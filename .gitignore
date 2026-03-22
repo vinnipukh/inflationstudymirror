@@ -1,0 +1,35 @@
+# --- Python / virtualenv ---
+.venv/
+venv/
+env/
+
+# Environment variables / secrets
+.env
+.env.*
+*.pem
+*.key
+id_rsa
+id_rsa.pub
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Caches / tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# JetBrains / IntelliJ / PyCharm
+.idea*
