@@ -32,23 +32,37 @@ The scrapers run automatically (via GitHub Actions) and append new daily snapsho
 ```
 inflationstudymirror/
 │
-├── Codes/                        # All scraping & processing scripts
+├── Codes/                              # All scraping & processing scripts
 │   ├── Markets/
 │   │   └── Gurmar/
-│   │       └── gurmar_scraper.py      # Selenium-based scraper for gurmar.com.tr
-│   └── ClothingStores/
-│       └── Vakko/
-│           ├── vakko_master_scraper.py  # API-based scraper for vakko.com
-│           ├── categoryfinder.py        # Extracts category IDs from sitemap XML
-│           └── vakko_categories.xml     # Vakko sitemap (category URLs)
+│   │       └── gurmar_scraper.py       # Selenium-based scraper for gurmar.com.tr
+│   │
+│   ├── ClothingStores/
+│   │   └── Vakko/
+│   │       ├── vakko_master_scraper.py # API-based scraper for vakko.com
+│   │       ├── categoryfinder.py       # Extracts category IDs from sitemap XML
+│   │       └── vakko_categories.xml    # Vakko sitemap (category URLs)
+│   │
+│   └── sahibinden/
+│       └── camoufox_scraper.py         # Sahibinden scraper (Camoufox-based; manual-run)
 │
-├── Datas/                        # Collected price data (CSV, date-stamped)
-│   └── Markets/
-│       └── Gurmar/
-│           ├── gurmar_prices_YYYY-MM-DD.csv
-│           └── ...
+├── Datas/                              # Collected price data (CSV, date-stamped)
+│   ├── Markets/
+│   │   └── Gurmar/
+│   │       ├── gurmar_prices_YYYY-MM-DD.csv
+│   │       └── ...
+│   │
+│   ├── ClothingStores/
+│   │   └── Vakko/
+│   │       ├── vakko_YYYY-MM-DD.csv
+│   │       └── ...
+│   │
+│   └── HousesRent/
+│       ├── Kayseri/
+│       ├── Sivas/
+│       └── Tokat/
 │
-├── requirements.txt              # Python dependencies
+├── requirements.txt                    # Python dependencies
 └── README.md
 ```
 
@@ -102,7 +116,7 @@ VAKKO_COOKIE=<your_session_cookie>
 VAKKO_USER_AGENT=<your_user_agent_string>
 ```
 
-> ⚠️ Never commit your `.env` file. It is already in `.gitignore`. 
+> ⚠️ Never commit your `.env` file. It is in `.gitignore`.
 
 ---
 
@@ -127,22 +141,14 @@ python categoryfinder.py
 ```bash
 python vakko_master_scraper.py
 ```
-Outputs a CSV to `Datas/ClothingStores/Vakko/vakko_prices_<today>.csv`.
+Outputs a CSV to `Datas/ClothingStores/Vakko/vakko_<today>.csv`.
+
+### Sahibinden (Manual-run)
+This scraper is **manual-run only**. Sahibinden may require login / extra verification when accessed from IPs outside Turkey, so GitHub Actions runners (typically outside Turkey) are not suitable for running it on a daily schedule.
 
 ---
 
 ## 📦 Dependencies
-
-```
-certifi==2026.1.4
-charset-normalizer==3.4.4
-idna==3.11
-packaging==26.0
-python-dotenv==1.2.1
-requests==2.32.3
-urllib3==2.6.3
-wheel==0.46.3
-```
 
 Install all at once:
 ```bash
@@ -153,7 +159,10 @@ pip install -r requirements.txt
 
 ## 🤖 Automation (GitHub Actions)
 
-The repository includes a GitHub Actions workflow (`.github/`) that runs the scrapers on a scheduled basis and automatically commits new daily price snapshots to the `Datas/` directory.
+This repository includes scheduled GitHub Actions workflows that run scrapers and commit new daily snapshots to `Datas/`:
+
+- `/.github/workflows/gurmar.yml` — runs the Gurmar market scraper and commits new `Datas/Markets/Gurmar/*.csv`
+- `/.github/workflows/vakko_scraper.yml` — runs the Vakko scraper using GitHub Actions secrets and commits new `Datas/ClothingStores/Vakko/*.csv`
 
 ---
 
