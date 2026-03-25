@@ -5,6 +5,7 @@ import json
 import random
 import asyncio
 from datetime import datetime
+from urllib.parse import urlparse
 from bs4 import BeautifulSoup
 from camoufox.async_api import AsyncCamoufox
 
@@ -43,12 +44,7 @@ if FAST_MODE:
     TURNSTILE_IFRAME      = (0.5,  1.0)   # wait between iframe scan attempts
     CHALLENGE_RETRIES     = 4             # max challenge poll iterations
     POST_CLOSE_WAIT       = 10            # seconds after closing browser
-    HOMEPAGE_WARMUP_WAIT  = (1.5,  2.5)   # initial warmup page sleep
-    WARMUP_STEP_WAIT_1    = (0.5,  1.0)   # warmup mid-step 1
-    WARMUP_STEP_WAIT_2    = (0.5,  1.0)   # warmup mid-step 2
-    HUMAN_SCROLLS_MINMAX  = (1, 2)        # scroll count range for human_scroll
     HUMAN_MOVE_PROB       = 0.4           # probability to call human_random_move
-    MAX_CONCURRENT_CITIES = 3             # max simultaneous browser instances
 else:
     NAV_WAIT              = (8.0, 12.0)   # after page.goto()
     PAGE_PAUSE            = (8.0, 12.0)   # pause between listing pages
@@ -57,12 +53,7 @@ else:
     TURNSTILE_IFRAME      = (1.0,  2.0)   # wait between iframe scan attempts
     CHALLENGE_RETRIES     = 15            # max challenge poll iterations
     POST_CLOSE_WAIT       = 30            # seconds after closing browser
-    HOMEPAGE_WARMUP_WAIT  = (3.0,  5.0)   # initial warmup page sleep
-    WARMUP_STEP_WAIT_1    = (1.0,  2.5)   # warmup mid-step 1
-    WARMUP_STEP_WAIT_2    = (1.5,  3.0)   # warmup mid-step 2
-    HUMAN_SCROLLS_MINMAX  = (2, 4)        # scroll count range for human_scroll
     HUMAN_MOVE_PROB       = 1.0           # probability to call human_random_move
-    MAX_CONCURRENT_CITIES = 2             # max simultaneous browser instances
 
 TURNSTILE_WIDGET_WAIT = (6.0,  9.0)       # wait for Turnstile widget to be ready
 
@@ -181,61 +172,32 @@ async def get_page_content(page, timeout=10_000):
 
 async def human_scroll(page, scrolls=3):
     """Sayfayı rastgele miktarda, rastgele aralıklarla aşağı kaydırır."""
-    for _ in range(scrolls):
-        amount = random.randint(200, 600)
-        await page.mouse.wheel(0, amount)
-        await asyncio.sleep(random.uniform(0.4, 1.2))
+    try:
+        for _ in range(scrolls):
+            amount = random.randint(200, 600)
+            await page.mouse.wheel(0, amount)
+            await asyncio.sleep(random.uniform(0.4, 1.2))
+    except Exception:
+        # Ignore errors from closed pages/browsers — scroll is best-effort
+        pass
 
 
 async def human_random_move(page):
     """Ekranın rastgele bir noktasına mouse'u hareket ettirir."""
-    x = random.randint(200, 1000)
-    y = random.randint(150, 600)
-    await page.mouse.move(x, y)
-    await asyncio.sleep(random.uniform(0.2, 0.6))
+    try:
+        x = random.randint(200, 1000)
+        y = random.randint(150, 600)
+        await page.mouse.move(x, y)
+        await asyncio.sleep(random.uniform(0.2, 0.6))
+    except Exception:
+        # Ignore errors from closed pages/browsers — mouse move is best-effort
+        pass
 
 
 async def maybe_human_move(page, prob=HUMAN_MOVE_PROB):
     """Calls human_random_move with probability `prob` to reduce overhead in fast mode."""
     if random.random() < prob:
         await human_random_move(page)
-
-
-async def warmup_homepage(page):
-    """
-    Sahibinden ana sayfasına gider, insan gibi davranır, sonra döner.
-
-    Doğrudan bracket URL'ine gitmek yerine önce ana sayfayı ziyaret etmek:
-    - Cloudflare'ın behavioral analysis'ine gerçek kullanıcı gibi görünür
-    - cf_clearance cookie'sini ana sayfada alarak arama sayfalarında
-      doğrulama çıkma ihtimalini azaltır
-    - Referrer header'ı doğal görünür (sahibinden.com içinden geziyor)
-    """
-    print("🏠 Ana sayfa ısınma turu başlıyor...")
-    try:
-        await page.goto("https://www.sahibinden.com", wait_until="domcontentloaded", timeout=60_000)
-        await asyncio.sleep(random.uniform(*HOMEPAGE_WARMUP_WAIT))
-
-        # Ana sayfada da managed challenge çıkabilir
-        if is_managed_challenge(page):
-            print("🛡️ Ana sayfada Managed Challenge — otomatik çözülmesi bekleniyor...")
-            await wait_for_challenge(page)
-
-        html = await handle_browser_check(page)
-
-        # Ana sayfada insan gibi davran
-        await human_scroll(page, scrolls=random.randint(*HUMAN_SCROLLS_MINMAX))
-        await asyncio.sleep(random.uniform(*WARMUP_STEP_WAIT_1))
-        await human_random_move(page)
-        await asyncio.sleep(random.uniform(*WARMUP_STEP_WAIT_2))
-        await human_random_move(page)
-
-        print("✅ Ana sayfa ısınma turu tamamlandı.")
-    except BrowserBlockedError:
-        # Ana sayfa da engellenirse devam et — scrape denenecek
-        print("⚠️ Ana sayfa ısınmasında engel, scrape'e devam ediliyor...")
-    except Exception as e:
-        print(f"⚠️ Ana sayfa ısınma hatası (önemsiz): {e}")
 
 
 # ============================================================
@@ -353,16 +315,12 @@ def is_managed_challenge(page):
     """
     sahibinden.com/cs/checkLoading sayfasını tespit eder.
     URL: www.sahibinden.com/cs/checkLoading veya secure.sahibinden.com
-    HTML incelemesinden: cf-turnstile + güvenlik doğrulaması içerir.
     """
     try:
-        url = page.url.lower()
-        if "/cs/checkloading" in url or "secure.sahibinden.com" in url:
-            return True
-        # HTML yedek kontrol
-        html = page.content()
-        lower = html.lower()
-        return "güvenlik doğrulaması" in lower and "cf-turnstile" in lower
+        parsed = urlparse(page.url)
+        netloc = parsed.netloc.lower()
+        path   = parsed.path.lower()
+        return "/cs/checkloading" in path or netloc == "secure.sahibinden.com"
     except Exception:
         return False
 
@@ -705,7 +663,6 @@ async def scrape_city_brackets(page, city_url_name, folder_name, brackets,
             wait = random.uniform(*BRACKET_BREAK)
             print(f"   😮‍💨 Bracket molası: {wait:.1f}s")
             await asyncio.sleep(wait)
-            await maybe_human_move(page)
 
         page_num    = start_page if bracket_index == start_bracket else 1
         current_url = (
@@ -719,11 +676,6 @@ async def scrape_city_brackets(page, city_url_name, folder_name, brackets,
 
         while True:
             await safe_goto(page, current_url)
-
-            # Sayfa yüklendi — insan gibi davran
-            await maybe_human_move(page)
-            await human_scroll(page, scrolls=random.randint(*HUMAN_SCROLLS_MINMAX))
-            await maybe_human_move(page)
 
             html     = await get_page_content(page)
             soup     = BeautifulSoup(html, "html.parser")
@@ -771,10 +723,7 @@ async def scrape_city_brackets(page, city_url_name, folder_name, brackets,
             if next_button and "href" in next_button.attrs:
                 current_url = "https://www.sahibinden.com" + next_button["href"]
                 page_num   += 1
-                # Sayfa geçişi öncesi: insan gibi gez, sıkılmış gibi bekle
-                await maybe_human_move(page)
                 await asyncio.sleep(random.uniform(*PAGE_PAUSE))
-                await maybe_human_move(page)
             else:
                 print(f"   Son sayfa — bracket {min_price}-{max_price} TL tamamlandı.")
                 break
@@ -786,16 +735,13 @@ async def scrape_city_brackets(page, city_url_name, folder_name, brackets,
 # PER-CITY SCRAPE
 # ============================================================
 
-async def scrape_city(city_url_name, city_data, checkpoint, warmup_event: asyncio.Event = None):
+async def scrape_city(city_url_name, city_data, checkpoint):
     """
     Her şehir için bağımsız Camoufox örneği başlatır.
 
     Turnstile için:
       1. Önce otomatik iframe koordinat tıklaması dener
       2. Başarısız olursa #btn-continue butonunu bekler
-
-    Ana sayfa ısınma turu yalnızca ilk şehirde yapılır (zaman kazancı).
-    warmup_event: İlk warmup'ın yapıldığını diğer şehirlere bildiren asyncio.Event.
     """
     folder_name  = city_data["folder"]
     brackets     = city_data["brackets"]
@@ -821,16 +767,6 @@ async def scrape_city(city_url_name, city_data, checkpoint, warmup_event: asynci
                 locale="tr-TR",
             ) as browser:
                 page = await browser.new_page()
-
-                # Ana sayfa ısınma turu — sadece ilk şehirde yapılır
-                # asyncio.Event atomik (await olmadan check+set arası context switch yok)
-                do_warmup = warmup_event is not None and not warmup_event.is_set()
-                if do_warmup:
-                    warmup_event.set()
-                    await warmup_homepage(page)
-                    await asyncio.sleep(random.uniform(3.0, 5.0))
-                else:
-                    print("🏠 Ana sayfa ısınması atlanıyor (zaten yapıldı).")
 
                 total = await scrape_city_brackets(
                     page, city_url_name, folder_name, brackets,
@@ -862,14 +798,11 @@ async def scrape_city(city_url_name, city_data, checkpoint, warmup_event: asynci
 
 async def main():
     city_list = list(CITIES.items())
-    semaphore = asyncio.Semaphore(min(MAX_CONCURRENT_CITIES, len(city_list)))
-    warmup_event = asyncio.Event()  # İlk şehir set eder, diğerleri skip eder
 
     async def run_city(city_url_name, city_data):
-        async with semaphore:
-            checkpoint = load_checkpoint(city_url_name)
-            await scrape_city(city_url_name, city_data, checkpoint, warmup_event)
-            clear_checkpoint(city_url_name)
+        checkpoint = load_checkpoint(city_url_name)
+        await scrape_city(city_url_name, city_data, checkpoint)
+        clear_checkpoint(city_url_name)
 
     await asyncio.gather(*(run_city(city, data) for city, data in city_list))
     print("\n✅ Tüm şehirler tamamlandı (asenkron).")
