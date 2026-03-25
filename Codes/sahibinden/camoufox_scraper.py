@@ -12,8 +12,6 @@ from camoufox.sync_api import Camoufox
 # YAPILANDIRMA
 # ============================================================
 
-# BUG FIX 5 — Üç şehir de aynı bracket'ları kullanıyor, tek yerde tanımla.
-# Biri değiştirilince üçü birden değişir.
 DEFAULT_BRACKETS = [
     (0,       19_999),
     (20_000,  39_999),
@@ -38,7 +36,6 @@ CHECKPOINT_FILE = os.path.join(SCRIPT_DIR, "scraper_checkpoint.json")
 # ============================================================
 
 def load_checkpoint():
-    """Checkpoint dosyası varsa yükle, yoksa boş dict döndür."""
     if os.path.isfile(CHECKPOINT_FILE):
         try:
             with open(CHECKPOINT_FILE, encoding="utf-8") as f:
@@ -52,14 +49,7 @@ def load_checkpoint():
 
 
 def save_checkpoint(city_url_name, bracket_index, page_num):
-    """Mevcut ilerlemeyi checkpoint dosyasına yaz.
-
-    BUG FIX 4 — Önceki versiyonda checkpoint sayfa BAŞINDA yazılıyordu.
-    Sayfa henüz çekilmemişken blok gelirse o sayfa "tamamlandı" sayılıp
-    bir sonraki başlatmada atlanıyor, veri kaybı oluşuyordu.
-
-    Artık checkpoint sayfa SONUNDA (CSV'ye yazıldıktan sonra) çağrılıyor.
-    """
+    """CSV'ye yazıldıktan SONRA çağrılır — veri kaybını önler."""
     data = {
         "city":          city_url_name,
         "bracket_index": bracket_index,
@@ -74,14 +64,12 @@ def save_checkpoint(city_url_name, bracket_index, page_num):
 
 
 def clear_checkpoint():
-    """Tüm şehirler tamamlanınca checkpoint'i sil."""
     if os.path.isfile(CHECKPOINT_FILE):
         os.remove(CHECKPOINT_FILE)
         print("🗑️ Checkpoint temizlendi.")
 
 
 def get_resume_point(checkpoint, city_url_name):
-    """Checkpoint'ten bu şehir için kaldığı yeri döndürür."""
     if checkpoint.get("city") == city_url_name:
         return checkpoint.get("bracket_index", 0), checkpoint.get("page_num", 1)
     return 0, 1
@@ -92,12 +80,10 @@ def get_resume_point(checkpoint, city_url_name):
 # ============================================================
 
 class BrowserBlockedError(Exception):
-    """safe_goto tüm denemelerde başarısız olunca fırlatılır."""
     pass
 
 
 def close_and_wait(label, reason="normal"):
-    """Tarayıcı kapatıldıktan sonra her zaman çağrılır — 30s sabit bekleme."""
     if reason == "engel":
         print(f"🚫 {label} tarayıcısı engel nedeniyle kapatıldı — temizlendi.")
     else:
@@ -107,13 +93,10 @@ def close_and_wait(label, reason="normal"):
 
 
 # ============================================================
-# SES UYARISI
-# winsound.Beep() eski PC speaker (Beep.sys) kullanır — modern
-# Windows'ta devre dışıdır. PlaySound + SND_ALIAS ses kartından çalar.
+# SES UYARISI — sadece Windows'ta çalışır, Linux'ta sessiz
 # ============================================================
 
 def beep_alert():
-    """Cloudflare doğrulama gelince sesli uyarı verir."""
     try:
         import winsound
         for sound in ["SystemExclamation", "SystemHand", "SystemExclamation"]:
@@ -127,7 +110,7 @@ def beep_alert():
                 except Exception:
                     pass
     except Exception:
-        print("\a\a\a")  # Windows dışı
+        print("\a\a\a")
 
 
 # ============================================================
@@ -148,6 +131,110 @@ def get_page_content(page, timeout=10_000):
 
 
 # ============================================================
+# İNSANSI DAVRANIŞLAR
+# ============================================================
+
+def human_scroll(page, scrolls=3):
+    """Sayfayı rastgele miktarda, rastgele aralıklarla aşağı kaydırır."""
+    for _ in range(scrolls):
+        amount = random.randint(200, 600)
+        page.mouse.wheel(0, amount)
+        time.sleep(random.uniform(0.4, 1.2))
+
+
+def human_random_move(page):
+    """Ekranın rastgele bir noktasına mouse'u hareket ettirir."""
+    x = random.randint(200, 1000)
+    y = random.randint(150, 600)
+    page.mouse.move(x, y)
+    time.sleep(random.uniform(0.2, 0.6))
+
+
+def warmup_homepage(page):
+    """
+    Sahibinden ana sayfasına gider, insan gibi davranır, sonra döner.
+
+    Doğrudan bracket URL'ine gitmek yerine önce ana sayfayı ziyaret etmek:
+    - Cloudflare'ın behavioral analysis'ine gerçek kullanıcı gibi görünür
+    - cf_clearance cookie'sini ana sayfada alarak arama sayfalarında
+      doğrulama çıkma ihtimalini azaltır
+    - Referrer header'ı doğal görünür (sahibinden.com içinden geziyor)
+    """
+    print("🏠 Ana sayfa ısınma turu başlıyor...")
+    try:
+        page.goto("https://www.sahibinden.com", wait_until="domcontentloaded", timeout=60_000)
+        time.sleep(random.uniform(3.0, 5.0))
+
+        # Ana sayfada da managed challenge çıkabilir
+        if is_managed_challenge(page):
+            print("🛡️ Ana sayfada Managed Challenge — otomatik çözülmesi bekleniyor...")
+            wait_for_challenge(page)
+
+        html = handle_browser_check(page)
+
+        # Ana sayfada insan gibi davran
+        human_scroll(page, scrolls=random.randint(2, 4))
+        time.sleep(random.uniform(1.0, 2.5))
+        human_random_move(page)
+        time.sleep(random.uniform(1.5, 3.0))
+        human_random_move(page)
+
+        print("✅ Ana sayfa ısınma turu tamamlandı.")
+    except BrowserBlockedError:
+        # Ana sayfa da engellenirse devam et — scrape denenecek
+        print("⚠️ Ana sayfa ısınmasında engel, scrape'e devam ediliyor...")
+    except Exception as e:
+        print(f"⚠️ Ana sayfa ısınma hatası (önemsiz): {e}")
+
+
+# ============================================================
+# OTOMATİK TURNSTİLE BYPASS
+# ============================================================
+
+def try_auto_turnstile(page):
+    """
+    Cloudflare Turnstile checkbox'ını otomatik olarak tıklamayı dener.
+
+    Yaklaşım: Sayfadaki tüm frame'leri tara, challenges.cloudflare.com
+    URL'ine sahip olanı bul, bounding box'tan checkbox koordinatını
+    hesapla, humanize=True ile insan gibi tıkla.
+
+    Başarılı olursa True, başarısız olursa False döner.
+    False durumunda handle_browser_check() manuel beklemeye geçer.
+    """
+    print("   🤖 Otomatik Turnstile bypass deneniyor...")
+    try:
+        # Iframe'in yüklenmesi için bekle
+        for _ in range(15):
+            time.sleep(1)
+            for frame in page.frames:
+                if frame.url.startswith("https://challenges.cloudflare.com"):
+                    frame_element  = frame.frame_element()
+                    bounding_box   = frame_element.bounding_box()
+                    if not bounding_box:
+                        continue
+
+                    # Checkbox iframe içinde sol-orta konumda
+                    checkbox_x = bounding_box["x"] + bounding_box["width"] / 9
+                    checkbox_y = bounding_box["y"] + bounding_box["height"] / 2
+
+                    # humanize=True sayesinde hareket eğri yoldan gider
+                    page.mouse.click(checkbox_x, checkbox_y)
+                    print(f"   ✅ Turnstile checkbox'ına tıklandı "
+                          f"({checkbox_x:.0f}, {checkbox_y:.0f})")
+
+                    # Doğrulamanın işlenmesini bekle
+                    time.sleep(random.uniform(5.0, 8.0))
+                    return True
+
+        print("   ℹ️ Cloudflare iframe bulunamadı (otomatik bypass atlandı).")
+        return False
+    except Exception as e:
+        print(f"   ⚠️ Otomatik bypass hatası: {e}")
+        return False
+
+
+# ============================================================
 # PROTECTION HANDLERS
 # ============================================================
 
@@ -155,70 +242,211 @@ def handle_browser_check(page):
     """
     Sahibinden'in Cloudflare Turnstile sayfasını geçer.
 
-    BUG FIX 3 — Önceki versiyonda geçilemezse sadece print yapıp
-    dönüyordu. safe_goto başarılı sanıyor, boş sayfa üzerinde
-    devam ediyordu. Artık BrowserBlockedError fırlatıyor.
-
-    REFACTOR 1 — get_page_content'in döndürdüğü HTML'i döndürüyor.
-    safe_goto içinde tekrar get_page_content çağrısına gerek kalmıyor.
+    1. Önce otomatik bypass dener (iframe koordinat tıklaması)
+    2. Otomatik başarısız olursa 'Devam Et' butonunu bekler
+    3. O da başarısız olursa BrowserBlockedError fırlatır
     """
     html = get_page_content(page)
-    if "tarayıcınızı kontrol ediyoruz" not in html.lower():
-        return html   # Turnstile yok, sayfanın HTML'ini döndür
+    lower = html.lower()
+    is_check_page = (
+        "tarayıcınızı kontrol ediyoruz" in lower
+        or ("güvenlik doğrulaması" in lower and "cf-turnstile" in lower)
+        or is_managed_challenge(page)
+    )
+    if not is_check_page:
+        return html
 
-    print("🤖 Browser check sayfası tespit edildi, Turnstile bekleniyor...")
+    print("🤖 Cloudflare koruma sayfası tespit edildi...")
     beep_alert()
+
+    # Adım 1: Otomatik bypass dene
+    auto_success = try_auto_turnstile(page)
+
+    if auto_success:
+        # Bypass sonrası sayfanın tam yüklenmesini bekle
+        try:
+            page.wait_for_function(
+                "() => !document.body.innerText.toLowerCase()"
+                ".includes('tarayıcınızı kontrol ediyoruz')",
+                timeout=20_000,
+            )
+            time.sleep(random.uniform(4.0, 6.0))
+            html = get_page_content(page)
+            if "tarayıcınızı kontrol ediyoruz" not in html.lower():
+                print("✅ Otomatik Turnstile bypass başarılı!")
+                return html
+        except Exception:
+            pass
+        print("   ⚠️ Otomatik bypass sonrası hâlâ check sayfasında, fallback'e geçiliyor...")
+
+    # Adım 2: Devam Et butonunu bekle (yarı-manuel)
+    print("   ⏳ 'Devam Et' butonu bekleniyor (Turnstile token shadow DOM)...")
     try:
         page.wait_for_selector("#turnStileWidget", timeout=25_000)
-        print("   ⏳ Turnstile token bekleniyor (shadow DOM)...")
         time.sleep(random.uniform(13.0, 17.0))
         page.wait_for_selector("#btn-continue", timeout=15_000)
         page.click("#btn-continue")
-        print("✅ 'Devam Et' butonuna tıklandı, sayfa geçişi bekleniyor...")
+        print("✅ 'Devam Et' butonuna tıklandı.")
         page.wait_for_function(
-            "() => !document.body.innerText.toLowerCase().includes('tarayıcınızı kontrol ediyoruz')",
+            "() => !document.body.innerText.toLowerCase()"
+            ".includes('tarayıcınızı kontrol ediyoruz')",
             timeout=25_000,
         )
         time.sleep(random.uniform(4.0, 6.0))
-        return get_page_content(page)   # Geçiş sonrası güncel HTML
+        return get_page_content(page)
     except Exception as e:
         raise BrowserBlockedError(f"Turnstile geçilemedi: {e}") from e
 
 
+def is_managed_challenge(page):
+    """
+    sahibinden.com/cs/checkLoading sayfasını tespit eder.
+    URL: www.sahibinden.com/cs/checkLoading veya secure.sahibinden.com
+    HTML incelemesinden: cf-turnstile + güvenlik doğrulaması içerir.
+    """
+    try:
+        url = page.url.lower()
+        if "/cs/checkloading" in url or "secure.sahibinden.com" in url:
+            return True
+        # HTML yedek kontrol
+        html = page.content()
+        lower = html.lower()
+        return "güvenlik doğrulaması" in lower and "cf-turnstile" in lower
+    except Exception:
+        return False
+
+
 def is_waiting_page(html):
     lower = html.lower()
-    return any(s in lower for s in ["bir dakika lütfen", "lütfen bekleyiniz"])
+    return any(s in lower for s in [
+        "bir dakika lütfen",
+        "lütfen bekleyiniz",
+        "doğrulanıyor",           # Managed challenge widget metni
+        "güvenlik doğrulaması",   # Managed challenge başlık metni
+    ])
 
 
 def is_login_page(html):
-    """
-    BUG FIX 2 — Önceki eşik sum >= 1'di. Sahibinden'in normal
-    footer'ında "giriş yap" geçtiği için her sayfada yanlış
-    pozitif veriyordu. Eşik 2'ye çıkarıldı.
-    """
+    """Eşik 2 — footer'daki tek 'giriş yap' yanlış pozitif vermesin."""
     lower = html.lower()
     signals = ["giriş yap", "üye girişi", "captcha", "güvenlik doğrulama", "robot olmadığınızı"]
     return sum(1 for s in signals if s in lower) >= 2 and "searchresultstable" not in lower
 
 
+def try_click_managed_challenge(page):
+    """
+    www.sahibinden.com/cs/checkLoading sayfasındaki Turnstile
+    checkbox'ına insan gibi tıklamayı dener.
+
+    HTML incelemesinden öğrenilenler:
+    - Widget iframe'siz, DOM'a inject ediliyor (div#AOzYg6 gibi)
+    - Turnstile JS sonradan challenges.cloudflare.com iframe'i yaratır
+    - Container: input[name="cf-turnstile-response"] içeren div
+
+    Tıklama stratejileri (sırayla):
+    1. Turnstile JS'in iframe inject etmesi için 4-6s bekle
+    2. challenges.cloudflare.com iframe'i bul → checkbox koordinatına tıkla
+    3. input[name="cf-turnstile-response"] container'ına göre tıkla
+    4. Viewport'un sol-orta kısmına fallback tıklama
+    """
+    print("   🖱️ Turnstile checkbox'ına tıklanmaya çalışılıyor...")
+
+    # Turnstile JS'in iframe'i inject etmesi için bekle
+    time.sleep(random.uniform(4.0, 6.0))
+    human_random_move(page)
+    time.sleep(random.uniform(1.0, 2.0))
+    human_random_move(page)
+    time.sleep(random.uniform(0.5, 1.5))
+
+    # Strateji 1: challenges.cloudflare.com iframe (Turnstile JS inject eder)
+    try:
+        for frame in page.frames:
+            if "challenges.cloudflare.com" in frame.url:
+                frame_el = frame.frame_element()
+                bb = frame_el.bounding_box()
+                if bb:
+                    cx = bb["x"] + bb["width"] * 0.1
+                    cy = bb["y"] + bb["height"] * 0.5
+                    page.mouse.move(cx, cy)
+                    time.sleep(random.uniform(0.4, 0.8))
+                    page.mouse.click(cx, cy)
+                    print(f"   ✅ Cloudflare iframe checkbox'ına tıklandı ({cx:.0f}, {cy:.0f})")
+                    time.sleep(random.uniform(3.0, 5.0))
+                    return True
+    except Exception as e:
+        print(f"   ⚠️ iframe stratejisi hatası: {e}")
+
+    # Strateji 2: input[name="cf-turnstile-response"] container'ına tıkla
+    try:
+        el = page.query_selector("input[name='cf-turnstile-response']")
+        if el:
+            bb = el.bounding_box()
+            if bb:
+                # Checkbox input'un solunda ~40px
+                cx = max(bb["x"] - 40, 10)
+                cy = bb["y"] + bb["height"] * 0.5
+                page.mouse.move(cx, cy)
+                time.sleep(random.uniform(0.4, 0.8))
+                page.mouse.click(cx, cy)
+                print(f"   ✅ Turnstile container'ına tıklandı ({cx:.0f}, {cy:.0f})")
+                time.sleep(random.uniform(3.0, 5.0))
+                return True
+    except Exception as e:
+        print(f"   ⚠️ Container stratejisi hatası: {e}")
+
+    # Strateji 3: Viewport fallback — widget genellikle sol-orta bölgede
+    try:
+        vp = page.viewport_size or {"width": 1280, "height": 720}
+        cx = vp["width"]  * 0.36
+        cy = vp["height"] * 0.37
+        page.mouse.move(cx, cy)
+        time.sleep(random.uniform(0.4, 0.8))
+        page.mouse.click(cx, cy)
+        print(f"   🖱️ Fallback viewport tıklaması ({cx:.0f}, {cy:.0f})")
+        time.sleep(random.uniform(3.0, 5.0))
+        return True
+    except Exception as e:
+        print(f"   ⚠️ Fallback tıklama hatası: {e}")
+
+    return False
+
+
 def wait_for_challenge(page, iterations=15):
     """
-    BUG FIX 1 — Önceki versiyonda max_wait=30 (saniye) geçiliyordu
-    ama aslında range(30//2)=15 iterasyon × 8-11s ≈ 120-165s bekliyordu.
-    Parametre adı 'max_wait' yanıltıcıydı.
+    Cloudflare challenge sayfalarını bekler ve geçmeye çalışır.
 
-    Artık 'iterations' parametresi — kaç kez kontrol edeceğini açıkça belirtir.
-    Her iterasyon 8-11s bekler → toplam max ~165s.
+    Sıra:
+    1. İnsan gibi bekle + mouse gezdirme
+    2. Widget'a tıklamayı dene (managed challenge için)
+    3. Her iterasyonda URL + HTML kontrolü — geçildi mi?
+    4. Tüm iterasyonlar dolunca başarısız döner
     """
-    print(f"⏳ Challenge sayfasının çözülmesi bekleniyor ({iterations} kontrol × ~9s)...")
+    print(f"⏳ Challenge sayfasının çözülmesi bekleniyor ({iterations} kontrol)...")
+
+    # İlk tıklama denemesi — hemen değil, biraz bekledikten sonra
+    if is_managed_challenge(page):
+        try_click_managed_challenge(page)
+
     for i in range(iterations):
         time.sleep(random.uniform(8.0, 11.0))
+
+        # Hâlâ managed challenge sayfasındaysa tekrar tıklamayı dene
+        if is_managed_challenge(page):
+            print(f"   [{i+1}/{iterations}] Hâlâ challenge sayfasında...")
+            # Her 3 iterasyonda bir tekrar tıkla
+            if i % 3 == 2:
+                try_click_managed_challenge(page)
+            # Arada insan gibi davran
+            human_random_move(page)
+            continue
+
         html = get_page_content(page)
         if not is_waiting_page(html):
-            print(f"✅ Challenge {i + 1}. kontrolde çözüldü.")
-            return html   # Güncel HTML'i döndür
-    print("⏰ Challenge çözülmedi.")
-    return None   # Başarısız → çağıran None'a göre karar verir
+            print(f"✅ Challenge {i + 1}. kontrolde geçildi.")
+            return html
+
+    print("⏰ Challenge geçilemedi.")
+    return None
 
 
 def wait_for_listings(page, timeout=20_000):
@@ -233,7 +461,6 @@ def wait_for_listings(page, timeout=20_000):
 
 
 def goto_with_retry(page, url, retries=3, timeout=60_000):
-    """page.goto() timeout hatalarına karşı retry ile sarar."""
     for attempt in range(1, retries + 1):
         try:
             page.goto(url, wait_until="domcontentloaded", timeout=timeout)
@@ -246,26 +473,31 @@ def goto_with_retry(page, url, retries=3, timeout=60_000):
                     print(f"   {wait:.1f}s bekleniyor...")
                     time.sleep(wait)
                 else:
-                    print("   ❌ Tüm goto denemeleri tükendi — tarayıcı yeniden başlatılacak.")
                     raise BrowserBlockedError(f"Kalıcı goto timeout: {url}") from e
             else:
                 raise BrowserBlockedError(f"goto hatası: {e}") from e
 
 
 def safe_goto(page, url):
-    """
-    Sahibinden'in tüm koruma katmanlarını yöneterek URL'ye gider.
-
-    REFACTOR 1 — handle_browser_check artık HTML döndürüyor.
-    Önceden her adımda ayrı get_page_content çağrısı vardı (2x parse).
-    Şimdi her fonksiyon döndürdüğü HTML'i bir sonrakine aktarıyor.
-    """
+    """Sahibinden'in tüm koruma katmanlarını yöneterek URL'ye gider."""
     goto_with_retry(page, url)
     time.sleep(random.uniform(8.0, 12.0))
 
-    html = handle_browser_check(page)   # HTML döndürüyor artık
+    # Managed Challenge kontrolü — secure.sahibinden.com/cs/checkLoading
+    # Bu sayfa otomatik çözülür, sadece redirect'i bekliyoruz
+    if is_managed_challenge(page):
+        print("🛡️ Cloudflare Managed Challenge tespit edildi — otomatik çözülmesi bekleniyor...")
+        beep_alert()
+        result = wait_for_challenge(page)
+        if result is None:
+            raise BrowserBlockedError(f"Managed challenge çözülmedi: {url}")
+        print("✅ Managed Challenge geçildi, devam ediliyor.")
 
-    # Login / CAPTCHA duvarı
+    # Sayfaya girdikten sonra kısa insan davranışı
+    human_random_move(page)
+
+    html = handle_browser_check(page)
+
     if is_login_page(html):
         print("🔄 Login sayfasına yönlendirildi, tekrar deneniyor...")
         time.sleep(random.uniform(10, 15))
@@ -273,7 +505,6 @@ def safe_goto(page, url):
         time.sleep(random.uniform(8, 12))
         html = handle_browser_check(page)
 
-    # Cloudflare kendi kendine çözülen waiting page
     if is_waiting_page(html):
         result = wait_for_challenge(page)
         if result is not None:
@@ -289,7 +520,6 @@ def safe_goto(page, url):
                 if result is not None:
                     html = result
 
-    # Son kontrol — hâlâ login/captcha sayfasındaysa yeniden dene
     if is_login_page(html):
         print("🔄 Login/CAPTCHA sayfası, tekrar deneniyor...")
         time.sleep(random.uniform(8, 12))
@@ -303,7 +533,6 @@ def safe_goto(page, url):
                 html = result
 
         if is_login_page(html):
-            print("❌ Yeniden denemeden sonra hâlâ engellendi — tarayıcı yeniden başlatılacak.")
             raise BrowserBlockedError(f"Kalıcı engel: {url}")
 
     wait_for_listings(page)
@@ -321,7 +550,6 @@ def normalize_price(price_text):
     cleaned = re.sub(r"[^\d,.]", "", cleaned)
     if not cleaned:
         return None
-
     if "." in cleaned and "," in cleaned:
         cleaned = cleaned.replace(".", "").replace(",", ".")
     elif "," in cleaned:
@@ -331,7 +559,6 @@ def normalize_price(price_text):
         if len(parts) > 1 and all(p.isdigit() for p in parts):
             if all(len(p) == 3 for p in parts[1:]):
                 cleaned = "".join(parts)
-
     try:
         return float(cleaned)
     except ValueError:
@@ -343,7 +570,6 @@ def normalize_price(price_text):
 # ============================================================
 
 def resolve_rooms_index(soup):
-    """Tablo başlığından 'Oda' sütununun indeksini dinamik bulur."""
     headers = [
         th.get_text(strip=True)
         for th in soup.select("#searchResultsTable thead th.searchResultsAttributeHeader")
@@ -355,7 +581,6 @@ def resolve_rooms_index(soup):
 
 
 def extract_rooms(attributes, room_index):
-    """Oda bilgisini dinamik index veya fallback ile çeker."""
     if room_index is not None and len(attributes) > room_index:
         return attributes[room_index].text.strip()
     if len(attributes) > 1:
@@ -391,26 +616,21 @@ def save_to_csv_incremental(folder_name, data_batch):
 
 def scrape_city_brackets(page, city_url_name, folder_name, brackets,
                          start_bracket=0, start_page=1):
-    """
-    Tüm bracket + sayfalamaları dolaşır. Her sayfa anında CSV'ye yazılır.
-    Checkpoint ile kaldığı bracket + sayfadan devam edebilir.
-    """
     total_saved = 0
 
     for bracket_index, (min_price, max_price) in enumerate(brackets):
 
-        # Checkpoint: tamamlanmış bracket'ları atla
         if bracket_index < start_bracket:
             print(f"   ⏭️ Bracket {min_price}-{max_price} TL daha önce tamamlandı, atlanıyor.")
             continue
 
         print(f"\n🔍 Bracket {min_price}-{max_price} TL taranıyor...")
 
-        # Bracket arası nefes molası (ilk/devam bracket'ı hariç)
         if bracket_index > start_bracket:
             wait = random.uniform(4.0, 6.0)
             print(f"   😮‍💨 Bracket molası: {wait:.1f}s")
             time.sleep(wait)
+            human_random_move(page)
 
         page_num    = start_page if bracket_index == start_bracket else 1
         current_url = (
@@ -418,13 +638,17 @@ def scrape_city_brackets(page, city_url_name, folder_name, brackets,
             f"?pagingSize=50&price_min={min_price}&price_max={max_price}"
         )
 
-        # Checkpoint sayfasına doğru offset hesapla
         if page_num > 1:
             current_url += f"&pagingOffset={(page_num - 1) * 50}"
             print(f"   📌 Checkpoint'ten devam: sayfa {page_num}")
 
         while True:
             safe_goto(page, current_url)
+
+            # Sayfa yüklendi — insan gibi davran
+            human_random_move(page)
+            human_scroll(page, scrolls=random.randint(1, 3))
+            human_random_move(page)
 
             html     = get_page_content(page)
             soup     = BeautifulSoup(html, "html.parser")
@@ -465,15 +689,17 @@ def scrape_city_brackets(page, city_url_name, folder_name, brackets,
             else:
                 print(f"   ⚠️ Sayfa {page_num}: parse edilebilir kayıt yok.")
 
-            # BUG FIX 4 — Checkpoint'i sayfa BAŞINDA değil SONUNDA yaz.
-            # CSV'ye yazıldıktan sonra işaretleme yapılınca veri kaybı olmaz.
+            # CSV'ye yazıldıktan SONRA checkpoint güncelle
             save_checkpoint(city_url_name, bracket_index, page_num)
 
             next_button = soup.find("a", title="Sonraki")
             if next_button and "href" in next_button.attrs:
                 current_url = "https://www.sahibinden.com" + next_button["href"]
                 page_num   += 1
+                # Sayfa geçişi öncesi: insan gibi gez, sıkılmış gibi bekle
+                human_random_move(page)
                 time.sleep(random.uniform(8.0, 12.0))
+                human_random_move(page)
             else:
                 print(f"   Son sayfa — bracket {min_price}-{max_price} TL tamamlandı.")
                 break
@@ -489,15 +715,11 @@ def scrape_city(city_url_name, city_data, checkpoint):
     """
     Her şehir için bağımsız Camoufox örneği başlatır.
 
-    REFACTOR 2 — Önceki versiyonda start_bracket/start_page hem
-    fonksiyon başında hem BrowserBlockedError except'inde ayrı ayrı
-    hesaplanıyordu. Artık get_resume_point() ile tek noktadan alınıyor.
+    Turnstile için:
+      1. Önce otomatik iframe koordinat tıklaması dener
+      2. Başarısız olursa #btn-continue butonunu bekler
 
-    Camoufox parametreleri:
-      humanize=True       → C++ tabanlı insan-benzeri mouse hareketi
-      disable_coop=True   → Turnstile cross-origin iframe tıklaması
-      os="windows"        → Windows fingerprint
-      locale="tr-TR"      → Türkçe locale
+    Her şehir açılışında önce ana sayfaya gidip "ısınma turu" yapılır.
     """
     folder_name  = city_data["folder"]
     brackets     = city_data["brackets"]
@@ -518,10 +740,16 @@ def scrape_city(city_url_name, city_data, checkpoint):
                 headless=False,
                 humanize=True,
                 disable_coop=True,
+                i_know_what_im_doing=True,
                 os="windows",
                 locale="tr-TR",
             ) as browser:
-                page  = browser.new_page()
+                page = browser.new_page()
+
+                # Ana sayfa ısınma turu — Cloudflare trust score'unu artırır
+                warmup_homepage(page)
+                time.sleep(random.uniform(3.0, 5.0))
+
                 total = scrape_city_brackets(
                     page, city_url_name, folder_name, brackets,
                     start_bracket=start_bracket,
@@ -534,7 +762,6 @@ def scrape_city(city_url_name, city_data, checkpoint):
 
         except BrowserBlockedError as e:
             print(f"   Engel detayı: {e}")
-            # Disk'teki güncel checkpoint'ten kaldığı yeri al
             start_bracket, start_page = get_resume_point(
                 load_checkpoint(), city_url_name
             )
@@ -554,7 +781,6 @@ def main():
     checkpoint = load_checkpoint()
     city_list  = list(CITIES.items())
 
-    # Checkpoint'teki şehirden öncekileri atla
     start_city = checkpoint.get("city")
     start_idx  = 0
     if start_city:
@@ -565,7 +791,7 @@ def main():
 
     for city_url_name, city_data in city_list[start_idx:]:
         scrape_city(city_url_name, city_data, checkpoint)
-        checkpoint = {}   # Sonraki şehir baştan başlar
+        checkpoint = {}
 
     clear_checkpoint()
     print("\n✅ Tüm şehirler tamamlandı.")
