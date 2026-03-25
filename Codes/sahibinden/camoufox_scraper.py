@@ -29,16 +29,42 @@ CITIES = {
 SCRIPT_DIR    = os.path.dirname(os.path.abspath(__file__))
 DATA_BASE_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "../../../Datas/HousesRent/"))
 
-# Timing constants (seconds)
-NAV_WAIT              = (8.0, 12.0)   # after page.goto()
-BRACKET_BREAK         = (4.0,  6.0)   # pause between brackets
-PAGE_PAUSE            = (8.0, 12.0)   # pause between listing pages
-CHALLENGE_WAIT        = (8.0, 11.0)   # interval between challenge poll iterations
-CHALLENGE_RETRIES     = 15            # max challenge poll iterations
-TURNSTILE_IFRAME      = (1.0,  2.0)   # wait between iframe scan attempts
-TURNSTILE_WIDGET_WAIT = (6.0,  9.0)   # wait for Turnstile widget to be ready
+# ============================================================
+# SPEED PROFILE
+# ============================================================
 
-MAX_CONCURRENT_CITIES = 2             # max simultaneous browser instances
+FAST_MODE = True
+
+if FAST_MODE:
+    NAV_WAIT              = (2.0,  4.0)   # after page.goto()
+    PAGE_PAUSE            = (2.0,  4.0)   # pause between listing pages
+    BRACKET_BREAK         = (1.0,  2.0)   # pause between brackets
+    CHALLENGE_WAIT        = (4.0,  6.0)   # interval between challenge poll iterations
+    TURNSTILE_IFRAME      = (0.5,  1.0)   # wait between iframe scan attempts
+    CHALLENGE_RETRIES     = 8             # max challenge poll iterations
+    POST_CLOSE_WAIT       = 10            # seconds after closing browser
+    HOMEPAGE_WARMUP_WAIT  = (1.5,  2.5)   # initial warmup page sleep
+    WARMUP_STEP_WAIT_1    = (0.5,  1.0)   # warmup mid-step 1
+    WARMUP_STEP_WAIT_2    = (0.5,  1.0)   # warmup mid-step 2
+    HUMAN_SCROLLS_MINMAX  = (1, 2)        # scroll count range for human_scroll
+    HUMAN_MOVE_PROB       = 0.4           # probability to call human_random_move
+    MAX_CONCURRENT_CITIES = 3             # max simultaneous browser instances
+else:
+    NAV_WAIT              = (8.0, 12.0)   # after page.goto()
+    PAGE_PAUSE            = (8.0, 12.0)   # pause between listing pages
+    BRACKET_BREAK         = (4.0,  6.0)   # pause between brackets
+    CHALLENGE_WAIT        = (8.0, 11.0)   # interval between challenge poll iterations
+    TURNSTILE_IFRAME      = (1.0,  2.0)   # wait between iframe scan attempts
+    CHALLENGE_RETRIES     = 15            # max challenge poll iterations
+    POST_CLOSE_WAIT       = 30            # seconds after closing browser
+    HOMEPAGE_WARMUP_WAIT  = (3.0,  5.0)   # initial warmup page sleep
+    WARMUP_STEP_WAIT_1    = (1.0,  2.5)   # warmup mid-step 1
+    WARMUP_STEP_WAIT_2    = (1.5,  3.0)   # warmup mid-step 2
+    HUMAN_SCROLLS_MINMAX  = (2, 4)        # scroll count range for human_scroll
+    HUMAN_MOVE_PROB       = 1.0           # probability to call human_random_move
+    MAX_CONCURRENT_CITIES = 2             # max simultaneous browser instances
+
+TURNSTILE_WIDGET_WAIT = (6.0,  9.0)       # wait for Turnstile widget to be ready
 
 
 def checkpoint_path(city_url_name: str) -> str:
@@ -104,8 +130,8 @@ async def close_and_wait(label, reason="normal"):
         print(f"🚫 {label} tarayıcısı engel nedeniyle kapatıldı — temizlendi.")
     else:
         print(f"🧹 {label} tarayıcısı kapatıldı — çerezler ve oturum temizlendi.")
-    print("⏳ Sonraki açılış için 30 saniye bekleniyor...")
-    await asyncio.sleep(30)
+    print(f"⏳ Sonraki açılış için {POST_CLOSE_WAIT} saniye bekleniyor...")
+    await asyncio.sleep(POST_CLOSE_WAIT)
 
 
 # ============================================================
@@ -169,6 +195,12 @@ async def human_random_move(page):
     await asyncio.sleep(random.uniform(0.2, 0.6))
 
 
+async def maybe_human_move(page, prob=HUMAN_MOVE_PROB):
+    """Calls human_random_move with probability `prob` to reduce overhead in fast mode."""
+    if random.random() < prob:
+        await human_random_move(page)
+
+
 async def warmup_homepage(page):
     """
     Sahibinden ana sayfasına gider, insan gibi davranır, sonra döner.
@@ -182,7 +214,7 @@ async def warmup_homepage(page):
     print("🏠 Ana sayfa ısınma turu başlıyor...")
     try:
         await page.goto("https://www.sahibinden.com", wait_until="domcontentloaded", timeout=60_000)
-        await asyncio.sleep(random.uniform(3.0, 5.0))
+        await asyncio.sleep(random.uniform(*HOMEPAGE_WARMUP_WAIT))
 
         # Ana sayfada da managed challenge çıkabilir
         if is_managed_challenge(page):
@@ -192,10 +224,10 @@ async def warmup_homepage(page):
         html = await handle_browser_check(page)
 
         # Ana sayfada insan gibi davran
-        await human_scroll(page, scrolls=random.randint(2, 4))
-        await asyncio.sleep(random.uniform(1.0, 2.5))
+        await human_scroll(page, scrolls=random.randint(*HUMAN_SCROLLS_MINMAX))
+        await asyncio.sleep(random.uniform(*WARMUP_STEP_WAIT_1))
         await human_random_move(page)
-        await asyncio.sleep(random.uniform(1.5, 3.0))
+        await asyncio.sleep(random.uniform(*WARMUP_STEP_WAIT_2))
         await human_random_move(page)
 
         print("✅ Ana sayfa ısınma turu tamamlandı.")
@@ -513,7 +545,7 @@ async def safe_goto(page, url):
         print("✅ Managed Challenge geçildi, devam ediliyor.")
 
     # Sayfaya girdikten sonra kısa insan davranışı
-    await human_random_move(page)
+    await maybe_human_move(page)
 
     html = await handle_browser_check(page)
 
@@ -649,7 +681,7 @@ async def scrape_city_brackets(page, city_url_name, folder_name, brackets,
             wait = random.uniform(*BRACKET_BREAK)
             print(f"   😮‍💨 Bracket molası: {wait:.1f}s")
             await asyncio.sleep(wait)
-            await human_random_move(page)
+            await maybe_human_move(page)
 
         page_num    = start_page if bracket_index == start_bracket else 1
         current_url = (
@@ -665,9 +697,9 @@ async def scrape_city_brackets(page, city_url_name, folder_name, brackets,
             await safe_goto(page, current_url)
 
             # Sayfa yüklendi — insan gibi davran
-            await human_random_move(page)
-            await human_scroll(page, scrolls=random.randint(1, 3))
-            await human_random_move(page)
+            await maybe_human_move(page)
+            await human_scroll(page, scrolls=random.randint(*HUMAN_SCROLLS_MINMAX))
+            await maybe_human_move(page)
 
             html     = await get_page_content(page)
             soup     = BeautifulSoup(html, "html.parser")
@@ -716,9 +748,9 @@ async def scrape_city_brackets(page, city_url_name, folder_name, brackets,
                 current_url = "https://www.sahibinden.com" + next_button["href"]
                 page_num   += 1
                 # Sayfa geçişi öncesi: insan gibi gez, sıkılmış gibi bekle
-                await human_random_move(page)
+                await maybe_human_move(page)
                 await asyncio.sleep(random.uniform(*PAGE_PAUSE))
-                await human_random_move(page)
+                await maybe_human_move(page)
             else:
                 print(f"   Son sayfa — bracket {min_price}-{max_price} TL tamamlandı.")
                 break
@@ -798,7 +830,7 @@ async def scrape_city(city_url_name, city_data, checkpoint):
 
 async def main():
     city_list = list(CITIES.items())
-    semaphore = asyncio.Semaphore(MAX_CONCURRENT_CITIES)
+    semaphore = asyncio.Semaphore(min(MAX_CONCURRENT_CITIES, len(city_list)))
 
     async def run_city(city_url_name, city_data):
         async with semaphore:
