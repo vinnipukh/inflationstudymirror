@@ -2,11 +2,11 @@ import os
 import csv
 import re
 import json
-import time
 import random
+import asyncio
 from datetime import datetime
 from bs4 import BeautifulSoup
-from camoufox.sync_api import Camoufox
+from camoufox.async_api import AsyncCamoufox
 
 # ============================================================
 # YAPILANDIRMA
@@ -26,19 +26,34 @@ CITIES = {
     "tokat":   {"folder": "Tokat",   "brackets": DEFAULT_BRACKETS},
 }
 
-SCRIPT_DIR      = os.path.dirname(os.path.abspath(__file__))
-DATA_BASE_DIR   = os.path.abspath(os.path.join(SCRIPT_DIR, "../../../Datas/HousesRent/"))
-CHECKPOINT_FILE = os.path.join(SCRIPT_DIR, "scraper_checkpoint.json")
+SCRIPT_DIR    = os.path.dirname(os.path.abspath(__file__))
+DATA_BASE_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "../../../Datas/HousesRent/"))
+
+# Timing constants (seconds)
+NAV_WAIT              = (8.0, 12.0)   # after page.goto()
+BRACKET_BREAK         = (4.0,  6.0)   # pause between brackets
+PAGE_PAUSE            = (8.0, 12.0)   # pause between listing pages
+CHALLENGE_WAIT        = (8.0, 11.0)   # interval between challenge poll iterations
+CHALLENGE_RETRIES     = 15            # max challenge poll iterations
+TURNSTILE_IFRAME      = (1.0,  2.0)   # wait between iframe scan attempts
+TURNSTILE_WIDGET_WAIT = (6.0,  9.0)   # wait for Turnstile widget to be ready
+
+MAX_CONCURRENT_CITIES = 2             # max simultaneous browser instances
+
+
+def checkpoint_path(city_url_name: str) -> str:
+    return os.path.join(SCRIPT_DIR, f"scraper_checkpoint_{city_url_name}.json")
 
 
 # ============================================================
 # CHECKPOINT SYSTEM
 # ============================================================
 
-def load_checkpoint():
-    if os.path.isfile(CHECKPOINT_FILE):
+def load_checkpoint(city_url_name):
+    path = checkpoint_path(city_url_name)
+    if os.path.isfile(path):
         try:
-            with open(CHECKPOINT_FILE, encoding="utf-8") as f:
+            with open(path, encoding="utf-8") as f:
                 data = json.load(f)
             print(f"📌 Checkpoint yüklendi → şehir: {data.get('city')}, "
                   f"bracket: {data.get('bracket_index')}, sayfa: {data.get('page_num')}")
@@ -57,16 +72,17 @@ def save_checkpoint(city_url_name, bracket_index, page_num):
         "saved_at":      datetime.now().isoformat(),
     }
     try:
-        with open(CHECKPOINT_FILE, "w", encoding="utf-8") as f:
+        with open(checkpoint_path(city_url_name), "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
     except Exception as e:
         print(f"⚠️ Checkpoint yazılamadı: {e}")
 
 
-def clear_checkpoint():
-    if os.path.isfile(CHECKPOINT_FILE):
-        os.remove(CHECKPOINT_FILE)
-        print("🗑️ Checkpoint temizlendi.")
+def clear_checkpoint(city_url_name):
+    path = checkpoint_path(city_url_name)
+    if os.path.isfile(path):
+        os.remove(path)
+        print(f"🗑️ Checkpoint temizlendi ({city_url_name}).")
 
 
 def get_resume_point(checkpoint, city_url_name):
@@ -83,74 +99,77 @@ class BrowserBlockedError(Exception):
     pass
 
 
-def close_and_wait(label, reason="normal"):
+async def close_and_wait(label, reason="normal"):
     if reason == "engel":
         print(f"🚫 {label} tarayıcısı engel nedeniyle kapatıldı — temizlendi.")
     else:
         print(f"🧹 {label} tarayıcısı kapatıldı — çerezler ve oturum temizlendi.")
     print("⏳ Sonraki açılış için 30 saniye bekleniyor...")
-    time.sleep(30)
+    await asyncio.sleep(30)
 
 
 # ============================================================
 # SES UYARISI — sadece Windows'ta çalışır, Linux'ta sessiz
 # ============================================================
 
-def beep_alert():
-    try:
-        import winsound
-        for sound in ["SystemExclamation", "SystemHand", "SystemExclamation"]:
-            try:
-                winsound.PlaySound(sound, winsound.SND_ALIAS | winsound.SND_SYNC)
-                time.sleep(0.3)
-            except Exception:
+async def beep_alert():
+    def _beep():
+        try:
+            import winsound
+            import time
+            for sound in ["SystemExclamation", "SystemHand", "SystemExclamation"]:
                 try:
-                    winsound.MessageBeep(winsound.MB_ICONEXCLAMATION)
+                    winsound.PlaySound(sound, winsound.SND_ALIAS | winsound.SND_SYNC)
                     time.sleep(0.3)
                 except Exception:
-                    pass
-    except Exception:
-        print("\a\a\a")
+                    try:
+                        winsound.MessageBeep(winsound.MB_ICONEXCLAMATION)
+                        time.sleep(0.3)
+                    except Exception:
+                        pass
+        except Exception:
+            print("\a\a\a")
+    await asyncio.to_thread(_beep)
 
 
 # ============================================================
 # PAGE CONTENT HELPER
 # ============================================================
 
-def get_page_content(page, timeout=10_000):
+async def get_page_content(page, timeout=10_000):
     """Navigasyon bitmeden page.content() çağrısını önler."""
     try:
-        page.wait_for_load_state("domcontentloaded", timeout=timeout)
+        await page.wait_for_load_state("domcontentloaded", timeout=timeout)
     except Exception:
         pass
     try:
-        return page.content()
+        return await page.content()
     except Exception:
-        time.sleep(3)
-        return page.content()
+        await asyncio.sleep(3)
+        return await page.content()
 
 
 # ============================================================
 # İNSANSI DAVRANIŞLAR
 # ============================================================
 
-def human_scroll(page, scrolls=3):
+async def human_scroll(page, scrolls=3):
     """Sayfayı rastgele miktarda, rastgele aralıklarla aşağı kaydırır."""
     for _ in range(scrolls):
         amount = random.randint(200, 600)
-        page.mouse.wheel(0, amount)
-        time.sleep(random.uniform(0.4, 1.2))
+        await page.mouse.wheel(0, amount)
+        await asyncio.sleep(random.uniform(0.4, 1.2))
 
 
-def human_random_move(page):
+async def human_random_move(page):
     """Ekranın rastgele bir noktasına mouse'u hareket ettirir."""
     x = random.randint(200, 1000)
     y = random.randint(150, 600)
-    page.mouse.move(x, y)
-    time.sleep(random.uniform(0.2, 0.6))
+    await page.mouse.move(x, y)
+    await asyncio.sleep(random.uniform(0.2, 0.6))
 
 
-def warmup_homepage(page):
+async def warmup_homepage(page):
     """
     Sahibinden ana sayfasına gider, insan gibi davranır, sonra döner.
 
@@ -162,22 +181,22 @@ def warmup_homepage(page):
     """
     print("🏠 Ana sayfa ısınma turu başlıyor...")
     try:
-        page.goto("https://www.sahibinden.com", wait_until="domcontentloaded", timeout=60_000)
-        time.sleep(random.uniform(3.0, 5.0))
+        await page.goto("https://www.sahibinden.com", wait_until="domcontentloaded", timeout=60_000)
+        await asyncio.sleep(random.uniform(3.0, 5.0))
 
         # Ana sayfada da managed challenge çıkabilir
         if is_managed_challenge(page):
             print("🛡️ Ana sayfada Managed Challenge — otomatik çözülmesi bekleniyor...")
-            wait_for_challenge(page)
+            await wait_for_challenge(page)
 
-        html = handle_browser_check(page)
+        html = await handle_browser_check(page)
 
         # Ana sayfada insan gibi davran
-        human_scroll(page, scrolls=random.randint(2, 4))
-        time.sleep(random.uniform(1.0, 2.5))
-        human_random_move(page)
-        time.sleep(random.uniform(1.5, 3.0))
-        human_random_move(page)
+        await human_scroll(page, scrolls=random.randint(2, 4))
+        await asyncio.sleep(random.uniform(1.0, 2.5))
+        await human_random_move(page)
+        await asyncio.sleep(random.uniform(1.5, 3.0))
+        await human_random_move(page)
 
         print("✅ Ana sayfa ısınma turu tamamlandı.")
     except BrowserBlockedError:
@@ -191,7 +210,7 @@ def warmup_homepage(page):
 # OTOMATİK TURNSTİLE BYPASS
 # ============================================================
 
-def try_auto_turnstile(page):
+async def try_auto_turnstile(page):
     """
     Cloudflare Turnstile checkbox'ını otomatik olarak tıklamayı dener.
 
@@ -205,11 +224,11 @@ def try_auto_turnstile(page):
     print("   🤖 Otomatik Turnstile bypass deneniyor...")
     try:
         # Iframe'in yüklenmesi için bekle
-        for _ in range(15):
-            time.sleep(1)
+        for _ in range(10):
+            await asyncio.sleep(random.uniform(*TURNSTILE_IFRAME))
             for frame in page.frames:
                 if frame.url.startswith("https://challenges.cloudflare.com"):
-                    frame_element  = frame.frame_element()
+                    frame_element  = await frame.frame_element()
                     bounding_box   = frame_element.bounding_box()
                     if not bounding_box:
                         continue
@@ -219,12 +238,12 @@ def try_auto_turnstile(page):
                     checkbox_y = bounding_box["y"] + bounding_box["height"] / 2
 
                     # humanize=True sayesinde hareket eğri yoldan gider
-                    page.mouse.click(checkbox_x, checkbox_y)
+                    await page.mouse.click(checkbox_x, checkbox_y)
                     print(f"   ✅ Turnstile checkbox'ına tıklandı "
                           f"({checkbox_x:.0f}, {checkbox_y:.0f})")
 
                     # Doğrulamanın işlenmesini bekle
-                    time.sleep(random.uniform(5.0, 8.0))
+                    await asyncio.sleep(random.uniform(3.5, 6.0))
                     return True
 
         print("   ℹ️ Cloudflare iframe bulunamadı (otomatik bypass atlandı).")
@@ -238,7 +257,7 @@ def try_auto_turnstile(page):
 # PROTECTION HANDLERS
 # ============================================================
 
-def handle_browser_check(page):
+async def handle_browser_check(page):
     """
     Sahibinden'in Cloudflare Turnstile sayfasını geçer.
 
@@ -246,7 +265,7 @@ def handle_browser_check(page):
     2. Otomatik başarısız olursa 'Devam Et' butonunu bekler
     3. O da başarısız olursa BrowserBlockedError fırlatır
     """
-    html = get_page_content(page)
+    html = await get_page_content(page)
     lower = html.lower()
     is_check_page = (
         "tarayıcınızı kontrol ediyoruz" in lower
@@ -257,21 +276,21 @@ def handle_browser_check(page):
         return html
 
     print("🤖 Cloudflare koruma sayfası tespit edildi...")
-    beep_alert()
+    await beep_alert()
 
     # Adım 1: Otomatik bypass dene
-    auto_success = try_auto_turnstile(page)
+    auto_success = await try_auto_turnstile(page)
 
     if auto_success:
         # Bypass sonrası sayfanın tam yüklenmesini bekle
         try:
-            page.wait_for_function(
+            await page.wait_for_function(
                 "() => !document.body.innerText.toLowerCase()"
                 ".includes('tarayıcınızı kontrol ediyoruz')",
                 timeout=20_000,
             )
-            time.sleep(random.uniform(4.0, 6.0))
-            html = get_page_content(page)
+            await asyncio.sleep(random.uniform(4.0, 6.0))
+            html = await get_page_content(page)
             if "tarayıcınızı kontrol ediyoruz" not in html.lower():
                 print("✅ Otomatik Turnstile bypass başarılı!")
                 return html
@@ -282,18 +301,18 @@ def handle_browser_check(page):
     # Adım 2: Devam Et butonunu bekle (yarı-manuel)
     print("   ⏳ 'Devam Et' butonu bekleniyor (Turnstile token shadow DOM)...")
     try:
-        page.wait_for_selector("#turnStileWidget", timeout=25_000)
-        time.sleep(random.uniform(13.0, 17.0))
-        page.wait_for_selector("#btn-continue", timeout=15_000)
-        page.click("#btn-continue")
+        await page.wait_for_selector("#turnStileWidget", timeout=25_000)
+        await asyncio.sleep(random.uniform(*TURNSTILE_WIDGET_WAIT))
+        await page.wait_for_selector("#btn-continue", timeout=15_000)
+        await page.click("#btn-continue")
         print("✅ 'Devam Et' butonuna tıklandı.")
-        page.wait_for_function(
+        await page.wait_for_function(
             "() => !document.body.innerText.toLowerCase()"
             ".includes('tarayıcınızı kontrol ediyoruz')",
             timeout=25_000,
         )
-        time.sleep(random.uniform(4.0, 6.0))
-        return get_page_content(page)
+        await asyncio.sleep(random.uniform(4.0, 6.0))
+        return await get_page_content(page)
     except Exception as e:
         raise BrowserBlockedError(f"Turnstile geçilemedi: {e}") from e
 
@@ -333,7 +352,7 @@ def is_login_page(html):
     return sum(1 for s in signals if s in lower) >= 2 and "searchresultstable" not in lower
 
 
-def try_click_managed_challenge(page):
+async def try_click_managed_challenge(page):
     """
     www.sahibinden.com/cs/checkLoading sayfasındaki Turnstile
     checkbox'ına insan gibi tıklamayı dener.
@@ -352,44 +371,44 @@ def try_click_managed_challenge(page):
     print("   🖱️ Turnstile checkbox'ına tıklanmaya çalışılıyor...")
 
     # Turnstile JS'in iframe'i inject etmesi için bekle
-    time.sleep(random.uniform(4.0, 6.0))
-    human_random_move(page)
-    time.sleep(random.uniform(1.0, 2.0))
-    human_random_move(page)
-    time.sleep(random.uniform(0.5, 1.5))
+    await asyncio.sleep(random.uniform(4.0, 6.0))
+    await human_random_move(page)
+    await asyncio.sleep(random.uniform(1.0, 2.0))
+    await human_random_move(page)
+    await asyncio.sleep(random.uniform(0.5, 1.5))
 
     # Strateji 1: challenges.cloudflare.com iframe (Turnstile JS inject eder)
     try:
         for frame in page.frames:
             if "challenges.cloudflare.com" in frame.url:
-                frame_el = frame.frame_element()
+                frame_el = await frame.frame_element()
                 bb = frame_el.bounding_box()
                 if bb:
                     cx = bb["x"] + bb["width"] * 0.1
                     cy = bb["y"] + bb["height"] * 0.5
-                    page.mouse.move(cx, cy)
-                    time.sleep(random.uniform(0.4, 0.8))
-                    page.mouse.click(cx, cy)
+                    await page.mouse.move(cx, cy)
+                    await asyncio.sleep(random.uniform(0.4, 0.8))
+                    await page.mouse.click(cx, cy)
                     print(f"   ✅ Cloudflare iframe checkbox'ına tıklandı ({cx:.0f}, {cy:.0f})")
-                    time.sleep(random.uniform(3.0, 5.0))
+                    await asyncio.sleep(random.uniform(3.0, 5.0))
                     return True
     except Exception as e:
         print(f"   ⚠️ iframe stratejisi hatası: {e}")
 
     # Strateji 2: input[name="cf-turnstile-response"] container'ına tıkla
     try:
-        el = page.query_selector("input[name='cf-turnstile-response']")
+        el = await page.query_selector("input[name='cf-turnstile-response']")
         if el:
             bb = el.bounding_box()
             if bb:
                 # Checkbox input'un solunda ~40px
                 cx = max(bb["x"] - 40, 10)
                 cy = bb["y"] + bb["height"] * 0.5
-                page.mouse.move(cx, cy)
-                time.sleep(random.uniform(0.4, 0.8))
-                page.mouse.click(cx, cy)
+                await page.mouse.move(cx, cy)
+                await asyncio.sleep(random.uniform(0.4, 0.8))
+                await page.mouse.click(cx, cy)
                 print(f"   ✅ Turnstile container'ına tıklandı ({cx:.0f}, {cy:.0f})")
-                time.sleep(random.uniform(3.0, 5.0))
+                await asyncio.sleep(random.uniform(3.0, 5.0))
                 return True
     except Exception as e:
         print(f"   ⚠️ Container stratejisi hatası: {e}")
@@ -399,11 +418,11 @@ def try_click_managed_challenge(page):
         vp = page.viewport_size or {"width": 1280, "height": 720}
         cx = vp["width"]  * 0.36
         cy = vp["height"] * 0.37
-        page.mouse.move(cx, cy)
-        time.sleep(random.uniform(0.4, 0.8))
-        page.mouse.click(cx, cy)
+        await page.mouse.move(cx, cy)
+        await asyncio.sleep(random.uniform(0.4, 0.8))
+        await page.mouse.click(cx, cy)
         print(f"   🖱️ Fallback viewport tıklaması ({cx:.0f}, {cy:.0f})")
-        time.sleep(random.uniform(3.0, 5.0))
+        await asyncio.sleep(random.uniform(3.0, 5.0))
         return True
     except Exception as e:
         print(f"   ⚠️ Fallback tıklama hatası: {e}")
@@ -411,7 +430,7 @@ def try_click_managed_challenge(page):
     return False
 
 
-def wait_for_challenge(page, iterations=15):
+async def wait_for_challenge(page, iterations=CHALLENGE_RETRIES):
     """
     Cloudflare challenge sayfalarını bekler ve geçmeye çalışır.
 
@@ -425,22 +444,22 @@ def wait_for_challenge(page, iterations=15):
 
     # İlk tıklama denemesi — hemen değil, biraz bekledikten sonra
     if is_managed_challenge(page):
-        try_click_managed_challenge(page)
+        await try_click_managed_challenge(page)
 
     for i in range(iterations):
-        time.sleep(random.uniform(8.0, 11.0))
+        await asyncio.sleep(random.uniform(*CHALLENGE_WAIT))
 
         # Hâlâ managed challenge sayfasındaysa tekrar tıklamayı dene
         if is_managed_challenge(page):
             print(f"   [{i+1}/{iterations}] Hâlâ challenge sayfasında...")
             # Her 3 iterasyonda bir tekrar tıkla
             if i % 3 == 2:
-                try_click_managed_challenge(page)
+                await try_click_managed_challenge(page)
             # Arada insan gibi davran
-            human_random_move(page)
+            await human_random_move(page)
             continue
 
-        html = get_page_content(page)
+        html = await get_page_content(page)
         if not is_waiting_page(html):
             print(f"✅ Challenge {i + 1}. kontrolde geçildi.")
             return html
@@ -449,9 +468,9 @@ def wait_for_challenge(page, iterations=15):
     return None
 
 
-def wait_for_listings(page, timeout=20_000):
+async def wait_for_listings(page, timeout=20_000):
     try:
-        page.wait_for_selector(
+        await page.wait_for_selector(
             "#searchResultsTable tbody tr.searchResultsItem",
             timeout=timeout,
         )
@@ -460,82 +479,82 @@ def wait_for_listings(page, timeout=20_000):
         return False
 
 
-def goto_with_retry(page, url, retries=3, timeout=60_000):
+async def goto_with_retry(page, url, retries=3, timeout=60_000):
     for attempt in range(1, retries + 1):
         try:
-            page.goto(url, wait_until="domcontentloaded", timeout=timeout)
+            await page.goto(url, wait_until="domcontentloaded", timeout=timeout)
             return
         except Exception as e:
             if "timeout" in str(e).lower():
                 print(f"   ⏱️ page.goto timeout (deneme {attempt}/{retries})")
                 if attempt < retries:
-                    wait = random.uniform(13.0, 18.0)
+                    wait = random.uniform(8.0, 12.0)
                     print(f"   {wait:.1f}s bekleniyor...")
-                    time.sleep(wait)
+                    await asyncio.sleep(wait)
                 else:
                     raise BrowserBlockedError(f"Kalıcı goto timeout: {url}") from e
             else:
                 raise BrowserBlockedError(f"goto hatası: {e}") from e
 
 
-def safe_goto(page, url):
+async def safe_goto(page, url):
     """Sahibinden'in tüm koruma katmanlarını yöneterek URL'ye gider."""
-    goto_with_retry(page, url)
-    time.sleep(random.uniform(8.0, 12.0))
+    await goto_with_retry(page, url)
+    await asyncio.sleep(random.uniform(*NAV_WAIT))
 
     # Managed Challenge kontrolü — secure.sahibinden.com/cs/checkLoading
     # Bu sayfa otomatik çözülür, sadece redirect'i bekliyoruz
     if is_managed_challenge(page):
         print("🛡️ Cloudflare Managed Challenge tespit edildi — otomatik çözülmesi bekleniyor...")
-        beep_alert()
-        result = wait_for_challenge(page)
+        await beep_alert()
+        result = await wait_for_challenge(page)
         if result is None:
             raise BrowserBlockedError(f"Managed challenge çözülmedi: {url}")
         print("✅ Managed Challenge geçildi, devam ediliyor.")
 
     # Sayfaya girdikten sonra kısa insan davranışı
-    human_random_move(page)
+    await human_random_move(page)
 
-    html = handle_browser_check(page)
+    html = await handle_browser_check(page)
 
     if is_login_page(html):
         print("🔄 Login sayfasına yönlendirildi, tekrar deneniyor...")
-        time.sleep(random.uniform(10, 15))
-        goto_with_retry(page, url)
-        time.sleep(random.uniform(8, 12))
-        html = handle_browser_check(page)
+        await asyncio.sleep(random.uniform(5, 8))
+        await goto_with_retry(page, url)
+        await asyncio.sleep(random.uniform(*NAV_WAIT))
+        html = await handle_browser_check(page)
 
     if is_waiting_page(html):
-        result = wait_for_challenge(page)
+        result = await wait_for_challenge(page)
         if result is not None:
             html = result
-            html = handle_browser_check(page) or html
+            html = await handle_browser_check(page) or html
         else:
             print("🔄 Challenge takılı kaldı, tekrar yükleniyor...")
-            goto_with_retry(page, url)
-            time.sleep(random.uniform(8, 12))
-            html = handle_browser_check(page)
+            await goto_with_retry(page, url)
+            await asyncio.sleep(random.uniform(*NAV_WAIT))
+            html = await handle_browser_check(page)
             if is_waiting_page(html):
-                result = wait_for_challenge(page)
+                result = await wait_for_challenge(page)
                 if result is not None:
                     html = result
 
     if is_login_page(html):
         print("🔄 Login/CAPTCHA sayfası, tekrar deneniyor...")
-        time.sleep(random.uniform(8, 12))
-        goto_with_retry(page, url)
-        time.sleep(random.uniform(8, 12))
-        html = handle_browser_check(page)
+        await asyncio.sleep(random.uniform(5, 8))
+        await goto_with_retry(page, url)
+        await asyncio.sleep(random.uniform(*NAV_WAIT))
+        html = await handle_browser_check(page)
 
         if is_waiting_page(html):
-            result = wait_for_challenge(page)
+            result = await wait_for_challenge(page)
             if result is not None:
                 html = result
 
         if is_login_page(html):
             raise BrowserBlockedError(f"Kalıcı engel: {url}")
 
-    wait_for_listings(page)
+    await wait_for_listings(page)
     return True
 
 
@@ -614,8 +633,8 @@ def save_to_csv_incremental(folder_name, data_batch):
 # CORE SCRAPE
 # ============================================================
 
-def scrape_city_brackets(page, city_url_name, folder_name, brackets,
-                         start_bracket=0, start_page=1):
+async def scrape_city_brackets(page, city_url_name, folder_name, brackets,
+                              start_bracket=0, start_page=1):
     total_saved = 0
 
     for bracket_index, (min_price, max_price) in enumerate(brackets):
@@ -627,10 +646,10 @@ def scrape_city_brackets(page, city_url_name, folder_name, brackets,
         print(f"\n🔍 Bracket {min_price}-{max_price} TL taranıyor...")
 
         if bracket_index > start_bracket:
-            wait = random.uniform(4.0, 6.0)
+            wait = random.uniform(*BRACKET_BREAK)
             print(f"   😮‍💨 Bracket molası: {wait:.1f}s")
-            time.sleep(wait)
-            human_random_move(page)
+            await asyncio.sleep(wait)
+            await human_random_move(page)
 
         page_num    = start_page if bracket_index == start_bracket else 1
         current_url = (
@@ -643,14 +662,14 @@ def scrape_city_brackets(page, city_url_name, folder_name, brackets,
             print(f"   📌 Checkpoint'ten devam: sayfa {page_num}")
 
         while True:
-            safe_goto(page, current_url)
+            await safe_goto(page, current_url)
 
             # Sayfa yüklendi — insan gibi davran
-            human_random_move(page)
-            human_scroll(page, scrolls=random.randint(1, 3))
-            human_random_move(page)
+            await human_random_move(page)
+            await human_scroll(page, scrolls=random.randint(1, 3))
+            await human_random_move(page)
 
-            html     = get_page_content(page)
+            html     = await get_page_content(page)
             soup     = BeautifulSoup(html, "html.parser")
             listings = soup.select("#searchResultsTable tbody tr.searchResultsItem")
 
@@ -697,9 +716,9 @@ def scrape_city_brackets(page, city_url_name, folder_name, brackets,
                 current_url = "https://www.sahibinden.com" + next_button["href"]
                 page_num   += 1
                 # Sayfa geçişi öncesi: insan gibi gez, sıkılmış gibi bekle
-                human_random_move(page)
-                time.sleep(random.uniform(8.0, 12.0))
-                human_random_move(page)
+                await human_random_move(page)
+                await asyncio.sleep(random.uniform(*PAGE_PAUSE))
+                await human_random_move(page)
             else:
                 print(f"   Son sayfa — bracket {min_price}-{max_price} TL tamamlandı.")
                 break
@@ -711,7 +730,7 @@ def scrape_city_brackets(page, city_url_name, folder_name, brackets,
 # PER-CITY SCRAPE
 # ============================================================
 
-def scrape_city(city_url_name, city_data, checkpoint):
+async def scrape_city(city_url_name, city_data, checkpoint):
     """
     Her şehir için bağımsız Camoufox örneği başlatır.
 
@@ -736,7 +755,7 @@ def scrape_city(city_url_name, city_data, checkpoint):
         print(f"{'=' * 50}")
 
         try:
-            with Camoufox(
+            async with AsyncCamoufox(
                 headless=False,
                 humanize=True,
                 disable_coop=True,
@@ -744,58 +763,52 @@ def scrape_city(city_url_name, city_data, checkpoint):
                 os="windows",
                 locale="tr-TR",
             ) as browser:
-                page = browser.new_page()
+                page = await browser.new_page()
 
                 # Ana sayfa ısınma turu — Cloudflare trust score'unu artırır
-                warmup_homepage(page)
-                time.sleep(random.uniform(3.0, 5.0))
+                await warmup_homepage(page)
+                await asyncio.sleep(random.uniform(3.0, 5.0))
 
-                total = scrape_city_brackets(
+                total = await scrape_city_brackets(
                     page, city_url_name, folder_name, brackets,
                     start_bracket=start_bracket,
                     start_page=start_page,
                 )
                 print(f"\n✅ {folder_name} tamamlandı — toplam {total} kayıt kaydedildi.")
 
-            close_and_wait(folder_name, reason="normal")
+            await close_and_wait(folder_name, reason="normal")
             break
 
         except BrowserBlockedError as e:
             print(f"   Engel detayı: {e}")
             start_bracket, start_page = get_resume_point(
-                load_checkpoint(), city_url_name
+                load_checkpoint(city_url_name), city_url_name
             )
             if attempt < max_restarts:
                 print(f"🔄 Yeniden başlatılıyor (deneme {attempt + 1}/{max_restarts})...")
-                close_and_wait(folder_name, reason="engel")
+                await close_and_wait(folder_name, reason="engel")
             else:
                 print(f"❌ {max_restarts} denemeden sonra {folder_name} atlandı.")
-                close_and_wait(folder_name, reason="engel")
+                await close_and_wait(folder_name, reason="engel")
 
 
 # ============================================================
 # MAIN
 # ============================================================
 
-def main():
-    checkpoint = load_checkpoint()
-    city_list  = list(CITIES.items())
+async def main():
+    city_list = list(CITIES.items())
+    semaphore = asyncio.Semaphore(MAX_CONCURRENT_CITIES)
 
-    start_city = checkpoint.get("city")
-    start_idx  = 0
-    if start_city:
-        for i, (city_url_name, _) in enumerate(city_list):
-            if city_url_name == start_city:
-                start_idx = i
-                break
+    async def run_city(city_url_name, city_data):
+        async with semaphore:
+            checkpoint = load_checkpoint(city_url_name)
+            await scrape_city(city_url_name, city_data, checkpoint)
+            clear_checkpoint(city_url_name)
 
-    for city_url_name, city_data in city_list[start_idx:]:
-        scrape_city(city_url_name, city_data, checkpoint)
-        checkpoint = {}
-
-    clear_checkpoint()
-    print("\n✅ Tüm şehirler tamamlandı.")
+    await asyncio.gather(*(run_city(city, data) for city, data in city_list))
+    print("\n✅ Tüm şehirler tamamlandı (asenkron).")
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
