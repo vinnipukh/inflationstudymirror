@@ -41,7 +41,7 @@ if FAST_MODE:
     BRACKET_BREAK         = (1.0,  2.0)   # pause between brackets
     CHALLENGE_WAIT        = (4.0,  6.0)   # interval between challenge poll iterations
     TURNSTILE_IFRAME      = (0.5,  1.0)   # wait between iframe scan attempts
-    CHALLENGE_RETRIES     = 8             # max challenge poll iterations
+    CHALLENGE_RETRIES     = 4             # max challenge poll iterations
     POST_CLOSE_WAIT       = 10            # seconds after closing browser
     HOMEPAGE_WARMUP_WAIT  = (1.5,  2.5)   # initial warmup page sleep
     WARMUP_STEP_WAIT_1    = (0.5,  1.0)   # warmup mid-step 1
@@ -367,6 +367,18 @@ def is_managed_challenge(page):
         return False
 
 
+def is_on_listing_page(page):
+    """
+    Bot normal bir ilan sayfasındaysa True döner — challenge kesinlikle geçilmiştir.
+    sahibinden.com/kiralik/* veya sahibinden.com/satilik/* URL'si yeterlidir.
+    """
+    try:
+        url = page.url.lower()
+        return "/kiralik/" in url or "/satilik/" in url
+    except Exception:
+        return False
+
+
 def is_waiting_page(html):
     lower = html.lower()
     return any(s in lower for s in [
@@ -469,8 +481,9 @@ async def wait_for_challenge(page, iterations=CHALLENGE_RETRIES):
     Sıra:
     1. İnsan gibi bekle + mouse gezdirme
     2. Widget'a tıklamayı dene (managed challenge için)
-    3. Her iterasyonda URL + HTML kontrolü — geçildi mi?
-    4. Tüm iterasyonlar dolunca başarısız döner
+    3. Her iterasyonda önce listing URL kontrolü — oradaysak 100% geçildi
+    4. Hâlâ challenge sayfasındaysa HTML kontrolü
+    5. Tüm iterasyonlar dolunca başarısız döner
     """
     print(f"⏳ Challenge sayfasının çözülmesi bekleniyor ({iterations} kontrol)...")
 
@@ -480,6 +493,12 @@ async def wait_for_challenge(page, iterations=CHALLENGE_RETRIES):
 
     for i in range(iterations):
         await asyncio.sleep(random.uniform(*CHALLENGE_WAIT))
+
+        # Listing sayfasına ulaştıysak → challenge kesinlikle geçildi
+        if is_on_listing_page(page):
+            html = await get_page_content(page)
+            print(f"✅ Challenge {i + 1}. kontrolde geçildi (listing sayfasında).")
+            return html
 
         # Hâlâ managed challenge sayfasındaysa tekrar tıklamayı dene
         if is_managed_challenge(page):
@@ -543,6 +562,10 @@ async def safe_goto(page, url):
         if result is None:
             raise BrowserBlockedError(f"Managed challenge çözülmedi: {url}")
         print("✅ Managed Challenge geçildi, devam ediliyor.")
+        # Listing sayfasındaysak handle_browser_check'e gerek yok — direkt devam
+        if is_on_listing_page(page):
+            await wait_for_listings(page)
+            return True
 
     # Sayfaya girdikten sonra kısa insan davranışı
     await maybe_human_move(page)
@@ -560,7 +583,8 @@ async def safe_goto(page, url):
         result = await wait_for_challenge(page)
         if result is not None:
             html = result
-            html = await handle_browser_check(page) or html
+            if not is_on_listing_page(page):
+                html = await handle_browser_check(page) or html
         else:
             print("🔄 Challenge takılı kaldı, tekrar yükleniyor...")
             await goto_with_retry(page, url)
@@ -762,7 +786,7 @@ async def scrape_city_brackets(page, city_url_name, folder_name, brackets,
 # PER-CITY SCRAPE
 # ============================================================
 
-async def scrape_city(city_url_name, city_data, checkpoint):
+async def scrape_city(city_url_name, city_data, checkpoint, warmup_event: asyncio.Event = None):
     """
     Her şehir için bağımsız Camoufox örneği başlatır.
 
@@ -770,7 +794,8 @@ async def scrape_city(city_url_name, city_data, checkpoint):
       1. Önce otomatik iframe koordinat tıklaması dener
       2. Başarısız olursa #btn-continue butonunu bekler
 
-    Her şehir açılışında önce ana sayfaya gidip "ısınma turu" yapılır.
+    Ana sayfa ısınma turu yalnızca ilk şehirde yapılır (zaman kazancı).
+    warmup_event: İlk warmup'ın yapıldığını diğer şehirlere bildiren asyncio.Event.
     """
     folder_name  = city_data["folder"]
     brackets     = city_data["brackets"]
@@ -797,9 +822,15 @@ async def scrape_city(city_url_name, city_data, checkpoint):
             ) as browser:
                 page = await browser.new_page()
 
-                # Ana sayfa ısınma turu — Cloudflare trust score'unu artırır
-                await warmup_homepage(page)
-                await asyncio.sleep(random.uniform(3.0, 5.0))
+                # Ana sayfa ısınma turu — sadece ilk şehirde yapılır
+                # asyncio.Event atomik (await olmadan check+set arası context switch yok)
+                do_warmup = warmup_event is not None and not warmup_event.is_set()
+                if do_warmup:
+                    warmup_event.set()
+                    await warmup_homepage(page)
+                    await asyncio.sleep(random.uniform(3.0, 5.0))
+                else:
+                    print("🏠 Ana sayfa ısınması atlanıyor (zaten yapıldı).")
 
                 total = await scrape_city_brackets(
                     page, city_url_name, folder_name, brackets,
@@ -828,14 +859,16 @@ async def scrape_city(city_url_name, city_data, checkpoint):
 # MAIN
 # ============================================================
 
+
 async def main():
     city_list = list(CITIES.items())
     semaphore = asyncio.Semaphore(min(MAX_CONCURRENT_CITIES, len(city_list)))
+    warmup_event = asyncio.Event()  # İlk şehir set eder, diğerleri skip eder
 
     async def run_city(city_url_name, city_data):
         async with semaphore:
             checkpoint = load_checkpoint(city_url_name)
-            await scrape_city(city_url_name, city_data, checkpoint)
+            await scrape_city(city_url_name, city_data, checkpoint, warmup_event)
             clear_checkpoint(city_url_name)
 
     await asyncio.gather(*(run_city(city, data) for city, data in city_list))
