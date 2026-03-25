@@ -9,3 +9,4 @@ wheel==0.46.3
 
 camoufox
 beautifulsoup4
+seleniumbase

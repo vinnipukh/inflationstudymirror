@@ -1,0 +1,277 @@
+﻿product_id,name,sku,marka_id,stok_durumu,birim,price,vat_rate,currency,url,scraped_at
+4257,0.30*875*200 OLUKLU,GLV.SAC.030.2000,4,Var,2,"276,00",20,TRY,https://yapimaks.com/0-30-875-200-oluklu-p4257,2026-03-23 22:26:37
+4258,0.30*875*250 OLUKLU,GLV.SAC.030.2500,4,Var,2,"343,75",20,TRY,https://yapimaks.com/0-30-875-250-oluklu-p4258,2026-03-23 22:26:39
+4259,0.30*875*300 OLUKLU,GLV.SAC.030.3000,4,Var,2,"412,50",20,TRY,https://yapimaks.com/0-30-875-300-oluklu-p4259,2026-03-23 22:26:41
+4254,0.30 TRP MAHYA,GLV.SAC.030.TMHY,4,Var,2,"137,50",20,TRY,https://yapimaks.com/0-30-trp-mahya-p4254,2026-03-23 22:26:43
+4260,0.40*86*200 TRAPEZ,GLV.SAC.040.2000,4,Var,2,"365,00",20,TRY,https://yapimaks.com/0-40-86-200-trapez-p4260,2026-03-23 22:26:45
+13720,0.40*86*2000 (BORDO),RALL.3009.040.2000,4,Yok,2,"370,00",20,TRY,https://yapimaks.com/0-40-86-2000-bordo-p13720,2026-03-23 22:26:47
+13724,0.40*86*2000 (GRİ),RALL.7016.040.2000,4,Var,2,"380,00",20,TRY,https://yapimaks.com/0-40-86-2000-gri-p13724,2026-03-23 22:26:49
+4261,0.40*86*250 TRAPEZ,GLV.SAC.040.2500,4,Var,2,"456,25",20,TRY,https://yapimaks.com/0-40-86-250-trapez-p4261,2026-03-23 22:26:51
+13725,0.40*86*2500 (GRİ),RALL.7016.040.2500,4,Var,2,"475,00",20,TRY,https://yapimaks.com/0-40-86-2500-gri-p13725,2026-03-23 22:26:53
+4264,0.40*86*30*30 TRAPEZ MAHYA GLV.,GLV.SAC.040.TMHY,4,Yok,2,"144,00",20,TRY,https://yapimaks.com/0-40-86-30-30-trapez-mahya-glv-p4264,2026-03-23 22:26:55
+4262,0.40*86*300 TRAPEZ,GLV.SAC.040.3000,4,Var,2,"547,50",20,TRY,https://yapimaks.com/0-40-86-300-trapez-p4262,2026-03-23 22:26:58
+13726,0.40*86*3000 (GRİ),RALL.7016.040.3000,4,Var,2,"570,00",20,TRY,https://yapimaks.com/0-40-86-3000-gri-p13726,2026-03-23 22:27:00
+4263,0.40*86*400 TRAPEZ,GLV.SAC.040.4000,4,Var,2,"730,00",20,TRY,https://yapimaks.com/0-40-86-400-trapez-p4263,2026-03-23 22:27:02
+14764,0.50*15*200 KAR TUTUCU AKSESUAR ANTRASİT,RALL.7016.050.AKS.02,4,Var,2,"110,00",20,TRY,https://yapimaks.com/0-50-15-200-kar-tutucu-aksesuar-antrasit-p14764,2026-03-23 22:27:04
+14768,0.50*15*200 KAR TUTUCU AKSESUAR BORDO,RALL.3009.050.AKS.03,4,Var,2,"110,00",20,TRY,https://yapimaks.com/0-50-15-200-kar-tutucu-aksesuar-bordo-p14768,2026-03-23 22:27:06
+14763,0.50*15*200 L KÖŞE AKSESUAR ANTRASİT,RALL.7016.050.AKS.03,4,Var,2,"110,00",20,TRY,https://yapimaks.com/0-50-15-200-l-kose-aksesuar-antrasit-p14763,2026-03-23 22:27:08
+14767,0.50*15*200 L KÖŞE AKSESUAR BORDO,RALL.3009.050.AKS.04,4,Var,2,"110,00",20,TRY,https://yapimaks.com/0-50-15-200-l-kose-aksesuar-bordo-p14767,2026-03-23 22:27:10
+14766,0.50*25*25*2000 DÜZ MAHYA (BORDO),RALL.3009.050.MHY01,4,Var,2,"352,00",20,TRY,https://yapimaks.com/0-50-25-25-2000-duz-mahya-bordo-p14766,2026-03-23 22:27:12
+14791,0.50*25*25*2000 DÜZ MAHYA (GRİ),RALL.7016.050.MHY02,4,Var,2,"350,00",20,TRY,https://yapimaks.com/0-50-25-25-2000-duz-mahya-gri-p14791,2026-03-23 22:27:14
+14769,0.50*30*200 ALIN KAPAMA AKSESUAR BORDO,RALL.3009.050.AKS.01,4,Var,2,"195,00",20,TRY,https://yapimaks.com/0-50-30-200-alin-kapama-aksesuar-bordo-p14769,2026-03-23 22:27:16
+7689,0.50*3009 RULO SAC 30-CM,RALL.3009.300.01,4,Var,4,"57,50",20,TRY,https://yapimaks.com/0-50-3009-rulo-sac-30-cm-p7689,2026-03-23 22:27:18
+14762,0.50*50*200 DERE AKSESUAR ANTRASİT,RALL.7016.050.AKS.01,4,Var,2,"330,00",20,TRY,https://yapimaks.com/0-50-50-200-dere-aksesuar-antrasit-p14762,2026-03-23 22:27:20
+14765,0.50*50*200 DERE AKSESUAR BORDO,RALL.3009.050.AKS.02,4,Var,2,"330,00",20,TRY,https://yapimaks.com/0-50-50-200-dere-aksesuar-bordo-p14765,2026-03-23 22:27:22
+15008,0.50*86*1250 (BORDO),RALL.3009.050.1250,4,Var,2,"262,50",20,TRY,https://yapimaks.com/0-50-86-1250-bordo-p15008,2026-03-23 22:27:24
+7714,0.50*86*2000 (GRİ),RALL.7016.050.2000,4,Var,2,"430,00",20,TRY,https://yapimaks.com/0-50-86-2000-gri-p7714,2026-03-23 22:27:26
+4276,0.50*86*30*30 TRAPEZ MAHYA GLV.,GLV.SAC.050.MHY,4,Var,2,"192,50",20,TRY,https://yapimaks.com/0-50-86-30-30-trapez-mahya-glv-p4276,2026-03-23 22:27:28
+7723,0.50*86*30*30 TRP MAHYA 7016-(A.GRİ),RALL.7016.050.MHY,4,Var,2,"215,00",20,TRY,https://yapimaks.com/0-50-86-30-30-trp-mahya-7016-a-gri-p7723,2026-03-23 22:27:30
+7738,0.50*86*30*30 TRP MAHYA 9002-(BEYAZ),RALL.9002.050.MHY,4,Var,2,"220,00",20,TRY,https://yapimaks.com/0-50-86-30-30-trp-mahya-9002-beyaz-p7738,2026-03-23 22:27:32
+7708,0.50*86*30*30 TRP MAHYA (BORDO),RALL.3009.050.MHY,4,Var,2,"220,00",20,TRY,https://yapimaks.com/0-50-86-30-30-trp-mahya-bordo-p7708,2026-03-23 22:27:35
+7693,0.50*86*3000 (BORDO),RALL.3009.050.3000,4,Yok,2,"630,00",20,TRY,https://yapimaks.com/0-50-86-3000-bordo-p7693,2026-03-23 22:27:37
+7716,0.50*86*3000 (GRİ),RALL.7016.050.3000,4,Var,2,"645,00",20,TRY,https://yapimaks.com/0-50-86-3000-gri-p7716,2026-03-23 22:27:39
+7696,0.50*86*4500 (BORDO),RALL.3009.050.4500,4,Var,2,"945,00",20,TRY,https://yapimaks.com/0-50-86-4500-bordo-p7696,2026-03-23 22:27:41
+7697,0.50*86*5000 (BORDO),RALL.3009.050.5000,4,Var,2,"1050,00",20,TRY,https://yapimaks.com/0-50-86-5000-bordo-p7697,2026-03-23 22:27:43
+4893,100/100/100 ÇİFT ÇATAL PİS SU PVC KALDE,KALDE.5213DBR0M0M45,141,Var,2,"178,00",20,TRY,https://yapimaks.com/100-100-100-cift-catal-pis-su-pvc-kalde-p4893,2026-03-23 22:27:45
+4916,100/100 ÇATAL PİS SU PVC KALDE,KALDE.5213SBR0M0M45,141,Var,2,"115,00",20,TRY,https://yapimaks.com/100-100-catal-pis-su-pvc-kalde-p4916,2026-03-23 22:27:47
+4917,100/100 TE PİS SU PVC KALDE,KALDE.5213SBR0M0M87,141,Var,2,"100,00",20,TRY,https://yapimaks.com/100-100-te-pis-su-pvc-kalde-p4917,2026-03-23 22:27:49
+4873,100/1000 PİS SU BORU KALDE,KALDE.5203TBE0M1000,141,Var,2,"167,00",20,TRY,https://yapimaks.com/100-1000-pis-su-boru-kalde-p4873,2026-03-23 22:27:51
+4935,100/150 PİS SU BORU KALDE,KALDE.5203TBEXM0150,141,Var,2,"49,00",20,TRY,https://yapimaks.com/100-150-pis-su-boru-kalde-p4935,2026-03-23 22:27:53
+4870,100/2000 PİS SU BORU KALDE,KALDE.5203TBE0M2000,141,Var,2,"278,00",20,TRY,https://yapimaks.com/100-2000-pis-su-boru-kalde-p4870,2026-03-23 22:27:55
+4884,100/250 PİS SU BORUSU KALDE,KALDE.5203TBEXM0250,141,Var,2,"68,00",20,TRY,https://yapimaks.com/100-250-pis-su-borusu-kalde-p4884,2026-03-23 22:27:57
+4874,100/3000 PİS SU BORU KALDE,KALDE.5203TBE0M3000,141,Var,2,"411,00",20,TRY,https://yapimaks.com/100-3000-pis-su-boru-kalde-p4874,2026-03-23 22:27:59
+4899,100/45 PİS SU PVC DİRSEK KALDE,KALDE.5213ELB0M0045,141,Var,2,"48,00",20,TRY,https://yapimaks.com/100-45-pis-su-pvc-dirsek-kalde-p4899,2026-03-23 22:28:01
+4892,100/50/100 ÇİFT ÇATAL PİS SU PVC KALDE,KALDE.5213DBR0M0K45,141,Var,2,"109,00",20,TRY,https://yapimaks.com/100-50-100-cift-catal-pis-su-pvc-kalde-p4892,2026-03-23 22:28:03
+4914,100/50 ÇATAL PİS SU PVC KALDE,KALDE.5213SBR0M0K45,141,Var,2,"66,00",20,TRY,https://yapimaks.com/100-50-catal-pis-su-pvc-kalde-p4914,2026-03-23 22:28:05
+4904,100/50 REDİKSİYON PİS SU PVC KALDE,KALDE.5213RDC0M0K00,141,Var,2,"35,00",20,TRY,https://yapimaks.com/100-50-rediksiyon-pis-su-pvc-kalde-p4904,2026-03-23 22:28:07
+12648,100/50 TE PİS SU PVC KALDE,KALDE.5213SBR0M0K87,141,Var,2,"77,00",20,TRY,https://yapimaks.com/100-50-te-pis-su-pvc-kalde-p12648,2026-03-23 22:28:09
+4869,100/500 PİS SU BORU PPRC KALDE,KALDE.5203TBE0M0500,141,Var,2,"111,00",20,TRY,https://yapimaks.com/100-500-pis-su-boru-pprc-kalde-p4869,2026-03-23 22:28:12
+4915,100/70 ÇATAL PİS SU PVC KALDE,KALDE.5213SBR0M0L45,141,Var,2,"93,00",20,TRY,https://yapimaks.com/100-70-catal-pis-su-pvc-kalde-p4915,2026-03-23 22:28:14
+4905,100/70 REDÜKSİYON PİS SU PVC KALDE,KALDE.5213RDC0M0L00,141,Var,2,"37,00",20,TRY,https://yapimaks.com/100-70-reduksiyon-pis-su-pvc-kalde-p4905,2026-03-23 22:28:16
+4900,100/90 PİS SU PVC DİRSEK KALDE,KALDE.5213ELB0M0090,141,Var,2,"60,00",20,TRY,https://yapimaks.com/100-90-pis-su-pvc-dirsek-kalde-p4900,2026-03-23 22:28:18
+4924,100 ES PİS SU PVC KALDE 110X87,KALDE.5213SPİ0M0087,141,Var,2,"182,00",20,TRY,https://yapimaks.com/100-es-pis-su-pvc-kalde-110x87-p4924,2026-03-23 22:28:20
+4922,100 KAYAR MANŞON PİS SU PVC KALDE,KALDE.5213SOCXM0000,141,Var,2,"57,00",20,TRY,https://yapimaks.com/100-kayar-manson-pis-su-pvc-kalde-p4922,2026-03-23 22:28:22
+4888,100 KELEPÇE PİS SU PVC KALDE,KALDE.5213BCC0M0000,141,Var,2,"21,00",20,TRY,https://yapimaks.com/100-kelepce-pis-su-pvc-kalde-p4888,2026-03-23 22:28:24
+4909,100 LİK CONTA KALDE,KALDE.5213RUR0M0000,141,Var,2,"4,00",20,TRY,https://yapimaks.com/100-lik-conta-kalde-p4909,2026-03-23 22:28:26
+11825,100 LÜK BANYO ASPİRATÖRÜ 12 WATT IŞILDAR,IŞILDAR.901000000009501,180,Var,2,"260,00",20,TRY,https://yapimaks.com/100-luk-banyo-aspiratoru-12-watt-isildar-p11825,2026-03-23 22:28:28
+4928,100 TAPA PİS SU KALDE,KALDE.5213STE0M0000,141,Var,2,"26,00",20,TRY,https://yapimaks.com/100-tapa-pis-su-kalde-p4928,2026-03-23 22:28:30
+4891,100 TEMİZLEME PİS SU KALDE,KALDE.5213CLP0M0000,141,Var,2,"145,00",20,TRY,https://yapimaks.com/100-temizleme-pis-su-kalde-p4891,2026-03-23 22:28:32
+4919,125/100 ÇATAL PİS SU PVC KALDE,KALDE.5213SBR0N0M45,141,Var,2,"164,00",20,TRY,https://yapimaks.com/125-100-catal-pis-su-pvc-kalde-p4919,2026-03-23 22:28:34
+4906,125/100 REDÜKSİYON PİS SU PVC KALDE,KALDE.5213RDC0N0M00,141,Var,2,"67,00",20,TRY,https://yapimaks.com/125-100-reduksiyon-pis-su-pvc-kalde-p4906,2026-03-23 22:28:36
+4876,125/1000 PİS SU BORU KALDE,KALDE.5203TBE0N1000,141,Var,2,"182,00",20,TRY,https://yapimaks.com/125-1000-pis-su-boru-kalde-p4876,2026-03-23 22:28:38
+4918,125/125 ÇATAL PİS SU PVC KALDE,KALDE.5213SBR0N0N45,141,Var,2,"200,00",20,TRY,https://yapimaks.com/125-125-catal-pis-su-pvc-kalde-p4918,2026-03-23 22:28:40
+4910,125/125 TE PİS SU ÇATAL KALDE,KALDE.5213SBR0N0N87,141,Var,2,"179,00",20,TRY,https://yapimaks.com/125-125-te-pis-su-catal-kalde-p4910,2026-03-23 22:28:42
+4877,125/2000 PİS SU BORU KALDE,KALDE.5203TBE0N2000,141,Var,2,"346,00",20,TRY,https://yapimaks.com/125-2000-pis-su-boru-kalde-p4877,2026-03-23 22:28:45
+4885,125/250 PİS SU BORU KALDE,KALDE.5203TBEXN0250,141,Var,2,"91,00",20,TRY,https://yapimaks.com/125-250-pis-su-boru-kalde-p4885,2026-03-23 22:28:47
+4878,125/3000 PİS SU BORU KALDE,KALDE.5203TBE0N3000,141,Var,2,"510,00",20,TRY,https://yapimaks.com/125-3000-pis-su-boru-kalde-p4878,2026-03-23 22:28:49
+4901,125/45 PİS SU PVC DİRSEK KALDE,KALDE.5213ELB0N0045,141,Var,2,"70,00",20,TRY,https://yapimaks.com/125-45-pis-su-pvc-dirsek-kalde-p4901,2026-03-23 22:28:51
+4875,125/500 PİS SU BORU PPRC KALDE,KALDE.5203TBE0N0500,141,Var,2,"102,00",20,TRY,https://yapimaks.com/125-500-pis-su-boru-pprc-kalde-p4875,2026-03-23 22:28:53
+14223,125/90 PİS SU PVC DİRSEK KALDE,KALDE.5213ELB0N0087,141,Var,2,"87,00",20,TRY,https://yapimaks.com/125-90-pis-su-pvc-dirsek-kalde-p14223,2026-03-23 22:28:55
+4923,125 KAYAR MANŞON PİS SU PVC KALDE,KALDE.5213SOC0N0000,141,Var,2,"95,00",20,TRY,https://yapimaks.com/125-kayar-manson-pis-su-pvc-kalde-p4923,2026-03-23 22:28:57
+4889,125 KELEPÇE PİS SU PVC KALDE,KALDE.5213BCCON0000,141,Var,2,"37,00",20,TRY,https://yapimaks.com/125-kelepce-pis-su-pvc-kalde-p4889,2026-03-23 22:28:59
+4925,125 TAPA PİS SU KALDE,KALDE.5213STE0N0000,141,Var,2,"44,00",20,TRY,https://yapimaks.com/125-tapa-pis-su-kalde-p4925,2026-03-23 22:29:01
+3581,14/16 DNS 50X100 5 CM KARBONLU FAWORİ,FAWORİ.001,35,Var,12,"750,00",20,TRY,https://yapimaks.com/14-16-dns-50x100-5-cm-karbonlu-fawori-p3581,2026-03-23 22:29:03
+3793,16 1/2 DIŞ DİŞLİ REKOR KALDE,KALDE.3411NMF160B00,128,Var,2,"65,00",20,TRY,https://yapimaks.com/16-1-2-dis-disli-rekor-kalde-p3793,2026-03-23 22:29:05
+3792,16 1/2 İÇ DİŞLİ REKOR KALDE,KALDE.3411NFF160B01,141,Var,2,"67,00",20,TRY,https://yapimaks.com/16-1-2-ic-disli-rekor-kalde-p3792,2026-03-23 22:29:07
+1707,16DNS DALMAÇYALI 5CM 50X100CM (10AD-5M2),CAPATECT.001,12,Var,12,"950,00",20,TRY,https://yapimaks.com/16dns-dalmacyali-5cm-50x100cm-10ad-5m2-p1707,2026-03-23 22:29:09
+14851,16X16 SABİT REKOR PE-X KALDE,KALDE.3411NPF161600,141,Var,2,"175,00",20,TRY,https://yapimaks.com/16x16-sabit-rekor-pe-x-kalde-p14851,2026-03-23 22:29:11
+12729,1X10A PAKET ŞALTER 0-1 AÇ KAPA METOP,METOP.015-10,459,Var,2,"198,90",20,TRY,https://yapimaks.com/1x10a-paket-salter-0-1-ac-kapa-metop-p12729,2026-03-23 22:29:13
+4799,20 1/2 BATARYA BAĞLANTISI ÇİFTLİ KALDE,KALDE.3222BAT200B04,141,Var,2,"115,00",20,TRY,https://yapimaks.com/20-1-2-batarya-baglantisi-ciftli-kalde-p4799,2026-03-23 22:29:15
+4798,20 1/2 BATARYA BAĞLANTISI TEKLİ DİŞİ KALDE,KALDE.3222BAT200B01,141,Var,2,"35,00",20,TRY,https://yapimaks.com/20-1-2-batarya-baglantisi-tekli-disi-kalde-p4798,2026-03-23 22:29:18
+11231,20 1/2 DIŞ DİŞLİ DİRSEK PPRC KALDE,KALDE.3222EMO200C00,141,Var,2,"60,00",20,TRY,https://yapimaks.com/20-1-2-dis-disli-dirsek-pprc-kalde-p11231,2026-03-23 22:29:20
+4820,20 1/2 DIŞ DİŞLİ REKOR PPRC KALDE,KALDE.3222NMO200B00,141,Var,2,"39,00",20,TRY,https://yapimaks.com/20-1-2-dis-disli-rekor-pprc-kalde-p4820,2026-03-23 22:29:22
+4804,20 1/2 İÇ DİŞLİ DİRSEK PPRC KALDE,KALDE.3222EFO200B00,141,Var,2,"33,00",20,TRY,https://yapimaks.com/20-1-2-ic-disli-dirsek-pprc-kalde-p4804,2026-03-23 22:29:24
+4814,20 1/2 İÇ DİŞLİ REKOR PPRC KALDE,KALDE.3222NFO200B00,141,Var,2,"31,00",20,TRY,https://yapimaks.com/20-1-2-ic-disli-rekor-pprc-kalde-p4814,2026-03-23 22:29:26
+4825,20 1/2 İÇ DİŞLİ TE PPRC KALDE,KALDE.3222TFO200B20,141,Var,2,"33,00",20,TRY,https://yapimaks.com/20-1-2-ic-disli-te-pprc-kalde-p4825,2026-03-23 22:29:28
+4844,20 1/2 REKOR OYNAR BAŞLI DIŞ DİŞLİ KALDE,KALDE.3272TUM200B00,141,Var,2,"89,00",20,TRY,https://yapimaks.com/20-1-2-rekor-oynar-basli-dis-disli-kalde-p4844,2026-03-23 22:29:30
+4840,20 1/2 REKOR OYNAR BAŞLI İÇ DİŞLİ KALDE,KALDE.3272TUF200B00,141,Var,2,"79,00",20,TRY,https://yapimaks.com/20-1-2-rekor-oynar-basli-ic-disli-kalde-p4840,2026-03-23 22:29:32
+4803,20 1/2 TAHARET BAĞLANTISI ÇİFTLİ KALDE,KALDE.3222BTT200B00,141,Var,2,"84,00",20,TRY,https://yapimaks.com/20-1-2-taharet-baglantisi-ciftli-kalde-p4803,2026-03-23 22:29:34
+4829,20 1/2 TE  DIŞ DİŞLİ PPRC KALDE,KALDE.3222TMO200B20,141,Var,2,"43,00",20,TRY,https://yapimaks.com/20-1-2-te-dis-disli-pprc-kalde-p4829,2026-03-23 22:29:36
+4760,20/25/20 İNEGAL TE PPRC KALDE,KALDE.3212TİO202520,141,Var,2,"15,00",20,TRY,https://yapimaks.com/20-25-20-inegal-te-pprc-kalde-p4760,2026-03-23 22:29:38
+4808,20 3/4 DIŞ DİŞLİ DİRSEK PPRC KALDE,KALDE.3222EMO200B00,141,Var,2,"41,00",20,TRY,https://yapimaks.com/20-3-4-dis-disli-dirsek-pprc-kalde-p4808,2026-03-23 22:29:40
+11230,20 3/4 İÇ DİŞ DİRSEK PPRC KALDE,KALDE.3222EFO200C00,141,Var,2,"41,00",20,TRY,https://yapimaks.com/20-3-4-ic-dis-dirsek-pprc-kalde-p11230,2026-03-23 22:29:42
+4815,20 3/4 İÇ DİŞLİ REKOR KALDE,KALDE.3222NFO200C00,141,Var,2,"37,00",20,TRY,https://yapimaks.com/20-3-4-ic-disli-rekor-kalde-p4815,2026-03-23 22:29:44
+11232,20 3/4 OYNAR BAŞLI REKOR DIŞ DİŞLİ ERKEK KALDE,KALDE.3252TUM200C00,141,Var,2,"96,00",20,TRY,https://yapimaks.com/20-3-4-oynar-basli-rekor-dis-disli-erkek-kalde-p11232,2026-03-23 22:29:46
+4773,20/45 DİRSEK PPRC KALDE,KALDE.3212ELB200045,141,Var,2,"5,00",20,TRY,https://yapimaks.com/20-45-dirsek-pprc-kalde-p4773,2026-03-23 22:29:48
+4772,20/90 DİRSEK KAPALI PPRC KALDE,KALDE.3212ELB200000,141,Var,2,"4,00",20,TRY,https://yapimaks.com/20-90-dirsek-kapali-pprc-kalde-p4772,2026-03-23 22:29:50
+4769,20 C KAVİS PPRC KALDE,KALDE.3202TWC200001,141,Var,2,"14,00",20,TRY,https://yapimaks.com/20-c-kavis-pprc-kalde-p4769,2026-03-23 22:29:53
+4854,20 ÇİFTLİ KELEPÇE PPRC KALDE,KALDE.3592BCK202200,141,Var,2,"5,00",20,TRY,https://yapimaks.com/20-ciftli-kelepce-pprc-kalde-p4854,2026-03-23 22:29:55
+4812,20 FİLTRE DİŞİ PPRC KALDE,KALDE.3222FLT200001,141,Var,2,"54,00",20,TRY,https://yapimaks.com/20-filtre-disi-pprc-kalde-p4812,2026-03-23 22:29:57
+4847,20 KAPAMA BAŞLIĞI PPRC KALDE,KALDE.3292STE200000,141,Var,2,"4,00",20,TRY,https://yapimaks.com/20-kapama-basligi-pprc-kalde-p4847,2026-03-23 22:29:59
+4855,20 KELEPÇE PPRC KALDE,KALDE.3592BCK202201,141,Var,2,"3,00",20,TRY,https://yapimaks.com/20-kelepce-pprc-kalde-p4855,2026-03-23 22:30:01
+4766,20 KOMPOZİT BORU PPRC 4 M KALDE,KALDE.3202TFR200020,141,Var,2,"93,00",20,TRY,https://yapimaks.com/20-kompozit-boru-pprc-4-m-kalde-p4766,2026-03-23 22:30:03
+4851,20 KÖRTAPA DİŞLİ PPRC KALDE,KALDE.3295STE200B00,141,Var,2,"2,00",20,TRY,https://yapimaks.com/20-kortapa-disli-pprc-kalde-p4851,2026-03-23 22:30:05
+4832,20 KÜRESEL VANA PPRC KALDE,KALDE.3242VLB200003,141,Var,2,"84,00",20,TRY,https://yapimaks.com/20-kuresel-vana-pprc-kalde-p4832,2026-03-23 22:30:07
+4780,20 MANŞON PPRC KALDE,KALDE.3212MUF200000,141,Var,2,"3,00",20,TRY,https://yapimaks.com/20-manson-pprc-kalde-p4780,2026-03-23 22:30:09
+4762,20 PPRC BORU 4 MT KALDE,KALDE.3202TBE200000,141,Var,2,"102,00",20,TRY,https://yapimaks.com/20-pprc-boru-4-mt-kalde-p4762,2026-03-23 22:30:11
+4789,20 TE PPRC KALDE,KALDE.3212TEO200000,141,Var,2,"6,00",20,TRY,https://yapimaks.com/20-te-pprc-kalde-p4789,2026-03-23 22:30:13
+4801,25 1/2 BATARYA BAĞLANTISI ÇİFTLİ KALDE,KALDE.3222BAT250B04,141,Var,2,"120,00",20,TRY,https://yapimaks.com/25-1-2-batarya-baglantisi-ciftli-kalde-p4801,2026-03-23 22:30:15
+4802,25 1/2  BATARYA BAĞLANTISI FEDERLİ ÇİFTLİ KALDE,KALDE.3222BAT250B05,141,Var,2,"106,00",20,TRY,https://yapimaks.com/25-1-2-batarya-baglantisi-federli-ciftli-kalde-p4802,2026-03-23 22:30:17
+4800,25 1/2 BATARYA BAĞLANTISI TEKLİ DİŞİ KALDE,KALDE.3222BAT250B01,141,Var,2,"43,00",20,TRY,https://yapimaks.com/25-1-2-batarya-baglantisi-tekli-disi-kalde-p4800,2026-03-23 22:30:19
+4809,25 1/2 DIŞ DİŞLİ DİRSEK PPRC KALDE,KALDE.3222EMO250B00,141,Var,2,"45,00",20,TRY,https://yapimaks.com/25-1-2-dis-disli-dirsek-pprc-kalde-p4809,2026-03-23 22:30:21
+4821,25 1/2 DIŞ DİŞLİ REKOR KALDE,KALDE.3222NMO250B00,141,Var,2,"40,00",20,TRY,https://yapimaks.com/25-1-2-dis-disli-rekor-kalde-p4821,2026-03-23 22:30:23
+4805,25 1/2 İÇ DİŞLİ DİRSEK PPRC KALDE,KALDE.3222EFO250B00,141,Var,2,"34,00",20,TRY,https://yapimaks.com/25-1-2-ic-disli-dirsek-pprc-kalde-p4805,2026-03-23 22:30:25
+4816,25 1/2 İÇ DİŞLİ REKOR KALDE,KALDE.3222NFO250B00,141,Var,2,"32,00",20,TRY,https://yapimaks.com/25-1-2-ic-disli-rekor-kalde-p4816,2026-03-23 22:30:27
+4826,25 1/2 İÇ DİŞLİ TE PPRC KALDE,KALDE.3222TFO250B25,141,Var,2,"39,00",20,TRY,https://yapimaks.com/25-1-2-ic-disli-te-pprc-kalde-p4826,2026-03-23 22:30:30
+4837,25 1/2 OYNAR BAŞLI REKOR DIŞ DİŞLİ ERKEK KALDE,KALDE.3252TUM250B00,141,Var,2,"143,00",20,TRY,https://yapimaks.com/25-1-2-oynar-basli-rekor-dis-disli-erkek-kalde-p4837,2026-03-23 22:30:32
+4836,25 1/2 OYNAR BAŞLI REKOR DİŞİ KALDE,KALDE.3252TUF250B00,141,Var,2,"127,00",20,TRY,https://yapimaks.com/25-1-2-oynar-basli-rekor-disi-kalde-p4836,2026-03-23 22:30:34
+4830,25 1/2 TE DIŞ DİŞLİ KALDE,KALDE.3222TMO250B25,141,Var,2,"47,00",20,TRY,https://yapimaks.com/25-1-2-te-dis-disli-kalde-p4830,2026-03-23 22:30:36
+14606,25 1 REKOR OYNAR BAŞLI İÇ DİŞLİ KALDE,KALDE.3272TUF251000,141,Var,2,"149,00",20,TRY,https://yapimaks.com/25-1-rekor-oynar-basli-ic-disli-kalde-p14606,2026-03-23 22:30:38
+4793,25/20/25 İNEGAL TE PPRC KALDE,KALDE.3212TİO252025,141,Var,2,"9,00",20,TRY,https://yapimaks.com/25-20-25-inegal-te-pprc-kalde-p4793,2026-03-23 22:30:40
+4784,25/20 REDÜKSİYON PPRC KALDE,KALDE.3212RDC252000,141,Var,2,"4,00",20,TRY,https://yapimaks.com/25-20-reduksiyon-pprc-kalde-p4784,2026-03-23 22:30:42
+4810,25 3/4 DIŞ DİŞLİ DİRSEK PPRC KALDE,KALDE.3222EMO250C00,141,Var,2,"61,00",20,TRY,https://yapimaks.com/25-3-4-dis-disli-dirsek-pprc-kalde-p4810,2026-03-23 22:30:44
+4822,25 3/4 DIŞ DİŞLİ REKOR PPRC KALDE(ERKEK NİPEL),KALDE.3222NMO250C00,141,Var,2,"57,00",20,TRY,https://yapimaks.com/25-3-4-dis-disli-rekor-pprc-kalde-erkek-nipel-p4822,2026-03-23 22:30:46
+4806,25 3/4 İÇ DİŞLİ DİRSEK PPRC KALDE,KALDE.3222EFO250C00,141,Var,2,"42,00",20,TRY,https://yapimaks.com/25-3-4-ic-disli-dirsek-pprc-kalde-p4806,2026-03-23 22:30:48
+4817,25 3/4 İÇ DİŞLİ REKOR PPRC KALDE,KALDE.3222NFO250C00,141,Var,2,"39,00",20,TRY,https://yapimaks.com/25-3-4-ic-disli-rekor-pprc-kalde-p4817,2026-03-23 22:30:50
+11233,25 3/4 OYNAR BAŞLI DIŞ DİŞLİ REKOR ERKEK KALDE,KALDE.3272TUM250C00,141,Var,2,"146,00",20,TRY,https://yapimaks.com/25-3-4-oynar-basli-dis-disli-rekor-erkek-kalde-p11233,2026-03-23 22:30:52
+4841,25 3/4 REKOR OYNAR BAŞLI İÇ DİŞLİ KALDE,KALDE.3272TUF250C00,141,Var,2,"132,00",20,TRY,https://yapimaks.com/25-3-4-rekor-oynar-basli-ic-disli-kalde-p4841,2026-03-23 22:30:54
+4831,25 3/4 TE DIŞ DİŞLİ PPRC KALDE,KALDE.3222TMO250C25,141,Var,2,"65,00",20,TRY,https://yapimaks.com/25-3-4-te-dis-disli-pprc-kalde-p4831,2026-03-23 22:30:56
+4827,25 3/4 TE İÇ DİŞLİ PPRC KALDE,KALDE.3222TFO250C25,141,Var,2,"46,00",20,TRY,https://yapimaks.com/25-3-4-te-ic-disli-pprc-kalde-p4827,2026-03-23 22:30:58
+4775,25/45 DİRSEK AÇIK PPRC KALDE,KALDE.3212ELB250045,141,Var,2,"7,00",20,TRY,https://yapimaks.com/25-45-dirsek-acik-pprc-kalde-p4775,2026-03-23 22:31:00
+4774,25/90 DİRSEK KAPALI PPRC KALDE,KALDE.3212ELB250000,141,Var,2,"6,00",20,TRY,https://yapimaks.com/25-90-dirsek-kapali-pprc-kalde-p4774,2026-03-23 22:31:02
+4770,25 C KAVİS PPRC KALDE,KALDE.3202TWC250001,141,Var,2,"22,00",20,TRY,https://yapimaks.com/25-c-kavis-pprc-kalde-p4770,2026-03-23 22:31:04
+4856,25 ÇİFTLİ KLİPS PPRC KALDE,KALDE.3592BCK252200,141,Var,2,"6,00",20,TRY,https://yapimaks.com/25-ciftli-klips-pprc-kalde-p4856,2026-03-23 22:31:07
+4813,25 FİLTRE DİŞİ PPRC KALDE,KALDE.3222FLT250001,141,Var,2,"82,00",20,TRY,https://yapimaks.com/25-filtre-disi-pprc-kalde-p4813,2026-03-23 22:31:09
+4848,25 KAPAMA BAŞLIĞI PPRC KALDE,KALDE.3292STE250000,141,Var,2,"5,00",20,TRY,https://yapimaks.com/25-kapama-basligi-pprc-kalde-p4848,2026-03-23 22:31:11
+4857,25 KELEPÇE PPRC KALDE,KALDE.3592BCK252701,141,Var,2,"4,00",20,TRY,https://yapimaks.com/25-kelepce-pprc-kalde-p4857,2026-03-23 22:31:13
+4767,25 KOMPOZİT BORU PPRC 4 M KALDE,KALDE.3202TFR250020,141,Var,2,"147,00",20,TRY,https://yapimaks.com/25-kompozit-boru-pprc-4-m-kalde-p4767,2026-03-23 22:31:15
+4852,25 KÖRTAPA DİŞLİ PPRC KALDE,KALDE.3295STE250C00,141,Var,2,"5,00",20,TRY,https://yapimaks.com/25-kortapa-disli-pprc-kalde-p4852,2026-03-23 22:31:17
+4833,25 KÜRESEL VANA PPRC KALDE,KALDE.3242VLB250003,141,Var,2,"116,00",20,TRY,https://yapimaks.com/25-kuresel-vana-pprc-kalde-p4833,2026-03-23 22:31:19
+4781,25 MANŞON PPRC KALDE,KALDE.3212MUF250000,141,Var,2,"4,00",20,TRY,https://yapimaks.com/25-manson-pprc-kalde-p4781,2026-03-23 22:31:21
+4763,25 PPRC BORU 4 MT KALDE,KALDE.3202TBE250000,141,Var,2,"155,00",20,TRY,https://yapimaks.com/25-pprc-boru-4-mt-kalde-p4763,2026-03-23 22:31:23
+4790,25 TE PPRC KALDE,KALDE.3212TEO250000,141,Var,2,"8,00",20,TRY,https://yapimaks.com/25-te-pprc-kalde-p4790,2026-03-23 22:31:25
+4811,32 1 DİRSEK DIŞ DİŞLİ PPRC KALDE,KALDE.3222EMO321000,141,Var,2,"102,00",20,TRY,https://yapimaks.com/32-1-dirsek-dis-disli-pprc-kalde-p4811,2026-03-23 22:31:27
+4823,32 1 DIŞ DİŞLİ REKOR PPRC KALDE,KALDE.3222NMO321000,141,Var,2,"92,00",20,TRY,https://yapimaks.com/32-1-dis-disli-rekor-pprc-kalde-p4823,2026-03-23 22:31:29
+4807,32 1 İÇ DİŞLİ DİRSEK PPRC KALDE,KALDE.3222EFO321000,141,Var,2,"78,00",20,TRY,https://yapimaks.com/32-1-ic-disli-dirsek-pprc-kalde-p4807,2026-03-23 22:31:31
+4818,32 1 İÇ DİŞLİ REKOR PPRC KALDE,KALDE.3222NFO321000,141,Var,2,"75,00",20,TRY,https://yapimaks.com/32-1-ic-disli-rekor-pprc-kalde-p4818,2026-03-23 22:31:33
+4845,32 1 OYNAR BAŞLI DIŞ DİŞLİ KALDE,KALDE.3272TUM321000,141,Var,2,"185,00",20,TRY,https://yapimaks.com/32-1-oynar-basli-dis-disli-kalde-p4845,2026-03-23 22:31:35
+4842,32 1 REKOR OYNAR BAŞLI İÇ DİŞLİ KALDE,KALDE.3272TUF321000,141,Var,2,"163,00",20,TRY,https://yapimaks.com/32-1-rekor-oynar-basli-ic-disli-kalde-p4842,2026-03-23 22:31:37
+4828,32 1 TE İÇ DİŞLİ PPRC KALDE,KALDE.3222TFO321032,141,Var,2,"82,00",20,TRY,https://yapimaks.com/32-1-te-ic-disli-pprc-kalde-p4828,2026-03-23 22:31:40
+4794,32/20/32 İNEGAL TE PPRC KALDE,KALDE.3212TİO322032,141,Var,2,"16,00",20,TRY,https://yapimaks.com/32-20-32-inegal-te-pprc-kalde-p4794,2026-03-23 22:31:42
+4785,32/20 REDÜKSİYON PPRC KALDE,KALDE.3212RDC322000,141,Var,2,"5,00",20,TRY,https://yapimaks.com/32-20-reduksiyon-pprc-kalde-p4785,2026-03-23 22:31:44
+4761,32/25/32 İNEGAL TE PPRC KALDE,KALDE.3212TİO322532,141,Var,2,"17,00",20,TRY,https://yapimaks.com/32-25-32-inegal-te-pprc-kalde-p4761,2026-03-23 22:31:46
+4786,32/25 REDÜKSİYON PPRC KALDE,KALDE.3212RDC322500,141,Var,2,"5,00",20,TRY,https://yapimaks.com/32-25-reduksiyon-pprc-kalde-p4786,2026-03-23 22:31:48
+4777,32/45 DİRSEK AÇIK PPRC KALDE,KALDE.3212ELB320045,141,Var,2,"12,00",20,TRY,https://yapimaks.com/32-45-dirsek-acik-pprc-kalde-p4777,2026-03-23 22:31:50
+4776,32/90 DİRSEK KAPALI PPRC KALDE,KALDE.3212ELB320000,141,Var,2,"11,00",20,TRY,https://yapimaks.com/32-90-dirsek-kapali-pprc-kalde-p4776,2026-03-23 22:31:52
+4771,32 C KAVİS PVC KALDE,KALDE.3202TWC320001,141,Var,2,"51,00",20,TRY,https://yapimaks.com/32-c-kavis-pvc-kalde-p4771,2026-03-23 22:31:54
+4858,32 ÇİFTLİ KLİPS PPRC KALDE,KALDE.3592BCK323400,141,Var,2,"7,00",20,TRY,https://yapimaks.com/32-ciftli-klips-pprc-kalde-p4858,2026-03-23 22:31:56
+4849,32 KAPAMA BAŞLIĞI PPRC KALDE,KALDE.3292STE320000,141,Var,2,"8,00",20,TRY,https://yapimaks.com/32-kapama-basligi-pprc-kalde-p4849,2026-03-23 22:31:58
+4859,32 KELEPÇE PPRC KALDE,KALDE.3592BCK323401,141,Var,2,"4,00",20,TRY,https://yapimaks.com/32-kelepce-pprc-kalde-p4859,2026-03-23 22:32:00
+4768,32 KOMPOZİT BORU PPRC 4 M KALDE,KALDE.3202TFR320020,141,Var,2,"233,00",20,TRY,https://yapimaks.com/32-kompozit-boru-pprc-4-m-kalde-p4768,2026-03-23 22:32:02
+4853,32 KÖRTAPA PPRC KALDE,KALDE.3295STE321000,141,Var,2,"10,00",20,TRY,https://yapimaks.com/32-kortapa-pprc-kalde-p4853,2026-03-23 22:32:04
+4834,32 KÜRESEL VANA PPRC KALDE,KALDE.3242VLB320003,141,Var,2,"172,00",20,TRY,https://yapimaks.com/32-kuresel-vana-pprc-kalde-p4834,2026-03-23 22:32:06
+4782,32 MANŞON PPRC KALDE,KALDE.3212MUF320000,141,Var,2,"8,00",20,TRY,https://yapimaks.com/32-manson-pprc-kalde-p4782,2026-03-23 22:32:08
+4764,32 PPRC BORU 4 MT KALDE,KALDE.3202TBE320000,141,Var,2,"258,00",20,TRY,https://yapimaks.com/32-pprc-boru-4-mt-kalde-p4764,2026-03-23 22:32:10
+4791,32 TE PPRC KALDE,KALDE.3212TEO320000,141,Var,2,"15,00",20,TRY,https://yapimaks.com/32-te-pprc-kalde-p4791,2026-03-23 22:32:13
+4819,40 1 1/4 İÇ DİŞLİ REKOR ALTI KÖŞE PPRC KALDE,KALDE.3222NFO401A06,141,Var,2,"158,00",20,TRY,https://yapimaks.com/40-1-1-4-ic-disli-rekor-alti-kose-pprc-kalde-p4819,2026-03-23 22:32:15
+4824,40 11/4 DIŞ DİŞLİ REKOR PPRC KALDE,KALDE.3222NMO401A06,141,Var,2,"200,00",20,TRY,https://yapimaks.com/40-11-4-dis-disli-rekor-pprc-kalde-p4824,2026-03-23 22:32:17
+4846,40 11/4 REKOR OYNAR BAŞLI DIŞ DİŞLİ KALDE,KALDE.3272TUM401A00,141,Var,2,"290,00",20,TRY,https://yapimaks.com/40-11-4-rekor-oynar-basli-dis-disli-kalde-p4846,2026-03-23 22:32:19
+4843,40 11/4 REKOR OYNAR BAŞLI İÇ DİŞLİ KALDE,KALDE.3272TUF401A00,141,Var,2,"278,00",20,TRY,https://yapimaks.com/40-11-4-rekor-oynar-basli-ic-disli-kalde-p4843,2026-03-23 22:32:21
+4795,40/20/40 İNEGAL TE PPRC KALDE,KALDE.3212TİO402040,141,Var,2,"25,00",20,TRY,https://yapimaks.com/40-20-40-inegal-te-pprc-kalde-p4795,2026-03-23 22:32:23
+4787,40/20 REDÜKSİYON PPRC KALDE,KALDE.3212RDC402000,141,Var,2,"9,00",20,TRY,https://yapimaks.com/40-20-reduksiyon-pprc-kalde-p4787,2026-03-23 22:32:25
+4796,40/25/40 İNEGAL TE PPRC KALDE,KALDE.3212TİO402540,141,Var,2,"26,00",20,TRY,https://yapimaks.com/40-25-40-inegal-te-pprc-kalde-p4796,2026-03-23 22:32:27
+4788,40/25 REDÜKSİYON PPRC KALDE,KALDE.3212RDF402500,141,Var,2,"9,00",20,TRY,https://yapimaks.com/40-25-reduksiyon-pprc-kalde-p4788,2026-03-23 22:32:29
+4797,40/32/40 İNEGAL TE PPRC KALDE,KALDE.3212TİO403240,141,Var,2,"26,00",20,TRY,https://yapimaks.com/40-32-40-inegal-te-pprc-kalde-p4797,2026-03-23 22:32:31
+4759,40/32 REDÜKSİYON PPRC KALDE,KALDE.3212RDC403200,141,Var,2,"10,00",20,TRY,https://yapimaks.com/40-32-reduksiyon-pprc-kalde-p4759,2026-03-23 22:32:33
+4779,40/45 DİRSEK AÇIK PPRC KALDE,KALDE.3212ELB400045,141,Var,2,"21,00",20,TRY,https://yapimaks.com/40-45-dirsek-acik-pprc-kalde-p4779,2026-03-23 22:32:35
+4778,40/90 DİRSEK KAPALI PPRC KALDE,KALDE.3212ELB400000,141,Var,2,"21,00",20,TRY,https://yapimaks.com/40-90-dirsek-kapali-pprc-kalde-p4778,2026-03-23 22:32:37
+4850,40 KAPAMA BAŞLIĞI PPRC KALDE,KALDE.3292STE400000,141,Var,2,"14,00",20,TRY,https://yapimaks.com/40-kapama-basligi-pprc-kalde-p4850,2026-03-23 22:32:39
+4860,40 KELEPÇE PPRC KALDE,KALDE.3592BCK404201,141,Var,2,"5,00",20,TRY,https://yapimaks.com/40-kelepce-pprc-kalde-p4860,2026-03-23 22:32:41
+4835,40 KÜRESEL VANA PPRC KALDE,KALDE.3242VLB400003,141,Var,2,"359,00",20,TRY,https://yapimaks.com/40-kuresel-vana-pprc-kalde-p4835,2026-03-23 22:32:43
+4783,40 MANŞON PPRC KALDE,KALDE.3212MUF400000,141,Var,2,"14,00",20,TRY,https://yapimaks.com/40-manson-pprc-kalde-p4783,2026-03-23 22:32:45
+4765,40 PPRC BORU 4 MT KALDE,KALDE.3202TBE400000,141,Var,2,"399,00",20,TRY,https://yapimaks.com/40-pprc-boru-4-mt-kalde-p4765,2026-03-23 22:32:48
+4792,40 TE PPRC KALDE,KALDE.3212TEO400000,141,Var,2,"28,00",20,TRY,https://yapimaks.com/40-te-pprc-kalde-p4792,2026-03-23 22:32:50
+13359,404 PLASTİK ÇELİK 44 GR.,404.A06002,311,Var,2,"65,00",20,TRY,https://yapimaks.com/404-plastik-celik-44-gr-p13359,2026-03-23 22:32:52
+13360,404 POWER MİX 80 GR,404.A06006,311,Yok,2,"135,00",20,TRY,https://yapimaks.com/404-power-mix-80-gr-p13360,2026-03-23 22:32:54
+13361,404 YAPGİT 50 GR PVC YAPIŞTIRICI,404.A06009,311,Var,2,"65,00",20,TRY,https://yapimaks.com/404-yapgit-50-gr-pvc-yapistirici-p13361,2026-03-23 22:32:56
+14607,50 1 1/2 DIŞ DİŞLİ REKOR KALDE,KALDE.3222NMO500B01,141,Var,2,"32,00",20,TRY,https://yapimaks.com/50-1-1-2-dis-disli-rekor-kalde-p14607,2026-03-23 22:32:58
+14996,50 1 1/2 İÇ DİŞLİ REKOR ALTI KÖŞE PPRC KALDE,KALDE.3222NFO501B06,141,Var,2,"214,00",20,TRY,https://yapimaks.com/50-1-1-2-ic-disli-rekor-alti-kose-pprc-kalde-p14996,2026-03-23 22:33:00
+4865,50/1000 PİS SU BORU PPRC KALDE,KALDE.5203TBE0K1000,141,Var,2,"72,00",20,TRY,https://yapimaks.com/50-1000-pis-su-boru-pprc-kalde-p4865,2026-03-23 22:33:02
+4879,50/150 PİS SU BORU KALDE,KALDE.5203TBEXK0150,141,Var,2,"19,00",20,TRY,https://yapimaks.com/50-150-pis-su-boru-kalde-p4879,2026-03-23 22:33:04
+11012,50/2000 PİS SU BORU PPRC KALDE,KALDE.5203TBE0K2000,141,Var,2,"128,00",20,TRY,https://yapimaks.com/50-2000-pis-su-boru-pprc-kalde-p11012,2026-03-23 22:33:06
+4880,50/250 PİS SU BORU KALDE,KALDE.5203TBEXK0250,141,Var,2,"30,00",20,TRY,https://yapimaks.com/50-250-pis-su-boru-kalde-p4880,2026-03-23 22:33:08
+4872,50/3000 PİS SU BORU KALDE,KALDE.5203TBE0K3000,141,Var,2,"189,00",20,TRY,https://yapimaks.com/50-3000-pis-su-boru-kalde-p4872,2026-03-23 22:33:10
+4894,50/45 PİS SU PVC DİRSEK KALDE,KALDE.5213ELB0K0045,141,Var,2,"14,00",20,TRY,https://yapimaks.com/50-45-pis-su-pvc-dirsek-kalde-p4894,2026-03-23 22:33:12
+10812,50/50/50 ÇİFT ÇATAL PİS SU 45 PVC KALDE,KALDE.5213DBR0K0K45,141,Var,2,"52,00",20,TRY,https://yapimaks.com/50-50-50-cift-catal-pis-su-45-pvc-kalde-p10812,2026-03-23 22:33:14
+4911,50/50 ÇATAL PİS SU PVC KALDE,KALDE.5213SBR0K0K45,141,Var,2,"28,00",20,TRY,https://yapimaks.com/50-50-catal-pis-su-pvc-kalde-p4911,2026-03-23 22:33:16
+4912,50/50 TE PİS SU PVC KALDE,KALDE.5213SBR0K0K87,141,Var,2,"30,00",20,TRY,https://yapimaks.com/50-50-te-pis-su-pvc-kalde-p4912,2026-03-23 22:33:18
+4881,50/500 PİS SU BORU PPRC KALDE,KALDE.5203TBEXK0500,141,Var,2,"46,00",20,TRY,https://yapimaks.com/50-500-pis-su-boru-pprc-kalde-p4881,2026-03-23 22:33:20
+4895,50/90 PİS SU PVC DİRSEK KALDE,KALDE.5213ELB0K0090,141,Var,2,"17,00",20,TRY,https://yapimaks.com/50-90-pis-su-pvc-dirsek-kalde-p4895,2026-03-23 22:33:23
+4920,50 KAYAR MANŞON PİS SU KALDE,KALDE.5213SOC0K0000,141,Var,2,"20,00",20,TRY,https://yapimaks.com/50-kayar-manson-pis-su-kalde-p4920,2026-03-23 22:33:25
+4886,50 KELEPÇE PİS SU PVC KALDE,KALDE.5213BCC0K0000,141,Var,2,"7,00",20,TRY,https://yapimaks.com/50-kelepce-pis-su-pvc-kalde-p4886,2026-03-23 22:33:27
+4907,50 LİK CONTA KALDE,KALDE.5213RUR0K0000,141,Var,2,"4,00",20,TRY,https://yapimaks.com/50-lik-conta-kalde-p4907,2026-03-23 22:33:29
+4926,50 TAPA PİS SU PVC KALDE,KALDE.5213STE0K0000,141,Var,2,"11,00",20,TRY,https://yapimaks.com/50-tapa-pis-su-pvc-kalde-p4926,2026-03-23 22:33:31
+4866,70/1000 PİS SU BORU KALDE,KALDE.5203TBE0L1000,141,Var,2,"102,00",20,TRY,https://yapimaks.com/70-1000-pis-su-boru-kalde-p4866,2026-03-23 22:33:33
+4882,70/150 PİS SU BORU KALDE,KALDE.5203TBEXL0150,141,Var,2,"33,00",20,TRY,https://yapimaks.com/70-150-pis-su-boru-kalde-p4882,2026-03-23 22:33:35
+4867,70/2000 PİS SU BORU KALDE,KALDE.5203TBE0L2000,141,Var,2,"181,00",20,TRY,https://yapimaks.com/70-2000-pis-su-boru-kalde-p4867,2026-03-23 22:33:37
+4883,70/250 PİS SU BORUSU KALDE,KALDE.5203TBEXL0250,141,Var,2,"47,00",20,TRY,https://yapimaks.com/70-250-pis-su-borusu-kalde-p4883,2026-03-23 22:33:39
+4868,70/3000 PİS SU BORU KALDE,KALDE.5203TBE0L3000,141,Var,2,"268,00",20,TRY,https://yapimaks.com/70-3000-pis-su-boru-kalde-p4868,2026-03-23 22:33:41
+4896,70/45 PİS SU PVC DİRSEK KALDE,KALDE.5213ELB0L0045,141,Var,2,"25,00",20,TRY,https://yapimaks.com/70-45-pis-su-pvc-dirsek-kalde-p4896,2026-03-23 22:33:43
+4898,70/50 ÇATAL PİS SU PVC KALDE,KALDE.5213SBR0L0K45,141,Var,2,"42,00",20,TRY,https://yapimaks.com/70-50-catal-pis-su-pvc-kalde-p4898,2026-03-23 22:33:45
+4903,70/50 REDÜKSİYON PİS SU PVC KALDE,KALDE.5213RDC0L0K00,141,Var,2,"22,00",20,TRY,https://yapimaks.com/70-50-reduksiyon-pis-su-pvc-kalde-p4903,2026-03-23 22:33:47
+4864,,,,,,,,TRY,https://yapimaks.com/70-500-pis-su-boru-pprc-kalde-p4864,2026-03-23 22:33:49
+4913,,,,,,,,TRY,https://yapimaks.com/70-70-catal-pis-su-pvc-kalde-p4913,2026-03-23 22:33:51
+4897,,,,,,,,TRY,https://yapimaks.com/70-90-pis-su-pvc-dirsek-kalde-p4897,2026-03-23 22:33:54
+4921,,,,,,,,TRY,https://yapimaks.com/70-kayar-manson-pis-su-pvc-kalde-p4921,2026-03-23 22:33:56
+4887,,,,,,,,TRY,https://yapimaks.com/70-kelepce-pis-su-pvc-kalde-p4887,2026-03-23 22:33:58
+4908,,,,,,,,TRY,https://yapimaks.com/70-lik-conta-kalde-p4908,2026-03-23 22:34:00
+4927,,,,,,,,TRY,https://yapimaks.com/70-tapa-pis-su-kalde-p4927,2026-03-23 22:34:02
+12523,,,,,,,,TRY,https://yapimaks.com/75-32-75-inegal-te-pprc-kalde-p12523,2026-03-23 22:34:04
+4376,,,,,,,,TRY,https://yapimaks.com/ac-kapa-kapak-takimi-p4376,2026-03-23 22:34:07
+13502,,,,,,,,TRY,https://yapimaks.com/aci-olcer-miknatisli-360-derece-bts-12103-p13502,2026-03-23 22:34:09
+3078,,,,,,,,TRY,https://yapimaks.com/acik-agiz-anahtar-14-15-jaws-eltos-p3078,2026-03-23 22:34:11
+3079,,,,,,,,TRY,https://yapimaks.com/acik-agiz-anahtar-16-17-jaws-eltos-p3079,2026-03-23 22:34:13
+3080,,,,,,,,TRY,https://yapimaks.com/acik-agiz-anahtar-18-19-jaws-eltos-p3080,2026-03-23 22:34:15
+3081,,,,,,,,TRY,https://yapimaks.com/acik-agiz-anahtar-20-22-jaws-eltos-p3081,2026-03-23 22:34:17
+3074,,,,,,,,TRY,https://yapimaks.com/acik-agiz-anahtar-6-7-jaws-eltos-p3074,2026-03-23 22:34:19
+3075,,,,,,,,TRY,https://yapimaks.com/acik-agiz-anahtar-8-9-jaws-eltos-p3075,2026-03-23 22:34:22
+1826,,,,,,,,TRY,https://yapimaks.com/acik-kagitlik-eko-p1826,2026-03-23 22:34:24
+15116,,,,,,,,TRY,https://yapimaks.com/acil-cikis-tabelasi-sag-panther-pt-190-p15116,2026-03-23 22:34:26
+14830,,,,,,,,TRY,https://yapimaks.com/acil-stop-kumanda-kutusu-butonu-p14830,2026-03-23 22:34:28
+6509,,,,,,,,TRY,https://yapimaks.com/acili-cektirme-seffaf-t-baglanti-100-adet-p6509,2026-03-23 22:34:30
+5047,,,,,,,,TRY,https://yapimaks.com/adaptor-takoz-conta-p5047,2026-03-23 22:34:32
+1928,,,,,,,,TRY,https://yapimaks.com/adertek-yapistirma-alci-25-kg-p1928,2026-03-23 22:34:35
+1946,,,,,,,,TRY,https://yapimaks.com/adertek-yapistirma-alcisi-1-kg-p1946,2026-03-23 22:34:37
+14029,,,,,,,,TRY,https://yapimaks.com/agac-kesim-motorlu-benzinli-testere-41cc-1-9hp-kama-kmr41-p14029,2026-03-23 22:34:39
+3250,,,,,,,,TRY,https://yapimaks.com/agac-kesim-motorlu-test-elektrik-ex75043a-p3250,2026-03-23 22:34:41
+11244,,,,,,,,TRY,https://yapimaks.com/agac-kesim-motorlu-testere-46cc-kama-p11244,2026-03-23 22:34:43
+14935,,,,,,,,TRY,https://yapimaks.com/agac-kesim-motorlu-testere-factor-p14935,2026-03-23 22:34:45
+14030,,,,,,,,TRY,https://yapimaks.com/agac-kesim-motoru-benzinli-58-cc-3-8-hp-38-dis-rodex-p14030,2026-03-23 22:34:47
+8005,,,,,,,,TRY,https://yapimaks.com/agac-kesim-motoru-elekt-2000w-40cm-rtrm9040-p8005,2026-03-23 22:34:50
+2828,,,,,,,,TRY,https://yapimaks.com/agora-mix-45x45-1k-1-4175m2-p2828,2026-03-23 22:34:52
+2829,,,,,,,,TRY,https://yapimaks.com/agora-mix-45x45-2k-1-62m2-p2829,2026-03-23 22:34:54
+3953,,,,,,,,TRY,https://yapimaks.com/agraf-10-1-adet-500-p3953,2026-03-23 22:34:56
+3945,AGRAF 12 1 ADET (500),FOUR.HNK0003,76,Var,2,"5,04",20,TRY,https://yapimaks.com/agraf-12-1-adet-500-p3945,2026-03-23 22:34:58
+3946,AGRAF 15 1 ADET (500),FOUR.HNK0004,76,Var,2,"6,78",20,TRY,https://yapimaks.com/agraf-15-1-adet-500-p3946,2026-03-23 22:35:00
+3947,AGRAF 20 1 ADET (500),FOUR.HNK0005,76,Var,2,"8,34",20,TRY,https://yapimaks.com/agraf-20-1-adet-500-p3947,2026-03-23 22:35:02
+3949,AGRAF 30 1 ADET (500),FOUR.HNK0007,76,Var,2,"13,20",20,TRY,https://yapimaks.com/agraf-30-1-adet-500-p3949,2026-03-23 22:35:04
+3950,AGRAF 40 1 ADET  (1000),FOUR.HNK0008,76,Var,2,"15,00",20,TRY,https://yapimaks.com/agraf-40-1-adet-1000-p3950,2026-03-23 22:35:07
+3944,AGRAF 7 1 ADET (500),FOUR.HNK0001,76,Var,2,"3,90",20,TRY,https://yapimaks.com/agraf-7-1-adet-500-p3944,2026-03-23 22:35:09
+14889,AGRAF VİDASI 4.2X16 MM  (500),AKDENİZ.VAGR42016GAL,206,Var,12,"290,00",20,TRY,https://yapimaks.com/agraf-vidasi-4-2x16-mm-500-p14889,2026-03-23 22:35:11
+412,"AGT PARKE ARMONİA LARGE MİNORİ (2,037 m2)",AGT.120016368,25,Var,2,"729,00",20,TRY,https://yapimaks.com/agt-parke-armonia-large-minori-2-037-m2-p412,2026-03-23 22:35:13
+413,"AGT PARKE ARMONİA LARGE TOSKANA (2,3763 m2)",AGT.120016370,25,Var,2,"799,00",20,TRY,https://yapimaks.com/agt-parke-armonia-large-toskana-2-3763-m2-p413,2026-03-23 22:35:15
+411,"AGT PARKE ARMONİA SLİM MİNORİ (1,755 m2)",AGT.120016367,25,Var,2,"629,00",20,TRY,https://yapimaks.com/agt-parke-armonia-slim-minori-1-755-m2-p411,2026-03-23 22:35:17
+404,"AGT PARKE ARMONİA SLİM NAPOLİ (1,755 m2)",AGT.120016360,25,Var,2,"629,00",20,TRY,https://yapimaks.com/agt-parke-armonia-slim-napoli-1-755-m2-p404,2026-03-23 22:35:19
+478,"AGT PARKE BELLA AKASYA NEO (2,292m2)",AGT.120028461,25,Var,2,"785,00",20,TRY,https://yapimaks.com/agt-parke-bella-akasya-neo-2-292m2-p478,2026-03-23 22:35:21
+476,"AGT PARKE BELLA ANEMON NEO (2,292m2)",AGT.120043602,25,Var,2,"785,00",20,TRY,https://yapimaks.com/agt-parke-bella-anemon-neo-2-292m2-p476,2026-03-23 22:35:23
+523,"AGT PARKE BELLA DEFNE NEO (2,292m2)",AGT.120043597,25,Var,2,"785,00",20,TRY,https://yapimaks.com/agt-parke-bella-defne-neo-2-292m2-p523,2026-03-23 22:35:25
+524,"AGT PARKE BELLA FREZYA NEO (2,292m2)",AGT.120043603,25,Var,2,"785,00",20,TRY,https://yapimaks.com/agt-parke-bella-frezya-neo-2-292m2-p524,2026-03-23 22:35:27
+14654,"AGT PARKE BELLA GARDENYA (2,292m2)",AGT.120043600,25,Var,2,"785,00",20,TRY,https://yapimaks.com/agt-parke-bella-gardenya-2-292m2-p14654,2026-03-23 22:35:29
+521,"AGT PARKE BELLA LİLYUM NEO (2,292m2)",AGT.120043605,25,Var,2,"785,00",20,TRY,https://yapimaks.com/agt-parke-bella-lilyum-neo-2-292m2-p521,2026-03-23 22:35:31
+525,AGT PARKE BELLA MANOLYA NEO (2.292m2),AGT.120043604,25,Var,2,"785,00",20,TRY,https://yapimaks.com/agt-parke-bella-manolya-neo-2-292m2-p525,2026-03-23 22:35:34
+526,"AGT PARKE BELLA VEGAS NEO (2,292m2)",AGT.120043607,25,Var,2,"785,00",20,TRY,https://yapimaks.com/agt-parke-bella-vegas-neo-2-292m2-p526,2026-03-23 22:35:36
+12126,"AGT PARKE BELLA YUKA NEO (2,292m2)",AGT.120045160,25,Var,2,"785,00",20,TRY,https://yapimaks.com/agt-parke-bella-yuka-neo-2-292m2-p12126,2026-03-23 22:35:38
+469,"AGT PARKE CONCEPT CASELLA 10 MM (1,488m2)",AGT.120025269,25,Var,2,"750,00",20,TRY,https://yapimaks.com/agt-parke-concept-casella-10-mm-1-488m2-p469,2026-03-23 22:35:40
+465,"AGT PARKE CONCEPT CENTRO 10MM (1,488m2)",AGT.120025256,25,Var,2,"750,00",20,TRY,https://yapimaks.com/agt-parke-concept-centro-10mm-1-488m2-p465,2026-03-23 22:35:42
+468,"AGT PARKE CONCEPT LORETO 10 MM (1,488m2)",AGT.120025268,25,Var,2,"750,00",20,TRY,https://yapimaks.com/agt-parke-concept-loreto-10-mm-1-488m2-p468,2026-03-23 22:35:44
+467,,,,,,,,TRY,https://yapimaks.com/agt-parke-concept-scala-10-mm-1-488m2-p467,2026-03-23 22:35:46
+12135,,,,,,,,TRY,https://yapimaks.com/agt-parke-corvina-albana-2-292m2-p12135,2026-03-23 22:35:48
+13707,,,,,,,,TRY,https://yapimaks.com/agt-parke-corvina-astera-2-292m2-p13707,2026-03-23 22:35:50
+12133,,,,,,,,TRY,https://yapimaks.com/agt-parke-corvina-faba-2-292m2-p12133,2026-03-23 22:35:52
+14356,,,,,,,,TRY,https://yapimaks.com/agt-parke-corvina-molette-2-292m2-p14356,2026-03-23 22:35:55
+12134,,,,,,,,TRY,https://yapimaks.com/agt-parke-corvina-pigato-2-292m2-p12134,2026-03-23 22:35:57
+12125,,,,,,,,TRY,https://yapimaks.com/agt-parke-corvina-vega-2-292m2-p12125,2026-03-23 22:35:59
+485,,,,,,,,TRY,https://yapimaks.com/agt-parke-defne-spark-grey-12-mm-1-14m2-p485,2026-03-23 22:36:01
+487,,,,,,,,TRY,https://yapimaks.com/agt-parke-effect-altay-8-mm-1-8336m2-p487,2026-03-23 22:36:03
+490,,,,,,,,TRY,https://yapimaks.com/agt-parke-effect-everest-8-mm-1-8336m2-p490,2026-03-23 22:36:05
+489,,,,,,,,TRY,https://yapimaks.com/agt-parke-effect-pamir-8-mm-1-8336m2-p489,2026-03-23 22:36:08
