@@ -130,13 +130,28 @@ async def wait_for_manual_solve(loop: asyncio.AbstractEventLoop,
 
 def is_protection_page(html: str, page) -> tuple[bool, str]:
     """
-    Herhangi bir Cloudflare/sahibinden koruma sayfasını tespit eder.
+    Herhangi bir koruma sayfasını tespit eder.
+
+    Tespit edilen tipler:
+    1. PerimeterX (px-captcha)   — "Bağlantınız kontrol ediliyor" + px-captcha
+    2. Cloudflare Managed        — /cs/checkLoading URL
+    3. Cloudflare Turnstile      — cf-turnstile widget
+    4. Cloudflare Waiting Page   — "bir dakika lütfen" vb.
 
     Returns:
         (True, açıklama) — koruma sayfasıysa
         (False, "")      — normal sayfaysa
     """
     lower = html.lower()
+
+    # PerimeterX — div#px-captcha veya meta name="px-captcha"
+    # Sayfa başlığı: "Olağan dışı erişim tespit ettik..."
+    # Buton metni:   "Basılı Tutun"
+    if "px-captcha" in lower or "olağan dışı erişim" in lower:
+        return True, "PerimeterX Bot Koruması (Basılı Tutun butonu)"
+
+    if "bağlantınız kontrol ediliyor" in lower:
+        return True, "PerimeterX Bağlantı Kontrolü"
 
     # Cloudflare Managed Challenge (checkLoading)
     try:
