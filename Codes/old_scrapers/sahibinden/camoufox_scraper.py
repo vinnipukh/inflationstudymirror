@@ -27,7 +27,7 @@ CITIES = {
 }
 
 SCRIPT_DIR      = os.path.dirname(os.path.abspath(__file__))
-DATA_BASE_DIR   = os.path.abspath(os.path.join(SCRIPT_DIR, "../../../Datas/HousesRent/"))
+DATA_BASE_DIR   = os.path.abspath(os.path.join(SCRIPT_DIR, "../../../../Datas/HousesRent/"))
 CHECKPOINT_FILE = os.path.join(SCRIPT_DIR, "scraper_checkpoint.json")
 
 

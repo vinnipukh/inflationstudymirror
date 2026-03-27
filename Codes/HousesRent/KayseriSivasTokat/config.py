@@ -54,14 +54,14 @@ def get_checkpoint_file() -> str:
 # ============================================================
 # ZAMANLAMA SABİTLERİ  (min, max) — saniye cinsinden
 # ============================================================
-PAGE_LOAD_AFTER_GOTO  = (8.0,  12.0)   # goto() sonrası bekleme
-BETWEEN_BRACKETS      = (4.0,   6.0)   # Bracket geçişi molası
-BETWEEN_PAGES         = (8.0,  12.0)   # Sayfalama geçişi
-LOGIN_RETRY_WAIT      = (10.0, 15.0)   # Login sayfası tekrar denemesi
-GOTO_RETRY_WAIT       = (13.0, 18.0)   # goto() timeout retry arası
-TURNSTILE_TOKEN_WAIT  = (13.0, 17.0)   # Turnstile widget sonrası bekleme
-POST_CHECK_WAIT       = (4.0,   6.0)   # Koruma sayfası geçildikten sonra
-HOMEPAGE_WAIT         = (3.0,   5.0)   # Ana sayfa yüklendikten sonra
+PAGE_LOAD_AFTER_GOTO  = (8.3,  12.7)   # goto() sonrası bekleme
+BETWEEN_BRACKETS      = (4.2,   6.3)   # Bracket geçişi molası
+BETWEEN_PAGES         = (8.1,  12.9)   # Sayfalama geçişi
+LOGIN_RETRY_WAIT      = (10.1, 15.2)   # Login sayfası tekrar denemesi
+GOTO_RETRY_WAIT       = (13.3, 18.8)   # goto() timeout retry arası
+TURNSTILE_TOKEN_WAIT  = (13.9, 17.3)   # Turnstile widget sonrası bekleme
+POST_CHECK_WAIT       = (4.3,   6.2)   # Koruma sayfası geçildikten sonra
+HOMEPAGE_WAIT         = (8.1,   9.2)   # Ana sayfa yüklendikten sonra
 CITY_CLOSE_WAIT       = 30             # Tarayıcı kapandıktan sonra (sabit)
 
 # ============================================================

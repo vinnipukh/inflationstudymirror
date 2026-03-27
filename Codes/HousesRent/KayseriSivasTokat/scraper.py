@@ -144,16 +144,36 @@ def is_protection_page(html: str, page) -> tuple[bool, str]:
     """
     lower = html.lower()
 
-    # PerimeterX — div#px-captcha veya meta name="px-captcha"
-    # Sayfa başlığı: "Olağan dışı erişim tespit ettik..."
-    # Buton metni:   "Basılı Tutun"
-    if "px-captcha" in lower or "olağan dışı erişim" in lower:
-        return True, "PerimeterX Bot Koruması (Basılı Tutun butonu)"
+    # ------------------------------------------------------------------
+    # DOM SELECTOR BAZLI TESPİT
+    # Her bot korumasının sayfaya bıraktığı CSS id/class'ları kontrol
+    # eder. HTML'de bu string'lerden biri geçiyorsa koruma sayfasıdır.
+    # ------------------------------------------------------------------
+    CAPTCHA_SIGNATURES: list[tuple[str, str]] = [
+        # (html'de aranacak string, açıklama)
+        ("px-captcha",           "PerimeterX"),
+        ("cf-turnstile",         "Cloudflare Turnstile"),
+        ("datadome-captcha",     "DataDome"),
+        ("g-recaptcha",          "Google reCAPTCHA"),
+        ("h-captcha",            "hCaptcha"),
+        ("aws-waf-captcha",      "AWS WAF CAPTCHA"),
+        ("geetest-captcha",      "GeeTest CAPTCHA"),
+        ("keycaptcha",           "KeyCAPTCHA"),
+        ("funcaptcha",           "FunCaptcha"),
+        ("yandex-captcha",       "Yandex CAPTCHA"),
+    ]
 
-    if "bağlantınız kontrol ediliyor" in lower:
+    for signature, name in CAPTCHA_SIGNATURES:
+        if signature in lower:
+            return True, f"{name} ({signature})"
+
+    # ------------------------------------------------------------------
+    # METİN BAZLI TESPİT — sahibinden'e özgü Türkçe koruma metinleri
+    # ------------------------------------------------------------------
+    if "olağan dışı erişim" in lower or "bağlantınız kontrol ediliyor" in lower:
         return True, "PerimeterX Bağlantı Kontrolü"
 
-    # Cloudflare Managed Challenge (checkLoading)
+    # Cloudflare Managed Challenge (checkLoading) — URL bazlı
     try:
         url = page.url.lower()
         if "/cs/checkloading" in url or "secure.sahibinden.com" in url:
@@ -161,11 +181,11 @@ def is_protection_page(html: str, page) -> tuple[bool, str]:
     except Exception:
         pass
 
-    if "güvenlik doğrulaması" in lower and "cf-turnstile" in lower:
-        return True, "Cloudflare Turnstile (güvenlik doğrulaması)"
+    if "güvenlik doğrulaması" in lower:
+        return True, "Cloudflare Güvenlik Doğrulaması"
 
     if "tarayıcınızı kontrol ediyoruz" in lower:
-        return True, "Cloudflare Turnstile (tarayıcı kontrolü)"
+        return True, "Cloudflare Tarayıcı Kontrolü"
 
     if any(s in lower for s in ["bir dakika lütfen", "lütfen bekleyiniz", "doğrulanıyor"]):
         return True, "Cloudflare Waiting Page"
