@@ -1,7 +1,7 @@
 # 📊 Inflation Study — AI 201 Project
 **Özyeğin University · AI 201 · Spring 2026**
 
-> An automated data-collection and analysis pipeline that tracks real-time product prices from Turkish retailers to study inflation patterns across grocery markets and clothing stores.
+> An automated data-collection and analysis pipeline that tracks real-time product prices from Turkish retailers to study inflation patterns across grocery markets, clothing stores, housing rentals, and construction/hardware markets.
 
 ---
 
@@ -10,12 +10,12 @@
 This project builds a web-scraping infrastructure to collect daily price data from online Turkish retailers, with the goal of:
 
 - Monitoring **price changes over time** across product categories
-- Comparing inflation trends between **grocery markets** (e.g. Gurmar) and **clothing stores** (e.g. Vakko)
+- Comparing inflation trends between **grocery markets** (e.g. Gurmar), **clothing stores** (e.g. Vakko), **housing rentals** (Sahibinden), and **construction/hardware markets** (Yapimaks)
 - Creating a structured, date-stamped dataset suitable for downstream AI/ML analysis and an **inflation calculator** (coming soon)
 
 The scrapers run automatically (via GitHub Actions) and append new daily snapshots to the `Datas/` directory.
 
-> ⚠️ **This is an active project.** More retailers (markets and clothing stores) will be added over time.
+> ⚠️ **This is an active project.** More retailers (markets, clothing stores, housing, and construction) will be added over time.
 
 ---
 
@@ -43,8 +43,20 @@ inflationstudymirror/
 │   │       ├── categoryfinder.py       # Extracts category IDs from sitemap XML
 │   │       └── vakko_categories.xml    # Vakko sitemap (category URLs)
 │   │
+│   ├── ConstructionMarkets/
+│   │   └── yapimaks/
+│   │       ├── scraper.py              # Python/XML scraper for yapimaks.com
+│   │       └── products1.xml           # Yapimaks product sitemap
+│   │
+│   ├── HousesRent/
+│   │   └── KayseriSivasTokat/
+│   │       ├── main.py                 # Orchestrator for Kayseri/Sivas/Tokat cities
+│   │       ├── scraper.py              # Async Camoufox-based scraper for sahibinden.com
+│   │       ├── run_scraper.py          # Helper runner script
+│   │       └── config.py               # City/search configuration
+│   │
 │   └── sahibinden/
-│       └── camoufox_scraper.py         # Sahibinden scraper (Camoufox-based; manual-run)
+│       └── camoufox_scraper.py         # Sahibinden scraper (legacy; manual-run)
 │
 ├── Datas/                              # Collected price data (CSV, date-stamped)
 │   ├── Markets/
@@ -57,6 +69,10 @@ inflationstudymirror/
 │   │       ├── vakko_YYYY-MM-DD.csv
 │   │       └── ...
 │   │
+│   ├── yapimaks/
+│   │   ├── yapimaks_YYYY-MM-DD.csv
+│   │   └── ...
+│   │
 │   └── HousesRent/
 │       ├── Kayseri/
 │       ├── Sivas/
@@ -66,7 +82,7 @@ inflationstudymirror/
 └── README.md
 ```
 
-> More retailer folders will be added under `Codes/Markets/` and `Codes/ClothingStores/` as the project grows.
+> More retailer folders will be added under `Codes/Markets/`, `Codes/ClothingStores/`, `Codes/ConstructionMarkets/`, and `Codes/HousesRent/` as the project grows.
 
 ---
 
@@ -76,6 +92,8 @@ inflationstudymirror/
 |--------|------|--------|------------|
 | [Gurmar](https://www.gurmar.com.tr) | Grocery market | Selenium (headless Chrome) | Fruits & Veg, Meat & Poultry, Dairy, Beverages, Snacks, Baby Products, Cleaning, Personal Care, Home & Living, Books & Stationery, Petshop |
 | [Vakko](https://www.vakko.com) | Clothing store | REST API (`api.vakko.com`) | Women's, Men's, Shoes & Bags |
+| [Yapimaks](https://www.yapimaks.com) | Construction market / hardware | Python + XML sitemap parsing | Building materials, hardware, tools |
+| [Sahibinden](https://www.sahibinden.com) | Houses rent | Async Camoufox-based scraper | Residential rentals in Kayseri, Sivas, Tokat |
 | _More coming soon_ | — | — | — |
 
 ### CSV Schema (Markets)
@@ -83,6 +101,19 @@ inflationstudymirror/
 kategori, product_name, product_price
 ```
 Each file is named `<source>_prices_YYYY-MM-DD.csv` and contains a full snapshot of available products and their prices on that date.
+
+### CSV Schema (Construction Markets — Yapimaks)
+```
+kategori, product_name, product_price
+```
+Files are saved to `Datas/yapimaks/` and track construction material and hardware prices.
+
+### CSV Schema (Houses Rent — Sahibinden)
+Housing rental data tracks different metrics from product prices:
+```
+city, district, title, price, rooms, area, listing_date, url
+```
+Files are saved to `Datas/HousesRent/<City>/` and contain daily snapshots of rental listings per city.
 
 ---
 
@@ -143,8 +174,21 @@ python vakko_master_scraper.py
 ```
 Outputs a CSV to `Datas/ClothingStores/Vakko/vakko_<today>.csv`.
 
-### Sahibinden (Manual-run)
-This scraper is **manual-run only**. Sahibinden may require login / extra verification when accessed from IPs outside Turkey, so GitHub Actions runners (typically outside Turkey) are not suitable for running it on a daily schedule.
+### Sahibinden — KayseriSivasTokat (Houses Rent)
+This scraper uses an async Camoufox-based approach and is **manual-run only**. Sahibinden may require login / extra verification when accessed from IPs outside Turkey, so GitHub Actions runners (typically outside Turkey) are not suitable for running it on a daily schedule.
+
+```bash
+cd Codes/HousesRent/KayseriSivasTokat
+python main.py
+```
+Outputs rental listing CSVs to `Datas/HousesRent/<City>/`.
+
+### Yapimaks (Construction Market)
+```bash
+cd Codes/ConstructionMarkets/yapimaks
+python scraper.py
+```
+Outputs a CSV to `Datas/yapimaks/`.
 
 ---
 
