@@ -107,20 +107,44 @@ def beep_alert() -> None:
 # ============================================================
 
 async def wait_for_manual_solve(loop: asyncio.AbstractEventLoop,
-                                 reason: str = "Bot koruması") -> None:
+                                 reason: str = "Bot koruması",
+                                 cmd_queue: "queue.Queue | None" = None) -> None:
     """
     Kullanıcıdan manuel çözüm bekler.
 
-    input() async event loop'u bloklamaz — executor'da çalıştırılır.
-    Bu sayede loop diğer coroutine'leri (varsa) çalıştırmaya devam edebilir.
+    input() executor'da çalışır — loop bloklanmaz.
+
+    Kullanıcı ENTER yerine bir komut yazarsa (next/skip/stop)
+    o komut hem kuyruğa eklenir hem de hemen işlenir:
+      - "next"  → SkipBracketSignal fırlatır
+      - "skip"  → SkipCitySignal fırlatır
+      - "stop"  → StopSignal fırlatır
     """
     beep_alert()
     print(f"\n{'=' * 55}")
     print(f"🔒 {reason} tespit edildi!")
     print("   1. Tarayıcıda doğrulamayı tamamlayın.")
     print("   2. Tamamladıktan sonra buraya ENTER basın.")
+    print("   💡 Veya: next (bracket atla) | skip (şehir atla) | stop")
     print(f"{'=' * 55}")
-    await loop.run_in_executor(None, input, "   ▶ ENTER: ")
+    user_input = await loop.run_in_executor(None, input, "   ▶ ENTER / komut: ")
+    cmd = user_input.strip().lower()
+
+    # input'a yazılan komutu direkt işle — kuyruğu bekleme
+    if cmd == "next":
+        print("⚡ Bracket atlanıyor...")
+        raise SkipBracketSignal()
+    elif cmd == "skip":
+        print("⚡ Şehir atlanıyor...")
+        raise SkipCitySignal()
+    elif cmd == "stop":
+        print("⚡ Durduruluyor...")
+        raise StopSignal()
+    elif cmd:
+        # Boş değil ama komut da değil — kuyruğa ekle, belki başka bir yerde işlenir
+        if cmd_queue is not None:
+            cmd_queue.put(cmd)
+
     print("✅ Devam ediliyor...")
 
 
@@ -265,7 +289,7 @@ async def goto_with_retry(page, url: str, retries: int = 3,
 # SAFE GOTO
 # ============================================================
 
-async def safe_goto(page, url: str, loop: asyncio.AbstractEventLoop) -> str:
+async def safe_goto(page, url: str, loop: asyncio.AbstractEventLoop, cmd_queue: "queue.Queue | None" = None) -> str:
     """
     URL'ye gider, tüm koruma katmanlarını yönetir.
 
@@ -281,35 +305,27 @@ async def safe_goto(page, url: str, loop: asyncio.AbstractEventLoop) -> str:
 
     html = await get_page_content(page)
 
-    # Koruma sayfası kontrolü — döngü: kullanıcı çözene kadar bekle
-    for _ in range(5):
+    # Koruma + Login sayfası döngüsü
+    # SkipBracketSignal/SkipCitySignal/StopSignal fırlatılırsa yukarı iletilir
+    for _ in range(8):
         is_prot, reason = is_protection_page(html, page)
-        if not is_prot:
+        is_log = is_login_page(html, page)
+
+        if not is_prot and not is_log:
             break
+
+        if is_log:
+            reason = "Login sayfası — tarayıcıda giriş yapın veya geri dönün"
+
         logger.warning("🔒 %s", reason)
-        await wait_for_manual_solve(loop, reason)
+        # Signal fırlatılırsa (next/skip/stop) buradan direkt çıkar
+        await wait_for_manual_solve(loop, reason, cmd_queue)
         await asyncio.sleep(random.uniform(*config.POST_CHECK_WAIT))
         html = await get_page_content(page)
 
-    # Login / CAPTCHA kontrolü
+    # Son kontrol — hâlâ engellendiyse BrowserBlockedError
     if is_login_page(html, page):
-        logger.warning("🔄 Login/CAPTCHA sayfası, tekrar deneniyor...")
-        await asyncio.sleep(random.uniform(*config.LOGIN_RETRY_WAIT))
-        await goto_with_retry(page, url)
-        await asyncio.sleep(random.uniform(*config.PAGE_LOAD_AFTER_GOTO))
-        html = await get_page_content(page)
-
-        for _ in range(5):
-            is_prot, reason = is_protection_page(html, page)
-            if not is_prot:
-                break
-            logger.warning("🔒 %s", reason)
-            await wait_for_manual_solve(loop, reason)
-            await asyncio.sleep(random.uniform(*config.POST_CHECK_WAIT))
-            html = await get_page_content(page)
-
-        if is_login_page(html, page):
-            raise BrowserBlockedError(f"Kalıcı engel: {url}")
+        raise BrowserBlockedError(f"Kalıcı login engeli: {url}")
 
     # İlan tablosunun yüklenmesini bekle
     try:
@@ -352,7 +368,7 @@ async def warmup_homepage(page, loop: asyncio.AbstractEventLoop) -> None:
             if not is_prot:
                 break
             logger.warning("🔒 Ana sayfada %s", reason)
-            await wait_for_manual_solve(loop, f"Ana sayfa — {reason}")
+            await wait_for_manual_solve(loop, f"Ana sayfa — {reason}", cmd_queue)
             await asyncio.sleep(random.uniform(*config.POST_CHECK_WAIT))
             html = await get_page_content(page)
 
@@ -583,7 +599,7 @@ async def scrape_city_brackets(
             # Konsol komutlarını kontrol et
             check_commands(cmd_queue)
 
-            html = await safe_goto(page, current_url, loop)
+            html = await safe_goto(page, current_url, loop, cmd_queue)
             records, soup = parse_page(html)
 
             if not records:
