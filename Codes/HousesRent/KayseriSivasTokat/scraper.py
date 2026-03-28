@@ -19,6 +19,7 @@ import time
 from datetime import datetime
 from functools import partial
 
+import cmd_queue
 from bs4 import BeautifulSoup
 from camoufox.async_api import AsyncCamoufox
 
@@ -305,27 +306,26 @@ async def safe_goto(page, url: str, loop: asyncio.AbstractEventLoop, cmd_queue: 
 
     html = await get_page_content(page)
 
-    # Koruma + Login sayfası döngüsü
+    # Koruma sayfası döngüsü
     # SkipBracketSignal/SkipCitySignal/StopSignal fırlatılırsa yukarı iletilir
     for _ in range(8):
         is_prot, reason = is_protection_page(html, page)
-        is_log = is_login_page(html, page)
-
-        if not is_prot and not is_log:
+        if not is_prot:
             break
-
-        if is_log:
-            reason = "Login sayfası — tarayıcıda giriş yapın veya geri dönün"
-
         logger.warning("🔒 %s", reason)
-        # Signal fırlatılırsa (next/skip/stop) buradan direkt çıkar
         await wait_for_manual_solve(loop, reason, cmd_queue)
         await asyncio.sleep(random.uniform(*config.POST_CHECK_WAIT))
         html = await get_page_content(page)
 
-    # Son kontrol — hâlâ engellendiyse BrowserBlockedError
+    # Login sayfası — 60s bekle, tarayıcı yeniden başlatılsın
     if is_login_page(html, page):
-        raise BrowserBlockedError(f"Kalıcı login engeli: {url}")
+        logger.warning(
+            "🔒 Login sayfası tespit edildi — 60s bekleniyor, "
+            "tarayıcı yeniden başlatılacak..."
+        )
+        beep_alert()
+        await asyncio.sleep(60)
+        raise BrowserBlockedError(f"Login engeli — tarayıcı yeniden başlatılacak: {url}")
 
     # İlan tablosunun yüklenmesini bekle
     try:
@@ -599,7 +599,11 @@ async def scrape_city_brackets(
             # Konsol komutlarını kontrol et
             check_commands(cmd_queue)
 
-            html = await safe_goto(page, current_url, loop, cmd_queue)
+            try:
+                html = await safe_goto(page, current_url, loop, cmd_queue)
+            except SkipBracketSignal:
+                logger.warning("⚡ Bracket atlanıyor...")
+                break  # while döngüsünden çık → for döngüsü sonraki bracket'a geçer
             records, soup = parse_page(html)
 
             if not records:
@@ -659,6 +663,7 @@ async def scrape_city(
     loop      = asyncio.get_event_loop()
 
     start_bracket, start_page = get_resume_point(checkpoint, city_slug)
+    _last_blocked_bracket = -1  # peş peşe engel tespiti için
     if start_bracket > 0 or start_page > 1:
         logger.info(
             "📌 %s için checkpoint: bracket %d, sayfa %d",
@@ -728,9 +733,19 @@ async def scrape_city(
 
         except BrowserBlockedError as e:
             logger.error("   Engel detayı: %s", e)
-            start_bracket, start_page = get_resume_point(
-                load_checkpoint(), city_slug
-            )
+            cp = load_checkpoint()
+            start_bracket, start_page = get_resume_point(cp, city_slug)
+
+            # Aynı bracket'ta 2 kez üst üste engel yeniyse sonraki bracket'a geç
+            if attempt > 1 and start_bracket == _last_blocked_bracket:
+                logger.warning(
+                    "⚡ Bracket %d peş peşe 2 kez engellendi — sonraki bracket'a geçiliyor.",
+                    start_bracket,
+                )
+                start_bracket += 1
+                start_page = 1
+            _last_blocked_bracket = start_bracket
+
             if attempt < config.MAX_RESTARTS_PER_CITY:
                 logger.info(
                     "🔄 Yeniden başlatılıyor (deneme %d/%d)...",
