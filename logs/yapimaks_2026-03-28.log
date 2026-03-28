@@ -1,0 +1,157 @@
+2026-03-28 11:07:38 [INFO] ==================================================
+2026-03-28 11:07:38 [INFO] Yapimaks Scraper basliyor
+2026-03-28 11:07:38 [INFO]   code   -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Codes\ConstructionMarkets\yapimaks
+2026-03-28 11:07:38 [INFO]   data   -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks
+2026-03-28 11:07:38 [INFO]   logs   -> C:\Users\arhan\PycharmProjects\inflationstudymirror\logs
+2026-03-28 11:07:38 [INFO]   proje  -> C:\Users\arhan\PycharmProjects\inflationstudymirror
+2026-03-28 11:07:38 [INFO] ==================================================
+2026-03-28 11:07:38 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-03-28 11:07:38 [INFO] Cookie alindi: ['_epower_session']
+2026-03-28 11:07:38 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-03-28 11:07:39 [INFO] Toplam URL: 8686 | Urun URL'i: 8686
+2026-03-28 11:07:39 [INFO] Sitemap degismis veya ilk calisma. Sitemap guncelleniyor...
+2026-03-28 11:07:39 [INFO] Sitemap guncellendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Codes\ConstructionMarkets\yapimaks\products1.xml
+2026-03-28 11:07:39 [INFO] 8686 urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-03-28.csv
+2026-03-28 11:07:39 [INFO] [1/8686] https://yapimaks.com/0-30-875-200-oluklu-p4257
+2026-03-28 11:07:39 [INFO] [4257] '0.30*875*200 OLUKLU' | 276,00 TL | SKU: GLV.SAC.030.2000
+2026-03-28 11:07:41 [INFO] [2/8686] https://yapimaks.com/0-30-875-250-oluklu-p4258
+2026-03-28 11:07:41 [INFO] [4258] '0.30*875*250 OLUKLU' | 343,75 TL | SKU: GLV.SAC.030.2500
+2026-03-28 11:07:43 [INFO] [3/8686] https://yapimaks.com/0-30-875-300-oluklu-p4259
+2026-03-28 11:07:43 [INFO] [4259] '0.30*875*300 OLUKLU' | 412,50 TL | SKU: GLV.SAC.030.3000
+2026-03-28 11:07:45 [INFO] [4/8686] https://yapimaks.com/0-30-trp-mahya-p4254
+2026-03-28 11:07:45 [INFO] [4254] '0.30 TRP MAHYA' | 137,50 TL | SKU: GLV.SAC.030.TMHY
+2026-03-28 11:07:47 [INFO] [5/8686] https://yapimaks.com/0-40-86-200-trapez-p4260
+2026-03-28 11:07:47 [INFO] [4260] '0.40*86*200 TRAPEZ' | 365,00 TL | SKU: GLV.SAC.040.2000
+2026-03-28 11:07:49 [INFO] [6/8686] https://yapimaks.com/0-40-86-2000-bordo-p13720
+2026-03-28 11:07:49 [INFO] [13720] '0.40*86*2000 (BORDO)' | 370,00 TL | SKU: RALL.3009.040.2000
+2026-03-28 11:07:50 [WARNING] Sinyal alindi, temiz kapatiliyor...
+2026-03-28 11:07:51 [WARNING] Erken cikis: 6/8686 tamamlandi.
+2026-03-28 11:07:51 [INFO] Tamamlandi! 6 urun -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-03-28.csv
+2026-03-28 11:10:14 [INFO] ==================================================
+2026-03-28 11:10:14 [INFO] Yapimaks Scraper basliyor
+2026-03-28 11:10:14 [INFO] ==================================================
+2026-03-28 11:10:14 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-03-28 11:10:14 [INFO] Cookie basariyla alindi.
+2026-03-28 11:10:14 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-03-28 11:10:14 [INFO] Sitemap'ten toplam 8686 urun URL'si bulundu.
+2026-03-28 11:10:14 [INFO] Guncel dosyada hazir olan urun: 6 | Sifirdan cekilecek (yeni) urun: 8680
+2026-03-28 11:10:14 [INFO] 8680 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-03-28.csv
+2026-03-28 11:10:14 [INFO] [1/8680] https://yapimaks.com/0-40-86-2000-gri-p13724
+2026-03-28 11:10:14 [INFO] [13724] '0.40*86*2000 (GRİ)' | 380,00 TL | SKU: RALL.7016.040.2000
+2026-03-28 11:10:16 [INFO] [2/8680] https://yapimaks.com/0-40-86-250-trapez-p4261
+2026-03-28 11:10:16 [INFO] [4261] '0.40*86*250 TRAPEZ' | 456,25 TL | SKU: GLV.SAC.040.2500
+2026-03-28 11:10:18 [INFO] [3/8680] https://yapimaks.com/0-40-86-2500-gri-p13725
+2026-03-28 11:10:18 [INFO] [13725] '0.40*86*2500 (GRİ)' | 475,00 TL | SKU: RALL.7016.040.2500
+2026-03-28 11:10:20 [INFO] [4/8680] https://yapimaks.com/0-40-86-30-30-trapez-mahya-glv-p4264
+2026-03-28 11:10:20 [INFO] [4264] '0.40*86*30*30 TRAPEZ MAHYA GLV.' | 144,00 TL | SKU: GLV.SAC.040.TMHY
+2026-03-28 11:10:21 [WARNING] Sinyal alindi, temiz kapatiliyor...
+2026-03-28 11:10:22 [WARNING] Erken cikis: 4/8680 tamamlandi.
+2026-03-28 11:10:22 [INFO] Tamamlandi! Toplam 4 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-03-28.csv
+2026-03-28 11:10:27 [INFO] ==================================================
+2026-03-28 11:10:27 [INFO] Yapimaks Scraper basliyor
+2026-03-28 11:10:27 [INFO] ==================================================
+2026-03-28 11:10:27 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-03-28 11:10:27 [INFO] Cookie basariyla alindi.
+2026-03-28 11:10:27 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-03-28 11:10:27 [INFO] Sitemap'ten toplam 8686 urun URL'si bulundu.
+2026-03-28 11:10:27 [INFO] Bugune ait veri yok. Eski veri (2026-03-27.csv) süzülerek bugune aktariliyor...
+2026-03-28 11:10:27 [INFO] Basarili! 8638 urun dunden bugune aktarildi.
+2026-03-28 11:10:27 [INFO] Guncel dosyada hazir olan urun: 8638 | Sifirdan cekilecek (yeni) urun: 48
+2026-03-28 11:10:27 [INFO] 48 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-03-28.csv
+2026-03-28 11:10:27 [INFO] [1/48] https://yapimaks.com/calcutta-beyaz-60x120-2k-8-beyaz-parlak-rek-pk-3ad-2-16m2-p2862
+2026-03-28 11:10:27 [INFO] [2862] 'CALCUTTA BEYAZ 60X120 2K-8 BEYAZ PARLAK ' | 666,00 TL | SKU: EGESER.600X1200CUT01PAR
+2026-03-28 11:10:29 [INFO] [2/48] https://yapimaks.com/cim-bicme-makinasi-elektrikli-1000w-300mm-kama-ecbm30-p15122
+2026-03-28 11:10:30 [INFO] [15122] 'ÇİM BİÇME MAKİNASI ELEKTRİKLİ 1000W 300M' | 4600,00 TL | SKU: KAMA.ECBM30
+2026-03-28 11:10:32 [INFO] [3/48] https://yapimaks.com/cim-bicme-makinasi-elektrikli-1200w-320mm-kama-ecbm32-p13481
+2026-03-28 11:10:32 [INFO] [13481] 'ÇİM BİÇME MAKİNASI ELEKTRİKLİ 1200W 320M' | 5100,00 TL | SKU: KAMA.ECBM32
+2026-03-28 11:10:34 [INFO] [4/48] https://yapimaks.com/demir-testeresi-15cm-gonyeli-p15081
+2026-03-28 11:10:34 [INFO] [15081] 'DEMİR TESTERESİ 15CM GÖNYELİ' | 315,00 TL | SKU: WERT.2535
+2026-03-28 11:10:36 [INFO] [5/48] https://yapimaks.com/demir-testeresi-30cm-boru-profil-p15082
+2026-03-28 11:10:36 [INFO] [15082] 'DEMİR TESTERESİ 30CM BORU PROFİL' | 230,00 TL | SKU: WERT.2533
+2026-03-28 11:10:38 [INFO] [6/48] https://yapimaks.com/el-feneri-usb-sarjli-solar-2x3w-pt-2207-p15112
+2026-03-28 11:10:38 [INFO] [15112] 'EL FENERİ USB ŞARJLI SOLAR 2X3W PT-2207' | 485,00 TL | SKU: PANTHER.PT-2207
+2026-03-28 11:10:40 [INFO] [7/48] https://yapimaks.com/fener-ve-sarj-cihazi-led-5w-20v-sarjli-aku-harictir-wonder-p15055
+2026-03-28 11:10:40 [INFO] [15055] 'FENER VE ŞARJ CİHAZI LED 5W 20V ŞARJLI (' | 1000,00 TL | SKU: WONDER.WAF405
+2026-03-28 11:10:42 [INFO] [8/48] https://yapimaks.com/gece-lambasi-1-w-panther-pt-287-pembe-mavi-p15100
+2026-03-28 11:10:42 [INFO] [15100] 'GECE LAMBASI 1 W PANTHER PT-287 PEMBE/MA' | 129,00 TL | SKU: PANTHER.PT-287
+2026-03-28 11:10:44 [INFO] [9/48] https://yapimaks.com/gece-lambasi-1-w-panther-pt-288-pembe-mavi-p15096
+2026-03-28 11:10:44 [INFO] [15096] 'GECE LAMBASI 1 W PANTHER PT-288 PEMBE/MA' | 139,00 TL | SKU: PANTHER.PT-288
+2026-03-28 11:10:46 [INFO] [10/48] https://yapimaks.com/gres-tabancasi-500-cc-wert-2653-p13126
+2026-03-28 11:10:46 [INFO] [13126] 'GRES TABANCASI 500 CC WERT 2653' | 490,00 TL | SKU: WERT.2653
+2026-03-28 11:10:48 [INFO] [11/48] https://yapimaks.com/gres-tabancasi-havali-400cc-gp-850n-gison-p4251
+2026-03-28 11:10:48 [INFO] [4251] 'GRES TABANCASI HAVALI 400CC GP-850N GISO' | 2275,00 TL | SKU: GİSON.GP850N
+2026-03-28 11:10:50 [INFO] [12/48] https://yapimaks.com/harc-ve-boya-karistirici-1800-w-st10-euromax-p3249
+2026-03-28 11:10:50 [INFO] [3249] 'HARÇ VE BOYA KARIŞTIRICI 1800 W ST10 EUR' | 4200,00 TL | SKU: EUROMAX.EMXST10
+2026-03-28 11:10:52 [INFO] [13/48] https://yapimaks.com/hava-hortumu-15-m-polietilen-p15078
+2026-03-28 11:10:52 [INFO] [15078] 'HAVA HORTUMU 15 M POLİETİLEN' | 440,00 TL | SKU: TROY.18615
+2026-03-28 11:10:54 [INFO] [14/48] https://yapimaks.com/hava-hortumu-7-5-m-polietilen-p15079
+2026-03-28 11:10:54 [INFO] [15079] 'HAVA HORTUMU 7.5 M POLİETİLEN' | 295,00 TL | SKU: TROY.18607
+2026-03-28 11:10:56 [INFO] [15/48] https://yapimaks.com/kamp-lambasi-pt-s600-solar-sajli-3-5w-p15111
+2026-03-28 11:10:56 [INFO] [15111] 'KAMP LAMBASI PT-S600 SOLAR ŞAJLI 3.5W' | 699,00 TL | SKU: PANTHER.PT-S600
+2026-03-28 11:10:58 [INFO] [16/48] https://yapimaks.com/kompresor-super-sessiz-24-lt-1-0-hp-factor-facews24-p15127
+2026-03-28 11:10:58 [INFO] [15127] 'KOMPRESÖR SÜPER SESSİZ 24 LT 1.0 HP FACT' | 8200,00 TL | SKU: FACTOR.FACEWS24
+2026-03-28 11:11:00 [INFO] [17/48] https://yapimaks.com/kriko-arabali-2-ton-bigred-t820050r-p15125
+2026-03-28 11:11:00 [INFO] [15125] 'KRİKO ARABALI 2 TON BIGRED T820050R' | 2700,00 TL | SKU: BİGRED.BIGT82000CS
+2026-03-28 11:11:02 [INFO] [18/48] https://yapimaks.com/kriko-sise-5-ton-bigred-t90504d-s-p15124
+2026-03-28 11:11:03 [INFO] [15124] 'KRİKO ŞİŞE 5 TON BIGRED T90504D-S' | 1750,00 TL | SKU: BİGRED.BIGTR90504S
+2026-03-28 11:11:05 [INFO] [19/48] https://yapimaks.com/kumpas-dijital-150-mm-metal-govde-bts12044-p7817
+2026-03-28 11:11:05 [INFO] [7817] 'KUMPAS DİJİTAL 150 MM METAL GÖVDE BTS120' | 925,00 TL | SKU: BTS.12044
+2026-03-28 11:11:07 [INFO] [20/48] https://yapimaks.com/mantolama-dubeli-pvc-11-5-cm-capatect-p1717
+2026-03-28 11:11:07 [INFO] [1717] 'MANTOLAMA DÜBELİ PVC 11.5-CM CAPATECT' | 3,30 TL | SKU: CAPATECT.013
+2026-03-28 11:11:09 [INFO] [21/48] https://yapimaks.com/masa-lambasi-gumus-usb-sarjli-2w-panther-pt-704-p15102
+2026-03-28 11:11:09 [INFO] [15102] 'MASA LAMBASI GÜMÜŞ USB ŞARJLI 2W PANTHER' | 499,00 TL | SKU: PANTHER.PT-704.G
+2026-03-28 11:11:11 [INFO] [22/48] https://yapimaks.com/masa-lambasi-siyah-usb-sarjli-panther-pt-704-p15101
+2026-03-28 11:11:11 [INFO] [15101] 'MASA LAMBASI SİYAH USB ŞARJLI  PANTHER P' | 499,00 TL | SKU: PANTHER.PT-704.S
+2026-03-28 11:11:13 [INFO] [23/48] https://yapimaks.com/mengene-150mm-doner-tablali-partner-21157-p7824
+2026-03-28 11:11:13 [INFO] [7824] 'MENGENE 150MM DÖNER TABLALI PARTNER 2115' | 3540,00 TL | SKU: PARTNER.21157
+2026-03-28 11:11:15 [INFO] [24/48] https://yapimaks.com/metre-celik-5x25mm-5mt-bmi475541-25-p15123
+2026-03-28 11:11:15 [INFO] [15123] 'METRE ÇELİK 5X25MM 5MT BMI475541/25' | 550,00 TL | SKU: BMI.475541.25
+2026-03-28 11:11:17 [INFO] [25/48] https://yapimaks.com/osb-2-122x244-cm-11-mm-kronospan-76-p5407
+2026-03-28 11:11:17 [INFO] [5407] 'OSB 2 122X244 CM 11 MM KRONOSPAN (76)' | 615,00 TL | SKU: KRONOSPAN.01
+2026-03-28 11:11:19 [INFO] [26/48] https://yapimaks.com/osb-2-122x244-cm-15-mm-kronospan-56-p5408
+2026-03-28 11:11:19 [INFO] [5408] 'OSB 2 122X244 CM 15 MM KRONOSPAN (56)' | 850,00 TL | SKU: KRONOSPAN.03
+2026-03-28 11:11:21 [INFO] [27/48] https://yapimaks.com/osb-2-122x244-cm-18-mm-kronospan-46-p5409
+2026-03-28 11:11:21 [INFO] [5409] 'OSB 2 122X244 CM 18 MM KRONOSPAN (46)' | 1000,00 TL | SKU: KRONOSPAN.04
+2026-03-28 11:11:23 [INFO] [28/48] https://yapimaks.com/pimli-daire-firca-50-mm-ha10145-hawk-p4482
+2026-03-28 11:11:23 [INFO] [4482] 'PİMLİ DAİRE FIRÇA 50 MM HA10145 HAWK' | 65,00 TL | SKU: HAWK.HA10145
+2026-03-28 11:11:25 [INFO] [29/48] https://yapimaks.com/pimli-daire-firca-60x8-mm-ha10131-hawk-p4481
+2026-03-28 11:11:25 [INFO] [4481] 'PİMLİ DAİRE FIRÇA 60X8 MM - HA10131 HAWK' | 50,00 TL | SKU: HAWK.HA10131
+2026-03-28 11:11:27 [INFO] [30/48] https://yapimaks.com/priz-3lu-grup-1x16a-kaucuk-topart-01525-p15126
+2026-03-28 11:11:27 [INFO] [15126] 'PRİZ 3LÜ GRUP 1X16A KAUÇUK TOPART 01525' | 120,00 TL | SKU: TOPART.TPRT01525
+2026-03-28 11:11:29 [INFO] [31/48] https://yapimaks.com/sokak-duvar-lambasi-pt-2992-solar-hareket-isik-sensoru-led-p12647
+2026-03-28 11:11:29 [INFO] [12647] 'SOKAK DUVAR LAMBASI PT-2992 SOLAR HAREKE' | 420,00 TL | SKU: PANTHER.PT-2992
+2026-03-28 11:11:31 [INFO] [32/48] https://yapimaks.com/sokak-duvar-lambasi-pt-2993-solar-hareket-isik-sensoru-5-w-72-smd-led-p15099
+2026-03-28 11:11:31 [INFO] [15099] 'SOKAK DUVAR LAMBASI PT-2993 SOLAR HAREKE' | 475,00 TL | SKU: PANTHER.PT-2993
+2026-03-28 11:11:33 [INFO] [33/48] https://yapimaks.com/spatula-50-mm-pt14105-p15120
+2026-03-28 11:11:33 [INFO] [15120] 'SPATULA 50 MM PT14105' | 65,00 TL | SKU: PARTNER.PT14105
+2026-03-28 11:11:35 [INFO] [34/48] https://yapimaks.com/spatula-80-mm-pt14108-p15121
+2026-03-28 11:11:35 [INFO] [15121] 'SPATULA 80 MM PT14108' | 90,00 TL | SKU: PARTNER.PT14108
+2026-03-28 11:11:37 [INFO] [35/48] https://yapimaks.com/sprey-boya-altin-rengi-ral-270-400ml-selena-p15091
+2026-03-28 11:11:37 [INFO] [15091] 'SPREY BOYA ALTIN RENGİ RAL 270 400ML SEL' | 149,00 TL | SKU: SELENA.10052501
+2026-03-28 11:11:39 [INFO] [36/48] https://yapimaks.com/sprey-boya-beyaz-ral-9003-400ml-selena-p15092
+2026-03-28 11:11:40 [INFO] [15092] 'SPREY BOYA BEYAZ RAL 9003 400ML SELENA' | 119,00 TL | SKU: SELENA.10052502
+2026-03-28 11:11:42 [INFO] [37/48] https://yapimaks.com/sprey-boya-fosforli-yesil-400ml-selena-p15086
+2026-03-28 11:11:42 [INFO] [15086] 'SPREY BOYA FOSFORLI YEŞİL 400ML SELENA' | 149,00 TL | SKU: SELENA.10052443
+2026-03-28 11:11:44 [INFO] [38/48] https://yapimaks.com/sprey-boya-fosforlu-sari-400ml-selena-p15085
+2026-03-28 11:11:44 [INFO] [15085] 'SPREY BOYA FOSFORLU SARI 400ML SELENA' | 149,00 TL | SKU: SELENA.10052442
+2026-03-28 11:11:46 [INFO] [39/48] https://yapimaks.com/sprey-boya-fosforlu-turuncu-400ml-selena-p15087
+2026-03-28 11:11:46 [INFO] [15087] 'SPREY BOYA FOSFORLU TURUNCU 400ML SELENA' | 149,00 TL | SKU: SELENA.10052444
+2026-03-28 11:11:48 [INFO] [40/48] https://yapimaks.com/sprey-boya-gri-ral7015-400ml-selena-p15090
+2026-03-28 11:11:48 [INFO] [15090] 'SPREY BOYA GRİ (RAL7015) 400ML SELENA' | 119,00 TL | SKU: SELENA.10052494
+2026-03-28 11:11:50 [INFO] [41/48] https://yapimaks.com/sprey-boya-metalik-gri-ral-9006-400ml-selena-p15088
+2026-03-28 11:11:50 [INFO] [15088] 'SPREY BOYA METALİK GRİ RAL 9006 400ML SE' | 139,00 TL | SKU: SELENA.10052492
+2026-03-28 11:11:52 [INFO] [42/48] https://yapimaks.com/sprey-boya-siyah-ral-9005-400ml-selena-p15093
+2026-03-28 11:11:52 [INFO] [15093] 'SPREY BOYA SİYAH RAL 9005 400ML SELENA' | 119,00 TL | SKU: SELENA.10052505
+2026-03-28 11:11:54 [INFO] [43/48] https://yapimaks.com/sprey-boya-yesil-ral6018-400ml-selena-p15089
+2026-03-28 11:11:54 [INFO] [15089] 'SPREY BOYA YEŞİL (RAL6018) 400ML SELENA' | 119,00 TL | SKU: SELENA.10052493
+2026-03-28 11:11:56 [INFO] [44/48] https://yapimaks.com/tel-firca-pvc-sapli-sari-tel-250-mm-sani-p13056
+2026-03-28 11:11:56 [INFO] [13056] 'TEL FIRÇA PVC SAPLI SARI TEL 250 MM SANİ' | 100,00 TL | SKU: SANİ.STS04658-3
+2026-03-28 11:11:58 [INFO] [45/48] https://yapimaks.com/tel-firca-pvc-sapli-sari-tel-ha10151-p4483
+2026-03-28 11:11:58 [INFO] [4483] 'TEL FIRÇA PVC SAPLI SARI TEL (HA10151)' | 100,00 TL | SKU: HAWK.HA10151
+2026-03-28 11:12:00 [INFO] [46/48] https://yapimaks.com/tel-firca-pvc-yesil-sapli-glv-10179-p14699
+2026-03-28 11:12:00 [INFO] [14699] 'TEL FIRÇA PVC YEŞİL SAPLI GLV  (10179)' | 105,00 TL | SKU: ERA.10179
+2026-03-28 11:12:02 [INFO] [47/48] https://yapimaks.com/toshiba-el-feneri-led-pilli-kfl-403l-g-c-p15095
+2026-03-28 11:12:02 [INFO] [15095] 'TOSHİBA EL FENERİ  LED PİLLİ KFL-403L(G)' | 225,00 TL | SKU: TOSHİBA.KFL-403L(G)C
+2026-03-28 11:12:04 [INFO] [48/48] https://yapimaks.com/toshiba-pil-kalem-aa-2000-mah-sarjli-2-li-p15094
+2026-03-28 11:12:04 [INFO] [15094] 'TOSHİBA PİL KALEM AA 2000 MAH ŞARJLI 2-L' | 599,00 TL | SKU: TOSHİBA.TNHC-6GME2 CB
+2026-03-28 11:12:06 [INFO] Tamamlandi! Toplam 48 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-03-28.csv
