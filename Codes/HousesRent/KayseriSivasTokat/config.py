@@ -61,7 +61,7 @@ LOGIN_RETRY_WAIT      = (10.1, 15.2)   # Login sayfası tekrar denemesi
 GOTO_RETRY_WAIT       = (13.3, 18.8)   # goto() timeout retry arası
 TURNSTILE_TOKEN_WAIT  = (13.9, 17.3)   # Turnstile widget sonrası bekleme
 POST_CHECK_WAIT       = (4.3,   6.2)   # Koruma sayfası geçildikten sonra
-HOMEPAGE_WAIT         = (8.1,   9.2)   # Ana sayfa yüklendikten sonra
+HOMEPAGE_WAIT         = (15.1,   27.2)   # Ana sayfa yüklendikten sonra
 CITY_CLOSE_WAIT       = 30             # Tarayıcı kapandıktan sonra (sabit)
 
 # ============================================================
@@ -73,6 +73,6 @@ CAMOUFOX_LOCALE = "tr-TR"
 # ============================================================
 # SCRAPER AYARLARI
 # ============================================================
-MAX_RESTARTS_PER_CITY = 3    # Bir şehirde max kaç kez tarayıcı yeniden başlar
-MAX_PAGES_PER_BRACKET = 20   # Sonsuz döngüye karşı güvenlik kapağı
+MAX_RESTARTS_PER_CITY = 5    # Bir şehirde max kaç kez tarayıcı yeniden başlar
+MAX_PAGES_PER_BRACKET = 30   # Sonsuz döngüye karşı güvenlik kapağı
 PAGE_SIZE             = 50   # Sayfa başına ilan sayısı
