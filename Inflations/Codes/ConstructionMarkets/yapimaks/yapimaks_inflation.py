@@ -1,121 +1,116 @@
+import pandas as pd
+import json
 import logging
-import sys
-import argparse
 from datetime import datetime, timedelta
 from pathlib import Path
-import pandas as pd
 
-# ── Dosya Yolları (Kendi klasör yapına göre ayarlı) ──
+# --- KONFİGÜRASYON VE YOLLAR ---
 DATA_DIR = Path(
     r"C:\Users\arhan\PycharmProjects\inflationstudymirror\InflationItems\Datas\ConstructionSuppliesMarkets\Yapimaks")
 OUT_DIR = Path(
     r"C:\Users\arhan\PycharmProjects\inflationstudymirror\Inflations\Datas\ConstructionSuppliesMarkets\Yapimaks")
+JSON_PATH = Path(
+    r"C:\Users\arhan\PycharmProjects\inflationstudymirror\Inflations\Codes\ConstructionMarkets\yapimaks\kategori_haritasi.json")
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
 
 
-def _load_csv(date_str):
+# --- TÜİK MAPPING FONKSİYONU ---
+def get_tuik_class(cat_name):
+    cat = str(cat_name).lower()
+    if any(k in cat for k in ['autokit', 'lastik bakım', 'antifriz', 'cam suyu', 'kriko', 'oto', 'jant', 'akü']):
+        return "07"  # Ulaştırma
+    if any(k in cat for k in ['yapay ağaç', 'yapay çiçek', 'peyzaj', 'tasma', 'köpek', 'evcil', 'kamp', 'spor']):
+        return "09"  # Eğlence/Kültür
+    return "05"  # Ev Bakım/Hırdavat (Default)
+
+
+def load_data(date_str, category_map):
     fpath = DATA_DIR / f"yapimaks_{date_str}.csv"
     if not fpath.exists():
-        logger.info(f"Veri bulunamadı: {fpath}")
-        return None
-    try:
-        df = pd.read_csv(fpath)
-        # "276,00" formatındaki fiyatları float'a çevirme
-        df['price'] = df['price'].astype(str).str.replace('.', '', regex=False).str.replace(',', '.', regex=False)
-        df['price'] = pd.to_numeric(df['price'], errors='coerce')
-        return df
-    except Exception as e:
-        logger.error(f"Okuma hatası {fpath}: {e}")
         return None
 
+    df = pd.read_csv(fpath)
+    # Fiyat temizleme: "276,00" -> 276.0
+    df['price'] = df['price'].astype(str).str.replace('.', '', regex=False).str.replace(',', '.', regex=False)
+    df['price'] = pd.to_numeric(df['price'], errors='coerce')
 
-def _compute_metrics(df_current, df_past):
-    df_current = df_current.copy()
-    past_subset = df_past[['product_id', 'price']].rename(columns={'price': 'past_price'})
-    merged = df_current.merge(past_subset, on='product_id', how='left')
+    # Kategori ve TÜİK sınıfı ekleme
+    df['category'] = df['url'].map(category_map).fillna("Bilinmeyen")
+    df['tuik_code'] = df['category'].apply(get_tuik_class)
 
-    # 1. Ürün Bazlı Enflasyon (Yüzdelik değişim)
-    merged['basic_inflation'] = ((merged['price'] - merged['past_price']) / merged['past_price']) * 100
-    merged['basic_inflation'] = merged['basic_inflation'].replace([float('inf'), float('-inf')], pd.NA)
-
-    # 2. Ortalama Enflasyon (Tüm ürünlerin değişim ortalaması)
-    avg_inflation = merged['basic_inflation'].mean()
-
-    # 3. Sepet Enflasyonu (Toplam güncel fiyat / Toplam geçmiş fiyat)
-    valid = merged.dropna(subset=['price', 'past_price'])
-    sum_current = valid['price'].sum()
-    sum_past = valid['past_price'].sum()
-    basket_inflation = ((sum_current - sum_past) / sum_past) * 100 if sum_past else None
-
-    merged = merged.drop(columns=['past_price'], errors='ignore')
-    return merged, basket_inflation, avg_inflation
+    return df[['product_id', 'price', 'category', 'tuik_code']]
 
 
-def calculate_inflation(target_date=None):
-    if target_date:
-        base_date = datetime.strptime(target_date, "%Y-%m-%d")
-    else:
-        base_date = datetime.today()
+def calculate_metrics(df_now, df_old, suffix):
+    merged = df_now.merge(df_old[['product_id', 'price']], on='product_id', how='inner', suffixes=('', '_old'))
 
-    today_str = base_date.strftime("%Y-%m-%d")
-    df_today = _load_csv(today_str)
+    # Ürün bazlı yüzde değişim
+    merged[f'change_{suffix}'] = ((merged['price'] - merged['price_old']) / merged['price_old']) * 100
 
-    if df_today is None:
-        logger.warning(f"Hesaplama yapılamıyor - {today_str} verisi yok.")
+    # 1. Genel Mağaza Enflasyonu (Sepet)
+    total_now = merged['price'].sum()
+    total_old = merged['price_old'].sum()
+    basket_inf = ((total_now - total_old) / total_old) * 100 if total_old > 0 else 0
+
+    # 2. TÜİK Gruplarına Göre Enflasyon
+    group_inf = merged.groupby('tuik_code').apply(
+        lambda x: ((x['price'].sum() - x['price_old'].sum()) / x['price_old'].sum()) * 100 if x[
+                                                                                                  'price_old'].sum() > 0 else 0
+    ).to_dict()
+
+    return merged, basket_inf, group_inf
+
+
+def run_inflation_report(target_date_str):
+    # 1. Kategori haritasını yükle
+    with open(JSON_PATH, 'r', encoding='utf-8') as f:
+        category_map = json.load(f)
+
+    df_target = load_data(target_date_str, category_map)
+    if df_target is None:
+        logger.error(f"{target_date_str} verisi bulunamadı!")
         return
 
+    base_date = datetime.strptime(target_date_str, "%Y-%m-%d")
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    intervals = {f"{d}d": (base_date - timedelta(days=d)).strftime("%Y-%m-%d") for d in [1, 7, 15, 30]}
 
-    summary_row = {'date': today_str}
-    detail_base = df_today.copy()
+    summary = {"date": target_date_str}
+    detailed_df = df_target.copy()
 
-    for label, past_str in intervals.items():
-        df_past = _load_csv(past_str)
+    # 1, 7, 15, 30 günlük döngü
+    for days in [1, 7, 15, 30]:
+        old_date_str = (base_date - timedelta(days=days)).strftime("%Y-%m-%d")
+        df_old = load_data(old_date_str, category_map)
 
-        if df_past is None:
-            detail_base[f'inflation_{label}'] = None
-            summary_row[f'avg_inflation_{label}'] = None
-            summary_row[f'basket_inflation_{label}'] = None
-            continue
+        if df_old is not None:
+            merged, basket, groups = calculate_metrics(df_target, df_old, f"{days}d")
 
-        merged, basket_inf, avg_inf = _compute_metrics(df_today, df_past)
+            # Detaylı dosyaya ekle
+            detailed_df = detailed_df.merge(merged[['product_id', f'change_{days}d']], on='product_id', how='left')
 
-        detail_base = detail_base.merge(
-            merged[['product_id', 'basic_inflation']].rename(columns={'basic_inflation': f'inflation_{label}'}),
-            on='product_id', how='left'
-        )
-
-        summary_row[f'avg_inflation_{label}'] = avg_inf
-        summary_row[f'basket_inflation_{label}'] = basket_inf
-
-    # Detaylı veriyi kaydet
-    detail_file = OUT_DIR / f"yapimaks_inflation_{today_str}.csv"
-    detail_base.to_csv(detail_file, index=False, encoding='utf-8')
-    logger.info(f"Detaylı rapor kaydedildi: {detail_file}")
-
-    # Özet veriyi güncelle
-    summary_file = OUT_DIR / "inflation_summary.csv"
-    df_summary = pd.DataFrame([summary_row])
-
-    try:
-        if summary_file.exists():
-            df_existing = pd.read_csv(summary_file)
-            df_existing = df_existing[df_existing['date'] != today_str]
-            df_final = pd.concat([df_existing, df_summary], ignore_index=True)
-            df_final.to_csv(summary_file, index=False, encoding='utf-8')
+            # Özet dosyaya ekle
+            summary[f'genel_{days}d'] = round(basket, 2)
+            for code, val in groups.items():
+                summary[f'grup_{code}_{days}d'] = round(val, 2)
         else:
-            df_summary.to_csv(summary_file, index=False, encoding='utf-8')
-        logger.info(f"Özet rapor güncellendi: {summary_file}")
-    except Exception as e:
-        logger.error(f"Özet dosyası yazılamadı: {e}")
+            logger.info(f"{days} gün öncesine ait veri ({old_date_str}) yok, atlanıyor.")
+
+    # Kayıt işlemleri
+    detailed_df.to_csv(OUT_DIR / f"yapimaks_detailed_inf_{target_date_str}.csv", index=False, encoding='utf-8-sig')
+
+    summary_file = OUT_DIR / "inflation_summary.csv"
+    summary_df = pd.DataFrame([summary])
+    if summary_file.exists():
+        old_summary = pd.read_csv(summary_file)
+        # Aynı tarihli kayıt varsa güncelle, yoksa ekle
+        summary_df = pd.concat([old_summary[old_summary['date'] != target_date_str], summary_df], ignore_index=True)
+
+    summary_df.to_csv(summary_file, index=False, encoding='utf-8-sig')
+    logger.info(f"Raporlar tamamlandı! Klasör: {OUT_DIR}")
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Yapimaks Saf Enflasyon Hesaplayıcı")
-    parser.add_argument("--date", help="Hedef tarih (YYYY-MM-DD)", default=None)
-    args = parser.parse_args()
-
-    calculate_inflation(args.date)
+    # Test etmek istediğin tarihi buraya yaz
+    run_inflation_report("2026-03-24")
