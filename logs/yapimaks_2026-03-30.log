@@ -1,0 +1,24 @@
+2026-03-30 12:57:42 [INFO] ==================================================
+2026-03-30 12:57:42 [INFO] Yapimaks Scraper basliyor
+2026-03-30 12:57:42 [INFO] ==================================================
+2026-03-30 12:57:42 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-03-30 12:57:42 [INFO] Cookie basariyla alindi.
+2026-03-30 12:57:42 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-03-30 12:57:42 [INFO] Sitemap'ten toplam 8688 urun URL'si bulundu.
+2026-03-30 12:57:42 [INFO] Bugune ait veri yok. Eski veri (2026-03-29.csv) süzülerek bugune aktariliyor...
+2026-03-30 12:57:42 [INFO] Basarili! 8682 urun dunden bugune aktarildi.
+2026-03-30 12:57:42 [INFO] Guncel dosyada hazir olan urun: 8682 | Sifirdan cekilecek (yeni) urun: 6
+2026-03-30 12:57:42 [INFO] 6 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-03-30.csv
+2026-03-30 12:57:42 [INFO] [1/6] https://yapimaks.com/alc-vida-matkap-45-mv45-1000-ad-dalsan-p1914
+2026-03-30 12:57:43 [INFO] [1914] 'ALÇ.VİDA MATKAP 45 MV45 (1000 AD) DALSAN' | 750,00 TL | SKU: DALSAN.2006
+2026-03-30 12:57:45 [INFO] [2/6] https://yapimaks.com/derz-malasi-uzun-kirmizi-115x385-duyar-p15140
+2026-03-30 12:57:45 [INFO] [15140] 'DERZ MALASI UZUN KIRMIZI 115X385 DUYAR' | 235,00 TL | SKU: DUYAR.120
+2026-03-30 12:57:47 [INFO] [3/6] https://yapimaks.com/koli-kalemi-mavi-yuma-790-m-p14779
+2026-03-30 12:57:47 [INFO] [14779] 'KOLİ KALEMİ MAVİ YUMA 790-M' | 22,50 TL | SKU: YUMA.YM-790-M
+2026-03-30 12:57:49 [INFO] [4/6] https://yapimaks.com/koli-kalemi-siyah-yuma-790-s-p14780
+2026-03-30 12:57:49 [INFO] [14780] 'KOLİ KALEMİ SİYAH YUMA 790-S' | 22,50 TL | SKU: YUMA.YM-790-S
+2026-03-30 12:57:51 [INFO] [5/6] https://yapimaks.com/sds-plus-agac-kalipci-uc-24x250-wonder-p15175
+2026-03-30 12:57:51 [INFO] [15175] 'SDS PLUS AĞAÇ KALIPÇI UÇ 24X250 WONDER' | 250,00 TL | SKU: WONDER.STW01495
+2026-03-30 12:57:53 [INFO] [6/6] https://yapimaks.com/sds-plus-matkap-ucu-24x450-mm-p15174
+2026-03-30 12:57:53 [INFO] [15174] 'SDS PLUS MATKAP UCU 24X450 MM' | 390,00 TL | SKU: WONDER.STW01394203
+2026-03-30 12:57:55 [INFO] Tamamlandi! Toplam 6 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-03-30.csv
