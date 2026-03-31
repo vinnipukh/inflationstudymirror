@@ -1,3 +1,5 @@
+import argparse
+
 import pandas as pd
 import json
 import logging
@@ -6,11 +8,11 @@ from pathlib import Path
 
 # --- KONFİGÜRASYON VE YOLLAR ---
 DATA_DIR = Path(
-    r"C:\Users\arhan\PycharmProjects\inflationstudymirror\InflationItems\Datas\ConstructionSuppliesMarkets\Yapimaks")
+    r"C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks")
 OUT_DIR = Path(
     r"C:\Users\arhan\PycharmProjects\inflationstudymirror\Inflations\Datas\ConstructionSuppliesMarkets\Yapimaks")
 JSON_PATH = Path(
-    r"C:\Users\arhan\PycharmProjects\inflationstudymirror\Inflations\Codes\ConstructionMarkets\yapimaks\kategori_haritasi.json")
+    r"C:\Users\arhan\PycharmProjects\inflationstudymirror\Inflations\Codes\ConstructionMarkets\yapimaks\Category\kategori_haritasi.json")
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
@@ -27,21 +29,18 @@ def get_tuik_class(cat_name):
 
 
 def load_data(date_str, category_map):
-    fpath = DATA_DIR / f"yapimaks_{date_str}.csv"
+    fpath = DATA_DIR / f"{date_str}.csv"
     if not fpath.exists():
         return None
 
     df = pd.read_csv(fpath)
-    # Fiyat temizleme: "276,00" -> 276.0
     df['price'] = df['price'].astype(str).str.replace('.', '', regex=False).str.replace(',', '.', regex=False)
     df['price'] = pd.to_numeric(df['price'], errors='coerce')
 
-    # Kategori ve TÜİK sınıfı ekleme
     df['category'] = df['url'].map(category_map).fillna("Bilinmeyen")
     df['tuik_code'] = df['category'].apply(get_tuik_class)
 
     return df[['product_id', 'price', 'category', 'tuik_code']]
-
 
 def calculate_metrics(df_now, df_old, suffix):
     merged = df_now.merge(df_old[['product_id', 'price']], on='product_id', how='inner', suffixes=('', '_old'))
@@ -112,5 +111,13 @@ def run_inflation_report(target_date_str):
 
 
 if __name__ == "__main__":
-    # Test etmek istediğin tarihi buraya yaz
-    run_inflation_report("2026-03-24")
+    # DÜZELTME 2: Dışarıdan (Terminalden) argüman alabilmesi için argparse kullanımı
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--date", type=str, help="Çalıştırılacak tarih (Örn: 2026-03-24)")
+    args = parser.parse_args()
+
+    if args.date:
+        run_inflation_report(args.date)
+    else:
+        # Eğer terminalden tarih girilmezse varsayılan olarak bunu çalıştır (Test için)
+        run_inflation_report("2026-03-24")

@@ -1,0 +1,14 @@
+2026-03-31 23:52:40 [INFO] ==================================================
+2026-03-31 23:52:40 [INFO] Yapimaks Scraper basliyor
+2026-03-31 23:52:40 [INFO] ==================================================
+2026-03-31 23:52:40 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-03-31 23:52:41 [INFO] Cookie basariyla alindi.
+2026-03-31 23:52:41 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-03-31 23:52:41 [INFO] Sitemap'ten toplam 8688 urun URL'si bulundu.
+2026-03-31 23:52:41 [INFO] Bugune ait veri yok. Eski veri (2026-03-30.csv) süzülerek bugune aktariliyor...
+2026-03-31 23:52:41 [INFO] Basarili! 8687 urun dunden bugune aktarildi.
+2026-03-31 23:52:41 [INFO] Guncel dosyada hazir olan urun: 8687 | Sifirdan cekilecek (yeni) urun: 1
+2026-03-31 23:52:41 [INFO] 1 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-03-31.csv
+2026-03-31 23:52:41 [INFO] [1/1] https://yapimaks.com/metal-kesici-115x1x22-karbosan-p14755
+2026-03-31 23:52:41 [INFO] [14755] 'METAL KESİCİ 115x1x22 KARBOSAN' | 35,00 TL | SKU: KARBOSAN.910440
+2026-03-31 23:52:43 [INFO] Tamamlandi! Toplam 1 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-03-31.csv
