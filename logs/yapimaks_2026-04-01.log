@@ -1,0 +1,50 @@
+2026-04-01 09:09:37 [INFO] ==================================================
+2026-04-01 09:09:37 [INFO] Yapimaks Scraper basliyor
+2026-04-01 09:09:37 [INFO] ==================================================
+2026-04-01 09:09:37 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-04-01 09:09:37 [INFO] Cookie basariyla alindi.
+2026-04-01 09:09:37 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-04-01 09:09:37 [INFO] Sitemap'ten toplam 8706 urun URL'si bulundu.
+2026-04-01 09:09:37 [INFO] Bugune ait veri yok. Eski veri (2026-03-31.csv) süzülerek bugune aktariliyor...
+2026-04-01 09:09:37 [INFO] Basarili! 8687 urun dunden bugune aktarildi.
+2026-04-01 09:09:37 [INFO] Guncel dosyada hazir olan urun: 8687 | Sifirdan cekilecek (yeni) urun: 19
+2026-04-01 09:09:37 [INFO] 19 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-01.csv
+2026-04-01 09:09:37 [INFO] [1/19] https://yapimaks.com/boru-kesme-makasi-pvc-42mm-p15188
+2026-04-01 09:09:37 [INFO] [15188] 'BORU KESME MAKASI PVC 42MM' | 630,00 TL | SKU: CANDAN.PPC-42
+2026-04-01 09:09:39 [INFO] [2/19] https://yapimaks.com/boru-kesme-makasi-pvc-otomatik-42mm-p15187
+2026-04-01 09:09:39 [INFO] [15187] 'BORU KESME MAKASI PVC OTOMATİK 42MM' | 900,00 TL | SKU: CANDAN.OTC-42
+2026-04-01 09:09:41 [INFO] [3/19] https://yapimaks.com/dizlik-16-cm-poliuretan-1-adet-duyar-341-p2124
+2026-04-01 09:09:41 [INFO] [2124] 'DİZLİK 16 cm POLİÜRETAN 1 ADET  DUYAR 34' | 420,00 TL | SKU: DUYAR.341
+2026-04-01 09:09:43 [INFO] [4/19] https://yapimaks.com/knauf-mineral-plus-ipb039-5-cm-14-4m2-p5246
+2026-04-01 09:09:44 [INFO] [5246] 'KNAUF MİNERAL PLUS IPB039 5 CM (14,4m2)' | 850,00 TL | SKU: KNAUF.IPB039
+2026-04-01 09:09:46 [INFO] [5/19] https://yapimaks.com/macun-kurek-ahsap-sapli-20-cm-yay-celigi-dekor-p15137
+2026-04-01 09:09:46 [INFO] [15137] 'MACUN KÜREK AHŞAP SAPLI 20 CM YAY ÇELİĞİ' | 450,00 TL | SKU: DEKOR.DK02057
+2026-04-01 09:09:48 [INFO] [6/19] https://yapimaks.com/macun-kurek-plastik-sapli-20cm-duyar-p15138
+2026-04-01 09:09:48 [INFO] [15138] 'MACUN KÜREK PLASTİK SAPLI 20CM DUYAR' | 250,00 TL | SKU: DUYAR.DY056
+2026-04-01 09:09:50 [INFO] [7/19] https://yapimaks.com/macun-kurek-plastik-sapli-20cm-dyr-p15139
+2026-04-01 09:09:50 [INFO] [15139] 'MACUN KÜREK PLASTİK SAPLI 20CM DYR' | 230,00 TL | SKU: DUYAR.DYR222
+2026-04-01 09:09:52 [INFO] [8/19] https://yapimaks.com/seramik-malasi-40-cm-ahsap-kapali-4x4-5-ucgen-dis-duyar-p15145
+2026-04-01 09:09:52 [INFO] [15145] 'SERAMİK MALASI 40 CM AHŞAP KAPALI 4X4,5 ' | 350,00 TL | SKU: DUYAR.DY186
+2026-04-01 09:09:54 [INFO] [9/19] https://yapimaks.com/seramik-malasi-40-cm-pvc-kapali-10x10-duyar-p15146
+2026-04-01 09:09:54 [INFO] [15146] 'SERAMİK MALASI 40 CM PVC KAPALI 10X10 DU' | 350,00 TL | SKU: DUYAR.DY189
+2026-04-01 09:09:56 [INFO] [10/19] https://yapimaks.com/seramik-malasi-40-cm-pvc-kapali-12x12-duyar-p15147
+2026-04-01 09:09:56 [INFO] [15147] 'SERAMİK MALASI 40 CM PVC KAPALI 12X12 DU' | 350,00 TL | SKU: DUYAR.DY435
+2026-04-01 09:09:58 [INFO] [11/19] https://yapimaks.com/silikon-tabanca-pvc-eko-p15070
+2026-04-01 09:09:58 [INFO] [15070] 'SİLİKON TABANCA PVC EKO' | 59,00 TL | SKU: PROPAN.EKO
+2026-04-01 09:10:00 [INFO] [12/19] https://yapimaks.com/silikon-tabanca-pvc-lux-p15071
+2026-04-01 09:10:00 [INFO] [15071] 'SİLİKON TABANCA PVC LÜX' | 99,00 TL | SKU: PROPAN.LÜX
+2026-04-01 09:10:02 [INFO] [13/19] https://yapimaks.com/sirik-teleskopik-2-mt-aslanlar-p15141
+2026-04-01 09:10:02 [INFO] [15141] 'SIRIK TELESKOPİK 2 MT ASLANLAR' | 200,00 TL | SKU: ASLANLAR.H05061
+2026-04-01 09:10:04 [INFO] [14/19] https://yapimaks.com/sirik-teleskopik-3-mt-aslanlar-p15142
+2026-04-01 09:10:04 [INFO] [15142] 'SIRIK TELESKOPİK 3 MT ASLANLAR' | 260,00 TL | SKU: ASLANLAR.H05062
+2026-04-01 09:10:06 [INFO] [15/19] https://yapimaks.com/sirik-teleskopik-4-mt-aslanlar-p15143
+2026-04-01 09:10:06 [INFO] [15143] 'SIRIK TELESKOPİK 4 MT ASLANLAR' | 320,00 TL | SKU: ASLANLAR.H05063
+2026-04-01 09:10:08 [INFO] [16/19] https://yapimaks.com/sirik-teleskopik-6-mt-aslanlar-p15144
+2026-04-01 09:10:08 [INFO] [15144] 'SIRIK TELESKOPİK 6 MT ASLANLAR' | 600,00 TL | SKU: ASLANLAR.H05064
+2026-04-01 09:10:10 [INFO] [17/19] https://yapimaks.com/yagdanlik-buyuk-500cc-p15163
+2026-04-01 09:10:10 [INFO] [15163] 'YAĞDANLIK BÜYÜK 500cc' | 450,00 TL | SKU: D02063
+2026-04-01 09:10:12 [INFO] [18/19] https://yapimaks.com/yagdanlik-kucuk-250cc-p15165
+2026-04-01 09:10:12 [INFO] [15165] 'YAĞDANLIK KÜÇÜK 250cc' | 370,00 TL | SKU: D02061
+2026-04-01 09:10:14 [INFO] [19/19] https://yapimaks.com/zimpara-malasi-robot-oynar-basli-dekor-1207-p11655
+2026-04-01 09:10:14 [INFO] [11655] 'ZIMPARA MALASI ROBOT(OYNAR BAŞLI) DEKOR ' | 200,00 TL | SKU: DEKOR.1207
+2026-04-01 09:10:16 [INFO] Tamamlandi! Toplam 19 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-01.csv

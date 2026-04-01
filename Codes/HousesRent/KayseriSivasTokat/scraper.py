@@ -180,7 +180,6 @@ def is_protection_page(html: str, page) -> tuple[bool, str]:
         ("cf-turnstile",         "Cloudflare Turnstile"),
         ("datadome-captcha",     "DataDome"),
         ("g-recaptcha",          "Google reCAPTCHA"),
-        ("h-captcha",            "hCaptcha"),
         ("aws-waf-captcha",      "AWS WAF CAPTCHA"),
         ("geetest-captcha",      "GeeTest CAPTCHA"),
         ("keycaptcha",           "KeyCAPTCHA"),
