@@ -1,0 +1,94 @@
+2026-04-02 16:19:36 [INFO] ==================================================
+2026-04-02 16:19:36 [INFO] Yapimaks Scraper basliyor
+2026-04-02 16:19:36 [INFO] ==================================================
+2026-04-02 16:19:36 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-04-02 16:19:36 [INFO] Cookie basariyla alindi.
+2026-04-02 16:19:36 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-04-02 16:19:36 [INFO] Sitemap'ten toplam 8729 urun URL'si bulundu.
+2026-04-02 16:19:36 [INFO] Bugune ait veri yok. Eski veri (2026-04-01.csv) süzülerek bugune aktariliyor...
+2026-04-02 16:19:36 [INFO] Basarili! 8688 urun dunden bugune aktarildi.
+2026-04-02 16:19:36 [INFO] Guncel dosyada hazir olan urun: 8688 | Sifirdan cekilecek (yeni) urun: 41
+2026-04-02 16:19:36 [INFO] 41 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-02.csv
+2026-04-02 16:19:36 [INFO] [1/41] https://yapimaks.com/404-plastik-celik-16-gr-p12242
+2026-04-02 16:19:36 [INFO] [12242] '404 PLASTİK ÇELİK 16 GR.' | 49,00 TL | SKU: 404.A06001
+2026-04-02 16:19:38 [INFO] [2/41] https://yapimaks.com/bits-uc-seti-sl-6-5x25mm-duz-20-li-p15128
+2026-04-02 16:19:38 [INFO] [15128] 'BİTS UÇ SETİ SL 6,5X25MM DÜZ 20 Lİ' | 450,00 TL | SKU: INGCO.SDB11SL513
+2026-04-02 16:19:40 [INFO] [3/41] https://yapimaks.com/hava-tabancasi-profesyonel-kisa-101-p15166
+2026-04-02 16:19:41 [INFO] [15166] 'HAVA TABANCASI PROFESYONEL KISA 101' | 200,00 TL | SKU: FRS.101
+2026-04-02 16:19:43 [INFO] [4/41] https://yapimaks.com/hava-tabancasi-profesyonel-uzun-102-p15167
+2026-04-02 16:19:43 [INFO] [15167] 'HAVA TABANCASI PROFESYONEL UZUN 102' | 220,00 TL | SKU: FRS.102
+2026-04-02 16:19:45 [INFO] [5/41] https://yapimaks.com/hava-tabancasi-yeni-nesil-kisa-103-p15168
+2026-04-02 16:19:45 [INFO] [15168] 'HAVA TABANCASI YENİ NESİL KISA 103' | 350,00 TL | SKU: FRS.103
+2026-04-02 16:19:47 [INFO] [6/41] https://yapimaks.com/hava-tabancasi-yeni-nesil-uzun-104-p15169
+2026-04-02 16:19:47 [INFO] [15169] 'HAVA TABANCASI YENİ NESİL UZUN 104' | 390,00 TL | SKU: FRS.104
+2026-04-02 16:19:49 [INFO] [7/41] https://yapimaks.com/iki-agiz-anahtar-18x19-elta-p3032
+2026-04-02 16:19:49 [INFO] [3032] 'İKİ AĞIZ ANAHTAR 18x19 - ELTA' | 155,00 TL | SKU: ELTA.0150.01.1819
+2026-04-02 16:19:51 [INFO] [8/41] https://yapimaks.com/kolastar-agzi-capraz-dis-61-cm-g-man-p15132
+2026-04-02 16:19:51 [INFO] [15132] 'KOLASTAR AĞZI ÇAPRAZ DİŞ 61 CM G-MAN' | 149,00 TL | SKU: G-MAN.TG1180
+2026-04-02 16:19:53 [INFO] [9/41] https://yapimaks.com/kontrol-kalemi-190-mm-izeltas-p13786
+2026-04-02 16:19:53 [INFO] [13786] 'KONTROL KALEMİ 190 MM İZELTAŞ' | 240,00 TL | SKU: İZELTAŞ.4550.17.0190
+2026-04-02 16:19:55 [INFO] [10/41] https://yapimaks.com/kontrol-kalemi-yildiz-190-mm-izeltas-p15129
+2026-04-02 16:19:55 [INFO] [15129] 'KONTROL KALEMİ YILDIZ 190 MM İZELTAŞ' | 260,00 TL | SKU: İZELTAŞ.4560.18.0190
+2026-04-02 16:19:57 [INFO] [11/41] https://yapimaks.com/metal-kesici-pro-115x3-0x22-23-egesan-p15170
+2026-04-02 16:19:57 [INFO] [15170] 'METAL KESİCİ PRO 115X3,0X22,23 EGESAN' | 30,00 TL | SKU: EGESAN.272006
+2026-04-02 16:19:59 [INFO] [12/41] https://yapimaks.com/metal-kesici-pro-230x3-0x22-23-egesan-p15171
+2026-04-02 16:19:59 [INFO] [15171] 'METAL KESİCİ PRO 230X3,0X22,23 EGESAN' | 90,00 TL | SKU: EGESAN.272027
+2026-04-02 16:20:01 [INFO] [13/41] https://yapimaks.com/metal-kesici-pro-sabit-tezgah-350x3-5x25-4-egesan-p15172
+2026-04-02 16:20:01 [INFO] [15172] 'METAL KESİCİ PRO SABİT TEZGAH 350X3,5X25' | 190,00 TL | SKU: EGESAN.272059
+2026-04-02 16:20:03 [INFO] [14/41] https://yapimaks.com/oygu-testere-5-cok-amacli-isiklar-500-5-p15131
+2026-04-02 16:20:03 [INFO] [15131] 'OYGU TESTERE 5 ÇOK AMAÇLI IŞIKLAR 500-5' | 200,00 TL | SKU: IŞIKLAR.I500-5
+2026-04-02 16:20:05 [INFO] [15/41] https://yapimaks.com/pense-ayarli-250mm-milwaukee-p15173
+2026-04-02 16:20:05 [INFO] [15173] 'PENSE AYARLI 250MM MILWAUKEE' | 1200,00 TL | SKU: MILWAUKEE.T4932471725
+2026-04-02 16:20:07 [INFO] [16/41] https://yapimaks.com/rulo-dekor-eksport-saten-yagli-boya-15cm-1082-p13945
+2026-04-02 16:20:07 [INFO] [13945] 'RULO DEKOR EKSPORT SATEN YAGLI BOYA 15CM' | 219,00 TL | SKU: DEKOR.1082
+2026-04-02 16:20:09 [INFO] [17/41] https://yapimaks.com/rulo-dekor-eksport-saten-yagli-boya-20cm-1080-p2109
+2026-04-02 16:20:09 [INFO] [2109] 'RULO DEKOR EKSPORT SATEN YAGLI BOYA 20CM' | 239,00 TL | SKU: DEKOR.1080
+2026-04-02 16:20:11 [INFO] [18/41] https://yapimaks.com/rulo-dekor-eksport-saten-yagli-boya-25cm-1081-p2108
+2026-04-02 16:20:11 [INFO] [2108] 'RULO DEKOR EKSPORT SATEN YAĞLI BOYA 25CM' | 275,00 TL | SKU: DEKOR.1081
+2026-04-02 16:20:13 [INFO] [19/41] https://yapimaks.com/rulo-dekor-eksport-yedek-25cm-1097-p13015
+2026-04-02 16:20:14 [INFO] [13015] 'RULO DEKOR EKSPORT YEDEK 25CM 1097' | 199,00 TL | SKU: DEKOR.1097
+2026-04-02 16:20:16 [INFO] [20/41] https://yapimaks.com/rulo-dekor-elek-izgara-25lik-premium-34cm-1481-p14637
+2026-04-02 16:20:16 [INFO] [14637] 'RULO DEKOR ELEK IZGARA 25LİK PREMİUM 34C' | 50,00 TL | SKU: DEKOR.1481
+2026-04-02 16:20:18 [INFO] [21/41] https://yapimaks.com/rulo-dekor-elek-izgara-34cm-1185-p8827
+2026-04-02 16:20:18 [INFO] [8827] 'RULO DEKOR ELEK IZGARA 34CM 1185' | 75,00 TL | SKU: DEKOR.1185
+2026-04-02 16:20:20 [INFO] [22/41] https://yapimaks.com/rulo-dekor-export-yedek-20cm-1096-p14494
+2026-04-02 16:20:20 [INFO] [14494] 'RULO DEKOR EXPORT YEDEK 20CM 1096' | 165,00 TL | SKU: DEKOR.1096
+2026-04-02 16:20:22 [INFO] [23/41] https://yapimaks.com/rulo-dekor-parmak-kadife-yedek-10cm-p14493
+2026-04-02 16:20:22 [INFO] [14493] 'RULO DEKOR PARMAK KADİFE YEDEK 10CM' | 60,00 TL | SKU: DEKOR.1079
+2026-04-02 16:20:24 [INFO] [24/41] https://yapimaks.com/rulo-dekor-parmak-sapli-10cm-11084-p2116
+2026-04-02 16:20:24 [INFO] [2116] 'RULO DEKOR PARMAK SAPLI 10CM 11084' | 85,00 TL | SKU: DEKOR.11084
+2026-04-02 16:20:26 [INFO] [25/41] https://yapimaks.com/rulo-dekor-parmak-yedek-10cm-adet-2100-p2115
+2026-04-02 16:20:26 [INFO] [2115] 'RULO DEKOR PARMAK YEDEK 10CM (ADET)2100' | 40,00 TL | SKU: DEKOR.2100
+2026-04-02 16:20:28 [INFO] [26/41] https://yapimaks.com/rulo-dekor-parmak-yedek-5cm-kalorifer-p14382
+2026-04-02 16:20:28 [INFO] [14382] 'RULO DEKOR PARMAK YEDEK 5CM KALORİFER' | 32,50 TL | SKU: DEKOR.1103
+2026-04-02 16:20:30 [INFO] [27/41] https://yapimaks.com/rulo-dekor-plasdek-ic-cephe-20cm-1015-p2107
+2026-04-02 16:20:30 [INFO] [2107] 'RULO DEKOR PLASDEK İÇ CEPHE 20CM 1015' | 239,00 TL | SKU: DEKOR.1015
+2026-04-02 16:20:32 [INFO] [28/41] https://yapimaks.com/rulo-dekor-plasdek-ic-cephe-25cm-1017-p2106
+2026-04-02 16:20:32 [INFO] [2106] 'RULO DEKOR PLASDEK İÇ CEPHE 25CM 1017' | 275,00 TL | SKU: DEKOR.1017
+2026-04-02 16:20:34 [INFO] [29/41] https://yapimaks.com/rulo-dekor-plasdek-saten-15cm-1018-p14481
+2026-04-02 16:20:34 [INFO] [14481] 'RULO DEKOR PLASDEK SATEN 15CM 1018' | 225,00 TL | SKU: DEKOR.1018
+2026-04-02 16:20:36 [INFO] [30/41] https://yapimaks.com/rulo-dekor-plasdek-yedek-20cm-1026-p2113
+2026-04-02 16:20:36 [INFO] [2113] 'RULO DEKOR PLASDEK YEDEK 20CM 1026' | 185,00 TL | SKU: DEKOR.1026
+2026-04-02 16:20:38 [INFO] [31/41] https://yapimaks.com/segoya-tirpan-misinasi-2-mm-yuvarlak-85-mt-p15134
+2026-04-02 16:20:38 [INFO] [15134] 'SEGOYA TIRPAN MİSİNASI 2 MM YUVARLAK 85 ' | 400,00 TL | SKU: SEGOYA.U03331
+2026-04-02 16:20:40 [INFO] [32/41] https://yapimaks.com/segoya-tirpan-misinasi-3-3-mm-altigen-46-mt-p15133
+2026-04-02 16:20:40 [INFO] [15133] 'SEGOYA TIRPAN MİSİNASI 3,3 MM ALTIGEN 46' | 400,00 TL | SKU: SEGOYA.U03330
+2026-04-02 16:20:42 [INFO] [33/41] https://yapimaks.com/seramik-kesme-elmas-takimi-leto-35572-p15135
+2026-04-02 16:20:42 [INFO] [15135] 'SERAMİK KESME ELMAS TAKIMI LETO 35572' | 260,00 TL | SKU: ERMO.35572
+2026-04-02 16:20:44 [INFO] [34/41] https://yapimaks.com/seramik-kesme-elmasi-10-mm-silver-p15136
+2026-04-02 16:20:44 [INFO] [15136] 'SERAMİK KESME ELMASI 10 MM SILVER' | 720,00 TL | SKU: RUBİ.01946
+2026-04-02 16:20:46 [INFO] [35/41] https://yapimaks.com/spanzet-kolon-sari-50mm-85-gr-1-metre-p767
+2026-04-02 16:20:46 [INFO] [767] 'SPANZET KOLON SARI 50MM 85 GR 1 METRE' | 35,00 TL | SKU: ASİLÇELİK.103
+2026-04-02 16:20:48 [INFO] [36/41] https://yapimaks.com/spanzet-kolon-sari-kancali-10mt-50mm-85-gr-p12910
+2026-04-02 16:20:49 [INFO] [12910] 'SPANZET KOLON SARI KANCALI (10MT 50MM 85' | 249,00 TL | SKU: ASİLÇELİK.104
+2026-04-02 16:20:51 [INFO] [37/41] https://yapimaks.com/spanzet-kolon-siyah-50mm-55-gr-1-metre-p766
+2026-04-02 16:20:51 [INFO] [766] 'SPANZET KOLON SİYAH 50MM 55 GR 1 METRE' | 27,50 TL | SKU: ASİLÇELİK.102
+2026-04-02 16:20:53 [INFO] [38/41] https://yapimaks.com/spanzet-takim-1-ton-4-mt-35mm-turuncu-p12909
+2026-04-02 16:20:53 [INFO] [12909] 'SPANZET TAKIM 1 TON 4 MT 35MM TURUNCU' | 250,00 TL | SKU: ASİLÇELİK.0002
+2026-04-02 16:20:55 [INFO] [39/41] https://yapimaks.com/spanzet-takim-2-ton-6-mt-35mm-20213-vivastar-p10012
+2026-04-02 16:20:55 [INFO] [10012] 'SPANZET TAKIM 2 TON 6 MT 35MM 20213 VİVA' | 300,00 TL | SKU: ASİLÇELİK.0003
+2026-04-02 16:20:57 [INFO] [40/41] https://yapimaks.com/spanzet-takim-mini-25-mm-4-mt-turuncu-p12911
+2026-04-02 16:20:57 [INFO] [12911] 'SPANZET TAKIM MİNİ 25 MM 4 MT TURUNCU' | 200,00 TL | SKU: ASİLÇELİK.0001
+2026-04-02 16:20:59 [INFO] [41/41] https://yapimaks.com/yagdanlik-madeni-flexible-uclu-500cc-izeltas-p15164
+2026-04-02 16:20:59 [INFO] [15164] 'YAĞDANLIK MADENİ (FLEXİBLE UÇLU) 500cc İ' | 650,00 TL | SKU: İZELTAŞ.6225.26.0500
+2026-04-02 16:21:01 [INFO] Tamamlandi! Toplam 41 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-02.csv
