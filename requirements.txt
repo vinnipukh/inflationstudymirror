@@ -11,3 +11,7 @@ camoufox
 beautifulsoup4
 seleniumbase
 cloudscraper
+cmd-queue
+rayobrowse
+playwright>=1.48.0
+requests>=2.32.0

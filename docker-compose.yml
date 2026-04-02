@@ -1,0 +1,12 @@
+services:
+  rayobrowse:
+    image: rayobyte/rayobrowse:latest
+    privileged: true # Bu satırı ekle (Önemli!)
+    shm_size: '2gb'
+    ports:
+      - "9222:9222"
+      - "6080-6099:6080-6099"
+    restart: always
+    environment:
+      - STEALTH_BROWSER_ACCEPT_TERMS=true
+      - STEALTH_BROWSER_NOVNC=true # Canlı izlemek için bunu da açalım
