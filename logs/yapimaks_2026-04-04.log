@@ -1,0 +1,74 @@
+2026-04-04 20:05:56 [INFO] ==================================================
+2026-04-04 20:05:56 [INFO] Yapimaks Scraper basliyor
+2026-04-04 20:05:56 [INFO] ==================================================
+2026-04-04 20:05:56 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-04-04 20:05:57 [INFO] Cookie basariyla alindi.
+2026-04-04 20:05:57 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-04-04 20:05:57 [INFO] Sitemap'ten toplam 8763 urun URL'si bulundu.
+2026-04-04 20:05:57 [INFO] Bugune ait veri yok. Eski veri (2026-04-03.csv) süzülerek bugune aktariliyor...
+2026-04-04 20:05:57 [INFO] Basarili! 8732 urun dunden bugune aktarildi.
+2026-04-04 20:05:57 [INFO] Guncel dosyada hazir olan urun: 8732 | Sifirdan cekilecek (yeni) urun: 31
+2026-04-04 20:05:57 [INFO] 31 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-04.csv
+2026-04-04 20:05:57 [INFO] [1/31] https://yapimaks.com/bag-makasi-20v-2-0ah-li-ion-cift-akulu-wonder-wat50s-p15149
+2026-04-04 20:05:57 [INFO] [15149] 'BAĞ MAKASI 20V 2.0AH Lİ-İON ÇİFT AKÜLÜ W' | 6500,00 TL | SKU: WONDER.WAT50S
+2026-04-04 20:05:59 [INFO] [2/31] https://yapimaks.com/bag-makasi-20v-aku-haric-wonder-wat50-p15148
+2026-04-04 20:05:59 [INFO] [15148] 'BAĞ MAKASI 20V AKÜ HARİÇ WONDER WAT50' | 2950,00 TL | SKU: WONDER.WAT50
+2026-04-04 20:06:01 [INFO] [3/31] https://yapimaks.com/bits-uc-pz1-75mm-yildiz-profesyonel-wonder-1-ad-p15160
+2026-04-04 20:06:01 [INFO] [15160] 'BİTS UÇ PZ1 75MM YILDIZ PROFESYONEL WOND' | 30,00 TL | SKU: WONDER.STW01917-6
+2026-04-04 20:06:03 [INFO] [4/31] https://yapimaks.com/buat-panc-seti-ahsap-set-16-parca-wonder-p15189
+2026-04-04 20:06:03 [INFO] [15189] 'BUAT PANÇ SETİ AHŞAP SET 16 PARÇA WONDER' | 380,00 TL | SKU: WONDER.STW01232
+2026-04-04 20:06:05 [INFO] [5/31] https://yapimaks.com/kademeli-matkap-ucu-4-12-mm-p15157
+2026-04-04 20:06:05 [INFO] [15157] 'KADEMELİ MATKAP UCU 4-12 MM' | 160,00 TL | SKU: WONDER.STW01376-3
+2026-04-04 20:06:07 [INFO] [6/31] https://yapimaks.com/kademeli-matkap-ucu-4-30-mm-p8170
+2026-04-04 20:06:07 [INFO] [8170] 'KADEMELİ MATKAP UCU 4-30 MM' | 390,00 TL | SKU: WONDER.STW01376-5
+2026-04-04 20:06:09 [INFO] [7/31] https://yapimaks.com/kademeli-matkap-ucu-4-32-mm-p15158
+2026-04-04 20:06:09 [INFO] [15158] 'KADEMELİ MATKAP UCU 4-32 MM' | 400,00 TL | SKU: WONDER.STW01376-4
+2026-04-04 20:06:11 [INFO] [8/31] https://yapimaks.com/keski-genis-14x250x40-mm-wonder-sds-plus-p13598
+2026-04-04 20:06:11 [INFO] [13598] 'KESKİ GENİŞ 14X250X40 MM WONDER SDS PLUS' | 100,00 TL | SKU: WONDER.STW013780
+2026-04-04 20:06:13 [INFO] [9/31] https://yapimaks.com/matkap-ucu-6-mm-seramik-cam-tugla-p15159
+2026-04-04 20:06:13 [INFO] [15159] 'MATKAP UCU 6 MM SERAMİK-CAM-TUĞLA' | 80,00 TL | SKU: WONDER.STW01402
+2026-04-04 20:06:15 [INFO] [10/31] https://yapimaks.com/sds-agac-delme-matkap-ucu-10x500-mm-wonder-p14332
+2026-04-04 20:06:15 [INFO] [14332] 'SDS AĞAÇ DELME MATKAP UCU 10X500 MM WOND' | 169,00 TL | SKU: WONDER.STW01460
+2026-04-04 20:06:17 [INFO] [11/31] https://yapimaks.com/sds-agac-delme-matkap-ucu-12x250-mm-wonder-p15176
+2026-04-04 20:06:17 [INFO] [15176] 'SDS AĞAÇ DELME MATKAP UCU 12X250 MM WOND' | 90,00 TL | SKU: WONDER.STW01452
+2026-04-04 20:06:19 [INFO] [12/31] https://yapimaks.com/sds-agac-delme-matkap-ucu-12x500-mm-wonder-p15177
+2026-04-04 20:06:20 [INFO] [15177] 'SDS AĞAÇ DELME MATKAP UCU 12X500 MM WOND' | 175,00 TL | SKU: WONDER.STW01461
+2026-04-04 20:06:22 [INFO] [13/31] https://yapimaks.com/sds-agac-delme-matkap-ucu-14x500-mm-wonder-p14333
+2026-04-04 20:06:22 [INFO] [14333] 'SDS AĞAÇ DELME MATKAP UCU 14X500 MM WOND' | 225,00 TL | SKU: WONDER.STW01462
+2026-04-04 20:06:24 [INFO] [14/31] https://yapimaks.com/sds-agac-delme-matkap-ucu-20x500-mm-wonder-p14334
+2026-04-04 20:06:24 [INFO] [14334] 'SDS AĞAÇ DELME MATKAP UCU 20X500 MM WOND' | 315,00 TL | SKU: WONDER.STW01465
+2026-04-04 20:06:26 [INFO] [15/31] https://yapimaks.com/sds-beton-buat-panc-acma-adaptor-200-mm-p15185
+2026-04-04 20:06:26 [INFO] [15185] 'SDS BETON BUAT(PANÇ) AÇMA ADAPTÖR 200 MM' | 200,00 TL | SKU: WONDER.WPBT02001
+2026-04-04 20:06:28 [INFO] [16/31] https://yapimaks.com/sds-beton-buat-panc-acma-adaptor-350-mm-p15184
+2026-04-04 20:06:28 [INFO] [15184] 'SDS BETON BUAT(PANÇ) AÇMA ADAPTÖR 350 MM' | 285,00 TL | SKU: WONDER.WPBT02002
+2026-04-04 20:06:30 [INFO] [17/31] https://yapimaks.com/sds-beton-buat-panc-acma-adaptorlu-100-mm-p15154
+2026-04-04 20:06:30 [INFO] [15154] 'SDS BETON BUAT(PANÇ) AÇMA ADAPTÖRLÜ 100 ' | 890,00 TL | SKU: WONDER.WPBT04012
+2026-04-04 20:06:32 [INFO] [18/31] https://yapimaks.com/sds-beton-buat-panc-acma-adaptorlu-120-mm-p15182
+2026-04-04 20:06:32 [INFO] [15182] 'SDS BETON BUAT(PANÇ) AÇMA ADAPTÖRLÜ 120 ' | 1000,00 TL | SKU: WONDER.WPBT04014
+2026-04-04 20:06:34 [INFO] [19/31] https://yapimaks.com/sds-beton-buat-panc-acma-adaptorlu-125-mm-p15183
+2026-04-04 20:06:34 [INFO] [15183] 'SDS BETON BUAT(PANÇ) AÇMA ADAPTÖRLÜ 125 ' | 1250,00 TL | SKU: WONDER.WPBT04015
+2026-04-04 20:06:36 [INFO] [20/31] https://yapimaks.com/sds-beton-buat-panc-acma-adaptorlu-30-mm-p15180
+2026-04-04 20:06:36 [INFO] [15180] 'SDS BETON BUAT(PANÇ) AÇMA ADAPTÖRLÜ 30 M' | 290,00 TL | SKU: WONDER.WPBT04001
+2026-04-04 20:06:38 [INFO] [21/31] https://yapimaks.com/sds-beton-buat-panc-acma-adaptorlu-40-mm-p15181
+2026-04-04 20:06:38 [INFO] [15181] 'SDS BETON BUAT(PANÇ) AÇMA ADAPTÖRLÜ 40 M' | 320,00 TL | SKU: WONDER.WPBT04003
+2026-04-04 20:06:40 [INFO] [22/31] https://yapimaks.com/sds-beton-buat-panc-acma-adaptorlu-60-mm-p15155
+2026-04-04 20:06:40 [INFO] [15155] 'SDS BETON BUAT(PANÇ) AÇMA ADAPTÖRLÜ 60 M' | 399,00 TL | SKU: WONDER.WPBT04007
+2026-04-04 20:06:42 [INFO] [23/31] https://yapimaks.com/sds-beton-buat-panc-acma-adaptorlu-70-mm-p15156
+2026-04-04 20:06:42 [INFO] [15156] 'SDS BETON BUAT(PANÇ) AÇMA ADAPTÖRLÜ 70 M' | 450,00 TL | SKU: WONDER.WPBT04009
+2026-04-04 20:06:44 [INFO] [24/31] https://yapimaks.com/sds-beton-buat-panc-acma-adaptorlu-75-mm-p15152
+2026-04-04 20:06:44 [INFO] [15152] 'SDS BETON BUAT(PANÇ) AÇMA ADAPTÖRLÜ 75 M' | 475,00 TL | SKU: WONDER.WPBT04010
+2026-04-04 20:06:46 [INFO] [25/31] https://yapimaks.com/sds-beton-buat-panc-acma-adaptorlu-80-mm-p15153
+2026-04-04 20:06:46 [INFO] [15153] 'SDS BETON BUAT(PANÇ) AÇMA ADAPTÖRLÜ 80 M' | 525,00 TL | SKU: WONDER.WPBT04011
+2026-04-04 20:06:48 [INFO] [26/31] https://yapimaks.com/sds-plus-4-elmasli-matkap-ucu-11x210-wonder-p15179
+2026-04-04 20:06:48 [INFO] [15179] 'SDS PLUS 4 ELMASLI MATKAP UCU 11X210 WON' | 80,00 TL | SKU: WONDER.STW013965
+2026-04-04 20:06:50 [INFO] [27/31] https://yapimaks.com/sds-plus-4-elmasli-matkap-ucu-16x260-wonder-p15178
+2026-04-04 20:06:50 [INFO] [15178] 'SDS PLUS 4 ELMASLI MATKAP UCU 16X260 WON' | 150,00 TL | SKU: WONDER.STW013971
+2026-04-04 20:06:52 [INFO] [28/31] https://yapimaks.com/sds-plus-matkap-ucu-26x600-mm-p13619
+2026-04-04 20:06:52 [INFO] [13619] 'SDS PLUS MATKAP UCU 26X600 MM' | 550,00 TL | SKU: WONDER.STW0139519-2
+2026-04-04 20:06:54 [INFO] [29/31] https://yapimaks.com/sds-plus-matkap-ucu-6-5x160-mm-p15186
+2026-04-04 20:06:54 [INFO] [15186] 'SDS PLUS MATKAP UCU 6,5x160 MM' | 40,00 TL | SKU: WONDER.STW013901
+2026-04-04 20:06:56 [INFO] [30/31] https://yapimaks.com/sds-plus-matkap-ucu-8x160-mm-p15190
+2026-04-04 20:06:57 [INFO] [15190] 'SDS PLUS MATKAP UCU 8x160 MM' | 45,00 TL | SKU: WONDER.STW01382
+2026-04-04 20:06:59 [INFO] [31/31] https://yapimaks.com/sds-plus-murc-14x250-mm-p14907
+2026-04-04 20:06:59 [INFO] [14907] 'SDS PLUS MURÇ 14X250 MM' | 59,00 TL | SKU: WONDER.STW01377
+2026-04-04 20:07:01 [INFO] Tamamlandi! Toplam 31 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-04.csv
