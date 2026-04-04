@@ -1,0 +1,56 @@
+2026-04-03 17:17:50 [INFO] ==================================================
+2026-04-03 17:17:50 [INFO] Yapimaks Scraper basliyor
+2026-04-03 17:17:50 [INFO] ==================================================
+2026-04-03 17:17:50 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-04-03 17:17:50 [INFO] Cookie basariyla alindi.
+2026-04-03 17:17:50 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-04-03 17:17:50 [INFO] Sitemap'ten toplam 8737 urun URL'si bulundu.
+2026-04-03 17:17:50 [INFO] Bugune ait veri yok. Eski veri (2026-04-02.csv) süzülerek bugune aktariliyor...
+2026-04-03 17:17:50 [INFO] Basarili! 8715 urun dunden bugune aktarildi.
+2026-04-03 17:17:51 [INFO] Guncel dosyada hazir olan urun: 8715 | Sifirdan cekilecek (yeni) urun: 22
+2026-04-03 17:17:51 [INFO] 22 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-03.csv
+2026-04-03 17:17:51 [INFO] [1/22] https://yapimaks.com/cerceve-dortlu-beyaz-yatay-linnera-viko-p9960
+2026-04-03 17:17:51 [INFO] [9960] 'ÇERÇEVE DÖRTLÜ BEYAZ YATAY LİNNERA VİKO' | 40,00 TL | SKU: VİKO.90480004
+2026-04-03 17:17:53 [INFO] [2/22] https://yapimaks.com/cerceve-ikili-antrasit-linnera-viko-p11137
+2026-04-03 17:17:53 [INFO] [11137] 'ÇERÇEVE İKİLİ ANTRASİT LİNNERA VİKO' | 164,00 TL | SKU: VİKO.92190632
+2026-04-03 17:17:55 [INFO] [3/22] https://yapimaks.com/cerceve-ikili-beyaz-karre-viko-p12040
+2026-04-03 17:17:55 [INFO] [12040] 'ÇERÇEVE İKİLİ BEYAZ KARRE VİKO' | 30,00 TL | SKU: VİKO.90960206
+2026-04-03 17:17:57 [INFO] [4/22] https://yapimaks.com/cerceve-ikili-beyaz-yatay-linnera-viko-p9958
+2026-04-03 17:17:57 [INFO] [9958] 'ÇERÇEVE İKİLİ BEYAZ YATAY LİNNERA VİKO' | 35,00 TL | SKU: VİKO.90480002
+2026-04-03 17:17:59 [INFO] [5/22] https://yapimaks.com/cerceve-ikili-beyaz-yatay-linnera-viko-p9961
+2026-04-03 17:17:59 [INFO] [9961] 'ÇERÇEVE İKİLİ BEYAZ YATAY LİNNERA VİKO' | 25,00 TL | SKU: VİKO.90480007
+2026-04-03 17:18:01 [INFO] [6/22] https://yapimaks.com/cerceve-tekli-antrasit-linnera-viko-p11136
+2026-04-03 17:18:01 [INFO] [11136] 'ÇERÇEVE TEKLİ ANTRASİT LİNNERA VİKO' | 84,00 TL | SKU: VİKO.92190631
+2026-04-03 17:18:03 [INFO] [7/22] https://yapimaks.com/cerceve-uclu-antrasit-linnera-viko-p11138
+2026-04-03 17:18:03 [INFO] [11138] 'ÇERÇEVE ÜÇLÜ ANTRASİT LİNNERA VİKO' | 180,00 TL | SKU: VİKO.92190633
+2026-04-03 17:18:05 [INFO] [8/22] https://yapimaks.com/cerceve-uclu-beyaz-yatay-linnera-viko-p9959
+2026-04-03 17:18:05 [INFO] [9959] 'ÇERÇEVE ÜÇLÜ BEYAZ YATAY LİNNERA VİKO' | 35,00 TL | SKU: VİKO.90480003
+2026-04-03 17:18:07 [INFO] [9/22] https://yapimaks.com/duman-detektoru-ct9451-cata-p1764
+2026-04-03 17:18:07 [INFO] [1764] 'DUMAN DETEKTÖRÜ CT9451 CATA' | 270,00 TL | SKU: CATA.CT9451
+2026-04-03 17:18:09 [INFO] [10/22] https://yapimaks.com/isaretleme-kalemi-mini-3-cm-renkli-cep-boy-stanley-p15150
+2026-04-03 17:18:09 [INFO] [15150] 'İŞARETLEME KALEMİ MİNİ 3 CM RENKLİ CEP B' | 69,00 TL | SKU: STANLEY.1.47.329
+2026-04-03 17:18:11 [INFO] [11/22] https://yapimaks.com/mekanizma-anahtar-tekli-novella-trenda-viko-cerceve-haric-p11132
+2026-04-03 17:18:11 [INFO] [11132] 'MEKANİZMA ANAHTAR TEKLİ NOVELLA/TRENDA V' | 60,00 TL | SKU: VİKO.92600001
+2026-04-03 17:18:13 [INFO] [12/22] https://yapimaks.com/mekanizma-dugme-kapak-beyaz-anahtar-2-li-karre-meridian-cerceve-haric-p15194
+2026-04-03 17:18:13 [INFO] [15194] 'MEKANİZMA+DÜĞME/KAPAK BEYAZ ANAHTAR 2 Lİ' | 120,00 TL | SKU: VİKO.90967002
+2026-04-03 17:18:15 [INFO] [13/22] https://yapimaks.com/mekanizma-dugme-kapak-beyaz-anahtar-tekli-karre-meridian-cerceve-haric-p15193
+2026-04-03 17:18:15 [INFO] [15193] 'MEKANİZMA+DÜĞME/KAPAK BEYAZ ANAHTAR TEKL' | 96,00 TL | SKU: VİKO.90967001
+2026-04-03 17:18:17 [INFO] [14/22] https://yapimaks.com/mekanizma-dugme-kapak-vavien-anahtar-karre-meridian-cerceve-haric-p12728
+2026-04-03 17:18:17 [INFO] [12728] 'MEKANİZMA+DÜĞME/KAPAK VAVİEN ANAHTAR KAR' | 96,00 TL | SKU: VİKO.90967004
+2026-04-03 17:18:19 [INFO] [15/22] https://yapimaks.com/mekanizma-komutator-anahtar-novella-trenda-viko-cerceve-haric-p11133
+2026-04-03 17:18:19 [INFO] [11133] 'MEKANİZMA KOMÜTATÖR ANAHTAR NOVELLA/TREN' | 84,00 TL | SKU: VİKO.92600002
+2026-04-03 17:18:21 [INFO] [16/22] https://yapimaks.com/mekanizma-konnektor-f-uydu-priz-sonlu-novella-trenada-viko-cerceve-haric-p11135
+2026-04-03 17:18:22 [INFO] [11135] 'MEKANİZMA KONNEKTÖR F UYDU PRİZ SONLU NO' | 276,00 TL | SKU: VİKO.92600009
+2026-04-03 17:18:24 [INFO] [17/22] https://yapimaks.com/mekanizma-priz-toprakli-novella-trenda-viko-cerceve-haric-p11134
+2026-04-03 17:18:24 [INFO] [11134] 'MEKANİZMA PRİZ TOPRAKLI NOVELLA/TRENDA V' | 87,00 TL | SKU: VİKO.92600008
+2026-04-03 17:18:26 [INFO] [18/22] https://yapimaks.com/mekanizma-telefon-data-numeris-tekli-cat3-novella-trenda-viko-cerceve-haric-p12556
+2026-04-03 17:18:26 [INFO] [12556] 'MEKANİZMA TELEFON DATA NÜMERİS TEKLİ CAT' | 114,00 TL | SKU: VİKO.92600013
+2026-04-03 17:18:28 [INFO] [19/22] https://yapimaks.com/otomat-sigorta-kutusu-18-li-sa-siva-alti-viko-p15191
+2026-04-03 17:18:28 [INFO] [15191] 'OTOMAT SİGORTA KUTUSU 18 Lİ SA SIVA ALTI' | 750,00 TL | SKU: VİKO.90912018
+2026-04-03 17:18:30 [INFO] [20/22] https://yapimaks.com/priz-toprakli-tekli-beyaz-karre-meridian-viko-p15195
+2026-04-03 17:18:30 [INFO] [15195] 'PRİZ TOPRAKLI TEKLİ BEYAZ KARRE/MERIDIAN' | 120,00 TL | SKU: VİKO.90967008
+2026-04-03 17:18:32 [INFO] [21/22] https://yapimaks.com/takviyeli-susta-10-mt-p12790
+2026-04-03 17:18:32 [INFO] [12790] 'TAKVİYELİ SUSTA 10 MT' | 265,00 TL | SKU: MUTLUSAN.1019100010
+2026-04-03 17:18:34 [INFO] [22/22] https://yapimaks.com/telefon-data-prizi-beyaz-karre-meridian-viko-cerceve-haric-p15197
+2026-04-03 17:18:34 [INFO] [15197] 'TELEFON DATA PRİZİ BEYAZ KARRE/MERIDIAN ' | 100,00 TL | SKU: VİKO.90967013
+2026-04-03 17:18:36 [INFO] Tamamlandi! Toplam 22 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-03.csv
