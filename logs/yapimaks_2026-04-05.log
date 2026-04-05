@@ -1,0 +1,36 @@
+2026-04-05 22:30:36 [INFO] ==================================================
+2026-04-05 22:30:36 [INFO] Yapimaks Scraper basliyor
+2026-04-05 22:30:36 [INFO] ==================================================
+2026-04-05 22:30:36 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-04-05 22:30:36 [INFO] Cookie basariyla alindi.
+2026-04-05 22:30:36 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-04-05 22:30:36 [INFO] Sitemap'ten toplam 8761 urun URL'si bulundu.
+2026-04-05 22:30:36 [INFO] Bugune ait veri yok. Eski veri (2026-04-04.csv) süzülerek bugune aktariliyor...
+2026-04-05 22:30:36 [INFO] Basarili! 8749 urun dunden bugune aktarildi.
+2026-04-05 22:30:36 [INFO] Guncel dosyada hazir olan urun: 8749 | Sifirdan cekilecek (yeni) urun: 12
+2026-04-05 22:30:36 [INFO] 12 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-05.csv
+2026-04-05 22:30:36 [INFO] [1/12] https://yapimaks.com/bahce-teli-glv-100cm-20mt-2-5m-5-5-5-5-helezon-p1256
+2026-04-05 22:30:37 [INFO] [1256] 'BAHÇE TELİ  GLV 100CM*20MT*2.5M*5,5*5,5 ' | 1800,00 TL | SKU: BAHÇE.TEL.006
+2026-04-05 22:30:39 [INFO] [2/12] https://yapimaks.com/bahce-teli-glv-120cm-20mt-2-5m-5-5-5-5-helezon-p1255
+2026-04-05 22:30:39 [INFO] [1255] 'BAHÇE TELİ  GLV 120CM*20MT*2.5M*5,5*5,5 ' | 2160,00 TL | SKU: BAHÇE.TEL.007
+2026-04-05 22:30:41 [INFO] [3/12] https://yapimaks.com/bahce-teli-glv-200cm-20mt-2-5m-5-5-5-5-helezon-p13511
+2026-04-05 22:30:41 [INFO] [13511] 'BAHÇE TELİ  GLV 200CM*20MT*2.5M*5,5*5,5 ' | 3600,00 TL | SKU: BAHÇE.TEL.009
+2026-04-05 22:30:43 [INFO] [4/12] https://yapimaks.com/cati-cikis-kapagi-kiremit-3009-bordo-plkrbn-p1796
+2026-04-05 22:30:43 [INFO] [1796] 'ÇATI ÇIKIŞ KAPAĞI KİREMİT 3009 BORDO (PL' | 2250,00 TL | SKU: ÇATI.004
+2026-04-05 22:30:45 [INFO] [5/12] https://yapimaks.com/cati-cikis-kapagi-kiremit-7016-antrasit-plkrbn-p1798
+2026-04-05 22:30:45 [INFO] [1798] 'ÇATI ÇIKIŞ KAPAĞI KİREMİT 7016 ANTRASİT ' | 2250,00 TL | SKU: ÇATI.006
+2026-04-05 22:30:47 [INFO] [6/12] https://yapimaks.com/cati-cikis-kapagi-singil-7016-antrasit-plkrbn-p1797
+2026-04-05 22:30:47 [INFO] [1797] 'ÇATI ÇIKIŞ KAPAĞI ŞINGIL 7016 ANTRASİT (' | 2250,00 TL | SKU: ÇATI.005
+2026-04-05 22:30:49 [INFO] [7/12] https://yapimaks.com/cati-cikis-kapagi-trapez-3009-bordo-plkrbn-p1793
+2026-04-05 22:30:49 [INFO] [1793] 'ÇATI ÇIKIŞ KAPAĞI TRAPEZ 3009 BORDO (PLK' | 2250,00 TL | SKU: ÇATI.001
+2026-04-05 22:30:51 [INFO] [8/12] https://yapimaks.com/cati-cikis-kapagi-trapez-7016-antrasit-plkrbn-p1795
+2026-04-05 22:30:51 [INFO] [1795] 'ÇATI ÇIKIŞ KAPAĞI TRAPEZ 7016 ANTRASİT (' | 2250,00 TL | SKU: ÇATI.003
+2026-04-05 22:30:53 [INFO] [9/12] https://yapimaks.com/cati-cikis-kapagi-trapez-9002-beyaz-plkrbn-p1794
+2026-04-05 22:30:53 [INFO] [1794] 'ÇATI ÇIKIŞ KAPAĞI TRAPEZ 9002 BEYAZ (PLK' | 2250,00 TL | SKU: ÇATI.002
+2026-04-05 22:30:55 [INFO] [10/12] https://yapimaks.com/lavabo-acar-1000-gr-handiron-p6632
+2026-04-05 22:30:55 [INFO] [6632] 'LAVABO AÇAR 1000 GR (HANDİRON)' | 175,00 TL | SKU: HANDİRON.02
+2026-04-05 22:30:57 [INFO] [11/12] https://yapimaks.com/lavabo-acar-500-gr-handiron-p11283
+2026-04-05 22:30:57 [INFO] [11283] 'LAVABO AÇAR 500 GR (HANDİRON)' | 115,00 TL | SKU: HANDİRON.03
+2026-04-05 22:30:59 [INFO] [12/12] https://yapimaks.com/yag-sokucu-prf-1-lt-handiron-p11697
+2026-04-05 22:30:59 [INFO] [11697] 'YAĞ SÖKÜCÜ PRF 1-LT (HANDİRON)' | 159,00 TL | SKU: HANDİRON.01
+2026-04-05 22:31:01 [INFO] Tamamlandi! Toplam 12 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-05.csv
