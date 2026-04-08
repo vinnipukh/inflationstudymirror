@@ -1,0 +1,114 @@
+2026-04-08 08:52:47 [INFO] ==================================================
+2026-04-08 08:52:47 [INFO] Yapimaks Scraper basliyor
+2026-04-08 08:52:47 [INFO] ==================================================
+2026-04-08 08:52:47 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-04-08 08:52:47 [INFO] Cookie basariyla alindi.
+2026-04-08 08:52:47 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-04-08 08:52:47 [INFO] Sitemap'ten toplam 8802 urun URL'si bulundu.
+2026-04-08 08:52:47 [INFO] Bugune ait veri yok. Eski veri (2026-04-07.csv) süzülerek bugune aktariliyor...
+2026-04-08 08:52:47 [INFO] Basarili! 8751 urun dunden bugune aktarildi.
+2026-04-08 08:52:47 [INFO] Guncel dosyada hazir olan urun: 8751 | Sifirdan cekilecek (yeni) urun: 51
+2026-04-08 08:52:47 [INFO] 51 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-08.csv
+2026-04-08 08:52:47 [INFO] [1/51] https://yapimaks.com/avadanlik-kutusu-no-1-siyah-p12302
+2026-04-08 08:52:47 [INFO] [12302] 'AVADANLIK KUTUSU NO:1 SİYAH' | 45,00 TL | SKU: SÖNMEZ.950-9
+2026-04-08 08:52:49 [INFO] [2/51] https://yapimaks.com/ayakkabilik-rattan-kahve-rixo-p15217
+2026-04-08 08:52:49 [INFO] [15217] 'AYAKKABILIK RATTAN KAHVE RİXO' | 825,00 TL | SKU: SÖNMEZ.610-2
+2026-04-08 08:52:51 [INFO] [3/51] https://yapimaks.com/ayakkabilik-star-lux-kahve-p15218
+2026-04-08 08:52:52 [INFO] [15218] 'AYAKKABILIK STAR LUX KAHVE' | 590,00 TL | SKU: SÖNMEZ.623-2
+2026-04-08 08:52:54 [INFO] [4/51] https://yapimaks.com/cop-kovasi-diamond-no-1-2-l-antrasit-p15226
+2026-04-08 08:52:54 [INFO] [15226] 'ÇÖP KOVASI DİAMOND NO:1 2 L ANTRASİT' | 90,00 TL | SKU: SÖNMEZ.241-3
+2026-04-08 08:52:56 [INFO] [5/51] https://yapimaks.com/cop-kovasi-geri-donusum-cam-atik-yesil-p12309
+2026-04-08 08:52:56 [INFO] [12309] 'ÇÖP KOVASI GERİ DÖNÜŞÜM CAM ATIK YEŞİL' | 545,00 TL | SKU: SÖNMEZ.493-21
+2026-04-08 08:52:58 [INFO] [6/51] https://yapimaks.com/cop-kovasi-geri-donusum-kagit-atik-mavi-p15227
+2026-04-08 08:52:58 [INFO] [15227] 'ÇÖP KOVASI GERİ DÖNÜŞÜM KAĞIT ATIK MAVİ' | 545,00 TL | SKU: SÖNMEZ.493-16
+2026-04-08 08:53:00 [INFO] [7/51] https://yapimaks.com/cop-kovasi-pedalli-slim-20-l-gri-plastik-p4533
+2026-04-08 08:53:00 [INFO] [4533] 'ÇÖP KOVASI PEDALLI SLİM 20 L GRİ PLASTİK' | 290,00 TL | SKU: SÖNMEZ.ST225-5
+2026-04-08 08:53:02 [INFO] [8/51] https://yapimaks.com/cop-kovasi-pedalli-slim-30-l-gri-plastik-p5543
+2026-04-08 08:53:02 [INFO] [5543] 'ÇÖP KOVASI PEDALLI SLİM 30 L GRİ PLASTİK' | 395,00 TL | SKU: SÖNMEZ.ST226-5
+2026-04-08 08:53:04 [INFO] [9/51] https://yapimaks.com/cop-kovasi-pedalli-slim-50-l-gri-plastik-p2672
+2026-04-08 08:53:04 [INFO] [2672] 'ÇÖP KOVASI PEDALLI SLİM 50 L GRİ PLASTİK' | 520,00 TL | SKU: SÖNMEZ.ST227-5
+2026-04-08 08:53:06 [INFO] [10/51] https://yapimaks.com/dalgic-pompa-kirli-su-1100w-11mt-rtm840-p8003
+2026-04-08 08:53:06 [INFO] [8003] 'DALGIÇ POMPA KİRLİ SU 1100W 11MT RTM840' | 9600,00 TL | SKU: RTRMAX.RTM840
+2026-04-08 08:53:08 [INFO] [11/51] https://yapimaks.com/dalgic-pompa-temiz-su-550w-8mt-rtm825-p10878
+2026-04-08 08:53:08 [INFO] [10878] 'DALGIÇ POMPA TEMİZ SU 550W 8MT RTM825' | 7560,00 TL | SKU: RTRMAX.RTM825
+2026-04-08 08:53:10 [INFO] [12/51] https://yapimaks.com/dalgic-pompa-temiz-su-800w-30mt-rtm833-p8002
+2026-04-08 08:53:10 [INFO] [8002] 'DALGIÇ POMPA TEMİZ SU 800W 30MT RTM833' | 9600,00 TL | SKU: RTRMAX.RTM833
+2026-04-08 08:53:12 [INFO] [13/51] https://yapimaks.com/dolap-plastik-safir-4-kat-beyaz-p15216
+2026-04-08 08:53:12 [INFO] [15216] 'DOLAP PLASTİK SAFİR 4 KAT BEYAZ' | 1900,00 TL | SKU: SÖNMEZ.0398-1
+2026-04-08 08:53:14 [INFO] [14/51] https://yapimaks.com/kasiklik-cekmece-buyuk-gri-pvc-p10301
+2026-04-08 08:53:14 [INFO] [10301] 'KAŞIKLIK ÇEKMECE BÜYÜK GRİ PVC' | 110,00 TL | SKU: SÖNMEZ.783-0
+2026-04-08 08:53:16 [INFO] [15/51] https://yapimaks.com/kasiklik-cekmece-kucuk-beyaz-pvc-p10299
+2026-04-08 08:53:16 [INFO] [10299] 'KAŞIKLIK ÇEKMECE KÜÇÜK BEYAZ PVC' | 59,00 TL | SKU: SÖNMEZ.781-0
+2026-04-08 08:53:18 [INFO] [16/51] https://yapimaks.com/kasiklik-cekmece-orta-gri-pvc-p10300
+2026-04-08 08:53:18 [INFO] [10300] 'KAŞIKLIK ÇEKMECE ORTA GRİ PVC' | 85,00 TL | SKU: SÖNMEZ.782-0
+2026-04-08 08:53:20 [INFO] [17/51] https://yapimaks.com/kaynak-makinas-160a-wd160ic1-stanley-p11680
+2026-04-08 08:53:20 [INFO] [11680] 'KAYNAK MAKİNAS 160A WD160IC1 STANLEY' | 11466,00 TL | SKU: STANLEY.WD160IC1
+2026-04-08 08:53:22 [INFO] [18/51] https://yapimaks.com/kaynak-makinasi-megastick-elektrot-200-magmaweld-501m2000mf-p13399
+2026-04-08 08:53:22 [INFO] [13399] 'KAYNAK MAKİNASİ MEGASTİCK ELEKTROT 200 M' | 10760,00 TL | SKU: MAGMAWELD.006042
+2026-04-08 08:53:24 [INFO] [19/51] https://yapimaks.com/klozet-set-2-li-wc-firca-cop-kova-dantel-pvc-p15236
+2026-04-08 08:53:25 [INFO] [15236] "KLOZET SET 2'Lİ WC FIRÇA+ÇÖP KOVA DANTEL" | 290,00 TL | SKU: SÖNMEZ.ST157-0
+2026-04-08 08:53:27 [INFO] [20/51] https://yapimaks.com/koltuk-plastik-defne-rattan-demir-ayak-antrasit-p15211
+2026-04-08 08:53:27 [INFO] [15211] 'KOLTUK PLASTİK DEFNE RATTAN DEMİR AYAK A' | 625,00 TL | SKU: SÖNMEZ.687-3
+2026-04-08 08:53:29 [INFO] [21/51] https://yapimaks.com/koltuk-plastik-defne-rattan-demir-ayak-kahve-p15212
+2026-04-08 08:53:29 [INFO] [15212] 'KOLTUK PLASTİK DEFNE RATTAN DEMİR AYAK K' | 625,00 TL | SKU: SÖNMEZ.687-2
+2026-04-08 08:53:31 [INFO] [22/51] https://yapimaks.com/koltuk-plastik-della-orijinal-beyaz-p15210
+2026-04-08 08:53:31 [INFO] [15210] 'KOLTUK PLASTİK DELLA ORİJİNAL BEYAZ' | 435,00 TL | SKU: SÖNMEZ.784-1
+2026-04-08 08:53:33 [INFO] [23/51] https://yapimaks.com/masa-plastik-80x80-elit-rattan-antrasit-camsiz-p15206
+2026-04-08 08:53:33 [INFO] [15206] 'MASA PLASTİK 80X80 ELİT RATTAN ANTRASİT ' | 1600,00 TL | SKU: SÖNMEZ.525-3
+2026-04-08 08:53:35 [INFO] [24/51] https://yapimaks.com/masa-plastik-katlanir-80x80-antrasit-eko-p15207
+2026-04-08 08:53:35 [INFO] [15207] 'MASA PLASTİK KATLANIR 80X80 ANTRASİT EKO' | 1200,00 TL | SKU: SÖNMEZ.626-3
+2026-04-08 08:53:37 [INFO] [25/51] https://yapimaks.com/organizer-13-seffaf-siyah-pvc-p15224
+2026-04-08 08:53:37 [INFO] [15224] 'ORGANİZER 13" ŞEFFAF SİYAH PVC' | 145,00 TL | SKU: SÖNMEZ.948-9
+2026-04-08 08:53:39 [INFO] [26/51] https://yapimaks.com/organizer-18-seffaf-siyah-pvc-p15225
+2026-04-08 08:53:39 [INFO] [15225] 'ORGANİZER 18" ŞEFFAF SİYAH PVC' | 360,00 TL | SKU: SÖNMEZ.949-9
+2026-04-08 08:53:41 [INFO] [27/51] https://yapimaks.com/oto-kontrol-kalemi-spiralli-sdn-8601-p15130
+2026-04-08 08:53:41 [INFO] [15130] 'OTO KONTROL KALEMİ SPİRALLİ SDN-8601' | 175,00 TL | SKU: WONDER.STW01039
+2026-04-08 08:53:43 [INFO] [28/51] https://yapimaks.com/oturma-takimi-ikili-oscar-capucino-p15200
+2026-04-08 08:53:43 [INFO] [15200] 'OTURMA TAKIMI İKİLİ OSCAR CAPUCİNO' | 23500,00 TL | SKU: SÖNMEZ.0084-4
+2026-04-08 08:53:45 [INFO] [29/51] https://yapimaks.com/oturma-takimi-ikili-oscar-kahve-p12321
+2026-04-08 08:53:45 [INFO] [12321] 'OTURMA TAKIMI İKİLİ OSCAR KAHVE' | 23500,00 TL | SKU: SÖNMEZ.0084-2
+2026-04-08 08:53:47 [INFO] [30/51] https://yapimaks.com/oturma-takimi-uclu-leo-capucino-p15198
+2026-04-08 08:53:47 [INFO] [15198] 'OTURMA TAKIMI ÜÇLÜ LEO CAPUCİNO' | 34650,00 TL | SKU: SÖNMEZ.0012-4
+2026-04-08 08:53:49 [INFO] [31/51] https://yapimaks.com/oturma-takimi-uclu-leo-kahverengi-p15199
+2026-04-08 08:53:49 [INFO] [15199] 'OTURMA TAKIMI ÜÇLÜ LEO KAHVERENGİ' | 34650,00 TL | SKU: SÖNMEZ.0012-2
+2026-04-08 08:53:51 [INFO] [32/51] https://yapimaks.com/piknik-sepeti-pvc-gri-premium-28-l-p10366
+2026-04-08 08:53:51 [INFO] [10366] 'PİKNİK SEPETİ PVC GRİ PREMİUM 28 L' | 345,00 TL | SKU: SÖNMEZ.812-11
+2026-04-08 08:53:53 [INFO] [33/51] https://yapimaks.com/piknik-seti-32-parca-6-kisilik-pvc-antrasit-p15230
+2026-04-08 08:53:53 [INFO] [15230] 'PİKNİK SETİ 32 PARÇA 6 KİŞİLİK PVC ANTRA' | 325,00 TL | SKU: SÖNMEZ.ST240-3
+2026-04-08 08:53:55 [INFO] [34/51] https://yapimaks.com/saklama-kabi-3-lu-trendy-dikdortgen-pvc-0-6-1-2-2-l-p7164
+2026-04-08 08:53:55 [INFO] [7164] "SAKLAMA KABI 3'LÜ TRENDY DİKDÖRTGEN PVC " | 95,00 TL | SKU: SÖNMEZ.ST-133-10
+2026-04-08 08:53:57 [INFO] [35/51] https://yapimaks.com/saklama-kabi-bonbon-mavi-kirmizi-seffaf-kilitli-kapak-pvc-0-5-l-p15235
+2026-04-08 08:53:57 [INFO] [15235] 'SAKLAMA KABI BONBON MAVİ KIRMIZI, ŞEFFAF' | 25,00 TL | SKU: SÖNMEZ.ST-076-10
+2026-04-08 08:53:59 [INFO] [36/51] https://yapimaks.com/saklama-kabi-derin-kilitli-5-l-plastik-seffaf-p15233
+2026-04-08 08:53:59 [INFO] [15233] 'SAKLAMA KABI DERİN KİLİTLİ 5 L PLASTİK Ş' | 95,00 TL | SKU: SÖNMEZ.HOBİ0410-10
+2026-04-08 08:54:01 [INFO] [37/51] https://yapimaks.com/saklama-kabi-seti-6-li-set-seffaf-p15222
+2026-04-08 08:54:01 [INFO] [15222] "SAKLAMA KABI SETİ 6'lı SET ŞEFFAF" | 195,00 TL | SKU: SÖNMEZ.FAV1367/S10
+2026-04-08 08:54:03 [INFO] [38/51] https://yapimaks.com/saklama-kabi-yatay-kilitli-tekerlekli-50-l-plastik-seffaf-p15232
+2026-04-08 08:54:04 [INFO] [15232] 'SAKLAMA KABI YATAY KİLİTLİ TEKERLEKLİ 50' | 495,00 TL | SKU: SÖNMEZ.HOBİ040810TİMON
+2026-04-08 08:54:06 [INFO] [39/51] https://yapimaks.com/salincak-ikili-balina-gri-p15205
+2026-04-08 08:54:06 [INFO] [15205] 'SALINCAK İKİLİ BALİNA GRİ' | 14850,00 TL | SKU: SÖNMEZ.0089-5
+2026-04-08 08:54:08 [INFO] [40/51] https://yapimaks.com/salincak-ikili-rest-antrasit-p15202
+2026-04-08 08:54:08 [INFO] [15202] 'SALINCAK İKİLİ REST ANTRASİT' | 14850,00 TL | SKU: SÖNMEZ.0090-3
+2026-04-08 08:54:10 [INFO] [41/51] https://yapimaks.com/salincak-ikili-rest-capucino-p15203
+2026-04-08 08:54:10 [INFO] [15203] 'SALINCAK İKİLİ REST CAPUCİNO' | 14850,00 TL | SKU: SÖNMEZ.0090-4
+2026-04-08 08:54:12 [INFO] [42/51] https://yapimaks.com/salincak-ikili-rest-gri-p15204
+2026-04-08 08:54:12 [INFO] [15204] 'SALINCAK İKİLİ REST GRİ' | 14850,00 TL | SKU: SÖNMEZ.0090-5
+2026-04-08 08:54:14 [INFO] [43/51] https://yapimaks.com/salincak-ikili-rest-kahve-p15201
+2026-04-08 08:54:14 [INFO] [15201] 'SALINCAK İKİLİ REST KAHVE' | 14850,00 TL | SKU: SÖNMEZ.0090-2
+2026-04-08 08:54:16 [INFO] [44/51] https://yapimaks.com/sandalye-plastik-defne-rattan-demir-ayak-antrasit-p15213
+2026-04-08 08:54:16 [INFO] [15213] 'SANDALYE PLASTİK DEFNE RATTAN DEMİR AYAK' | 425,00 TL | SKU: SÖNMEZ.688-3
+2026-04-08 08:54:18 [INFO] [45/51] https://yapimaks.com/sandalye-plastik-defne-rattan-demir-ayak-kahve-p15214
+2026-04-08 08:54:18 [INFO] [15214] 'SANDALYE PLASTİK DEFNE RATTAN DEMİR AYAK' | 425,00 TL | SKU: SÖNMEZ.688-2
+2026-04-08 08:54:20 [INFO] [46/51] https://yapimaks.com/sandalye-plastik-selen-orijinal-beyaz-p15209
+2026-04-08 08:54:20 [INFO] [15209] 'SANDALYE PLASTİK SELEN ORİJİNAL BEYAZ' | 435,00 TL | SKU: SÖNMEZ.775-1
+2026-04-08 08:54:22 [INFO] [47/51] https://yapimaks.com/sehpa-katlanir-plastik-pars-kahve-40x50-cm-eko-p15215
+2026-04-08 08:54:22 [INFO] [15215] 'SEHPA KATLANIR PLASTİK PARS KAHVE 40X50 ' | 350,00 TL | SKU: SÖNMEZ.0431-2
+2026-04-08 08:54:24 [INFO] [48/51] https://yapimaks.com/sivi-deterjanlik-sabunluk-pvc-p1282
+2026-04-08 08:54:24 [INFO] [1282] 'SIVI DETERJANLIK SABUNLUK PVC' | 99,00 TL | SKU: SÖNMEZ.ST131-0
+2026-04-08 08:54:26 [INFO] [49/51] https://yapimaks.com/tabure-plastik-katlanir-orta-orjinal-kahve-p15208
+2026-04-08 08:54:26 [INFO] [15208] 'TABURE PLASTİK KATLANIR ORTA ORJİNAL KAH' | 195,00 TL | SKU: SÖNMEZ.645-2
+2026-04-08 08:54:28 [INFO] [50/51] https://yapimaks.com/trapez-875-1000-seffaf-0-9mm-p15234
+2026-04-08 08:54:28 [INFO] [15234] 'TRAPEZ 875*1000*ŞEFFAF 0.9MM' | 260,00 TL | SKU: PVC.OND.TRP.1000
+2026-04-08 08:54:30 [INFO] [51/51] https://yapimaks.com/vileda-temizlik-kovasi-eko-13-l-metalize-p2565
+2026-04-08 08:54:30 [INFO] [2565] 'VİLEDA TEMİZLİK KOVASI EKO 13 L METALİZE' | 130,00 TL | SKU: SÖNMEZ.ST184-20
+2026-04-08 08:54:32 [INFO] Tamamlandi! Toplam 51 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-08.csv
