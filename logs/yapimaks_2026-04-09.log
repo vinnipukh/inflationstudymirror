@@ -1,0 +1,24 @@
+2026-04-09 23:19:29 [INFO] ==================================================
+2026-04-09 23:19:29 [INFO] Yapimaks Scraper basliyor
+2026-04-09 23:19:29 [INFO] ==================================================
+2026-04-09 23:19:29 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-04-09 23:19:30 [INFO] Cookie basariyla alindi.
+2026-04-09 23:19:30 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-04-09 23:19:30 [INFO] Sitemap'ten toplam 8804 urun URL'si bulundu.
+2026-04-09 23:19:30 [INFO] Bugune ait veri yok. Eski veri (2026-04-08.csv) süzülerek bugune aktariliyor...
+2026-04-09 23:19:30 [INFO] Basarili! 8798 urun dunden bugune aktarildi.
+2026-04-09 23:19:30 [INFO] Guncel dosyada hazir olan urun: 8798 | Sifirdan cekilecek (yeni) urun: 6
+2026-04-09 23:19:30 [INFO] 6 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-09.csv
+2026-04-09 23:19:30 [INFO] [1/6] https://yapimaks.com/ayakkabilik-pvc-star-lux-kahve-48x32x83-cm-p15218
+2026-04-09 23:19:30 [INFO] [15218] 'AYAKKABILIK PVC STAR LUX KAHVE 48X32X83 ' | 590,00 TL | SKU: SÖNMEZ.623-2
+2026-04-09 23:19:32 [INFO] [2/6] https://yapimaks.com/dolap-plastik-safir-4-kat-beyaz-demonte-p15216
+2026-04-09 23:19:33 [INFO] [15216] 'DOLAP PLASTİK SAFİR 4 KAT BEYAZ DEMONTE' | 1900,00 TL | SKU: SÖNMEZ.0398-1
+2026-04-09 23:19:35 [INFO] [3/6] https://yapimaks.com/saklama-kabi-pvc-2-7-l-1-adet-p7228
+2026-04-09 23:19:35 [INFO] [7228] 'SAKLAMA KABI PVC 2.7 L 1 ADET' | 75,00 TL | SKU: SÖNMEZ.ST087-0
+2026-04-09 23:19:37 [INFO] [4/6] https://yapimaks.com/sehpa-katlanir-plastik-pars-antrasit-40x50x38-cm-eko-p15215
+2026-04-09 23:19:37 [INFO] [15215] 'SEHPA KATLANIR PLASTİK PARS ANTRASİT 40X' | 350,00 TL | SKU: SÖNMEZ.0431-2
+2026-04-09 23:19:39 [INFO] [5/6] https://yapimaks.com/vileda-temizlik-kovasi-17-l-elit-gri-p5776
+2026-04-09 23:19:39 [INFO] [5776] 'VİLEDA TEMİZLİK KOVASI 17 L ELİT GRİ' | 205,00 TL | SKU: SÖNMEZ.ST243-17
+2026-04-09 23:19:41 [INFO] [6/6] https://yapimaks.com/vileda-temizlik-kovasi-eko-13-l-kirmizi-p2565
+2026-04-09 23:19:41 [INFO] [2565] 'VİLEDA TEMİZLİK KOVASI EKO 13 L KIRMIZI' | 130,00 TL | SKU: SÖNMEZ.ST184-20
+2026-04-09 23:19:43 [INFO] Tamamlandi! Toplam 6 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-09.csv
