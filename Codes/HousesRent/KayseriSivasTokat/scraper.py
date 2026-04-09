@@ -1,5 +1,5 @@
 """
-scraper.py — sarı site kira scraper (rayobrowse + Playwright)
+scraper.py — Sahibinden kira scraper (rayobrowse + Playwright)
 
 Fixes applied in this version (see spec doc for full analysis):
   #3 Singleton browser — browser created ONCE per city, not per retry attempt.
@@ -236,8 +236,8 @@ async def enforce_viewport(page):
         )
 
     await page.set_viewport_size({
-        "width":config.FORCE_VIEWPORT_WIDTH,
-        "height":config.FORCE_VIEWPORT_HEIGHT,
+        "width": config.FORCE_VIEWPORT_WIDTH,
+        "height": config.FORCE_VIEWPORT_HEIGHT,
     })
 
     if config.OVERRIDE_SCREEN_JS_PROPERTIES:
@@ -261,7 +261,7 @@ async def enforce_viewport(page):
 # Page classification
 #
 # ROOT CAUSE of "everything is a login page":
-#   sarı site embeds a hidden login modal (type="password" + type="email")
+#   sahibinden.com embeds a hidden login modal (type="password" + type="email")
 #   into EVERY page for the header login button.  The old code fired on any
 #   page with those fields anywhere in the DOM.
 #
@@ -558,9 +558,34 @@ async def _auto_solve_interactive_turnstile(page, loop, cmd_queue=None):
     logger.info("   🖱️  Turnstile checkbox tıklandı.")
     await asyncio.sleep(3)
 
+    # ------------------------------------------------------------------
+    # "Devam Et" button handling.
+    #
+    # From the page HTML (sahibinden_com_Yükleniyor.htm):
+    #   <input id="btn-continue" disabled type="button" value="Devam Et">
+    #
+    # The button starts DISABLED and only becomes enabled once Turnstile
+    # reports a successful token.  The old code checked is_visible() which
+    # passes on a disabled input — the click silently did nothing.
+    #
+    # Correct flow:
+    #   1. Turnstile widget solves → JS removes the `disabled` attribute
+    #   2. We wait up to 30 s for the button to become enabled
+    #   3. Move mouse to button with jitter, then click
+    # ------------------------------------------------------------------
     try:
         btn = page.locator("#btn-continue")
-        if await btn.count() > 0 and await btn.is_visible():
+        if await btn.count() > 0:
+            logger.info("   ⏳ 'Devam Et' butonu etkinleşmesi bekleniyor (maks 30s)...")
+            try:
+                # wait_for(state="enabled") polls until disabled attr is removed
+                await btn.wait_for(state="enabled", timeout=30_000)
+                logger.info("   ✅ 'Devam Et' butonu etkinleşti.")
+            except Exception:
+                logger.warning(
+                    "   ⚠️  'Devam Et' butonu 30s içinde etkinleşmedi — yine de tıklanıyor."
+                )
+
             bx = await btn.bounding_box()
             if bx:
                 await human_jittery_move(
@@ -568,10 +593,13 @@ async def _auto_solve_interactive_turnstile(page, loop, cmd_queue=None):
                     bx["x"] + bx["width"]  / 2,
                     bx["y"] + bx["height"] / 2,
                 )
+                await asyncio.sleep(random.uniform(0.3, 0.7))
                 await btn.click()
-                logger.info("   🖱️  'Devam' butonu tıklandı.")
+                logger.info("   🖱️  'Devam Et' butonu tıklandı.")
+                # Give page time to process the token and redirect
+                await asyncio.sleep(3)
     except Exception as e:
-        logger.debug("Turnstile devam butonu hatası: %s", e)
+        logger.debug("Turnstile 'Devam Et' butonu hatası: %s", e)
 
     for i in range(10):
         await asyncio.sleep(2)
@@ -701,7 +729,7 @@ async def safe_goto(page, url, loop, cmd_queue=None):
 
 def extract_total_listings(soup):
     """
-    Extract total listing count from a sarı site results page.
+    Extract total listing count from a sahibinden results page.
     Tries three strategies in order of reliability.
     Returns int or None.
     """
@@ -1057,12 +1085,12 @@ def get_resume_point(checkpoint, city_slug):
 # ---------------------------------------------------------------------------
 # FIX #4 — Global cookie store
 #
-# All three cities share the same domain (sarı site.com), so their cookies
+# All three cities share the same domain (sahibinden.com), so their cookies
 # are domain-scoped and interchangeable.  Per-city files were artificial,
 # caused warmup to repeat unnecessarily for each city, and left orphaned
 # stale files when a login block deleted only one city's cookies.
 #
-# THE FIX: one file — global_sarı_site_cookies.json — for all cities.
+# THE FIX: one file — global_sahibinden_cookies.json — for all cities.
 # ---------------------------------------------------------------------------
 
 _COOKIE_DIR_CREATED = False
@@ -1167,6 +1195,74 @@ def delete_global_cookies():
 
 
 # ---------------------------------------------------------------------------
+# Human-like scroll to bottom
+# ---------------------------------------------------------------------------
+
+async def scroll_to_bottom_humanlike(page):
+    """
+    Scroll the current page to the bottom in a human-like way before
+    moving to the next bracket.
+
+    Mimics the Windows middle-click auto-scroll behavior: starts slow,
+    accelerates, and finishes with a final JS snap to the very bottom.
+    Uses page.mouse.wheel() so Playwright routes it through the browser's
+    native input pipeline (same as a real wheel event).
+    """
+    try:
+        # Get total scrollable height via JS
+        doc_height = await page.evaluate(
+            "() => Math.max(document.body.scrollHeight, document.documentElement.scrollHeight)"
+        )
+        viewport_h = config.FORCE_VIEWPORT_HEIGHT
+
+        if doc_height <= viewport_h:
+            logger.debug("Sayfa viewport'tan küçük, kaydırma atlandı.")
+            return
+
+        logger.info("   📜 Sayfa sonuna kaydırılıyor...")
+
+        # How far we need to travel
+        remaining = doc_height - viewport_h
+
+        # Build a list of wheel delta values that feel like a gradually
+        # accelerating then decelerating auto-scroll.
+        # Total number of wheel events: aim for ~2-3 seconds of scrolling.
+        num_steps = random.randint(8, 14)
+        # Generate a bell-curve-ish distribution of step sizes
+        step_sizes = []
+        for i in range(num_steps):
+            # ramp up then ramp down
+            t = i / max(num_steps - 1, 1)
+            weight = 4 * t * (1 - t)   # parabola: 0 → 1 → 0
+            # Add jitter so it doesn't look mechanical
+            weight = max(0.1, weight + random.uniform(-0.1, 0.1))
+            step_sizes.append(weight)
+
+        # Normalise so the steps sum to the total scroll distance
+        total_weight = sum(step_sizes)
+        deltas = [int(remaining * w / total_weight) for w in step_sizes]
+
+        # Fix rounding drift so we hit exactly the right total
+        delta_diff = remaining - sum(deltas)
+        deltas[-1] += delta_diff
+
+        for delta in deltas:
+            if delta <= 0:
+                continue
+            await page.mouse.wheel(0, delta)
+            # Variable pause between wheel events: faster in the middle
+            await asyncio.sleep(random.uniform(0.08, 0.28))
+
+        # Final JS snap to guarantee we are at the very bottom
+        await page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+        await asyncio.sleep(random.uniform(0.4, 0.8))
+
+        logger.info("   📜 Sayfa sonuna ulaşıldı.")
+    except Exception as e:
+        logger.debug("scroll_to_bottom_humanlike hatası: %s", e)
+
+
+# ---------------------------------------------------------------------------
 # Core scraping loop
 # ---------------------------------------------------------------------------
 
@@ -1225,6 +1321,11 @@ async def scrape_city_brackets(
             "✅ Bracket %d-%d TL bitti: %d kayıt | Checkpoint: bracket_index=%d",
             mn, mx, count, bi,
         )
+
+        # Scroll to the bottom of the last results page before moving to the
+        # next bracket.  Looks like a human reading through the listings before
+        # starting a new search.
+        await scroll_to_bottom_humanlike(page)
 
     return total
 
