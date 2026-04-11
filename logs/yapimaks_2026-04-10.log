@@ -1,0 +1,28 @@
+2026-04-10 13:11:47 [INFO] ==================================================
+2026-04-10 13:11:47 [INFO] Yapimaks Scraper basliyor
+2026-04-10 13:11:47 [INFO] ==================================================
+2026-04-10 13:11:47 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-04-10 13:11:48 [INFO] Cookie basariyla alindi.
+2026-04-10 13:11:48 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-04-10 13:11:48 [INFO] Sitemap'ten toplam 8805 urun URL'si bulundu.
+2026-04-10 13:11:48 [INFO] Bugune ait veri yok. Eski veri (2026-04-09.csv) süzülerek bugune aktariliyor...
+2026-04-10 13:11:48 [INFO] Basarili! 8797 urun dunden bugune aktarildi.
+2026-04-10 13:11:48 [INFO] Guncel dosyada hazir olan urun: 8797 | Sifirdan cekilecek (yeni) urun: 8
+2026-04-10 13:11:48 [INFO] 8 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-10.csv
+2026-04-10 13:11:48 [INFO] [1/8] https://yapimaks.com/cim-cit-050cmx10-mt-p1265
+2026-04-10 13:11:48 [INFO] [1265] 'ÇİM ÇİT 050CMx10 MT' | 1650,00 TL | SKU: BAHÇE.TEL.Ç-050
+2026-04-10 13:11:50 [INFO] [2/8] https://yapimaks.com/cim-cit-075cmx10-mt-p1266
+2026-04-10 13:11:50 [INFO] [1266] 'ÇİM ÇİT 075CMx10 MT' | 2475,00 TL | SKU: BAHÇE.TEL.Ç-075
+2026-04-10 13:11:52 [INFO] [3/8] https://yapimaks.com/cim-cit-100cmx10-mt-p1259
+2026-04-10 13:11:52 [INFO] [1259] 'ÇİM ÇİT 100CMx10 MT' | 3150,00 TL | SKU: BAHÇE.TEL.Ç-100
+2026-04-10 13:11:54 [INFO] [4/8] https://yapimaks.com/cim-cit-120cmx10-mt-p1260
+2026-04-10 13:11:54 [INFO] [1260] 'ÇİM ÇİT 120CMx10 MT' | 3850,00 TL | SKU: BAHÇE.TEL.Ç-120
+2026-04-10 13:11:56 [INFO] [5/8] https://yapimaks.com/cim-cit-150cmx10-mt-p1261
+2026-04-10 13:11:56 [INFO] [1261] 'ÇİM ÇİT 150CMx10 MT' | 4750,00 TL | SKU: BAHÇE.TEL.Ç-150
+2026-04-10 13:11:58 [INFO] [6/8] https://yapimaks.com/saklama-kabi-pvc-4-5-l-1-adet-p2691
+2026-04-10 13:11:58 [INFO] [2691] 'SAKLAMA KABI PVC 4.5 L 1 ADET' | 99,00 TL | SKU: SÖNMEZ.077-0
+2026-04-10 13:12:00 [INFO] [7/8] https://yapimaks.com/siva-filesi-160-gr-f-160-expert-55-p3348
+2026-04-10 13:12:00 [INFO] [3348] 'SIVA FİLESİ 160 GR F 160 EXPERT (55)' | 38,00 TL | SKU: EXPERT.006
+2026-04-10 13:12:02 [INFO] [8/8] https://yapimaks.com/siva-filesi-160-gr-glass-55-p1710
+2026-04-10 13:12:02 [INFO] [1710] 'SIVA FİLESİ 160 GR GLASS (55)' | 50,00 TL | SKU: CAPATECT.SF160.07
+2026-04-10 13:12:04 [INFO] Tamamlandi! Toplam 8 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-10.csv

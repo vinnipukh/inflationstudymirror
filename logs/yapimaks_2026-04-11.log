@@ -1,0 +1,24 @@
+2026-04-11 13:26:31 [INFO] ==================================================
+2026-04-11 13:26:31 [INFO] Yapimaks Scraper basliyor
+2026-04-11 13:26:31 [INFO] ==================================================
+2026-04-11 13:26:31 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-04-11 13:26:31 [INFO] Cookie basariyla alindi.
+2026-04-11 13:26:31 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-04-11 13:26:31 [INFO] Sitemap'ten toplam 8810 urun URL'si bulundu.
+2026-04-11 13:26:31 [INFO] Bugune ait veri yok. Eski veri (2026-04-10.csv) süzülerek bugune aktariliyor...
+2026-04-11 13:26:31 [INFO] Basarili! 8804 urun dunden bugune aktarildi.
+2026-04-11 13:26:31 [INFO] Guncel dosyada hazir olan urun: 8804 | Sifirdan cekilecek (yeni) urun: 6
+2026-04-11 13:26:31 [INFO] 6 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-11.csv
+2026-04-11 13:26:31 [INFO] [1/6] https://yapimaks.com/astar-sentetik-3-kg-beyaz-3-kg-aura-p10620
+2026-04-11 13:26:31 [INFO] [10620] 'ASTAR SENTETİK 3 KG BEYAZ 3 KG AURA' | 450,00 TL | SKU: KARDELEN.034
+2026-04-11 13:26:33 [INFO] [2/6] https://yapimaks.com/baharatlik-3-lu-kristal-pvc-antrasit-kapak-seffaf-p15231
+2026-04-11 13:26:34 [INFO] [15231] "BAHARATLIK 3'LÜ KRİSTAL PVC ANTRASİT KAP" | 395,00 TL | SKU: SÖNMEZ.ST262-14
+2026-04-11 13:26:36 [INFO] [3/6] https://yapimaks.com/cati-merdiveni-67x70-akordiyon-p15254
+2026-04-11 13:26:36 [INFO] [15254] 'ÇATI MERDİVENİ 67x70 AKORDİYON' |  TL | SKU: 2MM.022
+2026-04-11 13:26:38 [INFO] [4/6] https://yapimaks.com/plastik-cok-amacli-kapakli-kutu-17-l-mor-p15220
+2026-04-11 13:26:38 [INFO] [15220] 'PLASTİK ÇOK AMAÇLI KAPAKLI KUTU 17 L MOR' | 205,00 TL | SKU: SÖNMEZ.FAV1451-0
+2026-04-11 13:26:40 [INFO] [5/6] https://yapimaks.com/plastik-cok-amacli-kapakli-kutu-26-l-acik-pembe-p15219
+2026-04-11 13:26:40 [INFO] [15219] 'PLASTİK ÇOK AMAÇLI KAPAKLI KUTU 26 L AÇI' | 245,00 TL | SKU: SÖNMEZ.FAV1450-0
+2026-04-11 13:26:42 [INFO] [6/6] https://yapimaks.com/plastik-cok-amacli-kapakli-kutu-26-l-yesil-p15221
+2026-04-11 13:26:42 [INFO] [15221] 'PLASTİK ÇOK AMAÇLI KAPAKLI KUTU 26 L YEŞ' | 245,00 TL | SKU: SÖNMEZ.FAV1452-0
+2026-04-11 13:26:44 [INFO] Tamamlandi! Toplam 6 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-11.csv
