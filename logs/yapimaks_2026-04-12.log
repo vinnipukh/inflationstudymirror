@@ -1,0 +1,46 @@
+2026-04-12 14:16:41 [INFO] ==================================================
+2026-04-12 14:16:41 [INFO] Yapimaks Scraper basliyor
+2026-04-12 14:16:41 [INFO] ==================================================
+2026-04-12 14:16:41 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-04-12 14:16:41 [INFO] Cookie basariyla alindi.
+2026-04-12 14:16:41 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-04-12 14:16:41 [INFO] Sitemap'ten toplam 8822 urun URL'si bulundu.
+2026-04-12 14:16:41 [INFO] Bugune ait veri yok. Eski veri (2026-04-11.csv) süzülerek bugune aktariliyor...
+2026-04-12 14:16:42 [INFO] Basarili! 8805 urun dunden bugune aktarildi.
+2026-04-12 14:16:42 [INFO] Guncel dosyada hazir olan urun: 8805 | Sifirdan cekilecek (yeni) urun: 17
+2026-04-12 14:16:42 [INFO] 17 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-12.csv
+2026-04-12 14:16:42 [INFO] [1/17] https://yapimaks.com/ahsap-koruyucu-vernikli-12-lt-seffaf-kardelen-p14001
+2026-04-12 14:16:42 [INFO] [14001] 'AHŞAP KORUYUCU VERNİKLİ 12 LT ŞEFFAF KAR' | 3500,00 TL | SKU: KARDELEN.0606236.3
+2026-04-12 14:16:44 [INFO] [2/17] https://yapimaks.com/cocuk-koltuk-monoblok-eko-kirmizi-p1212
+2026-04-12 14:16:44 [INFO] [1212] 'ÇOCUK KOLTUK MONOBLOK EKO KIRMIZI' | 130,00 TL | SKU: SÖNMEZ.178-17
+2026-04-12 14:16:46 [INFO] [3/17] https://yapimaks.com/cocuk-koltuk-monoblok-eko-mavi-p15228
+2026-04-12 14:16:46 [INFO] [15228] 'ÇOCUK KOLTUK MONOBLOK EKO MAVİ' | 130,00 TL | SKU: SÖNMEZ.178-16
+2026-04-12 14:16:48 [INFO] [4/17] https://yapimaks.com/efes-80-cm-alt-modul-fume-p15255
+2026-04-12 14:16:48 [INFO] [15255] 'EFES 80 CM ALT MODÜL FÜME' | 17900,00 TL | SKU: LINEART.142
+2026-04-12 14:16:50 [INFO] [5/17] https://yapimaks.com/kamp-sandalyesi-baston-kirmizi-p1210
+2026-04-12 14:16:50 [INFO] [1210] 'KAMP SANDALYESİ BASTON KIRMIZI' | 650,00 TL | SKU: SÖNMEZ.0085-0K
+2026-04-12 14:16:52 [INFO] [6/17] https://yapimaks.com/kamp-sandalyesi-baston-lacivert-p15253
+2026-04-12 14:16:52 [INFO] [15253] 'KAMP SANDALYESİ BASTON LACİVERT' | 650,00 TL | SKU: SÖNMEZ.0085-0L
+2026-04-12 14:16:54 [INFO] [7/17] https://yapimaks.com/kamp-sandalyesi-baston-yesil-p15252
+2026-04-12 14:16:54 [INFO] [15252] 'KAMP SANDALYESİ BASTON YEŞİL' | 650,00 TL | SKU: SÖNMEZ.0085-0Y
+2026-04-12 14:16:56 [INFO] [8/17] https://yapimaks.com/organizer-16-bolmeli-kapakli-kutu-p4528
+2026-04-12 14:16:56 [INFO] [4528] 'ORGANİZER 16 BÖLMELİ KAPAKLI KUTU' | 299,00 TL | SKU: HİPAŞ.616
+2026-04-12 14:16:58 [INFO] [9/17] https://yapimaks.com/organizer-24-bolmeli-kapakli-kutu-p4529
+2026-04-12 14:16:58 [INFO] [4529] 'ORGANİZER 24 BÖLMELİ KAPAKLI KUTU' | 325,00 TL | SKU: HİPAŞ.724
+2026-04-12 14:17:00 [INFO] [10/17] https://yapimaks.com/pelet-cam-dogal-6-mm-15-kg-p15237
+2026-04-12 14:17:00 [INFO] [15237] 'PELET ÇAM DOĞAL 6 MM 15 KG' | 260,00 TL | SKU: KARAGÜLLE.PLT001
+2026-04-12 14:17:02 [INFO] [11/17] https://yapimaks.com/promax-rapid-end-selulozik-boya-rall-9002-kirli-beyaz-15kg-p14085
+2026-04-12 14:17:02 [INFO] [14085] 'PROMAX RAPİD END SELÜLOZİK BOYA RALL 900' | 3250,00 TL | SKU: KARDELEN.2109257
+2026-04-12 14:17:04 [INFO] [12/17] https://yapimaks.com/promax-rapid-end-selulozik-boya-rall-9005-siyah-15kg-p5007
+2026-04-12 14:17:04 [INFO] [5007] 'PROMAX RAPİD END SELÜLOZİK BOYA RALL 900' | 3250,00 TL | SKU: KARDELEN.006
+2026-04-12 14:17:06 [INFO] [13/17] https://yapimaks.com/rapid-end-sanayi-boyasi-siyah-rin-boya-15kg-p14020
+2026-04-12 14:17:06 [INFO] [14020] 'RAPİD END SANAYİ BOYASI SİYAH RİN BOYA (' | 1300,00 TL | SKU: KARDELEN.2109256
+2026-04-12 14:17:08 [INFO] [14/17] https://yapimaks.com/takim-cantasi-22-plastik-kilitli-p15223
+2026-04-12 14:17:08 [INFO] [15223] 'TAKIM ÇANTASI 22" PLASTİK KİLİTLİ' | 560,00 TL | SKU: SÖNMEZ.946-9
+2026-04-12 14:17:10 [INFO] [15/17] https://yapimaks.com/tenis-kort-boyasi-15-lt-kirmizi-briland-p15239
+2026-04-12 14:17:10 [INFO] [15239] 'TENİS KORT BOYASI 15 LT KIRMIZI BRİLAND' | 4000,00 TL | SKU: KARDELEN.BRILAND015K
+2026-04-12 14:17:12 [INFO] [16/17] https://yapimaks.com/tenis-kort-boyasi-15-lt-yesil-briland-p15238
+2026-04-12 14:17:13 [INFO] [15238] 'TENİS KORT BOYASI 15 LT YEŞİL BRİLAND' | 4000,00 TL | SKU: KARDELEN.BRILAND015Y
+2026-04-12 14:17:15 [INFO] [17/17] https://yapimaks.com/tiner-selulozik-flora-1-2-400-ml-p15240
+2026-04-12 14:17:15 [INFO] [15240] 'TİNER SELÜLOZİK FLORA 1/2 (400 ML)' | 200,00 TL | SKU: KARDELEN.21092500
+2026-04-12 14:17:17 [INFO] Tamamlandi! Toplam 17 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-12.csv
