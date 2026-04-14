@@ -5,6 +5,7 @@ import os
 import queue
 import sys
 import threading
+import random
 
 import config
 from scraper import SkipCitySignal, StopSignal, clear_checkpoint, load_checkpoint, scrape_city
@@ -47,11 +48,6 @@ def print_status():
 
 
 def console_listener(cmd_queue, stop_event):
-    """
-    Single owner of stdin. wait_for_manual_solve() must NEVER call input() —
-    it reads from cmd_queue instead, avoiding the stdin deadlock that caused
-    CLI commands to stop working and human-click steps to hang indefinitely.
-    """
     while not stop_event.is_set():
         try:
             line = input()
@@ -80,6 +76,10 @@ async def run(args):
         if not cities:
             logger.error("Geçersiz şehir slug'ı: %s", args.city)
             sys.exit(1)
+    else:
+        # Issue #3: City Order Randomization
+        random.shuffle(cities)
+        logger.info("🔀 Şehir sırası karıştırıldı.")
 
     if not args.resume:
         for c in cities:

@@ -1,18 +1,3 @@
-"""
-scraper.py — Sahibinden kira scraper (rayobrowse + Playwright)
-
-Fixes applied in this version (see spec doc for full analysis):
-  #3 Singleton browser — browser created ONCE per city, not per retry attempt.
-                         Retries reuse the same browser; only cookies are cleared.
-  #2 Viewport enforcement — viewport forced to 1920×1080 immediately after page
-                            creation; JS screen.* properties patched to match.
-  #4 Global cookies — one shared cookie file for all cities instead of three
-                      per-city files. Same domain = same session = no waste.
-  #1 Per-bracket login retry — on BrowserBlockedError the SAME bracket is
-                                retried up to MAX_LOGIN_RETRIES_PER_BRACKET times
-                                with exponential back-off before being skipped.
-"""
-
 import asyncio
 import csv
 import json
@@ -34,22 +19,13 @@ logger = logging.getLogger(__name__)
 _SCRIPTS_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
-# ---------------------------------------------------------------------------
-# Signals (used as structured control-flow exceptions)
-# ---------------------------------------------------------------------------
-
 class SkipCitySignal(Exception):      pass
 class SkipBracketSignal(Exception):   pass
 class StopSignal(Exception):          pass
 class BrowserBlockedError(Exception): pass
 
 
-# ---------------------------------------------------------------------------
-# Command queue helpers
-# ---------------------------------------------------------------------------
-
 def check_commands(cmd_queue):
-    """Drain the command queue without blocking; raise the matching signal."""
     try:
         while True:
             cmd = cmd_queue.get_nowait().strip().lower()
@@ -66,16 +42,11 @@ def check_commands(cmd_queue):
 
 
 async def interruptible_sleep(seconds, cmd_queue):
-    """Sleep for `seconds` but wake every 0.5 s to honour CLI commands."""
     end_time = time.time() + seconds
     while time.time() < end_time:
         check_commands(cmd_queue)
         await asyncio.sleep(min(0.5, end_time - time.time()))
 
-
-# ---------------------------------------------------------------------------
-# Alert & manual-solve
-# ---------------------------------------------------------------------------
 
 def beep_alert():
     try:
@@ -93,13 +64,6 @@ def beep_alert():
 
 
 async def wait_for_manual_solve(loop, reason, cmd_queue=None, timeout=90):
-    """
-    Ask the user to solve a challenge manually.
-
-    Polls cmd_queue only — never calls input().  console_listener is the
-    sole owner of stdin, preventing the deadlock that previously caused CLI
-    commands to stop working and waits to last indefinitely.
-    """
     beep_alert()
     print(f"\n{'=' * 55}")
     print(f"🔒 {reason}")
@@ -129,26 +93,11 @@ async def wait_for_manual_solve(loop, reason, cmd_queue=None, timeout=90):
     logger.warning("⏱  Bekleme süresi doldu (%ds), otomatik devam.", timeout)
 
 
-# ---------------------------------------------------------------------------
-# Mouse helpers
-# ---------------------------------------------------------------------------
-
 def _viewport_size(page):
-    """
-    FIX #2: Always return the ENFORCED viewport (1920×1080), not the
-    dynamic value assigned by rayobrowse's fingerprint engine.
-
-    Rayobrowse randomises viewport for fingerprint diversity, which can
-    produce sizes as small as 375×667 (mobile emulation).  Small viewports
-    break Turnstile widget layout and cause click misses.  Since we force
-    the viewport to 1920×1080 right after page creation (in scrape_city),
-    this function simply returns those fixed values.
-    """
     return config.FORCE_VIEWPORT_WIDTH, config.FORCE_VIEWPORT_HEIGHT
 
 
 async def human_jittery_move(page, tx, ty, steps=15):
-    """Move the mouse along a jittery curved path to target (tx, ty)."""
     vw, vh = _viewport_size(page)
     sx = random.uniform(vw * 0.1, vw * 0.5)
     sy = random.uniform(vh * 0.05, vh * 0.2)
@@ -162,7 +111,6 @@ async def human_jittery_move(page, tx, ty, steps=15):
 
 
 async def human_browsing_clicks(page, count=2):
-    """Click random safe positions to simulate human reading/browsing."""
     try:
         vw, vh = _viewport_size(page)
         for _ in range(count):
@@ -175,16 +123,10 @@ async def human_browsing_clicks(page, count=2):
     except Exception as e:
         logger.debug("human_browsing_clicks hatası: %s", e)
 
-
-# Keep old name as alias so nothing downstream breaks
 do_stupid_human_clicks = human_browsing_clicks
 
 
 async def bracket_safe_clicks(page, count=1):
-    """
-    Click varied zones between brackets to look human.
-    Uses 6 zones (not just screen edges) to avoid a robotic pattern.
-    """
     try:
         vw, vh = _viewport_size(page)
         zones = [
@@ -206,18 +148,7 @@ async def bracket_safe_clicks(page, count=1):
         logger.debug("bracket_safe_clicks hatası: %s", e)
 
 
-# ---------------------------------------------------------------------------
-# FIX #2 — Viewport enforcement helper
-# ---------------------------------------------------------------------------
-
 async def enforce_viewport(page):
-    """
-    Force the page viewport to the configured safe desktop size and,
-    optionally, patch the JS screen.* properties to match so that
-    fingerprint and actual canvas dimensions stay consistent.
-
-    This must be called immediately after acquiring the page object.
-    """
     actual = page.viewport_size
     actual_w = actual["width"]  if actual else 0
     actual_h = actual["height"] if actual else 0
@@ -225,14 +156,12 @@ async def enforce_viewport(page):
     if actual_w < config.MINIMUM_SAFE_VIEWPORT_WIDTH:
         logger.warning(
             "⚠️  Rayobrowse küçük viewport atadı (%dx%d). %dx%d'e zorlanıyor.",
-            actual_w, actual_h,
-            config.FORCE_VIEWPORT_WIDTH, config.FORCE_VIEWPORT_HEIGHT,
+            actual_w, actual_h, config.FORCE_VIEWPORT_WIDTH, config.FORCE_VIEWPORT_HEIGHT,
         )
     else:
         logger.debug(
             "Viewport %dx%d → %dx%d'e standardize ediliyor.",
-            actual_w, actual_h,
-            config.FORCE_VIEWPORT_WIDTH, config.FORCE_VIEWPORT_HEIGHT,
+            actual_w, actual_h, config.FORCE_VIEWPORT_WIDTH, config.FORCE_VIEWPORT_HEIGHT,
         )
 
     await page.set_viewport_size({
@@ -257,17 +186,38 @@ async def enforce_viewport(page):
     logger.info("🖥️  Viewport zorlandı: %dx%d", config.FORCE_VIEWPORT_WIDTH, config.FORCE_VIEWPORT_HEIGHT)
 
 
-# ---------------------------------------------------------------------------
-# Page classification
-#
-# ROOT CAUSE of "everything is a login page":
-#   sahibinden.com embeds a hidden login modal (type="password" + type="email")
-#   into EVERY page for the header login button.  The old code fired on any
-#   page with those fields anywhere in the DOM.
-#
-# THE FIX: URL-first logic + safe-URL allowlist + require "google ile giriş
-#   yap" (only present on the real /giris page) as last-resort discriminator.
-# ---------------------------------------------------------------------------
+async def patch_browser_detection_leaks(page):
+    """Injects anti-detection JavaScript to hide automation markers."""
+    logger.info("🛡️  Anti-bot JS patchleri enjekte ediliyor...")
+    js_code = """() => {
+        Object.defineProperty(navigator, 'webdriver', {
+            get: () => undefined,
+            configurable: true
+        });
+        delete window.__playwright;
+        delete window._playwright;
+        delete window.__pw_manual;
+        if (window.cdp_) delete window.cdp_;
+        if (window.cdp$) delete window.cdp$;
+        if (window.__cdp_evaluate) delete window.__cdp_evaluate;
+        
+        const originalQuery = window.navigator.permissions.query;
+        window.navigator.permissions.query = (params) => Promise.resolve({state: 'granted', onchange: null});
+        
+        Object.defineProperty(navigator, 'plugins', {
+            get: () => [1, 2, 3, 4, 5], 
+            configurable: true
+        });
+        Object.defineProperty(navigator, 'languages', {
+            get: () => ['tr-TR', 'tr', 'en-US', 'en'],
+            configurable: true
+        });
+    }"""
+    try:
+        await page.add_init_script(js_code)
+    except Exception as e:
+        logger.debug(f"JS patch injection hatası: {e}")
+
 
 _SAFE_URL_FRAGMENTS = (
     "/kiralik/",
@@ -288,11 +238,6 @@ _HOMEPAGE_URLS = (
 
 
 def is_login_page(html, page=None):
-    """
-    Returns True ONLY when the browser is on the actual /giris login page.
-    Conservative by design — false negatives are recoverable; false positives
-    abort the entire city scrape.
-    """
     url = ""
     if page:
         try:
@@ -300,7 +245,6 @@ def is_login_page(html, page=None):
         except Exception:
             pass
 
-    # Definitive LOGIN via URL
     if url and (
         "secure.sahibinden.com/giris" in url
         or url.endswith("/giris")
@@ -308,7 +252,6 @@ def is_login_page(html, page=None):
     ):
         return True
 
-    # Definitive NOT LOGIN via safe URL allowlist
     if url:
         if any(url == h.lower().rstrip("/") for h in _HOMEPAGE_URLS):
             return False
@@ -322,8 +265,6 @@ def is_login_page(html, page=None):
     if 'class="homepage' in l or 'id="homepage' in l:
         return False
 
-    # Last-resort HTML check — require the Google login button, which only
-    # appears on the real /giris page and NOT in the hidden header modal.
     has_password     = 'type="password"' in l
     has_email        = 'type="email"' in l or 'name="email"' in l
     has_google_login = "google ile giriş yap" in l
@@ -335,8 +276,6 @@ def is_login_page(html, page=None):
 
 
 def is_protection_page(html, page):
-    # Check login first — the real login page embeds hCaptcha; without this
-    # guard it would be misreported as hCaptcha instead of a login redirect.
     if is_login_page(html, page):
         return False, ""
 
@@ -356,7 +295,7 @@ def is_protection_page(html, page):
         return True, "PerimeterX"
 
     try:
-        if "/cs/checkloading" in page.url.lower():
+        if "/cs/checkloading" in page.url.lower() or "/cs/tloading" in page.url.lower():
             return True, "Managed Challenge"
     except Exception:
         pass
@@ -371,36 +310,32 @@ def is_protection_page(html, page):
 
 
 def _safe_url(page):
-    """Return current page URL safely; empty string if disconnected."""
     try:
         return page.url
     except Exception:
         return ""
 
 
-# ---------------------------------------------------------------------------
-# Warmup
-# ---------------------------------------------------------------------------
-
 async def warmup_with_human_surf(page, loop, cmd_queue=None):
-    """
-    Visit the homepage and perform human-like actions to build trust.
-    Includes exponential back-off between protection-check iterations.
-    """
-    logger.info("🧑‍💻 Hızlı güven inşası (~10s)...")
+    """Enhanced warmup with maximum randomness to bypass behavioral detection."""
+    logger.info("🧑‍💻 Randomize ısınma başlatılıyor...")
     try:
-        await page.goto(config.BASE_URL, wait_until="domcontentloaded", timeout=60_000)
+        if random.random() < 0.7: 
+            await page.goto(config.BASE_URL, wait_until="domcontentloaded", timeout=60_000)
+        else:
+            logger.info("⏭️  Ana sayfa atlanıyor (doğrudan giriş simülasyonu)")
+            return 
     except Exception as e:
         raise BrowserBlockedError(f"Ana sayfaya erişilemedi: {e}")
 
     logger.info("   📍 URL: %s", _safe_url(page))
-    await interruptible_sleep(random.uniform(*config.HOMEPAGE_WAIT), cmd_queue)
+    warmup_duration = random.uniform(8, 25)
+    await interruptible_sleep(warmup_duration, cmd_queue)
+    
     html = await get_page_content(page)
 
     if is_login_page(html, page):
-        raise BrowserBlockedError(
-            f"Isınma sırasında login yönlendirmesi (URL: {_safe_url(page)})"
-        )
+        raise BrowserBlockedError(f"Isınma sırasında login yönlendirmesi (URL: {_safe_url(page)})")
 
     backoff = 2.0
     for attempt in range(3):
@@ -408,7 +343,7 @@ async def warmup_with_human_surf(page, loop, cmd_queue=None):
         if not p:
             break
         logger.info("🛡️  Koruma: %s | URL: %s (deneme %d/3)", r, _safe_url(page), attempt + 1)
-        if "turnstile" in r.lower() or "cloudflare" in r.lower():
+        if "turnstile" in r.lower() or "cloudflare" in r.lower() or "managed" in r.lower():
             if await auto_solve_turnstile(page, r, loop, cmd_queue):
                 html = await get_page_content(page)
                 if is_login_page(html, page):
@@ -421,36 +356,218 @@ async def warmup_with_human_surf(page, loop, cmd_queue=None):
         if is_login_page(html, page):
             raise BrowserBlockedError("Login (manuel çözüm sonrası)")
 
-    for _ in range(random.randint(2, 4)):
-        await page.mouse.wheel(0, random.randint(200, 400))
-        await asyncio.sleep(0.4)
+    num_scrolls = random.randint(1, 6)
+    for _ in range(num_scrolls):
+        direction = random.choice([-1, 1])
+        distance = random.randint(100, 800)
+        await page.mouse.wheel(0, distance * direction)
+        await asyncio.sleep(random.uniform(0.3, 1.0))
 
+    if random.random() < 0.75:
+        try:
+            nav = page.locator("nav a, .mainNavigation a")
+            cnt = await nav.count()
+            if cnt > 0:
+                target = nav.nth(random.randint(0, min(cnt, 5) - 1))
+                box = await target.bounding_box()
+                if box:
+                    await human_jittery_move(
+                        page,
+                        box["x"] + box["width"]  / 2,
+                        box["y"] + box["height"] / 2,
+                    )
+                    if random.random() < 0.5:
+                        await asyncio.sleep(random.uniform(0.5, 1.5))
+                        await page.mouse.click(box["x"] + box["width"] / 2, box["y"] + box["height"] / 2)
+        except Exception as e:
+            logger.debug("Nav hover hatası: %s", e)
+
+    num_stupid = random.randint(0, 3)
+    if num_stupid > 0:
+        await do_stupid_human_clicks(page, count=num_stupid)
+
+
+async def _is_enterprise_turnstile(page):
     try:
-        nav = page.locator("nav a, .mainNavigation a")
-        cnt = await nav.count()
-        if cnt > 0:
-            box = await nav.nth(random.randint(0, min(cnt, 5) - 1)).bounding_box()
-            if box:
-                await human_jittery_move(
-                    page,
-                    box["x"] + box["width"]  / 2,
-                    box["y"] + box["height"] / 2,
-                )
+        has_enterprise_key = await page.evaluate("""() => {
+            const input = document.querySelector('input[id="sitekeyEnterprise"]');
+            return input !== null && input.value && input.value.startsWith('0x4AAAAAAA');
+        }""")
+        
+        if has_enterprise_key:
+            logger.info("🔐 ENTERPRISE Turnstile tespit edildi (sitekeyEnterprise).")
+            return True
+        
+        has_explicit_render = await page.evaluate("""() => {
+            const scripts = document.querySelectorAll('script[src*="turnstile"]');
+            for (const s of scripts) {
+                if (s.src && s.src.includes('render=explicit')) {
+                    return true;
+                }
+            }
+            return false;
+        }""")
+        
+        if has_explicit_render:
+            logger.info("🔐 EXPLICIT render mode Turnstile tespit edildi.")
+            return True
+        
+        return False
+        
     except Exception as e:
-        logger.debug("Nav hover hatası: %s", e)
+        logger.debug(f"Turnstile tipi belirlenemedi: {e}")
+        return False
 
-    await human_browsing_clicks(page, count=1)
 
+async def solve_enterprise_turnstile(page, loop=None, cmd_queue=None, timeout=90):
+    logger.info("⏳ Turnstile API yüklenmesi bekleniyor...")
+    has_turnstile = False
+    for attempt in range(30): 
+        try:
+            has_turnstile = await page.evaluate("""() => {
+                return typeof window.turnstile !== 'undefined';
+            }""")
+            if has_turnstile:
+                break
+        except:
+            pass
+        await asyncio.sleep(0.5)
 
-# ---------------------------------------------------------------------------
-# Cloudflare / Turnstile helpers
-# ---------------------------------------------------------------------------
+    if not has_turnstile:
+        logger.warning("⚠️ Turnstile API script'i yüklenmedi.")
+        return False
+
+    logger.info("🔧 Turnstile widget aktifleştiriliyor (explicit render)...")
+    try:
+        render_result = await page.evaluate("""() => {
+            if (typeof turnstile === 'undefined' || !turnstile.render) {
+                return {error: 'turnstile_not_loaded'};
+            }
+            try {
+                const result = turnstile.render('#turnStileWidget');
+                return {status: 'render_called', token: result};
+            } catch (e) {
+                return {error: e.message};
+            }
+        }""")
+        
+        if render_result and render_result.get('error'):
+            logger.error(f"❌ turnstile.render() hatası: {render_result['error']}")
+            return False
+            
+        logger.info(f"✅ turnstile.render() başarıyla çağrıldı.")
+    except Exception as e:
+        logger.error(f"❌ turnstile.render() çağrılırken hata oluştu: {e}")
+        return False
+
+    await asyncio.sleep(2)
+
+    logger.info("⏳ Turnstile doğrulaması bekleniyor (maks 30s)...")
+    max_verify_wait = 30
+    verify_start = time.time()
+    
+    button_ready = False
+    while time.time() - verify_start < max_verify_wait:
+        try:
+            btn = page.locator('#btn-continue')
+            if await btn.count() > 0 and await btn.is_enabled():
+                logger.info("✅ 'Devam Et' butonu aktifleşti!")
+                button_ready = True
+                break
+        except Exception as e:
+            pass
+        
+        current_url = page.url
+        if '/cs/tloading' not in current_url.lower() and '/cs/checkloading' not in current_url.lower():
+            logger.info(f"✅ Doğrulama otomatik geçildi! Yeni URL: {current_url}")
+            return True
+            
+        try:
+            content = await get_page_content(page, 2000)
+            if 'searchresultstable' in content.lower():
+                return True
+        except:
+            pass
+            
+        try:
+            error_msg = page.locator('#continueRequestError')
+            if await error_msg.count() > 0 and await error_msg.is_visible():
+                error_text = await error_msg.text_content()
+                if error_text and 'gerçekleştiremedik' in error_text.lower():
+                    logger.warning(f"⚠️ Turnstile hata mesajı: {error_text}")
+                    return False
+        except:
+            pass
+            
+        await asyncio.sleep(1)
+
+    if not button_ready:
+        logger.warning("⏱ Turnstile doğrulaması zaman aşımına uğradı.")
+        return False
+
+    logger.info("🖱️ 'Devam Et' butonuna tıklanıyor...")
+    try:
+        btn = page.locator('#btn-continue')
+        if not await btn.is_enabled():
+            await asyncio.sleep(3)
+            if not await btn.is_enabled():
+                return False 
+                
+        box = await btn.bounding_box()
+        if box:
+            cx = box["x"] + box["width"] / 2
+            cy = box["y"] + box["height"] / 2
+            await human_jittery_move(page, cx, cy)
+            await asyncio.sleep(0.5)
+            await btn.click()
+            logger.info("✅ 'Devam Et' butonu tıklandı!")
+    except Exception as e:
+        logger.error(f"❌ Butona tıklanamadı: {e}")
+        return False
+
+    logger.info("⏳ Yönlendirme bekleniyor (spinner, maks 60s)...")
+    post_click_timeout = 60 
+    spinner_start = time.time()
+
+    while time.time() - spinner_start < post_click_timeout:
+        current_url = page.url
+        if '/cs/tloading' not in current_url.lower() and '/cs/checkloading' not in current_url.lower():
+            logger.info(f"✅ Yönlendirme başarılı! Yeni URL: {current_url}")
+            return True
+            
+        try:
+            content = await get_page_content(page, 2000)
+            if 'searchresultstable' in content.lower():
+                logger.info("✅ İlan tablosu yüklendi!")
+                return True
+        except:
+            pass
+            
+        if is_login_page(await get_page_content(page, 5000), page):
+            logger.error("❌ Turnstile sonrası login sayfasına yönlendirildi!")
+            return False
+            
+        try:
+            error_el = page.locator('#continueRequestError')
+            if await error_el.count() > 0 and await error_el.is_visible():
+                text = await error_el.text_content()
+                if text:
+                    if 'gerçekleştirmedi' in text.lower():
+                        return False 
+        except:
+            pass
+            
+        await asyncio.sleep(2)
+
+    logger.warning("⏱ Post-Turnstile yönlendirmesi zaman aşımına uğradı.")
+    return False
+
 
 async def _wait_for_managed_redirect(page, max_wait=40):
     for _ in range(int(max_wait / 2)):
         await asyncio.sleep(2)
         try:
-            if "/cs/checkloading" not in page.url.lower():
+            if "/cs/checkloading" not in page.url.lower() and "/cs/tloading" not in page.url.lower():
                 logger.info("   ✅ Managed challenge geçildi. URL: %s", _safe_url(page))
                 return True
         except Exception:
@@ -467,14 +584,6 @@ async def _wait_for_managed_redirect(page, max_wait=40):
 
 
 async def _auto_solve_interactive_turnstile(page, loop, cmd_queue=None):
-    """
-    Attempt to solve an interactive Cloudflare Turnstile challenge.
-
-    FIX (pre-solve stray click): checks whether the challenge is still
-    present BEFORE touching the mouse.  If the user already solved it,
-    we return True immediately without clicking the (now-loaded results) page.
-    """
-    # --- Early-exit: challenge already gone ---
     try:
         h = await get_page_content(page, 3000)
         if "tarayıcınızı kontrol ediyoruz" not in h.lower():
@@ -486,7 +595,6 @@ async def _auto_solve_interactive_turnstile(page, loop, cmd_queue=None):
     except Exception:
         pass
 
-    # --- Find Cloudflare iframe ---
     bb = None
     for _ in range(15):
         for f in page.frames:
@@ -498,7 +606,6 @@ async def _auto_solve_interactive_turnstile(page, loop, cmd_queue=None):
                 break
         if bb:
             break
-        # Re-check between waits — user may solve while we're looking
         try:
             h = await get_page_content(page, 2000)
             if "tarayıcınızı kontrol ediyoruz" not in h.lower():
@@ -528,7 +635,6 @@ async def _auto_solve_interactive_turnstile(page, loop, cmd_queue=None):
 
     await human_jittery_move(page, cx + random.uniform(30, 60), cy + random.uniform(-10, 10))
     for _ in range(random.randint(4, 6)):
-        # Check again during hover — user may solve while we're moving
         try:
             h = await get_page_content(page, 1000)
             if "tarayıcınızı kontrol ediyoruz" not in h.lower():
@@ -541,7 +647,6 @@ async def _auto_solve_interactive_turnstile(page, loop, cmd_queue=None):
         await asyncio.sleep(wait / 5)
         await page.mouse.move(cx + random.uniform(-5, 5), cy + random.uniform(-3, 3))
 
-    # Final pre-click check
     try:
         h = await get_page_content(page, 2000)
         if "tarayıcınızı kontrol ediyoruz" not in h.lower():
@@ -558,27 +663,11 @@ async def _auto_solve_interactive_turnstile(page, loop, cmd_queue=None):
     logger.info("   🖱️  Turnstile checkbox tıklandı.")
     await asyncio.sleep(3)
 
-    # ------------------------------------------------------------------
-    # "Devam Et" button handling.
-    #
-    # From the page HTML (sahibinden_com_Yükleniyor.htm):
-    #   <input id="btn-continue" disabled type="button" value="Devam Et">
-    #
-    # The button starts DISABLED and only becomes enabled once Turnstile
-    # reports a successful token.  The old code checked is_visible() which
-    # passes on a disabled input — the click silently did nothing.
-    #
-    # Correct flow:
-    #   1. Turnstile widget solves → JS removes the `disabled` attribute
-    #   2. We wait up to 30 s for the button to become enabled
-    #   3. Move mouse to button with jitter, then click
-    # ------------------------------------------------------------------
     try:
         btn = page.locator("#btn-continue")
         if await btn.count() > 0:
             logger.info("   ⏳ 'Devam Et' butonu etkinleşmesi bekleniyor (maks 30s)...")
             try:
-                # wait_for(state="enabled") polls until disabled attr is removed
                 await btn.wait_for(state="enabled", timeout=30_000)
                 logger.info("   ✅ 'Devam Et' butonu etkinleşti.")
             except Exception:
@@ -596,7 +685,6 @@ async def _auto_solve_interactive_turnstile(page, loop, cmd_queue=None):
                 await asyncio.sleep(random.uniform(0.3, 0.7))
                 await btn.click()
                 logger.info("   🖱️  'Devam Et' butonu tıklandı.")
-                # Give page time to process the token and redirect
                 await asyncio.sleep(3)
     except Exception as e:
         logger.debug("Turnstile 'Devam Et' butonu hatası: %s", e)
@@ -619,20 +707,23 @@ async def _auto_solve_interactive_turnstile(page, loop, cmd_queue=None):
 
 
 async def auto_solve_turnstile(page, reason, loop, cmd_queue=None):
-    managed = "managed" in reason.lower() or "checkloading" in reason.lower()
-    success = (
-        await _wait_for_managed_redirect(page)
-        if managed
-        else await _auto_solve_interactive_turnstile(page, loop, cmd_queue)
-    )
+    managed = "managed" in reason.lower() or "checkloading" in reason.lower() or "tloading" in reason.lower()
+    
+    if managed:
+        success = await _wait_for_managed_redirect(page)
+    else:
+        is_enterprise = await _is_enterprise_turnstile(page)
+        if is_enterprise:
+            logger.info("🔐 ENTERPRISE Turnstile solver kullanılıyor...")
+            success = await solve_enterprise_turnstile(page, loop, cmd_queue, timeout=90)
+        else:
+            logger.info("🔓 FREE TIER Turnstile solver kullanılıyor...")
+            success = await _auto_solve_interactive_turnstile(page, loop, cmd_queue)
+            
     if success:
         await asyncio.sleep(3)
     return success
 
-
-# ---------------------------------------------------------------------------
-# Page helpers
-# ---------------------------------------------------------------------------
 
 async def get_page_content(page, timeout=10000):
     try:
@@ -648,6 +739,7 @@ async def get_page_content(page, timeout=10000):
 
 
 async def goto_with_retry(page, url, retries=3, timeout=60000):
+    base_delay = config.GOTO_RETRY_WAIT[0]
     for attempt in range(1, retries + 1):
         try:
             await page.goto(url, wait_until="domcontentloaded", timeout=timeout)
@@ -656,16 +748,15 @@ async def goto_with_retry(page, url, retries=3, timeout=60000):
             err = str(e).lower()
             if "timeout" in err:
                 if attempt < retries:
-                    wait = random.uniform(*config.GOTO_RETRY_WAIT)
+                    retry_delay = random.uniform(base_delay * 0.8, base_delay * 1.3)
                     logger.warning(
                         "⏱  Timeout (deneme %d/%d), %.1fs sonra tekrar: %s",
-                        attempt, retries, wait, url,
+                        attempt, retries, retry_delay, url,
                     )
-                    await asyncio.sleep(wait)
+                    await asyncio.sleep(retry_delay)
                 else:
                     raise BrowserBlockedError(f"Timeout: {url}") from e
             else:
-                # Non-timeout errors are not recoverable by retrying
                 raise BrowserBlockedError(f"Goto hatası: {e}") from e
 
 
@@ -674,7 +765,6 @@ async def safe_goto(page, url, loop, cmd_queue=None):
     await interruptible_sleep(random.uniform(*config.PAGE_LOAD_AFTER_GOTO), cmd_queue)
     html = await get_page_content(page)
 
-    # Log final URL — makes unexpected redirects immediately visible
     final_url = _safe_url(page)
     if final_url and "sahibinden.com" not in final_url.lower():
         logger.warning(
@@ -692,7 +782,7 @@ async def safe_goto(page, url, loop, cmd_queue=None):
         if not p:
             break
         logger.info("🛡️  Koruma: %s | URL: %s", r, final_url)
-        if "turnstile" in r.lower() or "cloudflare" in r.lower():
+        if "turnstile" in r.lower() or "cloudflare" in r.lower() or "managed" in r.lower():
             if await auto_solve_turnstile(page, r, loop, cmd_queue):
                 html      = await get_page_content(page)
                 final_url = _safe_url(page)
@@ -723,16 +813,7 @@ async def safe_goto(page, url, loop, cmd_queue=None):
     return await get_page_content(page)
 
 
-# ---------------------------------------------------------------------------
-# Smart Adaptive Brackets
-# ---------------------------------------------------------------------------
-
 def extract_total_listings(soup):
-    """
-    Extract total listing count from a sahibinden results page.
-    Tries three strategies in order of reliability.
-    Returns int or None.
-    """
     res_elem = soup.select_one(".result-text, .search-result-title, [class*='resultCount']")
     if res_elem:
         text = res_elem.get_text(strip=True).replace(".", "").replace(",", "")
@@ -769,28 +850,13 @@ def extract_total_listings(soup):
 
 
 async def scrape_adaptive_bracket(
-    page,
-    city_slug,
-    city_name,
-    min_price,
-    max_price,
-    loop,
-    cmd_queue,
-    done_ranges=None,
-    depth=0,
-    max_depth=6,
+    page, city_slug, city_name, min_price, max_price, loop, cmd_queue,
+    done_ranges=None, depth=0, max_depth=6, session_state=None
 ):
-    """
-    Smart adaptive bracket scraper.
-
-    Peeks at total listing count and splits the range in half when too
-    dense, up to max_depth=6 recursion levels.
-
-    Does NOT call save_checkpoint — that is the responsibility of the
-    caller (scrape_city_brackets) so checkpoint format stays consistent.
-    """
     if done_ranges is None:
         done_ranges = set()
+    if session_state is None:
+        session_state = {"pages": 0}
 
     range_key = (city_slug, min_price, max_price)
     pad = "  " * depth
@@ -813,19 +879,12 @@ async def scrape_adaptive_bracket(
         raise
     except BrowserBlockedError as e:
         logger.error("%s❌ Engellendi (%d-%d TL): %s", pad, min_price, max_price, e)
-        raise  # Re-raise so scrape_city can apply per-bracket retry logic (#1)
+        raise 
 
     soup            = BeautifulSoup(html, "html.parser")
     total_listings  = extract_total_listings(soup)
     max_per_query   = config.MAX_LISTINGS_PER_QUERY
     min_width       = config.MIN_BRACKET_WIDTH
-
-    if total_listings is not None:
-        logger.info("%s📊 %d ilan (%d-%d TL)", pad, total_listings, min_price, max_price)
-    else:
-        logger.info(
-            "%s❓ İlan sayısı bilinmiyor, taranıyor (%d-%d TL)", pad, min_price, max_price
-        )
 
     should_split = (
         total_listings is not None
@@ -835,53 +894,45 @@ async def scrape_adaptive_bracket(
     )
 
     if should_split:
-        logger.info(
-            "%s⚠️  Çok yoğun (%d > %d), ikiye bölünüyor: %d-%d TL",
-            pad, total_listings, max_per_query, min_price, max_price,
-        )
         mid         = (min_price + max_price) // 2
         total_saved = 0
 
         logger.info("%s→ Sol: %d-%d TL", pad, min_price, mid)
         total_saved += await scrape_adaptive_bracket(
             page, city_slug, city_name, min_price, mid,
-            loop, cmd_queue, done_ranges, depth + 1, max_depth,
+            loop, cmd_queue, done_ranges, depth + 1, max_depth, session_state
         )
 
         await interruptible_sleep(random.uniform(*config.BETWEEN_BRACKETS), cmd_queue)
 
+        if random.random() < config.READING_SIMULATION_PROBABILITY: 
+            reading_time = random.uniform(5, 15) 
+            logger.info(f"📖 Okuma simülasyonu ({reading_time:.1f}s)...")
+            await interruptible_sleep(reading_time, cmd_queue)
+            for _ in range(random.randint(1, 3)):
+                await page.mouse.wheel(0, random.randint(-300, 300))
+                await asyncio.sleep(random.uniform(0.5, 1.5))
+
         logger.info("%s→ Sağ: %d-%d TL", pad, mid + 1, max_price)
         total_saved += await scrape_adaptive_bracket(
             page, city_slug, city_name, mid + 1, max_price,
-            loop, cmd_queue, done_ranges, depth + 1, max_depth,
+            loop, cmd_queue, done_ranges, depth + 1, max_depth, session_state
         )
 
-        logger.info(
-            "%s✅ Bölme bitti: %d-%d TL → %d kayıt", pad, min_price, max_price, total_saved
-        )
         done_ranges.add(range_key)
         return total_saved
 
-    if total_listings is not None and total_listings > max_per_query:
-        logger.warning(
-            "%s⚠️  Min genişlik (%d TL) aşıldı ama sayı (%d) hâlâ yüksek, yine taranıyor.",
-            pad, width, total_listings,
-        )
-
-    # --- Scrape page 1 (already loaded) ---
     records, soup = parse_page(html)
     total_saved   = len(records)
     if records:
         save_incremental(city_name, records)
-        logger.info("%s💾 Sayfa 1: %d kayıt", pad, len(records))
     else:
         prot, prot_name = is_protection_page(html, page)
         logger.warning(
-            "%s⚠️  Sayfa 1'de kayıt yok! URL: %s | Koruma: %s | HTML: %d karakter",
-            pad, _safe_url(page), prot_name if prot else "yok", len(html),
+            "%s⚠️  Sayfa 1'de kayıt yok! URL: %s | Koruma: %s",
+            pad, _safe_url(page), prot_name if prot else "yok",
         )
 
-    # --- Paginate ---
     page_num  = 1
     max_pages = config.MAX_PAGES_PER_BRACKET
 
@@ -889,17 +940,34 @@ async def scrape_adaptive_bracket(
         check_commands(cmd_queue)
         next_btn = soup.find("a", title="Sonraki")
         if not next_btn or "href" not in next_btn.attrs:
-            logger.info("%s📄 Son sayfa: %d", pad, page_num)
             break
 
         next_url  = config.BASE_URL + next_btn["href"]
         page_num += 1
+        session_state["pages"] += 1
 
-        await human_jittery_move(
-            page, random.uniform(300, 600), random.uniform(300, 600), steps=5
-        )
-        await asyncio.sleep(0.5)
-        await interruptible_sleep(random.uniform(*config.BETWEEN_PAGES), cmd_queue)
+        delay = random.uniform(*config.MIN_DELAY_BETWEEN_PAGES)
+        if random.random() < config.PROBABILITY_OF_EXTRA_DELAY:
+            extra = random.uniform(5, 15)
+            delay += extra
+            logger.info("⏸ Ekstra throttle gecikmesi (%.1fs)", extra)
+            
+        if session_state["pages"] >= config.COOLDOWN_AFTER_N_PAGES:
+            cooldown = random.uniform(*config.COLDOWN_DURATION)
+            logger.info("🧊 Cooldown aktifleştirildi (%d sayfa sonrası, %.1fs)", session_state["pages"], cooldown)
+            await asyncio.sleep(cooldown)
+            session_state["pages"] = 0 
+            
+        await interruptible_sleep(delay, cmd_queue)
+
+        if random.random() < 0.1: 
+            await page.go_back()
+            await asyncio.sleep(random.uniform(2, 5))
+            await page.go_forward()
+            await asyncio.sleep(random.uniform(2, 5))
+        elif random.random() < 0.05: 
+            await page.goto(page.url, wait_until="domcontentloaded")
+            await asyncio.sleep(random.uniform(3, 7))
 
         try:
             html = await safe_goto(page, next_url, loop, cmd_queue)
@@ -907,39 +975,19 @@ async def scrape_adaptive_bracket(
             raise
         except BrowserBlockedError as e:
             logger.error("%s❌ Sayfa %d'de engellendi: %s", pad, page_num, e)
-            raise  # propagate so scrape_city can retry
+            raise 
 
         records, soup = parse_page(html)
         if not records:
-            prot, prot_name = is_protection_page(html, page)
-            logger.warning(
-                "%s⚠️  Sayfa %d'de kayıt yok. URL: %s | Koruma: %s | HTML: %d karakter",
-                pad, page_num, _safe_url(page), prot_name if prot else "yok", len(html),
-            )
             break
 
         save_incremental(city_name, records)
         total_saved += len(records)
-        logger.info(
-            "%s✔ Sayfa %d: %d kayıt (toplam: %d)", pad, page_num, len(records), total_saved
-        )
-
-    if page_num >= max_pages:
-        logger.warning(
-            "%s⚠️  Max sayfa sınırına (%d) ulaşıldı (%d-%d TL). Veri eksik olabilir!",
-            pad, max_pages, min_price, max_price,
-        )
+        logger.info("%s✔ Sayfa %d: %d kayıt (toplam: %d)", pad, page_num, len(records), total_saved)
 
     done_ranges.add(range_key)
-    logger.info(
-        "%s🎉 %d-%d TL bitti: %d kayıt [%s]", pad, min_price, max_price, total_saved, city_slug
-    )
     return total_saved
 
-
-# ---------------------------------------------------------------------------
-# Data parsing & persistence
-# ---------------------------------------------------------------------------
 
 def normalize_price(t):
     if not t or t == "N/A":
@@ -962,20 +1010,14 @@ def normalize_price(t):
     except ValueError:
         return None
 
-
 def _normalise_tr(s):
     return (s.lower()
             .replace("ı", "i").replace("ö", "o").replace("ü", "u")
             .replace("ş", "s").replace("ç", "c").replace("ğ", "g"))
 
-
 def get_room_col_index(soup):
-    ths = [
-        _normalise_tr(th.text.strip())
-        for th in soup.select("#searchResultsTable thead th.searchResultsAttributeHeader")
-    ]
+    ths = [_normalise_tr(th.text.strip()) for th in soup.select("#searchResultsTable thead th.searchResultsAttributeHeader")]
     return next((i for i, h in enumerate(ths) if "oda" in h), None)
-
 
 def parse_page(html):
     soup = BeautifulSoup(html, "html.parser")
@@ -1001,10 +1043,9 @@ def parse_page(html):
             if pr and d != "N/A":
                 recs.append({"District": d, "Rooms": ro, "Price": pr})
         except Exception as e:
-            logger.debug("Satır ayrıştırma hatası: %s", e)
+            pass
 
     return recs, soup
-
 
 def save_incremental(city_name, batch):
     if not batch:
@@ -1017,12 +1058,6 @@ def save_incremental(city_name, batch):
         if not file_exists:
             writer.writeheader()
         writer.writerows(batch)
-    logger.info("   💾 %d kayıt → %s", len(batch), path)
-
-
-# ---------------------------------------------------------------------------
-# Checkpoint
-# ---------------------------------------------------------------------------
 
 def load_checkpoint():
     cp = config.get_checkpoint_file()
@@ -1030,72 +1065,41 @@ def load_checkpoint():
         try:
             with open(cp, encoding="utf-8") as f:
                 d = json.load(f)
-            logger.info(
-                "📌 Checkpoint: %s, bracket_index=%s, page_num=%s",
-                d.get("city"), d.get("bracket_index"), d.get("page_num"),
-            )
             return d
         except Exception:
-            logger.warning(
-                "⚠️  Checkpoint dosyası bozuk (%s), sıfırdan başlanıyor.", cp
-            )
+            pass
     return {}
 
-
 def save_checkpoint(city_slug, bracket_index, page_num):
-    """
-    Atomic write via temp-file + os.replace().
-    bracket_index is ALWAYS the enumeration index (0–4), never a price.
-    """
     os.makedirs(config.CHECKPOINT_DIR, exist_ok=True)
     target = config.get_checkpoint_file()
     tmp    = target + ".tmp"
     try:
         with open(tmp, "w", encoding="utf-8") as f:
-            json.dump(
-                {
+            json.dump({
                     "city":          city_slug,
                     "bracket_index": bracket_index,
                     "page_num":      page_num,
                     "saved_at":      datetime.now().isoformat(),
-                },
-                f,
-                indent=2,
-            )
+                }, f, indent=2)
         os.replace(tmp, target)
     except Exception as e:
-        logger.debug("Checkpoint kaydetme hatası: %s", e)
-
+        pass
 
 def clear_checkpoint():
     cp = config.get_checkpoint_file()
     try:
         if os.path.exists(cp):
             os.remove(cp)
-    except Exception as e:
-        logger.warning("Checkpoint silinemedi: %s", e)
-
+    except Exception:
+        pass
 
 def get_resume_point(checkpoint, city_slug):
     if checkpoint.get("city") == city_slug:
         return checkpoint.get("bracket_index", 0), checkpoint.get("page_num", 1)
     return 0, 1
 
-
-# ---------------------------------------------------------------------------
-# FIX #4 — Global cookie store
-#
-# All three cities share the same domain (sahibinden.com), so their cookies
-# are domain-scoped and interchangeable.  Per-city files were artificial,
-# caused warmup to repeat unnecessarily for each city, and left orphaned
-# stale files when a login block deleted only one city's cookies.
-#
-# THE FIX: one file — global_sahibinden_cookies.json — for all cities.
-# ---------------------------------------------------------------------------
-
 _COOKIE_DIR_CREATED = False
-
-
 def _ensure_cookie_dir():
     global _COOKIE_DIR_CREATED
     cd = os.path.join(config.CHECKPOINT_DIR, "cookies")
@@ -1104,21 +1108,14 @@ def _ensure_cookie_dir():
         _COOKIE_DIR_CREATED = True
     return cd
 
-
 def get_global_cookie_path():
-    """Path to the single shared cookie file for all cities."""
     return os.path.join(_ensure_cookie_dir(), "global_sahibinden_cookies.json")
 
-
 def _migrate_legacy_cookies():
-    """
-    One-time migration: merge old per-city cookie files into the global file.
-    Runs silently at startup; no-ops if global file already exists.
-    """
     cd          = _ensure_cookie_dir()
     global_path = get_global_cookie_path()
     if os.path.exists(global_path):
-        return  # Already migrated
+        return  
 
     merged = {}
     for fn in os.listdir(cd):
@@ -1127,21 +1124,17 @@ def _migrate_legacy_cookies():
             try:
                 with open(fp, "r", encoding="utf-8") as f:
                     for c in json.load(f):
-                        merged[c["name"]] = c  # Later file wins on name collision
-                logger.info("🍪 Eski çerez dosyası taşındı: %s", fn)
-            except Exception as e:
-                logger.debug("Eski çerez dosyası okunamadı (%s): %s", fn, e)
+                        merged[c["name"]] = c  
+            except Exception:
+                pass
 
     if merged:
         tmp = global_path + ".tmp"
         with open(tmp, "w", encoding="utf-8") as f:
             json.dump(list(merged.values()), f, indent=2)
         os.replace(tmp, global_path)
-        logger.info("🍪 %d çerez global dosyaya taşındı.", len(merged))
-
 
 async def save_global_cookies(page):
-    """Save current browser cookies to the global shared file."""
     try:
         cookies    = await page.context.cookies()
         now        = datetime.now(tz=timezone.utc).timestamp()
@@ -1150,16 +1143,10 @@ async def save_global_cookies(page):
         with open(tmp, "w", encoding="utf-8") as f:
             json.dump(persistent, f, indent=2)
         os.replace(tmp, get_global_cookie_path())
-        logger.info(
-            "🍪 %d kalıcı çerez kaydedildi (%d oturum çerezi atlandı).",
-            len(persistent), len(cookies) - len(persistent),
-        )
     except Exception as e:
-        logger.debug("Global çerez kaydetme hatası: %s", e)
-
+        pass
 
 async def load_global_cookies(page):
-    """Load the global cookie file into the browser context."""
     path = get_global_cookie_path()
     if not os.path.exists(path):
         return False
@@ -1171,78 +1158,49 @@ async def load_global_cookies(page):
         now   = datetime.now(tz=timezone.utc).timestamp()
         valid = [c for c in cookies if c.get("expires", now + 1) > now]
         if not valid:
-            logger.info("🍪 Tüm global çerezlerin süresi dolmuş, atlanıyor.")
             return False
         await page.context.add_cookies(valid)
-        logger.info("🍪 %d geçerli global çerez yüklendi.", len(valid))
         return True
     except Exception as e:
-        logger.debug("Global çerez yükleme hatası: %s", e)
         return False
 
-
 def delete_global_cookies():
-    """Delete the global cookie file and log clearly."""
     path = get_global_cookie_path()
     if os.path.exists(path):
         try:
             os.remove(path)
-            logger.info("🗑️  Global çerezler silindi.")
-        except Exception as e:
-            logger.warning("Global çerezler silinemedi: %s", e)
-    else:
-        logger.debug("Global çerez dosyası zaten yok, silme atlandı.")
+        except Exception:
+            pass
 
+async def inject_realistic_cookies(ctx):
+    """Adds normal browser cookies that scrapers often miss."""
+    await ctx.add_cookies([
+        {"name": "__Secure-3PSID", "value": "abc123mockvalue", "domain": ".sahibinden.com", "path": "/", "secure": True},
+        {"name": "_ga", "value": "GA1.2.123456789.101112234", "domain": ".sahibinden.com", "path": "/"},
+        {"name": "_fbp", "value": "fb.1.123456789.101112234", "domain": ".sahibinden.com", "path": "/"},
+    ])
 
-# ---------------------------------------------------------------------------
-# Human-like scroll to bottom
-# ---------------------------------------------------------------------------
 
 async def scroll_to_bottom_humanlike(page):
-    """
-    Scroll the current page to the bottom in a human-like way before
-    moving to the next bracket.
-
-    Mimics the Windows middle-click auto-scroll behavior: starts slow,
-    accelerates, and finishes with a final JS snap to the very bottom.
-    Uses page.mouse.wheel() so Playwright routes it through the browser's
-    native input pipeline (same as a real wheel event).
-    """
     try:
-        # Get total scrollable height via JS
-        doc_height = await page.evaluate(
-            "() => Math.max(document.body.scrollHeight, document.documentElement.scrollHeight)"
-        )
+        doc_height = await page.evaluate("() => Math.max(document.body.scrollHeight, document.documentElement.scrollHeight)")
         viewport_h = config.FORCE_VIEWPORT_HEIGHT
 
         if doc_height <= viewport_h:
-            logger.debug("Sayfa viewport'tan küçük, kaydırma atlandı.")
             return
 
-        logger.info("   📜 Sayfa sonuna kaydırılıyor...")
-
-        # How far we need to travel
         remaining = doc_height - viewport_h
-
-        # Build a list of wheel delta values that feel like a gradually
-        # accelerating then decelerating auto-scroll.
-        # Total number of wheel events: aim for ~2-3 seconds of scrolling.
         num_steps = random.randint(8, 14)
-        # Generate a bell-curve-ish distribution of step sizes
         step_sizes = []
         for i in range(num_steps):
-            # ramp up then ramp down
             t = i / max(num_steps - 1, 1)
-            weight = 4 * t * (1 - t)   # parabola: 0 → 1 → 0
-            # Add jitter so it doesn't look mechanical
+            weight = 4 * t * (1 - t)   
             weight = max(0.1, weight + random.uniform(-0.1, 0.1))
             step_sizes.append(weight)
 
-        # Normalise so the steps sum to the total scroll distance
         total_weight = sum(step_sizes)
         deltas = [int(remaining * w / total_weight) for w in step_sizes]
 
-        # Fix rounding drift so we hit exactly the right total
         delta_diff = remaining - sum(deltas)
         deltas[-1] += delta_diff
 
@@ -1250,45 +1208,26 @@ async def scroll_to_bottom_humanlike(page):
             if delta <= 0:
                 continue
             await page.mouse.wheel(0, delta)
-            # Variable pause between wheel events: faster in the middle
             await asyncio.sleep(random.uniform(0.08, 0.28))
 
-        # Final JS snap to guarantee we are at the very bottom
         await page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
         await asyncio.sleep(random.uniform(0.4, 0.8))
-
-        logger.info("   📜 Sayfa sonuna ulaşıldı.")
     except Exception as e:
-        logger.debug("scroll_to_bottom_humanlike hatası: %s", e)
+        pass
 
-
-# ---------------------------------------------------------------------------
-# Core scraping loop
-# ---------------------------------------------------------------------------
 
 async def scrape_city_brackets(
     page, city_slug, city_name, brackets, loop, cmd_queue,
     start_bracket=0, start_page=1,
 ):
-    """
-    Iterates top-level price brackets and delegates each to
-    scrape_adaptive_bracket.
-
-    This is the ONLY place save_checkpoint is called (using the correct
-    bracket enumeration index, not a price value).
-
-    On resume: the interrupted bracket is skipped to avoid duplicate CSV
-    rows, with a console warning explaining why.
-    """
     total       = 0
     done_ranges = set()
+    session_state = {"pages": 0} 
 
     if start_bracket > 0 and start_bracket < len(brackets):
         mn_skip, mx_skip = brackets[start_bracket]
         logger.warning(
-            "⏭️  Yarım kalan bracket atlanıyor (%d-%d TL) — CSV'de mükerrer kayıt "
-            "oluşmaması için.  Bu aralıktan eksik veri olabilir.",
-            mn_skip, mx_skip,
+            "⏭️  Yarım kalan bracket atlanıyor (%d-%d TL)", mn_skip, mx_skip,
         )
         start_bracket += 1
 
@@ -1296,8 +1235,6 @@ async def scrape_city_brackets(
         check_commands(cmd_queue)
         if bi < start_bracket:
             continue
-
-        logger.info("\n🔍 Ana bracket [%d/%d]: %d-%d TL", bi + 1, len(brackets), mn, mx)
 
         if bi > start_bracket:
             await interruptible_sleep(random.uniform(*config.BETWEEN_BRACKETS), cmd_queue)
@@ -1314,145 +1251,86 @@ async def scrape_city_brackets(
             cmd_queue=cmd_queue,
             done_ranges=done_ranges,
             depth=0,
+            session_state=session_state
         )
         total += count
         save_checkpoint(city_slug, bi, 1)
-        logger.info(
-            "✅ Bracket %d-%d TL bitti: %d kayıt | Checkpoint: bracket_index=%d",
-            mn, mx, count, bi,
-        )
-
-        # Scroll to the bottom of the last results page before moving to the
-        # next bracket.  Looks like a human reading through the listings before
-        # starting a new search.
+        
         await scroll_to_bottom_humanlike(page)
 
     return total
 
 
-# ---------------------------------------------------------------------------
-# FIX #3 — Singleton browser + FIX #1 — Per-bracket login retry
-#
-# FIX #3: browser is created ONCE before the retry loop and destroyed in the
-#   outer finally block after all attempts are exhausted or the city succeeds.
-#   Between retries, only cookies are cleared (instant) and warmup re-runs;
-#   no new Chromium process is spawned.  This reduces token creation from
-#   9–15 per run to 1, and cuts init time from 45–75 s to ~10 s.
-#
-# FIX #1: bracket_login_blocks tracks how many consecutive BrowserBlockedErrors
-#   each bracket has produced.  While the count is below
-#   MAX_LOGIN_RETRIES_PER_BRACKET, start_bracket is NOT incremented and the
-#   same bracket is retried with exponential back-off.  Only after exceeding
-#   the threshold is the bracket permanently skipped.
-# ---------------------------------------------------------------------------
-
 async def scrape_city(city, checkpoint, cmd_queue):
     city_slug = city["url_slug"]
     city_name = city["name"]
-    brackets  = city["brackets"]
-    loop      = asyncio.get_event_loop()
+    brackets = city["brackets"]
+    loop = asyncio.get_event_loop()
 
-    # One-time migration of old per-city cookie files → global file
     _migrate_legacy_cookies()
-
     start_bracket, start_page = get_resume_point(checkpoint, city_slug)
 
-    # FIX #1: per-bracket failure counter (bracket_index → consecutive_failures)
     bracket_login_blocks: dict = {}
-    max_bracket_retries  = config.MAX_LOGIN_RETRIES_PER_BRACKET
-    backoff_base         = config.LOGIN_RETRY_BACKOFF_BASE
-    backoff_max          = config.LOGIN_RETRY_BACKOFF_MAX
+    max_bracket_retries = config.MAX_LOGIN_RETRIES_PER_BRACKET
+    backoff_base = config.LOGIN_RETRY_BACKOFF_BASE
+    backoff_max = config.LOGIN_RETRY_BACKOFF_MAX
 
-    # ------------------------------------------------------------------
-    # FIX #3: Create the browser ONCE, outside the retry loop.
-    # The browser lives for the entire city scrape; only session state
-    # (cookies, page URL) is reset between attempts.
-    # ------------------------------------------------------------------
-    pw      = None
+    pw = None
     browser = None
-    ctx     = None
-    page    = None
+    ctx = None
+    page = None
 
     try:
-        logger.info(
-            "\n%s\nŞEHİR: %s — tarayıcı başlatılıyor (singleton)\n%s",
-            "=" * 50, city_name.upper(), "=" * 50,
-        )
-        ws      = rayobrowse.create_browser(
+        logger.info("\n%s\nŞEHİR: %s\n%s", "=" * 50, city_name.upper(), "=" * 50)
+        ws = rayobrowse.create_browser(
             headless=config.RAYOBROWSE_HEADLESS,
             target_os=config.RAYOBROWSE_TARGET_OS,
             browser_language=config.RAYOBROWSE_BROWSER_LANGUAGE,
             ui_language=config.RAYOBROWSE_UI_LANGUAGE,
         )
-        pw      = await async_playwright().start()
+        pw = await async_playwright().start()
         browser = await pw.chromium.connect_over_cdp(ws)
 
-        ctx  = browser.contexts[0]
-        page = ctx.pages[0] if ctx.pages else await ctx.new_page()
+        ctx = browser.contexts[0]
 
-        # FIX #2: enforce viewport immediately after page creation
-        await enforce_viewport(page)
+        # FIX VIEWPORT: Use no_viewport=True so the page maps exactly to the OS window size
+        # This prevents the Captcha from being pushed off-screen in VNC.
+        if not ctx.pages:
+            page = await ctx.new_page(no_viewport=True)
+        else:
+            page = ctx.pages[0]
 
-        # ------------------------------------------------------------------
-        # Retry loop — reuses the browser created above.
-        # Each attempt may:
-        #   • succeed → break
-        #   • hit a recoverable block → clear cookies, sleep, retry same bracket
-        #   • exhaust per-bracket retries → skip bracket, retry city loop
-        #   • receive SkipCitySignal / StopSignal → propagate up
-        # ------------------------------------------------------------------
         for attempt in range(1, config.MAX_RESTARTS_PER_CITY + 1):
-            logger.info(
-                "\n%s\nŞEHİR: %s — Deneme %d/%d\n%s",
-                "-" * 50, city_name.upper(),
-                attempt, config.MAX_RESTARTS_PER_CITY, "-" * 50,
-            )
-
             try:
-                # FIX #3: between retries reset session state, not the browser
                 if attempt > 1:
-                    logger.info("🔄 Oturum sıfırlanıyor (tarayıcı korunuyor)...")
                     await ctx.clear_cookies()
                     try:
                         await page.goto("about:blank", timeout=10_000)
                     except Exception:
                         pass
 
-                # --- Cookie warmup bypass ---
                 warmed_up = False
                 if await load_global_cookies(page):
                     try:
-                        await page.goto(
-                            config.BASE_URL,
-                            wait_until="domcontentloaded",
-                            timeout=30_000,
-                        )
+                        await page.goto(config.BASE_URL, wait_until="domcontentloaded", timeout=30_000)
                         await asyncio.sleep(2)
                         h = await get_page_content(page)
                         if (
-                            not is_protection_page(h, page)[0]
-                            and not is_login_page(h, page)
-                            and "searchresultstable" in h.lower()
+                                not is_protection_page(h, page)[0]
+                                and not is_login_page(h, page)
+                                and "searchresultstable" in h.lower()
                         ):
-                            logger.info("✅ Global çerezler geçerli — ısınma atlandı.")
                             warmed_up = True
                         else:
-                            logger.info(
-                                "   Çerezler geçersiz (URL: %s), silinip ısınılıyor.",
-                                _safe_url(page),
-                            )
                             delete_global_cookies()
                             await ctx.clear_cookies()
-                    except Exception as e:
-                        logger.debug("Çerez doğrulama hatası: %s", e)
+                    except Exception:
                         delete_global_cookies()
                         await ctx.clear_cookies()
 
                 if not warmed_up:
                     await warmup_with_human_surf(page, loop, cmd_queue)
                     await save_global_cookies(page)
-
-                await interruptible_sleep(random.uniform(*config.HOMEPAGE_WAIT), cmd_queue)
 
                 total = await scrape_city_brackets(
                     page, city_slug, city_name, brackets, loop, cmd_queue,
@@ -1461,76 +1339,42 @@ async def scrape_city(city, checkpoint, cmd_queue):
 
                 logger.info("\n✅ %s tamamlandı — %d kayıt.", city_name, total)
                 await save_global_cookies(page)
-                break  # Clean success — exit retry loop (browser closed in outer finally)
+                break
 
             except (SkipCitySignal, StopSignal):
-                raise  # Propagate immediately
+                raise
 
             except SkipBracketSignal:
                 start_bracket += 1
-                start_page     = 1
+                start_page = 1
                 bracket_login_blocks.pop(start_bracket - 1, None)
 
             except BrowserBlockedError as e:
-                # -------------------------------------------------------
-                # FIX #1: Per-bracket retry with exponential back-off.
-                #
-                # We count failures against start_bracket (the bracket
-                # that was being attempted when the block occurred).
-                # If we haven't hit the max yet, retry the SAME bracket.
-                # Only after exhausting retries do we skip it.
-                # -------------------------------------------------------
                 blocked_bi = start_bracket
-                bracket_login_blocks[blocked_bi] = (
-                    bracket_login_blocks.get(blocked_bi, 0) + 1
-                )
+                bracket_login_blocks[blocked_bi] = bracket_login_blocks.get(blocked_bi, 0) + 1
                 failures = bracket_login_blocks[blocked_bi]
 
                 delete_global_cookies()
                 await ctx.clear_cookies()
-                logger.error(
-                    "🔒 Engellendi (bracket %d, başarısızlık %d/%d): %s",
-                    blocked_bi, failures, max_bracket_retries, e,
-                )
+                logger.error("🔒 Engellendi (bracket %d, deneme %d/%d): %s", blocked_bi, failures, max_bracket_retries,
+                             e)
 
                 if failures < max_bracket_retries:
-                    # Retry same bracket — do NOT increment start_bracket
                     backoff = min(backoff_base * (2 ** (failures - 1)), backoff_max)
-                    logger.info(
-                        "🔁 Bracket %d için yeniden deneniyor (%d/%d) — %.0fs bekleniyor...",
-                        blocked_bi, failures, max_bracket_retries, backoff,
-                    )
                     await interruptible_sleep(backoff, cmd_queue)
-                    # Loop continues with same start_bracket
-
                 else:
-                    # Exceeded per-bracket retry budget — skip this bracket
-                    logger.warning(
-                        "⏭️  Bracket %d kalıcı olarak bloklandı (%d deneme sonrası), "
-                        "bir sonraki bracket'a geçiliyor.",
-                        blocked_bi, failures,
-                    )
                     bracket_login_blocks.pop(blocked_bi, None)
                     start_bracket += 1
-                    start_page     = 1
+                    start_page = 1
 
                     if start_bracket >= len(brackets):
-                        logger.error(
-                            "❌ %s için tüm bracket'lar bloklandı, şehir atlanıyor.",
-                            city_name,
-                        )
-                        break  # All brackets exhausted
-
-                    # Wait before trying next bracket with fresh session
-                    wait = random.uniform(30, 60)
-                    logger.info("⏳ %.1fs bekleniyor...", wait)
-                    await interruptible_sleep(wait, cmd_queue)
+                        break
+                    await interruptible_sleep(random.uniform(30, 60), cmd_queue)
 
     except (SkipCitySignal, StopSignal):
-        raise  # Propagate through the outer try
+        raise
 
     finally:
-        # FIX #3: Browser destroyed ONCE here, after ALL attempts for this city
         if browser:
             try:
                 await browser.close()
@@ -1541,4 +1385,3 @@ async def scrape_city(city, checkpoint, cmd_queue):
                 await pw.stop()
             except Exception:
                 pass
-        logger.info("🗑️  Tarayıcı kapatıldı (%s).", city_name)
