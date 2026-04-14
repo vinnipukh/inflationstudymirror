@@ -1,0 +1,14 @@
+2026-04-13 08:58:57 [INFO] ==================================================
+2026-04-13 08:58:57 [INFO] Yapimaks Scraper basliyor
+2026-04-13 08:58:57 [INFO] ==================================================
+2026-04-13 08:58:57 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-04-13 08:58:57 [INFO] Cookie basariyla alindi.
+2026-04-13 08:58:57 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-04-13 08:58:57 [INFO] Sitemap'ten toplam 8823 urun URL'si bulundu.
+2026-04-13 08:58:57 [INFO] Bugune ait veri yok. Eski veri (2026-04-12.csv) süzülerek bugune aktariliyor...
+2026-04-13 08:58:58 [INFO] Basarili! 8822 urun dunden bugune aktarildi.
+2026-04-13 08:58:58 [INFO] Guncel dosyada hazir olan urun: 8822 | Sifirdan cekilecek (yeni) urun: 1
+2026-04-13 08:58:58 [INFO] 1 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-13.csv
+2026-04-13 08:58:58 [INFO] [1/1] https://yapimaks.com/kamp-sandalyesi-luks-katlanir-antrasit-p1211
+2026-04-13 08:58:58 [INFO] [1211] 'KAMP SANDALYESİ LÜKS KATLANIR ANTRASİT' | 725,00 TL | SKU: SÖNMEZ.0087-3
+2026-04-13 08:59:00 [INFO] Tamamlandi! Toplam 1 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-13.csv
