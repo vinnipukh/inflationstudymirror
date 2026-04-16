@@ -1,0 +1,44 @@
+2026-04-16 20:52:30 [INFO] ==================================================
+2026-04-16 20:52:30 [INFO] Yapimaks Scraper basliyor
+2026-04-16 20:52:30 [INFO] ==================================================
+2026-04-16 20:52:30 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-04-16 20:52:30 [INFO] Cookie basariyla alindi.
+2026-04-16 20:52:30 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-04-16 20:52:30 [INFO] Sitemap'ten toplam 8840 urun URL'si bulundu.
+2026-04-16 20:52:30 [INFO] Bugune ait veri yok. Eski veri (2026-04-15.csv) süzülerek bugune aktariliyor...
+2026-04-16 20:52:30 [INFO] Basarili! 8824 urun dunden bugune aktarildi.
+2026-04-16 20:52:30 [INFO] Guncel dosyada hazir olan urun: 8824 | Sifirdan cekilecek (yeni) urun: 16
+2026-04-16 20:52:30 [INFO] 16 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-16.csv
+2026-04-16 20:52:30 [INFO] [1/16] https://yapimaks.com/asimetrik-kosebent-gonye-40x40x120-p15161
+2026-04-16 20:52:30 [INFO] [15161] 'ASİMETRİK KÖŞEBENT GÖNYE 40X40X120' | 25,00 TL | SKU: ARSLAN.Y05070
+2026-04-16 20:52:32 [INFO] [2/16] https://yapimaks.com/heykel-aslan-55-cm-p15245
+2026-04-16 20:52:32 [INFO] [15245] 'HEYKEL ASLAN 55 CM' | 1000,00 TL | SKU: HEYKEL.TİP.01.02
+2026-04-16 20:52:34 [INFO] [3/16] https://yapimaks.com/heykel-bisikletli-cocuk-45-cm-1-adet-p15249
+2026-04-16 20:52:35 [INFO] [15249] 'HEYKEL BİSİKLETLİ ÇOCUK 45 CM 1 ADET' | 750,00 TL | SKU: HEYKEL.TİP.03.01
+2026-04-16 20:52:37 [INFO] [4/16] https://yapimaks.com/heykel-buyuk-kuzu-45-cm-p15248
+2026-04-16 20:52:37 [INFO] [15248] 'HEYKEL BÜYÜK KUZU 45 CM' | 1000,00 TL | SKU: HEYKEL.TİP.02.01
+2026-04-16 20:52:39 [INFO] [5/16] https://yapimaks.com/heykel-degirmen-60-cm-p15246
+2026-04-16 20:52:39 [INFO] [15246] 'HEYKEL DEĞİRMEN 60 CM' | 1000,00 TL | SKU: HEYKEL.TİP.01.03
+2026-04-16 20:52:41 [INFO] [6/16] https://yapimaks.com/heykel-esek-60-cm-p15247
+2026-04-16 20:52:41 [INFO] [15247] 'HEYKEL EŞEK 60 CM' | 1000,00 TL | SKU: HEYKEL.TİP.01.04
+2026-04-16 20:52:43 [INFO] [7/16] https://yapimaks.com/heykel-kartal-70-cm-p15244
+2026-04-16 20:52:43 [INFO] [15244] 'HEYKEL KARTAL 70 CM' | 1000,00 TL | SKU: HEYKEL.TİP.01.01
+2026-04-16 20:52:45 [INFO] [8/16] https://yapimaks.com/heykel-mantar-tavsan-cuce-sepetli-cocuk-1-adet-belirtiniz-45-cm-p15250
+2026-04-16 20:52:45 [INFO] [15250] 'HEYKEL MANTAR-TAVŞAN-CÜCE-SEPETLİ ÇOCUK ' | 700,00 TL | SKU: HEYKEL.TİP.04.01
+2026-04-16 20:52:47 [INFO] [9/16] https://yapimaks.com/heykel-sincap-tavuk-kucuk-kuzu-30-cm-1-adet-belirtiniz-p15251
+2026-04-16 20:52:47 [INFO] [15251] 'HEYKEL SİNCAP-TAVUK-KÜÇÜK KUZU 30 CM 1 A' | 500,00 TL | SKU: HEYKEL.TİP.05.01
+2026-04-16 20:52:49 [INFO] [10/16] https://yapimaks.com/iki-agiz-anahtar-27x32-elta-p15162
+2026-04-16 20:52:49 [INFO] [15162] 'İKİ AĞIZ ANAHTAR 27X32 - ELTA' | 325,00 TL | SKU: ELTA.0150.01.2732
+2026-04-16 20:52:51 [INFO] [11/16] https://yapimaks.com/koltuk-rattan-flash-eko-antrasit-p15229
+2026-04-16 20:52:51 [INFO] [15229] 'KOLTUK RATTAN FLASH EKO ANTRASİT' | 495,00 TL | SKU: SÖNMEZ.0395-3
+2026-04-16 20:52:53 [INFO] [12/16] https://yapimaks.com/koltuk-rattan-flash-eko-kahverengi-p1216
+2026-04-16 20:52:53 [INFO] [1216] 'KOLTUK RATTAN FLASH EKO KAHVERENGİ' | 495,00 TL | SKU: SÖNMEZ.0395-2
+2026-04-16 20:52:55 [INFO] [13/16] https://yapimaks.com/kose-citasi-fileli-pvc-beyaz-085x085-34x90grx250cm-p12151
+2026-04-16 20:52:55 [INFO] [12151] 'KÖŞE ÇITASI FİLELİ PVC BEYAZ 085X085 (34' | 37,50 TL | SKU: DARKSS.FK.08
+2026-04-16 20:52:57 [INFO] [14/16] https://yapimaks.com/oturma-takimi-uclu-leo-capucino-7-kisilik-p15198
+2026-04-16 20:52:57 [INFO] [15198] 'OTURMA TAKIMI ÜÇLÜ LEO CAPUCİNO 7 KİŞİLİ' | 37125,00 TL | SKU: SÖNMEZ.0012-4
+2026-04-16 20:52:59 [INFO] [15/16] https://yapimaks.com/oturma-takimi-uclu-leo-kahverengi-7-kisilik-p15199
+2026-04-16 20:52:59 [INFO] [15199] 'OTURMA TAKIMI ÜÇLÜ LEO KAHVERENGİ 7 KİŞİ' | 37125,00 TL | SKU: SÖNMEZ.0012-2
+2026-04-16 20:53:01 [INFO] [16/16] https://yapimaks.com/siva-filesi-kesik-140gr-20-500-4-4-beyaz-100m2-p15256
+2026-04-16 20:53:01 [INFO] [15256] 'SIVA FİLESİ KESİK 140GR (20*500*4*4 BEYA' | 2000,00 TL | SKU: DARKSS.SFK.05
+2026-04-16 20:53:03 [INFO] Tamamlandi! Toplam 16 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-16.csv
