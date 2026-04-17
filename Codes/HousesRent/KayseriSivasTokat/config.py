@@ -70,8 +70,8 @@ OVERRIDE_SCREEN_JS_PROPERTIES = True   # Patch window.screen.* to match
 # back-off before giving up and moving to the next bracket.
 # ---------------------------------------------------------------------------
 MAX_LOGIN_RETRIES_PER_BRACKET = 3    # Retries before permanently skipping
-LOGIN_RETRY_BACKOFF_BASE      = 30   # Base wait in seconds (doubles each retry)
-LOGIN_RETRY_BACKOFF_MAX       = 120  # Maximum wait cap in seconds
+LOGIN_RETRY_BACKOFF_BASE      = 120   # Base wait in seconds (doubles each retry)
+LOGIN_RETRY_BACKOFF_MAX       = 360  # Maximum wait cap in seconds
 
 # ---------------------------------------------------------------------------
 # Scraping limits
