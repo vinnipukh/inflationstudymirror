@@ -1,0 +1,64 @@
+2026-04-17 12:05:49 [INFO] ==================================================
+2026-04-17 12:05:49 [INFO] Yapimaks Scraper basliyor
+2026-04-17 12:05:49 [INFO] ==================================================
+2026-04-17 12:05:49 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-04-17 12:05:49 [INFO] Cookie basariyla alindi.
+2026-04-17 12:05:49 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-04-17 12:05:49 [INFO] Sitemap'ten toplam 8863 urun URL'si bulundu.
+2026-04-17 12:05:49 [INFO] Bugune ait veri yok. Eski veri (2026-04-16.csv) süzülerek bugune aktariliyor...
+2026-04-17 12:05:49 [INFO] Basarili! 8837 urun dunden bugune aktarildi.
+2026-04-17 12:05:49 [INFO] Guncel dosyada hazir olan urun: 8837 | Sifirdan cekilecek (yeni) urun: 26
+2026-04-17 12:05:49 [INFO] 26 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-17.csv
+2026-04-17 12:05:49 [INFO] [1/26] https://yapimaks.com/asma-kilit-gri-38mm-uzun-ymk-1238l-p15262
+2026-04-17 12:05:49 [INFO] [15262] 'ASMA KİLİT GRİ 38MM-UZUN (YMK 1238L)' | 50,00 TL | SKU: YMK.1238L
+2026-04-17 12:05:51 [INFO] [2/26] https://yapimaks.com/asma-kilit-sari-32mm-uzun-ym2032-p15263
+2026-04-17 12:05:51 [INFO] [15263] 'ASMA KİLİT SARI 32MM UZUN YM2032' | 315,00 TL | SKU: YUMA.YM2032
+2026-04-17 12:05:53 [INFO] [3/26] https://yapimaks.com/atlas-mavi-20x20-2k-0-72m2-p15291
+2026-04-17 12:05:53 [INFO] [15291] 'ATLAS MAVİ 20X20 2K (0,72M2)' | 378,00 TL | SKU: EGESER.200X200ATS04.2K
+2026-04-17 12:05:55 [INFO] [4/26] https://yapimaks.com/canzone-kahve-33x33-1k-1-m2-p15282
+2026-04-17 12:05:56 [INFO] [15282] 'CANZONE KAHVE 33X33 1K (1 M2)' | 615,00 TL | SKU: EGESER.330X330CNZ06
+2026-04-17 12:05:58 [INFO] [5/26] https://yapimaks.com/capitol-acik-gri-60x120-1k-mat-rek-2-16m2-p15292
+2026-04-17 12:05:58 [INFO] [15292] 'CAPİTOL AÇIK GRİ 60X120 1K MAT REK (2,16' | 1449,00 TL | SKU: EGESER.600X1200CPT47REK
+2026-04-17 12:06:00 [INFO] [6/26] https://yapimaks.com/duvarci-malasi-no-20-kristal-p15264
+2026-04-17 12:06:00 [INFO] [15264] 'DUVARCI MALASI NO:20 KRİSTAL' | 250,00 TL | SKU: KRİSTAL.36923
+2026-04-17 12:06:02 [INFO] [7/26] https://yapimaks.com/eviye-420290-35x40-tezalt-mk435-0-6mm-3-1-2-pcelik-p15259
+2026-04-17 12:06:02 [INFO] [15259] 'EVİYE 420290 35X40 TEZALT MK435 0,6MM 3 ' | 1500,00 TL | SKU: PERA.00420290
+2026-04-17 12:06:04 [INFO] [8/26] https://yapimaks.com/isaretleme-kalemi-siyah-pm-720-p15273
+2026-04-17 12:06:04 [INFO] [15273] 'İŞARETLEME KALEMİ SİYAH PM-720' | 60,00 TL | SKU: WONDER.STW01052
+2026-04-17 12:06:06 [INFO] [9/26] https://yapimaks.com/isaretleme-kalemi-yesil-pm-720-p15274
+2026-04-17 12:06:06 [INFO] [15274] 'İŞARETLEME KALEMİ YEŞİL PM-720' | 60,00 TL | SKU: WONDER.STW01055
+2026-04-17 12:06:08 [INFO] [10/26] https://yapimaks.com/organizer-24-mano-org-24-p15279
+2026-04-17 12:06:08 [INFO] [15279] 'ORGANİZER 24" MANO ORG-24' | 425,00 TL | SKU: MANO.ORG-24
+2026-04-17 12:06:10 [INFO] [11/26] https://yapimaks.com/oturma-takimi-uclu-leo-antrasit-5-kisilik-p12322
+2026-04-17 12:06:10 [INFO] [12322] 'OTURMA TAKIMI ÜÇLÜ LEO ANTRASİT 5 KİŞİLİ' | 34650,00 TL | SKU: SÖNMEZ.0012A
+2026-04-17 12:06:12 [INFO] [12/26] https://yapimaks.com/oturma-takimi-uclu-leo-gri-5-kisilik-p12272
+2026-04-17 12:06:12 [INFO] [12272] 'OTURMA TAKIMI ÜÇLÜ LEO GRİ 5 KİŞİLİK' | 34650,00 TL | SKU: SÖNMEZ.0012-5
+2026-04-17 12:06:14 [INFO] [13/26] https://yapimaks.com/passion-beyaz-33x33-1k-1-m2-p15290
+2026-04-17 12:06:14 [INFO] [15290] 'PASSION BEYAZ 33X33 1K (1 M2)' | 480,00 TL | SKU: EGESER.330X330PSN01
+2026-04-17 12:06:16 [INFO] [14/26] https://yapimaks.com/passion-taupe-33x33-1k-1-m2-p15289
+2026-04-17 12:06:16 [INFO] [15289] 'PASSION TAUPE 33X33 1K (1 M2)' | 480,00 TL | SKU: EGESER.330X330PSN34
+2026-04-17 12:06:18 [INFO] [15/26] https://yapimaks.com/sds-plus-matkap-ucu-dort-elmasli-6x160-mm-p15275
+2026-04-17 12:06:18 [INFO] [15275] 'SDS PLUS MATKAP UCU DÖRT ELMASLI 6x160 M' | 45,00 TL | SKU: WONDER.STW013952
+2026-04-17 12:06:20 [INFO] [16/26] https://yapimaks.com/selsil-sivi-gres-zincir-yaglayici-500ml-p15266
+2026-04-17 12:06:20 [INFO] [15266] 'SELSİL SIVI GRES ZİNCİR YAĞLAYICI 500ML' | 150,00 TL | SKU: SELSİL.SIVIGRES.01
+2026-04-17 12:06:22 [INFO] [17/26] https://yapimaks.com/sunta-kesme-testere-180x24x22-2-wonder-p15277
+2026-04-17 12:06:22 [INFO] [15277] 'SUNTA KESME TESTERE 180x24x22.2 WONDER' | 399,00 TL | SKU: WONDER.STW01863
+2026-04-17 12:06:24 [INFO] [18/26] https://yapimaks.com/takim-cantasi-klasik-co-21-mano-p15281
+2026-04-17 12:06:24 [INFO] [15281] 'TAKIM ÇANTASI KLASİK  CO-21 MANO' | 695,00 TL | SKU: MANO.M01004
+2026-04-17 12:06:26 [INFO] [19/26] https://yapimaks.com/takim-cantasi-metal-kilitli-jmt-19-mano-p15284
+2026-04-17 12:06:26 [INFO] [15284] 'TAKIM ÇANTASI METAL KİLİTLİ JMT-19 MANO' | 750,00 TL | SKU: MANO.M01033
+2026-04-17 12:06:28 [INFO] [20/26] https://yapimaks.com/takim-cantasi-metal-kilitli-mt-26-mano-p15278
+2026-04-17 12:06:28 [INFO] [15278] 'TAKIM ÇANTASI METAL KİLİTLİ MT-26 MANO' | 1300,00 TL | SKU: MANO.M01098
+2026-04-17 12:06:30 [INFO] [21/26] https://yapimaks.com/takim-cantasi-profesyonel-jpt-19-mano-p15286
+2026-04-17 12:06:31 [INFO] [15286] 'TAKIM ÇANTASI PROFESYONEL JPT-19 MANO' | 620,00 TL | SKU: MANO.M01038
+2026-04-17 12:06:33 [INFO] [22/26] https://yapimaks.com/takim-cantasi-profesyonel-jpt-22-mano-p15287
+2026-04-17 12:06:33 [INFO] [15287] 'TAKIM ÇANTASI PROFESYONEL JPT-22 MANO' | 1100,00 TL | SKU: MANO.M01039
+2026-04-17 12:06:35 [INFO] [23/26] https://yapimaks.com/tutkal-ahsap-beyaz-1-1-su-bazli-700-gr-pass-p12346
+2026-04-17 12:06:35 [INFO] [12346] 'TUTKAL AHŞAP BEYAZ 1/1 SU BAZLI 700 GR P' | 275,00 TL | SKU: PASS.PT12
+2026-04-17 12:06:37 [INFO] [24/26] https://yapimaks.com/yer-isaretleme-bandi-50x27-5-kirmizi-beyaz-p15268
+2026-04-17 12:06:37 [INFO] [15268] 'YER İŞARETLEME BANDI 50X27,5 KIRMIZI-BEY' | 165,00 TL | SKU: STK.08054
+2026-04-17 12:06:39 [INFO] [25/26] https://yapimaks.com/yer-isaretleme-bandi-50x27-5-sari-siyah-p15269
+2026-04-17 12:06:39 [INFO] [15269] 'YER İŞARETLEME BANDI 50X27,5 SARI-SİYAH' | 165,00 TL | SKU: STK.08053
+2026-04-17 12:06:41 [INFO] [26/26] https://yapimaks.com/yer-isaretleme-bandi-50x27-5-sari-siyah-p15270
+2026-04-17 12:06:41 [INFO] [15270] 'YER İŞARETLEME BANDI 50X27,5 SARI-SİYAH' | 165,00 TL | SKU: WONDER.WBYİ5028
+2026-04-17 12:06:43 [INFO] Tamamlandi! Toplam 26 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-17.csv
