@@ -1,0 +1,48 @@
+2026-04-19 13:55:50 [INFO] ==================================================
+2026-04-19 13:55:50 [INFO] Yapimaks Scraper basliyor
+2026-04-19 13:55:50 [INFO] ==================================================
+2026-04-19 13:55:50 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-04-19 13:55:50 [INFO] Cookie basariyla alindi.
+2026-04-19 13:55:50 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-04-19 13:55:50 [INFO] Sitemap'ten toplam 8878 urun URL'si bulundu.
+2026-04-19 13:55:50 [INFO] Bugune ait veri yok. Eski veri (2026-04-18.csv) süzülerek bugune aktariliyor...
+2026-04-19 13:55:50 [INFO] Basarili! 8860 urun dunden bugune aktarildi.
+2026-04-19 13:55:50 [INFO] Guncel dosyada hazir olan urun: 8860 | Sifirdan cekilecek (yeni) urun: 18
+2026-04-19 13:55:50 [INFO] 18 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-19.csv
+2026-04-19 13:55:50 [INFO] [1/18] https://yapimaks.com/bosch-daire-testere-305x30-mm-100-dis-p15276
+2026-04-19 13:55:50 [INFO] [15276] 'BOSCH DAİRE TESTERE 305X30 MM 100 DİŞ' | 2750,00 TL | SKU: BOSCH.BHYT2608644386
+2026-04-19 13:55:52 [INFO] [2/18] https://yapimaks.com/bosch-daire-testere-sunta-kesme-190-30-24-dis-p11010
+2026-04-19 13:55:52 [INFO] [11010] 'BOSCH DAİRE TESTERE (SUNTA KESME)190*30*' | 620,00 TL | SKU: BOSCH.BHYT2608644376
+2026-04-19 13:55:54 [INFO] [3/18] https://yapimaks.com/bosch-daire-testere-sunta-kesme-190-30-48-dis-p12973
+2026-04-19 13:55:55 [INFO] [12973] 'BOSCH DAİRE TESTERE (SUNTA KESME)190*30*' | 750,00 TL | SKU: BOSCH.BHYT2608644377
+2026-04-19 13:55:57 [INFO] [4/18] https://yapimaks.com/derzmatik-beyaz-450-gr-p15267
+2026-04-19 13:55:57 [INFO] [15267] 'DERZMATİK BEYAZ 450 GR.' | 100,00 TL | SKU: DERZMATİK.04
+2026-04-19 13:55:59 [INFO] [5/18] https://yapimaks.com/klozet-kapak-leylak-yavas-kapanir-cocuk-oturakli-ustten-plastik-mentese-likya-kapya-era-p15257
+2026-04-19 13:55:59 [INFO] [15257] 'KLOZET KAPAK LEYLAK YAVAŞ KAPANIR ÇOCUK ' | 425,00 TL | SKU: VİSAM.529.005
+2026-04-19 13:56:01 [INFO] [6/18] https://yapimaks.com/macun-kurek-ahsap-sapli-18-cm-056-p15265
+2026-04-19 13:56:01 [INFO] [15265] 'MACUN KÜREK AHŞAP SAPLI 18 CM 056' | 375,00 TL | SKU: DEKOR.056
+2026-04-19 13:56:03 [INFO] [7/18] https://yapimaks.com/macun-kurek-ahsap-sapli-20-cm-057-p15137
+2026-04-19 13:56:03 [INFO] [15137] 'MACUN KÜREK AHŞAP SAPLI 20 CM 057' | 379,00 TL | SKU: DEKOR.057
+2026-04-19 13:56:05 [INFO] [8/18] https://yapimaks.com/salincak-tek-sepet-tenteli-bahce-mob-czm-p1790
+2026-04-19 13:56:05 [INFO] [1790] 'SALINCAK TEK SEPET TENTELİ BAHÇE MOB.- C' | 9500,00 TL | SKU: CZM.003
+2026-04-19 13:56:07 [INFO] [9/18] https://yapimaks.com/takim-cantasi-14-hoby-plastik-kilit-h-14-mano-p15283
+2026-04-19 13:56:07 [INFO] [15283] 'TAKIM ÇANTASI 14" HOBY PLASTİK KİLİT H-1' | 1560,00 TL | SKU: MANO.H-14
+2026-04-19 13:56:09 [INFO] [10/18] https://yapimaks.com/takim-cantasi-16-klasik-plastik-kilit-co-16-mano-p15280
+2026-04-19 13:56:09 [INFO] [15280] 'TAKIM ÇANTASI 16" KLASİK PLASTİK KİLİT C' | 315,00 TL | SKU: MANO.CO-16
+2026-04-19 13:56:11 [INFO] [11/18] https://yapimaks.com/takim-cantasi-16-profesyonel-plastik-kilit-jpt-16-mano-p15285
+2026-04-19 13:56:11 [INFO] [15285] 'TAKIM ÇANTASI 16" PROFESYONEL PLASTİK Kİ' | 435,00 TL | SKU: MANO.JPT-16
+2026-04-19 13:56:13 [INFO] [12/18] https://yapimaks.com/takim-cantasi-19-metal-kilitli-jmt-19-mano-p15284
+2026-04-19 13:56:13 [INFO] [15284] 'TAKIM ÇANTASI 19" METAL KİLİTLİ JMT-19 M' | 750,00 TL | SKU: MANO.JMT-19
+2026-04-19 13:56:15 [INFO] [13/18] https://yapimaks.com/takim-cantasi-19-profesyonel-jumpo-metal-kilit-jpt-19-mano-p15286
+2026-04-19 13:56:15 [INFO] [15286] 'TAKIM ÇANTASI 19" PROFESYONEL JUMPO META' | 620,00 TL | SKU: MANO.JPT-19
+2026-04-19 13:56:17 [INFO] [14/18] https://yapimaks.com/takim-cantasi-21-klasik-plastik-kilit-co-21-mano-p15281
+2026-04-19 13:56:17 [INFO] [15281] 'TAKIM ÇANTASI 21" KLASİK PLASTİK KİLİT C' | 695,00 TL | SKU: MANO.CO-21
+2026-04-19 13:56:19 [INFO] [15/18] https://yapimaks.com/takim-cantasi-22-profesyonel-jumbo-plastik-kilit-jpt-22-mano-p15287
+2026-04-19 13:56:19 [INFO] [15287] 'TAKIM ÇANTASI 22" PROFESYONEL JUMBO PLAS' | 1100,00 TL | SKU: MANO.JPT-22
+2026-04-19 13:56:21 [INFO] [16/18] https://yapimaks.com/takim-cantasi-26-metal-kilitli-mt-26-mano-p15278
+2026-04-19 13:56:21 [INFO] [15278] 'TAKIM ÇANTASI 26" METAL KİLİTLİ MT-26 MA' | 1300,00 TL | SKU: MANO.MT-26
+2026-04-19 13:56:23 [INFO] [17/18] https://yapimaks.com/tamir-bandi-camur-sakiz-100-mmx2-mt-p15271
+2026-04-19 13:56:23 [INFO] [15271] 'TAMİR BANDI ÇAMUR/SAKIZ 100 MMX2 MT' | 99,00 TL | SKU: WONDER.WBÇ1002
+2026-04-19 13:56:25 [INFO] [18/18] https://yapimaks.com/tamir-bandi-camur-sakiz-50-mmx2-mt-p15272
+2026-04-19 13:56:25 [INFO] [15272] 'TAMİR BANDI ÇAMUR/SAKIZ 50 MMX2 MT' | 50,00 TL | SKU: WONDER.WBÇ0502
+2026-04-19 13:56:27 [INFO] Tamamlandi! Toplam 18 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-19.csv

@@ -1,0 +1,20 @@
+2026-04-20 09:09:17 [INFO] ==================================================
+2026-04-20 09:09:17 [INFO] Yapimaks Scraper basliyor
+2026-04-20 09:09:17 [INFO] ==================================================
+2026-04-20 09:09:17 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-04-20 09:09:17 [INFO] Cookie basariyla alindi.
+2026-04-20 09:09:17 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-04-20 09:09:17 [INFO] Sitemap'ten toplam 8878 urun URL'si bulundu.
+2026-04-20 09:09:17 [INFO] Bugune ait veri yok. Eski veri (2026-04-19.csv) süzülerek bugune aktariliyor...
+2026-04-20 09:09:17 [INFO] Basarili! 8878 urun dunden bugune aktarildi.
+2026-04-20 09:09:17 [INFO] Guncel dosyada hazir olan urun: 8878 | Sifirdan cekilecek (yeni) urun: 0
+2026-04-20 09:09:17 [INFO] Sitemap'teki tum urunler zaten dosyamizda var, cikiliyor.
+2026-04-20 23:50:07 [INFO] ==================================================
+2026-04-20 23:50:07 [INFO] Yapimaks Scraper basliyor
+2026-04-20 23:50:07 [INFO] ==================================================
+2026-04-20 23:50:07 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-04-20 23:50:08 [INFO] Cookie basariyla alindi.
+2026-04-20 23:50:08 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-04-20 23:50:08 [INFO] Sitemap'ten toplam 8878 urun URL'si bulundu.
+2026-04-20 23:50:08 [INFO] Guncel dosyada hazir olan urun: 8878 | Sifirdan cekilecek (yeni) urun: 0
+2026-04-20 23:50:08 [INFO] Sitemap'teki tum urunler zaten dosyamizda var, cikiliyor.

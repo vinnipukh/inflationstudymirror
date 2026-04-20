@@ -1,0 +1,18 @@
+2026-04-18 10:53:13 [INFO] ==================================================
+2026-04-18 10:53:13 [INFO] Yapimaks Scraper basliyor
+2026-04-18 10:53:13 [INFO] ==================================================
+2026-04-18 10:53:13 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-04-18 10:53:14 [INFO] Cookie basariyla alindi.
+2026-04-18 10:53:14 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-04-18 10:53:14 [INFO] Sitemap'ten toplam 8866 urun URL'si bulundu.
+2026-04-18 10:53:14 [INFO] Bugune ait veri yok. Eski veri (2026-04-17.csv) süzülerek bugune aktariliyor...
+2026-04-18 10:53:14 [INFO] Basarili! 8863 urun dunden bugune aktarildi.
+2026-04-18 10:53:14 [INFO] Guncel dosyada hazir olan urun: 8863 | Sifirdan cekilecek (yeni) urun: 3
+2026-04-18 10:53:14 [INFO] 3 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-18.csv
+2026-04-18 10:53:14 [INFO] [1/3] https://yapimaks.com/eldiven-pu-touch-siyah-montaj-eldiveni-no-10-p15260
+2026-04-18 10:53:14 [INFO] [15260] 'ELDİVEN PU TOUCH SİYAH MONTAJ ELDİVENİ N' | 45,00 TL | SKU: BEYBİ.i040204
+2026-04-18 10:53:16 [INFO] [2/3] https://yapimaks.com/eldiven-pu-touch-siyah-montaj-eldiveni-no-7-p15261
+2026-04-18 10:53:16 [INFO] [15261] 'ELDİVEN PU TOUCH SİYAH MONTAJ ELDİVENİ N' | 45,00 TL | SKU: BEYBİ.İ040205
+2026-04-18 10:53:18 [INFO] [3/3] https://yapimaks.com/takim-cantasi-5-gozlu-metal-195x300x200-izeltas-p15288
+2026-04-18 10:53:18 [INFO] [15288] 'TAKIM ÇANTASI 5 GÖZLÜ METAL 195X300X200 ' | 2890,00 TL | SKU: İZELTAŞ.8420.33.6105
+2026-04-18 10:53:20 [INFO] Tamamlandi! Toplam 3 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-18.csv
