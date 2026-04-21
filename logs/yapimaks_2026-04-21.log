@@ -1,0 +1,22 @@
+2026-04-21 08:55:35 [INFO] ==================================================
+2026-04-21 08:55:35 [INFO] Yapimaks Scraper basliyor
+2026-04-21 08:55:35 [INFO] ==================================================
+2026-04-21 08:55:35 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-04-21 08:55:35 [INFO] Cookie basariyla alindi.
+2026-04-21 08:55:35 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-04-21 08:55:36 [INFO] Sitemap'ten toplam 8882 urun URL'si bulundu.
+2026-04-21 08:55:36 [INFO] Bugune ait veri yok. Eski veri (2026-04-20.csv) süzülerek bugune aktariliyor...
+2026-04-21 08:55:36 [INFO] Basarili! 8877 urun dunden bugune aktarildi.
+2026-04-21 08:55:36 [INFO] Guncel dosyada hazir olan urun: 8877 | Sifirdan cekilecek (yeni) urun: 5
+2026-04-21 08:55:36 [INFO] 5 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-21.csv
+2026-04-21 08:55:36 [INFO] [1/5] https://yapimaks.com/musluk-adaptoru-1-2-3-4-dy8024gl-p15301
+2026-04-21 08:55:36 [INFO] [15301] 'MUSLUK ADAPTÖRÜ 1/2-3/4 DY8024GL' | 60,00 TL | SKU: DAYE.8024GL
+2026-04-21 08:55:38 [INFO] [2/5] https://yapimaks.com/sprey-tabanca-6-fonksiyonlu-hortum-baglantili-daye-dy2423-p13494
+2026-04-21 08:55:38 [INFO] [13494] 'SPREY TABANCA 6 FONKSİYONLU HORTUM BAĞLA' | 275,00 TL | SKU: DAYE.2423
+2026-04-21 08:55:40 [INFO] [3/5] https://yapimaks.com/sprey-tabanca-metal-uclu-daye-dy2091-p15299
+2026-04-21 08:55:40 [INFO] [15299] 'SPREY TABANCA METAL UÇLU DAYE DY2091' | 550,00 TL | SKU: DAYE.2091
+2026-04-21 08:55:42 [INFO] [4/5] https://yapimaks.com/su-deposu-5000-lt-3-kat-mavi-foseptik-p15297
+2026-04-21 08:55:42 [INFO] [15297] 'SU DEPOSU 5000 LT 3 KAT MAVİ FOSEPTİK' |  TL | SKU: SU DEPOSU.5000.004
+2026-04-21 08:55:44 [INFO] [5/5] https://yapimaks.com/sunta-vidasi-6x120-std-20-adt-p15294
+2026-04-21 08:55:44 [INFO] [15294] 'SUNTA VİDASI 6x120 STD 20 ADT' | 70,00 TL | SKU: STD.9002047001
+2026-04-21 08:55:46 [INFO] Tamamlandi! Toplam 5 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-21.csv
