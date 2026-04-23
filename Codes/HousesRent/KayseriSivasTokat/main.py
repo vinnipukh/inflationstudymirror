@@ -17,16 +17,19 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 HELP_TEXT = """
-╔══════════════════════════════════════════╗
-║         Konsol Komutları                 ║
-╠══════════════════════════════════════════╣
-║  ok     → Manuel doğrulamayı onayla     ║
-║  skip   → Mevcut şehri atla             ║
-║  next   → Mevcut bracket'ı atla         ║
-║  stop   → Scraper'ı durdur              ║
-║  status → Mevcut durumu göster          ║
-║  help   → Bu listeyi göster             ║
-╚══════════════════════════════════════════╝
+╔══════════════════════════════════════════════╗
+║           Konsol Komutları                   ║
+╠══════════════════════════════════════════════╣
+║  ok        → Manuel doğrulamayı onayla      ║
+║  pause     → Scraper'ı duraklatır           ║
+║  go        → Duraklatan scraper'ı devam et  ║
+║  wait N    → N saniye bekle (örn: wait 30)  ║
+║  skip      → Mevcut şehri atla              ║
+║  next      → Mevcut bracket'ı atla          ║
+║  stop      → Scraper'ı durdur               ║
+║  status    → Mevcut durumu göster           ║
+║  help      → Bu listeyi göster              ║
+╚══════════════════════════════════════════════╝
 """
 
 _current_status: dict = {"city": "-", "bracket": "-", "page": "-"}
@@ -48,9 +51,13 @@ def print_status():
 
 def console_listener(cmd_queue, stop_event):
     """
-    Single owner of stdin. wait_for_manual_solve() must NEVER call input() —
-    it reads from cmd_queue instead, avoiding the stdin deadlock that caused
-    CLI commands to stop working and human-click steps to hang indefinitely.
+    Single owner of stdin.  Parses commands and pushes them to cmd_queue.
+
+    Plain strings are pushed as-is.
+    `wait N` is pushed as the tuple ("wait", N) so the async side can
+    await the sleep without blocking this thread.
+    `pause` and `go` are pushed as plain strings; the async check_commands
+    handler manipulates the _pause_event accordingly.
     """
     while not stop_event.is_set():
         try:
@@ -64,7 +71,15 @@ def console_listener(cmd_queue, stop_event):
             print(HELP_TEXT)
         elif cmd == "status":
             print_status()
-        elif cmd in ("skip", "next", "stop", "ok", "devam"):
+        elif cmd.startswith("wait "):
+            parts = cmd.split()
+            if len(parts) == 2 and parts[1].isdigit():
+                secs = int(parts[1])
+                cmd_queue.put(("wait", secs))
+                logger.info("⚡ Komut alındı: 'wait %d'", secs)
+            else:
+                print("Kullanım: wait <saniye>  (örn: wait 30)")
+        elif cmd in ("skip", "next", "stop", "ok", "devam", "pause", "go"):
             cmd_queue.put(cmd)
             logger.info("⚡ Komut alındı: '%s'", cmd)
         else:

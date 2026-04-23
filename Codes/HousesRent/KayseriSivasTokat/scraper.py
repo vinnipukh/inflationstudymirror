@@ -45,14 +45,43 @@ class BrowserBlockedError(Exception): pass
 
 
 # ---------------------------------------------------------------------------
+# Phase 1 — Pause/resume event
+#
+# _pause_event is set (= running) by default.  When the user types "pause"
+# the event is cleared; interruptible_sleep keeps polling the queue but does
+# not advance its countdown, effectively freezing the scraper.  When "go"
+# arrives the event is set again and normal execution resumes.
+# ---------------------------------------------------------------------------
+
+_pause_event = asyncio.Event()
+_pause_event.set()  # start in the "running" state
+
+
+# ---------------------------------------------------------------------------
 # Command queue helpers
 # ---------------------------------------------------------------------------
 
-def check_commands(cmd_queue):
-    """Drain the command queue without blocking; raise the matching signal."""
+async def check_commands(cmd_queue):
+    """
+    Drain the command queue and raise the appropriate signal.
+
+    Now async so it can sleep in-place for `wait X` and block for `pause`.
+    Items in the queue are either plain strings or (\"wait\", seconds) tuples.
+    """
     try:
         while True:
-            cmd = cmd_queue.get_nowait().strip().lower()
+            item = cmd_queue.get_nowait()
+
+            # --- Tuple commands ---
+            if isinstance(item, tuple) and item[0] == "wait":
+                secs = item[1]
+                logger.info("⏸  %ds bekleniyor (wait komutu)...", secs)
+                await asyncio.sleep(secs)
+                logger.info("▶  Bekleme tamamlandı, devam ediliyor.")
+                continue
+
+            cmd = item.strip().lower() if isinstance(item, str) else ""
+
             if cmd in ("skip", "skip city"):
                 raise SkipCitySignal()
             elif cmd in ("next", "skip bracket"):
@@ -61,15 +90,33 @@ def check_commands(cmd_queue):
                 raise StopSignal()
             elif cmd in ("ok", "devam", "continue"):
                 logger.info("✅ 'ok' komutu alındı.")
+            elif cmd == "pause":
+                _pause_event.clear()
+                print("\n⏸️  Scraper duraklatıldı.  Devam etmek için 'go' yazın.\n")
+            elif cmd == "go":
+                _pause_event.set()
+                logger.info("▶  'go' alındı — scraper devam ediyor.")
+
     except queue.Empty:
         pass
 
 
 async def interruptible_sleep(seconds, cmd_queue):
-    """Sleep for `seconds` but wake every 0.5 s to honour CLI commands."""
+    """
+    Sleep for `seconds`, waking every 0.5 s to honour CLI commands.
+
+    When paused (pause_event cleared), the countdown is frozen: the function
+    keeps looping and polling the queue without advancing `end_time`, so the
+    scraper is effectively halted until `go` arrives.
+    """
     end_time = time.time() + seconds
     while time.time() < end_time:
-        check_commands(cmd_queue)
+        if not _pause_event.is_set():
+            # Scraper is paused — poll queue but don't advance timer
+            await check_commands(cmd_queue)
+            await asyncio.sleep(0.5)
+            continue
+        await check_commands(cmd_queue)
         await asyncio.sleep(min(0.5, end_time - time.time()))
 
 
@@ -236,7 +283,7 @@ async def enforce_viewport(page):
         )
 
     await page.set_viewport_size({
-        "width": config.FORCE_VIEWPORT_WIDTH,
+        "width":  config.FORCE_VIEWPORT_WIDTH,
         "height": config.FORCE_VIEWPORT_HEIGHT,
     })
 
@@ -1277,7 +1324,7 @@ async def scrape_adaptive_bracket(
     pages_this_session = getattr(scrape_adaptive_bracket, "_session_page_count", 0)
 
     while page_num < max_pages:
-        check_commands(cmd_queue)
+        await check_commands(cmd_queue)
         next_btn = soup.find("a", title="Sonraki")
         if not next_btn or "href" not in next_btn.attrs:
             logger.info("%s📄 Son sayfa: %d", pad, page_num)
@@ -1434,7 +1481,46 @@ def save_incremental(city_name, batch):
 
 # ---------------------------------------------------------------------------
 # Checkpoint
+#
+# Format: {"city": slug, "bracket_index": int, "page_num": int, "saved_at": iso}
+#
+# bracket_index = the last FULLY COMPLETED top-level bracket (0–4).
+# On resume, scrape_city_brackets starts from bracket_index+1.
+#
+# When a city finishes completely a separate marker file is written:
+#   checkpoints/done_{city_slug}_{date}.json
+# This makes it easy to see at a glance what was completed that day.
 # ---------------------------------------------------------------------------
+
+def _completion_marker_path(city_slug: str) -> str:
+    import datetime as _dt2
+    today = _dt2.date.today().strftime("%Y-%m-%d")
+    return os.path.join(config.CHECKPOINT_DIR, f"done_{city_slug}_{today}.json")
+
+
+def mark_city_done(city_slug: str, city_name: str, total_records: int):
+    """Write a completion marker so we can see the city finished this day."""
+    os.makedirs(config.CHECKPOINT_DIR, exist_ok=True)
+    path = _completion_marker_path(city_slug)
+    try:
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump({
+                "city":          city_slug,
+                "city_name":     city_name,
+                "total_records": total_records,
+                "completed_at":  datetime.now().isoformat(),
+            }, f, indent=2)
+        print(f"\n{'🏁' * 30}")
+        print(f"  ✅ {city_name.upper()} TAMAMEN TARANDIIII — {total_records} kayıt")
+        print(f"{'🏁' * 30}\n")
+    except Exception as e:
+        logger.debug("Tamamlama işareti yazılamadı: %s", e)
+
+
+def is_city_done_today(city_slug: str) -> bool:
+    """Return True if this city already has a completion marker for today."""
+    return os.path.exists(_completion_marker_path(city_slug))
+
 
 def load_checkpoint():
     cp = config.get_checkpoint_file()
@@ -1457,7 +1543,8 @@ def load_checkpoint():
 def save_checkpoint(city_slug, bracket_index, page_num):
     """
     Atomic write via temp-file + os.replace().
-    bracket_index is ALWAYS the enumeration index (0–4), never a price.
+    bracket_index is ALWAYS the enumeration index (0–4) of the last
+    FULLY COMPLETED top-level bracket — never a price value.
     """
     os.makedirs(config.CHECKPOINT_DIR, exist_ok=True)
     target = config.get_checkpoint_file()
@@ -1489,90 +1576,157 @@ def clear_checkpoint():
 
 
 def get_resume_point(checkpoint, city_slug):
+    """
+    Returns (last_completed_bracket_index, page_num).
+
+    last_completed_bracket_index is the index of the LAST FULLY COMPLETED
+    bracket.  scrape_city_brackets will start from this index + 1.
+    Returns (-1, 1) when there is no checkpoint (meaning start from 0).
+    """
     if checkpoint.get("city") == city_slug:
-        return checkpoint.get("bracket_index", 0), checkpoint.get("page_num", 1)
-    return 0, 1
+        return checkpoint.get("bracket_index", -1), checkpoint.get("page_num", 1)
+    return -1, 1
 
 
 # ---------------------------------------------------------------------------
-# FIX #4 — Global cookie store
+# Phase 3 — Cookie Pool & Organic Scrubbing
 #
-# All three cities share the same domain (sahibinden.com), so their cookies
-# are domain-scoped and interchangeable.  Per-city files were artificial,
-# caused warmup to repeat unnecessarily for each city, and left orphaned
-# stale files when a login block deleted only one city's cookies.
+# Instead of a single global_sahibinden_cookies.json we maintain a pool of
+# 3-5 independent jar files (jar_0.json … jar_4.json).  Each browser session
+# randomly picks one jar, making the scraper look like 3-5 different humans
+# returning to the site rather than one human scraping thousands of pages.
 #
-# THE FIX: one file — global_sahibinden_cookies.json — for all cities.
+# On login block the active jar is deleted entirely; other jars are unaffected
+# so the next attempt can try a different identity.
+#
+# Organic scrubbing: analytics/ad-tracking cookies (_ga, _fbp, etc.) are
+# purged with a 20% probability on each save, mimicking a user who clears
+# third-party cookies occasionally.  Cloudflare / security cookies are NEVER
+# scrubbed — dropping cf_clearance or _px cookies triggers an instant re-CAPTCHA.
 # ---------------------------------------------------------------------------
 
-_COOKIE_DIR_CREATED = False
+_COOKIE_POOL_SIZE = 4      # Number of jars in the pool (3-5 recommended)
+_ACTIVE_JAR_INDEX = None   # Set at the start of each scrape_city call
+
+# Cookies whose names START WITH any of these prefixes are protected — never scrub
+_COOKIE_WHITELIST_PREFIXES = (
+    "cf_",        # Cloudflare: cf_clearance, cf_bm, cf_chl_*
+    "_px",        # PerimeterX: _px, _pxhd, _pxde, _pxvid
+    "__cf",       # Cloudflare internal
+    "__Secure-3P",# Google secure session cookies
+    "PHPSESSID",  # PHP session
+    "sid",        # Generic session id
+    "user",       # User auth
+    "auth",       # Auth tokens
+    "token",      # Any token cookie
+)
+
+# Cookies whose names match exactly or start with these are analytics/tracking
+# — eligible for random scrubbing
+_COOKIE_TRACKING_NAMES = (
+    "_ga", "_gid", "_gat",          # Google Analytics
+    "_fbp", "_fbc",                  # Facebook Pixel
+    "_tt_enable_cookie", "_ttp",     # TikTok
+    "IDE", "DSID", "__gads",         # Google Ads
+    "fr",                            # Facebook
+    "taboola_",                      # Taboola
+    "hotjar",                        # Hotjar
+)
 
 
-def _ensure_cookie_dir():
-    global _COOKIE_DIR_CREATED
-    cd = os.path.join(config.CHECKPOINT_DIR, "cookies")
-    if not _COOKIE_DIR_CREATED:
-        os.makedirs(cd, exist_ok=True)
-        _COOKIE_DIR_CREATED = True
+def _cookie_dir():
+    """Ensure and return the cookie pool directory path."""
+    cd = os.path.join(config.CHECKPOINT_DIR, "cookie_pools")
+    os.makedirs(cd, exist_ok=True)
     return cd
 
 
-def get_global_cookie_path():
-    """Path to the single shared cookie file for all cities."""
-    return os.path.join(_ensure_cookie_dir(), "global_sahibinden_cookies.json")
+def _jar_path(index: int) -> str:
+    return os.path.join(_cookie_dir(), f"jar_{index}.json")
 
 
-def _migrate_legacy_cookies():
+def _is_protected_cookie(name: str) -> bool:
+    """Return True if this cookie must NEVER be scrubbed."""
+    nl = name.lower()
+    return any(nl.startswith(p.lower()) for p in _COOKIE_WHITELIST_PREFIXES)
+
+
+def _is_tracking_cookie(name: str) -> bool:
+    """Return True if this cookie is analytics/ad-tracking and eligible for scrubbing."""
+    nl = name.lower()
+    return any(nl == t.lower() or nl.startswith(t.lower()) for t in _COOKIE_TRACKING_NAMES)
+
+
+def scrub_tracking_cookies(cookie_list: list) -> list:
     """
-    One-time migration: merge old per-city cookie files into the global file.
-    Runs silently at startup; no-ops if global file already exists.
+    Organically purge analytics/tracking cookies before saving a jar.
+
+    Called with a 20% probability on each save so the same tracking IDs
+    are not associated with thousands of page views — mimicking a real user
+    who occasionally clears third-party cookies.
+
+    NEVER removes protected cookies (Cloudflare, PerimeterX, session tokens).
     """
-    cd          = _ensure_cookie_dir()
-    global_path = get_global_cookie_path()
-    if os.path.exists(global_path):
-        return  # Already migrated
+    protected = [c for c in cookie_list if _is_protected_cookie(c.get("name", ""))]
+    others    = [c for c in cookie_list if not _is_protected_cookie(c.get("name", ""))]
 
-    merged = {}
-    for fn in os.listdir(cd):
-        if fn.endswith("_cookies.json") and fn != "global_sahibinden_cookies.json":
-            fp = os.path.join(cd, fn)
-            try:
-                with open(fp, "r", encoding="utf-8") as f:
-                    for c in json.load(f):
-                        merged[c["name"]] = c  # Later file wins on name collision
-                logger.info("🍪 Eski çerez dosyası taşındı: %s", fn)
-            except Exception as e:
-                logger.debug("Eski çerez dosyası okunamadı (%s): %s", fn, e)
+    kept    = [c for c in others if not _is_tracking_cookie(c.get("name", ""))]
+    scrubbed = [c for c in others if  _is_tracking_cookie(c.get("name", ""))]
 
-    if merged:
-        tmp = global_path + ".tmp"
-        with open(tmp, "w", encoding="utf-8") as f:
-            json.dump(list(merged.values()), f, indent=2)
-        os.replace(tmp, global_path)
-        logger.info("🍪 %d çerez global dosyaya taşındı.", len(merged))
+    if scrubbed:
+        logger.info(
+            "🧹 Takip çerezleri temizlendi (%d adet): %s",
+            len(scrubbed),
+            ", ".join(c["name"] for c in scrubbed),
+        )
+
+    return protected + kept
 
 
-async def save_global_cookies(page):
-    """Save current browser cookies to the global shared file."""
+def pick_active_jar() -> int:
+    """
+    Randomly select a jar index from the pool.
+    Prefers jars that already have cookies, falls back to any index.
+    Called once per scrape_city invocation.
+    """
+    existing = [i for i in range(_COOKIE_POOL_SIZE) if os.path.exists(_jar_path(i))]
+    if existing:
+        chosen = random.choice(existing)
+        logger.info("🍪 Çerez havuzundan jar_%d seçildi (%d mevcut jar).",
+                    chosen, len(existing))
+    else:
+        chosen = random.randint(0, _COOKIE_POOL_SIZE - 1)
+        logger.info("🍪 Yeni jar_%d oluşturulacak (havuz boş).", chosen)
+    return chosen
+
+
+async def save_pooled_cookies(page, jar_index: int):
+    """Save current browser cookies into the active pool jar."""
     try:
         cookies    = await page.context.cookies()
         now        = datetime.now(tz=timezone.utc).timestamp()
         persistent = [c for c in cookies if c.get("expires", -1) > now]
-        tmp        = get_global_cookie_path() + ".tmp"
+
+        # 20% chance to scrub tracking cookies before saving
+        if random.random() < 0.20:
+            persistent = scrub_tracking_cookies(persistent)
+
+        path = _jar_path(jar_index)
+        tmp  = path + ".tmp"
         with open(tmp, "w", encoding="utf-8") as f:
             json.dump(persistent, f, indent=2)
-        os.replace(tmp, get_global_cookie_path())
+        os.replace(tmp, path)
         logger.info(
-            "🍪 %d kalıcı çerez kaydedildi (%d oturum çerezi atlandı).",
-            len(persistent), len(cookies) - len(persistent),
+            "🍪 jar_%d: %d kalıcı çerez kaydedildi (%d oturum çerezi atlandı).",
+            jar_index, len(persistent), len(cookies) - len(persistent),
         )
     except Exception as e:
-        logger.debug("Global çerez kaydetme hatası: %s", e)
+        logger.debug("Çerez kaydetme hatası (jar_%d): %s", jar_index, e)
 
 
-async def load_global_cookies(page):
-    """Load the global cookie file into the browser context."""
-    path = get_global_cookie_path()
+async def load_pooled_cookies(page, jar_index: int) -> bool:
+    """Load cookies from the active pool jar into the browser context."""
+    path = _jar_path(jar_index)
     if not os.path.exists(path):
         return False
     try:
@@ -1583,27 +1737,87 @@ async def load_global_cookies(page):
         now   = datetime.now(tz=timezone.utc).timestamp()
         valid = [c for c in cookies if c.get("expires", now + 1) > now]
         if not valid:
-            logger.info("🍪 Tüm global çerezlerin süresi dolmuş, atlanıyor.")
+            logger.info("🍪 jar_%d: tüm çerezlerin süresi dolmuş.", jar_index)
             return False
         await page.context.add_cookies(valid)
-        logger.info("🍪 %d geçerli global çerez yüklendi.", len(valid))
+        logger.info("🍪 jar_%d: %d geçerli çerez yüklendi.", jar_index, len(valid))
         return True
     except Exception as e:
-        logger.debug("Global çerez yükleme hatası: %s", e)
+        logger.debug("Çerez yükleme hatası (jar_%d): %s", jar_index, e)
         return False
 
 
-def delete_global_cookies():
-    """Delete the global cookie file and log clearly."""
-    path = get_global_cookie_path()
+def delete_pooled_cookies(jar_index: int):
+    """Delete only the active jar (not the whole pool)."""
+    path = _jar_path(jar_index)
     if os.path.exists(path):
         try:
             os.remove(path)
-            logger.info("🗑️  Global çerezler silindi.")
+            logger.info("🗑️  jar_%d silindi.", jar_index)
         except Exception as e:
-            logger.warning("Global çerezler silinemedi: %s", e)
-    else:
-        logger.debug("Global çerez dosyası zaten yok, silme atlandı.")
+            logger.warning("jar_%d silinemedi: %s", jar_index, e)
+
+
+def delete_all_pool_cookies():
+    """Delete every jar in the pool (used on hard-reset login blocks)."""
+    deleted = 0
+    for i in range(_COOKIE_POOL_SIZE):
+        path = _jar_path(i)
+        if os.path.exists(path):
+            try:
+                os.remove(path)
+                deleted += 1
+            except Exception:
+                pass
+    if deleted:
+        logger.info("🗑️  Tüm çerez havuzu silindi (%d jar).", deleted)
+
+
+def _migrate_legacy_cookies():
+    """
+    One-time migration: move the old global_sahibinden_cookies.json into
+    jar_0 of the new pool.  Silent no-op if already migrated or no legacy file.
+    """
+    cd = os.path.join(config.CHECKPOINT_DIR, "cookies")
+    legacy = os.path.join(cd, "global_sahibinden_cookies.json")
+    if not os.path.exists(legacy):
+        return
+
+    target = _jar_path(0)
+    if os.path.exists(target):
+        return  # Pool already populated, don't overwrite
+
+    try:
+        import shutil
+        shutil.copy2(legacy, target)
+        logger.info("🍪 Eski global çerez dosyası jar_0'a taşındı.")
+    except Exception as e:
+        logger.debug("Legacy cookie taşıma hatası: %s", e)
+
+
+# ---------------------------------------------------------------------------
+# Thin compatibility shims so any code that still calls the old names works
+# ---------------------------------------------------------------------------
+
+async def save_global_cookies(page):
+    """Shim: save to whichever jar is currently active."""
+    global _ACTIVE_JAR_INDEX
+    idx = _ACTIVE_JAR_INDEX if _ACTIVE_JAR_INDEX is not None else 0
+    await save_pooled_cookies(page, idx)
+
+
+async def load_global_cookies(page) -> bool:
+    """Shim: load from whichever jar is currently active."""
+    global _ACTIVE_JAR_INDEX
+    idx = _ACTIVE_JAR_INDEX if _ACTIVE_JAR_INDEX is not None else 0
+    return await load_pooled_cookies(page, idx)
+
+
+def delete_global_cookies():
+    """Shim: delete only the active jar."""
+    global _ACTIVE_JAR_INDEX
+    idx = _ACTIVE_JAR_INDEX if _ACTIVE_JAR_INDEX is not None else 0
+    delete_pooled_cookies(idx)
 
 
 # ---------------------------------------------------------------------------
@@ -1705,7 +1919,7 @@ async def scrape_city_brackets(
         start_bracket += 1
 
     for bi, (mn, mx) in enumerate(brackets):
-        check_commands(cmd_queue)
+        await check_commands(cmd_queue)
         if bi < start_bracket:
             continue
 
@@ -1754,89 +1968,92 @@ async def scrape_city_brackets(
 
 
 # ---------------------------------------------------------------------------
-# FIX #3 — Singleton browser + FIX #1 — Per-bracket login retry
+# Phase 2 — Hard-reset on login block  +  Phase 3 cookie pool wiring
 #
-# FIX #3: browser is created ONCE before the retry loop and destroyed in the
-#   outer finally block after all attempts are exhausted or the city succeeds.
-#   Between retries, only cookies are cleared (instant) and warmup re-runs;
-#   no new Chromium process is spawned.  This reduces token creation from
-#   9–15 per run to 1, and cuts init time from 45–75 s to ~10 s.
-#
-# FIX #1: bracket_login_blocks tracks how many consecutive BrowserBlockedErrors
-#   each bracket has produced.  While the count is below
-#   MAX_LOGIN_RETRIES_PER_BRACKET, start_bracket is NOT incremented and the
-#   same bracket is retried with exponential back-off.  Only after exceeding
-#   the threshold is the bracket permanently skipped.
+# The browser is still a singleton within a city — it is reused across soft
+# retries (protection pages, timeouts) to save the 10-15 s startup cost.
+# But a login-redirect block ("Login yönlendirmesi" in the error message)
+# indicates the site has flagged the current identity.  In that case we:
+#   1. Close the browser completely (kill the Chromium process)
+#   2. Delete the active cookie jar so the new session is stateless
+#   3. Spin up a brand-new browser (fresh fingerprint from rayobrowse)
+#   4. Run warmup again with the new identity
 # ---------------------------------------------------------------------------
 
+async def _spawn_browser():
+    """Create a fresh rayobrowse browser and return (pw, browser, ctx, page)."""
+    ws      = rayobrowse.create_browser(
+        headless=config.RAYOBROWSE_HEADLESS,
+        target_os=config.RAYOBROWSE_TARGET_OS,
+        browser_language=config.RAYOBROWSE_BROWSER_LANGUAGE,
+        ui_language=config.RAYOBROWSE_UI_LANGUAGE,
+    )
+    pw      = await async_playwright().start()
+    browser = await pw.chromium.connect_over_cdp(ws)
+    ctx     = browser.contexts[0]
+    page    = ctx.pages[0] if ctx.pages else await ctx.new_page()
+    await enforce_viewport(page)
+    await patch_browser_detection_leaks(page)
+    return pw, browser, ctx, page
+
+
+async def _close_browser(pw, browser):
+    """Safely close a browser + playwright instance."""
+    if browser:
+        try:
+            await browser.close()
+        except Exception:
+            pass
+    if pw:
+        try:
+            await pw.stop()
+        except Exception:
+            pass
+
+
 async def scrape_city(city, checkpoint, cmd_queue):
+    global _ACTIVE_JAR_INDEX
+
     city_slug = city["url_slug"]
     city_name = city["name"]
     brackets  = city["brackets"]
     loop      = asyncio.get_event_loop()
 
-    # One-time migration of old per-city cookie files → global file
+    # One-time migration of legacy cookie files into the pool
     _migrate_legacy_cookies()
+
+    # Pick a random jar for this city's session
+    _ACTIVE_JAR_INDEX = pick_active_jar()
 
     start_bracket, start_page = get_resume_point(checkpoint, city_slug)
 
-    # FIX #1: per-bracket failure counter (bracket_index → consecutive_failures)
+    # Per-bracket failure counter
     bracket_login_blocks: dict = {}
     max_bracket_retries  = config.MAX_LOGIN_RETRIES_PER_BRACKET
     backoff_base         = config.LOGIN_RETRY_BACKOFF_BASE
     backoff_max          = config.LOGIN_RETRY_BACKOFF_MAX
 
-    # ------------------------------------------------------------------
-    # FIX #3: Create the browser ONCE, outside the retry loop.
-    # The browser lives for the entire city scrape; only session state
-    # (cookies, page URL) is reset between attempts.
-    # ------------------------------------------------------------------
-    pw      = None
-    browser = None
-    ctx     = None
-    page    = None
+    pw = browser = ctx = page = None
+    need_new_browser = True  # always spawn on first attempt
 
     try:
-        logger.info(
-            "\n%s\nŞEHİR: %s — tarayıcı başlatılıyor (singleton)\n%s",
-            "=" * 50, city_name.upper(), "=" * 50,
-        )
-        ws      = rayobrowse.create_browser(
-            headless=config.RAYOBROWSE_HEADLESS,
-            target_os=config.RAYOBROWSE_TARGET_OS,
-            browser_language=config.RAYOBROWSE_BROWSER_LANGUAGE,
-            ui_language=config.RAYOBROWSE_UI_LANGUAGE,
-        )
-        pw      = await async_playwright().start()
-        browser = await pw.chromium.connect_over_cdp(ws)
-
-        ctx  = browser.contexts[0]
-        page = ctx.pages[0] if ctx.pages else await ctx.new_page()
-
-        # FIX #2: enforce viewport immediately after page creation
-        await enforce_viewport(page)
-
-        # Issue #2: inject anti-detection JS patches before any navigation
-        await patch_browser_detection_leaks(page)
-
-        # ------------------------------------------------------------------
-        # Retry loop — reuses the browser created above.
-        # Each attempt may:
-        #   • succeed → break
-        #   • hit a recoverable block → clear cookies, sleep, retry same bracket
-        #   • exhaust per-bracket retries → skip bracket, retry city loop
-        #   • receive SkipCitySignal / StopSignal → propagate up
-        # ------------------------------------------------------------------
         for attempt in range(1, config.MAX_RESTARTS_PER_CITY + 1):
             logger.info(
-                "\n%s\nŞEHİR: %s — Deneme %d/%d\n%s",
-                "-" * 50, city_name.upper(),
-                attempt, config.MAX_RESTARTS_PER_CITY, "-" * 50,
+                "\n%s\nŞEHİR: %s — Deneme %d/%d (jar_%d)\n%s",
+                "=" * 50, city_name.upper(),
+                attempt, config.MAX_RESTARTS_PER_CITY,
+                _ACTIVE_JAR_INDEX, "=" * 50,
             )
 
             try:
-                # FIX #3: between retries reset session state, not the browser
-                if attempt > 1:
+                # ── Browser management ──────────────────────────────────
+                if need_new_browser:
+                    await _close_browser(pw, browser)
+                    logger.info("🚀 Yeni tarayıcı oluşturuluyor...")
+                    pw, browser, ctx, page = await _spawn_browser()
+                    need_new_browser = False
+                else:
+                    # Soft retry: reuse existing browser, just clear cookies
                     logger.info("🔄 Oturum sıfırlanıyor (tarayıcı korunuyor)...")
                     await ctx.clear_cookies()
                     try:
@@ -1844,9 +2061,9 @@ async def scrape_city(city, checkpoint, cmd_queue):
                     except Exception:
                         pass
 
-                # --- Cookie warmup bypass ---
+                # ── Cookie warmup bypass ─────────────────────────────────
                 warmed_up = False
-                if await load_global_cookies(page):
+                if await load_pooled_cookies(page, _ACTIVE_JAR_INDEX):
                     try:
                         await page.goto(
                             config.BASE_URL,
@@ -1860,23 +2077,24 @@ async def scrape_city(city, checkpoint, cmd_queue):
                             and not is_login_page(h, page)
                             and "searchresultstable" in h.lower()
                         ):
-                            logger.info("✅ Global çerezler geçerli — ısınma atlandı.")
+                            logger.info("✅ jar_%d çerezleri geçerli — ısınma atlandı.",
+                                        _ACTIVE_JAR_INDEX)
                             warmed_up = True
                         else:
                             logger.info(
                                 "   Çerezler geçersiz (URL: %s), silinip ısınılıyor.",
                                 _safe_url(page),
                             )
-                            delete_global_cookies()
+                            delete_pooled_cookies(_ACTIVE_JAR_INDEX)
                             await ctx.clear_cookies()
                     except Exception as e:
                         logger.debug("Çerez doğrulama hatası: %s", e)
-                        delete_global_cookies()
+                        delete_pooled_cookies(_ACTIVE_JAR_INDEX)
                         await ctx.clear_cookies()
 
                 if not warmed_up:
                     await warmup_with_human_surf(page, loop, cmd_queue)
-                    await save_global_cookies(page)
+                    await save_pooled_cookies(page, _ACTIVE_JAR_INDEX)
 
                 await interruptible_sleep(random.uniform(*config.HOMEPAGE_WAIT), cmd_queue)
 
@@ -1886,11 +2104,11 @@ async def scrape_city(city, checkpoint, cmd_queue):
                 )
 
                 logger.info("\n✅ %s tamamlandı — %d kayıt.", city_name, total)
-                await save_global_cookies(page)
-                break  # Clean success — exit retry loop (browser closed in outer finally)
+                await save_pooled_cookies(page, _ACTIVE_JAR_INDEX)
+                break  # Clean success
 
             except (SkipCitySignal, StopSignal):
-                raise  # Propagate immediately
+                raise
 
             except SkipBracketSignal:
                 start_bracket += 1
@@ -1898,42 +2116,56 @@ async def scrape_city(city, checkpoint, cmd_queue):
                 bracket_login_blocks.pop(start_bracket - 1, None)
 
             except BrowserBlockedError as e:
-                # -------------------------------------------------------
-                # FIX #1: Per-bracket retry with exponential back-off.
-                #
-                # We count failures against start_bracket (the bracket
-                # that was being attempted when the block occurred).
-                # If we haven't hit the max yet, retry the SAME bracket.
-                # Only after exhausting retries do we skip it.
-                # -------------------------------------------------------
+                error_str     = str(e).lower()
+                is_login_block = "login" in error_str or "giris" in error_str
+
                 blocked_bi = start_bracket
                 bracket_login_blocks[blocked_bi] = (
                     bracket_login_blocks.get(blocked_bi, 0) + 1
                 )
                 failures = bracket_login_blocks[blocked_bi]
 
-                delete_global_cookies()
-                await ctx.clear_cookies()
-                logger.error(
-                    "🔒 Engellendi (bracket %d, başarısızlık %d/%d): %s",
-                    blocked_bi, failures, max_bracket_retries, e,
-                )
+                if is_login_block:
+                    # ── Phase 2: HARD RESET ──────────────────────────────
+                    # Login block = site flagged our identity. Kill browser,
+                    # delete the active jar, pick a new jar, spawn fresh.
+                    logger.error(
+                        "🔒 LOGIN BLOĞU — Tarayıcı ve çerezler tamamen sıfırlanıyor! "
+                        "(bracket %d, hata: %s)",
+                        blocked_bi, e,
+                    )
+                    delete_pooled_cookies(_ACTIVE_JAR_INDEX)
+                    await ctx.clear_cookies()
+                    need_new_browser = True  # forces _spawn_browser() next iteration
+
+                    # Pick a DIFFERENT jar for the next attempt
+                    old_jar = _ACTIVE_JAR_INDEX
+                    candidates = [i for i in range(_COOKIE_POOL_SIZE) if i != old_jar]
+                    _ACTIVE_JAR_INDEX = random.choice(candidates)
+                    logger.info("🍪 Yeni jar seçildi: jar_%d → jar_%d",
+                                old_jar, _ACTIVE_JAR_INDEX)
+
+                else:
+                    # ── Soft block: keep browser, clear cookies ──────────
+                    logger.error(
+                        "🔒 Engellendi (bracket %d, başarısızlık %d/%d): %s",
+                        blocked_bi, failures, max_bracket_retries, e,
+                    )
+                    delete_pooled_cookies(_ACTIVE_JAR_INDEX)
+                    await ctx.clear_cookies()
+                    need_new_browser = False
 
                 if failures < max_bracket_retries:
-                    # Retry same bracket — do NOT increment start_bracket
                     backoff = min(backoff_base * (2 ** (failures - 1)), backoff_max)
                     logger.info(
-                        "🔁 Bracket %d için yeniden deneniyor (%d/%d) — %.0fs bekleniyor...",
+                        "🔁 Bracket %d yeniden deneniyor (%d/%d) — %.0fs bekleniyor...",
                         blocked_bi, failures, max_bracket_retries, backoff,
                     )
                     await interruptible_sleep(backoff, cmd_queue)
-                    # Loop continues with same start_bracket
 
                 else:
-                    # Exceeded per-bracket retry budget — skip this bracket
                     logger.warning(
-                        "⏭️  Bracket %d kalıcı olarak bloklandı (%d deneme sonrası), "
-                        "bir sonraki bracket'a geçiliyor.",
+                        "⏭️  Bracket %d kalıcı blok (%d deneme), bir sonrakine geçiliyor.",
                         blocked_bi, failures,
                     )
                     bracket_login_blocks.pop(blocked_bi, None)
@@ -1941,30 +2173,16 @@ async def scrape_city(city, checkpoint, cmd_queue):
                     start_page     = 1
 
                     if start_bracket >= len(brackets):
-                        logger.error(
-                            "❌ %s için tüm bracket'lar bloklandı, şehir atlanıyor.",
-                            city_name,
-                        )
-                        break  # All brackets exhausted
+                        logger.error("❌ %s tüm bracket'lar bloklandı, atlanıyor.", city_name)
+                        break
 
-                    # Wait before trying next bracket with fresh session
                     wait = random.uniform(30, 60)
                     logger.info("⏳ %.1fs bekleniyor...", wait)
                     await interruptible_sleep(wait, cmd_queue)
 
     except (SkipCitySignal, StopSignal):
-        raise  # Propagate through the outer try
+        raise
 
     finally:
-        # FIX #3: Browser destroyed ONCE here, after ALL attempts for this city
-        if browser:
-            try:
-                await browser.close()
-            except Exception:
-                pass
-        if pw:
-            try:
-                await pw.stop()
-            except Exception:
-                pass
+        await _close_browser(pw, browser)
         logger.info("🗑️  Tarayıcı kapatıldı (%s).", city_name)

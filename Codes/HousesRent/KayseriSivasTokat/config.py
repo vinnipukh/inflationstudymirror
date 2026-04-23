@@ -40,7 +40,7 @@ BETWEEN_BRACKETS      = (4.0,   6.0)
 BETWEEN_PAGES         = (8.0,  12.0)
 GOTO_RETRY_WAIT       = (13.0, 18.0)
 POST_CHECK_WAIT       = (4.0,   6.0)
-HOMEPAGE_WAIT         = (3.0,   5.0)
+HOMEPAGE_WAIT         = (5.0,   15.0)
 CITY_CLOSE_WAIT       = 30
 
 # ---------------------------------------------------------------------------
@@ -69,14 +69,14 @@ OVERRIDE_SCREEN_JS_PROPERTIES = True   # Patch window.screen.* to match
 # retry it up to MAX_LOGIN_RETRIES_PER_BRACKET times with exponential
 # back-off before giving up and moving to the next bracket.
 # ---------------------------------------------------------------------------
-MAX_LOGIN_RETRIES_PER_BRACKET = 3    # Retries before permanently skipping
+MAX_LOGIN_RETRIES_PER_BRACKET = 7    # Retries before permanently skipping
 LOGIN_RETRY_BACKOFF_BASE      = 120   # Base wait in seconds (doubles each retry)
 LOGIN_RETRY_BACKOFF_MAX       = 360  # Maximum wait cap in seconds
 
 # ---------------------------------------------------------------------------
 # Scraping limits
 # ---------------------------------------------------------------------------
-MAX_RESTARTS_PER_CITY = 3    # Full browser-session restarts per city
+MAX_RESTARTS_PER_CITY = 7    # Full browser-session restarts per city
 MAX_PAGES_PER_BRACKET = 20   # Safety page cap per price range
 PAGE_SIZE             = 50   # Listings per page
 
