@@ -1,0 +1,44 @@
+2026-04-23 17:12:43 [INFO] ==================================================
+2026-04-23 17:12:43 [INFO] Yapimaks Scraper basliyor
+2026-04-23 17:12:43 [INFO] ==================================================
+2026-04-23 17:12:43 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-04-23 17:12:44 [INFO] Cookie basariyla alindi.
+2026-04-23 17:12:44 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-04-23 17:12:44 [INFO] Sitemap'ten toplam 8889 urun URL'si bulundu.
+2026-04-23 17:12:44 [INFO] Bugune ait veri yok. Eski veri (2026-04-22.csv) süzülerek bugune aktariliyor...
+2026-04-23 17:12:44 [INFO] Basarili! 8873 urun dunden bugune aktarildi.
+2026-04-23 17:12:44 [INFO] Guncel dosyada hazir olan urun: 8873 | Sifirdan cekilecek (yeni) urun: 16
+2026-04-23 17:12:44 [INFO] 16 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-23.csv
+2026-04-23 17:12:44 [INFO] [1/16] https://yapimaks.com/cam-kesici-dairesel-120cm-boh514-p15323
+2026-04-23 17:12:44 [INFO] [15323] 'CAM KESİCİ DAİRESEL 120CM BOH514' | 5400,00 TL | SKU: BOHLE.514
+2026-04-23 17:12:46 [INFO] [2/16] https://yapimaks.com/havya-tabanca-100-w-fastbond-27001-p15306
+2026-04-23 17:12:46 [INFO] [15306] 'HAVYA TABANCA 100 W FASTBOND 27001' | 650,00 TL | SKU: FASTBOND.FAS27001
+2026-04-23 17:12:48 [INFO] [3/16] https://yapimaks.com/hortum-araci-20-mt-hortum-makara-dy61420xp-p15304
+2026-04-23 17:12:48 [INFO] [15304] 'HORTUM ARACI 20 MT HORTUM+MAKARA DY61420' | 2670,00 TL | SKU: DAYE.61420XP
+2026-04-23 17:12:50 [INFO] [4/16] https://yapimaks.com/hortum-araci-30-mt-hortum-makara-dy61430xp-p15305
+2026-04-23 17:12:50 [INFO] [15305] 'HORTUM ARACI 30 MT HORTUM+MAKARA DY61430' | 2950,00 TL | SKU: DAYE.61430XP
+2026-04-23 17:12:52 [INFO] [5/16] https://yapimaks.com/hortum-baglanti-4-lu-baslangic-set-dy8025-p15302
+2026-04-23 17:12:52 [INFO] [15302] 'HORTUM BAĞLANTI 4 LÜ BAŞLANGIÇ SET DY802' | 240,00 TL | SKU: DAYE.8025
+2026-04-23 17:12:54 [INFO] [6/16] https://yapimaks.com/hortum-makarasi-duvar-tipi-1-2-40-m-kapasite-dy622b-p15303
+2026-04-23 17:12:54 [INFO] [15303] 'HORTUM MAKARASI DUVAR TİPİ 1/2" 40 M kap' | 1280,00 TL | SKU: DAYE.622B
+2026-04-23 17:12:56 [INFO] [7/16] https://yapimaks.com/hortum-makarasi-guard-tekerlekli-50-m-kapasite-p13930
+2026-04-23 17:12:56 [INFO] [13930] 'HORTUM MAKARASI GUARD TEKERLEKLİ 50 M KA' | 1150,00 TL | SKU: GUARD.GUBHAR01
+2026-04-23 17:12:58 [INFO] [8/16] https://yapimaks.com/sicak-hava-tabancasi-2000w-fastbond-27305-p3578
+2026-04-23 17:12:58 [INFO] [3578] 'SICAK HAVA TABANCASI 2000W FASTBOND 2730' | 1400,00 TL | SKU: FASTBOND.27305
+2026-04-23 17:13:00 [INFO] [9/16] https://yapimaks.com/sicak-hava-tabancasi-rtm-303a-2000-w-rtrmax-p11194
+2026-04-23 17:13:00 [INFO] [11194] 'SICAK HAVA TABANCASI RTM 303A 2000 W RTR' | 1380,00 TL | SKU: RTRMAX.RTM303A
+2026-04-23 17:13:02 [INFO] [10/16] https://yapimaks.com/silikon-beyaz-anti-kuf-notr-tytan-280-ml-p11995
+2026-04-23 17:13:02 [INFO] [11995] 'SİLİKON BEYAZ ANTİ KÜF NÖTR TYTAN 280 ML' | 185,00 TL | SKU: SELENA.176
+2026-04-23 17:13:04 [INFO] [11/16] https://yapimaks.com/silikon-seffaf-anti-kuf-notr-tytan-280-ml-p11996
+2026-04-23 17:13:04 [INFO] [11996] 'SİLİKON ŞEFFAF ANTİ KÜF NÖTR TYTAN 280 M' | 185,00 TL | SKU: SELENA.177
+2026-04-23 17:13:06 [INFO] [12/16] https://yapimaks.com/siva-filesi-kesik-140-gr-20-500-4-4-beyaz-100m2-p15256
+2026-04-23 17:13:07 [INFO] [15256] 'SIVA FİLESİ KESİK 140 GR (20*500*4*4 BEY' | 2000,00 TL | SKU: DARKSS.SFK.05
+2026-04-23 17:13:09 [INFO] [13/16] https://yapimaks.com/siva-filesi-kesik-145-gr-20-500-4-4-mavi-100m2-p12988
+2026-04-23 17:13:09 [INFO] [12988] 'SIVA FİLESİ KESİK 145 GR 20*500*4*4 MAVİ' | 2000,00 TL | SKU: DARKSS.SFK.04
+2026-04-23 17:13:11 [INFO] [14/16] https://yapimaks.com/sprink-fiskiye-gomme-360-derece-daye-dy1013-p15300
+2026-04-23 17:13:11 [INFO] [15300] 'SPRİNK FISKİYE GÖMME 360 DERECE DAYE DY1' | 199,00 TL | SKU: DAYE.1013
+2026-04-23 17:13:13 [INFO] [15/16] https://yapimaks.com/sprink-hareketli-tekerlekli-pvc-taban-daye-dy6021-p13500
+2026-04-23 17:13:13 [INFO] [13500] 'SPRİNK HAREKETLİ TEKERLEKLİ PVC TABAN DA' | 480,00 TL | SKU: DAYE.6021
+2026-04-23 17:13:15 [INFO] [16/16] https://yapimaks.com/yapistirici-2-bilesenli-power2-5g-7g-alteco-p15298
+2026-04-23 17:13:15 [INFO] [15298] 'YAPIŞTIRICI 2 BİLEŞENLİ POWER2 5G + 7G A' | 90,00 TL | SKU: ALTECO.POWER2
+2026-04-23 17:13:17 [INFO] Tamamlandi! Toplam 16 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-23.csv

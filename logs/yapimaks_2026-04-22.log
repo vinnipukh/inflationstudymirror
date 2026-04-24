@@ -1,0 +1,28 @@
+2026-04-22 08:56:40 [INFO] ==================================================
+2026-04-22 08:56:40 [INFO] Yapimaks Scraper basliyor
+2026-04-22 08:56:40 [INFO] ==================================================
+2026-04-22 08:56:40 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-04-22 08:56:40 [INFO] Cookie basariyla alindi.
+2026-04-22 08:56:40 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-04-22 08:56:40 [INFO] Sitemap'ten toplam 8881 urun URL'si bulundu.
+2026-04-22 08:56:40 [INFO] Bugune ait veri yok. Eski veri (2026-04-21.csv) süzülerek bugune aktariliyor...
+2026-04-22 08:56:40 [INFO] Basarili! 8873 urun dunden bugune aktarildi.
+2026-04-22 08:56:41 [INFO] Guncel dosyada hazir olan urun: 8873 | Sifirdan cekilecek (yeni) urun: 8
+2026-04-22 08:56:41 [INFO] 8 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-22.csv
+2026-04-22 08:56:41 [INFO] [1/8] https://yapimaks.com/dairesel-cam-kesici-120cm-boh514-p15323
+2026-04-22 08:56:41 [INFO] [15323] 'DAİRESEL CAM KESİCİ 120CM BOH514' | 5400,00 TL | SKU: BOHLE.514
+2026-04-22 08:56:43 [INFO] [2/8] https://yapimaks.com/kaynak-kablosu-1x25mm-untel-1m-100-p14792
+2026-04-22 08:56:43 [INFO] [14792] 'KAYNAK KABLOSU 1X25MM ÜNTEL 1M (100)' | 280,00 TL | SKU: ÜNTEL.KAB2055
+2026-04-22 08:56:45 [INFO] [3/8] https://yapimaks.com/kose-citasi-delikli-eko-030-17x21-2-70-mt-pkt-50-p3920
+2026-04-22 08:56:45 [INFO] [3920] 'KÖŞE ÇITASI DELİKLİ EKO 030 17X21 2.70 M' | 25,00 TL | SKU: FOUR.030.KÇYD.17X21.2700
+2026-04-22 08:56:47 [INFO] [4/8] https://yapimaks.com/kose-citasi-delikli-glv-035-22x22-2-70-mt-pkt-50-p3918
+2026-04-22 08:56:47 [INFO] [3918] 'KÖŞE ÇITASI DELİKLİ GLV 035 22X22 2.70 M' | 32,50 TL | SKU: FOUR.035.KÇYD.22X22.2700
+2026-04-22 08:56:49 [INFO] [5/8] https://yapimaks.com/kose-citasi-delikli-glv-035-22x22-3-00-mt-pkt-50-p3923
+2026-04-22 08:56:49 [INFO] [3923] 'KÖŞE ÇITASI DELİKLİ GLV 035 22X22 3.00 M' | 37,50 TL | SKU: FOUR.035.KÇYD.22X22.3000
+2026-04-22 08:56:51 [INFO] [6/8] https://yapimaks.com/kose-citasi-makina-glv-035-36x36-2-70-mt-pkt-25-p3919
+2026-04-22 08:56:51 [INFO] [3919] 'KÖŞE ÇITASI MAKİNA GLV 035 36X36 2.70 MT' | 27,50 TL | SKU: FOUR.035.BD.36X36.2700
+2026-04-22 08:56:53 [INFO] [7/8] https://yapimaks.com/kose-citasi-makina-glv-035-36x36-3-00-mt-pkt-25-p3924
+2026-04-22 08:56:53 [INFO] [3924] 'KÖŞE ÇITASI MAKİNA GLV 035 36X36 3.00 MT' | 30,00 TL | SKU: FOUR.035.BD.39X39.3000
+2026-04-22 08:56:55 [INFO] [8/8] https://yapimaks.com/siva-filesi-55-gr-a-beyaz-100-m2-p12035
+2026-04-22 08:56:55 [INFO] [12035] 'SIVA FİLESİ 55-GR A++ BEYAZ (100 m2)' | 16,00 TL | SKU: DARKSS.SF055.01
+2026-04-22 08:56:57 [INFO] Tamamlandi! Toplam 8 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-22.csv

@@ -1,0 +1,29 @@
+2026-04-24 10:12:50 [INFO] ==================================================
+2026-04-24 10:12:50 [INFO] Yapimaks Scraper basliyor
+2026-04-24 10:12:50 [INFO] ==================================================
+2026-04-24 10:12:50 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-04-24 10:12:50 [INFO] Cookie basariyla alindi.
+2026-04-24 10:12:50 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-04-24 10:12:51 [INFO] Sitemap'ten toplam 8893 urun URL'si bulundu.
+2026-04-24 10:12:51 [INFO] Bugune ait veri yok. Eski veri (2026-04-23.csv) süzülerek bugune aktariliyor...
+2026-04-24 10:12:51 [INFO] Basarili! 8889 urun dunden bugune aktarildi.
+2026-04-24 10:12:51 [INFO] Guncel dosyada hazir olan urun: 8889 | Sifirdan cekilecek (yeni) urun: 4
+2026-04-24 10:12:51 [INFO] 4 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-24.csv
+2026-04-24 10:12:51 [INFO] [1/4] https://yapimaks.com/eviye-420035-40x70-cubim-u-70-p-celik-0-8mm-p15325
+2026-04-24 10:12:51 [INFO] [15325] 'EVİYE 420035 40X70 CUBİM U 70 P.ÇELİK 0.' | 4750,00 TL | SKU: PERA.00420035
+2026-04-24 10:12:53 [INFO] [2/4] https://yapimaks.com/rainpump-manometre-tps-s-p15320
+2026-04-24 10:12:53 [INFO] [15320] 'RAİNPUMP MANOMETRE TPS-S' | 330,00 TL | SKU: RAINPUMP.TPS-S
+2026-04-24 10:12:55 [INFO] [3/4] https://yapimaks.com/rainpump-manometre-tps-ss-p15321
+2026-04-24 10:12:55 [INFO] [15321] 'RAİNPUMP MANOMETRE TPS-SS' | 330,00 TL | SKU: RAINPUMP.TPS-SS
+2026-04-24 10:12:57 [INFO] [4/4] https://yapimaks.com/su-pompasi-hidrofor-0-7-hp-qb70-p15322
+2026-04-24 10:12:57 [INFO] [15322] 'SU POMPASI HİDROFOR 0.7 HP QB70' | 3100,00 TL | SKU: RAINPUMP.QB70-0.7HP
+2026-04-24 10:12:59 [INFO] Tamamlandi! Toplam 4 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-24.csv
+2026-04-24 19:01:30 [INFO] ==================================================
+2026-04-24 19:01:30 [INFO] Yapimaks Scraper basliyor
+2026-04-24 19:01:30 [INFO] ==================================================
+2026-04-24 19:01:30 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-04-24 19:01:31 [INFO] Cookie basariyla alindi.
+2026-04-24 19:01:31 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-04-24 19:01:31 [INFO] Sitemap'ten toplam 8893 urun URL'si bulundu.
+2026-04-24 19:01:31 [INFO] Guncel dosyada hazir olan urun: 8893 | Sifirdan cekilecek (yeni) urun: 0
+2026-04-24 19:01:31 [INFO] Sitemap'teki tum urunler zaten dosyamizda var, cikiliyor.
