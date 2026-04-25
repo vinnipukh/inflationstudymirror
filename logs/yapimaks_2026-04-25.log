@@ -1,0 +1,54 @@
+2026-04-25 12:18:57 [INFO] ==================================================
+2026-04-25 12:18:57 [INFO] Yapimaks Scraper basliyor
+2026-04-25 12:18:57 [INFO] ==================================================
+2026-04-25 12:18:57 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-04-25 12:18:59 [INFO] Cookie basariyla alindi.
+2026-04-25 12:18:59 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-04-25 12:18:59 [INFO] Sitemap'ten toplam 8911 urun URL'si bulundu.
+2026-04-25 12:18:59 [INFO] Bugune ait veri yok. Eski veri (2026-04-24.csv) süzülerek bugune aktariliyor...
+2026-04-25 12:18:59 [INFO] Basarili! 8890 urun dunden bugune aktarildi.
+2026-04-25 12:18:59 [INFO] Guncel dosyada hazir olan urun: 8890 | Sifirdan cekilecek (yeni) urun: 21
+2026-04-25 12:18:59 [INFO] 21 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-25.csv
+2026-04-25 12:18:59 [INFO] [1/21] https://yapimaks.com/alci-malasi-acik-plastik-sap-35-cm-skarp-al100335-p15331
+2026-04-25 12:18:59 [INFO] [15331] 'ALÇI MALASI AÇIK PLASTİK SAP 35 CM SKARP' | 230,00 TL | SKU: SKARP.AL100335
+2026-04-25 12:19:01 [INFO] [2/21] https://yapimaks.com/autokit-bagaj-organizer-fa2-1357-p15326
+2026-04-25 12:19:01 [INFO] [15326] 'AUTOKIT BAGAJ ORGANİZER FA2-1357' | 270,00 TL | SKU: AUTOKİT.FA2-1357
+2026-04-25 12:19:03 [INFO] [3/21] https://yapimaks.com/autokit-bagaj-piknik-canta-termal-yalitimli-fa2-1356-p15327
+2026-04-25 12:19:03 [INFO] [15327] 'AUTOKIT BAGAJ PİKNİK ÇANTA TERMAL YALITI' | 465,00 TL | SKU: AUTOKİT.FA2-1356
+2026-04-25 12:19:05 [INFO] [4/21] https://yapimaks.com/capa-keciboynuzu-sapli-sd-p15340
+2026-04-25 12:19:05 [INFO] [15340] 'ÇAPA KEÇİBOYNUZU SAPLI SD' | 125,00 TL | SKU: SD.KB0201
+2026-04-25 12:19:07 [INFO] [5/21] https://yapimaks.com/derz-malasi-kisa-115x280-skarp-sm160201-p15334
+2026-04-25 12:19:07 [INFO] [15334] 'DERZ MALASI KISA 115X280 SKARP SM160201' | 250,00 TL | SKU: SKARP.SM160201
+2026-04-25 12:19:09 [INFO] [6/21] https://yapimaks.com/duvarci-malasi-18-cm-skarp-sv101118-p15339
+2026-04-25 12:19:09 [INFO] [15339] 'DUVARCI MALASI 18 CM SKARP SV101118' | 260,00 TL | SKU: SKARP.SV101118
+2026-04-25 12:19:11 [INFO] [7/21] https://yapimaks.com/ege-takimi-5-li-29311-p12881
+2026-04-25 12:19:11 [INFO] [12881] 'EĞE TAKIMI 5 Lİ 29311' | 359,00 TL | SKU: VINKO.VI29311
+2026-04-25 12:19:13 [INFO] [8/21] https://yapimaks.com/ege-ve-torpu-seti-9-lu-03133-p15318
+2026-04-25 12:19:14 [INFO] [15318] 'EĞE VE TÖRPÜ SETİ 9 LU 03133' | 860,00 TL | SKU: VINKO.VI03133
+2026-04-25 12:19:16 [INFO] [9/21] https://yapimaks.com/mala-sungerli-14x28-cm-skarp-sv160203-p15336
+2026-04-25 12:19:16 [INFO] [15336] 'MALA SÜNGERLİ 14x28 CM SKARP SV160203' | 250,00 TL | SKU: SKARP.SV160203
+2026-04-25 12:19:18 [INFO] [10/21] https://yapimaks.com/mala-tirfil-kisa-15x22-5-skarp-sv160201-p15338
+2026-04-25 12:19:18 [INFO] [15338] 'MALA TIRFIL KISA 15X22,5 SKARP SV160201' | 220,00 TL | SKU: SKARP.SV160201
+2026-04-25 12:19:20 [INFO] [11/21] https://yapimaks.com/mala-tirfil-uzun-10x37-skarp-sv160200-p15337
+2026-04-25 12:19:20 [INFO] [15337] 'MALA TIRFIL UZUN 10X37 SKARP SV160200' | 230,00 TL | SKU: SKARP.SV160200
+2026-04-25 12:19:22 [INFO] [12/21] https://yapimaks.com/rainpump-manometre-tps-s-50-mm-p15320
+2026-04-25 12:19:22 [INFO] [15320] 'RAİNPUMP MANOMETRE TPS-S 50 MM' | 330,00 TL | SKU: RAINPUMP.TPS-S
+2026-04-25 12:19:24 [INFO] [13/21] https://yapimaks.com/rainpump-manometre-tps-ss-60-mm-p15321
+2026-04-25 12:19:24 [INFO] [15321] 'RAİNPUMP MANOMETRE TPS-SS 60 MM' | 330,00 TL | SKU: RAINPUMP.TPS-SS
+2026-04-25 12:19:26 [INFO] [14/21] https://yapimaks.com/saatci-ege-takimi-12-li-29305-p15313
+2026-04-25 12:19:26 [INFO] [15313] 'SAATÇİ EĞE TAKIMI 12 Lİ 29305' | 150,00 TL | SKU: VINKO.VI29305
+2026-04-25 12:19:28 [INFO] [15/21] https://yapimaks.com/saatci-ege-takimi-6-li-29309-p15314
+2026-04-25 12:19:28 [INFO] [15314] 'SAATÇİ EĞE TAKIMI 6 LI 29309' | 90,00 TL | SKU: VINKO.VI29309
+2026-04-25 12:19:30 [INFO] [16/21] https://yapimaks.com/sivaci-kurek-36x44-skarp-sv161200-p15335
+2026-04-25 12:19:30 [INFO] [15335] 'SIVACI KÜREK 36X44 SKARP SV161200' | 365,00 TL | SKU: SKARP.SV161200
+2026-04-25 12:19:32 [INFO] [17/21] https://yapimaks.com/spatula-egri-sapli-20-cm-skarp-al101120-p15332
+2026-04-25 12:19:32 [INFO] [15332] 'SPATULA EĞRİ SAPLI 20 CM SKARP AL101120' | 220,00 TL | SKU: SKARP.AL101120
+2026-04-25 12:19:34 [INFO] [18/21] https://yapimaks.com/spatula-egri-sapli-40-cm-skarp-al101140-p15333
+2026-04-25 12:19:34 [INFO] [15333] 'SPATULA EĞRİ SAPLI 40 CM SKARP AL101140' | 420,00 TL | SKU: SKARP.AL101140
+2026-04-25 12:19:36 [INFO] [19/21] https://yapimaks.com/spatula-no-120-desa-p15328
+2026-04-25 12:19:36 [INFO] [15328] 'SPATULA NO:120 DESA' | 130,00 TL | SKU: SD.ISP0120
+2026-04-25 12:19:38 [INFO] [20/21] https://yapimaks.com/spatula-no-60-desa-p15330
+2026-04-25 12:19:39 [INFO] [15330] 'SPATULA NO:60 DESA' | 110,00 TL | SKU: SD.ISP0060
+2026-04-25 12:19:41 [INFO] [21/21] https://yapimaks.com/spatula-no-80-desa-p15329
+2026-04-25 12:19:41 [INFO] [15329] 'SPATULA NO:80 DESA' | 115,00 TL | SKU: SD.ISP0080
+2026-04-25 12:19:43 [INFO] Tamamlandi! Toplam 21 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-25.csv
