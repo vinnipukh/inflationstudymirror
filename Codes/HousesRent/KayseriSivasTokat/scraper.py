@@ -42,6 +42,7 @@ class SkipCitySignal(Exception):      pass
 class SkipBracketSignal(Exception):   pass
 class StopSignal(Exception):          pass
 class BrowserBlockedError(Exception): pass
+class RestartBrowserSignal(Exception): pass  # User-triggered hard browser restart
 
 
 # ---------------------------------------------------------------------------
@@ -96,6 +97,8 @@ async def check_commands(cmd_queue):
             elif cmd == "go":
                 _pause_event.set()
                 logger.info("▶  'go' alındı — scraper devam ediyor.")
+            elif cmd == "restart":
+                raise RestartBrowserSignal()
 
     except queue.Empty:
         pass
@@ -139,20 +142,30 @@ def beep_alert():
         sys.stdout.flush()
 
 
-async def wait_for_manual_solve(loop, reason, cmd_queue=None, timeout=90):
+async def wait_for_manual_solve(loop, reason, cmd_queue=None, timeout=90, page=None):
     """
     Ask the user to solve a challenge manually.
 
     Polls cmd_queue only — never calls input().  console_listener is the
     sole owner of stdin, preventing the deadlock that previously caused CLI
     commands to stop working and waits to last indefinitely.
+
+    On timeout (90 s with no user input):
+      1. Press F5 to reload the page
+      2. Wait 5 s for the challenge page to re-render
+      3. Try to auto-solve the Turnstile again (enterprise solver first)
+      4. Return True if solved, False if still stuck (caller will re-check)
+
+    This handles the case where Turnstile solved but didn't redirect — a
+    reload forces the server to process the token and send the user onwards.
     """
     beep_alert()
     print(f"\n{'=' * 55}")
     print(f"🔒 {reason}")
     print(f"   Konsola 'ok' yazın devam etmek için.")
-    print(f"   Veya: skip / next / stop")
-    print(f"   {timeout}s içinde yanıt gelmezse otomatik devam edilir.")
+    print(f"   Veya: skip / next / stop / restart")
+    print(f"   {timeout}s içinde yanıt gelmezse sayfa yenilenir ve")
+    print(f"   Turnstile otomatik olarak tekrar çözülmeye çalışılır.")
     print(f"{'=' * 55}")
 
     deadline = time.time() + timeout
@@ -167,13 +180,67 @@ async def wait_for_manual_solve(loop, reason, cmd_queue=None, timeout=90):
                     raise SkipCitySignal()
                 elif cmd == "stop":
                     raise StopSignal()
+                elif cmd == "restart":
+                    raise RestartBrowserSignal()
                 elif cmd in ("ok", "devam", "continue"):
                     logger.info("✅ Manuel onay alındı.")
-                    return
+                    return True
             except queue.Empty:
                 pass
 
-    logger.warning("⏱  Bekleme süresi doldu (%ds), otomatik devam.", timeout)
+    # ── Timeout reached — reload and re-solve ────────────────────────────
+    logger.warning(
+        "⏱  Manuel çözüm bekleme süresi doldu (%ds). "
+        "Sayfa yenileniyor ve Turnstile tekrar çözülmeye çalışılıyor...",
+        timeout,
+    )
+
+    if page is None:
+        # No page reference — caller will handle
+        return False
+
+    try:
+        # F5 reload
+        logger.info("   🔄 F5 — sayfa yenileniyor...")
+        await page.keyboard.press("F5")
+        await asyncio.sleep(5)
+
+        # Check if challenge is still present
+        try:
+            html = await get_page_content(page, 8000)
+        except Exception:
+            html = ""
+
+        cur_url = _safe_url(page)
+
+        # Already redirected — no re-solve needed
+        if (
+            "cs/tloading"    not in cur_url.lower()
+            and "cs/checkloading" not in cur_url.lower()
+            and "tarayıcınızı kontrol ediyoruz" not in html.lower()
+        ):
+            logger.info("   ✅ Yenileme sonrası yönlendirme gerçekleşti. URL: %s", cur_url)
+            return True
+
+        # Re-attempt enterprise solve on the freshly loaded challenge page
+        logger.info("   🔐 Turnstile yeniden çözülmeye çalışılıyor (enterprise)...")
+        is_enterprise = await _is_enterprise_turnstile(page)
+        if is_enterprise:
+            solved = await solve_enterprise_turnstile(page, loop, cmd_queue)
+        else:
+            solved = await _auto_solve_interactive_turnstile(page, loop, cmd_queue)
+
+        if solved:
+            logger.info("   ✅ Yenileme sonrası Turnstile çözüldü!")
+        else:
+            logger.warning("   ❌ Yenileme sonrası Turnstile çözülemedi.")
+        return solved
+
+    except (SkipBracketSignal, SkipCitySignal, StopSignal, RestartBrowserSignal):
+        raise
+    except Exception as e:
+        logger.error("   ❌ Sayfa yenileme / yeniden çözme hatası: %s", e)
+        return False
 
 
 # ---------------------------------------------------------------------------
@@ -577,7 +644,7 @@ async def warmup_with_human_surf(page, loop, cmd_queue=None):
                 if is_login_page(html, page):
                     raise BrowserBlockedError("Login (Turnstile sonrası)")
                 continue
-        await wait_for_manual_solve(loop, f"Isınma — {r} | {_safe_url(page)}", cmd_queue)
+        await wait_for_manual_solve(loop, f"Isınma — {r} | {_safe_url(page)}", cmd_queue, page=page)
         await asyncio.sleep(backoff)
         backoff = min(backoff * 2, 15)
         html = await get_page_content(page)
@@ -1139,7 +1206,7 @@ async def safe_goto(page, url, loop, cmd_queue=None):
                         f"Login (Turnstile sonrası, URL: {final_url})"
                     )
                 continue
-        await wait_for_manual_solve(loop, f"{r} | URL: {final_url}", cmd_queue)
+        await wait_for_manual_solve(loop, f"{r} | URL: {final_url}", cmd_queue, page=page)
         await asyncio.sleep(backoff)
         backoff   = min(backoff * 2, 15)
         html      = await get_page_content(page)
@@ -2109,6 +2176,21 @@ async def scrape_city(city, checkpoint, cmd_queue):
 
             except (SkipCitySignal, StopSignal):
                 raise
+
+            except RestartBrowserSignal:
+                # User typed 'restart' — kill the current browser and spawn fresh
+                logger.warning(
+                    "🔁 RESTART komutu alındı — tarayıcı yeniden başlatılıyor..."
+                )
+                need_new_browser = True
+                # Pick a fresh jar so the new session starts with a different identity
+                old_jar = _ACTIVE_JAR_INDEX
+                candidates = [i for i in range(_COOKIE_POOL_SIZE) if i != old_jar]
+                _ACTIVE_JAR_INDEX = random.choice(candidates)
+                logger.info(
+                    "🍪 Restart sonrası yeni jar: jar_%d → jar_%d", old_jar, _ACTIVE_JAR_INDEX
+                )
+                # No backoff needed — user explicitly requested this
 
             except SkipBracketSignal:
                 start_bracket += 1

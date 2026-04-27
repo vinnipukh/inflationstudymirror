@@ -24,6 +24,7 @@ HELP_TEXT = """
 ║  pause     → Scraper'ı duraklatır           ║
 ║  go        → Duraklatan scraper'ı devam et  ║
 ║  wait N    → N saniye bekle (örn: wait 30)  ║
+║  restart   → Tarayıcıyı yeniden başlat      ║
 ║  skip      → Mevcut şehri atla              ║
 ║  next      → Mevcut bracket'ı atla          ║
 ║  stop      → Scraper'ı durdur               ║
@@ -79,7 +80,7 @@ def console_listener(cmd_queue, stop_event):
                 logger.info("⚡ Komut alındı: 'wait %d'", secs)
             else:
                 print("Kullanım: wait <saniye>  (örn: wait 30)")
-        elif cmd in ("skip", "next", "stop", "ok", "devam", "pause", "go"):
+        elif cmd in ("skip", "next", "stop", "ok", "devam", "pause", "go", "restart"):
             cmd_queue.put(cmd)
             logger.info("⚡ Komut alındı: '%s'", cmd)
         else:
