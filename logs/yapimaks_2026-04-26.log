@@ -1,0 +1,16 @@
+2026-04-26 18:13:25 [INFO] ==================================================
+2026-04-26 18:13:25 [INFO] Yapimaks Scraper basliyor
+2026-04-26 18:13:25 [INFO] ==================================================
+2026-04-26 18:13:25 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-04-26 18:13:25 [INFO] Cookie basariyla alindi.
+2026-04-26 18:13:25 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-04-26 18:13:26 [INFO] Sitemap'ten toplam 8913 urun URL'si bulundu.
+2026-04-26 18:13:26 [INFO] Bugune ait veri yok. Eski veri (2026-04-25.csv) süzülerek bugune aktariliyor...
+2026-04-26 18:13:26 [INFO] Basarili! 8911 urun dunden bugune aktarildi.
+2026-04-26 18:13:26 [INFO] Guncel dosyada hazir olan urun: 8911 | Sifirdan cekilecek (yeni) urun: 2
+2026-04-26 18:13:26 [INFO] 2 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-26.csv
+2026-04-26 18:13:26 [INFO] [1/2] https://yapimaks.com/torpu-hand-sapli-8-vinko-29557-p15316
+2026-04-26 18:13:26 [INFO] [15316] 'TÖRPÜ HAND SAPLI 8" VINKO 29557' | 100,00 TL | SKU: VINKO.VI29557
+2026-04-26 18:13:28 [INFO] [2/2] https://yapimaks.com/torpu-yarim-yuvarlak-8-sapli-vinko-29551-p15315
+2026-04-26 18:13:28 [INFO] [15315] 'TÖRPÜ YARIM YUVARLAK 8" SAPLI VINKO 2955' | 100,00 TL | SKU: VINKO.VI29551
+2026-04-26 18:13:30 [INFO] Tamamlandi! Toplam 2 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-26.csv

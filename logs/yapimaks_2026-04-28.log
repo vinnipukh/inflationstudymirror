@@ -1,0 +1,34 @@
+2026-04-28 09:10:59 [INFO] ==================================================
+2026-04-28 09:10:59 [INFO] Yapimaks Scraper basliyor
+2026-04-28 09:10:59 [INFO] ==================================================
+2026-04-28 09:10:59 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-04-28 09:11:00 [INFO] Cookie basariyla alindi.
+2026-04-28 09:11:00 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-04-28 09:11:01 [INFO] Sitemap'ten toplam 8927 urun URL'si bulundu.
+2026-04-28 09:11:01 [INFO] Bugune ait veri yok. Eski veri (2026-04-27.csv) süzülerek bugune aktariliyor...
+2026-04-28 09:11:01 [INFO] Basarili! 8916 urun dunden bugune aktarildi.
+2026-04-28 09:11:01 [INFO] Guncel dosyada hazir olan urun: 8916 | Sifirdan cekilecek (yeni) urun: 11
+2026-04-28 09:11:01 [INFO] 11 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-28.csv
+2026-04-28 09:11:01 [INFO] [1/11] https://yapimaks.com/dubel-yere-tespit-dubeli-kilcik-1-ad-p4862
+2026-04-28 09:11:01 [INFO] [4862] 'DÜBEL YERE TESPİT DÜBELİ KILÇIK 1 AD' | 2,00 TL | SKU: KALDE.3595PFP250000
+2026-04-28 09:11:03 [INFO] [2/11] https://yapimaks.com/kabin-kare-80x80-penta-nero-h190-5mm-c160-siyah-ekose-p15347
+2026-04-28 09:11:03 [INFO] [15347] 'KABİN KARE 80X80 PENTA NERO H190 5MM C16' |  TL | SKU: CABINART.045
+2026-04-28 09:11:05 [INFO] [3/11] https://yapimaks.com/orak-dal-metal-desa-co0350-p15342
+2026-04-28 09:11:05 [INFO] [15342] 'ORAK DAL METAL DESA ÇO0350' | 275,00 TL | SKU: SD.ÇO0350
+2026-04-28 09:11:07 [INFO] [4/11] https://yapimaks.com/pvc-mentese-a-kahve-75mm-pencere-p15295
+2026-04-28 09:11:07 [INFO] [15295] 'PVC MENTEŞE A.KAHVE 75MM PENCERE' | 75,00 TL | SKU: NOBEL.3841711775
+2026-04-28 09:11:09 [INFO] [5/11] https://yapimaks.com/pvc-mentese-beyaz-75mm-pencere-p15296
+2026-04-28 09:11:09 [INFO] [15296] 'PVC MENTEŞE BEYAZ 75MM PENCERE' | 75,00 TL | SKU: NOBEL.384173275
+2026-04-28 09:11:11 [INFO] [6/11] https://yapimaks.com/salincak-tekli-uzanma-rest-antrasit-p15202
+2026-04-28 09:11:11 [INFO] [15202] 'SALINCAK TEKLİ UZANMA REST ANTRASİT' | 12900,00 TL | SKU: SÖNMEZ.0090-3
+2026-04-28 09:11:13 [INFO] [7/11] https://yapimaks.com/salincak-tekli-uzanma-rest-capucino-p15203
+2026-04-28 09:11:13 [INFO] [15203] 'SALINCAK TEKLİ UZANMA REST CAPUCİNO' | 12900,00 TL | SKU: SÖNMEZ.0090-4
+2026-04-28 09:11:15 [INFO] [8/11] https://yapimaks.com/salincak-tekli-uzanma-rest-gri-p15204
+2026-04-28 09:11:15 [INFO] [15204] 'SALINCAK TEKLİ UZANMA REST GRİ' | 12900,00 TL | SKU: SÖNMEZ.0090-5
+2026-04-28 09:11:17 [INFO] [9/11] https://yapimaks.com/salincak-tekli-uzanma-rest-kahve-p15201
+2026-04-28 09:11:17 [INFO] [15201] 'SALINCAK TEKLİ UZANMA REST KAHVE' | 12900,00 TL | SKU: SÖNMEZ.0090-2
+2026-04-28 09:11:19 [INFO] [10/11] https://yapimaks.com/siva-filesi-kesik-140-gr-20-500-4-4-beyaz-100-m2-p15256
+2026-04-28 09:11:19 [INFO] [15256] 'SIVA FİLESİ KESİK 140 GR 20*500*4*4 BEYA' | 2000,00 TL | SKU: DARKSS.SFK.05
+2026-04-28 09:11:21 [INFO] [11/11] https://yapimaks.com/siva-filesi-kesik-145-gr-20-500-4-4-mavi-100-m2-p12988
+2026-04-28 09:11:21 [INFO] [12988] 'SIVA FİLESİ KESİK 145 GR 20*500*4*4 MAVİ' | 2000,00 TL | SKU: DARKSS.SFK.04
+2026-04-28 09:11:23 [INFO] Tamamlandi! Toplam 11 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-28.csv

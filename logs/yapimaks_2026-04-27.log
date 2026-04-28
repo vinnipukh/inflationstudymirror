@@ -1,0 +1,56 @@
+2026-04-27 20:22:06 [INFO] ==================================================
+2026-04-27 20:22:06 [INFO] Yapimaks Scraper basliyor
+2026-04-27 20:22:06 [INFO] ==================================================
+2026-04-27 20:22:06 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-04-27 20:22:07 [INFO] Cookie basariyla alindi.
+2026-04-27 20:22:07 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-04-27 20:22:07 [INFO] Sitemap'ten toplam 8923 urun URL'si bulundu.
+2026-04-27 20:22:07 [INFO] Bugune ait veri yok. Eski veri (2026-04-26.csv) süzülerek bugune aktariliyor...
+2026-04-27 20:22:07 [INFO] Basarili! 8901 urun dunden bugune aktarildi.
+2026-04-27 20:22:07 [INFO] Guncel dosyada hazir olan urun: 8901 | Sifirdan cekilecek (yeni) urun: 22
+2026-04-27 20:22:07 [INFO] 22 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-27.csv
+2026-04-27 20:22:07 [INFO] [1/22] https://yapimaks.com/3lu-grup-priz-20-mt-3x2-5-mm-01558-topart-p12859
+2026-04-27 20:22:07 [INFO] [12859] '3LÜ GRUP PRİZ 20 MT 3X2,5 MM 01558 TOPAR' | 1080,00 TL | SKU: TOPART.TPRT01558
+2026-04-27 20:22:09 [INFO] [2/22] https://yapimaks.com/asma-kilit-gri-50mm-uzun-ymk-1250l-p15343
+2026-04-27 20:22:09 [INFO] [15343] 'ASMA KİLİT GRİ 50MM UZUN (YMK 1250L)' | 60,00 TL | SKU: YMK.1250L
+2026-04-27 20:22:11 [INFO] [3/22] https://yapimaks.com/cam-vantuzu-aluminyum-ciftli-15005-topshop-p15310
+2026-04-27 20:22:11 [INFO] [15310] 'CAM VANTUZU ALÜMİNYUM ÇİFTLİ 15005 TOPSH' | 1500,00 TL | SKU: TOPSHOP.TH15005
+2026-04-27 20:22:13 [INFO] [4/22] https://yapimaks.com/cam-vantuzu-aluminyum-tekli-15003-topshop-p15312
+2026-04-27 20:22:13 [INFO] [15312] 'CAM VANTUZU ALÜMİNYUM TEKLİ 15003 TOPSHO' | 955,00 TL | SKU: TOPSHOP.TH15003
+2026-04-27 20:22:15 [INFO] [5/22] https://yapimaks.com/cam-vantuzu-uclu-15011-topshop-p15311
+2026-04-27 20:22:15 [INFO] [15311] 'CAM VANTUZU ÜÇLÜ 15011 TOPSHOP' | 650,00 TL | SKU: TOPSHOP.TH15011
+2026-04-27 20:22:17 [INFO] [6/22] https://yapimaks.com/demir-testere-kolu-152-mm-p14279
+2026-04-27 20:22:17 [INFO] [14279] 'DEMİR TESTERE KOLU 152 MM' | 250,00 TL | SKU: TOPSHOP.TSP03069
+2026-04-27 20:22:19 [INFO] [7/22] https://yapimaks.com/demir-testere-kolu-305-mm-p15319
+2026-04-27 20:22:19 [INFO] [15319] 'DEMİR TESTERE KOLU 305 MM' | 440,00 TL | SKU: TOPSHOP.TSP03070
+2026-04-27 20:22:21 [INFO] [8/22] https://yapimaks.com/eldiven-pu-touch-siyah-montaj-eldiveni-no-9-p15344
+2026-04-27 20:22:21 [INFO] [15344] 'ELDİVEN PU TOUCH SİYAH MONTAJ ELDİVENİ N' | 45,00 TL | SKU: BEYBİ.İ040207
+2026-04-27 20:22:23 [INFO] [9/22] https://yapimaks.com/elmas-testere-turbo-180-st-50987-procut-p7557
+2026-04-27 20:22:24 [INFO] [7557] 'ELMAS TESTERE TURBO 180-ST 50987-PROCUT' | 588,00 TL | SKU: PROCUT.50987
+2026-04-27 20:22:26 [INFO] [10/22] https://yapimaks.com/elmas-testere-turbo-a-115-51101-procut-p7826
+2026-04-27 20:22:26 [INFO] [7826] 'ELMAS TESTERE TURBO A-115-51101 PROCUT' | 191,00 TL | SKU: PROCUT.51101
+2026-04-27 20:22:28 [INFO] [11/22] https://yapimaks.com/elmas-testere-turbo-kanalli-230mm-sgs-p8796
+2026-04-27 20:22:28 [INFO] [8796] 'ELMAS TESTERE TURBO KANALLI  230MM SGS' | 450,00 TL | SKU: SGS.2230
+2026-04-27 20:22:30 [INFO] [12/22] https://yapimaks.com/elmas-testere-turbo-pro-180x1-8-mm-wonder-p10942
+2026-04-27 20:22:30 [INFO] [10942] 'ELMAS TESTERE TURBO PRO 180X1.8 MM WONDE' | 550,00 TL | SKU: WONDER.STW01856
+2026-04-27 20:22:32 [INFO] [13/22] https://yapimaks.com/epoksi-tabanca-plastik-tsp03093-345ml-p15308
+2026-04-27 20:22:32 [INFO] [15308] 'EPOKSİ TABANCA PLASTİK TSP03093 (345ML)' | 160,00 TL | SKU: TOPSHOP.TSP03093
+2026-04-27 20:22:34 [INFO] [14/22] https://yapimaks.com/karistirici-100x600-tsp14325-p15307
+2026-04-27 20:22:34 [INFO] [15307] 'KARIŞTIRICI 100X600 TSP14325' | 140,00 TL | SKU: TOPSHOP.TSP14325
+2026-04-27 20:22:36 [INFO] [15/22] https://yapimaks.com/kaynak-makinasi-160a-wd160ic1-stanley-p11680
+2026-04-27 20:22:36 [INFO] [11680] 'KAYNAK MAKİNASI 160A WD160IC1 STANLEY' | 11500,00 TL | SKU: STANLEY.WD160IC1
+2026-04-27 20:22:38 [INFO] [16/22] https://yapimaks.com/kaynak-makinasi-200a-wd200ic2-stanley-p9019
+2026-04-27 20:22:38 [INFO] [9019] 'KAYNAK MAKİNASI 200A WD200IC2 STANLEY' | 10194,00 TL | SKU: STANLEY.WD200IC2
+2026-04-27 20:22:40 [INFO] [17/22] https://yapimaks.com/kaynak-makinasi-megastick-elektrot-200-501m2000mf-magmaweld-p13399
+2026-04-27 20:22:40 [INFO] [13399] 'KAYNAK MAKİNASİ MEGASTİCK ELEKTROT 200 5' | 13900,00 TL | SKU: MAGMAWELD.006042
+2026-04-27 20:22:42 [INFO] [18/22] https://yapimaks.com/kose-citasi-alci-pvc-kesik-270-cm-tesay-p15341
+2026-04-27 20:22:42 [INFO] [15341] 'KÖŞE ÇITASI ALÇI PVC KESİK 270 CM TESAY' | 45,00 TL | SKU: TESAY.PKSK25-270
+2026-04-27 20:22:44 [INFO] [19/22] https://yapimaks.com/merdiven-teleskopik-11-basamak-320cm-p15346
+2026-04-27 20:22:44 [INFO] [15346] 'MERDİVEN TELESKOPİK 11 BASAMAK 320CM' | 12000,00 TL | SKU: SARAYLI.7111-T
+2026-04-27 20:22:46 [INFO] [20/22] https://yapimaks.com/merdiven-teleskopik-7-basamak-200cm-p15345
+2026-04-27 20:22:46 [INFO] [15345] 'MERDİVEN TELESKOPİK 7 BASAMAK 200CM' | 7500,00 TL | SKU: SARAYLI.7107-T
+2026-04-27 20:22:48 [INFO] [21/22] https://yapimaks.com/priz-3lu-grup-3x25a-kaucuk-tplast-p9853
+2026-04-27 20:22:48 [INFO] [9853] 'PRİZ 3LÜ GRUP 3X25A KAUÇUK TPLAST' | 601,00 TL | SKU: TPLAST.3104.308.0300
+2026-04-27 20:22:50 [INFO] [22/22] https://yapimaks.com/priz-3lu-grup-monofaze-1x16a-kaucuk-schneider-p12730
+2026-04-27 20:22:50 [INFO] [12730] 'PRİZ 3LÜ GRUP MONOFAZE 1X16A KAUÇUK SCHN' | 480,00 TL | SKU: SCHNEIDER.3201-366-0301
+2026-04-27 20:22:52 [INFO] Tamamlandi! Toplam 22 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-27.csv
