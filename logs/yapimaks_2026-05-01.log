@@ -1,0 +1,34 @@
+2026-05-01 14:48:41 [INFO] ==================================================
+2026-05-01 14:48:41 [INFO] Yapimaks Scraper basliyor
+2026-05-01 14:48:41 [INFO] ==================================================
+2026-05-01 14:48:41 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-05-01 14:48:41 [INFO] Cookie basariyla alindi.
+2026-05-01 14:48:41 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-05-01 14:48:42 [INFO] Sitemap'ten toplam 8943 urun URL'si bulundu.
+2026-05-01 14:48:42 [INFO] Bugune ait veri yok. Eski veri (2026-04-30.csv) süzülerek bugune aktariliyor...
+2026-05-01 14:48:42 [INFO] Basarili! 8932 urun dunden bugune aktarildi.
+2026-05-01 14:48:42 [INFO] Guncel dosyada hazir olan urun: 8932 | Sifirdan cekilecek (yeni) urun: 11
+2026-05-01 14:48:42 [INFO] 11 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-01.csv
+2026-05-01 14:48:42 [INFO] [1/11] https://yapimaks.com/astar-dekoratif-mineral-kaplama-pr-300-20-kg-p13444
+2026-05-01 14:48:42 [INFO] [13444] 'ASTAR DEKORATİF MİNERAL KAPLAMA PR-300 2' | 950,00 TL | SKU: DARKSS.B.PR300
+2026-05-01 14:48:44 [INFO] [2/11] https://yapimaks.com/cocuk-kilidi-cok-amacli-nobel-p15362
+2026-05-01 14:48:44 [INFO] [15362] 'ÇOCUK KİLİDİ ÇOK AMAÇLI NOBEL' | 99,00 TL | SKU: NOBEL.4000909
+2026-05-01 14:48:46 [INFO] [3/11] https://yapimaks.com/cocuk-kilidi-dolap-rayli-nobel-p6670
+2026-05-01 14:48:46 [INFO] [6670] 'ÇOCUK KİLİDİ DOLAP RAYLI NOBEL' | 99,00 TL | SKU: NOBEL.4000902
+2026-05-01 14:48:48 [INFO] [4/11] https://yapimaks.com/cocuk-kilidi-dolap-ve-cekmece-ideal-baby-p6572
+2026-05-01 14:48:48 [INFO] [6572] 'ÇOCUK KİLİDİ DOLAP VE ÇEKMECE IDEAL BABY' | 99,00 TL | SKU: IDEALBABY.IDE13
+2026-05-01 14:48:50 [INFO] [5/11] https://yapimaks.com/cocuk-kilidi-kapak-ideal-baby-p6672
+2026-05-01 14:48:50 [INFO] [6672] 'ÇOCUK KİLİDİ KAPAK IDEAL BABY' | 79,00 TL | SKU: IDEALBABY.IDE03
+2026-05-01 14:48:52 [INFO] [6/11] https://yapimaks.com/cocuk-kilidi-mini-cok-amacli-nobel-p6674
+2026-05-01 14:48:52 [INFO] [6674] 'ÇOCUK KİLİDİ MİNİ ÇOK AMAÇLI NOBEL' | 99,00 TL | SKU: NOBEL.4000910
+2026-05-01 14:48:54 [INFO] [7/11] https://yapimaks.com/cocuk-kilidi-pencere-ayarli-nobel-p6669
+2026-05-01 14:48:54 [INFO] [6669] 'ÇOCUK KİLİDİ PENCERE AYARLI NOBEL' | 99,00 TL | SKU: NOBEL.4000901
+2026-05-01 14:48:56 [INFO] [8/11] https://yapimaks.com/hofmann-sdr-78-mantolama-dubel-cakma-tabancasi-165-mm-p14226
+2026-05-01 14:48:56 [INFO] [14226] 'HOFMANN SDR 78 MANTOLAMA DÜBEL ÇAKMA TAB' | 23500,00 TL | SKU: HOFMANN.SDR78
+2026-05-01 14:48:58 [INFO] [9/11] https://yapimaks.com/siva-filesi-kesik-100-gr-20-500mt-beyaz-100-m2-p12567
+2026-05-01 14:48:58 [INFO] [12567] 'SIVA FİLESİ KESİK 100 GR 20*500MT BEYAZ ' | 1100,00 TL | SKU: DARKSS.SFK.03
+2026-05-01 14:49:00 [INFO] [10/11] https://yapimaks.com/siva-filesi-kesik-60-gr-14-28-500mt-beyaz-71-40-m2-p12566
+2026-05-01 14:49:00 [INFO] [12566] 'SIVA FİLESİ KESİK 60 GR 14,28*500MT BEYA' | 1050,00 TL | SKU: DARKSS.SFK.01
+2026-05-01 14:49:02 [INFO] [11/11] https://yapimaks.com/siva-filesi-kesik-90-gr-16-6-500mt-beyaz-100-m2-p13457
+2026-05-01 14:49:02 [INFO] [13457] 'SIVA FİLESİ KESİK 90 GR 16,6*500MT BEYAZ' | 1100,00 TL | SKU: DARKSS.SFK.02
+2026-05-01 14:49:04 [INFO] Tamamlandi! Toplam 11 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-01.csv

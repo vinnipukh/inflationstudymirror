@@ -1,0 +1,44 @@
+2026-04-30 23:28:57 [INFO] ==================================================
+2026-04-30 23:28:57 [INFO] Yapimaks Scraper basliyor
+2026-04-30 23:28:57 [INFO] ==================================================
+2026-04-30 23:28:57 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-04-30 23:28:57 [INFO] Cookie basariyla alindi.
+2026-04-30 23:28:57 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-04-30 23:28:58 [INFO] Sitemap'ten toplam 8938 urun URL'si bulundu.
+2026-04-30 23:28:58 [INFO] Bugune ait veri yok. Eski veri (2026-04-29.csv) süzülerek bugune aktariliyor...
+2026-04-30 23:28:58 [INFO] Basarili! 8922 urun dunden bugune aktarildi.
+2026-04-30 23:28:58 [INFO] Guncel dosyada hazir olan urun: 8922 | Sifirdan cekilecek (yeni) urun: 16
+2026-04-30 23:28:58 [INFO] 16 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-30.csv
+2026-04-30 23:28:58 [INFO] [1/16] https://yapimaks.com/atlas-mavi-20x20-2k-mat-0-72m2-p15291
+2026-04-30 23:28:58 [INFO] [15291] 'ATLAS MAVİ 20X20 2K MAT (0,72M2)' | 306,00 TL | SKU: EGESER.200X200ATS04.2K
+2026-04-30 23:29:00 [INFO] [2/16] https://yapimaks.com/canzone-kahve-33x33-1k-mat-1-m2-p15282
+2026-04-30 23:29:00 [INFO] [15282] 'CANZONE KAHVE 33X33 1K MAT (1 M2)' | 459,00 TL | SKU: EGESER.330X330CNZ06.1K
+2026-04-30 23:29:02 [INFO] [3/16] https://yapimaks.com/especta-rolyef-kahve-60x120-2k-mat-r10-rek-1-44m2-p15354
+2026-04-30 23:29:02 [INFO] [15354] 'ESPECTA ROLYEF KAHVE 60X120 2K MAT R10 R' | 599,00 TL | SKU: EGESER.600X1200ECT06REK.2K
+2026-04-30 23:29:04 [INFO] [4/16] https://yapimaks.com/himba-bej-15x60-1k-1-35m2-p15353
+2026-04-30 23:29:04 [INFO] [15353] 'HİMBA BEJ 15X60 1K (1,35M2)' | 547,00 TL | SKU: EGESER.150X600HIM12.1K
+2026-04-30 23:29:06 [INFO] [5/16] https://yapimaks.com/horizon-acik-gri-60x120-1k-tam-parlak-rek-2-16m2-p15357
+2026-04-30 23:29:06 [INFO] [15357] 'HORİZON AÇIK GRİ 60x120 1K TAM PARLAK RE' | 1500,00 TL | SKU: EGESER.600X1200HRZ47PAR.1K
+2026-04-30 23:29:08 [INFO] [6/16] https://yapimaks.com/horizon-antrasit-60x120-1k-tam-parlak-rek-2-16m2-p15358
+2026-04-30 23:29:08 [INFO] [15358] 'HORİZON ANTRASİT 60x120 1K TAM PARLAK RE' | 1585,00 TL | SKU: EGESER.600X1200HRZ19PAR.1K
+2026-04-30 23:29:10 [INFO] [7/16] https://yapimaks.com/montreal-beyaz-33x99-1k-mat-1m2-p15350
+2026-04-30 23:29:10 [INFO] [15350] 'MONTREAL BEYAZ 33X99 1K MAT (1M2)' | 665,00 TL | SKU: EGESER.330X990MNL01REK.1K
+2026-04-30 23:29:12 [INFO] [8/16] https://yapimaks.com/nevada-siyah-60x120-1k-tam-parlak-rek-2-16m2-p15356
+2026-04-30 23:29:12 [INFO] [15356] 'NEVADA SİYAH 60x120 1K TAM PARLAK REK (2' | 1679,00 TL | SKU: EGESER.600X1200NVD83PAR.1K
+2026-04-30 23:29:14 [INFO] [9/16] https://yapimaks.com/passion-beyaz-33x33-1k-mat-1-m2-p15290
+2026-04-30 23:29:14 [INFO] [15290] 'PASSION BEYAZ 33X33 1K MAT (1 M2)' | 480,00 TL | SKU: EGESER.330X330PSN01
+2026-04-30 23:29:16 [INFO] [10/16] https://yapimaks.com/passion-beyaz-33x33-1k-mat-1-m2-p15351
+2026-04-30 23:29:17 [INFO] [15351] 'PASSION BEYAZ 33X33 1K MAT (1 M2)' | 389,00 TL | SKU: EGESER.333x333PSN01.1K
+2026-04-30 23:29:19 [INFO] [11/16] https://yapimaks.com/passion-taupe-33x33-1k-mat-1-m2-p15289
+2026-04-30 23:29:19 [INFO] [15289] 'PASSION TAUPE 33X33 1K MAT (1 M2)' | 480,00 TL | SKU: EGESER.330X330PSN34
+2026-04-30 23:29:21 [INFO] [12/16] https://yapimaks.com/passion-taupe-33x33-1k-mat-1-m2-p15352
+2026-04-30 23:29:21 [INFO] [15352] 'PASSION TAUPE  33X33 1K MAT (1 M2)' | 389,00 TL | SKU: EGESER.333x333PSN44.1K
+2026-04-30 23:29:23 [INFO] [13/16] https://yapimaks.com/strec-17-micron-x150-mt-1400-gr-p15348
+2026-04-30 23:29:23 [INFO] [15348] 'STREÇ 17 MİCRON X150 MT (1400 GR)' | 250,00 TL | SKU: ELİTT.001
+2026-04-30 23:29:25 [INFO] [14/16] https://yapimaks.com/strec-17-micron-x300-mt-2640-gr-p15349
+2026-04-30 23:29:25 [INFO] [15349] 'STREÇ 17 MİCRON X300 MT (2640 GR)' | 550,00 TL | SKU: ELİTT.002
+2026-04-30 23:29:27 [INFO] [15/16] https://yapimaks.com/tria-koyu-mavi-deep-blue-33x99-2k-mat-rek-1m2-p15355
+2026-04-30 23:29:27 [INFO] [15355] 'TRIA KOYU MAVİ DEEP BLUE 33X99 2K MAT RE' | 399,00 TL | SKU: EGESER.330X990TRI04REK.2K
+2026-04-30 23:29:29 [INFO] [16/16] https://yapimaks.com/verano-acik-yesil-10x30-1k-0-6m2-p2744
+2026-04-30 23:29:29 [INFO] [2744] 'VERANO AÇIK YEŞİL 10X30 1K (0,6M2)' | 263,00 TL | SKU: EGESER.100X300VRO15.2K
+2026-04-30 23:29:31 [INFO] Tamamlandi! Toplam 16 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-04-30.csv

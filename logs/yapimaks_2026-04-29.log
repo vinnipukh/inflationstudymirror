@@ -1,0 +1,11 @@
+2026-04-29 18:22:45 [INFO] ==================================================
+2026-04-29 18:22:45 [INFO] Yapimaks Scraper basliyor
+2026-04-29 18:22:45 [INFO] ==================================================
+2026-04-29 18:22:45 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-04-29 18:22:45 [INFO] Cookie basariyla alindi.
+2026-04-29 18:22:45 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-04-29 18:22:48 [INFO] Sitemap'ten toplam 8927 urun URL'si bulundu.
+2026-04-29 18:22:48 [INFO] Bugune ait veri yok. Eski veri (2026-04-28.csv) süzülerek bugune aktariliyor...
+2026-04-29 18:22:48 [INFO] Basarili! 8927 urun dunden bugune aktarildi.
+2026-04-29 18:22:48 [INFO] Guncel dosyada hazir olan urun: 8927 | Sifirdan cekilecek (yeni) urun: 0
+2026-04-29 18:22:48 [INFO] Sitemap'teki tum urunler zaten dosyamizda var, cikiliyor.
