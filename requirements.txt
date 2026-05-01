@@ -11,3 +11,4 @@ camoufox
 beautifulsoup4
 seleniumbase
 cloudscraper
+curl-cffi
