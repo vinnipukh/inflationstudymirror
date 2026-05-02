@@ -1,0 +1,32 @@
+2026-05-02 19:00:05 [INFO] ==================================================
+2026-05-02 19:00:05 [INFO] Yapimaks Scraper basliyor
+2026-05-02 19:00:05 [INFO] ==================================================
+2026-05-02 19:00:05 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-05-02 19:00:06 [INFO] Cookie basariyla alindi.
+2026-05-02 19:00:06 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-05-02 19:00:06 [INFO] Sitemap'ten toplam 8946 urun URL'si bulundu.
+2026-05-02 19:00:06 [INFO] Bugune ait veri yok. Eski veri (2026-05-01.csv) süzülerek bugune aktariliyor...
+2026-05-02 19:00:06 [INFO] Basarili! 8936 urun dunden bugune aktarildi.
+2026-05-02 19:00:06 [INFO] Guncel dosyada hazir olan urun: 8936 | Sifirdan cekilecek (yeni) urun: 10
+2026-05-02 19:00:06 [INFO] 10 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-02.csv
+2026-05-02 19:00:06 [INFO] [1/10] https://yapimaks.com/mudahale-kapagi-four-30x60-p15370
+2026-05-02 19:00:06 [INFO] [15370] 'MÜDAHALE KAPAĞI FOUR 30x60' | 350,00 TL | SKU: FOUR.MDK6062
+2026-05-02 19:00:08 [INFO] [2/10] https://yapimaks.com/mudahale-kapagi-four-40x60-p15371
+2026-05-02 19:00:08 [INFO] [15371] 'MÜDAHALE KAPAĞI FOUR 40x60' | 425,00 TL | SKU: FOUR.MDK6063
+2026-05-02 19:00:10 [INFO] [3/10] https://yapimaks.com/siva-filesi-150-160-gr-c-turuncu-1-m2-50-p1999
+2026-05-02 19:00:10 [INFO] [1999] 'SIVA FİLESİ (150-160 GR) C TURUNCU 1 M2 ' | 11,00 TL | SKU: DARKSS.SF160.01
+2026-05-02 19:00:12 [INFO] [4/10] https://yapimaks.com/siva-filesi-160-gr-a-beyaz-1-m2-50-p12565
+2026-05-02 19:00:12 [INFO] [12565] 'SIVA FİLESİ 160 GR A++ BEYAZ 1 M2 (50)' | 24,00 TL | SKU: DARKSS.SF160.07
+2026-05-02 19:00:14 [INFO] [5/10] https://yapimaks.com/siva-filesi-160-gr-a-kirmizi-1-m2-50-p15243
+2026-05-02 19:00:14 [INFO] [15243] 'SIVA FİLESİ 160 GR A++ KIRMIZI 1 M2 (50)' | 25,00 TL | SKU: DARKSS.SF160.08
+2026-05-02 19:00:16 [INFO] [6/10] https://yapimaks.com/siva-filesi-160-gr-a-mavi-1-m2-50-p12987
+2026-05-02 19:00:16 [INFO] [12987] 'SIVA FİLESİ 160 GR A++ MAVİ 1 M2 (50)' | 24,00 TL | SKU: DARKSS.SF160.06
+2026-05-02 19:00:18 [INFO] [7/10] https://yapimaks.com/siva-filesi-160-gr-a-sari-1-m2-50-p12491
+2026-05-02 19:00:18 [INFO] [12491] 'SIVA FİLESİ 160 GR A+ SARI 1 M2 (50)' | 20,00 TL | SKU: DARKSS.SF160.04
+2026-05-02 19:00:20 [INFO] [8/10] https://yapimaks.com/siva-filesi-300-gr-panzer-beyaz-1-adet-25m2-p13401
+2026-05-02 19:00:20 [INFO] [13401] 'SIVA FİLESİ 300 GR PANZER BEYAZ 1 ADET (' | 1400,00 TL | SKU: DARKSS.SF160.09
+2026-05-02 19:00:22 [INFO] [9/10] https://yapimaks.com/siva-filesi-55-gr-a-beyaz-1-m2-100-p12035
+2026-05-02 19:00:22 [INFO] [12035] 'SIVA FİLESİ 55 GR A++ BEYAZ 1 M2 (100)' | 16,00 TL | SKU: DARKSS.SF055.01
+2026-05-02 19:00:24 [INFO] [10/10] https://yapimaks.com/siva-filesi-kesik-90-gr-16-6-500mt-beyaz-83-m2-p13457
+2026-05-02 19:00:24 [INFO] [13457] 'SIVA FİLESİ KESİK 90 GR 16,6*500MT BEYAZ' | 1100,00 TL | SKU: DARKSS.SFK.02
+2026-05-02 19:00:26 [INFO] Tamamlandi! Toplam 10 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-02.csv
