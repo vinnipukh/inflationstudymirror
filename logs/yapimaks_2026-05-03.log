@@ -1,0 +1,14 @@
+2026-05-03 18:06:37 [INFO] ==================================================
+2026-05-03 18:06:37 [INFO] Yapimaks Scraper basliyor
+2026-05-03 18:06:37 [INFO] ==================================================
+2026-05-03 18:06:37 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-05-03 18:06:37 [INFO] Cookie basariyla alindi.
+2026-05-03 18:06:37 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-05-03 18:06:37 [INFO] Sitemap'ten toplam 8947 urun URL'si bulundu.
+2026-05-03 18:06:37 [INFO] Bugune ait veri yok. Eski veri (2026-05-02.csv) süzülerek bugune aktariliyor...
+2026-05-03 18:06:37 [INFO] Basarili! 8946 urun dunden bugune aktarildi.
+2026-05-03 18:06:37 [INFO] Guncel dosyada hazir olan urun: 8946 | Sifirdan cekilecek (yeni) urun: 1
+2026-05-03 18:06:37 [INFO] 1 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-03.csv
+2026-05-03 18:06:37 [INFO] [1/1] https://yapimaks.com/0-40-86-2000-beyaz-p13718
+2026-05-03 18:06:37 [INFO] [13718] '0.40*86*2000 (BEYAZ)' | 380,00 TL | SKU: RALL.9002.040.2000
+2026-05-03 18:06:39 [INFO] Tamamlandi! Toplam 1 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-03.csv
