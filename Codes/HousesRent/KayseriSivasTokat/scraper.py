@@ -25,7 +25,7 @@ import time
 from datetime import datetime, timezone
 
 from bs4 import BeautifulSoup
-import rayobrowse
+import httpx
 from playwright.async_api import async_playwright
 
 import config
@@ -2048,15 +2048,49 @@ async def scrape_city_brackets(
 # ---------------------------------------------------------------------------
 
 async def _spawn_browser():
-    """Create a fresh rayobrowse browser and return (pw, browser, ctx, page)."""
-    ws      = rayobrowse.create_browser(
-        headless=config.RAYOBROWSE_HEADLESS,
-        target_os=config.RAYOBROWSE_TARGET_OS,
-        browser_language=config.RAYOBROWSE_BROWSER_LANGUAGE,
-        ui_language=config.RAYOBROWSE_UI_LANGUAGE,
-    )
+    """
+    Create a fresh rayobrowse browser using the v0.2.1 HTTP /connect API.
+
+    Breaking change in v0.2.0: /connect is now HTTP-only. It returns the
+    CDP WebSocket URL as plain text (and x-vnc-url in the response headers)
+    instead of upgrading the connection to a WebSocket itself.
+
+    Migration from v0.1.x:
+      Old: ws = rayobrowse.create_browser(headless=..., target_os=..., ...)
+      New: GET /connect?os=windows&headless=false&vnc=true&...
+           cdp_url = resp.text.strip()
+    """
+    params = {
+        "os":                  config.RAYOBROWSE_TARGET_OS,
+        "headless":            "true" if config.RAYOBROWSE_HEADLESS else "false",
+        "vnc":                 "true",
+        "browser_name":        config.RAYOBROWSE_BROWSER_NAME,
+        "browser_version_min": str(config.RAYOBROWSE_BROWSER_VERSION_MIN),
+        "browser_version_max": str(config.RAYOBROWSE_BROWSER_VERSION_MAX),
+        "browser_language":    config.RAYOBROWSE_BROWSER_LANGUAGE,
+        "ui_language":         config.RAYOBROWSE_UI_LANGUAGE,
+    }
+
+    logger.info("🚀 Rayobrowse /connect isteği gönderiliyor: %s", config.RAYOBROWSE_ENDPOINT)
+    async with httpx.AsyncClient() as client:
+        resp = await client.get(
+            f"{config.RAYOBROWSE_ENDPOINT}/connect",
+            params=params,
+            timeout=120,
+        )
+        resp.raise_for_status()
+        cdp_url = resp.text.strip()
+        vnc_url = resp.headers.get("x-vnc-url", "")
+
+    if not cdp_url:
+        raise BrowserBlockedError("Rayobrowse /connect boş CDP URL döndürdü.")
+
+    logger.info("✅ CDP URL alındı: %s", cdp_url)
+    if vnc_url:
+        logger.info("🖥️  Canlı tarayıcı görüntüsü için: %s", vnc_url)
+
     pw      = await async_playwright().start()
-    browser = await pw.chromium.connect_over_cdp(ws)
+    browser = await pw.chromium.connect_over_cdp(cdp_url)
     ctx     = browser.contexts[0]
     page    = ctx.pages[0] if ctx.pages else await ctx.new_page()
     await enforce_viewport(page)

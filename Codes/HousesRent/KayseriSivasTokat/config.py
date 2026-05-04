@@ -40,14 +40,24 @@ BETWEEN_BRACKETS      = (4.0,   6.0)
 BETWEEN_PAGES         = (8.0,  12.0)
 GOTO_RETRY_WAIT       = (13.0, 18.0)
 POST_CHECK_WAIT       = (4.0,   6.0)
-HOMEPAGE_WAIT         = (5.0,   15.0)
+HOMEPAGE_WAIT         = (3.0,   5.0)
 CITY_CLOSE_WAIT       = 30
 
 # ---------------------------------------------------------------------------
-# Rayobrowse browser settings
+# Rayobrowse browser settings (v0.2.1)
+#
+# Breaking change in v0.2.0: create_browser() is replaced by a plain
+# HTTP GET to /connect.  Parameter names updated accordingly:
+#   target_os  → os          (same values: "windows", "android", "macos")
+#   NEW: browser_name, browser_version_min, browser_version_max
+#   browser_language and ui_language still accepted as query params
 # ---------------------------------------------------------------------------
+RAYOBROWSE_ENDPOINT         = "http://localhost:9222"
 RAYOBROWSE_HEADLESS         = False
 RAYOBROWSE_TARGET_OS        = "windows"      # Best fingerprint coverage
+RAYOBROWSE_BROWSER_NAME     = "chrome"
+RAYOBROWSE_BROWSER_VERSION_MIN = 146        # Pin to a specific version range
+RAYOBROWSE_BROWSER_VERSION_MAX = 146        # (146 = latest in v0.2.1)
 RAYOBROWSE_BROWSER_LANGUAGE = "tr-TR,tr;q=0.9"
 RAYOBROWSE_UI_LANGUAGE      = "tr-TR"
 
@@ -69,14 +79,14 @@ OVERRIDE_SCREEN_JS_PROPERTIES = True   # Patch window.screen.* to match
 # retry it up to MAX_LOGIN_RETRIES_PER_BRACKET times with exponential
 # back-off before giving up and moving to the next bracket.
 # ---------------------------------------------------------------------------
-MAX_LOGIN_RETRIES_PER_BRACKET = 7    # Retries before permanently skipping
-LOGIN_RETRY_BACKOFF_BASE      = 120   # Base wait in seconds (doubles each retry)
-LOGIN_RETRY_BACKOFF_MAX       = 360  # Maximum wait cap in seconds
+MAX_LOGIN_RETRIES_PER_BRACKET = 3    # Retries before permanently skipping
+LOGIN_RETRY_BACKOFF_BASE      = 30   # Base wait in seconds (doubles each retry)
+LOGIN_RETRY_BACKOFF_MAX       = 120  # Maximum wait cap in seconds
 
 # ---------------------------------------------------------------------------
 # Scraping limits
 # ---------------------------------------------------------------------------
-MAX_RESTARTS_PER_CITY = 7    # Full browser-session restarts per city
+MAX_RESTARTS_PER_CITY = 3    # Full browser-session restarts per city
 MAX_PAGES_PER_BRACKET = 20   # Safety page cap per price range
 PAGE_SIZE             = 50   # Listings per page
 
