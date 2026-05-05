@@ -1,0 +1,14 @@
+2026-05-04 23:28:52 [INFO] ==================================================
+2026-05-04 23:28:52 [INFO] Yapimaks Scraper basliyor
+2026-05-04 23:28:52 [INFO] ==================================================
+2026-05-04 23:28:52 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-05-04 23:28:52 [INFO] Cookie basariyla alindi.
+2026-05-04 23:28:52 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-05-04 23:28:52 [INFO] Sitemap'ten toplam 8947 urun URL'si bulundu.
+2026-05-04 23:28:52 [INFO] Bugune ait veri yok. Eski veri (2026-05-03.csv) süzülerek bugune aktariliyor...
+2026-05-04 23:28:52 [INFO] Basarili! 8946 urun dunden bugune aktarildi.
+2026-05-04 23:28:52 [INFO] Guncel dosyada hazir olan urun: 8946 | Sifirdan cekilecek (yeni) urun: 1
+2026-05-04 23:28:52 [INFO] 1 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-04.csv
+2026-05-04 23:28:52 [INFO] [1/1] https://yapimaks.com/tabaklik-tek-katli-nikel-krom-metal-p12573
+2026-05-04 23:28:52 [INFO] [12573] 'TABAKLIK TEK KATLI NİKEL KROM METAL' | 650,00 TL | SKU: ACERO.20411
+2026-05-04 23:28:54 [INFO] Tamamlandi! Toplam 1 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-04.csv
