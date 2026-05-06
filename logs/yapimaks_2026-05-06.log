@@ -1,0 +1,18 @@
+2026-05-06 23:06:03 [INFO] ==================================================
+2026-05-06 23:06:03 [INFO] Yapimaks Scraper basliyor
+2026-05-06 23:06:03 [INFO] ==================================================
+2026-05-06 23:06:03 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-05-06 23:06:03 [INFO] Cookie basariyla alindi.
+2026-05-06 23:06:03 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-05-06 23:06:03 [INFO] Sitemap'ten toplam 8956 urun URL'si bulundu.
+2026-05-06 23:06:03 [INFO] Bugune ait veri yok. Eski veri (2026-05-05.csv) süzülerek bugune aktariliyor...
+2026-05-06 23:06:03 [INFO] Basarili! 8953 urun dunden bugune aktarildi.
+2026-05-06 23:06:03 [INFO] Guncel dosyada hazir olan urun: 8953 | Sifirdan cekilecek (yeni) urun: 3
+2026-05-06 23:06:03 [INFO] 3 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-06.csv
+2026-05-06 23:06:03 [INFO] [1/3] https://yapimaks.com/adertek-yapistirma-alcisi-25-kg-p1928
+2026-05-06 23:06:03 [INFO] [1928] 'ADERTEK YAPIŞTIRMA ALÇISI (25 KG)' | 200,00 TL | SKU: DALSAN.106
+2026-05-06 23:06:05 [INFO] [2/3] https://yapimaks.com/kartek-kartonpiyer-alcisi-30-kg-p1860
+2026-05-06 23:06:05 [INFO] [1860] 'KARTEK KARTONPİYER ALÇISI (30-KG)' | 150,00 TL | SKU: DALSAN.105
+2026-05-06 23:06:07 [INFO] [3/3] https://yapimaks.com/verano-acik-yesil-10x30-2k-0-6m2-p2744
+2026-05-06 23:06:07 [INFO] [2744] 'VERANO AÇIK YEŞİL 10X30 2K (0,6M2)' | 336,00 TL | SKU: EGESER.100X300VRO15.2K
+2026-05-06 23:06:09 [INFO] Tamamlandi! Toplam 3 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-06.csv
