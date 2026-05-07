@@ -1,0 +1,16 @@
+2026-05-07 22:35:54 [INFO] ==================================================
+2026-05-07 22:35:54 [INFO] Yapimaks Scraper basliyor
+2026-05-07 22:35:54 [INFO] ==================================================
+2026-05-07 22:35:54 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-05-07 22:35:54 [INFO] Cookie basariyla alindi.
+2026-05-07 22:35:54 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-05-07 22:35:54 [INFO] Sitemap'ten toplam 8955 urun URL'si bulundu.
+2026-05-07 22:35:54 [INFO] Bugune ait veri yok. Eski veri (2026-05-06.csv) süzülerek bugune aktariliyor...
+2026-05-07 22:35:54 [INFO] Basarili! 8953 urun dunden bugune aktarildi.
+2026-05-07 22:35:54 [INFO] Guncel dosyada hazir olan urun: 8953 | Sifirdan cekilecek (yeni) urun: 2
+2026-05-07 22:35:54 [INFO] 2 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-07.csv
+2026-05-07 22:35:54 [INFO] [1/2] https://yapimaks.com/klozet-hiera-duvara-tam-dayali-kanalsiz-kombi-beyaz-p15402
+2026-05-07 22:35:55 [INFO] [15402] 'KLOZET HİERA DUVARA TAM DAYALI KANALSIZ ' | 6900,00 TL | SKU: EGEVİT.814035
+2026-05-07 22:35:57 [INFO] [2/2] https://yapimaks.com/saksi-yali-metal-aski-balkon-2-adet-1-takim-p8673
+2026-05-07 22:35:57 [INFO] [8673] 'SAKSI YALI METAL ASKI BALKON 2 ADET 1 TA' | 200,00 TL | SKU: SERİNOVA.YB05
+2026-05-07 22:35:59 [INFO] Tamamlandi! Toplam 2 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-07.csv

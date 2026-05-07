@@ -1,24 +1,25 @@
 import requests
 import csv
 import time
+import os
 from datetime import datetime
 
 # -------------------------------------------------------------------
 # KATEGORİLER  (sadece slug'lar)
 # -------------------------------------------------------------------
 KATEGORILER = [
-    ("Meyve ve Sebze",          "meyve-ve-sebze-c"),
-    ("Et ve Tavuk",             "et-ve-tavuk-urunleri-c"),
+    ("Meyve ve Sebze", "meyve-ve-sebze-c"),
+    ("Et ve Tavuk", "et-ve-tavuk-urunleri-c"),
     ("Süt, Kahvaltılık, Sark.", "sut-kahvaltiliklar-sarkuteri-c"),
-    ("Temel Gıda",              "temel-gida-c"),
-    ("İçecekler",               "icecekler-c"),
-    ("Atıştırmalıklar",         "atistirmaliklar-c"),
-    ("Bebek Ürünleri",          "bebek-urunleri-c"),
-    ("Deterjan ve Temizlik",    "deterjan-temizlik-c"),
-    ("Kişisel Bakım",           "kisisel-bakim-ve-hijyen-c"),
-    ("Ev ve Yaşam",             "ev-yasam-c"),
-    ("Kitap, Kırtasiye",        "kitap-kirtasiye-oyuncak-c"),
-    ("Petshop",                 "petshop-c"),
+    ("Temel Gıda", "temel-gida-c"),
+    ("İçecekler", "icecekler-c"),
+    ("Atıştırmalıklar", "atistirmaliklar-c"),
+    ("Bebek Ürünleri", "bebek-urunleri-c"),
+    ("Deterjan ve Temizlik", "deterjan-temizlik-c"),
+    ("Kişisel Bakım", "kisisel-bakim-ve-hijyen-c"),
+    ("Ev ve Yaşam", "ev-yasam-c"),
+    ("Kitap, Kırtasiye", "kitap-kirtasiye-oyuncak-c"),
+    ("Petshop", "petshop-c"),
 ]
 
 BASE_URL = "https://api.gurmar.com.tr/api/home/slug/{slug}?page={page}"
@@ -104,6 +105,7 @@ def main():
                     continue
 
                 fiyat = product.get("price", "")
+                urun_id = product.get("id", "")
 
                 # Ekstra bilgileri de istersen açabilirsin:
                 # eski_fiyat = product.get("oldPrice")
@@ -112,8 +114,9 @@ def main():
                 # stok_disi  = product.get("outOfStock")
 
                 tum_urunler.append({
-                    "kategori":      kategori_adi,
-                    "product_name":  isim,
+                    "kategori": kategori_adi,
+                    "product_id": urun_id,
+                    "product_name": isim,
                     "product_price": fiyat,
                 })
                 cekilen_urun_sayisi += 1
@@ -136,8 +139,10 @@ def main():
     bugunun_tarihi = datetime.now().strftime("%Y-%m-%d")
     csv_dosyasi = f"Datas/Markets/Gurmar/gurmar_prices_{bugunun_tarihi}.csv"
 
+    os.makedirs(os.path.dirname(csv_dosyasi), exist_ok=True)
+
     with open(csv_dosyasi, "w", newline="", encoding="utf-8-sig") as file:
-        fieldnames = ["kategori", "product_name", "product_price"]
+        fieldnames = ["kategori", "product_id", "product_name", "product_price"]
         writer = csv.DictWriter(file, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(tum_urunler)
