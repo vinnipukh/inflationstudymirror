@@ -93,8 +93,8 @@ PAGE_SIZE             = 50   # Listings per page
 # ---------------------------------------------------------------------------
 # Smart Adaptive Brackets
 # ---------------------------------------------------------------------------
-MAX_LISTINGS_PER_QUERY = 1000   # Split bracket when listing count exceeds this
-MIN_BRACKET_WIDTH      = 500    # Minimum TL width — never split below this
+MAX_LISTINGS_PER_QUERY = 500   # Split bracket when listing count exceeds this
+MIN_BRACKET_WIDTH      = 250    # Minimum TL width — never split below this
 MAX_ADAPTIVE_DEPTH     = 6      # Max recursion depth (prevents stack overflow)
 
 # ---------------------------------------------------------------------------
