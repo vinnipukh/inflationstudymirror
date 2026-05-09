@@ -1,0 +1,1002 @@
+[
+  {
+    "name": "MS1",
+    "value": "",
+    "domain": ".sahibinden.com",
+    "path": "/kiralik",
+    "expires": 1809904190,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "vid",
+    "value": "223",
+    "domain": ".sahibinden.com",
+    "path": "/",
+    "expires": 1812916181.582971,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "cdid",
+    "value": "Qh5uLslBkPcHb6WJ69ff8fd6",
+    "domain": ".sahibinden.com",
+    "path": "/",
+    "expires": 1812916181.583008,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "csss",
+    "value": "4ssaqv4rnuD8T3Hb5blLj-96t1nkqo7pMiXZeKTJSqCWWEquRskyKQWqkMwpdvcY-HLKXr9WFJQs5uJmfjf82w",
+    "domain": ".sahibinden.com",
+    "path": "/",
+    "expires": 1778359190.405785,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "csls",
+    "value": "4q7vJ0YPgKhFszAJUZiPxAyzj44uuS3Ixk30bzjwFXQl3LFV_uHn1L_YpvSluSqp1-Rcg--8_FkSakxT3szJjw",
+    "domain": ".sahibinden.com",
+    "path": "/",
+    "expires": 1809892181.583046,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "cwt",
+    "value": "Yj9yuXOksh9jb4ZKXRd5fYPW1r4YWOHbDNI7OdhYZvLd79N3wWzECVe3AZmAtJSeaNMITBYtC9YNxrxWqMcmuja9LMQLlOpx64Q",
+    "domain": ".sahibinden.com",
+    "path": "/",
+    "expires": 1812916181.583078,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "__cflb",
+    "value": "0H28vudCb12J6LVB9qNuBCU3iDnBjmLggbLa2qq5Cmy",
+    "domain": "www.sahibinden.com",
+    "path": "/",
+    "expires": 1778359781.58311,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "MS1",
+    "value": "",
+    "domain": ".sahibinden.com",
+    "path": "/",
+    "expires": 1809902981,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "geoipCity",
+    "value": "istanbul",
+    "domain": ".sahibinden.com",
+    "path": "/",
+    "expires": 1778359782.536877,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "geoipIsp",
+    "value": "turkcell_superonline",
+    "domain": ".sahibinden.com",
+    "path": "/",
+    "expires": 1778359782.537129,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__cflb",
+    "value": "0H28v2suC8qL3geWTE4DP1nhkSyciq1h4NeivFR5hNT",
+    "domain": "banaozel.sahibinden.com",
+    "path": "/",
+    "expires": 1778359782.537319,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "bannerClosed",
+    "value": "false",
+    "domain": ".sahibinden.com",
+    "path": "/",
+    "expires": 1783382340,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "IDE",
+    "value": "AHWqTUkw8vDhCub05JoebVNWLTubkJW-oQmRGNvMyvBUa55KVXDaE9DRWFbG3T_iY1g",
+    "domain": ".doubleclick.net",
+    "path": "/",
+    "expires": 1812916182.607797,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "APC",
+    "value": "AfxxVi5SHg9GWTKsgEoiU5Z0TGCHzJNXLEPQGoX0BFTSrVdJ9H5TAQ",
+    "domain": ".doubleclick.net",
+    "path": "/",
+    "expires": 1793908182.840102,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None",
+    "partitionKey": "https://sahibinden.com",
+    "_crHasCrossSiteAncestor": true
+  },
+  {
+    "name": "_pxvid",
+    "value": "39982f45-4be0-11f1-ad7f-710e0df55306",
+    "domain": ".sahibinden.com",
+    "path": "/",
+    "expires": 1809892182.959079,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "_gid",
+    "value": "GA1.2.735485925.1778356183",
+    "domain": ".sahibinden.com",
+    "path": "/",
+    "expires": 1778443791,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "_fbp",
+    "value": "fb.1.1778356183392.569740255757412105",
+    "domain": ".sahibinden.com",
+    "path": "/",
+    "expires": 1786133391,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "nwsh",
+    "value": "std",
+    "domain": ".sahibinden.com",
+    "path": "/",
+    "expires": 1809893390,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "C",
+    "value": "1",
+    "domain": ".adform.net",
+    "path": "/",
+    "expires": 1781034746.623902,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "uid",
+    "value": "840862717614019906",
+    "domain": ".adform.net",
+    "path": "/",
+    "expires": 1783540770.371151,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "TPC",
+    "value": "1778356347648",
+    "domain": ".adform.net",
+    "path": "/",
+    "expires": 1778961146.956087,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "CM",
+    "value": "1%7C1",
+    "domain": ".adform.net",
+    "path": "/",
+    "expires": 1778443167.292066,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "uid",
+    "value": "840862717614019906",
+    "domain": ".seadform.net",
+    "path": "/",
+    "expires": 1783540767.511441,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "CM14",
+    "value": "1778443168_1778356768_1778356768_1_Hu7u4e4e4R4eAeAREREeEREREADg",
+    "domain": ".adform.net",
+    "path": "/",
+    "expires": 1779566367.513044,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "CMID",
+    "value": "af.SILmqPSgAIE09AIPTKwAA",
+    "domain": ".casalemedia.com",
+    "path": "/",
+    "expires": 1809892767.817278,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "CMPS",
+    "value": "2219",
+    "domain": ".casalemedia.com",
+    "path": "/",
+    "expires": 1786132767.723608,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "CMPRO",
+    "value": "2219",
+    "domain": ".casalemedia.com",
+    "path": "/",
+    "expires": 1786132767.81739,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "SEUNCY",
+    "value": "C70D88D50EDD8B94",
+    "domain": ".semasio.net",
+    "path": "/",
+    "expires": 1809892768.742781,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "audit_p",
+    "value": "1|0l8T1fHY/nw+O5EXVF0l/yEY0eu++0+gCeVX4uILqJx5mgGBkU58i8yf+mp0eO/yxyeVz7tnVSBBK03vAHceEG4bn2cxl7tJg0JkaynqqKrpo3oR/pdQFKndLi9TlHGTfY0V14FIbwNDA6MeUnKE5KZr5ZVxLWDe",
+    "domain": ".rubiconproject.com",
+    "path": "/",
+    "expires": 1809892767.752986,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None",
+    "partitionKey": "https://sahibinden.com",
+    "_crHasCrossSiteAncestor": true
+  },
+  {
+    "name": "khaos",
+    "value": "MOYRPCGW-1V-1EGK",
+    "domain": ".rubiconproject.com",
+    "path": "/",
+    "expires": 1809892767.753041,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "khaos_p",
+    "value": "MOYRPCGW-1V-1EGK",
+    "domain": ".rubiconproject.com",
+    "path": "/",
+    "expires": 1809892767.753057,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None",
+    "partitionKey": "https://sahibinden.com",
+    "_crHasCrossSiteAncestor": true
+  },
+  {
+    "name": "audit",
+    "value": "1|0l8T1fHY/nw+O5EXVF0l/yEY0eu++0+gCeVX4uILqJx5mgGBkU58i8yf+mp0eO/yxyeVz7tnVSBBK03vAHceEG4bn2cxl7tJg0JkaynqqKrpo3oR/pdQFKndLi9TlHGTfY0V14FIbwNDA6MeUnKE5KZr5ZVxLWDe",
+    "domain": ".rubiconproject.com",
+    "path": "/",
+    "expires": 1809892767.753068,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "_uid",
+    "value": "umv2329_7638055936463374438",
+    "domain": ".fwmrm.net",
+    "path": "/",
+    "expires": 1793908767.818243,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "mako_uid",
+    "value": "19e0e52ce73-13840000010f45f3",
+    "domain": ".eyeota.net",
+    "path": "/",
+    "expires": 1809892767.819361,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "tuuid",
+    "value": "0d2b56b0-8c74-4c34-b4c3-ab6929de30fd",
+    "domain": ".bidswitch.net",
+    "path": "/",
+    "expires": 1809892767.892337,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "c",
+    "value": "1778356768",
+    "domain": ".bidswitch.net",
+    "path": "/",
+    "expires": 1809892767.820616,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "tuuid_lu",
+    "value": "1778356768",
+    "domain": ".bidswitch.net",
+    "path": "/",
+    "expires": 1809892767.892455,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "rlas3",
+    "value": "09KzxPiQ9MLAMuEMSlspHPashaECwDhegc0srePiGqs=",
+    "domain": ".rlcdn.com",
+    "path": "/",
+    "expires": 1809892768.199282,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "XANDR_PANID",
+    "value": "cL_pyfl915nX_EqNBIB4GP0wTrfewbs3-EJwPHBMFZQJtVODobWpRqsb20nP8gpxau6VOJTCjYIE1ctYBXNkxtIkkN0wKBNhDPF1U0KwbI4.",
+    "domain": ".adnxs.com",
+    "path": "/",
+    "expires": 1786132769.804926,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None",
+    "partitionKey": "https://sahibinden.com",
+    "_crHasCrossSiteAncestor": true
+  },
+  {
+    "name": "uuid2",
+    "value": "4876877860199425945",
+    "domain": ".adnxs.com",
+    "path": "/",
+    "expires": 1786132769.80506,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "dax_listenerid",
+    "value": "6452E9EFC5EEABD03EEE394DC272E795",
+    "domain": ".thisisdax.com",
+    "path": "/",
+    "expires": 1809460768.093632,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "pxrc",
+    "value": "CKCk/s8GEgUI6AcQABIFCOhHEAA=",
+    "domain": ".rlcdn.com",
+    "path": "/",
+    "expires": 1783540768.199432,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "tuuid",
+    "value": "495cd759-6f5c-466a-b5d3-ac13c5fad2d0",
+    "domain": ".360yield.com",
+    "path": "/",
+    "expires": 1786132768.217235,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "tuuid_lu",
+    "value": "1778356768",
+    "domain": ".360yield.com",
+    "path": "/",
+    "expires": 1786132768.217336,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "arcki2",
+    "value": "moyrpcv9-XAR6AXRfSkWbpVhOMPlzxw-ad!20210107!1778356768869!ip#176.234.132.85",
+    "domain": ".audrte.com",
+    "path": "/",
+    "expires": 1779652768.291516,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "arcki2_adform",
+    "value": "840862717614019906!20210107!1778356768869",
+    "domain": ".audrte.com",
+    "path": "/",
+    "expires": 1779652768.29162,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "demdex",
+    "value": "73696656803388627361833940065653915319",
+    "domain": ".demdex.net",
+    "path": "/",
+    "expires": 1793908768.390505,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "dpm",
+    "value": "73696656803388627361833940065653915319",
+    "domain": ".dpm.demdex.net",
+    "path": "/",
+    "expires": 1793908768.390624,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "um",
+    "value": "!42,K9kmsphPw.Gf74zYwnhVzBlzNwfq97uYlItaVHqExloUXBVc.UymoM5lzCLjV4NL76kW7Q,1779566368",
+    "domain": ".360yield.com",
+    "path": "/",
+    "expires": 1786132768.418819,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "umeh",
+    "value": "!42,0,1840564768,-1",
+    "domain": ".360yield.com",
+    "path": "/",
+    "expires": 1786132768.418931,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "arcki2_ddp2",
+    "value": "moyrpcv9-XAR6AXRfSkWbpVhOMPlzxw-ad!20210107!1778356769006",
+    "domain": ".audrte.com",
+    "path": "/",
+    "expires": 1779652768.42741,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "UserID1",
+    "value": "7637984163482171758",
+    "domain": ".adfarm1.adition.com",
+    "path": "/",
+    "expires": 1786132768.479347,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "did",
+    "value": "L25qenDK1nh1cvsu",
+    "domain": ".pippio.com",
+    "path": "/",
+    "expires": 1809892768.49188,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "didts",
+    "value": "1778356769",
+    "domain": ".pippio.com",
+    "path": "/",
+    "expires": 1809892768.491994,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "nnls",
+    "value": "",
+    "domain": ".pippio.com",
+    "path": "/",
+    "expires": 1783540768.492021,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "pxrc",
+    "value": "CAA=",
+    "domain": ".pippio.com",
+    "path": "/",
+    "expires": 1783540768.492032,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "KRTBCOOKIE_391",
+    "value": "22924-840862717614019906&KRTB&23231-840862717614019906&KRTB&23263-840862717614019906&KRTB&23481-840862717614019906",
+    "domain": ".pubmatic.com",
+    "path": "/",
+    "expires": 1780948768.585764,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "PugT",
+    "value": "1778356769",
+    "domain": ".pubmatic.com",
+    "path": "/",
+    "expires": 1780948768.585875,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "wfivefivec",
+    "value": "bb9E7Ofz1WlNPH5",
+    "domain": ".w55c.net",
+    "path": "/",
+    "expires": 1812571169.659442,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "matchadform",
+    "value": "5",
+    "domain": ".w55c.net",
+    "path": "/",
+    "expires": 1780948769.659557,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "id5",
+    "value": "5ea5d051-9a0f-7136-ba76-b0162092aa96#1778356769233#2",
+    "domain": ".id5-sync.com",
+    "path": "/",
+    "expires": 1786132768.675305,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "arcki2_azerion",
+    "value": "495cd759-6f5c-466a-b5d3-ac13c5fad2d0!20210107!1778356769280",
+    "domain": ".audrte.com",
+    "path": "/",
+    "expires": 1779652768.703498,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "AFFICHE_W",
+    "value": "Yrztu9Ato15i96",
+    "domain": ".weborama.fr",
+    "path": "/",
+    "expires": 1812311969.710053,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "tt_viewer",
+    "value": "0b8a9feb-1713-4731-96f8-835fa07f34fa",
+    "domain": ".teads.tv",
+    "path": "/",
+    "expires": 1809806368.822356,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "3pi",
+    "value": "112#1778356769384#376265299#C70D88D50EDD8B94|104#1778356769489#689139168#0d2b56b0-8c74-4c34-b4c3-ab6929de30fd|10#1778356769275#1860054147#840862717614019906",
+    "domain": ".id5-sync.com",
+    "path": "/",
+    "expires": 1786132768.891886,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "tluid",
+    "value": "3793877132725854558793",
+    "domain": ".3lift.com",
+    "path": "/",
+    "expires": 1786132769.035959,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "_cc_dc",
+    "value": "2",
+    "domain": ".crwdcntrl.net",
+    "path": "/",
+    "expires": 1801681320.002985,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "_cc_id",
+    "value": "3dd3a5169f9a6cebbdc7fe2c470adf89",
+    "domain": ".crwdcntrl.net",
+    "path": "/",
+    "expires": 1801681320.003094,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "done_redirects252",
+    "value": "1",
+    "domain": ".onaudience.com",
+    "path": "/",
+    "expires": 1778443169.227795,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "SCM",
+    "value": "3a833a0435",
+    "domain": ".smaato.net",
+    "path": "/",
+    "expires": 1780171169.247192,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "SCM1067",
+    "value": "3a833a0435",
+    "domain": ".smaato.net",
+    "path": "/",
+    "expires": 1780171169.247286,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "SCMroqads",
+    "value": "3a833a0435",
+    "domain": ".smaato.net",
+    "path": "/",
+    "expires": 1780171169.247299,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "cookie",
+    "value": "79f9bec1400d2027",
+    "domain": ".onaudience.com",
+    "path": "/",
+    "expires": 1809892769.667375,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "done_redirects219",
+    "value": "1",
+    "domain": ".onaudience.com",
+    "path": "/",
+    "expires": 1778443169.290513,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "browser_id",
+    "value": "1:60567c27-9686-43f5-8e01-50c3387e965e",
+    "domain": ".rqtrk.eu",
+    "path": "/",
+    "expires": 1778961569.398705,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "zc",
+    "value": "178956b4-b5a0-4d86-633d-1fc7b2cf3429",
+    "domain": ".zeotap.com",
+    "path": "/",
+    "expires": 1809892769.576991,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "zsc",
+    "value": "%FE%0F%1E%96%AF56%AC%F2%9F%D2j7%84%D8%9A%17%D0%C6%0E8%3D9%24%05%EF%BE%E4%9D%60%A1%F4%8D%C2%1A%859%0C%80a%9E%88C%C7%05%81%9B%B5u%E0%3E%87%12%89%A3%FF%D2%DA%90%BF%CEG%7F%A8Kn%40%C2D%9E%A0%E5%BA7%7D%FB%1DuI%28K%0C0",
+    "domain": ".zeotap.com",
+    "path": "/",
+    "expires": 1778443169.449824,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "A3",
+    "value": "d=AQABBCKS_2kCEDuHBkR-_NrOSVQsVGhdSvsFEgEBAQHjAGoJascg0SMA_eMDAA&S=AQAAAmDVhRLR-T_aeeCIOpRAZwo",
+    "domain": ".yahoo.com",
+    "path": "/",
+    "expires": 1809914369.534869,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "IDSYNC",
+    "value": "199z~2vuj",
+    "domain": ".analytics.yahoo.com",
+    "path": "/",
+    "expires": 1809892769.534765,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "done_redirects271",
+    "value": "1",
+    "domain": ".onaudience.com",
+    "path": "/",
+    "expires": 1778443169.667524,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "anj",
+    "value": "dTM7k!M40]D>6NRF']wIg2E?]e4Up@!]tb68i_j$f$9G=+*r)C)-EYz/FL7s4MHk]9ZG(W4T$c(wliahD)ITqAQzNbe%No`-l$oYUwAy?o?]BKUc(<ZUq%`(*dMxw$go$).gLHHXs6>J>qqf7",
+    "domain": ".adnxs.com",
+    "path": "/",
+    "expires": 1786132769.805037,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "pid",
+    "value": "4428966509804433316",
+    "domain": ".smartadserver.com",
+    "path": "/",
+    "expires": 1786132770.30652,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "TestIfCookieP",
+    "value": "ok",
+    "domain": ".smartadserver.com",
+    "path": "/",
+    "expires": 1812571170.306675,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "csync",
+    "value": "22:840862717614019906",
+    "domain": ".smartadserver.com",
+    "path": "/",
+    "expires": 1780948770.306697,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "cf_clearance",
+    "value": "f6l7iw3ltpiA_3fUdbfs.6Ku7CYDAqIhDUTWgfo4WTA-1778356914-1.2.1.1-aVh3s2G9IHeBwBoYk7KMvuVp2IdSDSOZ7hkjoZkwv2WQ_AZkFBkxVGSd2RjdedYZ_hdnfngG2F3EQE4BwgqpULtpRfkjJ.EUbT8d2_L0vw1TYll01EI51LFT8iizxrcCQ4NETmTQGWo5CB5yyWScteTbl_ibdseGLoSTL4_sy0wA5f3MtzOgA6r1QpWDoIhxjvgomAly7LPRc5SqIJgskWt9uSjq45HdslU7cGfv9RVH9ucBGLnUGFdvqy7Wl373vEuPYR9U5lrYgb2bKrEWiYnBvHBzaBzkgCkMAmYmwTncse0btlFcTi.nkbIEkhUM6fglU9Srb83W3Z1SlrWvag",
+    "domain": ".sahibinden.com",
+    "path": "/",
+    "expires": 1809892914.014374,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None",
+    "partitionKey": "https://sahibinden.com",
+    "_crHasCrossSiteAncestor": false
+  },
+  {
+    "name": "__cf_bm",
+    "value": "jA8yTITWoCZv2Br2hXLo4boDU6FBIKzPxe3AUUuliRs-1778356914.5929916-1.0.1.1-pc3zZfMSKIYitsfCMyqzQzN89JrZWamL7NVp5huoe60AQvcAegywYk5pRO3wEYy6xj4YUeHnu3bMvqyb_ypBUTYBMJDN7AekRXxDKnJbQEw_0SAuZEJWcMkah2N3Dotmo0IfHdlc_d0jXWEAZiNuzQ",
+    "domain": ".sahibinden.com",
+    "path": "/",
+    "expires": 1778358714.014504,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "dp",
+    "value": "1920*1080-landscape",
+    "domain": ".sahibinden.com",
+    "path": "/",
+    "expires": 1778357995,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__gads",
+    "value": "ID=201a9fcdbefb9f03:T=1778356183:RT=1778357124:S=ALNI_MbHrzOSJTqU9sBGjVqTOZKSXM8_mQ",
+    "domain": ".sahibinden.com",
+    "path": "/",
+    "expires": 1812052183,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "__gpi",
+    "value": "UID=0000137681704146:T=1778356183:RT=1778357124:S=ALNI_MaOlJDOM-yFq-dizZHPWDsTMvA_rA",
+    "domain": ".sahibinden.com",
+    "path": "/",
+    "expires": 1812052183,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "__eoi",
+    "value": "ID=2319477fd6467069:T=1778356183:RT=1778357124:S=AA-Afjb0jBUMRiRJgE6lioabbRGN",
+    "domain": ".sahibinden.com",
+    "path": "/",
+    "expires": 1793908183,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "_dc_gtm_UA-235070-1",
+    "value": "1",
+    "domain": ".sahibinden.com",
+    "path": "/",
+    "expires": 1778357431,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "_gali",
+    "value": "onetrust-banner-sdk",
+    "domain": ".sahibinden.com",
+    "path": "/",
+    "expires": 1778357419,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "csid",
+    "value": "9nyyWclLfawr1YyGu3UCGWevZa_l3MNLn_GKwRwRnW50SL1D-xWVcDHrTNCM9W7Fvm7rO0Wb3660UrSGqfPsyINOWj9W8Ie0lKycvm8hkvW9g4xvhQTjQr8hW96MUne9MFdiPxIlM8rVhWItacdRDp8HgS8t6SVrNGEMgeADFh3vQYQ7uTS3B0ra0Up1s_Irk1KjwkXV-O-v_iSyyU3T9XDOlyAlt4uRQl5ZYgt9GKaQviLG7X47KpnjJxj-VVN3bi2_lQJF-FrFCQgQfheDfj7OZ4gdxjkfvkP_4f0Nxa-dBV8vqwRwsMtzUII9NJ98ud0ZtjYTb9gcmDRvK6sA8q8wry0Fg8PhEtoaXetwGPWW6il35qPBAbXi7ZXuxb5v",
+    "domain": ".sahibinden.com",
+    "path": "/",
+    "expires": 1778358290.405753,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "premium-plus-tid",
+    "value": "8050c9bd-fae5-4f7f-9b82-f932a0984664",
+    "domain": ".sahibinden.com",
+    "path": "/",
+    "expires": 1778358290,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "OptanonConsent",
+    "value": "isGpcEnabled=0&datestamp=Sat+May+09+2026+23%3A09%3A51+GMT%2B0300+(GMT%2B03%3A00)&version=202604.1.0&browserGpcFlag=0&isDntEnabled=0&isIABGlobal=false&consentId=02bc639e-acdd-42dc-9551-302e675705c3&interactionCount=1&isAnonUser=1&prevHadToken=0&landingPath=NotLandingPage&groups=C0004%3A0%2CC0001%3A1%2CC0003%3A0%2CC0002%3A0&hosts=H183%3A0%2CH186%3A0%2CH131%3A0%2CH76%3A0%2CH106%3A0%2CH8%3A0%2CH80%3A0%2CH67%3A0%2CH27%3A0%2CH14%3A0%2CH192%3A0%2CH31%3A0%2CH114%3A0%2CH184%3A0%2CH115%3A0%2CH117%3A0%2CH87%3A1%2CH88%3A0%2CH3%3A0%2CH4%3A0%2CH91%3A0%2CH194%3A0%2CH5%3A0%2CH185%3A0%2CH93%3A0%2CH180%3A0%2CH201%3A0%2CH195%3A0%2CH12%3A0%2CH17%3A0%2CH122%3A0%2CH96%3A0%2CH124%3A0%2CH64%3A1%2CH198%3A0&genVendors=&crTime=1778356203955&AwaitingReconsent=false",
+    "domain": ".sahibinden.com",
+    "path": "/",
+    "expires": 1809893391,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "_ga_CVPS3GXE1Z",
+    "value": "GS2.1.s1778356183$o1$g1$t1778357391$j40$l0$h0",
+    "domain": ".sahibinden.com",
+    "path": "/",
+    "expires": 1812917391.301977,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "_ga",
+    "value": "GA1.1.1954385773.1778356183",
+    "domain": ".sahibinden.com",
+    "path": "/",
+    "expires": 1812917391.368413,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "_ga_C1X44T5TZ9",
+    "value": "GS2.1.s1778356183$o1$g1$t1778357391$j40$l0$h0",
+    "domain": ".sahibinden.com",
+    "path": "/",
+    "expires": 1812917391.367752,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "_px3",
+    "value": "2dcb9c84045710c0eede669ff8fc9d5ea3714989b092cd09ff86c7120fd535bc:XBgmSKy5VCcx2uwaD2Oaq7kFLSxrnklDDAR1Zr/NCAH53ZXOw0/aZY/1mdE0c+h351yBPzqrBfYGub+K/uQfTg==:1000:kyK8w4JN7KXbBm9mocUupBNQfq+/ntK7dQNeRtrlAm5VkNaJFt74HInXVU4rtocePYCkhFFUtXdvH6bVBarpPuuKU1KtuD8wf2iSQxuCEAvfcB9m+xLGEdX2KSvVd3PdLz2aFcgmegvDDA29Zj8TJep3OgzeyiMw03Vmq6+XhWLuymzA00rfFrFGopeEiarUrdspk6aWHOt0dclcqhy0TI69pVa5BrHunCZcntT+0MDHH6MgpQj4hw7IiNDJpegOlr8nIrqUbITTUqA/BiFmWJOWUVCrvBL+nznstFe8i+6bNIp42aQRS0pXy9EaLJNacjNi5Dt7SBncLHAVinxg1SUPN4Jb6GXZcPMwE1qIegx8j93YItiZtctqI74ghAzLm9lgIoPJh6s1d3O37jDM8W6ZiWkp9ec4mGRFaa0IsudIrXAnG5tSly0zeZUgbRji1fhTfV2TSmtlgv0F+Y+TMhK2Z8dR2Ux3iffQhD4qPEkBNQ9X7RN6bDH1MZMprKxv",
+    "domain": ".sahibinden.com",
+    "path": "/",
+    "expires": 1778357722.018579,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  }
+]
