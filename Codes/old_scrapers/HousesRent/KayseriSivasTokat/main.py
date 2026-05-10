@@ -29,7 +29,6 @@ from scraper import (
     StopSignal,
     clear_checkpoint,
     load_checkpoint,
-    save_checkpoint,
     scrape_city,
 )
 

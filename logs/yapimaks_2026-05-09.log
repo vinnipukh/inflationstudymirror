@@ -1,0 +1,42 @@
+2026-05-09 11:16:15 [INFO] ==================================================
+2026-05-09 11:16:15 [INFO] Yapimaks Scraper basliyor
+2026-05-09 11:16:15 [INFO] ==================================================
+2026-05-09 11:16:15 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-05-09 11:16:15 [INFO] Cookie basariyla alindi.
+2026-05-09 11:16:15 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-05-09 11:16:16 [INFO] Sitemap'ten toplam 8968 urun URL'si bulundu.
+2026-05-09 11:16:16 [INFO] Bugune ait veri yok. Eski veri (2026-05-08.csv) süzülerek bugune aktariliyor...
+2026-05-09 11:16:16 [INFO] Basarili! 8953 urun dunden bugune aktarildi.
+2026-05-09 11:16:16 [INFO] Guncel dosyada hazir olan urun: 8953 | Sifirdan cekilecek (yeni) urun: 15
+2026-05-09 11:16:16 [INFO] 15 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-09.csv
+2026-05-09 11:16:16 [INFO] [1/15] https://yapimaks.com/mantolama-dubeli-celik-civi-15-5-cm-speco-p15418
+2026-05-09 11:16:16 [INFO] [15418] 'MANTOLAMA DÜBELİ ÇELİK ÇİVİ 15.5-CM (SPE' |  TL | SKU: SPECO.MDÇ.11.6
+2026-05-09 11:16:18 [INFO] [2/15] https://yapimaks.com/mantolama-dubeli-euro-celik-civili-11-5-cm-darkss-1-ad-p14514
+2026-05-09 11:16:18 [INFO] [14514] 'MANTOLAMA DÜBELİ EURO ÇELİK ÇİVİLİ 11.5 ' | 3,75 TL | SKU: DARKSS.MDÇ.11.5
+2026-05-09 11:16:20 [INFO] [3/15] https://yapimaks.com/mantolama-dubeli-euro-celik-civili-13-5-cm-darkss-1-ad-p2022
+2026-05-09 11:16:20 [INFO] [2022] 'MANTOLAMA DÜBELİ EURO ÇELİK ÇİVİLİ 13.5 ' | 3,50 TL | SKU: DARKSS.MDÇ.13.5
+2026-05-09 11:16:22 [INFO] [4/15] https://yapimaks.com/mantolama-dubeli-euro-celik-civili-15-5-cm-darkss-1-ad-p2023
+2026-05-09 11:16:22 [INFO] [2023] 'MANTOLAMA DÜBELİ EURO ÇELİK ÇİVİLİ 15.5 ' | 4,50 TL | SKU: DARKSS.MDÇ.15.5
+2026-05-09 11:16:24 [INFO] [5/15] https://yapimaks.com/mantolama-dubeli-euro-pvc-civili-11-5-cm-darkss-1-ad-p15408
+2026-05-09 11:16:24 [INFO] [15408] 'MANTOLAMA DÜBELİ EURO PVC ÇİVİLİ 11.5 CM' | 3,25 TL | SKU: DARKSS.MDÇ.11.6
+2026-05-09 11:16:26 [INFO] [6/15] https://yapimaks.com/mantolama-dubeli-euro-pvc-civili-13-5-cm-darkss-1-ad-p15409
+2026-05-09 11:16:26 [INFO] [15409] 'MANTOLAMA DÜBELİ EURO PVC ÇİVİLİ 13.5 CM' | 3,50 TL | SKU: DARKSS.MDÇ.13.6
+2026-05-09 11:16:28 [INFO] [7/15] https://yapimaks.com/mantolama-dubeli-euro-pvc-civili-15-5-cm-darkss-1-ad-p15410
+2026-05-09 11:16:28 [INFO] [15410] 'MANTOLAMA DÜBELİ EURO PVC ÇİVİLİ 15.5 CM' | 3,75 TL | SKU: DARKSS.MDÇ.15.6
+2026-05-09 11:16:30 [INFO] [8/15] https://yapimaks.com/mantolama-dubeli-gaz-beton-celik-civili-14-cm-darkss-1-ad-p14593
+2026-05-09 11:16:30 [INFO] [14593] 'MANTOLAMA DÜBELİ GAZ BETON ÇELİK ÇİVİLİ ' | 4,00 TL | SKU: DARKSS.MDGÇ.14
+2026-05-09 11:16:32 [INFO] [9/15] https://yapimaks.com/mantolama-dubeli-gaz-beton-celik-civili-16-cm-darkss-1-ad-p14594
+2026-05-09 11:16:32 [INFO] [14594] 'MANTOLAMA DÜBELİ GAZ BETON ÇELİK ÇİVİLİ ' | 4,50 TL | SKU: DARKSS.MDGÇ.16
+2026-05-09 11:16:34 [INFO] [10/15] https://yapimaks.com/mantolama-dubeli-gaz-beton-pvc-14-cm-1-ad-p14592
+2026-05-09 11:16:34 [INFO] [14592] 'MANTOLAMA DÜBELİ GAZ BETON PVC 14 CM 1 A' | 3,50 TL | SKU: DARKSS.MDG.14
+2026-05-09 11:16:36 [INFO] [11/15] https://yapimaks.com/mantolama-dubeli-gaz-beton-pvc-16-cm-1-ad-p2026
+2026-05-09 11:16:36 [INFO] [2026] 'MANTOLAMA DÜBELİ GAZ BETON PVC 16 CM 1 A' | 4,00 TL | SKU: DARKSS.MDG.16
+2026-05-09 11:16:38 [INFO] [12/15] https://yapimaks.com/mantolama-dubeli-pvc-12-cm-kirmizi-1-ad-p14515
+2026-05-09 11:16:38 [INFO] [14515] 'MANTOLAMA DÜBELİ PVC 12 CM KIRMIZI 1 AD' | 2,50 TL | SKU: DARKSS.MD.12
+2026-05-09 11:16:40 [INFO] [13/15] https://yapimaks.com/mantolama-dubeli-pvc-14-cm-turuncu-1-ad-p14404
+2026-05-09 11:16:41 [INFO] [14404] 'MANTOLAMA DÜBELİ PVC 14 CM TURUNCU 1 AD' | 3,50 TL | SKU: DARKSS.MD.14
+2026-05-09 11:16:43 [INFO] [14/15] https://yapimaks.com/metal-kiremit-classic-starbond-antrasit-p15422
+2026-05-09 11:16:43 [INFO] [15422] 'METAL KİREMİT CLASSİC STARBOND ANTRASİT' | 250,00 TL | SKU: STARBOND.001
+2026-05-09 11:16:45 [INFO] [15/15] https://yapimaks.com/priz-regulator-4000-w-cata-9187-reg-p11985
+2026-05-09 11:16:45 [INFO] [11985] 'PRİZ REGÜLATÖR 4000 W CATA-9187 REG' | 345,00 TL | SKU: CATA.9187REG
+2026-05-09 11:16:47 [INFO] Tamamlandi! Toplam 15 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-09.csv

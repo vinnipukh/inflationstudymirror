@@ -17,7 +17,6 @@ import random
 import re
 import time
 from datetime import datetime
-from functools import partial
 
 import cmd_queue
 from bs4 import BeautifulSoup

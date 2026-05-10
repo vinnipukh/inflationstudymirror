@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Yapimaks.com Product Scraper — API Edition (tarayıcısız)
+Yapimaks.com Product Scraper — API Edition (tara    yıcısız)
 - requests.Session ile otomatik cookie yönetimi
 - Sitemap değişikliklerini takip eder
 - Eski CSV'deki ürünleri güncel sitemap ile eşleştirip bugüne aktarır (Akıllı Kopyalama)

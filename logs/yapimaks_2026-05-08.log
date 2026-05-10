@@ -1,0 +1,28 @@
+2026-05-08 10:06:54 [INFO] ==================================================
+2026-05-08 10:06:54 [INFO] Yapimaks Scraper basliyor
+2026-05-08 10:06:54 [INFO] ==================================================
+2026-05-08 10:06:54 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-05-08 10:06:55 [INFO] Cookie basariyla alindi.
+2026-05-08 10:06:55 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-05-08 10:06:55 [INFO] Sitemap'ten toplam 8961 urun URL'si bulundu.
+2026-05-08 10:06:55 [INFO] Bugune ait veri yok. Eski veri (2026-05-07.csv) süzülerek bugune aktariliyor...
+2026-05-08 10:06:55 [INFO] Basarili! 8953 urun dunden bugune aktarildi.
+2026-05-08 10:06:55 [INFO] Guncel dosyada hazir olan urun: 8953 | Sifirdan cekilecek (yeni) urun: 8
+2026-05-08 10:06:55 [INFO] 8 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-08.csv
+2026-05-08 10:06:55 [INFO] [1/8] https://yapimaks.com/celik-dubel-gomlekli-10x85-mm-1-ad-p15405
+2026-05-08 10:06:55 [INFO] [15405] 'ÇELİK DÜBEL GÖMLEKLİ 10x85 MM 1 AD' | 20,00 TL | SKU: STD.911771800
+2026-05-08 10:06:57 [INFO] [2/8] https://yapimaks.com/led-panel-sensorlu-6400k-220q-slim-beyaz-yuv-18w-siva-ustu-ct-9247-p15404
+2026-05-08 10:06:57 [INFO] [15404] 'LED PANEL SENSÖRLÜ 6400K 220Q SLİM BEYAZ' | 440,00 TL | SKU: CATA.CT-9247B
+2026-05-08 10:06:59 [INFO] [3/8] https://yapimaks.com/mantolama-dubeli-euro-celik-civili-11-5-cm-darkss-p14514
+2026-05-08 10:06:59 [INFO] [14514] 'MANTOLAMA DÜBELİ EURO ÇELİK ÇİVİLİ 11.5-' | 3,75 TL | SKU: DARKSS.MDÇ.11.5
+2026-05-08 10:07:01 [INFO] [4/8] https://yapimaks.com/mantolama-dubeli-euro-pvc-civili-11-5-cm-darkss-p15408
+2026-05-08 10:07:01 [INFO] [15408] 'MANTOLAMA DÜBELİ EURO PVC ÇİVİLİ 11.5-CM' | 3,25 TL | SKU: DARKSS.MDÇ.11.6
+2026-05-08 10:07:03 [INFO] [5/8] https://yapimaks.com/mantolama-dubeli-euro-pvc-civili-15-5-cm-darkss-p15410
+2026-05-08 10:07:03 [INFO] [15410] 'MANTOLAMA DÜBELİ EURO PVC ÇİVİLİ 15.5-CM' | 3,75 TL | SKU: DARKSS.MDÇ.15.6
+2026-05-08 10:07:05 [INFO] [6/8] https://yapimaks.com/membran-3-mm-silvertech-p3000-10c-10m2-uks-p12843
+2026-05-08 10:07:05 [INFO] [12843] 'MEMBRAN 3 MM SİLVERTECH P3000 10C (10M2)' | 800,00 TL | SKU: WİNROOF.UKS099
+2026-05-08 10:07:07 [INFO] [7/8] https://yapimaks.com/silte-5mm-afk-yapiskanli-100-cm-proco-25m2-p15412
+2026-05-08 10:07:07 [INFO] [15412] 'ŞİLTE 5MM AFK YAPIŞKANLI 100-CM PROCO (2' | 75,00 TL | SKU: PROCO.005MMAFK00000001
+2026-05-08 10:07:09 [INFO] [8/8] https://yapimaks.com/silte-8mm-afk-yapiskanli-100-cm-proco-25m2-p15411
+2026-05-08 10:07:09 [INFO] [15411] 'ŞİLTE 8MM AFK YAPIŞKANLI 100-CM PROCO (2' | 97,50 TL | SKU: PROCO.008MMAFK00000001
+2026-05-08 10:07:11 [INFO] Tamamlandi! Toplam 8 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-08.csv

@@ -1,0 +1,16 @@
+2026-05-10 23:27:40 [INFO] ==================================================
+2026-05-10 23:27:40 [INFO] Yapimaks Scraper basliyor
+2026-05-10 23:27:40 [INFO] ==================================================
+2026-05-10 23:27:40 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-05-10 23:27:40 [INFO] Cookie basariyla alindi.
+2026-05-10 23:27:40 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-05-10 23:27:40 [INFO] Sitemap'ten toplam 8967 urun URL'si bulundu.
+2026-05-10 23:27:40 [INFO] Bugune ait veri yok. Eski veri (2026-05-09.csv) süzülerek bugune aktariliyor...
+2026-05-10 23:27:41 [INFO] Basarili! 8965 urun dunden bugune aktarildi.
+2026-05-10 23:27:41 [INFO] Guncel dosyada hazir olan urun: 8965 | Sifirdan cekilecek (yeni) urun: 2
+2026-05-10 23:27:41 [INFO] 2 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-10.csv
+2026-05-10 23:27:41 [INFO] [1/2] https://yapimaks.com/pvc-pencere-kolu-aluminyum-tekli-p9186
+2026-05-10 23:27:41 [INFO] [9186] 'PVC PENCERE KOLU ALÜMİNYUM TEKLİ' | 199,00 TL | SKU: STD.943162801
+2026-05-10 23:27:43 [INFO] [2/2] https://yapimaks.com/yuzey-sertlestirici-kuvars-kirmizi-25kg-qf444-p1979
+2026-05-10 23:27:43 [INFO] [1979] 'YÜZEY SERTLEŞTİRİCİ KUVARS KIRMIZI-25KG-' | 299,00 TL | SKU: DARKSS.YK.QF444K
+2026-05-10 23:27:45 [INFO] Tamamlandi! Toplam 2 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-10.csv
