@@ -1,0 +1,16 @@
+2026-05-14 23:16:45 [INFO] ==================================================
+2026-05-14 23:16:45 [INFO] Yapimaks Scraper basliyor
+2026-05-14 23:16:45 [INFO] ==================================================
+2026-05-14 23:16:45 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-05-14 23:16:45 [INFO] Cookie basariyla alindi.
+2026-05-14 23:16:45 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-05-14 23:16:45 [INFO] Sitemap'ten toplam 8992 urun URL'si bulundu.
+2026-05-14 23:16:45 [INFO] Bugune ait veri yok. Eski veri (2026-05-13.csv) süzülerek bugune aktariliyor...
+2026-05-14 23:16:45 [INFO] Basarili! 8990 urun dunden bugune aktarildi.
+2026-05-14 23:16:45 [INFO] Guncel dosyada hazir olan urun: 8990 | Sifirdan cekilecek (yeni) urun: 2
+2026-05-14 23:16:45 [INFO] 2 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-14.csv
+2026-05-14 23:16:45 [INFO] [1/2] https://yapimaks.com/su-deposu-foseptik-baca-p15460
+2026-05-14 23:16:45 [INFO] [15460] 'SU DEPOSU FOSEPTİK BACA' | 2750,00 TL | SKU: SU DEPOSU.5000.005
+2026-05-14 23:16:47 [INFO] [2/2] https://yapimaks.com/suzgec-10x10-metal-cerceve-saten-duz-kapak-yandan-50mm-alfor-p15456
+2026-05-14 23:16:47 [INFO] [15456] 'SÜZGEÇ 10X10 METAL ÇERÇEVE SATEN DÜZ KAP' | 255,00 TL | SKU: SÜZGEÇ.158543A501012
+2026-05-14 23:16:49 [INFO] Tamamlandi! Toplam 2 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-14.csv
