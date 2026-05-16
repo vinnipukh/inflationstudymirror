@@ -1,0 +1,52 @@
+2026-05-16 13:07:18 [INFO] ==================================================
+2026-05-16 13:07:18 [INFO] Yapimaks Scraper basliyor
+2026-05-16 13:07:18 [INFO] ==================================================
+2026-05-16 13:07:18 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-05-16 13:07:19 [INFO] Cookie basariyla alindi.
+2026-05-16 13:07:19 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-05-16 13:07:19 [INFO] Sitemap'ten toplam 7884 urun URL'si bulundu.
+2026-05-16 13:07:19 [INFO] Bugune ait veri yok. Eski veri (2026-05-15.csv) süzülerek bugune aktariliyor...
+2026-05-16 13:07:19 [INFO] Basarili! 7864 urun dunden bugune aktarildi.
+2026-05-16 13:07:19 [INFO] Guncel dosyada hazir olan urun: 7864 | Sifirdan cekilecek (yeni) urun: 20
+2026-05-16 13:07:19 [INFO] 20 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-16.csv
+2026-05-16 13:07:19 [INFO] [1/20] https://yapimaks.com/0-50-86-3000-bordo-p7693
+2026-05-16 13:07:19 [INFO] [7693] '0.50*86*3000 (BORDO)' | 675,00 TL | SKU: RALL.3009.050.3000
+2026-05-16 13:07:21 [INFO] [2/20] https://yapimaks.com/agac-kesim-motoru-elektrikli-1600w-40cm-rtrm9030-p15448
+2026-05-16 13:07:21 [INFO] [15448] 'AĞAÇ KESİM MOTORU ELEKTRİKLİ 1600W 40CM ' | 3650,00 TL | SKU: RTRMAX.RTM9030
+2026-05-16 13:07:23 [INFO] [3/20] https://yapimaks.com/agac-kesim-motoru-elektrikli-2000w-40cm-rtrm9040-p8005
+2026-05-16 13:07:23 [INFO] [8005] 'AĞAÇ KESİM MOTORU ELEKTRİKLİ 2000W 40CM ' | 4750,00 TL | SKU: RTRMAX.RTM9040
+2026-05-16 13:07:25 [INFO] [4/20] https://yapimaks.com/civi-zimba-cakma-tabancasi-8-16mm-elektrikli-rtm4020-p15445
+2026-05-16 13:07:25 [INFO] [15445] 'ÇİVİ ZIMBA ÇAKMA TABANCASI 8-16MM ELEKTR' | 2000,00 TL | SKU: RTRMAX.RTM4020
+2026-05-16 13:07:27 [INFO] [5/20] https://yapimaks.com/gonye-testere-kesme-ustten-tabla-1200w-210mm-rtm6220-rtrmax-p15446
+2026-05-16 13:07:27 [INFO] [15446] 'GÖNYE TESTERE KESME ÜSTTEN TABLA 1200W 2' | 10900,00 TL | SKU: RTRMAX.RTM6220
+2026-05-16 13:07:29 [INFO] [6/20] https://yapimaks.com/ilaclama-pompasi-rtm9616-akulu-12v-16-lt-sirt-rtrmax-p15452
+2026-05-16 13:07:29 [INFO] [15452] 'İLAÇLAMA POMPASI RTM9616 AKÜLÜ 12V 16 LT' | 3000,00 TL | SKU: RTRMAX.RTM9616
+2026-05-16 13:07:31 [INFO] [7/20] https://yapimaks.com/koli-tasima-araci-buyuk-katlanir-85x50x30-std-p15386
+2026-05-16 13:07:31 [INFO] [15386] 'KOLİ TAŞIMA ARACI BÜYÜK KATLANIR 85X50X3' | 2700,00 TL | SKU: STD.972878800
+2026-05-16 13:07:33 [INFO] [8/20] https://yapimaks.com/metre-arazi-30mtx13-mm-std-p15384
+2026-05-16 13:07:33 [INFO] [15384] 'METRE ARAZİ  30MTx13 MM STD' | 950,00 TL | SKU: STD.974839800.30
+2026-05-16 13:07:35 [INFO] [9/20] https://yapimaks.com/metre-arazi-50mtx13-mm-std-p15385
+2026-05-16 13:07:35 [INFO] [15385] 'METRE ARAZİ  50MTx13 MM STD' | 1190,00 TL | SKU: STD.974840800.50
+2026-05-16 13:07:37 [INFO] [10/20] https://yapimaks.com/mineflo-pvc-acik-kahve-en-2-mt-1-m-30-p13167
+2026-05-16 13:07:37 [INFO] [13167] 'MİNEFLO PVC AÇIK KAHVE EN:2 MT 1 M (30)' | 450,00 TL | SKU: AST.RN14
+2026-05-16 13:07:39 [INFO] [11/20] https://yapimaks.com/mineflo-pvc-gri-en-2-mt-1-m-30-p13165
+2026-05-16 13:07:39 [INFO] [13165] 'MİNEFLO PVC GRİ EN:2 MT 1 M (30)' | 450,00 TL | SKU: AST.RN29
+2026-05-16 13:07:41 [INFO] [12/20] https://yapimaks.com/mineflo-pvc-koyu-kahve-en-2-mt-1-m-30-p13166
+2026-05-16 13:07:41 [INFO] [13166] 'MİNEFLO PVC KOYU KAHVE EN:2 MT 1 M (30)' | 450,00 TL | SKU: AST.RN68
+2026-05-16 13:07:43 [INFO] [13/20] https://yapimaks.com/musamba-gri-parali-en-100cm-1-m-16-p11669
+2026-05-16 13:07:44 [INFO] [11669] 'MUŞAMBA GRİ PARALI EN:100CM 1 m (16)' | 275,00 TL | SKU: ATEŞ.MUŞAMBA.002
+2026-05-16 13:07:46 [INFO] [14/20] https://yapimaks.com/musamba-siyah-parali-en-100cm-1-m-16-p11668
+2026-05-16 13:07:46 [INFO] [11668] 'MUŞAMBA SİYAH PARALI EN:100CM 1 M (16)' | 275,00 TL | SKU: ATEŞ.MUŞAMBA.001
+2026-05-16 13:07:48 [INFO] [15/20] https://yapimaks.com/plaka-montaj-bandi-cift-tarafli-65mmx25mm-1p-8ad-rtrmax-p15444
+2026-05-16 13:07:48 [INFO] [15444] 'PLAKA MONTAJ BANDI ÇİFT TARAFLI  65MMX25' | 135,00 TL | SKU: RTRMAX.RNU1001
+2026-05-16 13:07:50 [INFO] [16/20] https://yapimaks.com/sifon-koruklu-uzun-70mm-std-uzun-32x70mm-p5035
+2026-05-16 13:07:50 [INFO] [5035] 'SİFON KÖRÜKLÜ UZUN 70MM STD UZUN 32X70MM' | 60,00 TL | SKU: KARPA.003
+2026-05-16 13:07:52 [INFO] [17/20] https://yapimaks.com/silikon-seffaf-280-gr-polyfix-unv-1kt-24ad-p8491
+2026-05-16 13:07:52 [INFO] [8491] 'SİLİKON ŞEFFAF 280 GR POLYFİX ÜNV(1KT 24' | 80,00 TL | SKU: SELENA.10051119
+2026-05-16 13:07:54 [INFO] [18/20] https://yapimaks.com/taharet-cubugu-uzun-krom-sivri-uc-p5044
+2026-05-16 13:07:54 [INFO] [5044] 'TAHARET ÇUBUĞU UZUN KROM SİVRİ UÇ' | 36,00 TL | SKU: KARPA.018
+2026-05-16 13:07:56 [INFO] [19/20] https://yapimaks.com/tirpan-cim-kenar-kesme-rtm912-elektrikli-250w-220mm-rtrmax-p15449
+2026-05-16 13:07:56 [INFO] [15449] 'TIRPAN ÇİM KENAR KESME RTM912 ELEKTRİKLİ' | 1300,00 TL | SKU: RTRMAX.RTM912
+2026-05-16 13:07:58 [INFO] [20/20] https://yapimaks.com/tirpan-cim-kenar-kesme-rtm915-elektrikli-450w-280mm-rtrmax-p15450
+2026-05-16 13:07:58 [INFO] [15450] 'TIRPAN ÇİM KENAR KESME RTM915 ELEKTRİKLİ' | 2500,00 TL | SKU: RTRMAX.RTM915
+2026-05-16 13:08:00 [INFO] Tamamlandi! Toplam 20 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-16.csv

@@ -1,0 +1,54 @@
+2026-05-15 21:00:35 [INFO] ==================================================
+2026-05-15 21:00:35 [INFO] Yapimaks Scraper basliyor
+2026-05-15 21:00:35 [INFO] ==================================================
+2026-05-15 21:00:35 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-05-15 21:00:36 [INFO] Cookie basariyla alindi.
+2026-05-15 21:00:36 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-05-15 21:00:36 [INFO] Sitemap'ten toplam 7875 urun URL'si bulundu.
+2026-05-15 21:00:36 [INFO] Bugune ait veri yok. Eski veri (2026-05-14.csv) süzülerek bugune aktariliyor...
+2026-05-15 21:00:36 [INFO] Basarili! 7854 urun dunden bugune aktarildi.
+2026-05-15 21:00:36 [INFO] Guncel dosyada hazir olan urun: 7854 | Sifirdan cekilecek (yeni) urun: 21
+2026-05-15 21:00:36 [INFO] 21 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-15.csv
+2026-05-15 21:00:36 [INFO] [1/21] https://yapimaks.com/agac-kesim-motoru-akusuz-rtx1891b-36v-35cm-pala-rtrmax-p15454
+2026-05-15 21:00:37 [INFO] [15454] 'AĞAÇ KESİM MOTORU AKÜSÜZ RTX1891B 36V 35' | 7250,00 TL | SKU: RTRMAX.RTX1891B
+2026-05-15 21:00:39 [INFO] [2/21] https://yapimaks.com/avadanlik-kutusu-12-5x19-5x9-cm-rcs15-rtrmax-p15426
+2026-05-15 21:00:39 [INFO] [15426] 'AVADANLIK KUTUSU 12,5x19,5x9 CM RCS15 RT' | 65,00 TL | SKU: RTRMAX.RCS15
+2026-05-15 21:00:41 [INFO] [3/21] https://yapimaks.com/avadanlik-kutusu-15-2x24-5x12-2-cm-rcs20-rtrmax-p15425
+2026-05-15 21:00:41 [INFO] [15425] 'AVADANLIK KUTUSU 15,2X24,5X12,2 CM RCS20' | 90,00 TL | SKU: RTRMAX.RCS20
+2026-05-15 21:00:43 [INFO] [4/21] https://yapimaks.com/avadanlik-kutusu-21-7x36x15-cm-rcs30-rtrmax-p15427
+2026-05-15 21:00:43 [INFO] [15427] 'AVADANLIK KUTUSU 21,7X36X15 CM RCS30 RTR' | 185,00 TL | SKU: RTRMAX.RCS30
+2026-05-15 21:00:45 [INFO] [5/21] https://yapimaks.com/avuc-taslama-sarjli-18v-125mm-komursuz-li-ion-aku-wonder-p14128
+2026-05-15 21:00:45 [INFO] [14128] 'AVUÇ TAŞLAMA ŞARJLI 18V 125MM KÖMÜRSÜZ L' | 8900,00 TL | SKU: WONDER.AT18-AG-BL
+2026-05-15 21:00:47 [INFO] [6/21] https://yapimaks.com/hava-jaki-lastik-sisirme-kaplin-girisli-egri-eltos-ehj-003-p15400
+2026-05-15 21:00:47 [INFO] [15400] 'HAVA JAKI LASTİK ŞİŞİRME KAPLİN GİRİŞLİ ' | 270,00 TL | SKU: ELTOS.EHJ003
+2026-05-15 21:00:49 [INFO] [7/21] https://yapimaks.com/hizli-sarj-aleti-18v-4-5a-x-lion-rtrmax-p12588
+2026-05-15 21:00:49 [INFO] [12588] 'HIZLI ŞARJ ALETİ 18V 4.5A X-LION RTRMAX' | 1050,00 TL | SKU: RTRMAX.RTX1809
+2026-05-15 21:00:51 [INFO] [8/21] https://yapimaks.com/hizli-sarj-aleti-20v-4-0a-quick-s-lion-rtrmax-p15453
+2026-05-15 21:00:51 [INFO] [15453] 'HIZLI ŞARJ ALETİ 20V 4.0A QUICK S-LION R' | 850,00 TL | SKU: RTRMAX.RTS5008Q
+2026-05-15 21:00:53 [INFO] [9/21] https://yapimaks.com/kose-citasi-delikli-alum-23x23x0-35mm-2-70-mt-p12536
+2026-05-15 21:00:53 [INFO] [12536] 'KÖŞE ÇITASI DELİKLİ ALÜM (23X23X0.35MM) ' | 67,00 TL | SKU: FOUR.0010
+2026-05-15 21:00:55 [INFO] [10/21] https://yapimaks.com/kose-citasi-fileli-pvc-mavi-10x10-45x145grx250cm-p14413
+2026-05-15 21:00:56 [INFO] [14413] 'KÖŞE ÇITASI FİLELİ PVC MAVİ 10X10 (45x14' | 60,00 TL | SKU: DARKSS.FK.10.03
+2026-05-15 21:00:58 [INFO] [11/21] https://yapimaks.com/maket-bicagi-rak-117-prf-siyah-metal-genis-rtrmax-p15424
+2026-05-15 21:00:58 [INFO] [15424] 'MAKET BIÇAĞI RAK 117 PRF SİYAH METAL GEN' | 85,00 TL | SKU: RTRMAX.RAK117
+2026-05-15 21:01:00 [INFO] [12/21] https://yapimaks.com/maskeleme-bandi-18mm-x-25-mt-rtrmax-1-ad-p15436
+2026-05-15 21:01:00 [INFO] [15436] 'MASKELEME BANDI 18MM x 25 MT RTRMAX 1 AD' | 20,00 TL | SKU: RTRMAX.RNM1825
+2026-05-15 21:01:02 [INFO] [13/21] https://yapimaks.com/maskeleme-bandi-24mm-x-25-mt-rtrmax-1-ad-p15437
+2026-05-15 21:01:02 [INFO] [15437] 'MASKELEME BANDI 24MM x 25 MT RTRMAX 1 AD' | 25,00 TL | SKU: RTRMAX.RNM2425
+2026-05-15 21:01:04 [INFO] [14/21] https://yapimaks.com/maskeleme-bandi-48mm-x-25-mt-rtrmax-1-ad-p15439
+2026-05-15 21:01:04 [INFO] [15439] 'MASKELEME BANDI 48MM x 25 MT RTRMAX 1 AD' | 45,00 TL | SKU: RTRMAX.RNM4825
+2026-05-15 21:01:06 [INFO] [15/21] https://yapimaks.com/pas-sokucu-350-ml-wd-40-p15401
+2026-05-15 21:01:06 [INFO] [15401] 'PAS SÖKÜCÜ 350 ML WD 40' | 425,00 TL | SKU: WD40.WD003
+2026-05-15 21:01:08 [INFO] [16/21] https://yapimaks.com/sizdirmazlik-bandi-22mmx3-35-mt-3-m-rtrmax-p15441
+2026-05-15 21:01:08 [INFO] [15441] 'SIZDIRMAZLIK BANDI 22MMx3.35 MT 3-M RTRM' | 135,00 TL | SKU: RTRMAX.RNU0511
+2026-05-15 21:01:10 [INFO] [17/21] https://yapimaks.com/strec-17-micron-50x150-mt-1400-gr-p15348
+2026-05-15 21:01:10 [INFO] [15348] 'STREÇ 17 MİCRON 50X150 MT (1400 GR)' | 250,00 TL | SKU: ELİTT.17MC50X150
+2026-05-15 21:01:12 [INFO] [18/21] https://yapimaks.com/strec-17-micron-50x300-mt-2640-gr-p15349
+2026-05-15 21:01:12 [INFO] [15349] 'STREÇ 17 MİCRON 50X300 MT (2640 GR)' | 550,00 TL | SKU: ELİTT.17MC50X300
+2026-05-15 21:01:14 [INFO] [19/21] https://yapimaks.com/torex-agac-somunu-m5-din-306-akb-1p-6-p13106
+2026-05-15 21:01:14 [INFO] [13106] 'TOREX AĞAÇ SOMUNU M5 DIN 306 AKB 1P= 6' | 47,00 TL | SKU: 8680613330088
+2026-05-15 21:01:16 [INFO] [20/21] https://yapimaks.com/yama-bandi-10x15-cm-suya-dayanikli-4-lu-rtrmax-p15442
+2026-05-15 21:01:16 [INFO] [15442] 'YAMA BANDI 10X15 CM SUYA DAYANIKLI 4 LÜ ' | 200,00 TL | SKU: RTRMAX.RNU0801
+2026-05-15 21:01:18 [INFO] [21/21] https://yapimaks.com/yama-bandi-48mmx1-2mt-suya-dayanikli-rtrmax-p15443
+2026-05-15 21:01:18 [INFO] [15443] 'YAMA BANDI 48MMX1.2MT SUYA DAYANIKLI RTR' | 200,00 TL | SKU: RTRMAX.RNU0802
+2026-05-15 21:01:20 [INFO] Tamamlandi! Toplam 21 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-15.csv
