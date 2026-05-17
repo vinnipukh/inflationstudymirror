@@ -1,0 +1,44 @@
+2026-05-17 21:53:45 [INFO] ==================================================
+2026-05-17 21:53:45 [INFO] Yapimaks Scraper basliyor
+2026-05-17 21:53:45 [INFO] ==================================================
+2026-05-17 21:53:45 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-05-17 21:53:46 [INFO] Cookie basariyla alindi.
+2026-05-17 21:53:46 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-05-17 21:53:46 [INFO] Sitemap'ten toplam 7891 urun URL'si bulundu.
+2026-05-17 21:53:46 [INFO] Bugune ait veri yok. Eski veri (2026-05-16.csv) süzülerek bugune aktariliyor...
+2026-05-17 21:53:46 [INFO] Basarili! 7875 urun dunden bugune aktarildi.
+2026-05-17 21:53:46 [INFO] Guncel dosyada hazir olan urun: 7875 | Sifirdan cekilecek (yeni) urun: 16
+2026-05-17 21:53:46 [INFO] 16 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-17.csv
+2026-05-17 21:53:46 [INFO] [1/16] https://yapimaks.com/25-uzun-kavis-pprc-kalde-p15419
+2026-05-17 21:53:46 [INFO] [15419] '25 UZUN KAVİS PPRC KALDE' | 25,00 TL | SKU: KALDE.3202TWC250000
+2026-05-17 21:53:48 [INFO] [2/16] https://yapimaks.com/is-ayakkabisi-brave-s1-air-max-bagcikli-no-40-p15378
+2026-05-17 21:53:48 [INFO] [15378] 'İŞ AYAKKABISI BRAVE S1 AIR MAX BAĞCIKLI ' | 1350,00 TL | SKU: STD.977016800.40
+2026-05-17 21:53:50 [INFO] [3/16] https://yapimaks.com/is-ayakkabisi-brave-s1-air-max-bagcikli-no-41-p15379
+2026-05-17 21:53:50 [INFO] [15379] 'İŞ AYAKKABISI BRAVE S1 AIR MAX BAĞCIKLI ' | 1350,00 TL | SKU: STD.977017800.41
+2026-05-17 21:53:52 [INFO] [4/16] https://yapimaks.com/is-ayakkabisi-brave-s1-air-max-bagcikli-no-42-p15380
+2026-05-17 21:53:52 [INFO] [15380] 'İŞ AYAKKABISI BRAVE S1 AIR MAX BAĞCIKLI ' | 1350,00 TL | SKU: STD.977018800.42
+2026-05-17 21:53:54 [INFO] [5/16] https://yapimaks.com/is-ayakkabisi-brave-s1-air-max-bagcikli-no-43-p15381
+2026-05-17 21:53:54 [INFO] [15381] 'İŞ AYAKKABISI BRAVE S1 AIR MAX BAĞCIKLI ' | 1350,00 TL | SKU: STD.977019800.43
+2026-05-17 21:53:56 [INFO] [6/16] https://yapimaks.com/is-ayakkabisi-brave-s1-air-max-bagcikli-no-44-p15382
+2026-05-17 21:53:56 [INFO] [15382] 'İŞ AYAKKABISI BRAVE S1 AIR MAX BAĞCIKLI ' | 1350,00 TL | SKU: STD.977020800.44
+2026-05-17 21:53:58 [INFO] [7/16] https://yapimaks.com/is-ayakkabisi-setra-max-s2-deri-bagcikli-no-39-p15372
+2026-05-17 21:53:58 [INFO] [15372] 'İŞ AYAKKABISI SETRA MAX S2 DERİ BAĞCIKLI' | 1200,00 TL | SKU: STD.976937800.39
+2026-05-17 21:54:00 [INFO] [8/16] https://yapimaks.com/is-ayakkabisi-setra-max-s2-deri-bagcikli-no-40-p15373
+2026-05-17 21:54:00 [INFO] [15373] 'İŞ AYAKKABISI SETRA MAX S2 DERİ BAĞCIKLI' | 1200,00 TL | SKU: STD.976938800.40
+2026-05-17 21:54:02 [INFO] [9/16] https://yapimaks.com/is-ayakkabisi-setra-max-s2-deri-bagcikli-no-41-p15374
+2026-05-17 21:54:02 [INFO] [15374] 'İŞ AYAKKABISI SETRA MAX S2 DERİ BAĞCIKLI' | 1200,00 TL | SKU: STD.976939800.41
+2026-05-17 21:54:04 [INFO] [10/16] https://yapimaks.com/is-ayakkabisi-setra-max-s2-deri-bagcikli-no-42-p15375
+2026-05-17 21:54:04 [INFO] [15375] 'İŞ AYAKKABISI SETRA MAX S2 DERİ BAĞCIKLI' | 1200,00 TL | SKU: STD.976940800.42
+2026-05-17 21:54:06 [INFO] [11/16] https://yapimaks.com/is-ayakkabisi-setra-max-s2-deri-bagcikli-no-43-p15376
+2026-05-17 21:54:06 [INFO] [15376] 'İŞ AYAKKABISI SETRA MAX S2 DERİ BAĞCIKLI' | 1200,00 TL | SKU: STD.976941800.43
+2026-05-17 21:54:08 [INFO] [12/16] https://yapimaks.com/is-ayakkabisi-setra-max-s2-deri-bagcikli-no-44-p15377
+2026-05-17 21:54:08 [INFO] [15377] 'İŞ AYAKKABISI SETRA MAX S2 DERİ BAĞCIKLI' | 1200,00 TL | SKU: STD.976942800.44
+2026-05-17 21:54:10 [INFO] [13/16] https://yapimaks.com/kum-0-5mm-50-kg-cuval-p15423
+2026-05-17 21:54:11 [INFO] [15423] 'KUM 0.5mm (50 KG ÇUVAL)' | 175,00 TL | SKU: KUM.05Ç
+2026-05-17 21:54:13 [INFO] [14/16] https://yapimaks.com/kurek-demir-sapli-tutmali-sait-demirci-p8414
+2026-05-17 21:54:13 [INFO] [8414] 'KÜREK DEMİR SAPLI TUTMALI SAİT DEMİRCİ' | 330,00 TL | SKU: SD.K4004
+2026-05-17 21:54:15 [INFO] [15/16] https://yapimaks.com/lehim-teli-tup-1-2-mm-pimax-p15399
+2026-05-17 21:54:15 [INFO] [15399] 'LEHİM TELİ TÜP 1.2 MM PİMAX' | 150,00 TL | SKU: PİNAX.012.ETL001
+2026-05-17 21:54:17 [INFO] [16/16] https://yapimaks.com/mekanizma-vavien-anahtar-artline-novella-trenda-viko-cerceve-haric-p15403
+2026-05-17 21:54:17 [INFO] [15403] 'MEKANİZMA VAVİEN ANAHTAR ARTLİNE NOVELLA' | 70,00 TL | SKU: VİKO.92600004
+2026-05-17 21:54:19 [INFO] Tamamlandi! Toplam 16 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-17.csv
