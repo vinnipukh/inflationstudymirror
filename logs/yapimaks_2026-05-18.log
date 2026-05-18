@@ -1,0 +1,14 @@
+2026-05-18 15:04:41 [INFO] ==================================================
+2026-05-18 15:04:41 [INFO] Yapimaks Scraper basliyor
+2026-05-18 15:04:41 [INFO] ==================================================
+2026-05-18 15:04:41 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-05-18 15:04:41 [INFO] Cookie basariyla alindi.
+2026-05-18 15:04:41 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-05-18 15:04:41 [INFO] Sitemap'ten toplam 7880 urun URL'si bulundu.
+2026-05-18 15:04:41 [INFO] Bugune ait veri yok. Eski veri (2026-05-17.csv) süzülerek bugune aktariliyor...
+2026-05-18 15:04:41 [INFO] Basarili! 7879 urun dunden bugune aktarildi.
+2026-05-18 15:04:41 [INFO] Guncel dosyada hazir olan urun: 7879 | Sifirdan cekilecek (yeni) urun: 1
+2026-05-18 15:04:41 [INFO] 1 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-18.csv
+2026-05-18 15:04:41 [INFO] [1/1] https://yapimaks.com/mudahale-kapagi-four-50x50-p3982
+2026-05-18 15:04:41 [INFO] [3982] 'MÜDAHALE KAPAĞI FOUR 50X50' | 600,00 TL | SKU: FOUR.MDK5050
+2026-05-18 15:04:43 [INFO] Tamamlandi! Toplam 1 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-18.csv
