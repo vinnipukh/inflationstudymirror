@@ -1,0 +1,26 @@
+2026-05-19 21:09:26 [INFO] ==================================================
+2026-05-19 21:09:26 [INFO] Yapimaks Scraper basliyor
+2026-05-19 21:09:26 [INFO] ==================================================
+2026-05-19 21:09:26 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-05-19 21:09:26 [INFO] Cookie basariyla alindi.
+2026-05-19 21:09:26 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-05-19 21:09:26 [INFO] Sitemap'ten toplam 7875 urun URL'si bulundu.
+2026-05-19 21:09:26 [INFO] Bugune ait veri yok. Eski veri (2026-05-18.csv) süzülerek bugune aktariliyor...
+2026-05-19 21:09:26 [INFO] Basarili! 7868 urun dunden bugune aktarildi.
+2026-05-19 21:09:26 [INFO] Guncel dosyada hazir olan urun: 7868 | Sifirdan cekilecek (yeni) urun: 7
+2026-05-19 21:09:26 [INFO] 7 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-19.csv
+2026-05-19 21:09:26 [INFO] [1/7] https://yapimaks.com/klozet-lagina-duvara-tam-dayali-kombi-p2894
+2026-05-19 21:09:26 [INFO] [2894] 'KLOZET LAGİNA DUVARA TAM DAYALI KOMBİ' | 5300,00 TL | SKU: EGEVİT.3540340
+2026-05-19 21:09:28 [INFO] [2/7] https://yapimaks.com/seramik-yapis-gri-qf121-c1t-25-kg-p1968
+2026-05-19 21:09:28 [INFO] [1968] 'SERAMİK YAPIŞ GRİ QF121 C1T-25 KG.' | 169,00 TL | SKU: DARKSS.YK.QF121G
+2026-05-19 21:09:30 [INFO] [3/7] https://yapimaks.com/su-pompasi-0-7-hp-qb70-p15322
+2026-05-19 21:09:30 [INFO] [15322] 'SU POMPASI  0.7 HP QB70' | 3100,00 TL | SKU: RAINPUMP.QB70-0.7HP
+2026-05-19 21:09:32 [INFO] [4/7] https://yapimaks.com/su-pompasi-rtm875-jet-tipi-1100w-1-5hp-45-mt-rtrmax-p10880
+2026-05-19 21:09:33 [INFO] [10880] 'SU POMPASI RTM875 JET TİPİ 1100W 1.5HP 4' | 6750,00 TL | SKU: RTRMAX.RTM875
+2026-05-19 21:09:35 [INFO] [5/7] https://yapimaks.com/tirmik-takviyeli-18-dis-p8453
+2026-05-19 21:09:35 [INFO] [8453] 'TIRMIK TAKVİYELİ 18 DİŞ' | 245,00 TL | SKU: SD.TT0018
+2026-05-19 21:09:37 [INFO] [6/7] https://yapimaks.com/verano-kirmizi-10x30-2k-0-6m2-p15463
+2026-05-19 21:09:37 [INFO] [15463] 'VERANO KIRMIZI 10X30 2K (0,6M2)' | 336,00 TL | SKU: EGESER.100X300VRO20.2K
+2026-05-19 21:09:39 [INFO] [7/7] https://yapimaks.com/verano-koyu-yesil-10x30-2k-0-6m2-p14175
+2026-05-19 21:09:39 [INFO] [14175] 'VERANO KOYU YEŞİL 10X30 2K (0,6M2)' | 336,00 TL | SKU: EGESER.100X300VRO25.2K
+2026-05-19 21:09:41 [INFO] Tamamlandi! Toplam 7 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-19.csv
