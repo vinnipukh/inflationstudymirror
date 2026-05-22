@@ -1,5 +1,4 @@
 import os
-
 import requests
 import re
 import time
@@ -7,7 +6,6 @@ import random
 import datetime
 import pandas as pd
 from pathlib import Path
-
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -99,27 +97,26 @@ for ana_kategori, id_list in kategoriler.items():
                         fiyat = fiyat_sozlugu.get('formattedValue', fiyat_sozlugu.get('value', 'Fiyat Yok'))
 
                         tum_urunler_temiz.append({
+                            "product-name": urun.get('name', 'İsimsiz'),
+                            "product-price": fiyat,
                             "Ana Kategori": ana_kategori,
                             "Kategori ID": kat_id,
-                            "Stok Kodu": urun.get('code', 'Kod Yok'),
-                            "Ürün Adı": urun.get('name', 'İsimsiz'),
-                            "Fiyat": fiyat
+                            "Stok Kodu": urun.get('code', 'Kod Yok')
                         })
 
                     mevcut_sayfa += 1
 
                     if mevcut_sayfa < toplam_sayfa:
-                        time.sleep(random.uniform(3.2, 4.8))  # Banlanmamak için sayfa arası bekleme
+                        time.sleep(random.uniform(3.2, 4.8))  
 
                 else:
-                    print(f"   ⚠️ HATA! Durum Kodu: {response.status_code}. Bu kategori atlanıyor.")
+                    print(f"    ⚠️ HATA! Durum Kodu: {response.status_code}. Bu kategori atlanıyor.")
                     break
 
             except Exception as e:
-                print(f"   ❌ Bir sorun oluştu: {e}")
+                print(f"    ❌ Bir sorun oluştu: {e}")
                 break
 
-        # Her kategoriden sonra insan taklidi için bekleme
         time.sleep(random.uniform(3.7, 5.5))
 
 # ==========================================
@@ -127,7 +124,6 @@ for ana_kategori, id_list in kategoriler.items():
 # ==========================================
 print(f"\n✅ Tarama Bitti! Ham ürün sayısı: {len(tum_urunler_temiz)}")
 
-# Dinamik klasör yolu bulma (Senin istediğin Datas/ClothingStores/Vakko klasörüne)
 mevcut_dosya = Path(__file__).resolve()
 proje_koku = mevcut_dosya.parents[3]
 hedef_klasor = proje_koku / "Datas" / "ClothingStores" / "Vakko"
@@ -138,10 +134,14 @@ tam_dosya_yolu = hedef_klasor / f"vakko_{bugunun_tarihi}.csv"
 
 df = pd.DataFrame(tum_urunler_temiz)
 
-# Çift verileri Stok Koduna göre sil (Böylece enflasyon analizin bozulmaz)
 if not df.empty:
+    sutun_sirasi = ["product-name", "product-price", "Ana Kategori", "Kategori ID", "Stok Kodu"]
+    df = df[sutun_sirasi]
+    
     df.drop_duplicates(subset=['Stok Kodu'], inplace=True)
-    df.to_csv(tam_dosya_yolu, index=False, encoding="utf-8-sig")
+    
+    # sep=',' olarak değiştirildi (virgül ayracı)
+    df.to_csv(tam_dosya_yolu, index=False, sep=',', encoding="utf-8-sig")
     print(f"🧹 Temizlik sonrası benzersiz ürün sayısı: {len(df)}")
     print(f"📁 Dosya başarıyla kaydedildi:\n--> {tam_dosya_yolu}")
 else:
