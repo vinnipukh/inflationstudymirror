@@ -3,6 +3,8 @@ import csv
 import time
 import os
 from datetime import datetime
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 # -------------------------------------------------------------------
 # KATEGORİLER  (sadece slug'lar)
@@ -34,9 +36,6 @@ HEADERS = {
 }
 
 
-# -------------------------------------------------------------------
-# Yardımcı fonksiyon: JSON ağacından tüm ürünleri recursive olarak çek
-# -------------------------------------------------------------------
 def extract_products(data):
     """
     API yanıtındaki iç içe geçmiş yapıda gezinerek
@@ -46,10 +45,8 @@ def extract_products(data):
     products = []
 
     if isinstance(data, dict):
-        # Bulunduğumuz düğüm bir product-card ise ürünü ekle
         if data.get("component") == "product-card" and "product" in data:
             products.append(data["product"])
-        # Alt dallarda da ara
         for value in data.values():
             products.extend(extract_products(value))
 
@@ -60,13 +57,14 @@ def extract_products(data):
     return products
 
 
-# -------------------------------------------------------------------
-# Ana fonksiyon
-# -------------------------------------------------------------------
 def main():
     tum_urunler = []
     session = requests.Session()
     session.headers.update(HEADERS)
+
+    # Surgical Add: Robust retry strategy for unattended GitHub Actions workflows
+    retries = Retry(total=5, backoff_factor=1, status_forcelist=[429, 500, 502, 503, 504])
+    session.mount("https://", HTTPAdapter(max_retries=retries))
 
     for kategori_adi, slug in KATEGORILER:
         print(f"\n🔍 İşleniyor: {kategori_adi}")
@@ -87,7 +85,6 @@ def main():
                 print(f"  ❌ Sayfa {page} alınamadı: {e}")
                 break
 
-            # İlk sayfadan sayfalama bilgilerini al
             if page == 1:
                 paging = data.get("paging", {})
                 beklenen_sayi = paging.get("totalRecords", 0)
@@ -96,7 +93,6 @@ def main():
                       f"(sayfa boyutu: {paging.get('pageSize', '?')}, "
                       f"toplam sayfa: {total_pages})")
 
-            # Ürünleri çıkar
             products = extract_products(data.get("page", []))
 
             for product in products:
@@ -104,20 +100,19 @@ def main():
                 if not isim:
                     continue
 
-                fiyat = product.get("price", "")
+                # Ensures price is safely cast to float as requested
+                try:
+                    fiyat = float(product.get("price", 0.0))
+                except (ValueError, TypeError):
+                    fiyat = 0.0
+
                 urun_id = product.get("id", "")
 
-                # Ekstra bilgileri de istersen açabilirsin:
-                # eski_fiyat = product.get("oldPrice")
-                # indirim    = product.get("discountRate")
-                # birim      = product.get("unitCode")
-                # stok_disi  = product.get("outOfStock")
-
+                # Surgical Fix: Mapping exact requested column headers
                 tum_urunler.append({
-                    "kategori": kategori_adi,
-                    "product_id": urun_id,
-                    "product_name": isim,
-                    "product_price": fiyat,
+                    "product-name": str(isim),
+                    "product-price": fiyat,
+                    "product-id": str(urun_id)
                 })
                 cekilen_urun_sayisi += 1
 
@@ -125,9 +120,8 @@ def main():
                   f"bu sayfadan {len(products)} ürün çekildi")
 
             page += 1
-            time.sleep(0.5)  # sunucuyu yormamak için kısa bekleme
+            time.sleep(0.5)
 
-        # Sonuç kontrolü
         if beklenen_sayi and cekilen_urun_sayisi == beklenen_sayi:
             print(f"  ✅ Başarılı! Beklenen: {beklenen_sayi} | "
                   f"Çekilen: {cekilen_urun_sayisi}")
@@ -141,9 +135,10 @@ def main():
 
     os.makedirs(os.path.dirname(csv_dosyasi), exist_ok=True)
 
+    # Surgical Fix: delimiter=";" and strict column ordering
     with open(csv_dosyasi, "w", newline="", encoding="utf-8-sig") as file:
-        fieldnames = ["kategori", "product_id", "product_name", "product_price"]
-        writer = csv.DictWriter(file, fieldnames=fieldnames)
+        fieldnames = ["product-name", "product-price", "product-id"]
+        writer = csv.DictWriter(file, fieldnames=fieldnames, delimiter=";")
         writer.writeheader()
         writer.writerows(tum_urunler)
 

@@ -1,0 +1,56 @@
+2026-05-21 22:34:53 [INFO] ==================================================
+2026-05-21 22:34:53 [INFO] Yapimaks Scraper basliyor
+2026-05-21 22:34:53 [INFO] ==================================================
+2026-05-21 22:34:53 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-05-21 22:34:54 [INFO] Cookie basariyla alindi.
+2026-05-21 22:34:54 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-05-21 22:34:54 [INFO] Sitemap'ten toplam 7870 urun URL'si bulundu.
+2026-05-21 22:34:54 [INFO] Bugune ait veri yok. Eski veri (2026-05-20.csv) süzülerek bugune aktariliyor...
+2026-05-21 22:34:54 [INFO] Basarili! 7848 urun dunden bugune aktarildi.
+2026-05-21 22:34:54 [INFO] Guncel dosyada hazir olan urun: 7848 | Sifirdan cekilecek (yeni) urun: 22
+2026-05-21 22:34:54 [INFO] 22 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-21.csv
+2026-05-21 22:34:54 [INFO] [1/22] https://yapimaks.com/aluminyum-folyo-yapiskanli-120-cm-50-1-metre-p10989
+2026-05-21 22:34:54 [INFO] [10989] 'ALÜMİNYUM FOLYO YAPIŞKANLI 120 CM (50) 1' | 165,00 TL | SKU: NOBEL.3690160259
+2026-05-21 22:34:56 [INFO] [2/22] https://yapimaks.com/eviye-440044-granit-quarstone-vetro-xl-6s-50x100-krem-p15367
+2026-05-21 22:34:56 [INFO] [15367] 'EVİYE 440044 GRANİT QUARSTONE VETRO XL 6' | 7100,00 TL | SKU: QUARSTONE.00440044
+2026-05-21 22:34:58 [INFO] [3/22] https://yapimaks.com/eviye-440045-granit-quarstone-vetro-xl-6s-50x100-siyah-p15364
+2026-05-21 22:34:58 [INFO] [15364] 'EVİYE 440045 GRANİT QUARSTONE VETRO XL 6' | 7100,00 TL | SKU: QUARSTONE.00440045
+2026-05-21 22:35:00 [INFO] [4/22] https://yapimaks.com/eviye-440047-granit-quarstone-vetro-xl-6s-50x100-beyaz-p15365
+2026-05-21 22:35:00 [INFO] [15365] 'EVİYE 440047 GRANİT QUARSTONE VETRO XL 6' | 7100,00 TL | SKU: QUARSTONE.00440047
+2026-05-21 22:35:02 [INFO] [5/22] https://yapimaks.com/eviye-440053-granit-quarstone-cielo-50-u-40x50-tezgah-ustu-siyah-p15366
+2026-05-21 22:35:02 [INFO] [15366] 'EVİYE 440053 GRANİT QUARSTONE CİELO 50 U' | 6500,00 TL | SKU: QUARSTONE.00440053
+2026-05-21 22:35:04 [INFO] [6/22] https://yapimaks.com/eviye-440056-granit-quarstone-cielo-70-u-40x70-krem-p15369
+2026-05-21 22:35:04 [INFO] [15369] 'EVİYE 440056 GRANİT QUARSTONE CİELO 70 U' | 7400,00 TL | SKU: QUARSTONE.00440056
+2026-05-21 22:35:06 [INFO] [7/22] https://yapimaks.com/eviye-440060-granit-quarstone-vetro-5s-50x86-krem-p15360
+2026-05-21 22:35:06 [INFO] [15360] 'EVİYE 440060 GRANİT QUARSTONE VETRO 5S 5' | 6500,00 TL | SKU: QUARSTONE.00440060
+2026-05-21 22:35:08 [INFO] [8/22] https://yapimaks.com/eviye-440060-granit-quarstone-vetro-5s-50x86-siyah-p15361
+2026-05-21 22:35:09 [INFO] [15361] 'EVİYE 440060 GRANİT QUARSTONE VETRO 5S 5' | 6500,00 TL | SKU: QUARSTONE.00440061
+2026-05-21 22:35:11 [INFO] [9/22] https://yapimaks.com/eviye-440068-granit-quarstone-cielo-50-u-40x50-ankastre-metalik-gri-p15363
+2026-05-21 22:35:11 [INFO] [15363] 'EVİYE 440068 GRANİT QUARSTONE CİELO 50 U' | 6500,00 TL | SKU: QUARSTONE.00440068
+2026-05-21 22:35:13 [INFO] [10/22] https://yapimaks.com/eviye-440073-granit-quarstone-vetro-5s-50x86-metalik-gri-p15368
+2026-05-21 22:35:13 [INFO] [15368] 'EVİYE 440073 GRANİT QUARSTONE VETRO 5S 5' | 6500,00 TL | SKU: QUARSTONE.00440073
+2026-05-21 22:35:15 [INFO] [11/22] https://yapimaks.com/eviye-440074-granit-quarstone-vetro-xl-6s-50x100-metalik-gri-p15359
+2026-05-21 22:35:15 [INFO] [15359] 'EVİYE 440074 GRANİT QUARSTONE VETRO XL 6' | 7100,00 TL | SKU: QUARSTONE.00440074
+2026-05-21 22:35:17 [INFO] [12/22] https://yapimaks.com/eviye-440075-granit-quarstone-cielo-70-u-40x70-tezgah-ustu-metalik-gri-p13790
+2026-05-21 22:35:17 [INFO] [13790] 'EVİYE 440075 GRANİT QUARSTONE CİELO 70 U' | 7400,00 TL | SKU: QUARSTONE.00440075
+2026-05-21 22:35:19 [INFO] [13/22] https://yapimaks.com/hortum-1-2-eko-orgulu-100-mt-p15457
+2026-05-21 22:35:19 [INFO] [15457] 'HORTUM 1/2 EKO ÖRGÜLÜ 100 MT' | 2400,00 TL | SKU: GÜNEŞ.0001.100
+2026-05-21 22:35:21 [INFO] [14/22] https://yapimaks.com/hortum-1-2-silikon-orgulu-100-mt-p4444
+2026-05-21 22:35:21 [INFO] [4444] 'HORTUM 1/2 SİLİKON ÖRGÜLÜ 100 MT' | 3200,00 TL | SKU: GÜNEŞ.0004.100
+2026-05-21 22:35:23 [INFO] [15/22] https://yapimaks.com/hortum-1p-eko-orgulu-50mt-p4429
+2026-05-21 22:35:23 [INFO] [4429] 'HORTUM 1P EKO ÖRGÜLÜ 50MT' | 3200,00 TL | SKU: GÜNEŞ.0003.50
+2026-05-21 22:35:25 [INFO] [16/22] https://yapimaks.com/hortum-1p-silikonlu-orgulu-1-m-p4551
+2026-05-21 22:35:25 [INFO] [4551] 'HORTUM 1P SİLİKONLU ÖRGÜLÜ 1 M' | 84,00 TL | SKU: GÜNEŞ.0006.1
+2026-05-21 22:35:27 [INFO] [17/22] https://yapimaks.com/hortum-3-4-silikon-orgulu-25-mt-p11958
+2026-05-21 22:35:27 [INFO] [11958] 'HORTUM 3/4 SİLİKON ÖRGÜLÜ 25 MT' | 1350,00 TL | SKU: GÜNEŞ.0005.25
+2026-05-21 22:35:29 [INFO] [18/22] https://yapimaks.com/hortum-3-4-silikon-orgulu-50-mt-p11959
+2026-05-21 22:35:29 [INFO] [11959] 'HORTUM 3/4 SİLİKON ÖRGÜLÜ 50 MT' | 2700,00 TL | SKU: GÜNEŞ.0005.50
+2026-05-21 22:35:31 [INFO] [19/22] https://yapimaks.com/hortum-hava-10-mm-1m-p15458
+2026-05-21 22:35:31 [INFO] [15458] 'HORTUM HAVA 10 MM, 1M' | 44,00 TL | SKU: GÜNEŞ.0018.9
+2026-05-21 22:35:33 [INFO] [20/22] https://yapimaks.com/hortum-terazi-seffaf-6-mm-1-m-p4449
+2026-05-21 22:35:33 [INFO] [4449] 'HORTUM TERAZİ ŞEFFAF 6 MM 1 M' | 8,40 TL | SKU: GÜNEŞ.0016.6
+2026-05-21 22:35:35 [INFO] [21/22] https://yapimaks.com/led-isik-solar-32mt-3200k-sari-isik-pt-132ww-p13255
+2026-05-21 22:35:35 [INFO] [13255] 'LED IŞIK SOLAR 32MT 3200K SARI IŞIK PT-1' | 450,00 TL | SKU: PANTHER PT-132WW
+2026-05-21 22:35:37 [INFO] [22/22] https://yapimaks.com/ondulin-oluklu-levha-yesil-2-mt-p7052
+2026-05-21 22:35:37 [INFO] [7052] 'ONDULİN OLUKLU LEVHA YEŞİL 2-MT' | 475,00 TL | SKU: ONDULİN. 002
+2026-05-21 22:35:39 [INFO] Tamamlandi! Toplam 22 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-21.csv

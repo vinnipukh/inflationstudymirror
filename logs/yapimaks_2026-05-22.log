@@ -1,0 +1,20 @@
+2026-05-22 23:16:57 [INFO] ==================================================
+2026-05-22 23:16:57 [INFO] Yapimaks Scraper basliyor
+2026-05-22 23:16:57 [INFO] ==================================================
+2026-05-22 23:16:57 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-05-22 23:16:58 [INFO] Cookie basariyla alindi.
+2026-05-22 23:16:58 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-05-22 23:16:58 [INFO] Sitemap'ten toplam 7855 urun URL'si bulundu.
+2026-05-22 23:16:58 [INFO] Bugune ait veri yok. Eski veri (2026-05-21.csv) süzülerek bugune aktariliyor...
+2026-05-22 23:16:58 [INFO] Basarili! 7851 urun dunden bugune aktarildi.
+2026-05-22 23:16:58 [INFO] Guncel dosyada hazir olan urun: 7851 | Sifirdan cekilecek (yeni) urun: 4
+2026-05-22 23:16:58 [INFO] 4 yeni urun scrapelanacak -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-22.csv
+2026-05-22 23:16:58 [INFO] [1/4] https://yapimaks.com/firca-kestirme-no-2-libra-p3610
+2026-05-22 23:16:58 [INFO] [3610] 'FIRÇA KESTİRME NO:2 LİBRA' | 45,00 TL | SKU: İZMİRFIRÇA.003248
+2026-05-22 23:17:00 [INFO] [2/4] https://yapimaks.com/mantolama-dubeli-celik-civi-17-5-cm-speco-p2024
+2026-05-22 23:17:00 [INFO] [2024] 'MANTOLAMA DÜBELİ ÇELİK ÇİVİ 17.5-CM (SPE' | 4,50 TL | SKU: SPECO.MDÇ.17.5
+2026-05-22 23:17:02 [INFO] [3/4] https://yapimaks.com/yalitim-pimi-4-cm-metal-yapiskanli-civi-1-ad-p12248
+2026-05-22 23:17:03 [INFO] [12248] 'YALITIM PİMİ 4 CM METAL YAPIŞKANLI ÇİVİ ' | 5,00 TL | SKU: DARKSS.YPM4
+2026-05-22 23:17:05 [INFO] [4/4] https://yapimaks.com/yalitim-pimi-6-cm-metal-yapiskanli-civi-1-ad-p11919
+2026-05-22 23:17:05 [INFO] [11919] 'YALITIM PİMİ 6 CM METAL YAPIŞKANLI ÇİVİ ' | 6,00 TL | SKU: DARKSS.YPM6
+2026-05-22 23:17:07 [INFO] Tamamlandi! Toplam 4 yeni urun eklendi -> C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-05-22.csv
