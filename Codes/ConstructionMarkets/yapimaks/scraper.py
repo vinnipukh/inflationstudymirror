@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
 """
-Yapimaks.com Product Scraper — API Edition (tara    yıcısız)
-- requests.Session ile otomatik cookie yönetimi
-- Sitemap değişikliklerini takip eder
-- Eski CSV'deki ürünleri güncel sitemap ile eşleştirip bugüne aktarır (Akıllı Kopyalama)
-- O günkü CSV'de olan URL'leri atlar (kaldığı yerden devam)
-- Her ürün anında CSV'ye yazılır (tarihli dosya adı)
+Yapimaks.com Product Scraper — API Edition (tarayıcısız)
+- Sütunlar "product-name" ve "product-price" başa gelecek şekilde güncellendi.
+- Ondalık ayracı olarak nokta (.) kullanıldı.
 """
 
 import csv
@@ -31,8 +28,9 @@ SITEMAP_URL = "https://yapimaks.com/sitemap/products1.xml"
 SITE_URL = "https://yapimaks.com"
 API_BASE = "https://yapimaks.com/api/tr/v1/layouts/b2c/products/{product_id}.json"
 DELAY = 2.0
-FIELDNAMES = ["product_id", "name", "sku", "marka_id", "stok_durumu",
-              "birim", "price", "vat_rate", "currency", "url", "scraped_at"]
+# İlk iki sütun istendiği gibi ayarlandı, geri kalanlar arkasına eklendi.
+FIELDNAMES = ["product-name", "product-price", "product_id", "sku", "marka_id", 
+              "stok_durumu", "birim", "vat_rate", "currency", "url", "scraped_at"]
 USER_AGENT = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
               "AppleWebKit/537.36 (KHTML, like Gecko) "
               "Chrome/120.0.0.0 Safari/537.36")
@@ -54,22 +52,18 @@ def setup_logging():
         ]
     )
 
-
 log = logging.getLogger(__name__)
 
 # ── GRACEFUL SHUTDOWN ─────────────────────────────────────────────────────────
 _shutdown = False
-
 
 def _handle_signal(sig, frame):
     global _shutdown
     log.warning("Sinyal alindi, temiz kapatiliyor...")
     _shutdown = True
 
-
 signal.signal(signal.SIGTERM, _handle_signal)
 signal.signal(signal.SIGINT, _handle_signal)
-
 
 # ── SESSION ───────────────────────────────────────────────────────────────────
 def make_session() -> requests.Session:
@@ -96,13 +90,11 @@ def make_session() -> requests.Session:
     })
     return s
 
-
 # ── CSV FONKSIYONLARI ─────────────────────────────────────────────────────────
 def get_csv_path() -> str:
     today = datetime.now().strftime("%Y-%m-%d")
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     return os.path.join(OUTPUT_DIR, f"{today}.csv")
-
 
 def get_latest_csv() -> str:
     if not os.path.exists(OUTPUT_DIR):
@@ -112,17 +104,16 @@ def get_latest_csv() -> str:
         return None
     return os.path.join(OUTPUT_DIR, csv_files[-1])
 
-
 def load_scraped_urls(csv_path: str) -> set:
     if not os.path.isfile(csv_path):
         return set()
     with open(csv_path, "r", encoding="utf-8-sig") as f:
         reader = csv.DictReader(f)
-        return {row["url"] for row in reader if row.get("url")}
-
+        return {row.get("url") for row in reader if row.get("url")}
 
 def open_csv_writer(csv_path: str):
     file_exists = os.path.isfile(csv_path)
+    # Virgül (,) ile ayrılmış standart CSV formatı kullanılıyor
     f = open(csv_path, "a", newline="", encoding="utf-8-sig")
     writer = csv.DictWriter(f, fieldnames=FIELDNAMES)
     if not file_exists:
@@ -130,11 +121,9 @@ def open_csv_writer(csv_path: str):
         f.flush()
     return f, writer
 
-
 def write_row(f, writer, data: dict):
     writer.writerow(data)
     f.flush()
-
 
 # ── SİTEMAP FONKSIYONLARI ─────────────────────────────────────────────────────
 def fetch_sitemap(session: requests.Session) -> str:
@@ -143,36 +132,32 @@ def fetch_sitemap(session: requests.Session) -> str:
     r.raise_for_status()
     return r.text
 
-
 def parse_urls(xml_text: str) -> list:
     xml_text = re.sub(r' xmlns="[^"]+"', "", xml_text)
     root = ET.fromstring(xml_text)
     return [el.findtext("loc", "").strip() for el in root.findall(".//url")]
 
-
 def is_product_url(url: str) -> bool:
     return bool(re.search(r"-p\d+$", url.rstrip("/")))
-
 
 def extract_product_id(url: str) -> str:
     m = re.search(r"-p(\d+)$", url.rstrip("/"))
     return m.group(1) if m else ""
 
-
 # ── SCRAPE FONKSIYONU ─────────────────────────────────────────────────────────
 def scrape_product(session: requests.Session, url: str) -> dict:
     product_id = extract_product_id(url)
     result = {
+        "product-name": "",
+        "product-price": "",
         "product_id": product_id,
-        "url": url,
-        "name": "",
         "sku": "",
         "marka_id": "",
         "stok_durumu": "",
         "birim": "",
-        "price": "",
         "vat_rate": "",
         "currency": "TRY",
+        "url": url,
         "scraped_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
     }
 
@@ -193,7 +178,7 @@ def scrape_product(session: requests.Session, url: str) -> dict:
         attrs = product.get("attributes", {})
         included = data.get("product", {}).get("included", [])
 
-        result["name"] = attrs.get("name", "")
+        result["product-name"] = attrs.get("name", "")
         result["sku"] = attrs.get("sku", "")
         result["marka_id"] = str(attrs.get("brand_id", ""))
         result["stok_durumu"] = "Var" if attrs.get("b2c_in_stock") else "Yok"
@@ -206,17 +191,17 @@ def scrape_product(session: requests.Session, url: str) -> dict:
                 if price_raw is not None:
                     vat = attrs.get("vat_rate", 0) / 100
                     price_kdv = price_raw * (1 + vat)
-                    result["price"] = f"{price_kdv:.2f}".replace(".", ",")
+                    # Nokta ile ayırma (699.90 formatı)
+                    result["product-price"] = f"{price_kdv:.2f}"
                 result["birim"] = str(unit_attrs.get("unit_id", ""))
                 break
 
-        log.info(f"[{product_id}] {result['name'][:40]!r} | {result['price']} TL | SKU: {result['sku']}")
+        log.info(f"[{product_id}] {result['product-name'][:40]!r} | {result['product-price']} TL | SKU: {result['sku']}")
 
     except Exception as e:
         log.error(f"[{url}] Hata: {e}")
 
     return result
-
 
 # ── MAIN ──────────────────────────────────────────────────────────────────────
 def main():
@@ -225,22 +210,18 @@ def main():
     log.info("Yapimaks Scraper basliyor")
     log.info("=" * 50)
 
-    # 1. Session al
     session = make_session()
 
-    # 2. Sitemap'i indir
     new_xml = fetch_sitemap(session)
     new_urls = set(parse_urls(new_xml))
     product_urls = sorted(u for u in new_urls if is_product_url(u))
     log.info(f"Sitemap'ten toplam {len(product_urls)} urun URL'si bulundu.")
 
-    # 3. Yolları belirle
     csv_path = get_csv_path()
     latest_csv = get_latest_csv()
     scraped_today = load_scraped_urls(csv_path)
 
-    # 4. AKILLI KOPYALAMA MANTIĞI
-    # Eğer bugün hiç ürün çekilmemişse (veya dosya yoksa) ve elimizde dünden kalan bir dosya varsa:
+    # AKILLI KOPYALAMA - Eski formattaki CSV'yi yeni formata göre destekler
     if not scraped_today and latest_csv and latest_csv != csv_path:
         log.info(f"Bugune ait veri yok. Eski veri ({os.path.basename(latest_csv)}) süzülerek bugune aktariliyor...")
         try:
@@ -253,28 +234,32 @@ def main():
 
                 aktarilan = 0
                 for row in reader:
-                    # Sadece güncel sitemap'te hala var olan URL'leri kopyala
                     if row.get("url") in new_urls:
-                        writer.writerow(row)
+                        # Eski sütun isimleri varsa yeni sütunlara taşı
+                        if "name" in row and "product-name" not in row:
+                            row["product-name"] = row.pop("name")
+                        if "price" in row and "product-price" not in row:
+                            row["product-price"] = row.pop("price").replace(",", ".")
+
+                        # Sadece FIELDNAMES içindeki verileri filtrele
+                        clean_row = {k: row.get(k, "") for k in FIELDNAMES}
+                        writer.writerow(clean_row)
                         aktarilan += 1
 
             log.info(f"Basarili! {aktarilan} urun dunden bugune aktarildi.")
         except Exception as e:
             log.error(f"Kopyalama sirasinda hata olustu: {e}")
 
-    # 5. Kopyalamadan sonra bugünün dosyasını tekrar oku ve eksikleri bul
     scraped_urls = load_scraped_urls(csv_path)
     remaining = [u for u in product_urls if u not in scraped_urls]
 
     if scraped_urls:
-        log.info(
-            f"Guncel dosyada hazir olan urun: {len(scraped_urls)} | Sifirdan cekilecek (yeni) urun: {len(remaining)}")
+        log.info(f"Guncel dosyada hazir olan urun: {len(scraped_urls)} | Sifirdan cekilecek (yeni) urun: {len(remaining)}")
 
     if not remaining:
         log.info("Sitemap'teki tum urunler zaten dosyamizda var, cikiliyor.")
         return
 
-    # 6. Kalanları Scrape et
     csv_file, writer = open_csv_writer(csv_path)
     log.info(f"{len(remaining)} yeni urun scrapelanacak -> {csv_path}")
 
@@ -293,7 +278,6 @@ def main():
         csv_file.close()
 
     log.info(f"Tamamlandi! Toplam {count} yeni urun eklendi -> {csv_path}")
-
 
 if __name__ == "__main__":
     main()
