@@ -178,7 +178,17 @@ def page_looks_like_challenge(driver: webdriver.Chrome) -> bool:
 
 def create_driver(browser_index: int) -> webdriver.Chrome:
     options = Options()
-    # GitHub Actions için headless ve güvenlik ayarları
+
+    # 1. Bot olarak algılanmayı zorlaştıran kritik ayarlar (Stealth Mod)
+    options.add_argument("--disable-blink-features=AutomationControlled")
+    options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    options.add_experimental_option('useAutomationExtension', False)
+
+    # 2. Gerçekçi bir User-Agent (Tarayıcı kimliği) ataması
+    user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+    options.add_argument(f"user-agent={user_agent}")
+
+    # 3. GitHub Actions için gerekli standart Headless ayarları
     options.add_argument("--headless=new")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
@@ -188,6 +198,17 @@ def create_driver(browser_index: int) -> webdriver.Chrome:
     options.add_argument("--window-size=1920,1080")
 
     driver = webdriver.Chrome(options=options)
+
+    # 4. En önemli adım: Javascript ile 'navigator.webdriver' değişkenini silmek
+    # Çoğu anti-bot sistemi tarayıcıda bu değişken var mı diye kontrol eder.
+    driver.execute_cdp_cmd('Page.addScriptToEvaluateOnNewDocument', {
+        'source': '''
+            Object.defineProperty(navigator, 'webdriver', {
+              get: () => undefined
+            })
+        '''
+    })
+
     driver.set_page_load_timeout(60)
     return driver
 
@@ -488,8 +509,8 @@ def remove_duplicate_rows(rows: List[Tuple[str, float]]) -> Tuple[List[Tuple[str
 # ==================== CSV OUTPUT ====================
 def generate_output_filename() -> str:
     today = datetime.now()
-    date_str = today.strftime("%Y-%m-%d")
-    return os.path.join(OUTPUT_DIR, f"watsons_ideal_prices_{date_str}.csv")
+    date_str = today.strftime("%d-%m-%Y")
+    return os.path.join(OUTPUT_DIR, f"watsons_{date_str}.csv")
 
 
 def write_csv(rows: List[Tuple[str, float]], output_file: str) -> None:
