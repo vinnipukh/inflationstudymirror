@@ -1,0 +1,40 @@
+name: Watsons Scraper Daily Run
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests selenium
+
+      - name: Run Scraper
+        run: python Codes/Cosmetics/Watson/scraper.py
+
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          git add Datas/ logs/
+          
+          git commit -m "Auto-update: Watsons ürün verileri eklendi [skip ci]" || echo "Değişiklik bulunamadı, commit atlandı."
+          git push

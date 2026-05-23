@@ -1,4 +1,5 @@
 import csv
+import os
 import random
 import re
 import time
@@ -17,9 +18,17 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 
+# ==================== YOL (PATH) AYARLARI ====================
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+# 3 klasör yukarı çıkarak ana dizine (inflationstudymirror) ulaşıyoruz
+PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "..", ".."))
+
+# Burayı görselde işaretlediğin Datas/Cosmetics/Watson klasörüne yönlendirdik
+OUTPUT_DIR = os.path.join(PROJECT_ROOT, "Datas", "Cosmetics", "Watson")
+os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # ==================== CONFIGURATION ====================
-SITEMAP_FILE = "sitemap.xml"
+SITEMAP_FILE = os.path.join(SCRIPT_DIR, "sitemap.xml")
 API_URL = "https://api.watsons.com.tr/api/v2/wtctr-spa/search"
 BASE_DOMAIN = "https://www.watsons.com.tr"
 
@@ -31,16 +40,12 @@ CURRENCY = "TRY"
 PAGE_SIZE = 28
 MAX_PAGES_PER_CATEGORY = 50
 
-# Number of parallel browser sessions + workers
-# Each browser = 1 session = 1 set of cookies
-# Recommended: 3-5 browsers (more = higher block risk)
 NUM_BROWSERS = 3
 MAX_WORKERS = NUM_BROWSERS
 
-# Backoff settings (only triggered on block/error)
-BACKOFF_BASE = 2.0       # Base sleep on 429/403
-BACKOFF_MAX = 30.0       # Max sleep on repeated blocks
-MAX_RETRIES = 5          # Max retries per page
+BACKOFF_BASE = 2.0
+BACKOFF_MAX = 30.0
+MAX_RETRIES = 5
 
 COOKIE_SELECTORS = [
     (By.ID, "onetrust-accept-btn-handler"),
@@ -55,14 +60,12 @@ CHALLENGE_KEYWORDS = [
     "access denied", "verify you are human", "challenge"
 ]
 
-# Thread-safe primitives
 progress_lock = threading.Lock()
 print_lock = threading.Lock()
 
 
 # ==================== THREAD-SAFE PRINT ====================
 def tprint(*args, **kwargs):
-    """Thread-safe print with thread name prefix."""
     thread_name = threading.current_thread().name
     with print_lock:
         print(f"[{thread_name}]", *args, **kwargs)
@@ -70,7 +73,6 @@ def tprint(*args, **kwargs):
 
 # ==================== DATA CLEANING ====================
 def clean_name(name: Any) -> str:
-    """Strip newline characters and extra whitespace from product name."""
     if name is None:
         return ""
     text = str(name).replace("\n", " ").replace("\r", " ")
@@ -79,7 +81,6 @@ def clean_name(name: Any) -> str:
 
 
 def clean_price_to_float(raw_price: Any) -> Optional[float]:
-    """Sanitize price string and convert to float."""
     if raw_price is None or raw_price == "":
         return None
     if isinstance(raw_price, (int, float)):
@@ -109,7 +110,6 @@ def clean_price_to_float(raw_price: Any) -> Optional[float]:
 
 # ==================== SITEMAP PARSING ====================
 def parse_sitemap(sitemap_path: str, category_filter: Optional[List[str]] = None) -> List[str]:
-    """Parse sitemap.xml and extract all category/brand codes from URLs."""
     category_codes = set()
     url_pattern = re.compile(r'/c/(\d+(?:_\d+)?)|/b/(\d+)')
 
@@ -117,7 +117,6 @@ def parse_sitemap(sitemap_path: str, category_filter: Optional[List[str]] = None
         with open(sitemap_path, 'r', encoding='utf-8') as f:
             xml_content = f.read()
 
-        # Strip namespaces
         xml_content = re.sub(r'\s+xmlns[^=]*="[^"]*"', '', xml_content)
         xml_content = re.sub(r'<([^>]+):', '<', xml_content)
         xml_content = re.sub(r'</([^>]+):', '</', xml_content)
@@ -178,16 +177,15 @@ def page_looks_like_challenge(driver: webdriver.Chrome) -> bool:
 
 
 def create_driver(browser_index: int) -> webdriver.Chrome:
-    """Create a new Chrome browser instance."""
     options = Options()
+    # GitHub Actions için headless ve güvenlik ayarları
+    options.add_argument("--headless=new")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
     options.add_argument("--start-maximized")
     options.add_argument("--lang=tr-TR")
-    options.add_argument("--window-size=1400,1200")
-
-    # Offset windows so they dont stack on top of each other
-    offset_x = (browser_index % 3) * 500
-    offset_y = (browser_index // 3) * 400
-    options.add_argument(f"--window-position={offset_x},{offset_y}")
+    options.add_argument("--window-size=1920,1080")
 
     driver = webdriver.Chrome(options=options)
     driver.set_page_load_timeout(60)
@@ -195,7 +193,6 @@ def create_driver(browser_index: int) -> webdriver.Chrome:
 
 
 def build_session_from_driver(driver: webdriver.Chrome, browser_index: int) -> requests.Session:
-    """Build a requests session using cookies from the browser."""
     session = requests.Session()
 
     try:
@@ -233,54 +230,43 @@ def build_session_from_driver(driver: webdriver.Chrome, browser_index: int) -> r
     return session
 
 
-def setup_browser_session(browser_index: int) -> Optional[Tuple[webdriver.Chrome, requests.Session]]:
-    """
-    Open a browser, handle cookies/challenge, return (driver, session).
-    Returns None if challenge cannot be cleared.
-    """
-    print(f"\n[INFO] Opening browser {browser_index + 1}/{NUM_BROWSERS}...")
-    driver = create_driver(browser_index)
+def setup_browser_session(browser_index: int, max_retries: int = 3) -> Optional[
+    Tuple[webdriver.Chrome, requests.Session]]:
+    # Captcha'ya takılırsa max_retries kadar baştan dener
+    for attempt in range(max_retries):
+        print(f"\n[INFO] Opening browser {browser_index + 1}/{NUM_BROWSERS} (Deneme {attempt + 1}/{max_retries})...")
+        driver = create_driver(browser_index)
 
-    try:
-        driver.get(f"{BASE_DOMAIN}/makyaj/c/100")
-        wait_for_page_ready(driver, timeout=30)
-        time.sleep(2)
+        try:
+            driver.get(f"{BASE_DOMAIN}/makyaj/c/100")
+            wait_for_page_ready(driver, timeout=30)
+            time.sleep(2)
 
-        accept_cookies_if_present(driver)
-
-        if page_looks_like_challenge(driver):
-            print(
-                f"\n[WARN] Browser {browser_index + 1} shows a challenge.\n"
-                f"Please solve the CAPTCHA in browser window {browser_index + 1},\n"
-                f"then press ENTER to continue..."
-            )
-            input(f"[Browser {browser_index + 1}] Press ENTER after solving challenge... ")
+            accept_cookies_if_present(driver)
 
             if page_looks_like_challenge(driver):
-                print(f"[ERROR] Browser {browser_index + 1} challenge not cleared. Skipping this browser.")
+                print(f"[WARN] Browser {browser_index + 1} captcha'ya yakalandı. Sürücü yeniden başlatılıyor...")
                 driver.quit()
-                return None
+                time.sleep(3)
+                continue  # Döngünün başına dönüp tekrar dener
 
-        session = build_session_from_driver(driver, browser_index + 1)
-        return driver, session
+            session = build_session_from_driver(driver, browser_index + 1)
+            return driver, session
 
-    except Exception as e:
-        print(f"[ERROR] Failed to set up browser {browser_index + 1}: {e}")
-        try:
-            driver.quit()
-        except Exception:
-            pass
-        return None
+        except Exception as e:
+            print(f"[ERROR] Failed to set up browser {browser_index + 1}: {e}")
+            try:
+                driver.quit()
+            except Exception:
+                pass
+            time.sleep(3)
+
+    print(f"[ERROR] Browser {browser_index + 1} art arda {max_retries} kez captcha'yı aşamadı. Atlanıyor.")
+    return None
 
 
 # ==================== SESSION POOL ====================
 class SessionPool:
-    """
-    Thread-safe pool of requests sessions.
-    Workers check out a session, use it, then return it.
-    If a session gets blocked, it is marked as dead and removed.
-    """
-
     def __init__(self, sessions: List[requests.Session]):
         self._sessions = list(sessions)
         self._available = list(sessions)
@@ -288,10 +274,8 @@ class SessionPool:
         self._dead_sessions: Set[int] = set()
 
     def acquire(self) -> Optional[requests.Session]:
-        """Block until a session is available, then return it."""
         with self._lock:
             while True:
-                # Filter out dead sessions
                 self._available = [
                     s for s in self._available
                     if id(s) not in self._dead_sessions
@@ -300,22 +284,19 @@ class SessionPool:
                     session = self._available.pop(0)
                     return session
 
-                # All sessions busy or dead
                 alive = [s for s in self._sessions if id(s) not in self._dead_sessions]
                 if not alive:
-                    return None  # No sessions left
+                    return None
 
                 self._lock.wait(timeout=1.0)
 
     def release(self, session: requests.Session) -> None:
-        """Return a session to the pool."""
         with self._lock:
             if id(session) not in self._dead_sessions:
                 self._available.append(session)
             self._lock.notify_all()
 
     def mark_dead(self, session: requests.Session) -> None:
-        """Mark a session as blocked/dead and remove it from pool."""
         with self._lock:
             self._dead_sessions.add(id(session))
             self._available = [
@@ -334,16 +315,7 @@ class SessionPool:
 
 
 # ==================== API FETCHING ====================
-def fetch_api_page_with_pool(
-    pool: SessionPool,
-    category_code: str,
-    page: int,
-) -> Optional[Dict[str, Any]]:
-    """
-    Fetch a single API page using a session from the pool.
-    Only sleeps on actual 429/403 responses (backoff).
-    No random delays otherwise.
-    """
+def fetch_api_page_with_pool(pool: SessionPool, category_code: str, page: int) -> Optional[Dict[str, Any]]:
     backoff = BACKOFF_BASE
     attempts = 0
 
@@ -370,20 +342,17 @@ def fetch_api_page_with_pool(
 
             response = session.get(API_URL, params=params, timeout=30)
 
-            # Rate limited
             if response.status_code == 429:
-                tprint(f"[WARN] 429 Rate Limited on category {category_code} page {page}. "
-                      f"Sleeping {backoff:.1f}s before retry...")
+                tprint(
+                    f"[WARN] 429 Rate Limited on category {category_code} page {page}. Sleeping {backoff:.1f}s before retry...")
                 pool.release(session)
                 time.sleep(min(backoff, BACKOFF_MAX))
                 backoff *= 2
                 attempts += 1
                 continue
 
-            # Blocked/Forbidden
             if response.status_code == 403:
-                tprint(f"[WARN] 403 Forbidden on category {category_code} page {page}. "
-                      f"Marking session as dead.")
+                tprint(f"[WARN] 403 Forbidden on category {category_code} page {page}. Marking session as dead.")
                 pool.mark_dead(session)
                 attempts += 1
                 backoff = min(backoff * 2, BACKOFF_MAX)
@@ -424,10 +393,10 @@ def extract_products(data: Dict[str, Any], seen_codes: Set[str]) -> List[Tuple[s
     for product in products:
         try:
             code = (
-                product.get("code") or
-                product.get("defaultSku") or
-                product.get("url") or
-                f"unknown-{len(seen_codes)}"
+                    product.get("code") or
+                    product.get("defaultSku") or
+                    product.get("url") or
+                    f"unknown-{len(seen_codes)}"
             )
 
             if code in seen_codes:
@@ -462,14 +431,8 @@ def extract_products(data: Dict[str, Any], seen_codes: Set[str]) -> List[Tuple[s
 
 
 # ==================== CATEGORY SCRAPER ====================
-def scrape_category(
-    pool: SessionPool,
-    category_code: str,
-    seen_codes: Set[str],
-    category_num: int,
-    total_categories: int,
-) -> Tuple[List[Tuple[str, float]], str, bool]:
-    """Scrape all pages of a single category. No artificial delays."""
+def scrape_category(pool: SessionPool, category_code: str, seen_codes: Set[str], category_num: int,
+                    total_categories: int) -> Tuple[List[Tuple[str, float]], str, bool]:
     tprint(f"Starting Category {category_num}/{total_categories}: Code={category_code}")
 
     category_rows = []
@@ -483,7 +446,6 @@ def scrape_category(
             failed = True
             break
 
-        # Thread-safe extraction
         with progress_lock:
             page_rows = extract_products(data, seen_codes)
 
@@ -497,7 +459,6 @@ def scrape_category(
         if page >= total_pages - 1:
             break
 
-        # Only check if pool is dead
         if not pool.has_alive_sessions():
             tprint(f"[ERROR] No sessions left. Stopping category {category_code}.")
             failed = True
@@ -509,7 +470,6 @@ def scrape_category(
 
 # ==================== DUPLICATE REMOVAL ====================
 def remove_duplicate_rows(rows: List[Tuple[str, float]]) -> Tuple[List[Tuple[str, float]], int]:
-    """Remove duplicate rows based on exact name + price match."""
     seen = set()
     unique_rows = []
     duplicates_removed = 0
@@ -527,17 +487,18 @@ def remove_duplicate_rows(rows: List[Tuple[str, float]]) -> Tuple[List[Tuple[str
 
 # ==================== CSV OUTPUT ====================
 def generate_output_filename() -> str:
-    """Generate output filename: watsons_DD-MM-YYYY.csv"""
     today = datetime.now()
-    date_str = today.strftime("%d-%m-%Y")
-    return f"watsons_{date_str}.csv"
+    date_str = today.strftime("%Y-%m-%d")
+    return os.path.join(OUTPUT_DIR, f"watsons_ideal_prices_{date_str}.csv")
 
 
 def write_csv(rows: List[Tuple[str, float]], output_file: str) -> None:
+    # İstenen başlıklar ve ";" ayırıcı
     with open(output_file, "w", newline="", encoding="utf-8-sig") as f:
         writer = csv.writer(f, delimiter=";", quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        writer.writerow(["name", "price"])
+        writer.writerow(["product-name", "product-price"])
         for name, price in rows:
+            # Fiyatı noktayla kaydet
             writer.writerow([name, f"{price:.2f}"])
 
 
@@ -551,7 +512,6 @@ def main() -> None:
     try:
         start_time = time.time()
 
-        # Parse sitemap
         print(f"[INFO] Parsing sitemap: {SITEMAP_FILE}")
         print(f"[INFO] Filtering for categories: {', '.join(TARGET_CATEGORIES)}")
         category_codes = parse_sitemap(SITEMAP_FILE, category_filter=TARGET_CATEGORIES)
@@ -562,10 +522,7 @@ def main() -> None:
 
         print(f"[INFO] Total categories to scrape: {len(category_codes)}")
 
-        # ==================== MULTI-BROWSER SETUP ====================
-        print(f"\n[INFO] Opening {NUM_BROWSERS} browser(s) to collect cookies...")
-        print("[INFO] Please wait while all browsers load...")
-
+        print(f"\n[INFO] Opening {NUM_BROWSERS} headless browser(s) to collect cookies...")
         sessions: List[requests.Session] = []
 
         for i in range(NUM_BROWSERS):
@@ -583,29 +540,19 @@ def main() -> None:
             return
 
         print(f"\n[INFO] {len(sessions)}/{NUM_BROWSERS} sessions ready.")
-        print("[INFO] You can now close or minimize the browser windows.")
 
-        # Create session pool
         pool = SessionPool(sessions)
 
-        # ==================== PARALLEL SCRAPING ====================
         print(f"\n[INFO] Starting parallel scraping with {MAX_WORKERS} workers...")
-        print(f"[INFO] No artificial delays - only backing off on 429/403 responses.")
-        print(f"[INFO] Scraping categories: {', '.join(category_codes)}")
-        print("="*60)
+        print("=" * 60)
 
         with ThreadPoolExecutor(
-            max_workers=MAX_WORKERS,
-            thread_name_prefix="Scraper"
+                max_workers=MAX_WORKERS,
+                thread_name_prefix="Scraper"
         ) as executor:
             future_to_category = {
                 executor.submit(
-                    scrape_category,
-                    pool,
-                    cat_code,
-                    seen_codes,
-                    idx,
-                    len(category_codes),
+                    scrape_category, pool, cat_code, seen_codes, idx, len(category_codes)
                 ): cat_code
                 for idx, cat_code in enumerate(category_codes, 1)
             }
@@ -614,21 +561,18 @@ def main() -> None:
                 category_code = future_to_category[future]
                 try:
                     category_rows, cat_code, failed = future.result()
-
                     with progress_lock:
                         all_rows.extend(category_rows)
                         if failed:
                             failed_categories.append(cat_code)
-
                 except Exception as e:
                     print(f"[ERROR] Category {category_code} raised an exception: {e}")
                     traceback.print_exc()
                     failed_categories.append(category_code)
 
-        # ==================== POST-PROCESSING ====================
-        print("\n" + "="*60)
+        print("\n" + "=" * 60)
         print("[INFO] POST-PROCESSING: Removing duplicates...")
-        print("="*60)
+        print("=" * 60)
 
         total_before = len(all_rows)
         all_rows, duplicates_removed = remove_duplicate_rows(all_rows)
@@ -638,58 +582,46 @@ def main() -> None:
         print(f"[INFO] Products after deduplication  : {total_after}")
         print(f"[INFO] Duplicates removed            : {duplicates_removed}")
 
-        # Generate filename
         output_file = generate_output_filename()
         if Path(output_file).exists():
             timestamp = datetime.now().strftime("%H%M%S")
-            output_file = f"watsons_{datetime.now().strftime('%d-%m-%Y')}_{timestamp}.csv"
+            output_file = os.path.join(OUTPUT_DIR,
+                                       f"watsons_ideal_prices_{datetime.now().strftime('%Y-%m-%d')}_{timestamp}.csv")
             print(f"[WARN] File exists. Using: {output_file}")
 
-        # Write CSV
         print(f"\n[INFO] Writing {len(all_rows)} products to {output_file}...")
         write_csv(all_rows, output_file)
 
-        # Final summary
         elapsed = time.time() - start_time
         minutes, seconds = divmod(elapsed, 60)
 
-        print("\n" + "="*60)
+        print("\n" + "=" * 60)
         print("SCRAPING COMPLETE")
-        print("="*60)
+        print("=" * 60)
         print(f"Total products (unique)    : {len(all_rows)}")
         print(f"Categories processed       : {len(category_codes) - len(failed_categories)}/{len(category_codes)}")
-        print(f"Duplicates removed         : {duplicates_removed}")
-        print(f"Sessions used              : {len(sessions)}")
         print(f"Time elapsed               : {int(minutes)}m {int(seconds)}s")
-        if failed_categories:
-            print(f"Failed categories          : {', '.join(failed_categories)}")
         print(f"Output file                : {output_file}")
-        print("="*60)
+        print("=" * 60)
 
     except KeyboardInterrupt:
-        print("\n[INFO] Interrupted. Saving partial results...")
         if all_rows:
             all_rows, dupes = remove_duplicate_rows(all_rows)
             out = generate_output_filename()
             write_csv(all_rows, out)
-            print(f"[INFO] Saved {len(all_rows)} products to {out}")
 
     except Exception as e:
-        print(f"[ERROR] Unexpected error in main: {e}")
         traceback.print_exc()
         if all_rows:
             all_rows, dupes = remove_duplicate_rows(all_rows)
             out = generate_output_filename()
             write_csv(all_rows, out)
-            print(f"[INFO] Saved partial results: {len(all_rows)} products to {out}")
 
     finally:
-        # Close all browsers
         print(f"\n[INFO] Closing {len(drivers)} browser(s)...")
         for i, driver in enumerate(drivers):
             try:
                 driver.quit()
-                print(f"[INFO] Browser {i + 1} closed.")
             except Exception:
                 pass
 
