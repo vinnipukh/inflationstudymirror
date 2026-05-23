@@ -62,7 +62,7 @@ def main():
     session = requests.Session()
     session.headers.update(HEADERS)
 
-    # Surgical Add: Robust retry strategy for unattended GitHub Actions workflows
+    # Robust retry strategy for unattended GitHub Actions workflows
     retries = Retry(total=5, backoff_factor=1, status_forcelist=[429, 500, 502, 503, 504])
     session.mount("https://", HTTPAdapter(max_retries=retries))
 
@@ -100,7 +100,6 @@ def main():
                 if not isim:
                     continue
 
-                # Ensures price is safely cast to float as requested
                 try:
                     fiyat = float(product.get("price", 0.0))
                 except (ValueError, TypeError):
@@ -108,7 +107,6 @@ def main():
 
                 urun_id = product.get("id", "")
 
-                # Surgical Fix: Mapping exact requested column headers
                 tum_urunler.append({
                     "product-name": str(isim),
                     "product-price": fiyat,
@@ -131,11 +129,17 @@ def main():
 
     # ── CSV'ye kaydet ────────────────────────────────────────────────
     bugunun_tarihi = datetime.now().strftime("%Y-%m-%d")
-    csv_dosyasi = f"Datas/Markets/Gurmar/gurmar_prices_{bugunun_tarihi}.csv"
 
-    os.makedirs(os.path.dirname(csv_dosyasi), exist_ok=True)
+    # Dynamically find the project root directory (3 levels up from this script)
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.abspath(os.path.join(script_dir, "..", "..", ".."))
 
-    # Surgical Fix: delimiter=";" and strict column ordering
+    # Target the root-level Datas/Markets/Gurmar folder
+    target_dir = os.path.join(project_root, "Datas", "Markets", "Gurmar")
+    csv_dosyasi = os.path.join(target_dir, f"gurmar_prices_{bugunun_tarihi}.csv")
+
+    os.makedirs(target_dir, exist_ok=True)
+
     with open(csv_dosyasi, "w", newline="", encoding="utf-8-sig") as file:
         fieldnames = ["product-name", "product-price", "product-id"]
         writer = csv.DictWriter(file, fieldnames=fieldnames, delimiter=";")
@@ -144,7 +148,6 @@ def main():
 
     print(f"\n🎉 İşlem tamam! Toplam {len(tum_urunler)} ürün "
           f"'{csv_dosyasi}' dosyasına kaydedildi.")
-
 
 if __name__ == "__main__":
     main()

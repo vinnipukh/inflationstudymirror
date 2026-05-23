@@ -20,10 +20,10 @@ def csv_sutun_ustune_yaz(hedef_klasor):
 
             # Sütun isimlerini kontrol et ve değiştir
             yeni_isimler = {}
-            if 'UrunAdi' in df.columns:
-                yeni_isimler['UrunAdi'] = 'product-name'
+            if 'product_name' in df.columns:
+                yeni_isimler['product_name'] = 'product-name'
             if 'FiyatFloat' in df.columns:
-                yeni_isimler['FiyatFloat'] = 'product-price'
+                yeni_isimler['product_price'] = 'product-price'
 
             if yeni_isimler:
                 df = df.rename(columns=yeni_isimler)
@@ -44,6 +44,6 @@ def csv_sutun_ustune_yaz(hedef_klasor):
 
 
 # CSV dosyalarının olduğu klasörün yolunu buraya yazın
-KLASOR_YOLU = f"C:\\Users\\arhan\\PycharmProjects\\inflationstudymirror\\Datas\\Technology"
+KLASOR_YOLU = f"C:\\Users\\arhan\\PycharmProjects\\inflationstudymirror\\Datas\\Markets\\Gurmar"
 
 csv_sutun_ustune_yaz(KLASOR_YOLU)
