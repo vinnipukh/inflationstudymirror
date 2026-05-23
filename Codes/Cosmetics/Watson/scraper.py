@@ -35,7 +35,7 @@ MAX_RETRIES = 5
 BACKOFF_BASE = 2.0
 BACKOFF_MAX = 30.0
 MIN_DELAY = 8.0
-MAX_DELAT = 18.0
+MAX_DELAY = 18.0
 
 progress_lock = threading.Lock()
 print_lock = threading.Lock()
