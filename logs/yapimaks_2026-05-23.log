@@ -1,0 +1,22 @@
+2026-05-23 05:39:05 [INFO] ==================================================
+2026-05-23 05:39:05 [INFO] Yapimaks Scraper basliyor
+2026-05-23 05:39:05 [INFO] ==================================================
+2026-05-23 05:39:05 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-05-23 05:39:05 [INFO] Cookie basariyla alindi.
+2026-05-23 05:39:05 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-05-23 05:39:06 [INFO] Sitemap'ten toplam 7851 urun URL'si bulundu.
+2026-05-23 05:39:06 [INFO] Bugune ait veri yok. Eski veri (2026-05-22.csv) süzülerek bugune aktariliyor...
+2026-05-23 05:39:06 [INFO] Basarili! 7846 urun dunden bugune aktarildi.
+2026-05-23 05:39:06 [INFO] Guncel dosyada hazir olan urun: 7846 | Sifirdan cekilecek (yeni) urun: 5
+2026-05-23 05:39:06 [INFO] 5 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-05-23.csv
+2026-05-23 05:39:06 [INFO] [1/5] https://yapimaks.com/cift-tarafli-kopuk-bant-yesil-siyah-10mm-10mt-14004-p12888
+2026-05-23 05:39:06 [INFO] [12888] 'ÇİFT TARAFLI KÖPÜK BANT YEŞİL SİYAH 10MM' | 45.00 TL | SKU: GLOBUS.GLO14004
+2026-05-23 05:39:08 [INFO] [2/5] https://yapimaks.com/hofmann-sdr-78-mantolama-dubel-cakma-tabancasi-165-mm-p14226
+2026-05-23 05:39:08 [INFO] [14226] 'HOFMANN SDR 78 MANTOLAMA DÜBEL ÇAKMA TAB' | 23500.00 TL | SKU: HOFMANN.SDR78
+2026-05-23 05:39:10 [INFO] [3/5] https://yapimaks.com/mastik-pu-sosis-600-ml-siyah-p11586
+2026-05-23 05:39:11 [INFO] [11586] 'MASTİK PU SOSİS 600 ML-SİYAH' | 270.00 TL | SKU: SELENA.10049867
+2026-05-23 05:39:13 [INFO] [4/5] https://yapimaks.com/silikon-seffaf-280-gr-polyfix-unv-1kt-24ad-p8491
+2026-05-23 05:39:13 [INFO] [8491] 'SİLİKON ŞEFFAF 280 GR POLYFİX ÜNV(1KT 24' | 80.00 TL | SKU: SELENA.10051119
+2026-05-23 05:39:15 [INFO] [5/5] https://yapimaks.com/torex-tirtilli-pul-m6-din6798-siyah-fosfat-1p-32-p238
+2026-05-23 05:39:15 [INFO] [238] 'TOREX TIRTILLI PUL M6 DIN6798 SİYAH FOSF' | 47.00 TL | SKU: 8680613430146
+2026-05-23 05:39:17 [INFO] Tamamlandi! Toplam 5 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-05-23.csv
