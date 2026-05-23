@@ -31,7 +31,7 @@ jobs:
 
       - name: Run the scraper script
         run: |
-          python scraper.py
+          python Codes/Markets/Gurmar/gurmar_scraper.py
 
       - name: Commit and push CSV data
         run: |
