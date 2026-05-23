@@ -1,0 +1,42 @@
+name: Beymen Tech Scraper Daily
+
+on:
+  schedule:
+    # Launch at 10:00 UTC daily
+    - cron: '0 10 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests seleniumbase
+
+      - name: Install browser
+        run: seleniumbase install chromedriver
+
+      - name: Run Scraper
+        run: python Codes/Technology/scraper.py
+
+      - name: Commit and Push
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add Datas/Technology/
+          git commit -m "Auto-update: Beymen tech data [skip ci]" || echo "No changes."
+          git push
