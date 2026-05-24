@@ -1,0 +1,14 @@
+2026-05-24 06:01:44 [INFO] ==================================================
+2026-05-24 06:01:44 [INFO] Yapimaks Scraper basliyor
+2026-05-24 06:01:44 [INFO] ==================================================
+2026-05-24 06:01:44 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-05-24 06:01:44 [INFO] Cookie basariyla alindi.
+2026-05-24 06:01:44 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-05-24 06:01:45 [INFO] Sitemap'ten toplam 7847 urun URL'si bulundu.
+2026-05-24 06:01:45 [INFO] Bugune ait veri yok. Eski veri (2026-05-23.csv) süzülerek bugune aktariliyor...
+2026-05-24 06:01:45 [INFO] Basarili! 7846 urun dunden bugune aktarildi.
+2026-05-24 06:01:45 [INFO] Guncel dosyada hazir olan urun: 7846 | Sifirdan cekilecek (yeni) urun: 1
+2026-05-24 06:01:45 [INFO] 1 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-05-24.csv
+2026-05-24 06:01:45 [INFO] [1/1] https://yapimaks.com/autokit-oto-yikama-sungeri-fa1-135-p3371
+2026-05-24 06:01:45 [INFO] [3371] 'AUTOKIT OTO YIKAMA SÜNGERİ FA1-135' | 75.00 TL | SKU: AUTOKİT.FA1-135
+2026-05-24 06:01:47 [INFO] Tamamlandi! Toplam 1 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-05-24.csv
