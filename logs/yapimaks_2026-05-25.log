@@ -1,0 +1,20 @@
+2026-05-25 06:27:29 [INFO] ==================================================
+2026-05-25 06:27:29 [INFO] Yapimaks Scraper basliyor
+2026-05-25 06:27:29 [INFO] ==================================================
+2026-05-25 06:27:29 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-05-25 06:27:29 [INFO] Cookie basariyla alindi.
+2026-05-25 06:27:29 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-05-25 06:27:30 [INFO] Sitemap'ten toplam 7839 urun URL'si bulundu.
+2026-05-25 06:27:30 [INFO] Bugune ait veri yok. Eski veri (2026-05-24.csv) süzülerek bugune aktariliyor...
+2026-05-25 06:27:30 [INFO] Basarili! 7835 urun dunden bugune aktarildi.
+2026-05-25 06:27:30 [INFO] Guncel dosyada hazir olan urun: 7835 | Sifirdan cekilecek (yeni) urun: 4
+2026-05-25 06:27:30 [INFO] 4 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-05-25.csv
+2026-05-25 06:27:30 [INFO] [1/4] https://yapimaks.com/dalgic-drenaj-pompa-temiz-su-550w-paslanmaz-govdeli-p14926
+2026-05-25 06:27:30 [INFO] [14926] 'DALGIÇ DRENAJ POMPA TEMİZ SU 550W PASLAN' | 3000.00 TL | SKU: FACTOR.FACCS550INOXN
+2026-05-25 06:27:32 [INFO] [2/4] https://yapimaks.com/dalgic-drenaj-pompa-temiz-su-750w-plastik-govdeli-p14927
+2026-05-25 06:27:32 [INFO] [14927] 'DALGIÇ DRENAJ POMPA TEMİZ SU 750W PLASTİ' | 2800.00 TL | SKU: FACTOR.FACCD750PN
+2026-05-25 06:27:34 [INFO] [3/4] https://yapimaks.com/dalgic-drenaj-pompa-temiz-su-900w-paslanmaz-govdeli-p14929
+2026-05-25 06:27:34 [INFO] [14929] 'DALGIÇ DRENAJ POMPA TEMİZ SU 900W PASLAN' | 3975.00 TL | SKU: FACTOR.FACCD9000INOX
+2026-05-25 06:27:36 [INFO] [4/4] https://yapimaks.com/oyma-bicak-seti-12-ahsap-parca-wert-p13139
+2026-05-25 06:27:37 [INFO] [13139] 'OYMA BIÇAK SETİ 12 AHŞAP PARÇA WERT' | 306.00 TL | SKU: WERT.2512
+2026-05-25 06:27:39 [INFO] Tamamlandi! Toplam 4 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-05-25.csv
