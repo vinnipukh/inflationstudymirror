@@ -1,0 +1,18 @@
+2026-05-26 06:06:35 [INFO] ==================================================
+2026-05-26 06:06:35 [INFO] Yapimaks Scraper basliyor
+2026-05-26 06:06:35 [INFO] ==================================================
+2026-05-26 06:06:35 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-05-26 06:06:36 [INFO] Cookie basariyla alindi.
+2026-05-26 06:06:36 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-05-26 06:06:36 [INFO] Sitemap'ten toplam 7837 urun URL'si bulundu.
+2026-05-26 06:06:36 [INFO] Bugune ait veri yok. Eski veri (2026-05-25.csv) süzülerek bugune aktariliyor...
+2026-05-26 06:06:36 [INFO] Basarili! 7834 urun dunden bugune aktarildi.
+2026-05-26 06:06:36 [INFO] Guncel dosyada hazir olan urun: 7834 | Sifirdan cekilecek (yeni) urun: 3
+2026-05-26 06:06:36 [INFO] 3 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-05-26.csv
+2026-05-26 06:06:36 [INFO] [1/3] https://yapimaks.com/arduazli-poliroof-pr-4500-kahve-3-3-mm-10-m2-5-p1547
+2026-05-26 06:06:37 [INFO] [1547] 'ARDUAZLI POLİROOF PR-4500 KAHVE 3.3 MM 1' | 1950.00 TL | SKU: BTM.0026
+2026-05-26 06:06:39 [INFO] [2/3] https://yapimaks.com/calacatta-beyaz-30x60-2k-k8-1-26m2-p11419
+2026-05-26 06:06:39 [INFO] [11419] 'CALACATTA BEYAZ 30X60 2K K8 (1,26M2)' | 377.00 TL | SKU: EGESER.300X600CLD01.END.1.26
+2026-05-26 06:06:41 [INFO] [3/3] https://yapimaks.com/seramik-cita-dis-kose-10-mm-eko-parlak-krom-270-cm-p9652
+2026-05-26 06:06:41 [INFO] [9652] 'SERAMİK ÇITA DIŞ KÖŞE 10 MM EKO PARLAK K' | 100.00 TL | SKU: TESAY.FÇDEK10
+2026-05-26 06:06:43 [INFO] Tamamlandi! Toplam 3 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-05-26.csv
