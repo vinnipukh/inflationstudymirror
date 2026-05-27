@@ -1,0 +1,16 @@
+2026-05-27 06:21:07 [INFO] ==================================================
+2026-05-27 06:21:07 [INFO] Yapimaks Scraper basliyor
+2026-05-27 06:21:07 [INFO] ==================================================
+2026-05-27 06:21:07 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-05-27 06:21:08 [INFO] Cookie basariyla alindi.
+2026-05-27 06:21:08 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-05-27 06:21:09 [INFO] Sitemap'ten toplam 7834 urun URL'si bulundu.
+2026-05-27 06:21:09 [INFO] Bugune ait veri yok. Eski veri (2026-05-26.csv) süzülerek bugune aktariliyor...
+2026-05-27 06:21:09 [INFO] Basarili! 7832 urun dunden bugune aktarildi.
+2026-05-27 06:21:09 [INFO] Guncel dosyada hazir olan urun: 7832 | Sifirdan cekilecek (yeni) urun: 2
+2026-05-27 06:21:09 [INFO] 2 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-05-27.csv
+2026-05-27 06:21:09 [INFO] [1/2] https://yapimaks.com/ahsap-koruyucu-vernikli-ceviz-2-2-lt-kardelen-p10897
+2026-05-27 06:21:09 [INFO] [10897] 'AHŞAP KORUYUCU VERNİKLİ CEVİZ 2.2 LT KAR' | 775.00 TL | SKU: KARDELEN.0606236.2
+2026-05-27 06:21:11 [INFO] [2/2] https://yapimaks.com/polikarbon-trp-900-2500-3mm-seffaf-p15465
+2026-05-27 06:21:11 [INFO] [15465] 'POLİKARBON TRP 900*2500*3MM-ŞEFFAF' | 1050.00 TL | SKU: POL.KRB.2500.01
+2026-05-27 06:21:13 [INFO] Tamamlandi! Toplam 2 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-05-27.csv
