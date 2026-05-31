@@ -38,11 +38,12 @@ def _compute_metrics(df_current: pd.DataFrame, df_past: pd.DataFrame):
     df_current = df_current.copy()
     df_current["tuik_category"] = "09"  # Tech group 09
 
+    # UrunID yerine product-name kullanılarak eşleştirme yapılıyor
     past_subset = (
-        df_past[["UrunID", "product-price"]]
+        df_past[["product-name", "product-price"]]
         .rename(columns={"product-price": "past_price"})
     )
-    merged = df_current.merge(past_subset, on="UrunID", how="left")
+    merged = df_current.merge(past_subset, on="product-name", how="left")
 
     # 1) Basic inflation per product
     merged["basic_inflation"] = (
@@ -125,11 +126,12 @@ def calculate_inflation(target_date=None, compare_date=None):
 
         merged, basic_idx, avg_inf, tuik_w = _compute_metrics(df_today, df_past)
 
+        # UrunID yerine product-name bazlı birleştirme
         detail_base = detail_base.merge(
-            merged[["UrunID", "basic_inflation"]].rename(
+            merged[["product-name", "basic_inflation"]].rename(
                 columns={"basic_inflation": f"basic_inflation_{label}"}
             ),
-            on="UrunID",
+            on="product-name",
             how="left",
         )
 
