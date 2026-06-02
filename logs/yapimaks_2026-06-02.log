@@ -1,0 +1,24 @@
+2026-06-02 06:41:57 [INFO] ==================================================
+2026-06-02 06:41:57 [INFO] Yapimaks Scraper basliyor
+2026-06-02 06:41:57 [INFO] ==================================================
+2026-06-02 06:41:57 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-06-02 06:41:58 [INFO] Cookie basariyla alindi.
+2026-06-02 06:41:58 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-06-02 06:41:58 [INFO] Sitemap'ten toplam 7824 urun URL'si bulundu.
+2026-06-02 06:41:58 [INFO] Bugune ait veri yok. Eski veri (2026-06-01.csv) süzülerek bugune aktariliyor...
+2026-06-02 06:41:58 [INFO] Basarili! 7818 urun dunden bugune aktarildi.
+2026-06-02 06:41:58 [INFO] Guncel dosyada hazir olan urun: 7818 | Sifirdan cekilecek (yeni) urun: 6
+2026-06-02 06:41:58 [INFO] 6 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-02.csv
+2026-06-02 06:41:58 [INFO] [1/6] https://yapimaks.com/damlama-sulama-borusu-16-mm-33-cm-delikli-1m-400-p12037
+2026-06-02 06:41:59 [INFO] [12037] 'DAMLAMA SULAMA BORUSU 16 MM 33 CM DELİKL' | 5.00 TL | SKU: DAMLAMA.015
+2026-06-02 06:42:01 [INFO] [2/6] https://yapimaks.com/golgelik-golgefil-85-siklik-en-100-cm-1-m-100-p8912
+2026-06-02 06:42:01 [INFO] [8912] 'GÖLGELİK-GÖLGEFİL %85 SIKLIK EN:100 CM, ' | 25.00 TL | SKU: GÖLGELİK.85.100CM
+2026-06-02 06:42:03 [INFO] [3/6] https://yapimaks.com/golgelik-golgefil-85-siklik-en-150-cm-1-m-100-p8913
+2026-06-02 06:42:03 [INFO] [8913] 'GÖLGELİK-GÖLGEFİL %85 SIKLIK EN:150 CM, ' | 35.00 TL | SKU: GÖLGELİK.85.150CM
+2026-06-02 06:42:05 [INFO] [4/6] https://yapimaks.com/golgelik-golgefil-85-siklik-en-200-cm-1-m-100-p8914
+2026-06-02 06:42:05 [INFO] [8914] 'GÖLGELİK-GÖLGEFİL %85 SIKLIK EN:200 CM, ' | 36.00 TL | SKU: GÖLGELİK.85.200CM
+2026-06-02 06:42:07 [INFO] [5/6] https://yapimaks.com/onluk-civi-branda-sait-demirci-p8386
+2026-06-02 06:42:07 [INFO] [8386] 'ÖNLÜK ÇİVİ BRANDA-SAİT DEMİRCİ' | 125.00 TL | SKU: SD.DÇÖ0302
+2026-06-02 06:42:09 [INFO] [6/6] https://yapimaks.com/saksi-ayakli-bahce-60-lt-yesil-no-2-fanus-haric-p8538
+2026-06-02 06:42:10 [INFO] [8538] 'SAKSI AYAKLI BAHÇE 60 LT YEŞİL NO:2 FANU' | 1025.00 TL | SKU: SERİNOVA.AB02.YEŞİL
+2026-06-02 06:42:12 [INFO] Tamamlandi! Toplam 6 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-02.csv
