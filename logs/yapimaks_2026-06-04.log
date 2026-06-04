@@ -1,0 +1,16 @@
+2026-06-04 06:42:23 [INFO] ==================================================
+2026-06-04 06:42:23 [INFO] Yapimaks Scraper basliyor
+2026-06-04 06:42:23 [INFO] ==================================================
+2026-06-04 06:42:23 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-06-04 06:42:24 [INFO] Cookie basariyla alindi.
+2026-06-04 06:42:24 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-06-04 06:42:24 [INFO] Sitemap'ten toplam 7815 urun URL'si bulundu.
+2026-06-04 06:42:24 [INFO] Bugune ait veri yok. Eski veri (2026-06-03.csv) süzülerek bugune aktariliyor...
+2026-06-04 06:42:24 [INFO] Basarili! 7813 urun dunden bugune aktarildi.
+2026-06-04 06:42:25 [INFO] Guncel dosyada hazir olan urun: 7813 | Sifirdan cekilecek (yeni) urun: 2
+2026-06-04 06:42:25 [INFO] 2 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-04.csv
+2026-06-04 06:42:25 [INFO] [1/2] https://yapimaks.com/klozet-kapak-lilyum-slim-yavas-kapanir-metal-alttan-mentese-alttan-tak-cikar-lagina-p15324
+2026-06-04 06:42:25 [INFO] [15324] 'KLOZET KAPAK LİLYUM SLİM YAVAŞ KAPANIR M' | 1000.00 TL | SKU: VİSAM.517.001
+2026-06-04 06:42:27 [INFO] [2/2] https://yapimaks.com/silte-8mm-duz-100-cm-proco-50m2-p9388
+2026-06-04 06:42:27 [INFO] [9388] 'ŞİLTE 8MM DÜZ 100-CM PROCO (50m2)' | 75.00 TL | SKU: PROCO.008MM
+2026-06-04 06:42:29 [INFO] Tamamlandi! Toplam 2 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-04.csv
