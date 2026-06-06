@@ -1,0 +1,44 @@
+2026-06-06 05:53:58 [INFO] ==================================================
+2026-06-06 05:53:58 [INFO] Yapimaks Scraper basliyor
+2026-06-06 05:53:58 [INFO] ==================================================
+2026-06-06 05:53:58 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-06-06 05:53:58 [INFO] Cookie basariyla alindi.
+2026-06-06 05:53:58 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-06-06 05:53:59 [INFO] Sitemap'ten toplam 7816 urun URL'si bulundu.
+2026-06-06 05:53:59 [INFO] Bugune ait veri yok. Eski veri (2026-06-05.csv) süzülerek bugune aktariliyor...
+2026-06-06 05:53:59 [INFO] Basarili! 7800 urun dunden bugune aktarildi.
+2026-06-06 05:53:59 [INFO] Guncel dosyada hazir olan urun: 7800 | Sifirdan cekilecek (yeni) urun: 16
+2026-06-06 05:53:59 [INFO] 16 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-06.csv
+2026-06-06 05:53:59 [INFO] [1/16] https://yapimaks.com/autokit-kemerli-cekme-halati-5-ton-4-metre-fa1-032-p15464
+2026-06-06 05:53:59 [INFO] [15464] 'AUTOKIT KEMERLİ ÇEKME HALATI 5 TON 4 MET' | 635.00 TL | SKU: AUTOKİT.FA1-032
+2026-06-06 05:54:01 [INFO] [2/16] https://yapimaks.com/balyoz-8-kg-sivri-p13068
+2026-06-06 05:54:01 [INFO] [13068] 'BALYOZ 8 KG SİVRİ' | 1000.00 TL | SKU: BALYOZ.S8KG
+2026-06-06 05:54:03 [INFO] [3/16] https://yapimaks.com/gaz-beton-10-cm-60x25x10-p9343
+2026-06-06 05:54:04 [INFO] [9343] 'GAZ BETON 10-CM (60x25X10)' | 60.50 TL | SKU: STT.016
+2026-06-06 05:54:06 [INFO] [4/16] https://yapimaks.com/hss-matkap-ucu-seti-8-parca-wert-p13137
+2026-06-06 05:54:06 [INFO] [13137] 'HSS MATKAP UCU SETİ 8 PARÇA WERT' | 380.00 TL | SKU: WERT.3503
+2026-06-06 05:54:08 [INFO] [5/16] https://yapimaks.com/iskence-c-tipi-50x150-mm-troy-25030-p14551
+2026-06-06 05:54:08 [INFO] [14551] 'İŞKENCE C TİPİ 50X150 MM TROY 25030' | 210.00 TL | SKU: TROY.25030
+2026-06-06 05:54:10 [INFO] [6/16] https://yapimaks.com/iskence-c-tipi-76-mm-troy-25063-p14550
+2026-06-06 05:54:10 [INFO] [14550] 'İŞKENCE C TİPİ 76 MM TROY 25063' | 270.00 TL | SKU: TROY.25063
+2026-06-06 05:54:12 [INFO] [7/16] https://yapimaks.com/kapi-kolu-planet-aynali-oda-nikel-inox-p6896
+2026-06-06 05:54:12 [INFO] [6896] 'KAPI KOLU PLANET AYNALI ODA NİKEL İNOX' | 264.00 TL | SKU: NOBEL.KK1960193
+2026-06-06 05:54:14 [INFO] [8/16] https://yapimaks.com/ondulin-mahya-kirmizi-2-mt-p7053
+2026-06-06 05:54:15 [INFO] [7053] 'ONDULİN MAHYA KIRMIZI 2 MT' | 450.00 TL | SKU: ONDULİN. 003
+2026-06-06 05:54:17 [INFO] [9/16] https://yapimaks.com/pala-testere-buyuk-50cm-p15083
+2026-06-06 05:54:17 [INFO] [15083] 'PALA TESTERE BÜYÜK 50CM' | 450.00 TL | SKU: WERT.2517
+2026-06-06 05:54:19 [INFO] [10/16] https://yapimaks.com/siva-filesi-160-gr-optimix-fawori-50-m2-p7084
+2026-06-06 05:54:19 [INFO] [7084] 'SIVA FİLESİ 160 GR OPTİMİX FAWORİ 50 M2' | 1750.00 TL | SKU: OPTİMİX.03
+2026-06-06 05:54:21 [INFO] [11/16] https://yapimaks.com/sivi-aktarma-pompasi-wert-p13142
+2026-06-06 05:54:21 [INFO] [13142] 'SIVI AKTARMA POMPASI WERT' | 170.00 TL | SKU: WERT.2646
+2026-06-06 05:54:23 [INFO] [12/16] https://yapimaks.com/su-deposu-1000-lt-3-kat-mavi-dik-uzun-q110x112-cm-p12623
+2026-06-06 05:54:23 [INFO] [12623] 'SU DEPOSU 1000 LT 3 KAT MAVİ DİK UZUN Q1' | 6500.00 TL | SKU: SU DEPOSU.1000.005
+2026-06-06 05:54:25 [INFO] [13/16] https://yapimaks.com/su-deposu-1000-lt-beyaz-yatay-92x95x138-cm-p11269
+2026-06-06 05:54:25 [INFO] [11269] 'SU DEPOSU 1000 LT BEYAZ YATAY 92x95x138 ' | 5900.00 TL | SKU: SU DEPOSU.1000.001
+2026-06-06 05:54:27 [INFO] [14/16] https://yapimaks.com/su-deposu-3000-lt-3-kat-mavi-yatay-132x130x193-cm-p13798
+2026-06-06 05:54:28 [INFO] [13798] 'SU DEPOSU 3000 LT 3 KAT MAVİ YATAY 132x1' | 18000.00 TL | SKU: SU DEPOSU.3000.004
+2026-06-06 05:54:30 [INFO] [15/16] https://yapimaks.com/su-deposu-5000-lt-3-kat-mavi-yatay-170x160x240-cm-p12373
+2026-06-06 05:54:30 [INFO] [12373] 'SU DEPOSU 5000 LT 3 KAT MAVİ YATAY 170x1' | 31000.00 TL | SKU: SU DEPOSU.5000.001
+2026-06-06 05:54:32 [INFO] [16/16] https://yapimaks.com/tel-firca-pvc-sapli-sari-telli-wert-p14922
+2026-06-06 05:54:32 [INFO] [14922] 'TEL FIRÇA PVC SAPLI SARI TELLİ WERT' | 100.00 TL | SKU: WERT.2770
+2026-06-06 05:54:34 [INFO] Tamamlandi! Toplam 16 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-06.csv
