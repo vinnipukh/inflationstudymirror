@@ -5,7 +5,7 @@ import time
 import os
 from datetime import datetime
 
-# --- Path & Timestamp Configuration  ---
+# --- Path & Timestamp Configuration ---
 # 1. Get the directory where this script is located
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -45,8 +45,10 @@ categories = [
 ]
 
 headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
+                  '(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
 }
+
 
 # --- Execution ---
 print(f"Data will be saved to: {csv_file_path}")
@@ -67,9 +69,14 @@ with open(csv_file_path, 'w', newline='', encoding='utf-8') as file:
 
             print(f"Scraping: {url}")
 
-            response = requests.get(url, headers=headers)
+            try:
+                response = requests.get(url, headers=headers, timeout=30)
+            except requests.RequestException as e:
+                print(f"Request failed for {url}: {e}")
+                break
 
             if response.status_code != 200:
+                print(f"Non-200 status ({response.status_code}) for {url}. Moving on.")
                 break
 
             soup = BeautifulSoup(response.content, 'html.parser')
@@ -98,7 +105,7 @@ with open(csv_file_path, 'w', newline='', encoding='utf-8') as file:
                             pass
 
                 if clean_price > 0:
-                    writer.writerow([ name, clean_price, category])
+                    writer.writerow([name, clean_price, category])
 
             offset += 15
             time.sleep(1)
