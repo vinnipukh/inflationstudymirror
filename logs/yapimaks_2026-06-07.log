@@ -1,0 +1,22 @@
+2026-06-07 06:24:00 [INFO] ==================================================
+2026-06-07 06:24:00 [INFO] Yapimaks Scraper basliyor
+2026-06-07 06:24:00 [INFO] ==================================================
+2026-06-07 06:24:00 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-06-07 06:24:01 [INFO] Cookie basariyla alindi.
+2026-06-07 06:24:01 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-06-07 06:24:01 [INFO] Sitemap'ten toplam 7806 urun URL'si bulundu.
+2026-06-07 06:24:01 [INFO] Bugune ait veri yok. Eski veri (2026-06-06.csv) süzülerek bugune aktariliyor...
+2026-06-07 06:24:01 [INFO] Basarili! 7801 urun dunden bugune aktarildi.
+2026-06-07 06:24:01 [INFO] Guncel dosyada hazir olan urun: 7801 | Sifirdan cekilecek (yeni) urun: 5
+2026-06-07 06:24:01 [INFO] 5 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-07.csv
+2026-06-07 06:24:01 [INFO] [1/5] https://yapimaks.com/makita-d-03925-daire-testere-235-mm-20-dis-p5665
+2026-06-07 06:24:01 [INFO] [5665] 'MAKİTA D-03925 DAİRE TESTERE 235 mm 20 d' | 719.00 TL | SKU: MAKİTA.D03925
+2026-06-07 06:24:03 [INFO] [2/5] https://yapimaks.com/naylon-seffaf-orjinal-0-25mc-2x2mt-p11183
+2026-06-07 06:24:04 [INFO] [11183] 'NAYLON ŞEFFAF ORJİNAL 0.25MC 2X2MT' | 250.00 TL | SKU: NAYLON.06
+2026-06-07 06:24:06 [INFO] [3/5] https://yapimaks.com/naylon-seffaf-standart-0-18mc-1x4mt-p12193
+2026-06-07 06:24:06 [INFO] [12193] 'NAYLON ŞEFFAF STANDART 0.18MC  1X4MT' | 150.00 TL | SKU: NAYLON.07
+2026-06-07 06:24:08 [INFO] [4/5] https://yapimaks.com/naylon-siyah-0-18-mc-2x2mt-p11182
+2026-06-07 06:24:08 [INFO] [11182] 'NAYLON SİYAH 0.18 MC 2X2MT' | 115.00 TL | SKU: NAYLON.05
+2026-06-07 06:24:10 [INFO] [5/5] https://yapimaks.com/su-terazisi-aluminyum-miknatissiz-100-cm-rodex-p14678
+2026-06-07 06:24:10 [INFO] [14678] 'SU TERAZİSİ ALÜMİNYUM MIKNATISSIZ 100 CM' | 545.00 TL | SKU: RODEX.RHT0904120100
+2026-06-07 06:24:12 [INFO] Tamamlandi! Toplam 5 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-07.csv
