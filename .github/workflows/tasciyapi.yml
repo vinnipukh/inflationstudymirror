@@ -30,7 +30,7 @@ jobs:
           pip install requests beautifulsoup4
 
       - name: Run TasciYapi scraper
-        run: python Scrapers/ConstructionSuppliesMarkets/TasciYapiMarket/tasciyapi_scraper.py
+        run: python Codes\ConstructionMarkets\tasciyapimarket/tasciyapi_scraper.py
 
       - name: Commit and push CSV output
         run: |
