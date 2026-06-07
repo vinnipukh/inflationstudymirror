@@ -1,0 +1,45 @@
+name: TasciYapi Daily Scraper
+
+on:
+  schedule:
+    # Her gün 14:00 UTC'de çalışır
+    - cron: '0 14 * * *'
+  workflow_dispatch:  # Actions sekmesinden elle de tetiklenebilir
+
+permissions:
+  contents: write  # Üretilen CSV'yi repo'ya commit edebilmek için
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4
+
+      - name: Run TasciYapi scraper
+        run: python Scrapers/ConstructionSuppliesMarkets/TasciYapiMarket/tasciyapi_scraper.py
+
+      - name: Commit and push CSV output
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Datas/ConstructionSuppliesMarkets/TasciYapiMarket/*.csv
+          if git diff --staged --quiet; then
+            echo "No new data to commit."
+          else
+            git commit -m "chore(data): TasciYapi scrape $(date -u +'%Y-%m-%d')"
+            git push
+          fi
