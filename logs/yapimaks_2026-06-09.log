@@ -1,0 +1,40 @@
+2026-06-09 06:09:25 [INFO] ==================================================
+2026-06-09 06:09:25 [INFO] Yapimaks Scraper basliyor
+2026-06-09 06:09:25 [INFO] ==================================================
+2026-06-09 06:09:25 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-06-09 06:09:26 [INFO] Cookie basariyla alindi.
+2026-06-09 06:09:26 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-06-09 06:09:27 [INFO] Sitemap'ten toplam 7793 urun URL'si bulundu.
+2026-06-09 06:09:27 [INFO] Bugune ait veri yok. Eski veri (2026-06-07.csv) süzülerek bugune aktariliyor...
+2026-06-09 06:09:27 [INFO] Basarili! 7779 urun dunden bugune aktarildi.
+2026-06-09 06:09:27 [INFO] Guncel dosyada hazir olan urun: 7779 | Sifirdan cekilecek (yeni) urun: 14
+2026-06-09 06:09:27 [INFO] 14 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-09.csv
+2026-06-09 06:09:27 [INFO] [1/14] https://yapimaks.com/beton-vibratoru-rtm3914-1500w-4000-rpm-rtrmax-p11195
+2026-06-09 06:09:27 [INFO] [11195] 'BETON VİBRATÖRÜ RTM3914 1500W 4000 RPM  ' | 7900.00 TL | SKU: RTRMAX.RTM3914
+2026-06-09 06:09:29 [INFO] [2/14] https://yapimaks.com/drenaj-kanali-izgara-150x100x500-p12998
+2026-06-09 06:09:29 [INFO] [12998] 'DRENAJ KANALI+IZGARA 150X100X500' | 160.00 TL | SKU: TORUN.DK.1008
+2026-06-09 06:09:31 [INFO] [3/14] https://yapimaks.com/drenaj-kanali-kapagi-080x65x1000-p9831
+2026-06-09 06:09:31 [INFO] [9831] 'DRENAJ KANALI KAPAĞI  080X65X1000' | 20.00 TL | SKU: TORUN.DK.1006-2
+2026-06-09 06:09:33 [INFO] [4/14] https://yapimaks.com/epoksi-genel-amacli-yap-enj-28-gr-selsil-p14316
+2026-06-09 06:09:33 [INFO] [14316] 'EPOKSİ GENEL AMAÇLI YAP.ENJ 28 GR (SELSİ' | 150.00 TL | SKU: SELSİL.3611
+2026-06-09 06:09:35 [INFO] [5/14] https://yapimaks.com/silte-10mm-yapiskanli-100-cm-proco-25m2-p11051
+2026-06-09 06:09:36 [INFO] [11051] 'ŞİLTE 10MM YAPIŞKANLI 100-CM PROCO (25m2' | 187.50 TL | SKU: PROCO.010M
+2026-06-09 06:09:38 [INFO] [6/14] https://yapimaks.com/silte-5mm-afk-100-cm-proco-25m2-p9390
+2026-06-09 06:09:38 [INFO] [9390] 'ŞİLTE 5MM AFK 100-CM PROCO (25m2)' | 100.00 TL | SKU: PROCO.005MMAFK
+2026-06-09 06:09:40 [INFO] [7/14] https://yapimaks.com/silte-5mm-afk-yapiskanli-100-cm-proco-25m2-p15412
+2026-06-09 06:09:40 [INFO] [15412] 'ŞİLTE 5MM AFK YAPIŞKANLI 100-CM PROCO (2' | 185.00 TL | SKU: PROCO.005MMAFK00000001
+2026-06-09 06:09:42 [INFO] [8/14] https://yapimaks.com/silte-5mm-yapiskanli-100-cm-proco-25m2-p11049
+2026-06-09 06:09:42 [INFO] [11049] 'ŞİLTE 5MM YAPIŞKANLI 100-CM PROCO (25m2)' | 115.00 TL | SKU: PROCO.005MMY
+2026-06-09 06:09:44 [INFO] [9/14] https://yapimaks.com/silte-8mm-afk-yapiskanli-100-cm-proco-25m2-p15411
+2026-06-09 06:09:44 [INFO] [15411] 'ŞİLTE 8MM AFK YAPIŞKANLI 100-CM PROCO (2' | 215.00 TL | SKU: PROCO.008MMAFK00000001
+2026-06-09 06:09:46 [INFO] [10/14] https://yapimaks.com/silte-8mm-yapiskanli-100-cm-proco-25m2-p11050
+2026-06-09 06:09:46 [INFO] [11050] 'ŞİLTE 8MM YAPIŞKANLI 100-CM PROCO (25m2)' | 150.00 TL | SKU: PROCO.008MMY
+2026-06-09 06:09:48 [INFO] [11/14] https://yapimaks.com/soku-demiri-100cm-3610-gr-p8441
+2026-06-09 06:09:49 [INFO] [8441] 'SÖKÜ DEMİRİ 100CM (3610-GR)' | 525.00 TL | SKU: SD.SK7002
+2026-06-09 06:09:51 [INFO] [12/14] https://yapimaks.com/soku-demiri-150cm-7295-gr-p8442
+2026-06-09 06:09:51 [INFO] [8442] 'SÖKÜ DEMİRİ 150CM (7295-GR)' | 775.00 TL | SKU: SD.SK7003
+2026-06-09 06:09:53 [INFO] [13/14] https://yapimaks.com/soku-demiri-60-cm-1105-gr-p8438
+2026-06-09 06:09:53 [INFO] [8438] 'SÖKÜ DEMİRİ 60 CM (1105-GR)' | 294.00 TL | SKU: SD.SK6000
+2026-06-09 06:09:55 [INFO] [14/14] https://yapimaks.com/soku-demiri-80-cm-2895-gr-p8437
+2026-06-09 06:09:55 [INFO] [8437] 'SÖKÜ DEMİRİ 80 CM (2895-GR)' | 558.00 TL | SKU: SD.SK8000
+2026-06-09 06:09:57 [INFO] Tamamlandi! Toplam 14 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-09.csv
