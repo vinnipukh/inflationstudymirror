@@ -1,0 +1,18 @@
+2026-06-10 06:23:52 [INFO] ==================================================
+2026-06-10 06:23:52 [INFO] Yapimaks Scraper basliyor
+2026-06-10 06:23:52 [INFO] ==================================================
+2026-06-10 06:23:52 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-06-10 06:23:53 [INFO] Cookie basariyla alindi.
+2026-06-10 06:23:53 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-06-10 06:23:54 [INFO] Sitemap'ten toplam 7787 urun URL'si bulundu.
+2026-06-10 06:23:54 [INFO] Bugune ait veri yok. Eski veri (2026-06-09.csv) süzülerek bugune aktariliyor...
+2026-06-10 06:23:54 [INFO] Basarili! 7784 urun dunden bugune aktarildi.
+2026-06-10 06:23:54 [INFO] Guncel dosyada hazir olan urun: 7784 | Sifirdan cekilecek (yeni) urun: 3
+2026-06-10 06:23:54 [INFO] 3 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-10.csv
+2026-06-10 06:23:54 [INFO] [1/3] https://yapimaks.com/kose-citasi-alci-pvc-kesik-270-cm-tesay-p15341
+2026-06-10 06:23:54 [INFO] [15341] 'KÖŞE ÇITASI ALÇI PVC KESİK 270 CM TESAY' | 50.00 TL | SKU: TESAY.PKSK25-270
+2026-06-10 06:23:56 [INFO] [2/3] https://yapimaks.com/lokma-ve-bits-takimi-39-parca-1-4-23070-proxxon-p7598
+2026-06-10 06:23:56 [INFO] [7598] 'LOKMA VE BİTS TAKIMI 39 PARÇA 1/4" 23070' | 3100.00 TL | SKU: PROXXON.23070
+2026-06-10 06:23:58 [INFO] [3/3] https://yapimaks.com/metre-serit-7-5mt-25mm-bts-12360-p12228
+2026-06-10 06:23:58 [INFO] [12228] 'METRE ŞERİT 7.5MT 25MM BTS 12360' | 225.00 TL | SKU: BTS.12360
+2026-06-10 06:24:00 [INFO] Tamamlandi! Toplam 3 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-10.csv
