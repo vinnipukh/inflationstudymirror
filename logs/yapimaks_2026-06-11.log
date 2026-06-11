@@ -1,0 +1,20 @@
+2026-06-11 06:48:48 [INFO] ==================================================
+2026-06-11 06:48:48 [INFO] Yapimaks Scraper basliyor
+2026-06-11 06:48:48 [INFO] ==================================================
+2026-06-11 06:48:48 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-06-11 06:48:49 [INFO] Cookie basariyla alindi.
+2026-06-11 06:48:49 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-06-11 06:48:49 [INFO] Sitemap'ten toplam 7781 urun URL'si bulundu.
+2026-06-11 06:48:49 [INFO] Bugune ait veri yok. Eski veri (2026-06-10.csv) süzülerek bugune aktariliyor...
+2026-06-11 06:48:49 [INFO] Basarili! 7777 urun dunden bugune aktarildi.
+2026-06-11 06:48:49 [INFO] Guncel dosyada hazir olan urun: 7777 | Sifirdan cekilecek (yeni) urun: 4
+2026-06-11 06:48:49 [INFO] 4 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-11.csv
+2026-06-11 06:48:49 [INFO] [1/4] https://yapimaks.com/0-30-875-300-oluklu-p4259
+2026-06-11 06:48:50 [INFO] [4259] '0.30*875*300 OLUKLU' | 450.00 TL | SKU: GLV.SAC.030.3000
+2026-06-11 06:48:52 [INFO] [2/4] https://yapimaks.com/eps-50-karbonlu-10cm-50-100-darkss-5ad-2-5m-p3215
+2026-06-11 06:48:52 [INFO] [3215] 'EPS-50 KARBONLU 10CM 50*100-DARKSS (5AD ' | 675.00 TL | SKU: EPS.14.0017
+2026-06-11 06:48:54 [INFO] [3/4] https://yapimaks.com/laminat-kot-farki-esik-prf-aluminyum-mat-eloksal-270cm-tesay-p14741
+2026-06-11 06:48:54 [INFO] [14741] 'LAMİNAT KOT FARKI EŞİK PRF ALÜMİNYUM MAT' | 299.00 TL | SKU: TESAY.LKFA10.01
+2026-06-11 06:48:56 [INFO] [4/4] https://yapimaks.com/oluklu-875-2000-seffaf-0-7mm-p7657
+2026-06-11 06:48:56 [INFO] [7657] 'OLUKLU 875*2000*ŞEFFAF 0.7MM' | 400.00 TL | SKU: PVC.OND.01.2000
+2026-06-11 06:48:58 [INFO] Tamamlandi! Toplam 4 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-11.csv
