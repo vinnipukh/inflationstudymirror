@@ -1,0 +1,52 @@
+2026-06-12 06:41:14 [INFO] ==================================================
+2026-06-12 06:41:14 [INFO] Yapimaks Scraper basliyor
+2026-06-12 06:41:14 [INFO] ==================================================
+2026-06-12 06:41:14 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-06-12 06:41:15 [INFO] Cookie basariyla alindi.
+2026-06-12 06:41:15 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-06-12 06:41:15 [INFO] Sitemap'ten toplam 7793 urun URL'si bulundu.
+2026-06-12 06:41:15 [INFO] Bugune ait veri yok. Eski veri (2026-06-11.csv) süzülerek bugune aktariliyor...
+2026-06-12 06:41:15 [INFO] Basarili! 7773 urun dunden bugune aktarildi.
+2026-06-12 06:41:15 [INFO] Guncel dosyada hazir olan urun: 7773 | Sifirdan cekilecek (yeni) urun: 20
+2026-06-12 06:41:15 [INFO] 20 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-12.csv
+2026-06-12 06:41:15 [INFO] [1/20] https://yapimaks.com/astar-donusum-10-kg-ic-cephe-fawori-p3605
+2026-06-12 06:41:15 [INFO] [3605] 'ASTAR DÖNÜŞÜM 10-KG İÇ CEPHE FAWORİ' | 1250.00 TL | SKU: FAWORİ.028
+2026-06-12 06:41:17 [INFO] [2/20] https://yapimaks.com/astar-donusum-20-kg-ic-cephe-fawori-p3616
+2026-06-12 06:41:18 [INFO] [3616] 'ASTAR DÖNÜŞÜM 20 KG İÇ CEPHE FAWORİ' | 2250.00 TL | SKU: FAWORİ.044
+2026-06-12 06:41:20 [INFO] [3/20] https://yapimaks.com/astar-donusum-3-5-kg-ic-cephe-fawori-p3593
+2026-06-12 06:41:20 [INFO] [3593] 'ASTAR DÖNÜŞÜM 3,5 KG İÇ CEPHE FAWORİ' | 500.00 TL | SKU: FAWORİ.013
+2026-06-12 06:41:22 [INFO] [4/20] https://yapimaks.com/dis-cephe-boyasi-fawori-premium-sil-mix-1-15-lt-p3622
+2026-06-12 06:41:22 [INFO] [3622] 'DIŞ CEPHE BOYASI FAWORİ PREMİUM SİL.MİX-' | 3350.00 TL | SKU: FAWORİ.050
+2026-06-12 06:41:24 [INFO] [5/20] https://yapimaks.com/faras-hazneli-supurgeli-p2591
+2026-06-12 06:41:24 [INFO] [2591] 'FARAŞ HAZNELİ SÜPÜRGELİ' | 149.00 TL | SKU: DOĞUŞ.26.045
+2026-06-12 06:41:26 [INFO] [6/20] https://yapimaks.com/faras-metal-sapli-endustriyel-p2570
+2026-06-12 06:41:26 [INFO] [2570] 'FARAŞ METAL SAPLI ENDÜSTRİYEL' | 200.00 TL | SKU: DOĞUŞ.20.220
+2026-06-12 06:41:28 [INFO] [7/20] https://yapimaks.com/gonye-marangoz-500-mm-sari-rh12450-rtrmax-p11189
+2026-06-12 06:41:28 [INFO] [11189] 'GÖNYE MARANGOZ 500 MM SARI RH12450 RTRMA' | 125.00 TL | SKU: RTRMAX.RH12450
+2026-06-12 06:41:30 [INFO] [8/20] https://yapimaks.com/matkap-ucu-5-mm-seramik-cam-tugla-p10948
+2026-06-12 06:41:31 [INFO] [10948] 'MATKAP UCU 5 MM SERAMİK-CAM-TUĞLA' | 105.00 TL | SKU: WONDER.STW01400
+2026-06-12 06:41:33 [INFO] [9/20] https://yapimaks.com/matkap-ucu-6-mm-seramik-cam-tugla-p15159
+2026-06-12 06:41:33 [INFO] [15159] 'MATKAP UCU 6 MM SERAMİK-CAM-TUĞLA' | 140.00 TL | SKU: WONDER.STW01402
+2026-06-12 06:41:35 [INFO] [10/20] https://yapimaks.com/panjur-pvc-beyaz-35x40-airvent-p8185
+2026-06-12 06:41:35 [INFO] [8185] 'PANJUR PVC BEYAZ 35X40 AİRVENT' | 305.00 TL | SKU: UBM.U02002
+2026-06-12 06:41:37 [INFO] [11/20] https://yapimaks.com/panjur-pvc-beyaz-40x44-airvent-p8186
+2026-06-12 06:41:37 [INFO] [8186] 'PANJUR PVC BEYAZ 40X44 AİRVENT' | 335.00 TL | SKU: UBM.U02003
+2026-06-12 06:41:39 [INFO] [12/20] https://yapimaks.com/purmuz-cakmakli-kartus-seti-orcamp-p11216
+2026-06-12 06:41:39 [INFO] [11216] 'PÜRMÜZ ÇAKMAKLI KARTUŞ SETİ ORCAMP' | 550.00 TL | SKU: ORCAMP.CX500
+2026-06-12 06:41:41 [INFO] [13/20] https://yapimaks.com/sac-kesme-kaportaci-makasi-stanley-14-566-p15477
+2026-06-12 06:41:42 [INFO] [15477] 'SAC KESME KAPORTACI MAKASI STANLEY 14-56' | 1450.00 TL | SKU: STANLEY.14.566
+2026-06-12 06:41:44 [INFO] [14/20] https://yapimaks.com/seramik-yapis-gri-qf121-c1t-25-kg-p1968
+2026-06-12 06:41:44 [INFO] [1968] 'SERAMİK YAPIŞ GRİ QF121 C1T-25 KG.' | 169.00 TL | SKU: DARKSS.YK.QF121G
+2026-06-12 06:41:46 [INFO] [15/20] https://yapimaks.com/su-terazisi-eko-80-cm-rh13308-rtrmax-p11028
+2026-06-12 06:41:46 [INFO] [11028] 'SU TERAZİSİ EKO 80 CM RH13308 RTRMAX' | 315.00 TL | SKU: RTRMAX.RH13308
+2026-06-12 06:41:48 [INFO] [16/20] https://yapimaks.com/takim-cantasi-19-profesyonel-jumpo-plastik-kilit-jpt-19-mano-p15286
+2026-06-12 06:41:48 [INFO] [15286] 'TAKIM ÇANTASI 19" PROFESYONEL JUMPO PLAS' | 620.00 TL | SKU: MANO.JPT-19
+2026-06-12 06:41:50 [INFO] [17/20] https://yapimaks.com/tirpan-cim-kenar-kesme-rtm915-elektrikli-450w-280mm-rtrmax-p15450
+2026-06-12 06:41:50 [INFO] [15450] 'TIRPAN ÇİM KENAR KESME RTM915 ELEKTRİKLİ' | 2500.00 TL | SKU: RTRMAX.RTM915
+2026-06-12 06:41:52 [INFO] [18/20] https://yapimaks.com/tirpan-yan-benzinli-1-7-kw-wonder-p13932
+2026-06-12 06:41:52 [INFO] [13932] 'TIRPAN YAN BENZİNLİ 1.7 KW WONDER' | 5150.00 TL | SKU: WONDER.WBYT1017
+2026-06-12 06:41:54 [INFO] [19/20] https://yapimaks.com/torex-dubel-tugla-bosluk-10-mm-1p-12-p335
+2026-06-12 06:41:55 [INFO] [335] 'TOREX DÜBEL TUĞLA BOŞLUK 10 MM 1P=12' | 47.00 TL | SKU: 8680613930172
+2026-06-12 06:41:57 [INFO] [20/20] https://yapimaks.com/wc-matik-pvc-beyaz-made-p12959
+2026-06-12 06:41:57 [INFO] [12959] 'WC MATİK PVC BEYAZ (MADE)' | 50.00 TL | SKU: MADE.WCM
+2026-06-12 06:41:59 [INFO] Tamamlandi! Toplam 20 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-12.csv
