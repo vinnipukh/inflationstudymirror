@@ -1,0 +1,34 @@
+2026-06-14 06:40:10 [INFO] ==================================================
+2026-06-14 06:40:10 [INFO] Yapimaks Scraper basliyor
+2026-06-14 06:40:10 [INFO] ==================================================
+2026-06-14 06:40:10 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-06-14 06:40:11 [INFO] Cookie basariyla alindi.
+2026-06-14 06:40:11 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-06-14 06:40:11 [INFO] Sitemap'ten toplam 7795 urun URL'si bulundu.
+2026-06-14 06:40:11 [INFO] Bugune ait veri yok. Eski veri (2026-06-13.csv) süzülerek bugune aktariliyor...
+2026-06-14 06:40:11 [INFO] Basarili! 7784 urun dunden bugune aktarildi.
+2026-06-14 06:40:11 [INFO] Guncel dosyada hazir olan urun: 7784 | Sifirdan cekilecek (yeni) urun: 11
+2026-06-14 06:40:11 [INFO] 11 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-14.csv
+2026-06-14 06:40:11 [INFO] [1/11] https://yapimaks.com/dalgic-pompa-bicakli-dokum-govdeli-kirli-su-1100w-p14474
+2026-06-14 06:40:11 [INFO] [14474] 'DALGIÇ POMPA BIÇAKLI DÖKÜM GÖVDELİ KİRLİ' | 10000.00 TL | SKU: FACTOR.1100WB
+2026-06-14 06:40:13 [INFO] [2/11] https://yapimaks.com/silte-10mm-yapiskanli-100-cm-proco-25-p11051
+2026-06-14 06:40:14 [INFO] [11051] 'ŞİLTE 10MM YAPIŞKANLI 100 CM PROCO (25)' | 187.50 TL | SKU: PROCO.10MM.Y
+2026-06-14 06:40:16 [INFO] [3/11] https://yapimaks.com/silte-4mm-afk-100-cm-proco-1-m2-25-p9386
+2026-06-14 06:40:16 [INFO] [9386] 'ŞİLTE 4MM AFK 100 CM PROCO 1 M2 (25)' | 90.00 TL | SKU: PROCO.4MMAFK
+2026-06-14 06:40:18 [INFO] [4/11] https://yapimaks.com/silte-4mm-yapiskanli-100-cm-proco-1m2-25-p11048
+2026-06-14 06:40:18 [INFO] [11048] 'ŞİLTE 4MM YAPIŞKANLI 100 CM PROCO 1M2 (2' | 105.00 TL | SKU: PROCO.4MM.Y
+2026-06-14 06:40:20 [INFO] [5/11] https://yapimaks.com/silte-5mm-afk-100-cm-proco-1m2-25-p9390
+2026-06-14 06:40:20 [INFO] [9390] 'ŞİLTE 5MM AFK 100 CM PROCO 1M2 (25)' | 100.00 TL | SKU: PROCO.5MMAFK
+2026-06-14 06:40:22 [INFO] [6/11] https://yapimaks.com/silte-5mm-afk-yapiskanli-100-cm-proco-1m2-25-p15412
+2026-06-14 06:40:22 [INFO] [15412] 'ŞİLTE 5MM AFK YAPIŞKANLI 100 CM PROCO 1M' | 185.00 TL | SKU: PROCO.5MMAFK.Y
+2026-06-14 06:40:24 [INFO] [7/11] https://yapimaks.com/silte-5mm-duz-100-cm-proco-1m2-60-p9385
+2026-06-14 06:40:24 [INFO] [9385] 'ŞİLTE 5MM DÜZ 100 CM PROCO 1M2 (60)' | 45.00 TL | SKU: PROCO.5MM
+2026-06-14 06:40:26 [INFO] [8/11] https://yapimaks.com/silte-5mm-yapiskanli-100-cm-proco-1m2-25-p11049
+2026-06-14 06:40:27 [INFO] [11049] 'ŞİLTE 5MM YAPIŞKANLI 100 CM PROCO 1M2 (2' | 115.00 TL | SKU: PROCO.5MM.Y
+2026-06-14 06:40:29 [INFO] [9/11] https://yapimaks.com/silte-8mm-afk-yapiskanli-100-cm-proco-1m2-25-p15411
+2026-06-14 06:40:29 [INFO] [15411] 'ŞİLTE 8MM AFK YAPIŞKANLI 100 CM PROCO 1M' | 215.00 TL | SKU: PROCO.8MMAFK.Y
+2026-06-14 06:40:31 [INFO] [10/11] https://yapimaks.com/silte-8mm-duz-100-cm-proco-1m2-50-p9388
+2026-06-14 06:40:31 [INFO] [9388] 'ŞİLTE 8MM DÜZ 100 CM PROCO 1M2 (50)' | 75.00 TL | SKU: PROCO.8MM
+2026-06-14 06:40:33 [INFO] [11/11] https://yapimaks.com/silte-8mm-yapiskanli-100-cm-proco-1m2-25-p11050
+2026-06-14 06:40:33 [INFO] [11050] 'ŞİLTE 8MM YAPIŞKANLI 100 CM PROCO 1M2 (2' | 150.00 TL | SKU: PROCO.8MM.Y
+2026-06-14 06:40:35 [INFO] Tamamlandi! Toplam 11 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-14.csv
