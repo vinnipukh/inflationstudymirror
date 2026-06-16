@@ -1,0 +1,22 @@
+2026-06-16 07:26:58 [INFO] ==================================================
+2026-06-16 07:26:58 [INFO] Yapimaks Scraper basliyor
+2026-06-16 07:26:58 [INFO] ==================================================
+2026-06-16 07:26:58 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-06-16 07:26:59 [INFO] Cookie basariyla alindi.
+2026-06-16 07:26:59 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-06-16 07:26:59 [INFO] Sitemap'ten toplam 7789 urun URL'si bulundu.
+2026-06-16 07:26:59 [INFO] Bugune ait veri yok. Eski veri (2026-06-15.csv) süzülerek bugune aktariliyor...
+2026-06-16 07:27:00 [INFO] Basarili! 7784 urun dunden bugune aktarildi.
+2026-06-16 07:27:00 [INFO] Guncel dosyada hazir olan urun: 7784 | Sifirdan cekilecek (yeni) urun: 5
+2026-06-16 07:27:00 [INFO] 5 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-16.csv
+2026-06-16 07:27:00 [INFO] [1/5] https://yapimaks.com/naylon-balonlu-100cm-x-50mt-25gr-p6217
+2026-06-16 07:27:00 [INFO] [6217] 'NAYLON BALONLU 100cm x 50MT (25GR)' | 350.00 TL | SKU: NAYLON.001
+2026-06-16 07:27:02 [INFO] [2/5] https://yapimaks.com/naylon-balonlu-150cm-x-50mt-35gr-p6218
+2026-06-16 07:27:02 [INFO] [6218] 'NAYLON BALONLU 150cm x 50MT (35GR)' | 600.00 TL | SKU: NAYLON.002
+2026-06-16 07:27:04 [INFO] [3/5] https://yapimaks.com/shingle-havalandirma-duz-kirmizi-p7628
+2026-06-16 07:27:04 [INFO] [7628] 'SHINGLE HAVALANDIRMA DÜZ KIRMIZI' | 275.00 TL | SKU: MS.1032
+2026-06-16 07:27:06 [INFO] [4/5] https://yapimaks.com/shingle-havalandirma-duz-siyah-p7629
+2026-06-16 07:27:07 [INFO] [7629] 'SHINGLE HAVALANDIRMA DÜZ SİYAH' | 275.00 TL | SKU: MS.1031
+2026-06-16 07:27:09 [INFO] [5/5] https://yapimaks.com/shingle-havalandirma-duz-yesil-p7627
+2026-06-16 07:27:09 [INFO] [7627] 'SHINGLE HAVALANDIRMA DÜZ YEŞİL' | 275.00 TL | SKU: MS.1033
+2026-06-16 07:27:11 [INFO] Tamamlandi! Toplam 5 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-16.csv
