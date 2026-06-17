@@ -1,0 +1,18 @@
+2026-06-17 07:09:32 [INFO] ==================================================
+2026-06-17 07:09:32 [INFO] Yapimaks Scraper basliyor
+2026-06-17 07:09:32 [INFO] ==================================================
+2026-06-17 07:09:32 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-06-17 07:09:32 [INFO] Cookie basariyla alindi.
+2026-06-17 07:09:32 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-06-17 07:09:33 [INFO] Sitemap'ten toplam 7788 urun URL'si bulundu.
+2026-06-17 07:09:33 [INFO] Bugune ait veri yok. Eski veri (2026-06-16.csv) süzülerek bugune aktariliyor...
+2026-06-17 07:09:33 [INFO] Basarili! 7785 urun dunden bugune aktarildi.
+2026-06-17 07:09:33 [INFO] Guncel dosyada hazir olan urun: 7785 | Sifirdan cekilecek (yeni) urun: 3
+2026-06-17 07:09:33 [INFO] 3 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-17.csv
+2026-06-17 07:09:33 [INFO] [1/3] https://yapimaks.com/firca-kestirme-lux-no-4-kardelen-p10903
+2026-06-17 07:09:33 [INFO] [10903] 'FIRÇA KESTİRME LÜX NO:4 KARDELEN' | 75.00 TL | SKU: KARDELEN.0049
+2026-06-17 07:09:35 [INFO] [2/3] https://yapimaks.com/klips-1-ad-1000-p3964
+2026-06-17 07:09:35 [INFO] [3964] 'KLİPS 1 AD (1000)' | 2.00 TL | SKU: FOUR.HNK0022
+2026-06-17 07:09:37 [INFO] [3/3] https://yapimaks.com/zemin-koruma-ortusu-kalin-20-m2-guard-p8149
+2026-06-17 07:09:37 [INFO] [8149] 'ZEMİN/KORUMA ÖRTÜSÜ KALIN 20 M2 GUARD' | 75.00 TL | SKU: GUARD.STG03051
+2026-06-17 07:09:39 [INFO] Tamamlandi! Toplam 3 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-17.csv
