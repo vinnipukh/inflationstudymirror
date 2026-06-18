@@ -1,0 +1,40 @@
+2026-06-18 06:52:07 [INFO] ==================================================
+2026-06-18 06:52:07 [INFO] Yapimaks Scraper basliyor
+2026-06-18 06:52:07 [INFO] ==================================================
+2026-06-18 06:52:07 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-06-18 06:52:08 [INFO] Cookie basariyla alindi.
+2026-06-18 06:52:08 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-06-18 06:52:08 [INFO] Sitemap'ten toplam 7788 urun URL'si bulundu.
+2026-06-18 06:52:08 [INFO] Bugune ait veri yok. Eski veri (2026-06-17.csv) süzülerek bugune aktariliyor...
+2026-06-18 06:52:08 [INFO] Basarili! 7774 urun dunden bugune aktarildi.
+2026-06-18 06:52:08 [INFO] Guncel dosyada hazir olan urun: 7774 | Sifirdan cekilecek (yeni) urun: 14
+2026-06-18 06:52:08 [INFO] 14 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-18.csv
+2026-06-18 06:52:08 [INFO] [1/14] https://yapimaks.com/batarya-lale-mix-lavabo-p11538
+2026-06-18 06:52:09 [INFO] [11538] 'BATARYA LALE MİX LAVABO' | 2150.00 TL | SKU: GMS.LA100
+2026-06-18 06:52:11 [INFO] [2/14] https://yapimaks.com/batarya-sirma-mix-aplike-eviye-p14216
+2026-06-18 06:52:11 [INFO] [14216] 'BATARYA SIRMA MİX APLİKE EVİYE' | 2550.00 TL | SKU: GMS.SR237
+2026-06-18 06:52:13 [INFO] [3/14] https://yapimaks.com/batarya-zirve-mix-eviye-yatik-boru-p11531
+2026-06-18 06:52:13 [INFO] [11531] 'BATARYA ZİRVE MİX EVİYE (YATIK BORU)' | 2665.00 TL | SKU: GMS.ZRV104
+2026-06-18 06:52:15 [INFO] [4/14] https://yapimaks.com/batarya-zirve-mix-kugu-lavabo-p11529
+2026-06-18 06:52:15 [INFO] [11529] 'BATARYA ZİRVE MİX KUĞU LAVABO' | 2500.00 TL | SKU: GMS.ZRV101
+2026-06-18 06:52:17 [INFO] [5/14] https://yapimaks.com/capa-keciboynuzu-sd-p14945
+2026-06-18 06:52:17 [INFO] [14945] 'ÇAPA KEÇİBOYNUZU SD' | 125.00 TL | SKU: SD.KB0200
+2026-06-18 06:52:19 [INFO] [6/14] https://yapimaks.com/capa-pancar-sivri-sd-p15556
+2026-06-18 06:52:20 [INFO] [15556] 'ÇAPA PANCAR SİVRİ SD' | 100.00 TL | SKU: SD.DÇ0202
+2026-06-18 06:52:22 [INFO] [7/14] https://yapimaks.com/capa-ucgen-celik-uc-0121-sait-demirci-p8343
+2026-06-18 06:52:22 [INFO] [8343] 'ÇAPA ÜÇGEN ÇELİK ÜÇ 0121 SAİT DEMİRCİ' | 275.00 TL | SKU: SD.ÜÇ0121
+2026-06-18 06:52:24 [INFO] [8/14] https://yapimaks.com/demir-kesme-makasi-yedek-agzi-12mm-sait-demirci-p8409
+2026-06-18 06:52:24 [INFO] [8409] 'DEMİR KESME MAKASI YEDEK AĞZI 12mm - SAİ' | 1465.00 TL | SKU: SD.İMY0012
+2026-06-18 06:52:26 [INFO] [9/14] https://yapimaks.com/iskence-kucuk-tip-20-cm-kti-0020-sait-demirci-p8332
+2026-06-18 06:52:26 [INFO] [8332] 'İŞKENCE KÜÇÜK TİP 20 CM KTİ 0020 SAİT DE' | 550.00 TL | SKU: SD.KTİ 0020
+2026-06-18 06:52:28 [INFO] [10/14] https://yapimaks.com/kurek-demir-sapli-tutmali-sait-demirci-p8414
+2026-06-18 06:52:29 [INFO] [8414] 'KÜREK DEMİR SAPLI TUTMALI SAİT DEMİRCİ' | 375.00 TL | SKU: SD.K4004
+2026-06-18 06:52:31 [INFO] [11/14] https://yapimaks.com/kurek-faryap-sapli-no-6-p8416
+2026-06-18 06:52:31 [INFO] [8416] 'KÜREK FARYAP SAPLI NO.6' | 425.00 TL | SKU: SD.K4006
+2026-06-18 06:52:33 [INFO] [12/14] https://yapimaks.com/kuresel-rekorlu-bahce-muslugu-1-2-p4352
+2026-06-18 06:52:33 [INFO] [4352] 'KÜRESEL REKORLU BAHÇE MUSLUĞU 1/2' | 430.00 TL | SKU: GMS.KBM115
+2026-06-18 06:52:35 [INFO] [13/14] https://yapimaks.com/mudahale-kapagi-four-20x20-p12993
+2026-06-18 06:52:35 [INFO] [12993] 'MÜDAHALE KAPAĞI FOUR 20x20' | 360.00 TL | SKU: FOUR.MDK2020
+2026-06-18 06:52:37 [INFO] [14/14] https://yapimaks.com/soku-demiri-manivela-topuklu-150cm-sait-demirci-tm-7010-p15557
+2026-06-18 06:52:38 [INFO] [15557] 'SÖKÜ DEMİRİ MANİVELA (TOPUKLU) 150CM SAİ' | 2750.00 TL | SKU: SD.TM7010
+2026-06-18 06:52:40 [INFO] Tamamlandi! Toplam 14 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-18.csv
