@@ -1,0 +1,16 @@
+2026-06-19 07:05:59 [INFO] ==================================================
+2026-06-19 07:05:59 [INFO] Yapimaks Scraper basliyor
+2026-06-19 07:05:59 [INFO] ==================================================
+2026-06-19 07:05:59 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-06-19 07:06:00 [INFO] Cookie basariyla alindi.
+2026-06-19 07:06:00 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-06-19 07:06:01 [INFO] Sitemap'ten toplam 7783 urun URL'si bulundu.
+2026-06-19 07:06:01 [INFO] Bugune ait veri yok. Eski veri (2026-06-18.csv) süzülerek bugune aktariliyor...
+2026-06-19 07:06:01 [INFO] Basarili! 7781 urun dunden bugune aktarildi.
+2026-06-19 07:06:01 [INFO] Guncel dosyada hazir olan urun: 7781 | Sifirdan cekilecek (yeni) urun: 2
+2026-06-19 07:06:01 [INFO] 2 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-19.csv
+2026-06-19 07:06:01 [INFO] [1/2] https://yapimaks.com/oluklu-875-1000-seffaf-0-7mm-p15052
+2026-06-19 07:06:01 [INFO] [15052] 'OLUKLU 875*1000*ŞEFFAF 0.7MM' | 200.00 TL | SKU: PVC.OND.01.1000.01
+2026-06-19 07:06:03 [INFO] [2/2] https://yapimaks.com/polikarbon-trp-900x2000-3-mm-seffaf-p15019
+2026-06-19 07:06:04 [INFO] [15019] 'POLİKARBON TRP 900X2000 3 MM ŞEFFAF' | 575.00 TL | SKU: POL.KRB.2000.01
+2026-06-19 07:06:06 [INFO] Tamamlandi! Toplam 2 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-19.csv
