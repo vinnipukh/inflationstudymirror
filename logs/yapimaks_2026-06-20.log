@@ -1,0 +1,28 @@
+2026-06-20 06:20:45 [INFO] ==================================================
+2026-06-20 06:20:45 [INFO] Yapimaks Scraper basliyor
+2026-06-20 06:20:45 [INFO] ==================================================
+2026-06-20 06:20:45 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-06-20 06:20:45 [INFO] Cookie basariyla alindi.
+2026-06-20 06:20:45 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-06-20 06:20:46 [INFO] Sitemap'ten toplam 7780 urun URL'si bulundu.
+2026-06-20 06:20:46 [INFO] Bugune ait veri yok. Eski veri (2026-06-19.csv) süzülerek bugune aktariliyor...
+2026-06-20 06:20:46 [INFO] Basarili! 7772 urun dunden bugune aktarildi.
+2026-06-20 06:20:46 [INFO] Guncel dosyada hazir olan urun: 7772 | Sifirdan cekilecek (yeni) urun: 8
+2026-06-20 06:20:46 [INFO] 8 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-20.csv
+2026-06-20 06:20:46 [INFO] [1/8] https://yapimaks.com/ampul-led-kristal-4w-3000k-sari-ledolet-p15113
+2026-06-20 06:20:46 [INFO] [15113] 'AMPUL LED KRİSTAL 4W 3000K SARI LEDOLET' | 210.00 TL | SKU: LEDOLET.LEDO018
+2026-06-20 06:20:48 [INFO] [2/8] https://yapimaks.com/duracell-pil-cr-2032-lithium-para-pil-1adet-p13983
+2026-06-20 06:20:48 [INFO] [13983] 'DURACELL PİL CR 2032 LITHIUM PARA PİL 1A' | 100.00 TL | SKU: DURACELL.CR2032
+2026-06-20 06:20:50 [INFO] [3/8] https://yapimaks.com/el-feneri-pt-977-sarjli-calisma-p14843
+2026-06-20 06:20:50 [INFO] [14843] 'EL FENERİ PT-977 ŞARJLI ÇALIŞMA' | 530.00 TL | SKU: PANTHER PT-977
+2026-06-20 06:20:52 [INFO] [4/8] https://yapimaks.com/fan-mini-usb-sarjli-su-spreyli-avec-av-f833-p15567
+2026-06-20 06:20:53 [INFO] [15567] 'FAN MİNİ USB ŞARJLI SU SPREYLİ AVEC AV-F' | 360.00 TL | SKU: AVEC.AV-F833
+2026-06-20 06:20:55 [INFO] [5/8] https://yapimaks.com/hesap-makinesi-renkli-avec-h106-p13246
+2026-06-20 06:20:55 [INFO] [13246] 'HESAP MAKİNESİ RENKLİ AVEC H106' | 190.00 TL | SKU: AVEC.AV-H106
+2026-06-20 06:20:57 [INFO] [6/8] https://yapimaks.com/sarj-aleti-adaptor-type-c-20w-pd-ttec-2scp01b-p13251
+2026-06-20 06:20:57 [INFO] [13251] 'ŞARJ ALETİ ADAPTÖR TYPE-C 20W PD TTEC 2S' | 570.00 TL | SKU: TTEC.2SCP01B
+2026-06-20 06:20:59 [INFO] [7/8] https://yapimaks.com/tasyunu-levha-fawori-tr7-5-05cm-60-100-6ad-3-6m2-p14546
+2026-06-20 06:20:59 [INFO] [14546] 'TAŞYÜNÜ LEVHA FAWORİ TR7,5-05CM (60*100*' | 1250.00 TL | SKU: FAWORİ.258
+2026-06-20 06:21:01 [INFO] [8/8] https://yapimaks.com/toshiba-pil-ince-4-lu-lr03-kumanda-p9834
+2026-06-20 06:21:01 [INFO] [9834] "TOSHİBA PİL İNCE 4'LÜ LR03 KUMANDA" | 100.00 TL | SKU: TOSHİBA.LR03
+2026-06-20 06:21:03 [INFO] Tamamlandi! Toplam 8 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-20.csv
