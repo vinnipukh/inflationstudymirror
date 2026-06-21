@@ -1,0 +1,66 @@
+2026-06-21 06:50:47 [INFO] ==================================================
+2026-06-21 06:50:47 [INFO] Yapimaks Scraper basliyor
+2026-06-21 06:50:47 [INFO] ==================================================
+2026-06-21 06:50:47 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-06-21 06:50:48 [INFO] Cookie basariyla alindi.
+2026-06-21 06:50:48 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-06-21 06:50:48 [INFO] Sitemap'ten toplam 7785 urun URL'si bulundu.
+2026-06-21 06:50:48 [INFO] Bugune ait veri yok. Eski veri (2026-06-20.csv) süzülerek bugune aktariliyor...
+2026-06-21 06:50:48 [INFO] Basarili! 7758 urun dunden bugune aktarildi.
+2026-06-21 06:50:48 [INFO] Guncel dosyada hazir olan urun: 7758 | Sifirdan cekilecek (yeni) urun: 27
+2026-06-21 06:50:48 [INFO] 27 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-21.csv
+2026-06-21 06:50:48 [INFO] [1/27] https://yapimaks.com/0-30-trapez-mahya-p4254
+2026-06-21 06:50:49 [INFO] [4254] '0.30 TRAPEZ MAHYA' | 150.00 TL | SKU: GLV.SAC.030.TMHY
+2026-06-21 06:50:51 [INFO] [2/27] https://yapimaks.com/0-40-86-2000-trapez-beyaz-p13718
+2026-06-21 06:50:51 [INFO] [13718] '0.40*86*2000 TRAPEZ (BEYAZ)' | 400.00 TL | SKU: RALL.9002.040.2000
+2026-06-21 06:50:53 [INFO] [3/27] https://yapimaks.com/0-40-86-2000-trapez-gri-p13724
+2026-06-21 06:50:53 [INFO] [13724] '0.40*86*2000 TRAPEZ (GRİ)' | 410.00 TL | SKU: RALL.7016.040.2000
+2026-06-21 06:50:55 [INFO] [4/27] https://yapimaks.com/0-40-86-2500-trapez-gri-p13725
+2026-06-21 06:50:55 [INFO] [13725] '0.40*86*2500 TRAPEZ (GRİ)' | 512.50 TL | SKU: RALL.7016.040.2500
+2026-06-21 06:50:57 [INFO] [5/27] https://yapimaks.com/0-40-86-3000-trapez-gri-p13726
+2026-06-21 06:50:57 [INFO] [13726] '0.40*86*3000 TRAPEZ (GRİ)' | 615.00 TL | SKU: RALL.7016.040.3000
+2026-06-21 06:50:59 [INFO] [6/27] https://yapimaks.com/0-50-86-1250-trapez-bordo-p15008
+2026-06-21 06:50:59 [INFO] [15008] '0.50*86*1250 TRAPEZ (BORDO)' | 280.00 TL | SKU: RALL.3009.050.1250
+2026-06-21 06:51:01 [INFO] [7/27] https://yapimaks.com/0-50-86-2000-trapez-gri-p7714
+2026-06-21 06:51:02 [INFO] [7714] '0.50*86*2000 TRAPEZ (GRİ)' | 470.00 TL | SKU: RALL.7016.050.2000
+2026-06-21 06:51:04 [INFO] [8/27] https://yapimaks.com/0-50-86-3000-trapez-bordo-p7693
+2026-06-21 06:51:04 [INFO] [7693] '0.50*86*3000 TRAPEZ (BORDO)' | 675.00 TL | SKU: RALL.3009.050.3000
+2026-06-21 06:51:06 [INFO] [9/27] https://yapimaks.com/0-50-86-3000-trapez-gri-p7716
+2026-06-21 06:51:06 [INFO] [7716] '0.50*86*3000 TRAPEZ (GRİ)' | 705.00 TL | SKU: RALL.7016.050.3000
+2026-06-21 06:51:08 [INFO] [10/27] https://yapimaks.com/0-50-86-4500-trapez-bordo-p7696
+2026-06-21 06:51:08 [INFO] [7696] '0.50*86*4500 TRAPEZ (BORDO)' | 1012.50 TL | SKU: RALL.3009.050.4500
+2026-06-21 06:51:10 [INFO] [11/27] https://yapimaks.com/0-50-86-5000-trapez-bordo-p7697
+2026-06-21 06:51:10 [INFO] [7697] '0.50*86*5000 TRAPEZ (BORDO)' | 1125.00 TL | SKU: RALL.3009.050.5000
+2026-06-21 06:51:12 [INFO] [12/27] https://yapimaks.com/aspirator-banyo-mutfak-super-sessiz-100-mm-bylion-p15498
+2026-06-21 06:51:13 [INFO] [15498] 'ASPİRATÖR BANYO MUTFAK SÜPER SESSİZ 100 ' | 450.00 TL | SKU: BYLİON.ASP100
+2026-06-21 06:51:15 [INFO] [13/27] https://yapimaks.com/aspirator-banyo-mutfak-super-sessiz-120-mm-bylion-p15499
+2026-06-21 06:51:15 [INFO] [15499] 'ASPİRATÖR BANYO MUTFAK SÜPER SESSİZ 120 ' | 475.00 TL | SKU: BYLİON.ASP120
+2026-06-21 06:51:17 [INFO] [14/27] https://yapimaks.com/drenaj-levhasi-200-2000-40-m2-400-gr-m2-p12073
+2026-06-21 06:51:17 [INFO] [12073] 'DRENAJ LEVHASI 200*2000(40 M2)(400 gr/m2' | 1300.00 TL | SKU: DARKSS.DR400
+2026-06-21 06:51:19 [INFO] [15/27] https://yapimaks.com/fan-mini-usb-sarjli-avec-av-f130-p15584
+2026-06-21 06:51:19 [INFO] [15584] 'FAN MİNİ USB ŞARJLI AVEC AV-F130' | 150.00 TL | SKU: AVEC.AV-F130
+2026-06-21 06:51:21 [INFO] [16/27] https://yapimaks.com/fan-mini-usb-sarjli-avec-av-f137-p15583
+2026-06-21 06:51:21 [INFO] [15583] 'FAN MİNİ USB ŞARJLI AVEC AV-F137' | 120.00 TL | SKU: AVEC.AV-F137
+2026-06-21 06:51:23 [INFO] [17/27] https://yapimaks.com/fan-usb-sarjli-4-in1-masaustu-aski-klipsli-elde-avec-av-f131-p15568
+2026-06-21 06:51:24 [INFO] [15568] 'FAN USB ŞARJLI 4 İN1 (MASAÜSTÜ-ASKI-KLİP' | 350.00 TL | SKU: AVEC.AV-F131
+2026-06-21 06:51:26 [INFO] [18/27] https://yapimaks.com/hesap-makinesi-avec-h101-p15585
+2026-06-21 06:51:26 [INFO] [15585] 'HESAP MAKİNESİ AVEC H101' | 170.00 TL | SKU: AVEC.AV-H101
+2026-06-21 06:51:28 [INFO] [19/27] https://yapimaks.com/hesap-makinesi-avec-h924-p15586
+2026-06-21 06:51:28 [INFO] [15586] 'HESAP MAKİNESİ AVEC H924' | 300.00 TL | SKU: AVEC.AV-H924
+2026-06-21 06:51:30 [INFO] [20/27] https://yapimaks.com/polikarbon-trp-900x2000-3-mm-seffaf-p15019
+2026-06-21 06:51:30 [INFO] [15019] 'POLİKARBON TRP 900X2000 3 MM ŞEFFAF' | 575.00 TL | SKU: POL.KRB.2000.01
+2026-06-21 06:51:32 [INFO] [21/27] https://yapimaks.com/sprey-kontakt-yagsiz-500-ml-borfh-p15528
+2026-06-21 06:51:32 [INFO] [15528] 'SPREY KONTAKT YAĞSIZ 500 ML. BÖRFH' | 140.00 TL | SKU: BÖRFH.B6020737
+2026-06-21 06:51:34 [INFO] [22/27] https://yapimaks.com/sprey-silikon-500-ml-borfh-p15529
+2026-06-21 06:51:34 [INFO] [15529] 'SPREY SİLİKON 500 ML. BÖRFH' | 130.00 TL | SKU: BÖRFH.B6020768
+2026-06-21 06:51:36 [INFO] [23/27] https://yapimaks.com/su-terazisi-3-lu-aluminyum-9-16-24-bts-03049-p15538
+2026-06-21 06:51:37 [INFO] [15538] 'SU TERAZİSİ 3 LÜ ALÜMİNYUM 9-16-24" BTS ' | 850.00 TL | SKU: BTS.03049
+2026-06-21 06:51:39 [INFO] [24/27] https://yapimaks.com/su-terazisi-800-mm-bts-03140-p15539
+2026-06-21 06:51:39 [INFO] [15539] 'SU TERAZİSİ 800 MM BTS 03140' | 320.00 TL | SKU: BTS.03140
+2026-06-21 06:51:41 [INFO] [25/27] https://yapimaks.com/tayrot-somunu-17-75-p9397
+2026-06-21 06:51:41 [INFO] [9397] 'TAYROT SOMUNU 17*75' | 50.00 TL | SKU: TAYROT.004
+2026-06-21 06:51:43 [INFO] [26/27] https://yapimaks.com/zimpara-rulo-sunger-green-gold-p-180-kum-atlas-p926
+2026-06-21 06:51:43 [INFO] [926] 'ZIMPARA RULO SÜNGER GREEN/GOLD P-180 KUM' | 90.00 TL | SKU: ATLAS.006.78072754043
+2026-06-21 06:51:45 [INFO] [27/27] https://yapimaks.com/zimpara-sunger-kalin-120-kum-atlas-p15591
+2026-06-21 06:51:45 [INFO] [15591] 'ZIMPARA SÜNGER KALIN 120 KUM -ATLAS' | 50.00 TL | SKU: ATLAS.00672753577
+2026-06-21 06:51:47 [INFO] Tamamlandi! Toplam 27 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-21.csv
