@@ -1,0 +1,46 @@
+2026-06-22 07:24:04 [INFO] ==================================================
+2026-06-22 07:24:04 [INFO] Yapimaks Scraper basliyor
+2026-06-22 07:24:04 [INFO] ==================================================
+2026-06-22 07:24:04 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-06-22 07:24:04 [INFO] Cookie basariyla alindi.
+2026-06-22 07:24:04 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-06-22 07:24:05 [INFO] Sitemap'ten toplam 7787 urun URL'si bulundu.
+2026-06-22 07:24:05 [INFO] Bugune ait veri yok. Eski veri (2026-06-21.csv) süzülerek bugune aktariliyor...
+2026-06-22 07:24:05 [INFO] Basarili! 7770 urun dunden bugune aktarildi.
+2026-06-22 07:24:05 [INFO] Guncel dosyada hazir olan urun: 7770 | Sifirdan cekilecek (yeni) urun: 17
+2026-06-22 07:24:05 [INFO] 17 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-22.csv
+2026-06-22 07:24:05 [INFO] [1/17] https://yapimaks.com/faras-buyuk-sapli-hazneli-supurgeli-p15494
+2026-06-22 07:24:05 [INFO] [15494] 'FARAŞ BÜYÜK SAPLI HAZNELİ SÜPÜRGELİ' | 125.00 TL | SKU: DOĞUŞ.25023
+2026-06-22 07:24:07 [INFO] [2/17] https://yapimaks.com/kurek-insaat-celik-firat-1700-p10187
+2026-06-22 07:24:07 [INFO] [10187] 'KÜREK İNŞAAT ÇELİK FIRAT-1700' | 215.00 TL | SKU: KESKİN.150.1700
+2026-06-22 07:24:09 [INFO] [3/17] https://yapimaks.com/kurek-insaat-demir-sait-demirci-p8412
+2026-06-22 07:24:10 [INFO] [8412] 'KÜREK İNŞAAT DEMİR SAİT DEMİRCİ' | 205.00 TL | SKU: SD.K4001
+2026-06-22 07:24:12 [INFO] [4/17] https://yapimaks.com/mentese-bicagi-tas-22-mm-p15526
+2026-06-22 07:24:12 [INFO] [15526] 'MENTEŞE BIÇAĞI TAS 22 MM' | 120.00 TL | SKU: ERATOOL.ERA40107
+2026-06-22 07:24:14 [INFO] [5/17] https://yapimaks.com/mentese-bicagi-tas-40-mm-p15548
+2026-06-22 07:24:14 [INFO] [15548] 'MENTEŞE BIÇAĞI TAS 40 MM' | 200.00 TL | SKU: ERATOOL.ERA401115
+2026-06-22 07:24:16 [INFO] [6/17] https://yapimaks.com/puntali-tel-120cm-12x12-0-9-mm-25-1-mt-p2722
+2026-06-22 07:24:16 [INFO] [2722] 'PUNTALI TEL 120CM 12X12 0,9 MM (25) 1-MT' | 125.00 TL | SKU: EBAX.011
+2026-06-22 07:24:18 [INFO] [7/17] https://yapimaks.com/puntali-tel-150cm-12x12-0-9-mm-25-1-mt-p2723
+2026-06-22 07:24:18 [INFO] [2723] 'PUNTALI TEL 150CM 12X12 0,9 MM (25) 1-MT' | 150.00 TL | SKU: EBAX.012
+2026-06-22 07:24:20 [INFO] [8/17] https://yapimaks.com/rulo-dekor-silteks-20cm-p15497
+2026-06-22 07:24:21 [INFO] [15497] 'RULO DEKOR SİLTEKS 20CM' | 245.00 TL | SKU: DEKOR.1010
+2026-06-22 07:24:23 [INFO] [9/17] https://yapimaks.com/silte-4mm-yapiskanli-100-cm-proco-1m2-25-p11048
+2026-06-22 07:24:23 [INFO] [11048] 'ŞİLTE 4MM YAPIŞKANLI 100 CM PROCO 1M2 (2' | 105.00 TL | SKU: PROCO.4MM.Y
+2026-06-22 07:24:25 [INFO] [10/17] https://yapimaks.com/sinek-teli-080cm-ebax-rulo-30mt-1-mt-p2725
+2026-06-22 07:24:25 [INFO] [2725] 'SİNEK TELİ 080CM EBAX (RULO-30MT) 1 MT' | 75.00 TL | SKU: EBAX.014
+2026-06-22 07:24:27 [INFO] [11/17] https://yapimaks.com/sinek-teli-100cm-std-rulo-30mt-1-mt-p2720
+2026-06-22 07:24:27 [INFO] [2720] 'SİNEK TELİ 100CM STD (RULO-30MT) 1 MT' | 75.00 TL | SKU: EBAX.009
+2026-06-22 07:24:29 [INFO] [12/17] https://yapimaks.com/sinek-teli-120cm-ebax-rulo-30mt-1-mt-p2724
+2026-06-22 07:24:29 [INFO] [2724] 'SİNEK TELİ 120CM EBAX (RULO-30MT) 1 MT' | 100.00 TL | SKU: EBAX.013
+2026-06-22 07:24:31 [INFO] [13/17] https://yapimaks.com/trajli-demir-kapi-kilit-elektrikli-14cm-barel-5cm-p6664
+2026-06-22 07:24:32 [INFO] [6664] 'TRAJLI DEMİR KAPI KİLİT ELEKTRİKLİ 14CM ' | 1150.00 TL | SKU: YT.39042873
+2026-06-22 07:24:34 [INFO] [14/17] https://yapimaks.com/trajli-demir-kapi-kilit-elektrikli-14cm-barel-7cm-ym611u-p13994
+2026-06-22 07:24:34 [INFO] [13994] 'TRAJLI DEMİR KAPI KİLİT ELEKTRİKLİ 14CM ' | 1250.00 TL | SKU: YUMA.YM-611-U
+2026-06-22 07:24:36 [INFO] [15/17] https://yapimaks.com/zimpara-rulo-sunger-gold-120-kum-atlas-1-m-p920
+2026-06-22 07:24:36 [INFO] [920] 'ZIMPARA RULO SÜNGER GOLD 120 KUM ATLAS 1' | 90.00 TL | SKU: ATLAS.006.001.08.04
+2026-06-22 07:24:38 [INFO] [16/17] https://yapimaks.com/zimpara-sunger-kalin-120-kum-atlas-1-ad-p15591
+2026-06-22 07:24:38 [INFO] [15591] 'ZIMPARA SÜNGER KALIN 120 KUM -ATLAS 1 AD' | 50.00 TL | SKU: ATLAS.00672753577
+2026-06-22 07:24:40 [INFO] [17/17] https://yapimaks.com/zimpara-sunger-kalin-60-kum-atlas-1-ad-p15590
+2026-06-22 07:24:40 [INFO] [15590] 'ZIMPARA SÜNGER KALIN 60 KUM - ATLAS 1 AD' | 50.00 TL | SKU: ATLAS.006.72740857
+2026-06-22 07:24:42 [INFO] Tamamlandi! Toplam 17 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-22.csv
