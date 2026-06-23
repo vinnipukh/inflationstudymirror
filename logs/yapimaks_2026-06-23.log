@@ -1,0 +1,40 @@
+2026-06-23 06:06:27 [INFO] ==================================================
+2026-06-23 06:06:27 [INFO] Yapimaks Scraper basliyor
+2026-06-23 06:06:27 [INFO] ==================================================
+2026-06-23 06:06:27 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-06-23 06:06:28 [INFO] Cookie basariyla alindi.
+2026-06-23 06:06:28 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-06-23 06:06:28 [INFO] Sitemap'ten toplam 7791 urun URL'si bulundu.
+2026-06-23 06:06:28 [INFO] Bugune ait veri yok. Eski veri (2026-06-22.csv) süzülerek bugune aktariliyor...
+2026-06-23 06:06:28 [INFO] Basarili! 7777 urun dunden bugune aktarildi.
+2026-06-23 06:06:28 [INFO] Guncel dosyada hazir olan urun: 7777 | Sifirdan cekilecek (yeni) urun: 14
+2026-06-23 06:06:28 [INFO] 14 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-23.csv
+2026-06-23 06:06:28 [INFO] [1/14] https://yapimaks.com/20-1-2-batarya-baglantisi-ciftli-federli-kalde-p15420
+2026-06-23 06:06:29 [INFO] [15420] '20 1/2 BATARYA BAĞLANTISI ÇİFTLİ FEDERLİ' | 125.00 TL | SKU: KALDE.3222BAT200B05
+2026-06-23 06:06:31 [INFO] [2/14] https://yapimaks.com/20-kuresel-vana-mini-pprc-kalde-p15421
+2026-06-23 06:06:31 [INFO] [15421] '20 KÜRESEL VANA MİNİ PPRC KALDE' | 65.00 TL | SKU: KALDE.3242VLM200000
+2026-06-23 06:06:33 [INFO] [3/14] https://yapimaks.com/bel-kurek-celik-firat-1721-p11513
+2026-06-23 06:06:33 [INFO] [11513] 'BEL KÜREK ÇELiK FIRAT-1721' | 375.00 TL | SKU: KESKİN.150.1721
+2026-06-23 06:06:35 [INFO] [4/14] https://yapimaks.com/camasir-taharet-musluk-dual-complement-cift-cikis-gms-p15417
+2026-06-23 06:06:35 [INFO] [15417] 'ÇAMAŞIR TAHARET MUSLUK DUAL COMPLEMENT Ç' | 460.00 TL | SKU: GMS.MK140
+2026-06-23 06:06:37 [INFO] [5/14] https://yapimaks.com/cim-bicme-benzinli-sanzimanli-lms51-factor-196-cc-p15543
+2026-06-23 06:06:37 [INFO] [15543] 'ÇİM BİÇME BENZİNLİ ŞANZIMANLI LMS51 FACT' | 19500.00 TL | SKU: FACTOR.LMS51
+2026-06-23 06:06:39 [INFO] [6/14] https://yapimaks.com/demir-testeresi-15cm-gonyeli-p15081
+2026-06-23 06:06:40 [INFO] [15081] 'DEMİR TESTERESİ 15CM GÖNYELİ' | 320.00 TL | SKU: WERT.2535
+2026-06-23 06:06:42 [INFO] [7/14] https://yapimaks.com/drenaj-kanali-kapagi-080x65x1000-p9831
+2026-06-23 06:06:42 [INFO] [9831] 'DRENAJ KANALI KAPAĞI  080X65X1000' | 95.00 TL | SKU: TORUN.DK.1006-2
+2026-06-23 06:06:44 [INFO] [8/14] https://yapimaks.com/kuresel-rekorlu-bahce-muslugu-uzun-kol-1-2-gms-p15415
+2026-06-23 06:06:44 [INFO] [15415] 'KÜRESEL REKORLU BAHÇE MUSLUĞU UZUN KOL 1' | 340.00 TL | SKU: GMS.KBM115C
+2026-06-23 06:06:46 [INFO] [9/14] https://yapimaks.com/sarj-kablo-type-c-type-c-1-2m-100w-siyah-s-cc100a17-p15569
+2026-06-23 06:06:46 [INFO] [15569] 'ŞARJ KABLO TYPE C-TYPE C 1.2M 100W SİYAH' | 265.00 TL | SKU: JOYROOM.S-CC100A17
+2026-06-23 06:06:48 [INFO] [10/14] https://yapimaks.com/sarj-kablo-type-c-type-c-1m-60w-beyaz-s-a9-p15570
+2026-06-23 06:06:48 [INFO] [15570] 'ŞARJ KABLO TYPE C-TYPE C 1M 60W BEYAZ S-' | 140.00 TL | SKU: JOYROOM.S-A9-B
+2026-06-23 06:06:51 [INFO] [11/14] https://yapimaks.com/sarj-kablo-type-c-type-c-1m-60w-siyah-s-a9-p15571
+2026-06-23 06:06:51 [INFO] [15571] 'ŞARJ KABLO TYPE C-TYPE C 1M 60W SİYAH S-' | 140.00 TL | SKU: JOYROOM.S-A9-S
+2026-06-23 06:06:53 [INFO] [12/14] https://yapimaks.com/spiral-hortum-robot-dus-kisa-80-cm-orgulu-gms-p15414
+2026-06-23 06:06:53 [INFO] [15414] 'SPİRAL HORTUM ROBOT DUŞ KISA 80 CM ÖRGÜL' | 145.00 TL | SKU: GMS.ST048
+2026-06-23 06:06:55 [INFO] [13/14] https://yapimaks.com/tirpan-tel-firca-6-150mm-factor-p15541
+2026-06-23 06:06:55 [INFO] [15541] 'TIRPAN TEL FIRÇA 6" 150MM FACTOR' | 550.00 TL | SKU: FACTOR.FCGA4160
+2026-06-23 06:06:57 [INFO] [14/14] https://yapimaks.com/tirpan-testeresi-40-dis-255x25-4x1-3-mm-factor-p15542
+2026-06-23 06:06:57 [INFO] [15542] 'TIRPAN TESTERESİ 40 DİŞ 255X25,4X1,3 MM ' | 610.00 TL | SKU: FACTOR.FCGA4000
+2026-06-23 06:06:59 [INFO] Tamamlandi! Toplam 14 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-23.csv
