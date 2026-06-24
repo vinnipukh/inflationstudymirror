@@ -1,0 +1,76 @@
+2026-06-24 06:06:21 [INFO] ==================================================
+2026-06-24 06:06:21 [INFO] Yapimaks Scraper basliyor
+2026-06-24 06:06:21 [INFO] ==================================================
+2026-06-24 06:06:21 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-06-24 06:06:22 [INFO] Cookie basariyla alindi.
+2026-06-24 06:06:22 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-06-24 06:06:23 [INFO] Sitemap'ten toplam 7817 urun URL'si bulundu.
+2026-06-24 06:06:23 [INFO] Bugune ait veri yok. Eski veri (2026-06-23.csv) süzülerek bugune aktariliyor...
+2026-06-24 06:06:23 [INFO] Basarili! 7785 urun dunden bugune aktarildi.
+2026-06-24 06:06:23 [INFO] Guncel dosyada hazir olan urun: 7785 | Sifirdan cekilecek (yeni) urun: 32
+2026-06-24 06:06:23 [INFO] 32 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-24.csv
+2026-06-24 06:06:23 [INFO] [1/32] https://yapimaks.com/ahsap-koruyucu-vernikli-ceviz-2-2-lt-kardelen-p10897
+2026-06-24 06:06:23 [INFO] [10897] 'AHŞAP KORUYUCU VERNİKLİ CEVİZ 2.2 LT KAR' | 775.00 TL | SKU: KARDELEN.0606236.2
+2026-06-24 06:06:25 [INFO] [2/32] https://yapimaks.com/asma-tavan-karopan-beyaz-duz-60-60-8mm-1-ad-p772
+2026-06-24 06:06:25 [INFO] [772] 'ASMA TAVAN KAROPAN BEYAZ DÜZ 60*60*8MM 1' | 60.00 TL | SKU: ASMAT.002
+2026-06-24 06:06:27 [INFO] [3/32] https://yapimaks.com/bahce-lambasi-solar-led-pt-b213-panther-p15565
+2026-06-24 06:06:27 [INFO] [15565] 'BAHÇE LAMBASI SOLAR LED PT-B213 PANTHER' | 435.00 TL | SKU: PANTHER.PT-B213
+2026-06-24 06:06:29 [INFO] [4/32] https://yapimaks.com/boya-sokucu-400ml-mxs-p15527
+2026-06-24 06:06:30 [INFO] [15527] 'BOYA SÖKÜCÜ 400ML MXS' | 250.00 TL | SKU: MXS.187000
+2026-06-24 06:06:32 [INFO] [5/32] https://yapimaks.com/cim-bicme-lms-51-benzinli-sanzimanli-factor-196-cc-p15543
+2026-06-24 06:06:32 [INFO] [15543] 'ÇİM BİÇME LMS-51 BENZİNLİ ŞANZIMANLI FAC' | 19500.00 TL | SKU: FACTOR.LMS51
+2026-06-24 06:06:34 [INFO] [6/32] https://yapimaks.com/cim-bicme-ums40-benzinli-sanzimanli-factor-130-cc-p14936
+2026-06-24 06:06:34 [INFO] [14936] 'ÇİM BİÇME UMS40 BENZİNLİ ŞANZIMANLI FACT' | 11250.00 TL | SKU: FACTOR.UMS40
+2026-06-24 06:06:36 [INFO] [7/32] https://yapimaks.com/cim-bicme-ums46-benzinli-sanzimanli-factor-149-cc-p14937
+2026-06-24 06:06:36 [INFO] [14937] 'ÇİM BİÇME UMS46 BENZİNLİ ŞANZIMANLI FACT' | 14000.00 TL | SKU: FACTOR.UMS46
+2026-06-24 06:06:38 [INFO] [8/32] https://yapimaks.com/dogalgaz-cam-menfezi-siyah-180-mm-p15500
+2026-06-24 06:06:39 [INFO] [15500] 'DOĞALGAZ CAM MENFEZİ SİYAH 180 MM' | 45.00 TL | SKU: MADE.1101
+2026-06-24 06:06:41 [INFO] [9/32] https://yapimaks.com/el-feneri-pt-6893-usb-sarjli-anahtarlikli-24x5x25-cm-p15564
+2026-06-24 06:06:41 [INFO] [15564] 'EL FENERİ PT-6893 USB ŞARJLI ANAHTARLIKL' | 110.00 TL | SKU: PANTHER.PT-6893
+2026-06-24 06:06:43 [INFO] [10/32] https://yapimaks.com/el-feneri-usb-sarjli-solar-3w-pt-2206-p15576
+2026-06-24 06:06:43 [INFO] [15576] 'EL FENERİ USB ŞARJLI SOLAR 3W PT-2206' | 560.00 TL | SKU: PANTHER.PT-2206
+2026-06-24 06:06:45 [INFO] [11/32] https://yapimaks.com/firca-kestirme-lux-no-4-kardelen-p10903
+2026-06-24 06:06:45 [INFO] [10903] 'FIRÇA KESTİRME LÜX NO:4 KARDELEN' | 75.00 TL | SKU: KARDELEN.0049
+2026-06-24 06:06:47 [INFO] [12/32] https://yapimaks.com/iskele-baglama-cakma-dubeli-m10x12x40-1-ad-p15515
+2026-06-24 06:06:48 [INFO] [15515] 'İSKELE BAĞLAMA ÇAKMA DÜBELİ M10X12X40 1 ' | 9.00 TL | SKU: KOPS.STKKEPS20003
+2026-06-24 06:06:50 [INFO] [13/32] https://yapimaks.com/iskele-baglama-cakma-dubeli-m16x20x65-1-ad-p15516
+2026-06-24 06:06:50 [INFO] [15516] 'İSKELE BAĞLAMA ÇAKMA DÜBELİ M16X20X65 1 ' | 28.00 TL | SKU: KOPS.STKKEPS20005
+2026-06-24 06:06:52 [INFO] [14/32] https://yapimaks.com/iskele-baglama-cakma-dubeli-m6x8x25-1-ad-p15514
+2026-06-24 06:06:52 [INFO] [15514] 'İSKELE BAĞLAMA ÇAKMA DÜBELİ M6X8X25 1 AD' | 6.00 TL | SKU: KOPS.STKKEPS20001
+2026-06-24 06:06:54 [INFO] [15/32] https://yapimaks.com/izole-astar-konsantre-2-5-lt-kardelen-p5024
+2026-06-24 06:06:54 [INFO] [5024] 'İZOLE ASTAR(KONSANTRE) 2.5 LT KARDELEN' | 375.00 TL | SKU: KARDELEN.023
+2026-06-24 06:06:56 [INFO] [16/32] https://yapimaks.com/kafa-lambasi-pt-5044-pilli-200lm-p15566
+2026-06-24 06:06:57 [INFO] [15566] 'KAFA LAMBASI PT-5044 PİLLİ 200LM' | 100.00 TL | SKU: PANTHER.PT-5044
+2026-06-24 06:06:59 [INFO] [17/32] https://yapimaks.com/kafa-lambasi-pt-5520-usb-sarjli-3w-led-500lm-p15579
+2026-06-24 06:06:59 [INFO] [15579] 'KAFA LAMBASI PT-5520 USB ŞARJLI 3W LED 5' | 330.00 TL | SKU: PANTHER.PT-5520
+2026-06-24 06:07:01 [INFO] [18/32] https://yapimaks.com/kamp-lambasi-pt-358-usb-sarjli-3w-smd-led-300lm-p15578
+2026-06-24 06:07:01 [INFO] [15578] 'KAMP LAMBASI PT-358 USB ŞARJLI 3W SMD LE' | 140.00 TL | SKU: PANTHER PT-358
+2026-06-24 06:07:03 [INFO] [19/32] https://yapimaks.com/kivircik-rulo-paspas-100cm-14-mm-gri-p7606
+2026-06-24 06:07:03 [INFO] [7606] 'KIVIRCIK RULO PASPAS 100CM 14 MM (GRİ)' | 349.00 TL | SKU: PSP.100.G.14
+2026-06-24 06:07:05 [INFO] [20/32] https://yapimaks.com/promax-rapid-end-selulozik-boya-rall-7016-antrasit-gri-15kg-p5008
+2026-06-24 06:07:06 [INFO] [5008] 'PROMAX RAPİD END SELÜLOZİK BOYA RALL 701' | 3250.00 TL | SKU: KARDELEN.007
+2026-06-24 06:07:08 [INFO] [21/32] https://yapimaks.com/promax-rapid-end-selulozik-boya-rall-9005-siyah-3kg-p14166
+2026-06-24 06:07:08 [INFO] [14166] 'PROMAX RAPİD END SELÜLOZİK BOYA RALL 900' | 850.00 TL | SKU: KARDELEN.2109261
+2026-06-24 06:07:10 [INFO] [22/32] https://yapimaks.com/rapid-end-astar-promax-kirmizi-selulozik-antipas-18kg-p5029
+2026-06-24 06:07:10 [INFO] [5029] 'RAPİD END ASTAR PROMAX KIRMIZI SELÜLOZİK' | 2000.00 TL | SKU: KARDELEN.028
+2026-06-24 06:07:12 [INFO] [23/32] https://yapimaks.com/solar-led-bahce-lambasi-sari-isik-10-lu-set-pt-b110-p15577
+2026-06-24 06:07:12 [INFO] [15577] 'SOLAR LED BAHÇE LAMBASI SARI IŞIK 10 LU ' | 1025.00 TL | SKU: PANTHER.B110
+2026-06-24 06:07:14 [INFO] [24/32] https://yapimaks.com/tiner-sentetik-flora-2-1-1000ml-p12929
+2026-06-24 06:07:15 [INFO] [12929] 'TİNER SENTETİK FLORA 2/1 (1000ML)' | 180.00 TL | SKU: KARDELEN.2109240
+2026-06-24 06:07:17 [INFO] [25/32] https://yapimaks.com/tiner-sentetik-flora-3-1-1925ml-p10625
+2026-06-24 06:07:17 [INFO] [10625] 'TİNER SENTETİK FLORA 3/1 (1925ML)' | 325.00 TL | SKU: KARDELEN.041
+2026-06-24 06:07:19 [INFO] [26/32] https://yapimaks.com/tornavida-yildiz-4x150-mega-p15521
+2026-06-24 06:07:19 [INFO] [15521] 'TORNAVİDA YILDIZ 4X150 MEGA' | 50.00 TL | SKU: MEGA.MG1124150
+2026-06-24 06:07:21 [INFO] [27/32] https://yapimaks.com/zemin-koruma-ortusu-kalin-10-m2-kardelen-p12176
+2026-06-24 06:07:21 [INFO] [12176] 'ZEMİN/KORUMA ÖRTÜSÜ KALIN 10 M2 KARDELEN' | 65.00 TL | SKU: KARDELEN.0060
+2026-06-24 06:07:23 [INFO] [28/32] https://yapimaks.com/zemin-koruma-ortusu-kalin-20-m2-kardelen-p12177
+2026-06-24 06:07:24 [INFO] [12177] 'ZEMİN/KORUMA ÖRTÜSÜ KALIN 20 M2 KARDELEN' | 90.00 TL | SKU: KARDELEN.0061
+2026-06-24 06:07:26 [INFO] [29/32] https://yapimaks.com/zemin-koruma-ortusu-kalin-32-m2-kardelen-p8150
+2026-06-24 06:07:26 [INFO] [8150] 'ZEMİN/KORUMA ÖRTÜSÜ KALIN 32 M2 KARDELEN' | 120.00 TL | SKU: KARDELEN.0062
+2026-06-24 06:07:28 [INFO] [30/32] https://yapimaks.com/zemin-koruma-ortusu-kalin-50-m2-kardelen-p11427
+2026-06-24 06:07:28 [INFO] [11427] 'ZEMİN/KORUMA ÖRTÜSÜ KALIN 50 M2 KARDELEN' | 175.00 TL | SKU: KARDELEN.0063
+2026-06-24 06:07:30 [INFO] [31/32] https://yapimaks.com/zemin-koruma-ortusu-pratik-20-m2-kardelen-p14612
+2026-06-24 06:07:30 [INFO] [14612] 'ZEMİN/KORUMA ÖRTÜSÜ PRATİK 20 M2 KARDELE' | 57.50 TL | SKU: KARDELEN.0065
+2026-06-24 06:07:32 [INFO] [32/32] https://yapimaks.com/zemin-koruma-ortusu-pratik-32-m2-kardelen-p14393
+2026-06-24 06:07:33 [INFO] [14393] 'ZEMİN/KORUMA ÖRTÜSÜ PRATİK 32 M2 KARDELE' | 72.50 TL | SKU: KARDELEN.0066
+2026-06-24 06:07:35 [INFO] Tamamlandi! Toplam 32 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-24.csv
