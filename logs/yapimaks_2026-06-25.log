@@ -1,0 +1,60 @@
+2026-06-25 06:06:23 [INFO] ==================================================
+2026-06-25 06:06:23 [INFO] Yapimaks Scraper basliyor
+2026-06-25 06:06:23 [INFO] ==================================================
+2026-06-25 06:06:23 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-06-25 06:06:23 [INFO] Cookie basariyla alindi.
+2026-06-25 06:06:23 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-06-25 06:06:24 [INFO] Sitemap'ten toplam 7829 urun URL'si bulundu.
+2026-06-25 06:06:24 [INFO] Bugune ait veri yok. Eski veri (2026-06-24.csv) süzülerek bugune aktariliyor...
+2026-06-25 06:06:24 [INFO] Basarili! 7805 urun dunden bugune aktarildi.
+2026-06-25 06:06:24 [INFO] Guncel dosyada hazir olan urun: 7805 | Sifirdan cekilecek (yeni) urun: 24
+2026-06-25 06:06:24 [INFO] 24 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-25.csv
+2026-06-25 06:06:24 [INFO] [1/24] https://yapimaks.com/corex-falcon-kirmizi-alcipan-120-250-3m2-p1868
+2026-06-25 06:06:24 [INFO] [1868] 'COREX FALCON KIRMIZI ALÇIPAN -120*250 (3' | 350.00 TL | SKU: DALSAN.203
+2026-06-25 06:06:26 [INFO] [2/24] https://yapimaks.com/dus-spiral-hortumu-narin-orgulu-gms-175-cm-p15416
+2026-06-25 06:06:26 [INFO] [15416] 'DUŞ SPİRAL HORTUMU NARİN ÖRGÜLÜ GMS 175 ' | 165.00 TL | SKU: GMS.YD052
+2026-06-25 06:06:28 [INFO] [3/24] https://yapimaks.com/dus-spiral-hortumu-orgulu-gms-175-cm-p11557
+2026-06-25 06:06:29 [INFO] [11557] 'DUŞ SPİRAL HORTUMU ÖRGÜLÜ GMS 175 CM' | 250.00 TL | SKU: GMS.YD029
+2026-06-25 06:06:31 [INFO] [4/24] https://yapimaks.com/dus-spiral-hortumu-orgulu-siyah-gms-150-cm-p15413
+2026-06-25 06:06:31 [INFO] [15413] 'DUŞ SPİRAL HORTUMU ÖRGÜLÜ SİYAH GMS 150 ' | 280.00 TL | SKU: GMS.YD029.S
+2026-06-25 06:06:33 [INFO] [5/24] https://yapimaks.com/kopuk-tabancasi-krom-kaplama-1407-rodex-p15468
+2026-06-25 06:06:33 [INFO] [15468] 'KÖPÜK TABANCASI KROM KAPLAMA 1407 RODEX' | 425.00 TL | SKU: RODEX.RHT1407100001
+2026-06-25 06:06:35 [INFO] [6/24] https://yapimaks.com/lokma-ve-bits-takimi-32-parca-1-4-23078-proxxon-p7599
+2026-06-25 06:06:35 [INFO] [7599] 'LOKMA VE BİTS TAKIMI 32 PARÇA 1/4" 23078' | 3550.00 TL | SKU: PROXXON.23078
+2026-06-25 06:06:37 [INFO] [7/24] https://yapimaks.com/mengene-100mm-doner-tablali-partner-21153-p15534
+2026-06-25 06:06:37 [INFO] [15534] 'MENGENE 100MM DÖNER TABLALI PARTNER 2115' | 1750.00 TL | SKU: PARTNER.PRT21153
+2026-06-25 06:06:39 [INFO] [8/24] https://yapimaks.com/mengene-boru-1-10-50-mm-01451-partner-p7412
+2026-06-25 06:06:39 [INFO] [7412] 'MENGENE BORU 1" 10-50 MM 01451 PARTNER' | 750.00 TL | SKU: PARTNER.PT01451
+2026-06-25 06:06:41 [INFO] [9/24] https://yapimaks.com/mengene-boru-2-10-90-mm-01452-partner-p15537
+2026-06-25 06:06:42 [INFO] [15537] 'MENGENE BORU 2" 10-90 MM 01452 PARTNER' | 1220.00 TL | SKU: PARTNER.PRT01452
+2026-06-25 06:06:44 [INFO] [10/24] https://yapimaks.com/mengene-boru-3-15-114-mm-01453-partner-p15536
+2026-06-25 06:06:44 [INFO] [15536] 'MENGENE BORU 3" 15-114 MM 01453 PARTNER' | 2100.00 TL | SKU: PARTNER.PRT01453
+2026-06-25 06:06:46 [INFO] [11/24] https://yapimaks.com/metre-serit-3mt-16mm-cift-stoplu-rodex-p15471
+2026-06-25 06:06:46 [INFO] [15471] 'METRE ŞERİT 3MT 16MM ÇİFT STOPLU RODEX' | 80.00 TL | SKU: RODEX.RHT0901191316
+2026-06-25 06:06:48 [INFO] [12/24] https://yapimaks.com/metre-serit-5mt-19mm-cift-stoplu-rodex-p15470
+2026-06-25 06:06:48 [INFO] [15470] 'METRE ŞERİT 5MT 19MM ÇİFT STOPLU RODEX' | 105.00 TL | SKU: RODEX.RHT0901191519
+2026-06-25 06:06:50 [INFO] [13/24] https://yapimaks.com/metre-serit-5mt-25mm-mtp0525-rodex-p15469
+2026-06-25 06:06:50 [INFO] [15469] 'METRE ŞERİT 5MT 25MM MTP0525 RODEX' | 110.00 TL | SKU: RODEX.RHT0901131525
+2026-06-25 06:06:52 [INFO] [14/24] https://yapimaks.com/misina-basligi-kolay-sarim-yeni-tip-rty145-p15511
+2026-06-25 06:06:52 [INFO] [15511] 'MİSİNA BAŞLIĞI KOLAY SARIM YENİ TİP RTY1' | 350.00 TL | SKU: RTRMAX.RTY145
+2026-06-25 06:06:54 [INFO] [15/24] https://yapimaks.com/sarj-aleti-adaptor-type-c-giris-siyah-20w-jr-tcf20eu-p15574
+2026-06-25 06:06:55 [INFO] [15574] 'ŞARJ ALETİ ADAPTÖR TYPE-C GİRİŞ SİYAH 20' | 555.00 TL | SKU: JOYROOM.JR-TCF20EU-S
+2026-06-25 06:06:57 [INFO] [16/24] https://yapimaks.com/sarj-aleti-kablo-1m-type-c-type-c-beyaz-jr-tcf20eu-p15572
+2026-06-25 06:06:57 [INFO] [15572] 'ŞARJ ALETİ + KABLO 1M TYPE-C - TYPE-C BE' | 650.00 TL | SKU: JOYROOM.JR-TCF20EU-KB
+2026-06-25 06:06:59 [INFO] [17/24] https://yapimaks.com/sarj-aleti-usb-a-c-dual-port-20w-beyaz-jr-tcf21eu-p15573
+2026-06-25 06:06:59 [INFO] [15573] 'ŞARJ ALETİ USB (A+C) DUAL PORT 20W  BEYA' | 710.00 TL | SKU: JOYROOM.JR-TCF21EU-B
+2026-06-25 06:07:01 [INFO] [18/24] https://yapimaks.com/sarj-kablo-silikon-type-c-type-c-2m-100w-siyah-s-a29-p15575
+2026-06-25 06:07:01 [INFO] [15575] 'ŞARJ KABLO SİLİKON TYPE C-TYPE C 2M 100W' | 350.00 TL | SKU: JOYROOM.S-A29-S
+2026-06-25 06:07:03 [INFO] [19/24] https://yapimaks.com/su-terazisi-mini-sum33-rodex-8-5x2x4-5-cm-p15473
+2026-06-25 06:07:03 [INFO] [15473] 'SU TERAZİSİ MİNİ SUM33 RODEX 8.5X2X4.5 C' | 90.00 TL | SKU: RODEX.RHT0904130001
+2026-06-25 06:07:05 [INFO] [20/24] https://yapimaks.com/tirpan-sirt-2t-3-hp-factor-mbg650-p15540
+2026-06-25 06:07:05 [INFO] [15540] 'TIRPAN SIRT 2T 3 HP FACTOR MBG650' | 8200.00 TL | SKU: FACTOR.MBG650-3HP
+2026-06-25 06:07:07 [INFO] [21/24] https://yapimaks.com/tirpan-sirt-rtm9638-benzinli-52cc-1-9hp-rtrmax-p8008
+2026-06-25 06:07:08 [INFO] [8008] 'TIRPAN SIRT RTM9638 BENZİNLİ 52CC/1.9HP ' | 8750.00 TL | SKU: RTRMAX.RTM9638
+2026-06-25 06:07:10 [INFO] [22/24] https://yapimaks.com/tirpan-yan-akulu-2x-li-ion-150mm-10000rpm-20v-1-5ah-rodex-9022-p15545
+2026-06-25 06:07:10 [INFO] [15545] 'TIRPAN YAN AKÜLÜ 2X LI-ION 150MM 10000RP' | 2850.00 TL | SKU: RODEX.RDX9022
+2026-06-25 06:07:12 [INFO] [23/24] https://yapimaks.com/tirpan-yan-akulu-2x4-0-ah-liion-230-mm-8400rpm-20v-rodex-9023-p15544
+2026-06-25 06:07:12 [INFO] [15544] 'TIRPAN YAN AKÜLÜ 2X4.0 AH LIION 230 MM 8' | 4850.00 TL | SKU: RODEX.RDX9023
+2026-06-25 06:07:14 [INFO] [24/24] https://yapimaks.com/tirpan-yan-benzinli-52cc-2-8kw-2-hp-rodex-9635-p15546
+2026-06-25 06:07:14 [INFO] [15546] 'TIRPAN YAN BENZİNLİ 52CC/2,8KW 2 HP RODE' | 6350.00 TL | SKU: RODEX.RDX9635
+2026-06-25 06:07:16 [INFO] Tamamlandi! Toplam 24 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-25.csv
