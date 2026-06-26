@@ -1,0 +1,20 @@
+2026-06-26 06:10:25 [INFO] ==================================================
+2026-06-26 06:10:25 [INFO] Yapimaks Scraper basliyor
+2026-06-26 06:10:25 [INFO] ==================================================
+2026-06-26 06:10:25 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-06-26 06:10:26 [INFO] Cookie basariyla alindi.
+2026-06-26 06:10:26 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-06-26 06:10:27 [INFO] Sitemap'ten toplam 7824 urun URL'si bulundu.
+2026-06-26 06:10:27 [INFO] Bugune ait veri yok. Eski veri (2026-06-25.csv) süzülerek bugune aktariliyor...
+2026-06-26 06:10:27 [INFO] Basarili! 7820 urun dunden bugune aktarildi.
+2026-06-26 06:10:27 [INFO] Guncel dosyada hazir olan urun: 7820 | Sifirdan cekilecek (yeni) urun: 4
+2026-06-26 06:10:27 [INFO] 4 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-26.csv
+2026-06-26 06:10:27 [INFO] [1/4] https://yapimaks.com/alc-vida-sivri-25-bv25-1000-ad-rigips-p15596
+2026-06-26 06:10:28 [INFO] [15596] 'ALÇ.VİDA SİVRİ 25 BV25 (1000-AD) RİGİPS' | 425.00 TL | SKU: DALSAN.317
+2026-06-26 06:10:30 [INFO] [2/4] https://yapimaks.com/demir-kesme-makasi-yedek-agzi-14mm-sait-demirci-p8410
+2026-06-26 06:10:30 [INFO] [8410] 'DEMİR KESME MAKASI YEDEK AĞZI 14mm - SAİ' | 1615.00 TL | SKU: SD.İMY0014
+2026-06-26 06:10:32 [INFO] [3/4] https://yapimaks.com/demir-kesme-makasi-yedek-agzi-16mm-sait-demirci-p8411
+2026-06-26 06:10:32 [INFO] [8411] 'DEMİR KESME MAKASI YEDEK AĞZI 16mm - SAİ' | 1770.00 TL | SKU: SD.İMY0016
+2026-06-26 06:10:34 [INFO] [4/4] https://yapimaks.com/priz-toprakli-tekli-beyaz-linnera-rollina-viko-p9951
+2026-06-26 06:10:34 [INFO] [9951] 'PRİZ TOPRAKLI TEKLİ BEYAZ LİNNERA/ROLLİN' | 92.00 TL | SKU: VİKO.90440008
+2026-06-26 06:10:36 [INFO] Tamamlandi! Toplam 4 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-26.csv
