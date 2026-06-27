@@ -1,0 +1,34 @@
+2026-06-27 05:53:02 [INFO] ==================================================
+2026-06-27 05:53:02 [INFO] Yapimaks Scraper basliyor
+2026-06-27 05:53:02 [INFO] ==================================================
+2026-06-27 05:53:02 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-06-27 05:53:03 [INFO] Cookie basariyla alindi.
+2026-06-27 05:53:03 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-06-27 05:53:03 [INFO] Sitemap'ten toplam 7825 urun URL'si bulundu.
+2026-06-27 05:53:03 [INFO] Bugune ait veri yok. Eski veri (2026-06-26.csv) süzülerek bugune aktariliyor...
+2026-06-27 05:53:03 [INFO] Basarili! 7814 urun dunden bugune aktarildi.
+2026-06-27 05:53:03 [INFO] Guncel dosyada hazir olan urun: 7814 | Sifirdan cekilecek (yeni) urun: 11
+2026-06-27 05:53:03 [INFO] 11 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-27.csv
+2026-06-27 05:53:03 [INFO] [1/11] https://yapimaks.com/20-pprc-boru-4-mt-kalde-p4762
+2026-06-27 05:53:03 [INFO] [4762] '20 PPRC BORU 4 MT KALDE' | 102.00 TL | SKU: KALDE.3202TBE200000
+2026-06-27 05:53:05 [INFO] [2/11] https://yapimaks.com/70-3000-pis-su-boru-kalde-p4868
+2026-06-27 05:53:05 [INFO] [4868] '70/3000 PİS SU BORU KALDE' | 268.00 TL | SKU: KALDE.5203TBE0L3000
+2026-06-27 05:53:07 [INFO] [3/11] https://yapimaks.com/bituself-star-10-cm-aluminyum-p1593
+2026-06-27 05:53:08 [INFO] [1593] 'BİTÜSELF STAR 10 CM ALÜMİNYUM' | 395.00 TL | SKU: BTM.0218
+2026-06-27 05:53:10 [INFO] [4/11] https://yapimaks.com/bituself-star-20-cm-aluminyum-p1599
+2026-06-27 05:53:10 [INFO] [1599] 'BİTÜSELF STAR 20 CM ALÜMİNYUM' | 725.00 TL | SKU: BTM.0224
+2026-06-27 05:53:12 [INFO] [5/11] https://yapimaks.com/bituself-star-30-cm-kirmizi-p1603
+2026-06-27 05:53:12 [INFO] [1603] 'BİTÜSELF STAR 30 CM KIRMIZI' | 1290.00 TL | SKU: BTM.0228
+2026-06-27 05:53:14 [INFO] [6/11] https://yapimaks.com/geotekstil-kece-250gr-gri-1-m2-200m2-p5190
+2026-06-27 05:53:15 [INFO] [5190] 'GEOTEKSTİL KEÇE 250GR GRİ 1 M2 (200M2)' | 15.00 TL | SKU: DARKSS.K250
+2026-06-27 05:53:17 [INFO] [7/11] https://yapimaks.com/pah-profili-kulakli-3-mt-p13547
+2026-06-27 05:53:17 [INFO] [13547] 'PAH PROFİLİ KULAKLI  3-MT' | 55.00 TL | SKU: FOUR.PAH.KLKL.3000B
+2026-06-27 05:53:19 [INFO] [8/11] https://yapimaks.com/pah-profili-kulaksiz-3-mt-p13548
+2026-06-27 05:53:19 [INFO] [13548] 'PAH PROFİLİ KULAKSIZ  3-MT' | 55.00 TL | SKU: FOUR.PAH.KLKS.3000B
+2026-06-27 05:53:21 [INFO] [9/11] https://yapimaks.com/polikarbon-trp-900-3000-3mm-fume-p7531
+2026-06-27 05:53:21 [INFO] [7531] 'POLİKARBON TRP 900*3000*3MM-FÜME' | 865.00 TL | SKU: POL.KRB.3000.02
+2026-06-27 05:53:23 [INFO] [10/11] https://yapimaks.com/polikarbon-trp-900x2000-3-mm-fume-p15020
+2026-06-27 05:53:23 [INFO] [15020] 'POLİKARBON TRP 900X2000 3 MM FÜME' | 575.00 TL | SKU: POL.KRB.2000.02
+2026-06-27 05:53:25 [INFO] [11/11] https://yapimaks.com/tasyunu-levha-capatect-sw035-05cm-3-60m2-p1720
+2026-06-27 05:53:26 [INFO] [1720] 'TAŞYÜNÜ LEVHA CAPATECT SW035-05CM (3,60M' | 1500.00 TL | SKU: CAPATECT.016
+2026-06-27 05:53:28 [INFO] Tamamlandi! Toplam 11 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-27.csv
