@@ -1,0 +1,34 @@
+2026-06-28 06:17:39 [INFO] ==================================================
+2026-06-28 06:17:39 [INFO] Yapimaks Scraper basliyor
+2026-06-28 06:17:39 [INFO] ==================================================
+2026-06-28 06:17:39 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-06-28 06:17:39 [INFO] Cookie basariyla alindi.
+2026-06-28 06:17:39 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-06-28 06:17:40 [INFO] Sitemap'ten toplam 7814 urun URL'si bulundu.
+2026-06-28 06:17:40 [INFO] Bugune ait veri yok. Eski veri (2026-06-27.csv) süzülerek bugune aktariliyor...
+2026-06-28 06:17:40 [INFO] Basarili! 7803 urun dunden bugune aktarildi.
+2026-06-28 06:17:40 [INFO] Guncel dosyada hazir olan urun: 7803 | Sifirdan cekilecek (yeni) urun: 11
+2026-06-28 06:17:40 [INFO] 11 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-28.csv
+2026-06-28 06:17:40 [INFO] [1/11] https://yapimaks.com/0-40-86-2000-trapez-bordo-p13720
+2026-06-28 06:17:40 [INFO] [13720] '0.40*86*2000 TRAPEZ (BORDO)' | 400.00 TL | SKU: RALL.3009.040.2000
+2026-06-28 06:17:42 [INFO] [2/11] https://yapimaks.com/atelier-wood-oak-ahsap-mese-60x120-1k-mat-rek-2-16m2-p15608
+2026-06-28 06:17:43 [INFO] [15608] 'ATELİER WOOD OAK AHŞAP MEŞE 60x120 1K MA' | 1436.00 TL | SKU: EGESER.600X1200ALW47REK.1K
+2026-06-28 06:17:45 [INFO] [3/11] https://yapimaks.com/blume-deco-mix-20x20-2k-0-48m2-p15484
+2026-06-28 06:17:45 [INFO] [15484] 'BLUME DECO MİX 20X20 2K (0,48M2)' | 261.00 TL | SKU: EGESER.200X200BLD00.2K
+2026-06-28 06:17:47 [INFO] [4/11] https://yapimaks.com/delta-strip-80-cm-alt-beyaz-p5513
+2026-06-28 06:17:47 [INFO] [5513] 'DELTA/STRİP 80 CM ALT BEYAZ' | 9950.00 TL | SKU: LINEART.079
+2026-06-28 06:17:49 [INFO] [5/11] https://yapimaks.com/maklux-makine-alcisi-35-kg-rigips-p2492
+2026-06-28 06:17:49 [INFO] [2492] 'MAKLUX MAKİNE ALÇISI  35 KG RİGİPS' | 180.00 TL | SKU: DALSAN.102
+2026-06-28 06:17:51 [INFO] [6/11] https://yapimaks.com/nest-gri-40x40-1k-1-44m2-p15609
+2026-06-28 06:17:52 [INFO] [15609] 'NEST GRİ 40X40 1K (1,44M2)' | 546.00 TL | SKU: EGESER.400X400NST03.1K
+2026-06-28 06:17:54 [INFO] [7/11] https://yapimaks.com/nova-80-cm-ust-ayna-beyaz-p11583
+2026-06-28 06:17:54 [INFO] [11583] 'NOVA 80 CM ÜST AYNA BEYAZ' | 3800.00 TL | SKU: LINEART.103
+2026-06-28 06:17:56 [INFO] [8/11] https://yapimaks.com/panel-cit-150cm-yesil-2500-5-15-4-mm-p7315
+2026-06-28 06:17:56 [INFO] [7315] 'PANEL ÇİT 150CM YEŞİL (2500*5*15) 4-MM' | 700.00 TL | SKU: PANELÇİT.0005
+2026-06-28 06:17:58 [INFO] [9/11] https://yapimaks.com/panel-cit-direk-150cm-yesil-50-50-1-50-p7320
+2026-06-28 06:17:58 [INFO] [7320] 'PANEL ÇİT DİREK 150CM YEŞİL (50*50*1,50)' | 300.00 TL | SKU: PANELÇİT.0011
+2026-06-28 06:18:00 [INFO] [10/11] https://yapimaks.com/perde-rayi-kornis-uclu-2-5-m-super-p15597
+2026-06-28 06:18:01 [INFO] [15597] 'PERDE RAYI KORNİŞ ÜÇLÜ 2,5 M SÜPER' | 125.00 TL | SKU: IŞIK.SFXDB013
+2026-06-28 06:18:03 [INFO] [11/11] https://yapimaks.com/sense-acik-gri-40x40-1k-1-44m2-p15610
+2026-06-28 06:18:03 [INFO] [15610] 'SENSE AÇIK GRİ 40X40 1K (1,44M2)' | 546.00 TL | SKU: EGESER.400X400SSN47.1K
+2026-06-28 06:18:05 [INFO] Tamamlandi! Toplam 11 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-06-28.csv
