@@ -2,6 +2,8 @@
 
 A comprehensive data collection and inflation analysis project tracking price changes across Turkish retailers and services over time.
 
+This project includes my personal contributions to https://github.com/urazkagangunes/InflationResearchStudy 
+
 ## Overview
 
 This project scrapes product and service price data from various Turkish retailers, markets, and platforms, then processes the data to calculate inflation metrics. The repository focuses on real-time price monitoring and inflation analysis using Turkish Central Bank (TUIK) weighting standards.
@@ -32,7 +34,7 @@ inflationstudymirror/
 - **Multi-store scraping**: Automated data collection from diverse Turkish retailers including:
   - Cosmetics: Watson, Migros, Bauhaus, Rossmann
   - Clothing: Vakko, and other apparel retailers
-  - Real Estate: Rental property data from Sahibinden
+  - Real Estate: Rental property data from Sarı site
   - Markets: Grocery items from Gurmar and other supermarkets
   - Electronics: Samsung products
 
@@ -61,7 +63,7 @@ inflationstudymirror/
 ### Inflation Calculators
 - `Inflations/Codes/Cosmetics/inflation.py` - Cosmetics inflation metrics
 - `Inflations/Codes/Technology/tuik_config.py` - TUIK weights configuration
-- `Inflations/Codes/HousesRent/sahibinden_inflation.py` - Rental market inflation
+- `Inflations/Codes/HousesRent/Sarı site_inflation.py` - Rental market inflation
 - `Inflations/Codes/Markets/Gurmar/gurmar_inflation.py` - Market basket inflation
 
 ### Data Processing
@@ -92,7 +94,7 @@ python Codes/Markets/Gurmar/gurmar_scraper.py
 python Inflations/Codes/Cosmetics/inflation.py --date 2026-03-15
 
 # Calculate housing rental inflation
-python Inflations/Codes/HousesRent/sahibinden_inflation.py --city Kayseri --date 2026-03-15
+python Inflations/Codes/HousesRent/Sarı site_inflation.py --city Kayseri --date 2026-03-15
 
 # Calculate market inflation
 python Inflations/Codes/Markets/Gurmar/gurmar_inflation.py --date 2026-03-15
