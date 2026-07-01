@@ -1,0 +1,68 @@
+2026-07-01 06:26:15 [INFO] ==================================================
+2026-07-01 06:26:15 [INFO] Yapimaks Scraper basliyor
+2026-07-01 06:26:15 [INFO] ==================================================
+2026-07-01 06:26:15 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-07-01 06:26:16 [INFO] Cookie basariyla alindi.
+2026-07-01 06:26:16 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-07-01 06:26:16 [INFO] Sitemap'ten toplam 7823 urun URL'si bulundu.
+2026-07-01 06:26:16 [INFO] Bugune ait veri yok. Eski veri (2026-06-30.csv) süzülerek bugune aktariliyor...
+2026-07-01 06:26:16 [INFO] Basarili! 7795 urun dunden bugune aktarildi.
+2026-07-01 06:26:17 [INFO] Guncel dosyada hazir olan urun: 7795 | Sifirdan cekilecek (yeni) urun: 28
+2026-07-01 06:26:17 [INFO] 28 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-01.csv
+2026-07-01 06:26:17 [INFO] [1/28] https://yapimaks.com/0-40-86-2500-trapez-beyaz-p13728
+2026-07-01 06:26:17 [INFO] [13728] '0.40*86*2500 TRAPEZ (BEYAZ)' | 500.00 TL | SKU: RALL.9002.040.2500
+2026-07-01 06:26:19 [INFO] [2/28] https://yapimaks.com/0-40-86-2500-trapez-bordo-p13721
+2026-07-01 06:26:19 [INFO] [13721] '0.40*86*2500 TRAPEZ (BORDO)' | 500.00 TL | SKU: RALL.3009.040.2500
+2026-07-01 06:26:21 [INFO] [3/28] https://yapimaks.com/0-50-105-2000-trapez-beyaz-p7727
+2026-07-01 06:26:21 [INFO] [7727] '0.50*105*2000 TRAPEZ (BEYAZ)' | 500.00 TL | SKU: RALL.9002.050.2000
+2026-07-01 06:26:23 [INFO] [4/28] https://yapimaks.com/0-50-105-2500-trapez-beyaz-p7728
+2026-07-01 06:26:23 [INFO] [7728] '0.50*105*2500 TRAPEZ (BEYAZ)' | 625.00 TL | SKU: RALL.9002.050.2500
+2026-07-01 06:26:25 [INFO] [5/28] https://yapimaks.com/0-50-86-2500-trapez-bordo-p7692
+2026-07-01 06:26:25 [INFO] [7692] '0.50*86*2500 TRAPEZ (BORDO)' | 562.50 TL | SKU: RALL.3009.050.2500
+2026-07-01 06:26:27 [INFO] [6/28] https://yapimaks.com/16dns-dalmacyali-10cm-50-100-5ad-2-5m2-p1728
+2026-07-01 06:26:28 [INFO] [1728] '16DNS DALMAÇYALI 10CM 50*100(5AD-2,5M2)' | 1375.00 TL | SKU: CAPATECT.026
+2026-07-01 06:26:30 [INFO] [7/28] https://yapimaks.com/ic-cephe-boyasi-rg1-15-lt-momentomax-p6081
+2026-07-01 06:26:30 [INFO] [6081] 'İÇ CEPHE BOYASI RG1 (15 LT) MOMENTOMAX' | 3500.00 TL | SKU: MOMENTOMAX.024
+2026-07-01 06:26:32 [INFO] [8/28] https://yapimaks.com/ic-cephe-boyasi-rg1-7-5-lt-momentomax-p6082
+2026-07-01 06:26:32 [INFO] [6082] 'İÇ CEPHE BOYASI RG1 (7.5 LT) MOMENTOMAX' | 1950.00 TL | SKU: MOMENTOMAX.025
+2026-07-01 06:26:34 [INFO] [9/28] https://yapimaks.com/maskeleme-bandi-48mm-x-25-mt-p14154
+2026-07-01 06:26:34 [INFO] [14154] 'MASKELEME BANDI 48MM X 25 MT' | 50.00 TL | SKU: KAVİ.STK08052
+2026-07-01 06:26:36 [INFO] [10/28] https://yapimaks.com/panel-cit-050cm-a-gri-2500-5-15-4-mm-p7322
+2026-07-01 06:26:36 [INFO] [7322] 'PANEL ÇİT 050CM A.GRİ (2500*5*15) 4-MM' | 295.00 TL | SKU: PANELÇİT.0050.7016
+2026-07-01 06:26:38 [INFO] [11/28] https://yapimaks.com/panel-cit-075cm-a-gri-2500-5-15-4-mm-p7323
+2026-07-01 06:26:38 [INFO] [7323] 'PANEL ÇİT 075CM A.GRİ (2500*5*15) 4-MM' | 400.00 TL | SKU: PANELÇİT.0075.7016
+2026-07-01 06:26:40 [INFO] [12/28] https://yapimaks.com/panel-cit-100cm-a-gri-2500-5-15-4-mm-p7324
+2026-07-01 06:26:41 [INFO] [7324] 'PANEL ÇİT 100CM A.GRİ (2500*5*15) 4-MM' | 500.00 TL | SKU: PANELÇİT.0100.7016
+2026-07-01 06:26:43 [INFO] [13/28] https://yapimaks.com/panel-cit-100cm-yesil-2500-5-15-4-mm-p7313
+2026-07-01 06:26:43 [INFO] [7313] 'PANEL ÇİT 100CM YEŞİL (2500*5*15) 4-MM' | 450.00 TL | SKU: PANELÇİT.0003
+2026-07-01 06:26:45 [INFO] [14/28] https://yapimaks.com/panel-cit-120cm-a-gri-2500-5-15-4-mm-p14237
+2026-07-01 06:26:45 [INFO] [14237] 'PANEL ÇİT 120CM A.GRİ (2500*5*15) 4-MM' | 575.00 TL | SKU: PANELÇİT.0120.7016
+2026-07-01 06:26:47 [INFO] [15/28] https://yapimaks.com/panel-cit-150cm-a-gri-2500-5-15-4-mm-p15612
+2026-07-01 06:26:47 [INFO] [15612] 'PANEL ÇİT 150CM A.GRİ (2500*5*15) 4-MM' | 725.00 TL | SKU: PANELÇİT.0150.7017
+2026-07-01 06:26:49 [INFO] [16/28] https://yapimaks.com/panel-cit-direk-050cm-a-gri-50-50-1-50-p7325
+2026-07-01 06:26:49 [INFO] [7325] 'PANEL ÇİT DİREK 050CM A.GRİ (50*50*1,50)' | 135.00 TL | SKU: PANELÇİT.0016.7016
+2026-07-01 06:26:51 [INFO] [17/28] https://yapimaks.com/panel-cit-direk-075cm-a-gri-50-50-1-50-p7326
+2026-07-01 06:26:51 [INFO] [7326] 'PANEL ÇİT DİREK 075CM A.GRİ (50*50*1,50)' | 175.00 TL | SKU: PANELÇİT.0017.7016
+2026-07-01 06:26:53 [INFO] [18/28] https://yapimaks.com/panel-cit-direk-100cm-a-gri-50-50-1-50-p7327
+2026-07-01 06:26:54 [INFO] [7327] 'PANEL ÇİT DİREK 100CM A.GRİ (50*50*1,50)' | 225.00 TL | SKU: PANELÇİT.0018.7016
+2026-07-01 06:26:56 [INFO] [19/28] https://yapimaks.com/panel-cit-direk-100cm-yesil-50-50-1-50-p7334
+2026-07-01 06:26:56 [INFO] [7334] 'PANEL ÇİT DİREK 100CM YEŞİL (50*50*1,50)' | 190.00 TL | SKU: PANELÇİT.0009
+2026-07-01 06:26:58 [INFO] [20/28] https://yapimaks.com/panel-cit-direk-120cm-a-gri-50-50-1-50-p14236
+2026-07-01 06:26:58 [INFO] [14236] 'PANEL ÇİT DİREK 120CM A.GRİ (50*50*1,50)' | 250.00 TL | SKU: PANELÇİT.0019.7016
+2026-07-01 06:27:00 [INFO] [21/28] https://yapimaks.com/panel-cit-direk-150cm-a-gri-50-50-1-50-p15613
+2026-07-01 06:27:00 [INFO] [15613] 'PANEL ÇİT DİREK 150CM A.GRİ (50*50*1,50)' | 315.00 TL | SKU: PANELÇİT.0020.7017
+2026-07-01 06:27:02 [INFO] [22/28] https://yapimaks.com/panel-cit-kapak-pvc-a-gri-p7332
+2026-07-01 06:27:02 [INFO] [7332] 'PANEL ÇİT KAPAK PVC-A.GRİ' | 7.50 TL | SKU: PANELÇİT.0033
+2026-07-01 06:27:04 [INFO] [23/28] https://yapimaks.com/perde-rayi-kornis-ikili-3-m-super-p4596
+2026-07-01 06:27:05 [INFO] [4596] 'PERDE RAYI KORNİŞ İKİLİ 3 M SÜPER' | 125.00 TL | SKU: IŞIK.0100
+2026-07-01 06:27:07 [INFO] [24/28] https://yapimaks.com/perde-rayi-kornis-uclu-3-m-super-p4599
+2026-07-01 06:27:07 [INFO] [4599] 'PERDE RAYI KORNİŞ ÜÇLÜ 3 M SÜPER' | 149.00 TL | SKU: IŞIK.0110
+2026-07-01 06:27:09 [INFO] [25/28] https://yapimaks.com/perde-rayi-kornis-uclu-4-5-m-super-p4602
+2026-07-01 06:27:09 [INFO] [4602] 'PERDE RAYI KORNİŞ ÜÇLÜ 4.5 M SÜPER' | 225.00 TL | SKU: IŞIK.0113
+2026-07-01 06:27:11 [INFO] [26/28] https://yapimaks.com/perde-rayi-kornis-uclu-5-m-super-p4603
+2026-07-01 06:27:11 [INFO] [4603] 'PERDE RAYI KORNİŞ ÜÇLÜ 5 M SÜPER' | 247.50 TL | SKU: IŞIK.0114
+2026-07-01 06:27:13 [INFO] [27/28] https://yapimaks.com/perde-rayi-kornis-uclu-6-m-super-p4604
+2026-07-01 06:27:13 [INFO] [4604] 'PERDE RAYI KORNİŞ ÜÇLÜ 6 M SÜPER' | 302.50 TL | SKU: IŞIK.0115
+2026-07-01 06:27:15 [INFO] [28/28] https://yapimaks.com/trifonlu-kelepce-1-1-2-50-lik-p5087
+2026-07-01 06:27:15 [INFO] [5087] 'TRİFONLU KELEPÇE (1 1/2) 50 LİK' | 27.50 TL | SKU: TRF.KELEPÇE.050
+2026-07-01 06:27:17 [INFO] Tamamlandi! Toplam 28 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-01.csv
