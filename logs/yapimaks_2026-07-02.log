@@ -1,0 +1,18 @@
+2026-07-02 05:58:52 [INFO] ==================================================
+2026-07-02 05:58:52 [INFO] Yapimaks Scraper basliyor
+2026-07-02 05:58:52 [INFO] ==================================================
+2026-07-02 05:58:52 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-07-02 05:58:52 [INFO] Cookie basariyla alindi.
+2026-07-02 05:58:52 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-07-02 05:58:53 [INFO] Sitemap'ten toplam 7821 urun URL'si bulundu.
+2026-07-02 05:58:53 [INFO] Bugune ait veri yok. Eski veri (2026-07-01.csv) süzülerek bugune aktariliyor...
+2026-07-02 05:58:53 [INFO] Basarili! 7818 urun dunden bugune aktarildi.
+2026-07-02 05:58:53 [INFO] Guncel dosyada hazir olan urun: 7818 | Sifirdan cekilecek (yeni) urun: 3
+2026-07-02 05:58:53 [INFO] 3 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-02.csv
+2026-07-02 05:58:53 [INFO] [1/3] https://yapimaks.com/grout-harci-hammerfast-gm-500-25kg-p1982
+2026-07-02 05:58:53 [INFO] [1982] 'GROUT HARCI HAMMERFAST GM-500 (25KG)' | 525.00 TL | SKU: DARKSS.YK.GM500
+2026-07-02 05:58:55 [INFO] [2/3] https://yapimaks.com/jenerator-benzinli-9-4-kva-monofaze-kgl10000-ipli-marsli-p14932
+2026-07-02 05:58:56 [INFO] [14932] 'JENERATÖR BENZİNLİ 9.4 KVA MONOFAZE KGL1' | 39900.00 TL | SKU: FACTOR.FACKGL10000CE
+2026-07-02 05:58:58 [INFO] [3/3] https://yapimaks.com/su-deposu-bacasi-foseptik-p15460
+2026-07-02 05:58:58 [INFO] [15460] 'SU DEPOSU BACASI FOSEPTİK' | 2750.00 TL | SKU: SU DEPOSU.5000.005
+2026-07-02 05:59:00 [INFO] Tamamlandi! Toplam 3 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-02.csv
