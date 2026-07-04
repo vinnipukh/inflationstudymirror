@@ -1,0 +1,38 @@
+2026-07-04 05:45:07 [INFO] ==================================================
+2026-07-04 05:45:07 [INFO] Yapimaks Scraper basliyor
+2026-07-04 05:45:07 [INFO] ==================================================
+2026-07-04 05:45:07 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-07-04 05:45:08 [INFO] Cookie basariyla alindi.
+2026-07-04 05:45:08 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-07-04 05:45:09 [INFO] Sitemap'ten toplam 7823 urun URL'si bulundu.
+2026-07-04 05:45:09 [INFO] Bugune ait veri yok. Eski veri (2026-07-03.csv) süzülerek bugune aktariliyor...
+2026-07-04 05:45:09 [INFO] Basarili! 7810 urun dunden bugune aktarildi.
+2026-07-04 05:45:09 [INFO] Guncel dosyada hazir olan urun: 7810 | Sifirdan cekilecek (yeni) urun: 13
+2026-07-04 05:45:09 [INFO] 13 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-04.csv
+2026-07-04 05:45:09 [INFO] [1/13] https://yapimaks.com/baret-ayarli-sari-p9044
+2026-07-04 05:45:09 [INFO] [9044] 'BARET AYARLI SARI' | 125.00 TL | SKU: ESSAFE.GE1548S
+2026-07-04 05:45:11 [INFO] [2/13] https://yapimaks.com/celik-kapi-silindir-seti-barelli-saten-68-mm-ymk-b68hbgs-p15666
+2026-07-04 05:45:11 [INFO] [15666] 'ÇELİK KAPI SİLİNDİR SETİ BARELLİ SATEN 6' | 700.00 TL | SKU: YUMA.YMK-B68HBGS
+2026-07-04 05:45:13 [INFO] [3/13] https://yapimaks.com/cerman-barel-kilit-90-mm-saten-hibrit-p13217
+2026-07-04 05:45:14 [INFO] [13217] 'CERMAN BAREL KİLİT 90 MM SATEN HİBRİT' | 325.00 TL | SKU: YUMA.YMKB90HS
+2026-07-04 05:45:16 [INFO] [4/13] https://yapimaks.com/eldiven-asit-45-cm-siyah-uzun-kaucuk-rubi-p15673
+2026-07-04 05:45:16 [INFO] [15673] 'ELDİVEN ASİT 45 CM SİYAH UZUN KAUÇUK RUB' | 229.00 TL | SKU: RUBİ.010223
+2026-07-04 05:45:18 [INFO] [5/13] https://yapimaks.com/firca-temizlik-badana-bursa-223-p14707
+2026-07-04 05:45:18 [INFO] [14707] 'FIRÇA TEMİZLİK BADANA BURSA 223' | 120.00 TL | SKU: İZMİRFIRÇA.C05094
+2026-07-04 05:45:20 [INFO] [6/13] https://yapimaks.com/gezer-cizme-218-sari-kisa-konc-no-42-p4144
+2026-07-04 05:45:20 [INFO] [4144] 'GEZER ÇİZME 218 SARI KISA KONÇ NO:42' | 399.00 TL | SKU: GEZER.00218.42
+2026-07-04 05:45:22 [INFO] [7/13] https://yapimaks.com/kale-164gnc-68-mm-nikel-p11768
+2026-07-04 05:45:23 [INFO] [11768] 'KALE 164GNC 68 MM NİKEL' | 560.00 TL | SKU: KALE.164GNC68.NK
+2026-07-04 05:45:25 [INFO] [8/13] https://yapimaks.com/kapi-hidroligi-no-3-40-65-kg-kale-p12978
+2026-07-04 05:45:25 [INFO] [12978] 'KAPI HİDROLİĞİ NO:3(40-65 KG) KALE' | 1475.00 TL | SKU: KALE.KD002/50-330
+2026-07-04 05:45:27 [INFO] [9/13] https://yapimaks.com/kapi-hidroligi-no-4-60-85-kg-kale-p12977
+2026-07-04 05:45:27 [INFO] [12977] 'KAPI HİDROLİĞİ NO:4(60-85 KG) KALE' | 1700.00 TL | SKU: KALE.KD002/50-440
+2026-07-04 05:45:29 [INFO] [10/13] https://yapimaks.com/kapi-hidroligi-no-4-ymk-60-90-kg-p8194
+2026-07-04 05:45:29 [INFO] [8194] 'KAPI HİDROLİĞİ NO:4 YMK 60-90 KG' | 1060.00 TL | SKU: YUMA.YMK-Y02123
+2026-07-04 05:45:31 [INFO] [11/13] https://yapimaks.com/lokma-takimi-bits-uclu-1-4-circirli-14-parca-bosch-p14724
+2026-07-04 05:45:32 [INFO] [14724] 'LOKMA TAKIMI BİTS UÇLU 1/4" CIRCIRLI 14 ' | 1600.00 TL | SKU: BOSCH.BHHE1600A02BY0
+2026-07-04 05:45:34 [INFO] [12/13] https://yapimaks.com/sosis-tabancasi-600-ml-frs-353-p12483
+2026-07-04 05:45:34 [INFO] [12483] 'SOSİS TABANCASI 600 ML FRS 353' | 800.00 TL | SKU: FRS.353
+2026-07-04 05:45:36 [INFO] [13/13] https://yapimaks.com/tasyunu-levha-capatect-sw035-10cm-1-80m2-p15679
+2026-07-04 05:45:36 [INFO] [15679] 'TAŞYÜNÜ LEVHA CAPATECT SW035-10CM (1,80M' | 1100.00 TL | SKU: CAPATECT.SF160.11
+2026-07-04 05:45:38 [INFO] Tamamlandi! Toplam 13 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-04.csv
