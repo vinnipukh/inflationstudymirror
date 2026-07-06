@@ -1,0 +1,20 @@
+2026-07-06 06:28:11 [INFO] ==================================================
+2026-07-06 06:28:11 [INFO] Yapimaks Scraper basliyor
+2026-07-06 06:28:11 [INFO] ==================================================
+2026-07-06 06:28:11 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-07-06 06:28:11 [INFO] Cookie basariyla alindi.
+2026-07-06 06:28:11 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-07-06 06:28:12 [INFO] Sitemap'ten toplam 7821 urun URL'si bulundu.
+2026-07-06 06:28:12 [INFO] Bugune ait veri yok. Eski veri (2026-07-05.csv) süzülerek bugune aktariliyor...
+2026-07-06 06:28:12 [INFO] Basarili! 7817 urun dunden bugune aktarildi.
+2026-07-06 06:28:12 [INFO] Guncel dosyada hazir olan urun: 7817 | Sifirdan cekilecek (yeni) urun: 4
+2026-07-06 06:28:12 [INFO] 4 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-06.csv
+2026-07-06 06:28:12 [INFO] [1/4] https://yapimaks.com/koli-bandi-seffaf-45x100-metre-astel-p15638
+2026-07-06 06:28:12 [INFO] [15638] 'KOLİ BANDI ŞEFFAF 45X100 METRE ASTEL' | 95.00 TL | SKU: ASTEL.A07135
+2026-07-06 06:28:14 [INFO] [2/4] https://yapimaks.com/metre-serit-5m-x-25mm-gri-ayz-p15659
+2026-07-06 06:28:15 [INFO] [15659] 'METRE ŞERİT 5M X 25MM GRİ AYZ' | 135.00 TL | SKU: AYZ.PR0525A
+2026-07-06 06:28:17 [INFO] [3/4] https://yapimaks.com/tornavida-4-5x80-yildiz-opak-elta-p15602
+2026-07-06 06:28:17 [INFO] [15602] 'TORNAVİDA 4,5X80 YILDIZ OPAK ELTA' | 170.00 TL | SKU: ELTA.4170.18.4580
+2026-07-06 06:28:19 [INFO] [4/4] https://yapimaks.com/tornavida-8x150-seri-yildiz-opak-elta-p15601
+2026-07-06 06:28:19 [INFO] [15601] 'TORNAVİDA 8X150 SERİ YILDIZ OPAK ELTA' | 375.00 TL | SKU: ELTA.4170.18.8150
+2026-07-06 06:28:21 [INFO] Tamamlandi! Toplam 4 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-06.csv
