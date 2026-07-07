@@ -1,0 +1,88 @@
+2026-07-07 06:07:43 [INFO] ==================================================
+2026-07-07 06:07:43 [INFO] Yapimaks Scraper basliyor
+2026-07-07 06:07:43 [INFO] ==================================================
+2026-07-07 06:07:43 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-07-07 06:07:44 [INFO] Cookie basariyla alindi.
+2026-07-07 06:07:44 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-07-07 06:07:44 [INFO] Sitemap'ten toplam 7851 urun URL'si bulundu.
+2026-07-07 06:07:44 [INFO] Bugune ait veri yok. Eski veri (2026-07-06.csv) süzülerek bugune aktariliyor...
+2026-07-07 06:07:44 [INFO] Basarili! 7813 urun dunden bugune aktarildi.
+2026-07-07 06:07:45 [INFO] Guncel dosyada hazir olan urun: 7813 | Sifirdan cekilecek (yeni) urun: 38
+2026-07-07 06:07:45 [INFO] 38 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-07.csv
+2026-07-07 06:07:45 [INFO] [1/38] https://yapimaks.com/balyoz-3-kg-duz-sapli-n0-3-p15550
+2026-07-07 06:07:45 [INFO] [15550] 'BALYOZ 3 KG DÜZ SAPLI (N0-3)' | 550.00 TL | SKU: SD.BS01
+2026-07-07 06:07:47 [INFO] [2/38] https://yapimaks.com/balyoz-3-kg-sivri-sapli-n0-3-p15553
+2026-07-07 06:07:47 [INFO] [15553] 'BALYOZ 3 KG SİVRİ SAPLI (N0-3)' | 575.00 TL | SKU: SD.BS05
+2026-07-07 06:07:49 [INFO] [3/38] https://yapimaks.com/balyoz-4-kg-duz-sapli-n0-4-p15551
+2026-07-07 06:07:49 [INFO] [15551] 'BALYOZ 4 KG DÜZ SAPLI (N0-4)' | 675.00 TL | SKU: SD.BS02
+2026-07-07 06:07:51 [INFO] [4/38] https://yapimaks.com/balyoz-4-kg-sivri-sapli-n0-4-p15554
+2026-07-07 06:07:51 [INFO] [15554] 'BALYOZ 4 KG SİVRİ SAPLI (N0-4)' | 675.00 TL | SKU: SD.BS06
+2026-07-07 06:07:53 [INFO] [5/38] https://yapimaks.com/balyoz-5-kg-duz-sapli-n0-5-p15552
+2026-07-07 06:07:54 [INFO] [15552] 'BALYOZ 5 KG DÜZ SAPLI (N0-5)' | 825.00 TL | SKU: SD.BS03
+2026-07-07 06:07:56 [INFO] [6/38] https://yapimaks.com/balyoz-5-kg-sivri-sapli-n0-5-p15555
+2026-07-07 06:07:56 [INFO] [15555] 'BALYOZ 5 KG SİVRİ SAPLI (N0-5)' | 850.00 TL | SKU: SD.BS07
+2026-07-07 06:07:58 [INFO] [7/38] https://yapimaks.com/gezer-cizme-216-sari-uzun-konc-no-43-p15630
+2026-07-07 06:07:58 [INFO] [15630] 'GEZER ÇİZME 216 SARI UZUN KONÇ NO:43' | 380.00 TL | SKU: GEZER.G04014
+2026-07-07 06:08:00 [INFO] [8/38] https://yapimaks.com/gezer-cizme-216-sari-uzun-konc-no-45-p15631
+2026-07-07 06:08:00 [INFO] [15631] 'GEZER ÇİZME 216 SARI UZUN KONÇ NO:45' | 380.00 TL | SKU: GEZER.0216.45
+2026-07-07 06:08:02 [INFO] [9/38] https://yapimaks.com/gezer-cizme-262-celik-burunlu-yesil-no-41-p15632
+2026-07-07 06:08:03 [INFO] [15632] 'GEZER ÇİZME 262 ÇELİK BURUNLU YEŞİL NO:4' | 600.00 TL | SKU: GEZER.0262.41
+2026-07-07 06:08:05 [INFO] [10/38] https://yapimaks.com/gezer-cizme-262-celik-burunlu-yesil-no-42-p15633
+2026-07-07 06:08:05 [INFO] [15633] 'GEZER ÇİZME 262 ÇELİK BURUNLU YEŞİL NO:4' | 600.00 TL | SKU: GEZER.0262.42
+2026-07-07 06:08:07 [INFO] [11/38] https://yapimaks.com/gezer-cizme-262-celik-burunlu-yesil-no-43-p15634
+2026-07-07 06:08:07 [INFO] [15634] 'GEZER ÇİZME 262 ÇELİK BURUNLU YEŞİL NO:4' | 600.00 TL | SKU: GEZER.0262.43
+2026-07-07 06:08:09 [INFO] [12/38] https://yapimaks.com/gezer-cizme-262-celik-burunlu-yesil-no-44-p15635
+2026-07-07 06:08:09 [INFO] [15635] 'GEZER ÇİZME 262 ÇELİK BURUNLU YEŞİL NO:4' | 600.00 TL | SKU: GEZER.0262.44
+2026-07-07 06:08:11 [INFO] [13/38] https://yapimaks.com/gezer-cizme-397-corapli-fir-yesil-uzun-41-p4174
+2026-07-07 06:08:11 [INFO] [4174] 'GEZER ÇİZME 397 ÇORAPLI FIR YEŞİL UZUN 4' | 750.00 TL | SKU: GEZER.00397.41
+2026-07-07 06:08:13 [INFO] [14/38] https://yapimaks.com/gezer-cizme-397-corapli-fir-yesil-uzun-42-p4175
+2026-07-07 06:08:14 [INFO] [4175] 'GEZER ÇİZME 397 ÇORAPLI FIR YEŞİL UZUN 4' | 750.00 TL | SKU: GEZER.00397.42
+2026-07-07 06:08:16 [INFO] [15/38] https://yapimaks.com/gezer-cizme-397-corapli-fir-yesil-uzun-43-p4176
+2026-07-07 06:08:16 [INFO] [4176] 'GEZER ÇİZME 397 ÇORAPLI FIR YEŞİL UZUN 4' | 750.00 TL | SKU: GEZER.00397.43
+2026-07-07 06:08:18 [INFO] [16/38] https://yapimaks.com/gezer-cizme-397-corapli-fir-yesil-uzun-44-p4177
+2026-07-07 06:08:18 [INFO] [4177] 'GEZER ÇİZME 397 ÇORAPLI FIR YEŞİL UZUN 4' | 750.00 TL | SKU: GEZER.00397.44
+2026-07-07 06:08:20 [INFO] [17/38] https://yapimaks.com/gezer-cizme-397-corapli-fir-yesil-uzun-45-p4178
+2026-07-07 06:08:20 [INFO] [4178] 'GEZER ÇİZME 397 ÇORAPLI FIR YEŞİL UZUN 4' | 750.00 TL | SKU: GEZER.00397.45
+2026-07-07 06:08:22 [INFO] [18/38] https://yapimaks.com/kapi-kolu-penta-k-rozetli-wc-nikel-inox-p10753
+2026-07-07 06:08:23 [INFO] [10753] 'KAPI KOLU PENTA K.ROZETLİ WC NİKEL İNOX' | 418.00 TL | SKU: NOBEL.103408293
+2026-07-07 06:08:25 [INFO] [19/38] https://yapimaks.com/koli-bandi-hotmelt-seffaf-45mmx100-metre-globus-p15621
+2026-07-07 06:08:25 [INFO] [15621] 'KOLİ BANDI HOTMELT ŞEFFAF 45MMX100 METRE' | 90.00 TL | SKU: GLOBUS.GLO10339
+2026-07-07 06:08:27 [INFO] [20/38] https://yapimaks.com/kontrol-kalemi-190-mm-duz-uc-aslan-p15643
+2026-07-07 06:08:27 [INFO] [15643] 'KONTROL KALEMİ 190 MM DÜZ UÇ ASLAN' | 40.00 TL | SKU: ASLAN.AS7204
+2026-07-07 06:08:29 [INFO] [21/38] https://yapimaks.com/lehim-pastasi-yagi-20-gr-weller-lf25-p15620
+2026-07-07 06:08:29 [INFO] [15620] 'LEHİM PASTASI (YAĞI) 20 GR WELLER LF25' | 220.00 TL | SKU: WELLER.COOLF25
+2026-07-07 06:08:31 [INFO] [22/38] https://yapimaks.com/lehim-teli-makara-1-mm-40-60-100-g-fastbond-fa27145-p15619
+2026-07-07 06:08:31 [INFO] [15619] 'LEHİM TELİ MAKARA 1 MM 40/60 100 G FASTB' | 395.00 TL | SKU: FASTBOND.FA27145
+2026-07-07 06:08:33 [INFO] [23/38] https://yapimaks.com/lokma-ara-kol-100-1-4-izeltas-p15657
+2026-07-07 06:08:34 [INFO] [15657] 'LOKMA ARA KOL 100 1/4" İZELTAŞ' | 130.00 TL | SKU: İZELTAŞ.1507.06.0100
+2026-07-07 06:08:36 [INFO] [24/38] https://yapimaks.com/metal-flap-disk-kesici-115-zr-60-karbosan-p15660
+2026-07-07 06:08:36 [INFO] [15660] 'METAL FLAP DİSK KESİCİ 115 ZR-60 (KARBOS' | 90.00 TL | SKU: KARBOSAN.K06340
+2026-07-07 06:08:38 [INFO] [25/38] https://yapimaks.com/metal-flap-disk-kesici-115-zr-80-karbosan-p15661
+2026-07-07 06:08:38 [INFO] [15661] 'METAL FLAP DİSK KESİCİ 115 ZR-80 (KARBOS' | 90.00 TL | SKU: KARBOSAN.K06311
+2026-07-07 06:08:40 [INFO] [26/38] https://yapimaks.com/metal-taslama-inox-115x6-4x22-10680-karbosan-p15649
+2026-07-07 06:08:40 [INFO] [15649] 'METAL TAŞLAMA İNOX  115X6.4X22 10680 KAR' | 75.00 TL | SKU: KARBOSAN.910680
+2026-07-07 06:08:42 [INFO] [27/38] https://yapimaks.com/musluk-adaptoru-1-2-dy8010-p15622
+2026-07-07 06:08:43 [INFO] [15622] 'MUSLUK ADAPTÖRÜ 1/2"  DY8010' | 45.00 TL | SKU: DAYE.8010
+2026-07-07 06:08:45 [INFO] [28/38] https://yapimaks.com/sprey-tabanca-6-fonksiyon-metal-daye-dy2040lu-p15624
+2026-07-07 06:08:45 [INFO] [15624] 'SPREY TABANCA 6 FONKSİYON METAL DAYE DY2' | 800.00 TL | SKU: DAYE.2040LU
+2026-07-07 06:08:47 [INFO] [29/38] https://yapimaks.com/sprey-tabanca-7-fonksiyonlu-daye-dy2056g-p15625
+2026-07-07 06:08:47 [INFO] [15625] 'SPREY TABANCA 7 FONKSİYONLU DAYE DY2056G' | 650.00 TL | SKU: DAYE.2056G
+2026-07-07 06:08:49 [INFO] [30/38] https://yapimaks.com/sprey-tabanca-8-fonksiyon-metal-daye-dy2040ap-p15623
+2026-07-07 06:08:49 [INFO] [15623] 'SPREY TABANCA 8 FONKSİYON METAL DAYE DY2' | 750.00 TL | SKU: DAYE.2040AP
+2026-07-07 06:08:51 [INFO] [31/38] https://yapimaks.com/sprink-8-fonksiyonlu-luks-daye-dy6029-p15626
+2026-07-07 06:08:51 [INFO] [15626] 'SPRİNK 8 FONKSİYONLU LÜKS DAYE DY6029' | 350.00 TL | SKU: DAYE.6029
+2026-07-07 06:08:53 [INFO] [32/38] https://yapimaks.com/tc-040-mm-eko-27x60x27-3-m-1-ad-12-p3929
+2026-07-07 06:08:54 [INFO] [3929] 'TC 040 MM EKO 27X60X27 3 M 1 AD (12)' | 77.00 TL | SKU: FOUR.040.TC-60.27.3000
+2026-07-07 06:08:56 [INFO] [33/38] https://yapimaks.com/tirpan-yan-gb53yk-benzin-2t-3-hp-factor-gb53yk-p15627
+2026-07-07 06:08:56 [INFO] [15627] 'TIRPAN YAN GB53YK BENZİN 2T 3 HP FACTOR ' | 6800.00 TL | SKU: FACTOR.FCGB53YK
+2026-07-07 06:08:58 [INFO] [34/38] https://yapimaks.com/tornavida-topac-4-5x100-yildiz-kraft-izeltas-p15606
+2026-07-07 06:08:58 [INFO] [15606] 'TORNAVİDA TOPAÇ 4,5X100 YILDIZ KRAFT İZE' | 260.00 TL | SKU: İZELTAŞ.4120.18.5100
+2026-07-07 06:09:00 [INFO] [35/38] https://yapimaks.com/tornavida-topac-4-5x25-yildiz-kraft-izeltas-p15603
+2026-07-07 06:09:00 [INFO] [15603] 'TORNAVİDA TOPAÇ 4,5X25 YILDIZ KRAFT İZEL' | 175.00 TL | SKU: İZELTAŞ.4130.18.4525
+2026-07-07 06:09:02 [INFO] [36/38] https://yapimaks.com/tornavida-topac-4-5x300-yildiz-kraft-izeltas-p15607
+2026-07-07 06:09:02 [INFO] [15607] 'TORNAVİDA TOPAÇ 4,5X300 YILDIZ KRAFT İZE' | 715.00 TL | SKU: İZELTAŞ.4120.18.5300
+2026-07-07 06:09:04 [INFO] [37/38] https://yapimaks.com/tornavida-topac-4-5x80-yildiz-kraft-izeltas-p15605
+2026-07-07 06:09:05 [INFO] [15605] 'TORNAVİDA TOPAÇ 4,5X80 YILDIZ KRAFT İZEL' | 230.00 TL | SKU: İZELTAŞ.4120.18.4580
+2026-07-07 06:09:07 [INFO] [38/38] https://yapimaks.com/tornavida-topac-6x25-yildiz-kraft-izeltas-p15604
+2026-07-07 06:09:07 [INFO] [15604] 'TORNAVİDA TOPAÇ 6X25 YILDIZ KRAFT İZELTA' | 215.00 TL | SKU: İZELTAŞ.4130.18.0625
+2026-07-07 06:09:09 [INFO] Tamamlandi! Toplam 38 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-07.csv
