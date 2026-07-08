@@ -1,0 +1,76 @@
+2026-07-08 05:20:38 [INFO] ==================================================
+2026-07-08 05:20:38 [INFO] Yapimaks Scraper basliyor
+2026-07-08 05:20:38 [INFO] ==================================================
+2026-07-08 05:20:38 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-07-08 05:20:39 [INFO] Cookie basariyla alindi.
+2026-07-08 05:20:39 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-07-08 05:20:39 [INFO] Sitemap'ten toplam 7877 urun URL'si bulundu.
+2026-07-08 05:20:39 [INFO] Bugune ait veri yok. Eski veri (2026-07-07.csv) süzülerek bugune aktariliyor...
+2026-07-08 05:20:40 [INFO] Basarili! 7845 urun dunden bugune aktarildi.
+2026-07-08 05:20:40 [INFO] Guncel dosyada hazir olan urun: 7845 | Sifirdan cekilecek (yeni) urun: 32
+2026-07-08 05:20:40 [INFO] 32 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-08.csv
+2026-07-08 05:20:40 [INFO] [1/32] https://yapimaks.com/asma-tavan-karopan-beyaz-duz-60-60-8mm-1-ad-p772
+2026-07-08 05:20:40 [INFO] [772] 'ASMA TAVAN KAROPAN BEYAZ DÜZ 60*60*8MM 1' | 60.00 TL | SKU: ASMAT.002
+2026-07-08 05:20:42 [INFO] [2/32] https://yapimaks.com/bag-makasi-200-mm-wert-4123-p15593
+2026-07-08 05:20:42 [INFO] [15593] 'BAĞ MAKASI 200 MM WERT 4123' | 425.00 TL | SKU: WERT.4123
+2026-07-08 05:20:44 [INFO] [3/32] https://yapimaks.com/bag-makasi-230-mm-wert-4129-p15592
+2026-07-08 05:20:44 [INFO] [15592] 'BAĞ MAKASI 230 MM WERT 4129' | 625.00 TL | SKU: WERT.4129
+2026-07-08 05:20:46 [INFO] [4/32] https://yapimaks.com/bag-makasi-prof-215mm-desa-p15558
+2026-07-08 05:20:47 [INFO] [15558] 'BAĞ MAKASI PROF. 215mm DESA' | 450.00 TL | SKU: SD.BMD001
+2026-07-08 05:20:49 [INFO] [5/32] https://yapimaks.com/bits-uc-ph2-50mm-yildiz-wonder-1-ad-p15518
+2026-07-08 05:20:49 [INFO] [15518] 'BİTS UÇ PH2 50MM YILDIZ WONDER 1 AD' | 25.00 TL | SKU: WONDER.STW01904
+2026-07-08 05:20:51 [INFO] [6/32] https://yapimaks.com/dalgic-drenaj-pompa-550-w-cs550-n-rainpump-p15533
+2026-07-08 05:20:51 [INFO] [15533] 'DALGIÇ DRENAJ POMPA 550 W CS550-N RAINPU' | 2350.00 TL | SKU: RAINPUMP.CS550P-N
+2026-07-08 05:20:53 [INFO] [7/32] https://yapimaks.com/dalgic-drenaj-pompa-cs550-n-inox-rainpump-p15532
+2026-07-08 05:20:53 [INFO] [15532] 'DALGIÇ DRENAJ POMPA CS550-N INOX  RAINPU' | 2850.00 TL | SKU: RAINPUMP.CS550INOX-N
+2026-07-08 05:20:55 [INFO] [8/32] https://yapimaks.com/firca-kestirme-ahsap-super-no-3-201-yildirim-firca-p15504
+2026-07-08 05:20:55 [INFO] [15504] 'FIRÇA KESTİRME AHŞAP SÜPER NO:3 201 YILD' | 90.00 TL | SKU: YILDIRIMFIRÇA.201
+2026-07-08 05:20:57 [INFO] [9/32] https://yapimaks.com/firca-kestirme-ahsap-super-no-4-202-yildirim-firca-p15505
+2026-07-08 05:20:58 [INFO] [15505] 'FIRÇA KESTİRME AHŞAP SÜPER NO:4 202 YILD' | 100.00 TL | SKU: YILDIRIMFIRÇA.202
+2026-07-08 05:21:00 [INFO] [10/32] https://yapimaks.com/firca-kestirme-lux-no-2-5-124-yildirim-firca-p15492
+2026-07-08 05:21:00 [INFO] [15492] 'FIRÇA KESTİRME LÜX NO:2.5 124 YILDIRIM F' | 45.00 TL | SKU: YILDIRIMFIRÇA.124
+2026-07-08 05:21:02 [INFO] [11/32] https://yapimaks.com/firca-kestirme-lux-no-3-125-yildirim-firca-p15493
+2026-07-08 05:21:02 [INFO] [15493] 'FIRÇA KESTİRME LÜX NO:3 125 YILDIRIM FIR' | 55.00 TL | SKU: YILDIRIMFIRÇA.125
+2026-07-08 05:21:04 [INFO] [12/32] https://yapimaks.com/firca-kestirme-lux-no-4-126-yildirim-firca-p15599
+2026-07-08 05:21:04 [INFO] [15599] 'FIRÇA KESTİRME LÜX NO:4 126 YILDIRIM FIR' | 65.00 TL | SKU: YILDIRIMFIRÇA.126
+2026-07-08 05:21:06 [INFO] [13/32] https://yapimaks.com/firca-oto-battal-20-cm-451-yildirim-firca-p15491
+2026-07-08 05:21:07 [INFO] [15491] 'FIRÇA OTO BATTAL 20 CM 451 YILDIRIM FIRÇ' | 115.00 TL | SKU: YILDIRIMFIRÇA.451
+2026-07-08 05:21:09 [INFO] [14/32] https://yapimaks.com/firca-robot-lux-no-3-306-yildirim-firca-p15600
+2026-07-08 05:21:09 [INFO] [15600] 'FIRÇA ROBOT LÜX NO:3 306 YILDIRIM FIRÇA' | 80.00 TL | SKU: YILDIRIMFIRÇA.306
+2026-07-08 05:21:11 [INFO] [15/32] https://yapimaks.com/firca-yagli-boya-ahsap-sap-no-1-5-402-yildirim-firca-p15506
+2026-07-08 05:21:11 [INFO] [15506] 'FIRÇA YAĞLI BOYA AHŞAP SAP NO:1.5 402 YI' | 50.00 TL | SKU: YILDIRIMFIRÇA.402
+2026-07-08 05:21:13 [INFO] [16/32] https://yapimaks.com/firca-yagli-boya-ahsap-sap-no-2-403-yildirim-firca-p15507
+2026-07-08 05:21:13 [INFO] [15507] 'FIRÇA YAĞLI BOYA AHŞAP SAP NO:2 403 YILD' | 70.00 TL | SKU: YILDIRIMFIRÇA.403
+2026-07-08 05:21:15 [INFO] [17/32] https://yapimaks.com/firca-yagli-boya-ahsap-sap-no-2-5-404-yildirim-firca-p15508
+2026-07-08 05:21:16 [INFO] [15508] 'FIRÇA YAĞLI BOYA AHŞAP SAP NO:2,5 404 YI' | 75.00 TL | SKU: YILDIRIMFIRÇA.404
+2026-07-08 05:21:18 [INFO] [18/32] https://yapimaks.com/firca-yagli-boya-ahsap-sap-no-3-405-yildirim-firca-p15509
+2026-07-08 05:21:18 [INFO] [15509] 'FIRÇA YAĞLI BOYA AHŞAP SAP NO:3 405 YILD' | 90.00 TL | SKU: YILDIRIMFIRÇA.405
+2026-07-08 05:21:20 [INFO] [19/32] https://yapimaks.com/firca-yagli-boya-ahsap-sap-no-4-406-yildirim-firca-p15510
+2026-07-08 05:21:20 [INFO] [15510] 'FIRÇA YAĞLI BOYA AHŞAP SAP NO:4 406 YILD' | 120.00 TL | SKU: YILDIRIMFIRÇA.406
+2026-07-08 05:21:22 [INFO] [20/32] https://yapimaks.com/gezer-cizme-392-sari-uzun-konc-no-43-p15630
+2026-07-08 05:21:22 [INFO] [15630] 'GEZER ÇİZME 392 SARI UZUN KONÇ NO:43' | 380.00 TL | SKU: GEZER.0392.43
+2026-07-08 05:21:24 [INFO] [21/32] https://yapimaks.com/gezer-cizme-392-sari-uzun-konc-no-45-p15631
+2026-07-08 05:21:25 [INFO] [15631] 'GEZER ÇİZME 392 SARI UZUN KONÇ NO:45' | 380.00 TL | SKU: GEZER.0392.45
+2026-07-08 05:21:27 [INFO] [22/32] https://yapimaks.com/led-panel-ct5147-slim-beyaz-yuv-12w-6400k-150q-siva-alti-cata-p15705
+2026-07-08 05:21:27 [INFO] [15705] 'LED PANEL CT5147 SLİM BEYAZ YUV. 12W 640' | 140.00 TL | SKU: CATA.CT-5147
+2026-07-08 05:21:29 [INFO] [23/32] https://yapimaks.com/matkap-ucu-4-5-6-8-10-mm-5-li-set-seramik-cam-tugla-p15517
+2026-07-08 05:21:29 [INFO] [15517] 'MATKAP UCU (4,5,6,8,10 MM) 5 Lİ SET SERA' | 790.00 TL | SKU: WONDER.STW01410-1
+2026-07-08 05:21:31 [INFO] [24/32] https://yapimaks.com/matkap-ucu-7-mm-seramik-cam-tugla-p15501
+2026-07-08 05:21:31 [INFO] [15501] 'MATKAP UCU 7 MM SERAMİK-CAM-TUĞLA' | 165.00 TL | SKU: WONDER.STW01404
+2026-07-08 05:21:33 [INFO] [25/32] https://yapimaks.com/matkap-ucu-8-mm-seramik-cam-tugla-p10935
+2026-07-08 05:21:34 [INFO] [10935] 'MATKAP UCU 8 MM SERAMİK-CAM-TUĞLA' | 195.00 TL | SKU: WONDER.STW01405
+2026-07-08 05:21:36 [INFO] [26/32] https://yapimaks.com/matkap-ucu-9-mm-seramik-cam-tugla-p10950
+2026-07-08 05:21:36 [INFO] [10950] 'MATKAP UCU 9 MM SERAMİK-CAM-TUĞLA' | 250.00 TL | SKU: WONDER.STW01406
+2026-07-08 05:21:38 [INFO] [27/32] https://yapimaks.com/metre-serit-7-5mt-25mm-stud-govde-milwaukee-p15639
+2026-07-08 05:21:38 [INFO] [15639] 'METRE ŞERİT 7.5MT 25MM STUD GÖVDE MİLWAU' | 1375.00 TL | SKU: MİLWAUKEE.T48229926
+2026-07-08 05:21:40 [INFO] [28/32] https://yapimaks.com/panel-armatur-clip-in-30x30-25w-6400k-p13785
+2026-07-08 05:21:40 [INFO] [13785] 'PANEL ARMATÜR CLİP-İN 30X30 25W 6400K' | 270.00 TL | SKU: CATA.5286
+2026-07-08 05:21:42 [INFO] [29/32] https://yapimaks.com/priz-1x16a-kaucuk-duz-monofaz-mete-p6056
+2026-07-08 05:21:43 [INFO] [6056] 'PRİZ 1x16A KAUÇUK DÜZ MONOFAZ METE' | 95.00 TL | SKU: METE.404001
+2026-07-08 05:21:45 [INFO] [30/32] https://yapimaks.com/soku-demiri-manivela-topuklu-120cm-sait-demirci-p15485
+2026-07-08 05:21:45 [INFO] [15485] 'SÖKÜ DEMİRİ MANİVELA (TOPUKLU) 120CM SAİ' | 1850.00 TL | SKU: SD.TM7001
+2026-07-08 05:21:47 [INFO] [31/32] https://yapimaks.com/su-terazisi-aluminyum-miknatissiz-80-cm-rodex-p15472
+2026-07-08 05:21:47 [INFO] [15472] 'SU TERAZİSİ ALÜMİNYUM MIKNATISSIZ 80 CM ' | 480.00 TL | SKU: RODEX.RHT0904120080
+2026-07-08 05:21:49 [INFO] [32/32] https://yapimaks.com/su-terazisi-mini-magnetli-sum10-rodex-p15474
+2026-07-08 05:21:49 [INFO] [15474] 'SU TERAZİSİ MİNİ MAGNETLİ SUM10 RODEX' | 155.00 TL | SKU: RODEX.RHT0904170010
+2026-07-08 05:21:51 [INFO] Tamamlandi! Toplam 32 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-08.csv
