@@ -1,0 +1,66 @@
+2026-07-09 06:04:12 [INFO] ==================================================
+2026-07-09 06:04:12 [INFO] Yapimaks Scraper basliyor
+2026-07-09 06:04:12 [INFO] ==================================================
+2026-07-09 06:04:12 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-07-09 06:04:13 [INFO] Cookie basariyla alindi.
+2026-07-09 06:04:13 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-07-09 06:04:13 [INFO] Sitemap'ten toplam 7893 urun URL'si bulundu.
+2026-07-09 06:04:13 [INFO] Bugune ait veri yok. Eski veri (2026-07-08.csv) süzülerek bugune aktariliyor...
+2026-07-09 06:04:13 [INFO] Basarili! 7866 urun dunden bugune aktarildi.
+2026-07-09 06:04:13 [INFO] Guncel dosyada hazir olan urun: 7866 | Sifirdan cekilecek (yeni) urun: 27
+2026-07-09 06:04:13 [INFO] 27 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-09.csv
+2026-07-09 06:04:13 [INFO] [1/27] https://yapimaks.com/akrobat-alt-ayak-120-cm-merdiven-alt-ayak-p15718
+2026-07-09 06:04:14 [INFO] [15718] 'AKROBAT ALT AYAK / 120 CM MERDİVEN ALT A' | 575.00 TL | SKU: SARAYLI.00
+2026-07-09 06:04:16 [INFO] [2/27] https://yapimaks.com/cirpi-ipi-70-gr-75-mt-p15524
+2026-07-09 06:04:16 [INFO] [15524] 'ÇIRPI İPİ 70 GR. 75 MT' | 50.00 TL | SKU: WONDER.W01502
+2026-07-09 06:04:18 [INFO] [3/27] https://yapimaks.com/cirpi-ipi-85-gr-90-mt-p15523
+2026-07-09 06:04:18 [INFO] [15523] 'ÇIRPI İPİ 85 GR. 90 MT' | 55.00 TL | SKU: WONDER.W015021
+2026-07-09 06:04:20 [INFO] [4/27] https://yapimaks.com/flator-3-4-p4351
+2026-07-09 06:04:20 [INFO] [4351] 'FLATÖR 3/4' | 680.00 TL | SKU: GMS.FL403
+2026-07-09 06:04:22 [INFO] [5/27] https://yapimaks.com/merdiven-2x11-a-tip-surgulu-endustriyel-aluminyum-7211a-p8221
+2026-07-09 06:04:22 [INFO] [8221] 'MERDİVEN 2X11 A TİP SÜRGÜLÜ ENDÜSTRİYEL ' | 7850.00 TL | SKU: SARAYLI.7211A
+2026-07-09 06:04:24 [INFO] [6/27] https://yapimaks.com/merdiven-2x13-surgulu-7m-endustriyel-aluminyum-7213-p8222
+2026-07-09 06:04:25 [INFO] [8222] 'MERDİVEN 2X13 SÜRGÜLÜ 7M ENDÜSTRİYEL ALÜ' | 8580.00 TL | SKU: SARAYLI.7213S
+2026-07-09 06:04:27 [INFO] [7/27] https://yapimaks.com/merdiven-3-1-kod-1303-tek-tarafli-aluminyum-prof-beyaz-sarayli-p15717
+2026-07-09 06:04:27 [INFO] [15717] 'MERDİVEN 3+1 KOD:1303 TEK TARAFLI ALÜMİN' | 4235.00 TL | SKU: SARAYLI.1303
+2026-07-09 06:04:29 [INFO] [8/27] https://yapimaks.com/merdiven-3-1-wonder-metal-plastik-basamak-1423-sarayli-p14229
+2026-07-09 06:04:29 [INFO] [14229] 'MERDİVEN 3+1 WONDER METAL PLASTİK BASAMA' | 1660.00 TL | SKU: SARAYLI.1423
+2026-07-09 06:04:31 [INFO] [9/27] https://yapimaks.com/merdiven-4-1-jackson-metal-1103-sarayli-p8202
+2026-07-09 06:04:31 [INFO] [8202] 'MERDİVEN 4+1 JACKSON METAL 1103 SARAYLI' | 1475.00 TL | SKU: SARAYLI.1103
+2026-07-09 06:04:33 [INFO] [10/27] https://yapimaks.com/merdiven-4-1-kod-1304-tek-tarafli-aluminyum-prof-beyaz-sarayli-p15712
+2026-07-09 06:04:34 [INFO] [15712] 'MERDİVEN 4+1 KOD:1304 TEK TARAFLI ALÜMİN' | 4960.00 TL | SKU: SARAYLI.1304
+2026-07-09 06:04:36 [INFO] [11/27] https://yapimaks.com/merdiven-4-1-wonder-metal-plastik-basamak-1424-sarayli-p14230
+2026-07-09 06:04:36 [INFO] [14230] 'MERDİVEN 4+1 WONDER METAL PLASTİK BASAMA' | 1980.00 TL | SKU: SARAYLI.1424
+2026-07-09 06:04:38 [INFO] [12/27] https://yapimaks.com/merdiven-4-4-kod-1204-cift-cikisli-metal-sarayli-p8205
+2026-07-09 06:04:38 [INFO] [8205] 'MERDİVEN 4+4 KOD:1204 ÇİFT ÇIKIŞLI METAL' | 1520.00 TL | SKU: SARAYLI.1204
+2026-07-09 06:04:40 [INFO] [13/27] https://yapimaks.com/merdiven-4-4-kod-1804-cift-tarafli-aluminyum-sarayli-p8209
+2026-07-09 06:04:40 [INFO] [8209] 'MERDİVEN 4+4 KOD:1804 ÇİFT TARAFLI ALÜMİ' | 2715.00 TL | SKU: SARAYLI.1804
+2026-07-09 06:04:42 [INFO] [14/27] https://yapimaks.com/merdiven-5-1-kod-1305-tek-tarafli-aluminyum-prof-beyaz-sarayli-p15713
+2026-07-09 06:04:42 [INFO] [15713] 'MERDİVEN 5+1 KOD:1305 TEK TARAFLI ALÜMİN' | 5785.00 TL | SKU: SARAYLI.1305
+2026-07-09 06:04:44 [INFO] [15/27] https://yapimaks.com/merdiven-5-5-kod-1205-cift-cikisli-metal-sarayli-p8206
+2026-07-09 06:04:45 [INFO] [8206] 'MERDİVEN 5+5 KOD:1205 ÇİFT ÇIKIŞLI METAL' | 1820.00 TL | SKU: SARAYLI.1205
+2026-07-09 06:04:47 [INFO] [16/27] https://yapimaks.com/merdiven-6-6-kod-1206-cift-cikisli-metal-sarayli-p8207
+2026-07-09 06:04:47 [INFO] [8207] 'MERDİVEN 6+6 KOD:1206 ÇİFT ÇIKIŞLI METAL' | 2160.00 TL | SKU: SARAYLI.1206
+2026-07-09 06:04:49 [INFO] [17/27] https://yapimaks.com/merdiven-6-6-kod-1806-cift-tarafli-aluminyum-sarayli-p8211
+2026-07-09 06:04:49 [INFO] [8211] 'MERDİVEN 6+6 KOD:1806 ÇİFT TARAFLI ALÜMİ' | 4095.00 TL | SKU: SARAYLI.1806
+2026-07-09 06:04:51 [INFO] [18/27] https://yapimaks.com/merdiven-7-7-kod-1207-cift-cikisli-metal-sarayli-p8208
+2026-07-09 06:04:51 [INFO] [8208] 'MERDİVEN 7+7 KOD:1207 ÇİFT ÇIKIŞLI METAL' | 2495.00 TL | SKU: SARAYLI.1207
+2026-07-09 06:04:53 [INFO] [19/27] https://yapimaks.com/merdiven-8-1-wonder-metal-plastik-basamak-1428-sarayli-p14234
+2026-07-09 06:04:54 [INFO] [14234] 'MERDİVEN 8+1 WONDER METAL PLASTİK BASAMA' | 3660.00 TL | SKU: SARAYLI.1428
+2026-07-09 06:04:56 [INFO] [20/27] https://yapimaks.com/merdiven-hardy-pratik-2-li-siyah-metal-sarayli-1632-h-p15715
+2026-07-09 06:04:56 [INFO] [15715] "MERDİVEN HARDY PRATİK 2'Lİ SİYAH METAL S" | 1155.00 TL | SKU: SARAYLI.1632-H
+2026-07-09 06:04:58 [INFO] [21/27] https://yapimaks.com/merdiven-hardy-pratik-3-lu-siyah-metal-sarayli-1633-h-p15709
+2026-07-09 06:04:58 [INFO] [15709] "MERDİVEN HARDY PRATİK 3'LÜ SİYAH METAL S" | 1550.00 TL | SKU: SARAYLI.1633-H
+2026-07-09 06:05:00 [INFO] [22/27] https://yapimaks.com/merdiven-hardy-pratik-4-lu-siyah-metal-sarayli-1634-h-p15716
+2026-07-09 06:05:00 [INFO] [15716] "MERDİVEN HARDY PRATİK 4'LÜ SİYAH METAL S" | 1795.00 TL | SKU: SARAYLI.1634-H
+2026-07-09 06:05:02 [INFO] [23/27] https://yapimaks.com/merdiven-pratik-2-li-beyaz-metal-sarayli-1632-p15714
+2026-07-09 06:05:02 [INFO] [15714] "MERDİVEN PRATİK 2'Lİ BEYAZ METAL SARAYLI" | 1155.00 TL | SKU: SARAYLI.1632
+2026-07-09 06:05:04 [INFO] [24/27] https://yapimaks.com/merdiven-pratik-3-lu-beyaz-metal-sarayli-1633-p15708
+2026-07-09 06:05:05 [INFO] [15708] "MERDİVEN PRATİK 3'LÜ BEYAZ METAL SARAYLI" | 1550.00 TL | SKU: SARAYLI.1633
+2026-07-09 06:05:07 [INFO] [25/27] https://yapimaks.com/merdiven-pratik-4-lu-beyaz-metal-sarayli-1634-p15710
+2026-07-09 06:05:07 [INFO] [15710] "MERDİVEN PRATİK 4'LÜ BEYAZ METAL SARAYLI" | 1795.00 TL | SKU: SARAYLI.1634
+2026-07-09 06:05:09 [INFO] [26/27] https://yapimaks.com/merdiven-tabureli-3-basamak-katlanir-metal-beyaz-1151-sarayli-p15711
+2026-07-09 06:05:09 [INFO] [15711] 'MERDİVEN TABURELİ 3 BASAMAK KATLANIR MET' | 1665.00 TL | SKU: SARAYLI.1151
+2026-07-09 06:05:11 [INFO] [27/27] https://yapimaks.com/tirpan-sirt-benzinli-1-7-kw-wonder-p15503
+2026-07-09 06:05:11 [INFO] [15503] 'TIRPAN SIRT BENZİNLİ 1.7 KW WONDER' | 5850.00 TL | SKU: WONDER.WBST2017
+2026-07-09 06:05:13 [INFO] Tamamlandi! Toplam 27 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-09.csv
