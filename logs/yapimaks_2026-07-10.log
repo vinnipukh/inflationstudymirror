@@ -1,0 +1,72 @@
+2026-07-10 06:03:02 [INFO] ==================================================
+2026-07-10 06:03:02 [INFO] Yapimaks Scraper basliyor
+2026-07-10 06:03:02 [INFO] ==================================================
+2026-07-10 06:03:02 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-07-10 06:03:03 [INFO] Cookie basariyla alindi.
+2026-07-10 06:03:03 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-07-10 06:03:03 [INFO] Sitemap'ten toplam 7912 urun URL'si bulundu.
+2026-07-10 06:03:03 [INFO] Bugune ait veri yok. Eski veri (2026-07-09.csv) süzülerek bugune aktariliyor...
+2026-07-10 06:03:04 [INFO] Basarili! 7882 urun dunden bugune aktarildi.
+2026-07-10 06:03:04 [INFO] Guncel dosyada hazir olan urun: 7882 | Sifirdan cekilecek (yeni) urun: 30
+2026-07-10 06:03:04 [INFO] 30 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-10.csv
+2026-07-10 06:03:04 [INFO] [1/30] https://yapimaks.com/autokit-mikrofiber-havlu-temizlik-bez-5-li-30x30-cm-fa1-882-p3475
+2026-07-10 06:03:04 [INFO] [3475] 'AUTOKIT MİKROFİBER HAVLU TEMİZLİK BEZ 5 ' | 96.00 TL | SKU: AUTOKİT.FA1-882
+2026-07-10 06:03:06 [INFO] [2/30] https://yapimaks.com/autokit-trafik-seti-eva-canta-fa1-005-p14985
+2026-07-10 06:03:06 [INFO] [14985] 'AUTOKIT TRAFİK SETİ EVA ÇANTA  FA1-005' | 2750.00 TL | SKU: AUTOKİT.FA1-005
+2026-07-10 06:03:08 [INFO] [3/30] https://yapimaks.com/autokit-trafik-seti-kare-bez-canta-ekonomik-fa1-002-p3353
+2026-07-10 06:03:08 [INFO] [3353] 'AUTOKIT TRAFİK SETİ KARE BEZ ÇANTA EKONO' | 1900.00 TL | SKU: AUTOKİT.FA1-002
+2026-07-10 06:03:10 [INFO] [4/30] https://yapimaks.com/betofast-6-3-105-1-ad-p9136
+2026-07-10 06:03:11 [INFO] [9136] 'BETOFAST 6.3*105 1 AD' | 4.25 TL | SKU: STD.900242700
+2026-07-10 06:03:13 [INFO] [5/30] https://yapimaks.com/bits-uc-ph2-100mm-yildiz-wonder-bilsterli-2-ad-p15520
+2026-07-10 06:03:13 [INFO] [15520] 'BİTS UÇ PH2 100MM YILDIZ WONDER BİLSTERL' | 110.00 TL | SKU: WONDER.STW020109
+2026-07-10 06:03:15 [INFO] [6/30] https://yapimaks.com/bits-uc-ph2-150mm-yildiz-wonder-bilsterli-1-ad-p15519
+2026-07-10 06:03:15 [INFO] [15519] 'BİTS UÇ PH2 150MM YILDIZ WONDER BİLSTERL' | 90.00 TL | SKU: WONDER.STW020110
+2026-07-10 06:03:17 [INFO] [7/30] https://yapimaks.com/bits-uc-ph2-75mm-yildiz-wonder-bilsterli-3-ad-p15502
+2026-07-10 06:03:17 [INFO] [15502] 'BİTS UÇ PH2 75MM YILDIZ WONDER BİLSTERLİ' | 100.00 TL | SKU: WONDER.STW020108
+2026-07-10 06:03:19 [INFO] [8/30] https://yapimaks.com/boardex-120-240-12-5-mm-50-p1922
+2026-07-10 06:03:20 [INFO] [1922] 'BOARDEX 120*240*12.5 MM (50)' | 725.00 TL | SKU: DALSAN.204
+2026-07-10 06:03:22 [INFO] [9/30] https://yapimaks.com/eldiven-asit-45-cm-siyah-uzun-kaucuk-rubi-h2-45-p15673
+2026-07-10 06:03:22 [INFO] [15673] 'ELDİVEN ASİT 45 CM SİYAH UZUN KAUÇUK RUB' | 229.00 TL | SKU: RUBİ.010223
+2026-07-10 06:03:24 [INFO] [10/30] https://yapimaks.com/folyo-bant-aluminyum-takviyeli-44x20-mt-wonder-p15645
+2026-07-10 06:03:24 [INFO] [15645] 'FOLYO BANT ALÜMİNYUM TAKVİYELİ 44X20 MT ' | 80.00 TL | SKU: WONDER.WBFT4420
+2026-07-10 06:03:26 [INFO] [11/30] https://yapimaks.com/folyo-bant-aluminyum-takviyeli-72x20-mt-wonder-p15646
+2026-07-10 06:03:26 [INFO] [15646] 'FOLYO BANT ALÜMİNYUM TAKVİYELİ 72X20 MT ' | 125.00 TL | SKU: WONDER.WBFT7220
+2026-07-10 06:03:28 [INFO] [12/30] https://yapimaks.com/folyo-bant-aluminyum-takviyeli-96x20-mt-wonder-p15647
+2026-07-10 06:03:28 [INFO] [15647] 'FOLYO BANT ALÜMİNYUM TAKVİYELİ  96X20 MT' | 170.00 TL | SKU: WONDER.WBFT9620
+2026-07-10 06:03:30 [INFO] [13/30] https://yapimaks.com/golgelik-golgefil-85-siklik-en-150-cm-1-m-100-p8913
+2026-07-10 06:03:31 [INFO] [8913] 'GÖLGELİK-GÖLGEFİL %85 SIKLIK EN:150 CM, ' | 38.00 TL | SKU: GÖLGELİK.85.150CM
+2026-07-10 06:03:33 [INFO] [14/30] https://yapimaks.com/golgelik-golgefil-85-siklik-en-200-cm-1-m-100-p8914
+2026-07-10 06:03:33 [INFO] [8914] 'GÖLGELİK-GÖLGEFİL %85 SIKLIK EN:200 CM, ' | 50.00 TL | SKU: GÖLGELİK.85.200CM
+2026-07-10 06:03:35 [INFO] [15/30] https://yapimaks.com/golgelik-golgefil-85-siklik-en-300-cm-1-m-100-p15719
+2026-07-10 06:03:35 [INFO] [15719] 'GÖLGELİK-GÖLGEFİL %85 SIKLIK EN:300 CM, ' | 75.00 TL | SKU: GÖLGELİK.85.300CM
+2026-07-10 06:03:37 [INFO] [16/30] https://yapimaks.com/golgelik-golgefil-85-siklik-en-400-cm-1-m-100-p15720
+2026-07-10 06:03:37 [INFO] [15720] 'GÖLGELİK-GÖLGEFİL %85 SIKLIK EN:400 CM, ' | 100.00 TL | SKU: GÖLGELİK.85.400CM
+2026-07-10 06:03:39 [INFO] [17/30] https://yapimaks.com/kapi-hidroligi-no-3-guard-40-65-kg-p15663
+2026-07-10 06:03:40 [INFO] [15663] 'KAPI HİDROLİĞİ NO:3 GUARD 40-65 KG' | 500.00 TL | SKU: GUARD.GUKH03
+2026-07-10 06:03:42 [INFO] [18/30] https://yapimaks.com/kapi-hidroligi-no-4-guard-60-90-kg-p15664
+2026-07-10 06:03:42 [INFO] [15664] 'KAPI HİDROLİĞİ NO:4 GUARD 60-90 KG' | 600.00 TL | SKU: GUARD.GUKH04
+2026-07-10 06:03:44 [INFO] [19/30] https://yapimaks.com/kazima-bicagi-yedegi-10-lu-stanley-p15642
+2026-07-10 06:03:44 [INFO] [15642] 'KAZIMA BIÇAĞI YEDEĞİ 10 LU STANLEY' | 75.00 TL | SKU: STANLEY.0-28-510
+2026-07-10 06:03:46 [INFO] [20/30] https://yapimaks.com/koli-bandi-akrilik-seffaf-45mm-x100-metre-stk-p15637
+2026-07-10 06:03:46 [INFO] [15637] 'KOLİ BANDI AKRİLİK ŞEFFAF 45MM X100 METR' | 60.00 TL | SKU: STK.08045
+2026-07-10 06:03:48 [INFO] [21/30] https://yapimaks.com/sac-kesme-kaportaci-makasi-duz-300-mm-stanley-14-566-p15477
+2026-07-10 06:03:48 [INFO] [15477] 'SAC KESME KAPORTACI MAKASI DÜZ 300 MM ST' | 1450.00 TL | SKU: STANLEY.14.566
+2026-07-10 06:03:50 [INFO] [22/30] https://yapimaks.com/sac-kesme-makasi-agir-hizmet-duz-250-mm-troy-21110-p13314
+2026-07-10 06:03:51 [INFO] [13314] 'SAC KESME MAKASI AĞIR HİZMET DÜZ 250 MM ' | 959.00 TL | SKU: TROY.21110
+2026-07-10 06:03:53 [INFO] [23/30] https://yapimaks.com/sac-kesme-makasi-duz-245-mm-troy-21101-p13128
+2026-07-10 06:03:53 [INFO] [13128] 'SAC KESME MAKASI DÜZ 245 MM TROY 21101' | 730.00 TL | SKU: TROY.21101
+2026-07-10 06:03:55 [INFO] [24/30] https://yapimaks.com/sac-kesme-makasi-sag-245-mm-troy-21100-p13138
+2026-07-10 06:03:55 [INFO] [13138] 'SAC KESME MAKASI SAĞ 245 MM TROY 21100' | 735.00 TL | SKU: TROY.21100
+2026-07-10 06:03:57 [INFO] [25/30] https://yapimaks.com/sac-kesme-makasi-sag-250-mm-b12r-weller-wiss-p10035
+2026-07-10 06:03:57 [INFO] [10035] 'SAC KESME MAKASI SAĞ 250 MM B12R - WELLE' | 858.00 TL | SKU: WELLERWİSS.B12R
+2026-07-10 06:03:59 [INFO] [26/30] https://yapimaks.com/sac-kesme-makasi-sol-245-mm-troy-21102-p13135
+2026-07-10 06:04:00 [INFO] [13135] 'SAC KESME MAKASI SOL 245 MM TROY 21102' | 730.00 TL | SKU: TROY.21102
+2026-07-10 06:04:02 [INFO] [27/30] https://yapimaks.com/siva-filesi-160-gr-b-turuncu-1-m2-50-p11914
+2026-07-10 06:04:02 [INFO] [11914] 'SIVA FİLESİ 160-GR B+ TURUNCU 1 M2 (50)' | 13.75 TL | SKU: DARKSS.SF160.02
+2026-07-10 06:04:04 [INFO] [28/30] https://yapimaks.com/spatula-kazima-6-cm-skarp-sp-101206-p15559
+2026-07-10 06:04:04 [INFO] [15559] 'SPATULA KAZIMA 6 CM SKARP SP 101206' | 70.00 TL | SKU: SKARP.SP101206
+2026-07-10 06:04:06 [INFO] [29/30] https://yapimaks.com/toshiba-pil-buyuk-r20sl-2li-p15580
+2026-07-10 06:04:06 [INFO] [15580] 'TOSHİBA PİL BÜYÜK R20SL 2Lİ' | 100.00 TL | SKU: TOSHİBA.R20SL.SP-2TGTET
+2026-07-10 06:04:08 [INFO] [30/30] https://yapimaks.com/toshiba-pil-ince-10-lu-aaa-kumanda-lr03-1-5v-p15581
+2026-07-10 06:04:09 [INFO] [15581] 'TOSHİBA PİL İNCE 10-LU AAA KUMANDA LR03/' | 200.00 TL | SKU: TOSHİBA.LR03GCA.BP-10C
+2026-07-10 06:04:11 [INFO] Tamamlandi! Toplam 30 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-10.csv
