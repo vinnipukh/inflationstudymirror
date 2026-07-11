@@ -1,0 +1,56 @@
+2026-07-11 05:12:52 [INFO] ==================================================
+2026-07-11 05:12:52 [INFO] Yapimaks Scraper basliyor
+2026-07-11 05:12:52 [INFO] ==================================================
+2026-07-11 05:12:52 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-07-11 05:12:53 [INFO] Cookie basariyla alindi.
+2026-07-11 05:12:53 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-07-11 05:12:53 [INFO] Sitemap'ten toplam 7929 urun URL'si bulundu.
+2026-07-11 05:12:53 [INFO] Bugune ait veri yok. Eski veri (2026-07-10.csv) süzülerek bugune aktariliyor...
+2026-07-11 05:12:53 [INFO] Basarili! 7907 urun dunden bugune aktarildi.
+2026-07-11 05:12:53 [INFO] Guncel dosyada hazir olan urun: 7907 | Sifirdan cekilecek (yeni) urun: 22
+2026-07-11 05:12:53 [INFO] 22 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-11.csv
+2026-07-11 05:12:53 [INFO] [1/22] https://yapimaks.com/bag-makasi-200-mm-troy-41203-p15594
+2026-07-11 05:12:54 [INFO] [15594] 'BAĞ MAKASI 200 MM TROY 41203' | 760.00 TL | SKU: TROY.41203
+2026-07-11 05:12:56 [INFO] [2/22] https://yapimaks.com/camasir-askisi-kupeste-aluminyum-kare-tks-08-p15490
+2026-07-11 05:12:56 [INFO] [15490] 'ÇAMAŞIR ASKISI KÜPEŞTE ALÜMİNYUM KARE TK' | 515.00 TL | SKU: TAKAS.TKS-08
+2026-07-11 05:12:58 [INFO] [3/22] https://yapimaks.com/cerman-barel-kilit-68-mm-bilyali-mandalli-tuzakli-saten-p15667
+2026-07-11 05:12:58 [INFO] [15667] 'CERMAN BAREL KİLİT 68 MM BİLYALI MANDALL' | 480.00 TL | SKU: YUMA.YM-B68BTMS
+2026-07-11 05:13:00 [INFO] [4/22] https://yapimaks.com/cerman-barel-kilit-90-mm-saten-yuma-p15662
+2026-07-11 05:13:00 [INFO] [15662] 'CERMAN BAREL KİLİT 90 MM SATEN YUMA' | 520.00 TL | SKU: YUMA.YM-B90S
+2026-07-11 05:13:02 [INFO] [5/22] https://yapimaks.com/emniyet-kelepcesi-kademeli-saten-yuma-ek-200-p15668
+2026-07-11 05:13:02 [INFO] [15668] 'EMNİYET KELEPÇESİ KADEMELİ SATEN YUMA EK' | 220.00 TL | SKU: YUMA.EK-200
+2026-07-11 05:13:04 [INFO] [6/22] https://yapimaks.com/freze-bicagi-7-8-x12-mm-topshop-th14491-p15618
+2026-07-11 05:13:04 [INFO] [15618] 'FREZE BIÇAĞI 7/8"X12 MM TOPSHOP TH14491' | 400.00 TL | SKU: TOPSHOP.TH14491
+2026-07-11 05:13:06 [INFO] [7/22] https://yapimaks.com/freze-bicagi-seti-12-parca-6-mm-topshop-th03038-p15616
+2026-07-11 05:13:07 [INFO] [15616] 'FREZE BIÇAĞI SETİ 12 PARÇA 6 MM TOPSHOP ' | 800.00 TL | SKU: TOPSHOP.TSP03038
+2026-07-11 05:13:09 [INFO] [8/22] https://yapimaks.com/freze-bicagi-seti-12-parca-8-mm-topshop-th03039-p15617
+2026-07-11 05:13:09 [INFO] [15617] 'FREZE BIÇAĞI SETİ 12 PARÇA 8 MM TOPSHOP ' | 850.00 TL | SKU: TOPSHOP.TSP03039
+2026-07-11 05:13:11 [INFO] [9/22] https://yapimaks.com/freze-makinasi-900-w-dik-m3601b-makita-p15598
+2026-07-11 05:13:11 [INFO] [15598] 'FREZE MAKİNASI 900 W DİK M3601B MAKİTA' | 6750.00 TL | SKU: MAKİTA.MAKM3601B
+2026-07-11 05:13:13 [INFO] [10/22] https://yapimaks.com/kapi-hidroligi-no-5-80-120-kg-kale-p12159
+2026-07-11 05:13:13 [INFO] [12159] 'KAPI HİDROLİĞİ NO:5(80-120 KG) KALE' | 2000.00 TL | SKU: KALE.KD002/50-550-0
+2026-07-11 05:13:15 [INFO] [11/22] https://yapimaks.com/kazima-bicagi-30-cm-aluminyum-yenal-p15640
+2026-07-11 05:13:15 [INFO] [15640] 'KAZIMA BIÇAĞI 30 CM ALÜMİNYUM YENAL' | 380.00 TL | SKU: YENAL.Y08-KB.150210
+2026-07-11 05:13:17 [INFO] [12/22] https://yapimaks.com/kazima-bicagi-plastik-turuncu-18-mm-yenal-p15641
+2026-07-11 05:13:18 [INFO] [15641] 'KAZIMA BIÇAĞI PLASTİK TURUNCU 18 MM YENA' | 120.00 TL | SKU: YENAL.Y08-KB490101
+2026-07-11 05:13:20 [INFO] [13/22] https://yapimaks.com/klozet-kapak-lale-yavas-kapanir-duroplast-paslanmaz-krom-mentese-ustten-sikma-tyana-p15595
+2026-07-11 05:13:20 [INFO] [15595] 'KLOZET KAPAK LALE YAVAŞ KAPANIR DUROPLAS' | 1750.00 TL | SKU: VİSAM.516.001
+2026-07-11 05:13:22 [INFO] [14/22] https://yapimaks.com/laminant-esik-prf-alm-sari-35-mm-bantli-p15486
+2026-07-11 05:13:22 [INFO] [15486] 'LAMİNANT EŞİK PRF ALM. SARI  35 MM (BANT' | 185.00 TL | SKU: TESAY.GPRA35.02
+2026-07-11 05:13:24 [INFO] [15/22] https://yapimaks.com/motorsiklet-disk-kilidi-alarmli-yuma-ym749-a-p15496
+2026-07-11 05:13:24 [INFO] [15496] 'MOTORSİKLET DİSK KİLİDİ ALARMLI YUMA YM7' | 860.00 TL | SKU: YUMA.YM-794-A
+2026-07-11 05:13:26 [INFO] [16/22] https://yapimaks.com/motorsiklet-disk-kilidi-yuma-ym749-p15495
+2026-07-11 05:13:26 [INFO] [15495] 'MOTORSİKLET DİSK KİLİDİ YUMA YM749' | 555.00 TL | SKU: YUMA.YM-749
+2026-07-11 05:13:28 [INFO] [17/22] https://yapimaks.com/pah-profili-kulaksiz-3-mt-tesay-p15611
+2026-07-11 05:13:28 [INFO] [15611] 'PAH PROFİLİ KULAKSIZ 3 MT TESAY' | 65.00 TL | SKU: TESAY.PAH02
+2026-07-11 05:13:30 [INFO] [18/22] https://yapimaks.com/panjur-pvc-beyaz-30x50-airvent-p15489
+2026-07-11 05:13:31 [INFO] [15489] 'PANJUR PVC BEYAZ 30X50 AİRVENT' | 370.00 TL | SKU: UBM.U020011
+2026-07-11 05:13:33 [INFO] [19/22] https://yapimaks.com/seramik-cita-kot-farki-esik-profil-10-mm-ayarli-mat-krom-270-cm-p15487
+2026-07-11 05:13:33 [INFO] [15487] 'SERAMİK ÇITA KOT FARKI EŞİK PROFİL 10 MM' | 530.00 TL | SKU: TESAY.FKFA10.01
+2026-07-11 05:13:35 [INFO] [20/22] https://yapimaks.com/sifon-koruklu-s-tasmali-lavabo-sifon-65mm-p5109
+2026-07-11 05:13:35 [INFO] [5109] 'SİFON KÖRÜKLÜ S TAŞMALI LAVABO SİFON 65M' | 190.00 TL | SKU: GÜÇLÜ.GP1316
+2026-07-11 05:13:37 [INFO] [21/22] https://yapimaks.com/trifonlu-kelepce-uzun-5-150-lik-p15615
+2026-07-11 05:13:37 [INFO] [15615] "TRİFONLU KELEPÇE UZUN (5') 150 LiK" | 80.00 TL | SKU: TRF.KELEPÇE.U150
+2026-07-11 05:13:39 [INFO] [22/22] https://yapimaks.com/vantilator-ayakli-18-ventus-p15587
+2026-07-11 05:13:39 [INFO] [15587] "VANTİLATÖR AYAKLI 18''  VENTUS" | 1900.00 TL | SKU: VENTUS.VEN1810012420
+2026-07-11 05:13:41 [INFO] Tamamlandi! Toplam 22 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-11.csv
