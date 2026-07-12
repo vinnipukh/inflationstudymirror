@@ -1,0 +1,62 @@
+2026-07-12 05:27:51 [INFO] ==================================================
+2026-07-12 05:27:51 [INFO] Yapimaks Scraper basliyor
+2026-07-12 05:27:51 [INFO] ==================================================
+2026-07-12 05:27:51 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-07-12 05:27:52 [INFO] Cookie basariyla alindi.
+2026-07-12 05:27:52 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-07-12 05:27:53 [INFO] Sitemap'ten toplam 7939 urun URL'si bulundu.
+2026-07-12 05:27:53 [INFO] Bugune ait veri yok. Eski veri (2026-07-11.csv) süzülerek bugune aktariliyor...
+2026-07-12 05:27:53 [INFO] Basarili! 7914 urun dunden bugune aktarildi.
+2026-07-12 05:27:53 [INFO] Guncel dosyada hazir olan urun: 7914 | Sifirdan cekilecek (yeni) urun: 25
+2026-07-12 05:27:53 [INFO] 25 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-12.csv
+2026-07-12 05:27:53 [INFO] [1/25] https://yapimaks.com/derz-seviye-tespit-klips-2mm-sef-1-kalite-100-ad-p15758
+2026-07-12 05:27:53 [INFO] [15758] 'DERZ SEVİYE TESPİT KLİPS 2MM ŞEF 1.KALİT' | 100.00 TL | SKU: ALFOR.A11.20SR.100.51
+2026-07-12 05:27:55 [INFO] [2/25] https://yapimaks.com/derz-seviye-tespit-klips-2mm-syh-ecofit-100-adet-p14513
+2026-07-12 05:27:55 [INFO] [14513] 'DERZ SEVİYE TESPİT KLİPS 2MM SYH ECOFİT ' | 75.00 TL | SKU: ALFOR.A11.20SR.100.50
+2026-07-12 05:27:57 [INFO] [3/25] https://yapimaks.com/el-feneri-acil-durum-pt-1092-p15754
+2026-07-12 05:27:58 [INFO] [15754] 'EL FENERİ ACİL DURUM PT-1092' | 110.00 TL | SKU: PANTHER.PT-1092
+2026-07-12 05:28:00 [INFO] [4/25] https://yapimaks.com/el-feneri-pt-1915-pilli-2x5w-cob-led-p7346
+2026-07-12 05:28:00 [INFO] [7346] 'EL FENERİ PT-1915 PİLLİ 2X5W+COB LED' | 105.00 TL | SKU: PANTHER PT-1915
+2026-07-12 05:28:02 [INFO] [5/25] https://yapimaks.com/el-feneri-pt-6892-usb-sarjli-p15753
+2026-07-12 05:28:02 [INFO] [15753] 'EL FENERİ PT-6892 USB ŞARJLI' | 125.00 TL | SKU: PANTHER.PT-6892
+2026-07-12 05:28:04 [INFO] [6/25] https://yapimaks.com/eps-50-karbonlu-3cm-50-100-darkss-16ad-8m-p3209
+2026-07-12 05:28:04 [INFO] [3209] 'EPS-50 KARBONLU 3CM 50*100-DARKSS (16AD ' | 675.00 TL | SKU: EPS.14.0011
+2026-07-12 05:28:06 [INFO] [7/25] https://yapimaks.com/eps-50-karbonlu-5cm-50-100-10ad-5m2-darkss-p3211
+2026-07-12 05:28:07 [INFO] [3211] 'EPS-50 KARBONLU 5CM 50*100 (10AD 5m2) DA' | 700.00 TL | SKU: EPS.14.0013
+2026-07-12 05:28:09 [INFO] [8/25] https://yapimaks.com/fan-mini-usb-sarjli-avec-av-f138-p15756
+2026-07-12 05:28:09 [INFO] [15756] 'FAN MİNİ USB ŞARJLI AVEC AV-F138' | 210.00 TL | SKU: AVEC.AV-F138
+2026-07-12 05:28:11 [INFO] [9/25] https://yapimaks.com/fan-mini-usb-sarjli-su-spreyli-avec-av-f171-p15755
+2026-07-12 05:28:11 [INFO] [15755] 'FAN MİNİ USB ŞARJLI SU SPREYLİ AVEC AV-F' | 365.00 TL | SKU: AVEC.AV-F171
+2026-07-12 05:28:13 [INFO] [10/25] https://yapimaks.com/fan-mini-usb-sarjli-su-spreyli-avec-av-f178-p15757
+2026-07-12 05:28:13 [INFO] [15757] 'FAN MİNİ USB ŞARJLI SU SPREYLİ AVEC AV-F' | 725.00 TL | SKU: AVEC.AV-F178
+2026-07-12 05:28:15 [INFO] [11/25] https://yapimaks.com/kafa-lambasi-pt-5872-usb-sarjli-p15752
+2026-07-12 05:28:16 [INFO] [15752] 'KAFA LAMBASI PT-5872 USB ŞARJLI' | 180.00 TL | SKU: PANTHER PT-5872
+2026-07-12 05:28:18 [INFO] [12/25] https://yapimaks.com/kafa-lambasi-usb-sarjli-pt-5222-panther-p12421
+2026-07-12 05:28:18 [INFO] [12421] 'KAFA LAMBASI USB ŞARJLI PT-5222 PANTHER' | 325.00 TL | SKU: PANTHER PT-5222
+2026-07-12 05:28:20 [INFO] [13/25] https://yapimaks.com/lokma-takimi-kisa-alti-kose-16-parca-1-4-retta-p15636
+2026-07-12 05:28:20 [INFO] [15636] 'LOKMA TAKIMI KISA ALTI KÖŞE 16 PARÇA 1/4' | 2540.00 TL | SKU: RETTA.RLT1604
+2026-07-12 05:28:22 [INFO] [14/25] https://yapimaks.com/mentese-45-derece-p9174
+2026-07-12 05:28:22 [INFO] [9174] 'MENTEŞE 45 DERECE' | 45.00 TL | SKU: STD.936930800
+2026-07-12 05:28:24 [INFO] [15/25] https://yapimaks.com/sinek-oldurucu-isik-gece-lambasi-usb-sarjli-pt-z614-p15751
+2026-07-12 05:28:25 [INFO] [15751] 'SİNEK ÖLDÜRÜCÜ IŞIK GECE LAMBASI USB ŞAR' | 345.00 TL | SKU: PANTHER.PT-Z614
+2026-07-12 05:28:27 [INFO] [16/25] https://yapimaks.com/sinek-oldurucu-isik-usb-sarjli-pt-z613-p15749
+2026-07-12 05:28:27 [INFO] [15749] 'SİNEK ÖLDÜRÜCÜ IŞIK USB ŞARJLI PT-Z613' | 680.00 TL | SKU: PANTHER.PT-Z613
+2026-07-12 05:28:29 [INFO] [17/25] https://yapimaks.com/sinek-oldurucu-isik-usb-sarjli-pt-z615-p15750
+2026-07-12 05:28:29 [INFO] [15750] 'SİNEK ÖLDÜRÜCÜ IŞIK USB ŞARJLI PT-Z615' | 440.00 TL | SKU: PANTHER.PT-Z615
+2026-07-12 05:28:31 [INFO] [18/25] https://yapimaks.com/siperlik-maske-pvc-camli-p8917
+2026-07-12 05:28:32 [INFO] [8917] 'SİPERLİK MASKE PVC CAMLI' | 300.00 TL | SKU: ESSAFE.GE1218
+2026-07-12 05:28:34 [INFO] [19/25] https://yapimaks.com/sokak-duvar-lambasi-pt-2993-solar-hareket-isik-sensoru-5-w-72-smd-led-p15099
+2026-07-12 05:28:34 [INFO] [15099] 'SOKAK DUVAR LAMBASI PT-2993 SOLAR HAREKE' | 475.00 TL | SKU: PANTHER.PT-2993
+2026-07-12 05:28:36 [INFO] [20/25] https://yapimaks.com/sprey-boya-cikolata-kahve-8017-400ml-selsil-p11057
+2026-07-12 05:28:36 [INFO] [11057] 'SPREY BOYA ÇİKOLATA KAHVE 8017 400ML SEL' | 149.00 TL | SKU: SELSİL.450
+2026-07-12 05:28:38 [INFO] [21/25] https://yapimaks.com/stropiyer-k14-eko-10x10cm-10mm-2m-p9325
+2026-07-12 05:28:38 [INFO] [9325] 'STROPİYER K14 EKO 10X10CM 10MM (2M)' | 42.50 TL | SKU: STROPİYER.019
+2026-07-12 05:28:40 [INFO] [22/25] https://yapimaks.com/taharet-cubugu-plastik-17-cm-p15742
+2026-07-12 05:28:41 [INFO] [15742] 'TAHARET ÇUBUĞU PLASTİK 17 CM' | 30.00 TL | SKU: GÜÇLÜ.GP4126
+2026-07-12 05:28:43 [INFO] [23/25] https://yapimaks.com/taharet-cubugu-plastik-29-cm-p15743
+2026-07-12 05:28:43 [INFO] [15743] 'TAHARET ÇUBUĞU PLASTİK 29 CM' | 35.00 TL | SKU: GÜÇLÜ.GP4127
+2026-07-12 05:28:45 [INFO] [24/25] https://yapimaks.com/taharet-cubugu-plastik-34-cm-p15744
+2026-07-12 05:28:45 [INFO] [15744] 'TAHARET ÇUBUĞU PLASTİK 34 CM' | 40.00 TL | SKU: GÜÇLÜ.GP4128
+2026-07-12 05:28:47 [INFO] [25/25] https://yapimaks.com/troblen-korugu-60-cm-p15736
+2026-07-12 05:28:47 [INFO] [15736] 'TROBLEN KÖRÜĞÜ 60 CM' | 120.00 TL | SKU: GÜÇLÜ.GP2108
+2026-07-12 05:28:49 [INFO] Tamamlandi! Toplam 25 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-12.csv
