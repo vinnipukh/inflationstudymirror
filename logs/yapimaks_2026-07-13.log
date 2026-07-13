@@ -1,0 +1,76 @@
+2026-07-13 05:36:48 [INFO] ==================================================
+2026-07-13 05:36:48 [INFO] Yapimaks Scraper basliyor
+2026-07-13 05:36:48 [INFO] ==================================================
+2026-07-13 05:36:48 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-07-13 05:36:48 [INFO] Cookie basariyla alindi.
+2026-07-13 05:36:48 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-07-13 05:36:49 [INFO] Sitemap'ten toplam 7964 urun URL'si bulundu.
+2026-07-13 05:36:49 [INFO] Bugune ait veri yok. Eski veri (2026-07-12.csv) süzülerek bugune aktariliyor...
+2026-07-13 05:36:49 [INFO] Basarili! 7932 urun dunden bugune aktarildi.
+2026-07-13 05:36:49 [INFO] Guncel dosyada hazir olan urun: 7932 | Sifirdan cekilecek (yeni) urun: 32
+2026-07-13 05:36:49 [INFO] 32 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-13.csv
+2026-07-13 05:36:49 [INFO] [1/32] https://yapimaks.com/adaptor-takoz-conta-guclu-1-adet-p15748
+2026-07-13 05:36:49 [INFO] [15748] 'ADAPTÖR TAKOZ CONTA GÜÇLÜ 1 ADET' | 12.50 TL | SKU: GÜÇLÜ.4105
+2026-07-13 05:36:51 [INFO] [2/32] https://yapimaks.com/cekvalf-plastik-klapeli-110-mm-guclu-p15740
+2026-07-13 05:36:51 [INFO] [15740] 'ÇEKVALF PLASTİK KLAPELİ 110 MM GÜÇLÜ' | 350.00 TL | SKU: GÜÇLÜ.4132
+2026-07-13 05:36:53 [INFO] [3/32] https://yapimaks.com/cekvalf-plastik-klapeli-125-mm-guclu-p15741
+2026-07-13 05:36:53 [INFO] [15741] 'ÇEKVALF PLASTİK KLAPELİ 125 MM GÜÇLÜ' | 375.00 TL | SKU: GÜÇLÜ.GP4133
+2026-07-13 05:36:55 [INFO] [4/32] https://yapimaks.com/cekvalf-plastik-klapeli-75-mm-guclu-p15739
+2026-07-13 05:36:56 [INFO] [15739] 'ÇEKVALF PLASTİK KLAPELİ 75 MM GÜÇLÜ' | 325.00 TL | SKU: GÜÇLÜ.4142
+2026-07-13 05:36:58 [INFO] [5/32] https://yapimaks.com/derz-seviye-tespit-klips-2mm-yesil-ecofit-100-adet-p14513
+2026-07-13 05:36:58 [INFO] [14513] 'DERZ SEVİYE TESPİT KLİPS 2MM YEŞİL ECOFİ' | 75.00 TL | SKU: ALFOR.A11.20SR.100.50
+2026-07-13 05:37:00 [INFO] [6/32] https://yapimaks.com/kablo-2x0-75-mm-kodlu-kordon-recber-1-m-p14968
+2026-07-13 05:37:00 [INFO] [14968] 'KABLO 2X0.75 MM KODLU KORDON REÇBER 1 M' | 25.00 TL | SKU: REÇBER.901067
+2026-07-13 05:37:02 [INFO] [7/32] https://yapimaks.com/kada-celik-telli-dirsekli-koruklu-q100-p15737
+2026-07-13 05:37:02 [INFO] [15737] 'KADA ÇELİK TELLİ DİRSEKLİ KÖRÜKLÜ Q100' | 185.00 TL | SKU: GÜÇLÜ.4103
+2026-07-13 05:37:04 [INFO] [8/32] https://yapimaks.com/keser-mini-sapli-mk0351-sait-demirci-p15759
+2026-07-13 05:37:04 [INFO] [15759] 'KESER MİNİ SAPLI MK0351 SAİT DEMİRCİ' | 650.00 TL | SKU: SD.MK0351
+2026-07-13 05:37:06 [INFO] [9/32] https://yapimaks.com/kilit-kapi-oda-35-mm-604-ekstra-yuma-p15669
+2026-07-13 05:37:06 [INFO] [15669] 'KİLİT KAPI ODA 35 MM 604 (EKSTRA) YUMA' | 230.00 TL | SKU: YUMA.Y02604
+2026-07-13 05:37:08 [INFO] [10/32] https://yapimaks.com/kilit-kapi-oda-nikel-40-mm-oval-yuma-p15671
+2026-07-13 05:37:09 [INFO] [15671] 'KİLİT KAPI ODA NİKEL 40 MM (OVAL) YUMA' | 230.00 TL | SKU: YUMA.Y02613
+2026-07-13 05:37:11 [INFO] [11/32] https://yapimaks.com/oda-kilidi-gomme-kare-40-mm-hibrit-ymk-p15670
+2026-07-13 05:37:11 [INFO] [15670] 'ODA KİLİDİ GÖMME KARE 40 MM HİBRİT YMK' | 140.00 TL | SKU: YUMA.Y02061
+2026-07-13 05:37:13 [INFO] [12/32] https://yapimaks.com/rezervuar-bas-hortumu-3-mt-contali-4123-p15738
+2026-07-13 05:37:13 [INFO] [15738] 'REZERVUAR BAS HORTUMU 3 MT CONTALI 4123' | 175.00 TL | SKU: GÜÇLÜ.4123
+2026-07-13 05:37:15 [INFO] [13/32] https://yapimaks.com/sifon-koruklu-copmak-kafa-cift-gozlu-tasmali-s-li-govde-eviye-q50-derin-p15730
+2026-07-13 05:37:15 [INFO] [15730] 'SİFON KÖRÜKLÜ ÇÖPMAK KAFA ÇİFT GÖZLÜ TAŞ' | 600.00 TL | SKU: GÜÇLÜ.1528
+2026-07-13 05:37:17 [INFO] [14/32] https://yapimaks.com/sifon-koruklu-dus-trobleni-q32-p15735
+2026-07-13 05:37:17 [INFO] [15735] 'SİFON KÖRÜKLÜ DUŞ TROBLENİ Q32' | 140.00 TL | SKU: GÜÇLÜ.2102
+2026-07-13 05:37:19 [INFO] [15/32] https://yapimaks.com/sifon-koruklu-luks-gri-65x32-35-80-cm-p15733
+2026-07-13 05:37:19 [INFO] [15733] 'SİFON KÖRÜKLÜ LÜKS GRİ 65X32 35-80 CM' | 75.00 TL | SKU: GÜÇLÜ.1250
+2026-07-13 05:37:21 [INFO] [16/32] https://yapimaks.com/sifon-koruklu-s-ciftli-copmak-tasmali-q32-50-dik-derin-p15734
+2026-07-13 05:37:22 [INFO] [15734] 'SİFON KÖRÜKLÜ S ÇİFTLİ ÇÖPMAK TAŞMALI Q3' | 650.00 TL | SKU: GÜÇLÜ.1510
+2026-07-13 05:37:24 [INFO] [17/32] https://yapimaks.com/sifon-koruklu-s-copmak-tekli-q32-50-derin-p15728
+2026-07-13 05:37:24 [INFO] [15728] 'SİFON KÖRÜKLÜ S ÇÖPMAK TEKLİ Q32-50 (DER' | 280.00 TL | SKU: GÜÇLÜ.1500
+2026-07-13 05:37:26 [INFO] [18/32] https://yapimaks.com/sifon-koruklu-s-tasmali-lavabo-sifon-65x32-mm-p15725
+2026-07-13 05:37:26 [INFO] [15725] 'SİFON KÖRÜKLÜ S TAŞMALI LAVABO SİFON 65X' | 370.00 TL | SKU: GÜÇLÜ.1320
+2026-07-13 05:37:28 [INFO] [19/32] https://yapimaks.com/sifon-koruklu-s-tekli-copmak-tasmali-q32-50-dik-derin-p15729
+2026-07-13 05:37:28 [INFO] [15729] 'SİFON KÖRÜKLÜ S TEKLİ ÇÖPMAK TAŞMALI Q32' | 330.00 TL | SKU: GÜÇLÜ.1502
+2026-07-13 05:37:30 [INFO] [20/32] https://yapimaks.com/sifon-koruklu-sabit-kafali-65x32-1100-p15721
+2026-07-13 05:37:30 [INFO] [15721] 'SİFON KÖRÜKLÜ SABİT KAFALI 65X32 1100' | 50.00 TL | SKU: GÜÇLÜ.1100
+2026-07-13 05:37:32 [INFO] [21/32] https://yapimaks.com/sifon-koruklu-sabit-kafali-65x50-paslanmaz-p15722
+2026-07-13 05:37:33 [INFO] [15722] 'SİFON KÖRÜKLÜ SABİT KAFALI 65X50 (PASLAN' | 60.00 TL | SKU: GÜÇLÜ.1106
+2026-07-13 05:37:35 [INFO] [22/32] https://yapimaks.com/sifon-koruklu-sabit-kafali-85x32-paslanmaz-35-80-cm-p15723
+2026-07-13 05:37:35 [INFO] [15723] 'SİFON KÖRÜKLÜ SABİT KAFALI 85X32 (PASLAN' | 70.00 TL | SKU: GÜÇLÜ.1107
+2026-07-13 05:37:37 [INFO] [23/32] https://yapimaks.com/sifon-koruklu-tasli-q32-65x32-p15724
+2026-07-13 05:37:37 [INFO] [15724] 'SİFON KÖRÜKLÜ TASLI Q32 65X32' | 110.00 TL | SKU: GÜÇLÜ.1304
+2026-07-13 05:37:39 [INFO] [24/32] https://yapimaks.com/sifon-koruklu-tekli-copmak-q32-derin-p15726
+2026-07-13 05:37:39 [INFO] [15726] 'SİFON KÖRÜKLÜ TEKLİ ÇÖPMAK Q32 (DERİN)' | 205.00 TL | SKU: GÜÇLÜ.1506
+2026-07-13 05:37:41 [INFO] [25/32] https://yapimaks.com/sifon-koruklu-tekli-copmak-tasmali-q32-50-yan-p15727
+2026-07-13 05:37:41 [INFO] [15727] 'SİFON KÖRÜKLÜ TEKLİ ÇÖPMAK TAŞMALI Q32-5' | 250.00 TL | SKU: GÜÇLÜ.1514
+2026-07-13 05:37:43 [INFO] [26/32] https://yapimaks.com/sifon-lavabo-suzgeci-copmak-derin-saci-p15731
+2026-07-13 05:37:43 [INFO] [15731] 'SİFON LAVABO SÜZGECİ- ÇÖPMAK DERİN SACI' | 80.00 TL | SKU: GÜÇLÜ.9163
+2026-07-13 05:37:45 [INFO] [27/32] https://yapimaks.com/taharet-cubugu-krom-uc-17-cm-p15745
+2026-07-13 05:37:46 [INFO] [15745] 'TAHARET ÇUBUĞU KROM UÇ 17 CM' | 40.00 TL | SKU: GÜÇLÜ.4129
+2026-07-13 05:37:48 [INFO] [28/32] https://yapimaks.com/taharet-cubugu-krom-uc-29-cm-p15746
+2026-07-13 05:37:48 [INFO] [15746] 'TAHARET ÇUBUĞU KROM UÇ 29 CM' | 45.00 TL | SKU: GÜÇLÜ.4130
+2026-07-13 05:37:50 [INFO] [29/32] https://yapimaks.com/taharet-cubugu-krom-uc-34-cm-p15747
+2026-07-13 05:37:50 [INFO] [15747] 'TAHARET ÇUBUĞU KROM UÇ 34 CM' | 50.00 TL | SKU: GÜÇLÜ.4131
+2026-07-13 05:37:52 [INFO] [30/32] https://yapimaks.com/trajli-demir-kapi-kilit-14-cm-oval-yuma-p15629
+2026-07-13 05:37:52 [INFO] [15629] 'TRAJLI DEMİR KAPI KİLİT 14 CM OVAL YUMA' | 470.00 TL | SKU: YUMA.YM-600AK
+2026-07-13 05:37:54 [INFO] [31/32] https://yapimaks.com/troblen-korugu-balkon-60-cm-p15736
+2026-07-13 05:37:54 [INFO] [15736] 'TROBLEN KÖRÜĞÜ BALKON 60 CM' | 120.00 TL | SKU: GÜÇLÜ.GP2108
+2026-07-13 05:37:56 [INFO] [32/32] https://yapimaks.com/wc-matik-pvc-beyaz-p15732
+2026-07-13 05:37:57 [INFO] [15732] 'WC MATİK PVC BEYAZ' | 50.00 TL | SKU: GÜÇLÜ.4125
+2026-07-13 05:37:59 [INFO] Tamamlandi! Toplam 32 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-13.csv
