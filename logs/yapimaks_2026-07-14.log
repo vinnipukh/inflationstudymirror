@@ -1,0 +1,22 @@
+2026-07-14 04:50:23 [INFO] ==================================================
+2026-07-14 04:50:23 [INFO] Yapimaks Scraper basliyor
+2026-07-14 04:50:23 [INFO] ==================================================
+2026-07-14 04:50:23 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-07-14 04:50:24 [INFO] Cookie basariyla alindi.
+2026-07-14 04:50:24 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-07-14 04:50:24 [INFO] Sitemap'ten toplam 7962 urun URL'si bulundu.
+2026-07-14 04:50:24 [INFO] Bugune ait veri yok. Eski veri (2026-07-13.csv) süzülerek bugune aktariliyor...
+2026-07-14 04:50:24 [INFO] Basarili! 7957 urun dunden bugune aktarildi.
+2026-07-14 04:50:24 [INFO] Guncel dosyada hazir olan urun: 7957 | Sifirdan cekilecek (yeni) urun: 5
+2026-07-14 04:50:24 [INFO] 5 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-14.csv
+2026-07-14 04:50:24 [INFO] [1/5] https://yapimaks.com/autokit-seyahat-boyun-yastigi-fa2-1103-p3483
+2026-07-14 04:50:24 [INFO] [3483] 'AUTOKIT SEYAHAT BOYUN YASTIĞI FA2-1103' | 167.00 TL | SKU: AUTOKİT.FA2-1103
+2026-07-14 04:50:26 [INFO] [2/5] https://yapimaks.com/dikey-supurge-sarjli-18v-2-0ah-stanley-sfmcvs001d1-p15513
+2026-07-14 04:50:27 [INFO] [15513] 'DİKEY SÜPÜRGE ŞARJLI 18V 2.0AH STANLEY S' | 15000.00 TL | SKU: STANLEY.SFMCVS001D1-W
+2026-07-14 04:50:29 [INFO] [3/5] https://yapimaks.com/eps-10-3cm-50-100-16ad-8m2-darkss-p3183
+2026-07-14 04:50:29 [INFO] [3183] 'EPS-10 3CM 50*100(16AD-8M2)DARKSS' | 500.00 TL | SKU: EPS.10.0002
+2026-07-14 04:50:31 [INFO] [4/5] https://yapimaks.com/yapistirici-hizli-10-g-kirmizi-alteco-p12236
+2026-07-14 04:50:31 [INFO] [12236] 'YAPIŞTIRICI HIZLI 10 G KIRMIZI ALTECO' | 87.00 TL | SKU: ALTECO3T-10G
+2026-07-14 04:50:33 [INFO] [5/5] https://yapimaks.com/yapistirici-kutulu-20-gr-alteco-p12235
+2026-07-14 04:50:33 [INFO] [12235] 'YAPIŞTIRICI KUTULU 20 GR ALTECO' | 115.00 TL | SKU: ALTECOD-D20KUTULU
+2026-07-14 04:50:35 [INFO] Tamamlandi! Toplam 5 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-14.csv
