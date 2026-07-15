@@ -1,0 +1,40 @@
+2026-07-15 04:51:00 [INFO] ==================================================
+2026-07-15 04:51:00 [INFO] Yapimaks Scraper basliyor
+2026-07-15 04:51:00 [INFO] ==================================================
+2026-07-15 04:51:00 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-07-15 04:51:01 [INFO] Cookie basariyla alindi.
+2026-07-15 04:51:01 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-07-15 04:51:01 [INFO] Sitemap'ten toplam 7969 urun URL'si bulundu.
+2026-07-15 04:51:01 [INFO] Bugune ait veri yok. Eski veri (2026-07-14.csv) süzülerek bugune aktariliyor...
+2026-07-15 04:51:01 [INFO] Basarili! 7955 urun dunden bugune aktarildi.
+2026-07-15 04:51:01 [INFO] Guncel dosyada hazir olan urun: 7955 | Sifirdan cekilecek (yeni) urun: 14
+2026-07-15 04:51:01 [INFO] 14 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-15.csv
+2026-07-15 04:51:01 [INFO] [1/14] https://yapimaks.com/agt-parke-effect-ural-8-mm-1-8336m2-p488
+2026-07-15 04:51:02 [INFO] [488] 'AGT PARKE EFFECT URAL 8 MM (1,8336m2)' | 980.00 TL | SKU: AGT.120029608
+2026-07-15 04:51:04 [INFO] [2/14] https://yapimaks.com/agt-supurgelik-8cm-ural-5000e-p13711
+2026-07-15 04:51:04 [INFO] [13711] 'AGT SÜPÜRGELİK 8cm URAL 5000E' | 140.00 TL | SKU: AGT.120037779
+2026-07-15 04:51:06 [INFO] [3/14] https://yapimaks.com/corex-falcon-beyaz-alcipan-120-250-3m2-p1871
+2026-07-15 04:51:06 [INFO] [1871] 'COREX FALCON BEYAZ ALÇIPAN 120*250 (3M2)' | 259.00 TL | SKU: DALSAN.201
+2026-07-15 04:51:08 [INFO] [4/14] https://yapimaks.com/corex-falcon-kirmizi-alcipan-120-250-3m2-p1868
+2026-07-15 04:51:08 [INFO] [1868] 'COREX FALCON KIRMIZI ALÇIPAN -120*250 (3' | 350.00 TL | SKU: DALSAN.203
+2026-07-15 04:51:10 [INFO] [5/14] https://yapimaks.com/derzmatik-gri-360-gr-p6552
+2026-07-15 04:51:11 [INFO] [6552] 'DERZMATİK GRİ 360 GR' | 110.00 TL | SKU: DERZMATİK.02
+2026-07-15 04:51:13 [INFO] [6/14] https://yapimaks.com/eldiven-kaynakci-deri-p5828
+2026-07-15 04:51:13 [INFO] [5828] 'ELDİVEN KAYNAKÇI DERİ' | 199.00 TL | SKU: MAXWELDER.PRO
+2026-07-15 04:51:15 [INFO] [7/14] https://yapimaks.com/gonye-marangoz-400-mm-sari-rh12440-rtrmax-p11188
+2026-07-15 04:51:15 [INFO] [11188] 'GÖNYE MARANGOZ 400 MM SARI RH12440 RTRMA' | 115.00 TL | SKU: RTRMAX.RH12440
+2026-07-15 04:51:17 [INFO] [8/14] https://yapimaks.com/kabin-kare-90x90-penta-h190-5mm-c101-parlak-prf-p1684
+2026-07-15 04:51:17 [INFO] [1684] 'KABİN KARE 90X90 PENTA H190 5MM C101 PAR' | 5675.00 TL | SKU: CABINART.018
+2026-07-15 04:51:19 [INFO] [9/14] https://yapimaks.com/kalip-yagi-30-lt-p12628
+2026-07-15 04:51:19 [INFO] [12628] 'KALIP YAĞI 30 LT' | 2500.00 TL | SKU: DARKSS.KY.30
+2026-07-15 04:51:21 [INFO] [10/14] https://yapimaks.com/likit-membran-1k-1099-uv-elastomerik-recine-esasli-hibrit-20kg-p15704
+2026-07-15 04:51:22 [INFO] [15704] 'LİKİT MEMBRAN 1K-1099 UV ELASTOMERİK REÇ' | 3900.00 TL | SKU: DARKSS.1K-1099
+2026-07-15 04:51:24 [INFO] [11/14] https://yapimaks.com/masa-baglanti-gonyesi-20x35-p5384
+2026-07-15 04:51:24 [INFO] [5384] 'MASA BAĞLANTI GÖNYESİ 20X35' | 9.00 TL | SKU: BEŞEL.BA2035
+2026-07-15 04:51:26 [INFO] [12/14] https://yapimaks.com/norm-tipi-30mm-1-ad-1000-p7426
+2026-07-15 04:51:26 [INFO] [7426] 'NORM TİPİ 30MM 1 AD (1000)' | 1.50 TL | SKU: PASPAYI.03030
+2026-07-15 04:51:28 [INFO] [13/14] https://yapimaks.com/sokak-duvar-lambasi-pt-2980-solar-hareket-isik-sensoru-cob-led-p12423
+2026-07-15 04:51:28 [INFO] [12423] 'SOKAK DUVAR LAMBASI PT-2980 SOLAR HAREKE' | 315.00 TL | SKU: PANTHER PT-2980
+2026-07-15 04:51:30 [INFO] [14/14] https://yapimaks.com/tirpan-yan-rtm9632-benzin-52cc-1-9hp-250mm-rtrmax-p8007
+2026-07-15 04:51:31 [INFO] [8007] 'TIRPAN YAN RTM9632 BENZİN 52CC/1.9HP 250' | 6985.00 TL | SKU: RTRMAX.RTM9632
+2026-07-15 04:51:33 [INFO] Tamamlandi! Toplam 14 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-15.csv
