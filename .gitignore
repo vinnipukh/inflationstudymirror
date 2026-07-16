@@ -2,12 +2,24 @@
 .venv/
 venv/
 env/
+ENV/
+artifacts/.venv/
+
+# Python packaging / build outputs
+build/
+dist/
+*.egg-info/
+*.egg
+pip-wheel-metadata/
 
 # Environment variables / secrets
 .env
 .env.*
+!.env.example
 *.pem
 *.key
+*.crt
+*.p12
 id_rsa
 id_rsa.pub
 
@@ -15,16 +27,41 @@ id_rsa.pub
 __pycache__/
 *.py[cod]
 *$py.class
+*.pyd
+*.so
 
 # Caches / tooling
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.pyre/
+.tox/
+.nox/
+.hypothesis/
+.cache/
 .coverage
+.coverage.*
 htmlcov/
+
+# Type checker / language server
+pyrightconfig.json
+typings/
 
 # Jupyter
 .ipynb_checkpoints/
+
+# Runtime artifacts
+*.tmp
+*.temp
+tmp/
+temp/
+
+# Scraper/runtime checkpoints
+checkpoints/
+Codes/**/checkpoints/
+
+# Streamlit local config
+.streamlit/secrets.toml
 
 # OS / editor
 .DS_Store
