@@ -87,9 +87,10 @@ class RetailerAveragesResource:
             parsed_filters = parse_common_filters(req)
             history, skipped, meta = load_filtered_history(parsed_filters)
             trends = calculate_retailer_average_trends(history, parsed_filters.selected_retailers, aggregation)
+            records = records_from_frame(trends, RETAILER_AVERAGE_COLUMNS)
             resp.status = falcon.HTTP_200
             resp.media = envelope(
-                {"retailer_averages": records_from_frame(trends, RETAILER_AVERAGE_COLUMNS)},
+                {"records": records, "retailer_averages": records},
                 meta={**meta, "aggregation": aggregation, "skipped_file_count": len(skipped)},
             )
         except ApiFilterError as exc:

@@ -150,10 +150,14 @@ def load_filtered_history(parsed_filters: ParsedFilters) -> tuple[pd.DataFrame, 
         parsed_filters.max_files_per_retailer,
         inventory=parsed_filters.inventory,
     )
+    warnings = list(parsed_filters.meta.get("warnings", []))
+    if history.empty and len(skipped) > 0 and parsed_filters.meta.get("selected_inventory_file_count", 0):
+        warnings.append("selected files skipped; no usable rows loaded")
     meta = {
         **parsed_filters.meta,
         "history_row_count": int(len(history)),
         "skipped_file_count": int(len(skipped)),
+        "warnings": warnings,
     }
     return history, skipped, meta
 
