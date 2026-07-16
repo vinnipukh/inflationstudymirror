@@ -39,11 +39,12 @@ Important existing facts:
 - ✓ Generated inflation outputs exist under `Inflations/Datas/` — existing.
 - ✓ A Streamlit dashboard entrypoint exists at `streamlit_app.py` — existing.
 - ✓ Dashboard search/autocorrection helper behavior exists in `streamlit_app.py` — existing.
+- ✓ Domain/application modules independent of Streamlit and Falcon exist under `inflation_dashboard/` — validated in Phase 1.
+- ✓ CSV adapter preserves bounded retailer/date/max-files loading for existing `Datas/` files — validated in Phase 1.
 
 ### Active
 
 - [ ] Build a Falcon Python Web Framework API that exposes dashboard data from existing CSV files.
-- [ ] Refactor data loading/parsing/aggregation into domain/application modules that are independent of Streamlit and Falcon.
 - [ ] Refactor Streamlit frontend so all dashboard tabs read from Falcon endpoints, not directly from CSV files.
 - [ ] Preserve four dashboard tabs: product price chart/cheapest date, retailer average chart, price movers, and coverage/overview.
 - [ ] Preserve performance controls: retailer selection, date filters, max files per retailer, and cached/limited loading.
@@ -105,4 +106,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state.
 
 ---
-*Last updated: 2026-07-16 after initialization*
+*Last updated: 2026-07-16 after Phase 1 completion*
