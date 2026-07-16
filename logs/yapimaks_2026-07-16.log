@@ -1,0 +1,22 @@
+2026-07-16 05:09:46 [INFO] ==================================================
+2026-07-16 05:09:46 [INFO] Yapimaks Scraper basliyor
+2026-07-16 05:09:46 [INFO] ==================================================
+2026-07-16 05:09:46 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-07-16 05:09:47 [INFO] Cookie basariyla alindi.
+2026-07-16 05:09:47 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-07-16 05:09:47 [INFO] Sitemap'ten toplam 7951 urun URL'si bulundu.
+2026-07-16 05:09:47 [INFO] Bugune ait veri yok. Eski veri (2026-07-15.csv) süzülerek bugune aktariliyor...
+2026-07-16 05:09:47 [INFO] Basarili! 7946 urun dunden bugune aktarildi.
+2026-07-16 05:09:47 [INFO] Guncel dosyada hazir olan urun: 7946 | Sifirdan cekilecek (yeni) urun: 5
+2026-07-16 05:09:47 [INFO] 5 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-16.csv
+2026-07-16 05:09:47 [INFO] [1/5] https://yapimaks.com/16dns-dalmacyali-duble-karbon-10cm-50x100cm-5ad-2-5m2-p15525
+2026-07-16 05:09:47 [INFO] [15525] '16DNS DALMAÇYALI  DUBLE KARBON 10CM 50X1' | 1425.00 TL | SKU: CAPATECT.SF160.10
+2026-07-16 05:09:49 [INFO] [2/5] https://yapimaks.com/delinator-duba-30cm-esnek-trafik-serit-ayiraci-ms1-2518-maxsaf-p5821
+2026-07-16 05:09:49 [INFO] [5821] 'DELİNATÖR DUBA 30CM ESNEK TRAFİK ŞERİT A' | 200.00 TL | SKU: MAXSAFETY.MS1-2518
+2026-07-16 05:09:51 [INFO] [3/5] https://yapimaks.com/koni-duba-75-cm-kirilmaz-cift-reflektifli-ms1-5051-p15033
+2026-07-16 05:09:52 [INFO] [15033] 'KONİ DUBA 75 CM KIRILMAZ ÇİFT REFLEKTİFL' | 360.00 TL | SKU: MAXSAFETY.MS1-5051
+2026-07-16 05:09:54 [INFO] [4/5] https://yapimaks.com/maklux-makine-alcisi-35-kg-rigips-p2492
+2026-07-16 05:09:54 [INFO] [2492] 'MAKLUX MAKİNE ALÇISI  35 KG RİGİPS' | 179.00 TL | SKU: DALSAN.102
+2026-07-16 05:09:56 [INFO] [5/5] https://yapimaks.com/merdiven-3x15-a-tipi-surgulu-endustriiyel-aluminyum-7315-12-mt-p8225
+2026-07-16 05:09:56 [INFO] [8225] 'MERDİVEN 3X15 A TİPİ SÜRGÜLÜ ENDÜSTRİİYE' | 19500.00 TL | SKU: SARAYLI.7315
+2026-07-16 05:09:58 [INFO] Tamamlandi! Toplam 5 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-16.csv
