@@ -7,6 +7,7 @@ Move the current single-file, direct-CSV Streamlit dashboard into a separated de
 ## Phases
 
 **Phase Numbering:**
+
 - Integer phases (1, 2, 3): Planned milestone work.
 - Decimal phases (2.1, 2.2): Urgent insertions if needed.
 
@@ -26,6 +27,7 @@ Move the current single-file, direct-CSV Streamlit dashboard into a separated de
 **Requirements**: REQ-02, REQ-05, REQ-06, REQ-07, REQ-08, REQ-10, REQ-11
 
 **Success Criteria** (what must be TRUE):
+
   1. Domain/application modules expose inventory, price history, retailer averages, movers, and coverage use cases.
   2. Existing CSV parsing behavior from `streamlit_app.py` is preserved behind a CSV adapter.
   3. Core functions can be imported and checked without launching Streamlit.
@@ -34,7 +36,12 @@ Move the current single-file, direct-CSV Streamlit dashboard into a separated de
 **Plans**: 2 plans
 
 Plans:
+**Wave 1**
+
 - [ ] 01-01: Extract price parsing, CSV inventory, and history loading into shared modules.
+
+**Wave 2** *(blocked on Wave 1 completion)*
+
 - [ ] 01-02: Extract aggregation/use-case functions and add focused ad-hoc verification.
 
 ### Phase 2: Falcon API Backend
@@ -46,6 +53,7 @@ Plans:
 **Requirements**: REQ-01, REQ-02, REQ-05, REQ-06, REQ-07, REQ-08, REQ-10, REQ-11
 
 **Success Criteria** (what must be TRUE):
+
   1. Falcon app exposes health, inventory/retailers, product history, retailer averages, movers, and coverage endpoints.
   2. Endpoints accept retailer/date/file-cap filters where relevant.
   3. API responses are JSON-serializable and stable for Streamlit consumption.
@@ -54,6 +62,7 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
+
 - [ ] 02-01: Add Falcon app/resources and response serialization.
 - [ ] 02-02: Add API smoke verification and error/empty-state handling.
 
@@ -66,6 +75,7 @@ Plans:
 **Requirements**: REQ-03, REQ-04, REQ-05, REQ-06, REQ-07, REQ-08, REQ-09, REQ-11
 
 **Success Criteria** (what must be TRUE):
+
   1. Streamlit has a configurable Falcon API base URL.
   2. Product explorer, retailer averages, price movers, and overview tabs render from API responses.
   3. Search/autocorrection controls still guide user selection.
@@ -74,6 +84,7 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
+
 - [ ] 03-01: Add API client layer and wire sidebar/filter flows to API calls.
 - [ ] 03-02: Refactor all four tabs to use API payloads and preserve existing UX behavior.
 
@@ -86,6 +97,7 @@ Plans:
 **Requirements**: REQ-12, NFR-01, NFR-02, NFR-03, NFR-04, NFR-05, NFR-06
 
 **Success Criteria** (what must be TRUE):
+
   1. Documentation explains separate Falcon API and Streamlit frontend run commands.
   2. Verification scripts cover core domain behavior and API/frontend contract assumptions.
   3. Dependency notes are clear for the user's `uv` workflow without surprise installs.
@@ -94,6 +106,7 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
+
 - [ ] 04-01: Add run/deployment documentation and dependency notes.
 - [ ] 04-02: Add focused verification scripts/checks and final cleanup.
 
