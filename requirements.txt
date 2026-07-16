@@ -6,6 +6,7 @@ python-dotenv==1.2.1
 requests==2.32.5
 urllib3==2.6.3
 wheel==0.46.3
+falcon
 
 camoufox
 beautifulsoup4
