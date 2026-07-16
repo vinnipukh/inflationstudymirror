@@ -174,6 +174,73 @@ For questions, suggestions, or collaborations:
 
 This project is a personal research mirror for inflation study purposes.
 
+## Installation
+
+The repository is Python-based. The practical dependency list is tracked in `requirements.txt`; `pyproject.toml` is currently skeletal and does not list runtime dependencies.
+
+```bash
+python -m pip install -r requirements.txt
+python -m pip install pandas streamlit plotly
+```
+
+`Codes/ClothingStores/Vakko/vakko_master_scraper.py` also reads `VAKKO_COOKIE` and `VAKKO_USER_AGENT` from the environment through `python-dotenv`.
+
+## Quick Start
+
+1. Install dependencies:
+
+   ```bash
+   python -m pip install -r requirements.txt
+   python -m pip install pandas streamlit plotly
+   ```
+
+2. Run a bounded dashboard locally:
+
+   ```bash
+   streamlit run streamlit_app.py
+   ```
+
+3. Run an individual scraper or inflation calculator when you want to refresh a specific dataset:
+
+   ```bash
+   python Codes/Markets/Gurmar/gurmar_scraper.py
+   python Inflations/Codes/Markets/Gurmar/gurmar_inflation.py -h
+   ```
+
+## Usage Examples
+
+### Launch the current dashboard
+
+```bash
+streamlit run streamlit_app.py
+```
+
+The dashboard reads tracked CSV files from `Datas/`, builds a lazy inventory, and exposes product history, retailer averages, price movers, and coverage views.
+
+### Scrape Gurmar prices
+
+```bash
+python Codes/Markets/Gurmar/gurmar_scraper.py
+```
+
+This writes daily Gurmar CSV files under `Datas/Markets/Gurmar/`.
+
+### Calculate Gurmar inflation
+
+```bash
+python Inflations/Codes/Markets/Gurmar/gurmar_inflation.py -i Datas/Markets/Gurmar/gurmar_2026-02-24.csv
+```
+
+Use `-h` on calculator scripts to inspect their supported arguments.
+
+## Additional Developer Documentation
+
+- `docs/ARCHITECTURE.md` describes the scraper, CSV, dashboard, and extracted core boundaries.
+- `docs/GETTING-STARTED.md` gives a short setup path for new contributors.
+- `docs/DEVELOPMENT.md` covers local development conventions.
+- `docs/TESTING.md` documents the current ad-hoc verification posture.
+- `docs/CONFIGURATION.md` lists environment variables and configuration files discovered in the repository.
+
 ## Notes
 
 - Data collection respects website terms of service and robots.txt

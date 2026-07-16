@@ -27,7 +27,7 @@ Terminali açıp aşağıdaki komutları kullanabilirsiniz.
 Verilen tarihteki dosyayı alır ve otomatik olarak 1, 7, 15 ve 30 gün öncesinin dosyalarını aynı klasörde arayıp hesaplama yapar:
 
 ```bash
-python gurmar_inflation.py -i gurmar_2026-02-24.cs
+python gurmar_inflation.py -i gurmar_2026-02-24.csv
 ```
 
 ### 2. Çıktıları Farklı Klasöre Kaydetme (-o)
