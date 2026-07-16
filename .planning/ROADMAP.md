@@ -63,12 +63,12 @@ Plans:
   3. API responses are JSON-serializable and stable for Streamlit consumption.
   4. API code does not import Streamlit.
 
-**Plans**: 2 plans
+**Plans**: 1/2 plans executed
 
 Plans:
 **Wave 1**
 
-- [ ] 02-01: Add Falcon app/resources and response serialization.
+- [x] 02-01: Add Falcon app/resources and response serialization.
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
@@ -127,9 +127,9 @@ Independent plans inside a phase may run in parallel when they do not touch the 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Hexagonal Core Extraction | 2/2 | Complete    | 2026-07-16 |
-| 2. Falcon API Backend | 0/2 | Not started | - |
+| 2. Falcon API Backend | 1/2 | In Progress | - |
 | 3. Streamlit API Frontend | 0/2 | Not started | - |
 | 4. Deployment & Verification Hardening | 0/2 | Not started | - |
 
 ---
-*Last updated: 2026-07-16 after Phase 1 completion*
+*Last updated: 2026-07-16 after Phase 2 plan 02-01 completion*
