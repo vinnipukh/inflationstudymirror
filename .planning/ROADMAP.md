@@ -12,7 +12,7 @@ Move the current single-file, direct-CSV Streamlit dashboard into a separated de
 - Decimal phases (2.1, 2.2): Urgent insertions if needed.
 
 - [x] **Phase 1: Hexagonal Core Extraction** - Extract data parsing/loading/use cases from `streamlit_app.py` into framework-independent modules. (completed 2026-07-16)
-- [ ] **Phase 2: Falcon API Backend** - Add Falcon resources/endpoints that serve filtered dashboard data from the domain layer.
+- [x] **Phase 2: Falcon API Backend** - Add Falcon resources/endpoints that serve filtered dashboard data from the domain layer. (completed 2026-07-16)
 - [ ] **Phase 3: Streamlit API Frontend** - Refactor Streamlit tabs to call the Falcon API instead of reading CSVs directly.
 - [ ] **Phase 4: Deployment & Verification Hardening** - Document two-process deployment and add focused checks for API/frontend contracts.
 
@@ -63,7 +63,7 @@ Plans:
   3. API responses are JSON-serializable and stable for Streamlit consumption.
   4. API code does not import Streamlit.
 
-**Plans**: 1/2 plans executed
+**Plans**: 2/2 plans executed
 
 Plans:
 **Wave 1**
@@ -72,7 +72,7 @@ Plans:
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
-- [ ] 02-02: Add API smoke verification and error/empty-state handling.
+- [x] 02-02: Add API smoke verification and error/empty-state handling.
 
 ### Phase 3: Streamlit API Frontend
 
@@ -127,9 +127,9 @@ Independent plans inside a phase may run in parallel when they do not touch the 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Hexagonal Core Extraction | 2/2 | Complete    | 2026-07-16 |
-| 2. Falcon API Backend | 1/2 | In Progress | - |
+| 2. Falcon API Backend | 2/2 | Complete    | 2026-07-16 |
 | 3. Streamlit API Frontend | 0/2 | Not started | - |
 | 4. Deployment & Verification Hardening | 0/2 | Not started | - |
 
 ---
-*Last updated: 2026-07-16 after Phase 2 plan 02-01 completion*
+*Last updated: 2026-07-16 after Phase 2 completion*
