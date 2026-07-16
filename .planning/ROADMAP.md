@@ -66,8 +66,12 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
+**Wave 1**
 
 - [ ] 02-01: Add Falcon app/resources and response serialization.
+
+**Wave 2** *(blocked on Wave 1 completion)*
+
 - [ ] 02-02: Add API smoke verification and error/empty-state handling.
 
 ### Phase 3: Streamlit API Frontend
