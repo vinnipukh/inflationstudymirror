@@ -1,57 +1,164 @@
 <!-- generated-by: gsd-doc-writer -->
 # Testing
 
-## Test Framework and Setup
+## Current Testing Posture
 
-No dedicated test framework configuration or `tests/` directory was found. There is no canonical `pytest`, lint, or build command in `pyproject.toml`, `requirements.txt`, or project scripts.
+This repository does not currently define a conventional automated test suite. Live inspection found no `tests/` directory, no `test*.py` files, and no canonical `pytest`, lint, or coverage command in `pyproject.toml`, `requirements.txt`, or project scripts.
 
-Current verification is ad-hoc and file-focused:
+The current canonical verification target is the Falcon API smoke/boundary checker:
 
-- Python syntax checks with `python -m py_compile <file>`.
-- Temporary helper scripts under the OS temp directory for focused behavior checks.
-- Manual scraper runs and inspection of generated CSV files.
-- Manual Streamlit browser checks for visual dashboard behavior.
+```bash
+uv run python scripts/verify_falcon_api.py
+```
 
-## Running Tests
+This script is the primary regression check for the Phase 2 API backend described in `README.md` and `docs/ARCHITECTURE.md`. It uses Falcon's in-process `TestClient`; it does not bind a port, launch a persistent server, or require a browser.
 
-Because there is no canonical suite, choose the smallest relevant check for the file you changed.
+## Dependency Setup for Verification
 
-### Syntax-check a Python file
+Use the repository root as the working directory.
+
+### Minimal Falcon API verification environment
+
+`pyproject.toml` currently declares the minimal Falcon dependency path:
+
+```bash
+uv sync
+uv run python scripts/verify_falcon_api.py
+```
+
+`uv.lock` records Falcon as the locked dependency for this path. `docs/CONFIGURATION.md` has more detail about the split between `pyproject.toml`, `uv.lock`, and `requirements.txt`.
+
+### Broader scraper/dashboard environment
+
+The older scraper and dashboard workflows are not fully represented by `pyproject.toml`:
+
+```bash
+python -m pip install -r requirements.txt
+python -m pip install pandas streamlit plotly
+```
+
+Use this path when manually running scraper scripts or the Streamlit dashboard. The Streamlit dashboard imports `pandas`, `plotly.express`, and `streamlit`; those packages are not currently listed in `requirements.txt`.
+
+## Falcon API Smoke and Boundary Check
+
+Run:
+
+```bash
+uv run python scripts/verify_falcon_api.py
+```
+
+Expected output shape:
+
+```text
+PASS boundary checks: imports, stdlib-only cache boundary, lightweight health resource
+PASS source contracts: endpoint routes and stable response keys
+PASS endpoint smoke: health, inventory, history, retailer averages, movers, coverage, invalid-filter
+```
+
+The script verifies:
+
+- `inflation_dashboard/api/` does not import `streamlit`, `streamlit_app`, `plotly`, or database/cache frameworks listed in the verifier.
+- Core dashboard modules under `inflation_dashboard/domain/`, `inflation_dashboard/application/`, and `inflation_dashboard/adapters/csv_price_repository.py` do not import Falcon, Streamlit, or Plotly.
+- `HealthResource` remains lightweight and does not load CSV inventory/history.
+- `inflation_dashboard.api.falcon_app.create_app()` registers:
+  - `/api/health`
+  - `/api/inventory`
+  - `/api/history`
+  - `/api/retailer-averages`
+  - `/api/movers`
+  - `/api/coverage`
+- API response envelopes keep the stable top-level keys `data`, `meta`, and `errors`.
+- Response payloads are JSON-native and do not leak pandas/numpy scalar objects, NaN, or Infinity values.
+- In-process endpoint smoke checks cover health, inventory, history, retailer averages, movers, coverage, an empty product-history response, and invalid-filter handling.
+
+The checker uses bounded API requests such as `max_files=1` for data endpoints so routine verification does not scan all tracked CSV history.
+
+## Python Syntax Checks
+
+For changes outside the Falcon API verifier, use targeted syntax checks on the files you touched:
 
 ```bash
 python -m py_compile streamlit_app.py
 python -m py_compile inflation_dashboard/domain/prices.py
 python -m py_compile inflation_dashboard/adapters/csv_price_repository.py
 python -m py_compile inflation_dashboard/application/use_cases.py
+python -m py_compile inflation_dashboard/api/filters.py
+python -m py_compile inflation_dashboard/api/resources.py
+python -m py_compile inflation_dashboard/api/serialization.py
+python -m py_compile inflation_dashboard/api/falcon_app.py
 ```
 
-### Run dashboard helper checks
+These are syntax checks only. Do not report them as unit-test, integration-test, or coverage results.
 
-Create a temporary script under the OS temp directory with a `hermes-verify-` filename prefix, import the helper functions you changed, exercise bounded real data or tiny in-memory frames, then delete the script. Report this as ad-hoc verification, not as a full suite result.
+## Streamlit Dashboard Checks
 
-### Inspect calculator CLIs
+There is no automated browser or snapshot suite for `streamlit_app.py`.
+
+For manual dashboard verification:
 
 ```bash
-python Inflations/Codes/Markets/Gurmar/gurmar_inflation.py -h
-python Inflations/Codes/HousesRent/sahibinden_inflation.py -h
+streamlit run streamlit_app.py
 ```
+
+Recommended checks after dashboard changes:
+
+- The app starts without import errors.
+- Retailer/date filters populate from tracked `Datas/` CSV inventory.
+- Product history selection handles empty and populated selections.
+- Charts and tables render with bounded data rather than forcing all history to load.
+- Any behavior that depends on the planned API frontend is called out explicitly; Phase 3 has not landed, so the current Streamlit UI still reads the shared package directly rather than calling Falcon over HTTP.
+
+## Scraper and Inflation Script Checks
+
+Scraper and inflation scripts under `Codes/` and `Inflations/Codes/` are source-specific and mostly standalone. There is no common test harness for them.
+
+For script changes, prefer the smallest safe check available:
+
+```bash
+python -m py_compile path/to/script.py
+python path/to/script.py --help
+```
+
+Only run a live scraper when you intentionally want network access and new CSV output. Many scheduled GitHub Actions workflows commit generated CSV files back to the repository, so inspect `git status --short` after scraper runs.
+
+## GitHub Actions
+
+The workflows under `.github/workflows/` are operational scraper jobs, not test workflows. They install source-specific dependencies, run scraper scripts, and commit generated data files.
+
+Examples include:
+
+| Workflow | Purpose |
+|---|---|
+| `.github/workflows/gurmar.yml` | Runs the Gurmar market scraper. |
+| `.github/workflows/yapimaks.yml` | Runs the Yapimaks construction-market scraper. |
+| `.github/workflows/vakko_scraper.yml` | Runs the Vakko clothing scraper. |
+| `.github/workflows/watsons.yml` | Runs the Watson cosmetics scraper. |
+| `.github/workflows/chakra_scraper.yml` | Runs the home-goods scraper. |
+| `.github/workflows/beymen.yml` | Runs the technology scraper. |
+| `.github/workflows/tasciyapi.yml` | Runs the Tasci Yapi construction-market scraper. |
+
+Passing scheduled scraper automation means a particular scraper completed in GitHub Actions. It should not be interpreted as proof that dashboard/API contracts, unit behavior, or coverage thresholds passed.
 
 ## Writing New Tests
 
-No naming convention is established yet. If a test suite is added, prefer small fixture-driven tests for reusable code rather than full-history data scans.
+No repository-wide test naming convention is established yet. If a suite is added, prefer small fixture-driven tests around reusable modules rather than full-history scans over all tracked data.
 
-Good initial targets:
+Good first targets:
 
-- `inflation_dashboard/domain/prices.py::coerce_price()` for Turkish lira strings, decimal commas, and invalid values.
-- `inflation_dashboard/domain/prices.py::parse_date_from_name()` for supported filename patterns.
-- `inflation_dashboard/adapters/csv_price_repository.py::discover_csv_inventory()` with a temporary directory of small CSVs.
-- `inflation_dashboard/adapters/csv_price_repository.py::load_price_history()` with max-file limits and skipped-file diagnostics.
+- `inflation_dashboard/domain/prices.py::coerce_price()` for Turkish lira strings, decimal commas, thousands separators, numeric inputs, and invalid values.
+- `inflation_dashboard/domain/prices.py::parse_date_from_name()` for supported filename date patterns.
+- `inflation_dashboard/domain/prices.py::build_product_frame()` for source-specific row normalization.
+- `inflation_dashboard/adapters/csv_price_repository.py::discover_csv_inventory()` with a temporary directory of tiny CSV files.
+- `inflation_dashboard/adapters/csv_price_repository.py::load_price_history()` for date filtering, `max_files` limits, retailer filtering, and skipped-file diagnostics.
 - `inflation_dashboard/application/use_cases.py` aggregation functions using small in-memory pandas DataFrames.
-- Search/autocorrection helpers in `streamlit_app.py`.
+- `inflation_dashboard/api/filters.py` for date, boolean, retailer, and `max_files` validation.
+- `inflation_dashboard/api/serialization.py` for JSON-safe conversion of pandas/numpy/date values.
 
-## Coverage Requirements
+When adding tests, keep data fixtures small and synthetic. Avoid tests that depend on scanning every CSV under `Datas/` unless they are explicitly marked as slow/manual.
 
-No coverage tool or threshold is configured. There is no `.coveragerc`, `coverage` config, or CI coverage gate in the repository.
+## Coverage
+
+No coverage tool or threshold is configured. Live inspection found no `.coveragerc`, coverage configuration, or CI coverage gate.
 
 | Type | Threshold |
 |---|---|
@@ -60,14 +167,15 @@ No coverage tool or threshold is configured. There is no `.coveragerc`, `coverag
 | Functions | Not configured |
 | Statements | Not configured |
 
-## CI Integration
+Do not claim coverage percentages until a coverage tool and command are added to the repository.
 
-GitHub Actions workflows under `.github/workflows/` run operational scrapers on schedules or manual dispatch. They are not test workflows.
+## Reporting Verification Results
 
-| Workflow | Trigger | What it runs |
-|---|---|---|
-| `vakko_scraper.yml` | Schedule and manual dispatch | Installs selected packages, runs `Codes/ClothingStores/Vakko/vakko_master_scraper.py`, commits new Vakko CSVs. |
-| `gurmar.yml` | Schedule and manual dispatch | Installs selected packages, runs `Codes/Markets/Gurmar/gurmar_scraper.py`, commits new Gurmar CSVs. |
-| Other scraper workflows | Schedule/manual patterns | Run source-specific scrapers and commit generated CSV outputs. |
+When documenting or reporting verification, distinguish the type of evidence:
 
-These workflows validate that scraper automation can execute in GitHub Actions, but they do not replace unit tests or dashboard/API contract tests.
+- `scripts/verify_falcon_api.py` passing: Falcon API smoke, source-contract, response-envelope, JSON-serialization, and boundary checks passed.
+- `python -m py_compile ...` passing: targeted syntax check passed.
+- `streamlit run streamlit_app.py` manual check: local dashboard startup/UI behavior was manually exercised.
+- Scraper workflow or local scraper passing: a source-specific scraper ran; generated files and side effects still need review.
+
+Avoid describing the current project as having a full test suite until one is actually added.
