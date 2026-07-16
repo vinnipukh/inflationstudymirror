@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_phase: 2
-current_phase_name: Falcon API Backend
-status: needs_review
-stopped_at: Phase 2 source-verified; runtime Falcon verification blocked by missing dependency
+current_phase: 3
+current_phase_name: Streamlit API Frontend
+status: ready_for_next_phase
+stopped_at: Completed Phase 2 runtime verification
 last_updated: "2026-07-16T11:35:01Z"
 last_activity: 2026-07-16
-last_activity_desc: Completed Phase 2 plan 02-02 API smoke verification and hardening
+last_activity_desc: Completed Phase 2 runtime Falcon verification
 progress:
   total_phases: 4
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 8
   completed_plans: 4
   percent: 50
@@ -24,16 +24,16 @@ progress:
 See: `.planning/PROJECT.md` (updated 2026-07-16)
 
 **Core value:** Users can explore scraped product prices quickly and reliably from a Streamlit dashboard whose data access is served through a Falcon API instead of direct frontend CSV scanning.
-**Current focus:** Phase 2 — Falcon API Backend runtime verification
+**Current focus:** Phase 3 — Streamlit API Frontend
 
 ## Current Position
 
-Phase: 2 of 4 (Falcon API Backend)
-Plan: Runtime verification pending
-Status: Phase 2 plans executed; strict closeout blocked until Falcon TestClient smoke verification passes
-Last activity: 2026-07-16 — Completed 02-02 API smoke verification and hardening
+Phase: 3 of 4 (Streamlit API Frontend)
+Plan: 03-01 next
+Status: Phase 2 complete; ready for Streamlit API client/frontend refactor
+Last activity: 2026-07-16 — Completed Phase 2 runtime Falcon verification
 
-Progress: [█████░░░░░] 50% (plan execution), 25% phases strictly complete
+Progress: [█████░░░░░] 50%
 
 ## Performance Metrics
 
@@ -65,7 +65,7 @@ Recent decisions affecting current work:
 - Keep planning coarse and use parallel execution when safe.
 - Phase 2 API code is a thin Falcon adapter under `inflation_dashboard/api/` with uniform `{data, meta, errors}` envelopes and no Streamlit/Plotly imports.
 - Plan 02-02 added bounded Falcon `TestClient` smoke verification plus source boundary checks for imports, response contracts, JSON-native payloads, invalid filters, and lightweight health behavior.
-- Falcon dependency metadata is declared, but the active local Python environment still needs the user's `uv` install workflow before runtime TestClient endpoint requests can run.
+- Falcon dependency metadata is declared and runtime TestClient endpoint smoke verification passed under the user's `uv` workflow.
 
 ### Pending Todos
 
@@ -76,7 +76,7 @@ None yet.
 - No canonical test suite exists; use focused ad-hoc verification until tests are added.
 - Dataset is large; preserve filter/cap-driven loading to avoid slow startup.
 - Dependency metadata is inconsistent between `pyproject.toml`, `requirements.txt`, GitHub Actions, and local runtime.
-- Falcon is declared but not installed in the active environment; run/install with `uv` before Falcon runtime smoke checks.
+- Phase 2 runtime verification passed with `uv run python scripts/verify_falcon_api.py`; preserve this verifier as the API contract check for Phase 3.
 
 ## Deferred Items
 
@@ -88,5 +88,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-07-16T11:35:01Z
-Stopped at: Phase 2 source-verified; runtime Falcon verification blocked by missing dependency
-Resume file: .planning/phases/02-falcon-api-backend/02-VERIFICATION.md
+Stopped at: Completed Phase 2 runtime verification; ready for 03-01 Streamlit API client work
+Resume file: .planning/phases/03-streamlit-api-frontend/03-01-PLAN.md
