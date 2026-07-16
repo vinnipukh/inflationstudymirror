@@ -108,7 +108,13 @@ class MoversResource:
                     f"Unknown retailer: {scope_retailer}",
                     meta={"filters": {"scope_retailer": scope_retailer}},
                 )
-            limit = _parse_positive_int(req, "limit", default=10, minimum=1)
+            limit = _parse_bounded_int(
+                req,
+                "limit",
+                default=_parse_bounded_int(req, "mover_count", default=10, minimum=5, maximum=30),
+                minimum=5,
+                maximum=30,
+            )
             mover_results = calculate_price_movers(history, scope_retailer, limit)
             stats = mover_results["stats"]
             resp.status = falcon.HTTP_200
@@ -134,7 +140,7 @@ class CoverageResource:
         try:
             parsed_filters = parse_common_filters(req)
             history, skipped, meta = load_filtered_history(parsed_filters)
-            category_limit = _parse_positive_int(req, "category_limit", default=20, minimum=1)
+            category_limit = _parse_bounded_int(req, "category_limit", default=20, minimum=1)
             summary = calculate_coverage_summary(history, skipped)
             coverage_over_time = calculate_coverage_over_time(history)
             category_coverage = calculate_category_coverage(history, limit=category_limit)
@@ -167,7 +173,7 @@ def _single_selected_retailer(selected_retailers: list[str]) -> str:
     )
 
 
-def _parse_positive_int(req: Any, name: str, *, default: int, minimum: int) -> int:
+def _parse_bounded_int(req: Any, name: str, *, default: int, minimum: int, maximum: int | None = None) -> int:
     raw_value = req.get_param(name, default=None)
     if raw_value in {None, ""}:
         return default
@@ -175,6 +181,6 @@ def _parse_positive_int(req: Any, name: str, *, default: int, minimum: int) -> i
         parsed_value = int(str(raw_value))
     except ValueError as exc:
         raise ApiFilterError("invalid_filter", f"Invalid {name}", meta={"filters": {name: raw_value}}) from exc
-    if parsed_value < minimum:
+    if parsed_value < minimum or (maximum is not None and parsed_value > maximum):
         raise ApiFilterError("invalid_filter", f"Invalid {name}", meta={"filters": {name: raw_value}})
     return parsed_value
