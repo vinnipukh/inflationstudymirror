@@ -3,38 +3,19 @@ from __future__ import annotations
 from difflib import get_close_matches
 import re
 import unicodedata
-from pathlib import Path
 
 import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-PROJECT_ROOT = Path(__file__).resolve().parent
-RAW_DATA_ROOT = PROJECT_ROOT / "Datas"
+from inflation_dashboard.adapters.csv_price_repository import (
+    DEFAULT_MAX_FILES_PER_RETAILER,
+    DEFAULT_RETAILERS,
+    discover_csv_inventory as discover_csv_inventory_uncached,
+    load_price_history as load_price_history_uncached,
+)
 
-PRICE_COLUMNS = [
-    "member_price",
-    "original_price",
-    "shown_price",
-    "product-price",
-    "product_price",
-    "price",
-    "Price",
-    "median_price",
-    "Fiyat",
-]
-ID_COLUMNS = ["Stok Kodu", "sku", "product_id", "UrunID", "id", "Kategori ID"]
-NAME_COLUMNS = ["product-name", "name", "Product Name", "brand", "District"]
-CATEGORY_COLUMNS = ["category", "Category", "Ana Kategori", "Rooms"]
-DATE_PATTERN = re.compile(r"(20\d{2})[-_](\d{2})[-_](\d{2})")
 MAX_AUTOCORRECT_OPTIONS = 80
-
-
-def parse_date_from_name(name: str) -> pd.Timestamp | pd.NaT:
-    match = DATE_PATTERN.search(name)
-    if not match:
-        return pd.NaT
-    return pd.to_datetime("-".join(match.groups()), errors="coerce")
 
 
 def normalize_search_text(value: object) -> str:
@@ -116,160 +97,9 @@ def autocorrect_multiselect(
     return st.multiselect(label, display_options, default=current_selection, key=key)
 
 
-def coerce_price(value: object) -> float | None:
-    if value is None or pd.isna(value):
-        return None
-
-    text = str(value).strip()
-    if not text or text.lower() in {"nan", "none", "n/a"}:
-        return None
-
-    text = (
-        text.replace("₺", "")
-        .replace("TL", "")
-        .replace("TRY", "")
-        .replace('"', "")
-        .replace("\xa0", " ")
-        .strip()
-    )
-    text = re.sub(r"[^0-9,.-]", "", text)
-
-    if not text or text in {"-", ".", ","}:
-        return None
-
-    if "," in text and "." in text:
-        if text.rfind(",") > text.rfind("."):
-            text = text.replace(".", "").replace(",", ".")
-        else:
-            text = text.replace(",", "")
-    elif "," in text:
-        if re.search(r",\d{1,2}$", text):
-            text = text.replace(".", "").replace(",", ".")
-        else:
-            text = text.replace(",", "")
-    elif "." in text:
-        decimal_places = len(text.rsplit(".", 1)[-1])
-        if decimal_places == 3 and text.count(".") >= 1:
-            text = text.replace(".", "")
-
-    try:
-        return float(text)
-    except ValueError:
-        return None
-
-
-def detect_retailer(path: Path) -> str:
-    parts = path.parts
-    if "Datas" not in parts:
-        return path.parent.name
-
-    relative_parts = parts[parts.index("Datas") + 1 : -1]
-    if not relative_parts:
-        return path.parent.name
-    if len(relative_parts) == 1:
-        return relative_parts[0]
-    return " / ".join(relative_parts)
-
-
-SUPPORTED_RETAILERS = {
-    "ClothingStores / Vakko",
-    "Markets / Gurmar",
-    "HomeGoods",
-    "Technology",
-    "Cosmetics / Watson",
-    "ConstructionSuppliesMarkets / TasciYapiMarket",
-    "HousesRent / Kayseri",
-    "HousesRent / Sivas",
-    "HousesRent / Tokat",
-    "yapimaks",
-}
-
-DEFAULT_RETAILERS = (
-    "Markets / Gurmar",
-    "ClothingStores / Vakko",
-    "HomeGoods",
-)
-DEFAULT_MAX_FILES_PER_RETAILER = 45
-
-
 @st.cache_data(show_spinner=False)
 def discover_csv_inventory() -> pd.DataFrame:
-    rows = []
-    for csv_path in RAW_DATA_ROOT.rglob("*.csv"):
-        retailer = detect_retailer(csv_path)
-        date_value = parse_date_from_name(csv_path.name)
-        if retailer not in SUPPORTED_RETAILERS or pd.isna(date_value):
-            continue
-
-        rows.append(
-            {
-                "path": str(csv_path),
-                "retailer": retailer,
-                "date": date_value,
-                "size_mb": csv_path.stat().st_size / 1024 / 1024,
-            }
-        )
-
-    if not rows:
-        return pd.DataFrame(columns=["path", "retailer", "date", "size_mb"])
-
-    return pd.DataFrame(rows).sort_values(["retailer", "date"])
-
-
-def first_non_empty_column(frame: pd.DataFrame, columns: list[str]) -> pd.Series:
-    result = pd.Series(pd.NA, index=frame.index, dtype="string")
-    for column in columns:
-        if column not in frame.columns:
-            continue
-        values = frame[column].astype("string").str.strip().replace("", pd.NA)
-        result = result.combine_first(values)
-    return result
-
-
-def build_product_frame(
-    frame: pd.DataFrame,
-    retailer: str,
-    price_column: str,
-    date_value: pd.Timestamp,
-    source_file: str,
-) -> pd.DataFrame:
-    if retailer.startswith("HousesRent /"):
-        district = first_non_empty_column(frame, ["District"])
-        rooms = first_non_empty_column(frame, ["Rooms"])
-        product_name = district.str.cat(rooms.fillna(""), sep=" - ").str.strip(" -")
-        product_id = product_name
-        category = rooms.fillna("Uncategorized")
-    elif retailer == "Cosmetics / Watson":
-        brand = first_non_empty_column(frame, ["brand"])
-        sku = first_non_empty_column(frame, ["sku"])
-        product_id = sku.combine_first(brand)
-        product_name = brand.fillna("").str.cat(" (" + sku.fillna("") + ")").str.strip()
-        product_name = product_name.str.replace(r"^\s*\((.*)\)$", r"\1", regex=True)
-        category = brand.fillna("Uncategorized")
-    else:
-        product_id = first_non_empty_column(frame, ID_COLUMNS)
-        product_name = first_non_empty_column(frame, NAME_COLUMNS).combine_first(product_id)
-        product_id = product_id.combine_first(product_name)
-        category = first_non_empty_column(frame, CATEGORY_COLUMNS).fillna("Uncategorized")
-
-    prices = frame[price_column].map(coerce_price)
-    product_data = pd.DataFrame(
-        {
-            "date": date_value,
-            "retailer": retailer,
-            "product_id": product_id,
-            "product_name": product_name,
-            "category": category,
-            "price": prices,
-            "source_file": source_file,
-        }
-    )
-    product_data = product_data.dropna(subset=["product_id", "product_name", "price"])
-    product_data = product_data[
-        (product_data["product_id"].astype(str).str.strip() != "")
-        & (product_data["product_name"].astype(str).str.strip() != "")
-    ]
-    return product_data
+    return discover_csv_inventory_uncached()
 
 
 @st.cache_data(show_spinner="Loading selected scraped CSV files...")
@@ -279,75 +109,14 @@ def load_price_history(
     end_date,
     max_files_per_retailer: int,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
-    rows: list[dict[str, object]] = []
-    skipped: list[dict[str, object]] = []
-
     inventory = discover_csv_inventory()
-    if inventory.empty or not selected_retailers:
-        return pd.DataFrame(), pd.DataFrame()
-
-    selected_files = inventory[
-        inventory["retailer"].isin(selected_retailers)
-        & (inventory["date"] >= pd.to_datetime(start_date))
-        & (inventory["date"] <= pd.to_datetime(end_date))
-    ].copy()
-
-    if max_files_per_retailer > 0:
-        selected_files = (
-            selected_files.sort_values(["retailer", "date"], ascending=[True, False])
-            .groupby("retailer", group_keys=False)
-            .head(max_files_per_retailer)
-            .sort_values(["retailer", "date"])
-        )
-
-    for file_info in selected_files.itertuples(index=False):
-        csv_path = Path(file_info.path)
-        retailer = file_info.retailer
-        date_value = file_info.date
-
-        try:
-            frame = pd.read_csv(
-                csv_path,
-                sep=None,
-                engine="python",
-                encoding="utf-8-sig",
-                on_bad_lines="skip",
-            )
-        except Exception as exc:
-            skipped.append({"file": str(csv_path.relative_to(PROJECT_ROOT)), "reason": str(exc)})
-            continue
-
-        if frame.empty:
-            skipped.append({"file": str(csv_path.relative_to(PROJECT_ROOT)), "reason": "empty file"})
-            continue
-
-        price_column = next((column for column in PRICE_COLUMNS if column in frame.columns), None)
-        if not price_column:
-            skipped.append({"file": str(csv_path.relative_to(PROJECT_ROOT)), "reason": "no recognized price column"})
-            continue
-
-        product_data = build_product_frame(
-            frame=frame,
-            retailer=retailer,
-            price_column=price_column,
-            date_value=date_value,
-            source_file=str(csv_path.relative_to(PROJECT_ROOT)),
-        )
-        if not product_data.empty:
-            rows.append(product_data)
-
-    history = pd.concat(rows, ignore_index=True) if rows else pd.DataFrame()
-    skipped_df = pd.DataFrame(skipped)
-
-    if history.empty:
-        return history, skipped_df
-
-    history = (
-        history.drop_duplicates(subset=["date", "retailer", "product_id"], keep="last")
-        .sort_values(["retailer", "product_name", "date"])
-        .reset_index(drop=True)
+    return load_price_history_uncached(
+        selected_retailers,
+        start_date,
+        end_date,
+        max_files_per_retailer,
+        inventory=inventory,
     )
-    return history, skipped_df
 
 
 def format_currency(value: float | int | None) -> str:
