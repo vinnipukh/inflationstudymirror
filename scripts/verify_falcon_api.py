@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import json
 import math
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -21,6 +22,79 @@ if str(REPO_ROOT) not in sys.path:
 
 ENVELOPE_KEYS = {"data", "meta", "errors"}
 RETAILER = "Markets / Gurmar"
+FORBIDDEN_API_IMPORTS = ("streamlit", "streamlit_app", "plotly")
+FORBIDDEN_CORE_IMPORTS = ("falcon", "streamlit", "plotly")
+FORBIDDEN_CACHE_IMPORTS = ("redis", "sqlalchemy", "django", "peewee", "sqlite3")
+
+
+def _is_forbidden_import(source: str, module: str) -> bool:
+    return bool(re.search(rf"^\s*(import\s+{re.escape(module)}\b|from\s+{re.escape(module)}\b)", source, re.MULTILINE))
+
+
+def _iter_python_files(*relative_paths: str) -> list[Path]:
+    files: list[Path] = []
+    for relative_path in relative_paths:
+        path = REPO_ROOT / relative_path
+        if path.is_file():
+            files.append(path)
+        else:
+            files.extend(sorted(path.glob("*.py")))
+    return files
+
+
+def _assert_import_boundaries() -> None:
+    api_files = _iter_python_files("inflation_dashboard/api")
+    core_files = _iter_python_files(
+        "inflation_dashboard/domain",
+        "inflation_dashboard/application",
+        "inflation_dashboard/adapters/csv_price_repository.py",
+    )
+
+    for path in api_files:
+        source = path.read_text(encoding="utf-8")
+        for module in FORBIDDEN_API_IMPORTS:
+            assert not _is_forbidden_import(source, module), f"{path} imports forbidden API module {module}"
+        for module in FORBIDDEN_CACHE_IMPORTS:
+            assert not _is_forbidden_import(source, module), f"{path} imports forbidden cache/database module {module}"
+
+    for path in core_files:
+        source = path.read_text(encoding="utf-8")
+        for module in FORBIDDEN_CORE_IMPORTS:
+            assert not _is_forbidden_import(source, module), f"{path} imports forbidden core module {module}"
+
+    resources_source = (REPO_ROOT / "inflation_dashboard/api/resources.py").read_text(encoding="utf-8")
+    health_match = re.search(r"class HealthResource:.*?(?=\nclass InventoryResource:)", resources_source, re.DOTALL)
+    assert health_match, "HealthResource body not found"
+    health_body = health_match.group(0)
+    for token in ("get_inventory", "discover_csv_inventory", "load_price_history", "load_filtered_history"):
+        assert token not in health_body, f"HealthResource must not reference {token}"
+
+    print("PASS boundary checks: imports, stdlib-only cache boundary, lightweight health resource")
+
+
+def _assert_source_contracts() -> None:
+    app_source = (REPO_ROOT / "inflation_dashboard/api/falcon_app.py").read_text(encoding="utf-8")
+    for path in ("/api/health", "/api/inventory", "/api/history", "/api/retailer-averages", "/api/movers", "/api/coverage"):
+        assert path in app_source, f"app factory missing route {path}"
+
+    resources_source = (REPO_ROOT / "inflation_dashboard/api/resources.py").read_text(encoding="utf-8")
+    for token in (
+        '"retailers"',
+        '"min_date"',
+        '"max_date"',
+        '"history"',
+        '"summary"',
+        '"records"',
+        '"biggest_drops"',
+        '"biggest_gains"',
+        '"coverage_over_time"',
+        '"category_coverage"',
+        '"skipped_files"',
+        '"skipped_file_count"',
+    ):
+        assert token in resources_source, f"resources.py missing response contract token {token}"
+
+    print("PASS source contracts: endpoint routes and stable response keys")
 
 
 def _load_client() -> Any:
@@ -111,6 +185,17 @@ def run_endpoint_smoke() -> None:
     }
     _assert_endpoint_shapes(responses)
 
+    product_empty = _get(
+        client,
+        f"/api/history?retailer={RETAILER}&product_retailer={RETAILER}&product_name=__definitely_missing__&max_files=1",
+    )
+    assert isinstance(product_empty["data"].get("history"), list), "product history must include history list"
+    summary = product_empty["data"].get("summary")
+    assert isinstance(summary, dict), "product history must include summary mapping"
+    assert {"latest_price", "cheapest_price", "cheapest_date", "change_since_first_pct"}.issubset(summary), (
+        "product history summary keys missing"
+    )
+
     invalid = _get(client, "/api/history?retailer=Unknown%20Retailer&max_files=1", expected_status="400 Bad Request")
     assert invalid["data"] is None, "invalid filter data must be null"
     assert invalid["errors"], "invalid filter response must include errors"
@@ -122,6 +207,8 @@ def run_endpoint_smoke() -> None:
 
 
 def main() -> int:
+    _assert_import_boundaries()
+    _assert_source_contracts()
     run_endpoint_smoke()
     return 0
 
