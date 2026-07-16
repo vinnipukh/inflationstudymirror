@@ -14,6 +14,24 @@ from inflation_dashboard.adapters.csv_price_repository import (
     discover_csv_inventory as discover_csv_inventory_uncached,
     load_price_history as load_price_history_uncached,
 )
+from inflation_dashboard.application.chart_specs import (
+    BIGGEST_DROPS_COLUMNS,
+    BIGGEST_GAINS_COLUMNS,
+    SKIPPED_DIAGNOSTICS_COLUMNS,
+    category_coverage_bar_chart_spec,
+    coverage_area_chart_spec,
+    product_price_chart_spec,
+    retailer_average_chart_spec,
+)
+from inflation_dashboard.application.use_cases import (
+    calculate_category_coverage,
+    calculate_coverage_over_time,
+    calculate_coverage_summary,
+    calculate_price_movers,
+    calculate_retailer_average_trends,
+    get_product_history,
+    summarize_product_history,
+)
 
 MAX_AUTOCORRECT_OPTIONS = 80
 
@@ -125,11 +143,26 @@ def format_currency(value: float | int | None) -> str:
     return f"₺{value:,.2f}"
 
 
-def line_chart(data: pd.DataFrame, x: str, y: str, color: str | None = None, title: str = ""):
-    chart = px.line(data, x=x, y=y, color=color, markers=True, title=title)
+def render_chart(data: pd.DataFrame, spec: dict[str, object]):
+    chart_type = spec["type"]
+    chart_kwargs = {
+        "x": spec["x"],
+        "y": spec["y"],
+        "color": spec.get("color"),
+        "title": spec["title"],
+    }
+    if chart_type == "line":
+        chart = px.line(data, markers=True, **chart_kwargs)
+    elif chart_type == "area":
+        chart = px.area(data, **chart_kwargs)
+    elif chart_type == "bar":
+        chart = px.bar(data, orientation=spec.get("orientation"), **chart_kwargs)
+    else:
+        raise ValueError(f"Unsupported chart type: {chart_type}")
+
     chart.update_layout(height=460, legend_title_text="")
-    chart.update_yaxes(title="Price (TRY)")
-    chart.update_xaxes(title="Date")
+    chart.update_yaxes(title=spec["y_label"])
+    chart.update_xaxes(title=spec["x_label"])
     st.plotly_chart(chart, use_container_width=True)
 
 
@@ -152,22 +185,20 @@ def render_product_explorer(history: pd.DataFrame):
         help_text="Type part of the product name; the closest spelling is surfaced first.",
     )
 
-    product_history = retailer_slice[retailer_slice["product_name"] == selected_product].copy()
-    product_history = product_history.sort_values("date")
-
-    cheapest_row = product_history.loc[product_history["price"].idxmin()]
-    latest_row = product_history.iloc[-1]
-    first_row = product_history.iloc[0]
-    change_since_first = ((latest_row["price"] - first_row["price"]) / first_row["price"] * 100) if first_row["price"] else 0.0
+    product_history = get_product_history(history, selected_retailer, selected_product)
+    summary = summarize_product_history(product_history)
 
     c1, c2, c3, c4 = st.columns(4)
-    c1.metric("Latest price", format_currency(latest_row["price"]))
-    c2.metric("Cheapest price", format_currency(cheapest_row["price"]))
-    c3.metric("Cheapest date", cheapest_row["date"].strftime("%Y-%m-%d"))
-    c4.metric("Change vs first seen", f"{change_since_first:.2f}%")
+    c1.metric("Latest price", format_currency(summary["latest_price"]))
+    c2.metric("Cheapest price", format_currency(summary["cheapest_price"]))
+    cheapest_date = summary["cheapest_date"]
+    c3.metric("Cheapest date", cheapest_date.strftime("%Y-%m-%d") if pd.notna(cheapest_date) else "-")
+    c4.metric("Change vs first seen", f"{summary['change_since_first_pct']:.2f}%")
 
-    line_chart(product_history, x="date", y="price", title=f"{selected_product} price history")
-    st.dataframe(product_history[["date", "price", "category", "source_file"]], use_container_width=True, hide_index=True)
+    spec = product_price_chart_spec(f"{selected_product} price history")
+    render_chart(product_history, spec)
+    st.dataframe(product_history[spec["table_columns"]], use_container_width=True, hide_index=True)
+
 
 
 def render_retailer_average(history: pd.DataFrame):
@@ -182,18 +213,15 @@ def render_retailer_average(history: pd.DataFrame):
     )
     aggregation = st.radio("Aggregation", ["Average", "Median"], horizontal=True)
 
-    filtered = history[history["retailer"].isin(selected_retailers)].copy()
-    if filtered.empty:
+    grouped = calculate_retailer_average_trends(history, selected_retailers, aggregation)
+    if grouped.empty:
         st.info("Select at least one retailer.")
         return
 
-    if aggregation == "Average":
-        grouped = filtered.groupby(["date", "retailer"], as_index=False)["price"].mean()
-    else:
-        grouped = filtered.groupby(["date", "retailer"], as_index=False)["price"].median()
+    spec = retailer_average_chart_spec(aggregation)
+    render_chart(grouped, spec)
+    st.dataframe(grouped[spec["table_columns"]], use_container_width=True, hide_index=True)
 
-    line_chart(grouped, x="date", y="price", color="retailer", title=f"{aggregation} scraped price by retailer")
-    st.dataframe(grouped.sort_values(["retailer", "date"]), use_container_width=True, hide_index=True)
 
 
 def render_price_movers(history: pd.DataFrame):
@@ -202,105 +230,55 @@ def render_price_movers(history: pd.DataFrame):
     selected_retailer = autocorrect_selectbox("Retailer scope", retailer_options, key="mover_retailer")
     mover_count = st.slider("Rows to show", min_value=5, max_value=30, value=10)
 
-    movers = history.copy()
-    if selected_retailer != "All retailers":
-        movers = movers[movers["retailer"] == selected_retailer]
-
-    stats = (
-        movers.groupby(["retailer", "product_id", "product_name", "category"], as_index=False)
-        .agg(
-            first_seen=("date", "min"),
-            last_seen=("date", "max"),
-            first_price=("price", "first"),
-            latest_price=("price", "last"),
-            min_price=("price", "min"),
-            max_price=("price", "max"),
-            observations=("price", "size"),
-        )
-    )
-    stats = stats[stats["observations"] >= 2].copy()
-    if stats.empty:
+    mover_results = calculate_price_movers(history, selected_retailer, mover_count)
+    biggest_drops = mover_results["biggest_drops"]
+    biggest_gains = mover_results["biggest_gains"]
+    if biggest_drops.empty and biggest_gains.empty:
         st.info("Not enough repeated product observations for this selection.")
         return
-
-    stats["change_since_first_pct"] = ((stats["latest_price"] - stats["first_price"]) / stats["first_price"]) * 100
-    stats["drop_from_peak_pct"] = ((stats["latest_price"] - stats["max_price"]) / stats["max_price"]) * 100
-    stats["savings_vs_peak"] = stats["max_price"] - stats["latest_price"]
-
-    biggest_drops = stats.sort_values("drop_from_peak_pct").head(mover_count)
-    biggest_gains = stats.sort_values("change_since_first_pct", ascending=False).head(mover_count)
 
     left, right = st.columns(2)
     with left:
         st.markdown("**Best current deals vs peak price**")
         st.dataframe(
-            biggest_drops[
-                [
-                    "retailer",
-                    "product_name",
-                    "latest_price",
-                    "max_price",
-                    "savings_vs_peak",
-                    "drop_from_peak_pct",
-                    "last_seen",
-                ]
-            ],
+            biggest_drops[BIGGEST_DROPS_COLUMNS],
             use_container_width=True,
             hide_index=True,
         )
     with right:
         st.markdown("**Strongest increases since first seen**")
         st.dataframe(
-            biggest_gains[
-                [
-                    "retailer",
-                    "product_name",
-                    "first_price",
-                    "latest_price",
-                    "change_since_first_pct",
-                    "first_seen",
-                    "last_seen",
-                ]
-            ],
+            biggest_gains[BIGGEST_GAINS_COLUMNS],
             use_container_width=True,
             hide_index=True,
         )
 
 
+
 def render_overview(history: pd.DataFrame, skipped: pd.DataFrame):
     st.subheader("4. Dataset coverage overview")
-    history = history.copy()
-    history["month"] = history["date"].dt.to_period("M").astype(str)
+    summary = calculate_coverage_summary(history, skipped)
 
     c1, c2, c3, c4 = st.columns(4)
-    c1.metric("Retailers", history["retailer"].nunique())
-    c2.metric("Tracked products", history["product_id"].nunique())
-    c3.metric("Price observations", len(history))
-    c4.metric("Date range", f"{history['date'].min():%Y-%m-%d} → {history['date'].max():%Y-%m-%d}")
+    c1.metric("Retailers", summary["retailer_count"])
+    c2.metric("Tracked products", summary["product_count"])
+    c3.metric("Price observations", summary["observation_count"])
+    c4.metric("Date range", summary["date_range"])
 
     left, right = st.columns(2)
     with left:
-        coverage = history.groupby(["date", "retailer"], as_index=False)["product_id"].nunique()
-        coverage = coverage.rename(columns={"product_id": "tracked_products"})
-        chart = px.area(coverage, x="date", y="tracked_products", color="retailer", title="Tracked products over time")
-        chart.update_layout(height=420, legend_title_text="")
-        st.plotly_chart(chart, use_container_width=True)
+        coverage = calculate_coverage_over_time(history)
+        render_chart(coverage, coverage_area_chart_spec())
 
     with right:
-        categories = (
-            history.groupby(["retailer", "category"], as_index=False)["product_id"]
-            .nunique()
-            .rename(columns={"product_id": "products"})
-            .sort_values("products", ascending=False)
-            .head(20)
-        )
-        chart = px.bar(categories, x="products", y="category", color="retailer", orientation="h", title="Top categories by tracked products")
-        chart.update_layout(height=420, legend_title_text="")
-        st.plotly_chart(chart, use_container_width=True)
+        categories = calculate_category_coverage(history)
+        render_chart(categories, category_coverage_bar_chart_spec())
 
     if not skipped.empty:
         with st.expander(f"Skipped files ({len(skipped)})"):
-            st.dataframe(skipped, use_container_width=True, hide_index=True)
+            columns = [column for column in SKIPPED_DIAGNOSTICS_COLUMNS if column in skipped.columns]
+            st.dataframe(skipped[columns], use_container_width=True, hide_index=True)
+
 
 
 def main() -> None:
