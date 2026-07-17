@@ -1,0 +1,68 @@
+2026-07-17 05:13:10 [INFO] ==================================================
+2026-07-17 05:13:10 [INFO] Yapimaks Scraper basliyor
+2026-07-17 05:13:10 [INFO] ==================================================
+2026-07-17 05:13:10 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-07-17 05:13:11 [INFO] Cookie basariyla alindi.
+2026-07-17 05:13:11 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-07-17 05:13:11 [INFO] Sitemap'ten toplam 7974 urun URL'si bulundu.
+2026-07-17 05:13:11 [INFO] Bugune ait veri yok. Eski veri (2026-07-16.csv) süzülerek bugune aktariliyor...
+2026-07-17 05:13:11 [INFO] Basarili! 7946 urun dunden bugune aktarildi.
+2026-07-17 05:13:11 [INFO] Guncel dosyada hazir olan urun: 7946 | Sifirdan cekilecek (yeni) urun: 28
+2026-07-17 05:13:11 [INFO] 28 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-17.csv
+2026-07-17 05:13:11 [INFO] [1/28] https://yapimaks.com/antipas-gri-18-kg-sentetik-aura-p10960
+2026-07-17 05:13:12 [INFO] [10960] 'ANTİPAS GRİ 18 KG SENTETİK AURA' | 2000.00 TL | SKU: KARDELEN.057
+2026-07-17 05:13:14 [INFO] [2/28] https://yapimaks.com/basli-civi-tabanca-f25-1p-5000-ad-p7787
+2026-07-17 05:13:14 [INFO] [7787] 'BAŞLI ÇİVİ TABANCA F25 1P=5000 AD' | 240.00 TL | SKU: RAYTEL.F25
+2026-07-17 05:13:16 [INFO] [3/28] https://yapimaks.com/basli-civi-tabanca-f30-1p-5000-ad-p7789
+2026-07-17 05:13:16 [INFO] [7789] 'BAŞLI ÇİVİ TABANCA F30 1P=5000 AD' | 280.00 TL | SKU: RAYTEL.F30
+2026-07-17 05:13:18 [INFO] [4/28] https://yapimaks.com/basli-civi-tabanca-f40-1p-5000-ad-p7790
+2026-07-17 05:13:18 [INFO] [7790] 'BAŞLI ÇİVİ TABANCA F40 1P=5000 AD' | 370.00 TL | SKU: RAYTEL.F40
+2026-07-17 05:13:20 [INFO] [5/28] https://yapimaks.com/derzmatik-antrasit-gri-360-gr-p12970
+2026-07-17 05:13:20 [INFO] [12970] 'DERZMATİK ANTRASİT GRİ 360 GR' | 110.00 TL | SKU: DERZMATİK.03
+2026-07-17 05:13:22 [INFO] [6/28] https://yapimaks.com/derzmatik-kahverengi-360-gr-p15760
+2026-07-17 05:13:23 [INFO] [15760] 'DERZMATİK KAHVERENGİ 360 GR' | 110.00 TL | SKU: DERZMATİK.05
+2026-07-17 05:13:25 [INFO] [7/28] https://yapimaks.com/epoksi-metal-yapistirici-enj-28-gr-selsil-p14317
+2026-07-17 05:13:25 [INFO] [14317] 'EPOKSİ METAL YAPIŞTIRICI ENJ 28-GR (SELS' | 150.00 TL | SKU: SELSİL.3633
+2026-07-17 05:13:27 [INFO] [8/28] https://yapimaks.com/eps-50-karbonlu-5cm-50-100-10ad-5m2-darkss-p3211
+2026-07-17 05:13:27 [INFO] [3211] 'EPS-50 KARBONLU 5CM 50*100 (10AD 5m2) DA' | 700.00 TL | SKU: EPS.14.0013
+2026-07-17 05:13:29 [INFO] [9/28] https://yapimaks.com/granit-mermer-yapistirici-bej-1200-gr-p15765
+2026-07-17 05:13:29 [INFO] [15765] 'GRANİT MERMER YAPIŞTIRICI BEJ 1200 GR' | 240.00 TL | SKU: ELKAY.BF10.501
+2026-07-17 05:13:31 [INFO] [10/28] https://yapimaks.com/granit-mermer-yapistirici-bej-500-gr-p5393
+2026-07-17 05:13:32 [INFO] [5393] 'GRANİT MERMER YAPIŞTIRICI BEJ 500 GR' | 160.00 TL | SKU: ELKAY.BF10.500
+2026-07-17 05:13:34 [INFO] [11/28] https://yapimaks.com/granit-mermer-yapistirici-beyaz-1200-gr-p15766
+2026-07-17 05:13:34 [INFO] [15766] 'GRANİT MERMER YAPIŞTIRICI BEYAZ 1200 GR' | 299.00 TL | SKU: ELKAY.BF10.502
+2026-07-17 05:13:36 [INFO] [12/28] https://yapimaks.com/kapi-zili-kanarya-3-sesli-mutlusan-p6126
+2026-07-17 05:13:36 [INFO] [6126] 'KAPI ZİLİ KANARYA 3 SESLİ MUTLUSAN' | 175.00 TL | SKU: MUTLUSAN.1810500007
+2026-07-17 05:13:38 [INFO] [13/28] https://yapimaks.com/klozet-era-alttan-cikisli-p2881
+2026-07-17 05:13:38 [INFO] [2881] 'KLOZET ERA ALTTAN ÇIKIŞLI' | 2650.00 TL | SKU: EGEVİT.141031011
+2026-07-17 05:13:40 [INFO] [14/28] https://yapimaks.com/klozet-kapak-tyana-yavas-kapanir-paslanmaz-krom-mentese-ustten-sikma-p2924
+2026-07-17 05:13:40 [INFO] [2924] 'KLOZET KAPAK TYANA YAVAŞ KAPANIR PASLANM' | 1750.00 TL | SKU: EGEVİT.EVKK720501001
+2026-07-17 05:13:42 [INFO] [15/28] https://yapimaks.com/klozet-kapya-arkadan-cikisli-p13164
+2026-07-17 05:13:43 [INFO] [13164] 'KLOZET KAPYA ARKADAN ÇIKIŞLI' | 2900.00 TL | SKU: EGEVİT.EV15203
+2026-07-17 05:13:45 [INFO] [16/28] https://yapimaks.com/klozet-knidos-latte-asma-soft-close-kapak-p2916
+2026-07-17 05:13:45 [INFO] [2916] 'KLOZET KNİDOS LATTE ASMA+SOFT CLOSE KAPA' | 10100.00 TL | SKU: EGEVİT.8830367
+2026-07-17 05:13:47 [INFO] [17/28] https://yapimaks.com/kosebent-30x30-parlak-krom-270-cm-p8284
+2026-07-17 05:13:47 [INFO] [8284] 'KÖŞEBENT 30X30 PARLAK KROM -270 CM' | 350.00 TL | SKU: TESAY.FKDA30
+2026-07-17 05:13:49 [INFO] [18/28] https://yapimaks.com/lavabo-knidos-antrasit-60-cm-batarya-delikli-p2921
+2026-07-17 05:13:49 [INFO] [2921] 'LAVABO KNİDOS ANTRASİT 60 CM BATARYA DEL' | 5800.00 TL | SKU: EGEVİT.886111801
+2026-07-17 05:13:51 [INFO] [19/28] https://yapimaks.com/lavabo-knidos-beyaz-60-cm-batarya-delikli-p2918
+2026-07-17 05:13:51 [INFO] [2918] 'LAVABO KNİDOS BEYAZ 60 CM BATARYA DELİKL' | 4500.00 TL | SKU: EGEVİT.8861110
+2026-07-17 05:13:53 [INFO] [20/28] https://yapimaks.com/lavabo-knidos-beyaz-60-cm-batarya-deliksiz-p15773
+2026-07-17 05:13:54 [INFO] [15773] 'LAVABO KNİDOS BEYAZ 60 CM BATARYA DELİKS' | 4500.00 TL | SKU: EGEVİT.88601
+2026-07-17 05:13:56 [INFO] [21/28] https://yapimaks.com/lavabo-knidos-latte-60-cm-batarya-deliksiz-p15774
+2026-07-17 05:13:56 [INFO] [15774] 'LAVABO KNİDOS LATTE 60 CM BATARYA DELİKS' | 5800.00 TL | SKU: EGEVİT.88601L
+2026-07-17 05:13:58 [INFO] [22/28] https://yapimaks.com/lavabo-knidos-siyah-60-cm-batarya-delikli-p2920
+2026-07-17 05:13:58 [INFO] [2920] 'LAVABO KNİDOS SİYAH 60 CM BATARYA DELİKL' | 5800.00 TL | SKU: EGEVİT.88611161
+2026-07-17 05:14:00 [INFO] [23/28] https://yapimaks.com/pas-sokucu-yaglayici-400-ml-selsil-p13885
+2026-07-17 05:14:00 [INFO] [13885] 'PAS SÖKÜCÜ YAĞLAYICI 400 ML SELSİL' | 130.00 TL | SKU: SELSİL.058
+2026-07-17 05:14:02 [INFO] [24/28] https://yapimaks.com/sentetik-boya-siyah-1-1-aura-p12926
+2026-07-17 05:14:03 [INFO] [12926] 'SENTETİK BOYA SİYAH 1/1 AURA' | 250.00 TL | SKU: KARDELEN.2109237
+2026-07-17 05:14:05 [INFO] [25/28] https://yapimaks.com/spiral-hortum-seti-15-m-sulama-roney-p13936
+2026-07-17 05:14:05 [INFO] [13936] 'SPİRAL HORTUM SETİ 15 M SULAMA RONEY' | 1200.00 TL | SKU: RONEY.RG9515A
+2026-07-17 05:14:07 [INFO] [26/28] https://yapimaks.com/sprey-boya-kirmizi-400ml-3020-selsil-p14146
+2026-07-17 05:14:07 [INFO] [14146] 'SPREY BOYA KIRMIZI 400ML (3020) SELSİL' | 149.00 TL | SKU: SELSİL.419
+2026-07-17 05:14:09 [INFO] [27/28] https://yapimaks.com/sprey-boya-parlak-beyaz-400-ml-9010-selsil-p13868
+2026-07-17 05:14:09 [INFO] [13868] 'SPREY BOYA PARLAK BEYAZ 400 ML (9010) SE' | 149.00 TL | SKU: SELSİL.405
+2026-07-17 05:14:11 [INFO] [28/28] https://yapimaks.com/sprey-kontakt-yagsiz-500-ml-borfh-p15528
+2026-07-17 05:14:11 [INFO] [15528] 'SPREY KONTAKT YAĞSIZ 500 ML. BÖRFH' | 140.00 TL | SKU: BÖRFH.B6020737
+2026-07-17 05:14:13 [INFO] Tamamlandi! Toplam 28 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-17.csv
