@@ -1,7 +1,7 @@
 <!-- generated-by: gsd-doc-writer -->
 # API Reference
 
-This document covers the Falcon API implemented under `inflation_dashboard/api/`. It documents only the routes registered by `inflation_dashboard.api.falcon_app.create_app()`.
+This document covers the complete Falcon API implemented under `inflation_dashboard/api/`. The API is consumed by the Streamlit frontend through `inflation_dashboard/frontend/api_client.py`.
 
 ## App Factory
 
@@ -55,11 +55,11 @@ They do not apply to `/api/health` or `/api/inventory`.
 
 | Parameter | Type | Default / behavior | Validation |
 |---|---|---|---|
-| `retailer` | repeatable string | If omitted, selects existing values from `DEFAULT_RETAILERS` (`Markets / Gurmar`, `ClothingStores / Vakko`, `HomeGoods`). If none exist in inventory, selects the first available retailers, up to three. | Unknown retailers return `400 Bad Request` with `code: "invalid_filter"`. |
-| `start_date` | ISO date string | Defaults to the latest 60-day window bounded by discovered inventory min/max dates when inventory has dates. | Invalid ISO dates return `400 Bad Request`. A start date after `end_date` returns `400 Bad Request`. |
+| `retailer` | repeatable string | If omitted, selects existing values from `DEFAULT_RETAILERS`. If none exist, selects the first available retailers, up to three. | Unknown retailers return `400 Bad Request` with `code: "invalid_filter"`. |
+| `start_date` | ISO date string | Defaults to the latest 60-day window bounded by discovered inventory min/max dates. | Invalid ISO dates return `400 Bad Request`. A start date after `end_date` returns `400 Bad Request`. |
 | `end_date` | ISO date string | Defaults to inventory `max_date` when available. | Invalid ISO dates return `400 Bad Request`. |
-| `max_files` | integer | Defaults to `DEFAULT_MAX_FILES_PER_RETAILER` (`45`). Limits newest files loaded per selected retailer after date filtering. `0` means uncapped. | Negative or non-integer values return `400 Bad Request`. |
-| `all_history` | boolean | Defaults to `false`. Truthy values force uncapped loading and set effective `max_files_per_retailer` to `0`. | Accepted true values: `1`, `true`, `t`, `yes`, `y`, `on`. Accepted false values: `0`, `false`, `f`, `no`, `n`, `off`. Other values return `400 Bad Request`. |
+| `max_files` | integer | Defaults to `DEFAULT_MAX_FILES_PER_RETAILER` (`45`). Limits newest files loaded per selected retailer. `0` means uncapped. | Negative or non-integer values return `400 Bad Request`. |
+| `all_history` | boolean | Defaults to `false`. Truthy values force uncapped loading (`max_files=0`). | Boolean strings accepted. Other values return `400 Bad Request`. |
 
 Common success metadata includes:
 
@@ -73,8 +73,6 @@ Common success metadata includes:
 - `history_row_count` for endpoints that load history
 - `skipped_file_count` for endpoints that load history
 - `warnings`, including `all_history requested; CSV load is uncapped` when uncapped loading is requested
-
-If selected files are skipped and no usable rows load, history-loading endpoints append the warning `selected files skipped; no usable rows loaded`.
 
 ## Endpoints
 
@@ -90,12 +88,8 @@ None.
 
 ```json
 {
-  "data": {
-    "status": "ok"
-  },
-  "meta": {
-    "service": "inflation-dashboard-api"
-  },
+  "data": { "status": "ok" },
+  "meta": { "service": "inflation-dashboard-api" },
   "errors": []
 }
 ```
@@ -133,8 +127,8 @@ Includes all common filters plus:
 
 | Parameter | Type | Default / behavior | Validation |
 |---|---|---|---|
-| `product_name` | string | If omitted, `data.history` contains all filtered history rows. If provided, `data.history` contains rows for this product only and `data.summary` is included. | No explicit validation. A missing product returns an empty history list and an empty-product summary. |
-| `product_retailer` | string | Used only with `product_name`. If omitted and exactly one common `retailer` is selected, that selected retailer is used. | Required when `product_name` is supplied and multiple retailers are selected; otherwise returns `400 Bad Request` with `message: "product_retailer is required"`. |
+| `product_name` | string | If omitted, `data.history` contains all filtered rows. If provided, `data.history` contains rows for this product and `data.summary`. | A missing product returns an empty history list and empty-product summary. |
+| `product_retailer` | string | Used only with `product_name`. If omitted and exactly one retailer is selected, that one is used. | Required when `product_name` is supplied and multiple retailers are selected. |
 
 #### Success data without `product_name`
 
@@ -142,16 +136,14 @@ Includes all common filters plus:
 |---|---|---|
 | `history` | array of objects | Normalized rows from `HISTORY_COLUMNS`. Empty if no rows match the filters. |
 
-Large history responses add the warning `history response may be large` when `all_history` is true or more than 5,000 rows are returned.
-
 #### Success data with `product_name`
 
 | Field | Type | Description |
 |---|---|---|
-| `history` | array of objects | Product history rows with columns `date`, `price`, `category`, and `source_file`. Empty if the product is not found. |
+| `history` | array of objects | Product history rows with `date`, `price`, `category`, `source_file`. |
 | `summary` | object | Product summary from `summarize_product_history()`. |
 
-Product summary fields are:
+Product summary fields:
 
 | Field | Type | Empty-product value |
 |---|---|---|
@@ -159,8 +151,6 @@ Product summary fields are:
 | `cheapest_price` | number or null | `null` |
 | `cheapest_date` | string or null | `null` |
 | `change_since_first_pct` | number | `0.0` |
-
-Product responses also add `product_name` and `product_retailer` to `meta`.
 
 ### `GET /api/retailer-averages`
 
@@ -172,23 +162,14 @@ Includes all common filters plus:
 
 | Parameter | Type | Default / behavior | Validation |
 |---|---|---|---|
-| `aggregation` | string | Defaults to `Average`. `Median` switches the aggregation from mean to median. | Must be exactly `Average` or `Median`; other values return `400 Bad Request` with `message: "Invalid aggregation"`. |
+| `aggregation` | string | Defaults to `Average`. `Median` switches to median. | Must be exactly `Average` or `Median`. |
 
 #### Success data
 
 | Field | Type | Description |
 |---|---|---|
-| `records` | array of objects | Trend records with columns `date`, `retailer`, and `price`. Empty if no filtered rows are available. |
-| `retailer_averages` | array of objects | Same records as `records`, retained as an explicit endpoint-specific key. |
-
-#### Success metadata
-
-Includes common metadata plus:
-
-| Field | Type | Description |
-|---|---|---|
-| `aggregation` | string | Effective aggregation, `Average` or `Median`. |
-| `skipped_file_count` | integer | Number of skipped CSV files. |
+| `records` | array of objects | Trend records with `date`, `retailer`, `price`. |
+| `retailer_averages` | array of objects | Same as `records`. |
 
 ### `GET /api/movers`
 
@@ -200,31 +181,19 @@ Includes all common filters plus:
 
 | Parameter | Type | Default / behavior | Validation |
 |---|---|---|---|
-| `scope_retailer` | string | Defaults to `All retailers`. Use a selected retailer to scope mover calculations to one retailer. | Must be `All retailers` or one of the selected retailers from the common filter. Unknown values return `400 Bad Request`. |
-| `limit` | integer | Defaults to the parsed `mover_count` value, or `10` when neither is supplied. Controls number of rows returned for each mover list. | Must be between `5` and `30`, inclusive. |
-| `mover_count` | integer | Backward-compatible default source for `limit`. Used only when `limit` is not supplied. | Must be between `5` and `30`, inclusive. |
+| `scope_retailer` | string | Defaults to `All retailers`. Scopes mover calculations to one retailer. | Must be `All retailers` or a selected retailer. |
+| `limit` | integer | Defaults to `10`. Controls rows per mover list. | Between `5` and `30`. |
 
 #### Success data
 
 | Field | Type | Description |
 |---|---|---|
-| `biggest_drops` | array of objects | Rows with columns `retailer`, `product_name`, `latest_price`, `max_price`, `savings_vs_peak`, `drop_from_peak_pct`, and `last_seen`. Empty if no eligible repeated products are found. |
-| `biggest_gains` | array of objects | Rows with columns `retailer`, `product_name`, `first_price`, `latest_price`, `change_since_first_pct`, `first_seen`, and `last_seen`. Empty if no eligible repeated products are found. |
-
-#### Success metadata
-
-Includes common metadata plus:
-
-| Field | Type | Description |
-|---|---|---|
-| `scope_retailer` | string | Effective mover scope. |
-| `limit` | integer | Effective row limit. |
-| `eligible_product_count` | integer | Number of products with enough observations for mover statistics before top-N slicing. |
-| `skipped_file_count` | integer | Number of skipped CSV files. |
+| `biggest_drops` | array of objects | Rows with `retailer`, `product_name`, price, and percentage data. |
+| `biggest_gains` | array of objects | Rows with `retailer`, `product_name`, price, and percentage data. |
 
 ### `GET /api/coverage`
 
-Returns dataset coverage diagnostics for the selected history.
+Returns dataset coverage diagnostics.
 
 #### Query parameters
 
@@ -232,67 +201,43 @@ Includes all common filters plus:
 
 | Parameter | Type | Default / behavior | Validation |
 |---|---|---|---|
-| `category_limit` | integer | Defaults to `20`. Caps category coverage rows. | Must be at least `1`. Non-integer or smaller values return `400 Bad Request`. |
+| `category_limit` | integer | Defaults to `20`. Caps category coverage rows. | Must be at least `1`. |
 
 #### Success data
 
 | Field | Type | Description |
 |---|---|---|
 | `summary` | object | Coverage counts and date range. |
-| `coverage_over_time` | array of objects | Rows with columns `date`, `retailer`, and `tracked_products`. Empty if no filtered history is available. |
-| `category_coverage` | array of objects | Rows with columns `retailer`, `category`, and `products`, capped by `category_limit`. Empty if no filtered history is available. |
-| `skipped_files` | array of objects | Skipped file diagnostics with columns `file` and `reason`. |
-
-`summary` contains:
-
-| Field | Type | Empty-history value |
-|---|---|---|
-| `retailer_count` | integer | `0` |
-| `product_count` | integer | `0` |
-| `observation_count` | integer | `0` |
-| `date_range` | string | `"-"` |
-| `skipped_file_count` | integer | Number of skipped files. |
-
-#### Success metadata
-
-Includes common metadata plus:
-
-| Field | Type | Description |
-|---|---|---|
-| `category_limit` | integer | Effective category coverage cap. |
-| `skipped_file_count` | integer | Number of skipped CSV files. |
+| `coverage_over_time` | array of objects | Tracked products by date and retailer. |
+| `category_coverage` | array of objects | Products by retailer and category. |
+| `skipped_files` | array of objects | Skipped file diagnostics. |
 
 ## Error Responses
 
-Filter validation errors are converted to `400 Bad Request` responses by `_set_filter_error()`.
+Filter validation errors return `400 Bad Request` responses.
 
 Error envelope shape:
 
 ```json
 {
   "data": null,
-  "meta": {
-    "filters": {}
-  },
+  "meta": { "filters": {} },
   "errors": [
-    {
-      "code": "invalid_filter",
-      "message": "Invalid filter message"
-    }
+    { "code": "invalid_filter", "message": "Unknown retailer: <name>" }
   ]
 }
 ```
 
-Documented validation failures include:
+Documented failure codes:
 
-| Trigger | Message source |
+| Trigger | Message |
 |---|---|
 | Unknown `retailer` | `Unknown retailer: <name>` |
 | Invalid `start_date` or `end_date` | `Invalid date` |
 | `start_date` after `end_date` | `Invalid date range` |
 | Invalid `max_files` | `Invalid max_files` |
-| Invalid `all_history` boolean | `Invalid all_history` |
-| Product lookup with multiple selected retailers and no `product_retailer` | `product_retailer is required` |
+| Invalid `all_history` | `Invalid all_history` |
+| Product lookup with multiple retailers and no `product_retailer` | `product_retailer is required` |
 | Invalid `aggregation` | `Invalid aggregation` |
 | Invalid `scope_retailer` | `Unknown retailer: <name>` |
 | Invalid `limit`, `mover_count`, or `category_limit` | `Invalid <parameter>` |
@@ -301,19 +246,36 @@ Documented validation failures include:
 
 Empty states are successful responses unless a filter is invalid:
 
-- Empty inventory returns `retailers: []`, `min_date: null`, `max_date: null`, and count metadata of `0`.
-- Empty history returns `data.history: []`.
-- Product history for a missing product returns `data.history: []` and summary values of `null`/`0.0`.
-- Retailer averages return `data.records: []` and `data.retailer_averages: []` when there is no filtered history.
-- Movers return empty `biggest_drops` and `biggest_gains` lists when there are no products with repeated observations.
-- Coverage returns zero-valued summary counts, `date_range: "-"`, and empty coverage arrays when there is no filtered history.
+- Empty inventory: `retailers: []`, `min_date: null`, `max_date: null`, counts `0`
+- Empty history: `data.history: []`
+- Missing product: empty history list, summary values `null`/`0.0`
+- No retailer averages: `data.records: []`, `data.retailer_averages: []`
+- No movers: empty `biggest_drops` and `biggest_gains`
+- No coverage: zero-valued summary, `date_range: "-"`, empty arrays
 
-## Smoke Verification
+## Frontend Integration
 
-Run the bounded Falcon API smoke check from the repository root:
+The Streamlit frontend (`streamlit_app.py`) consumes these endpoints through `inflation_dashboard.frontend.api_client`. Each endpoint has a dedicated wrapper function:
+
+| Endpoint | Client Method |
+|---|---|
+| `/api/inventory` | `fetch_inventory(base_url)` |
+| `/api/history` | `fetch_history(base_url, filters)` |
+| `/api/retailer-averages` | `fetch_retailer_averages(base_url, filters)` |
+| `/api/movers` | `fetch_movers(base_url, filters)` |
+| `/api/coverage` | `fetch_coverage(base_url, filters)` |
+
+The client validates response envelopes and raises `ApiClientError` on non-JSON, non-envelope, or non-200 responses.
+
+## Verification
 
 ```bash
-python scripts/verify_falcon_api.py
-```
+# Bounded in-process smoke check
+uv run python scripts/verify_falcon_api.py
 
-The script uses Falcon's in-process `falcon.testing.TestClient`; it does not bind a port or start a persistent server. It verifies route registration, import boundaries, stable envelope keys, endpoint response shapes, JSON-native serialization, an empty product-history response, and an invalid-filter `400 Bad Request` response.
+# Frontend API client verification
+uv run python scripts/verify_streamlit_api_frontend.py
+
+# Combined full-stack test
+uv run python scripts/verify_full_stack.py
+```

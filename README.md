@@ -2,11 +2,38 @@
 
 A comprehensive data collection and inflation analysis project tracking price changes across Turkish retailers and services over time.
 
-This project includes my personal contributions to https://github.com/urazkagangunes/InflationResearchStudy 
+This project includes my personal contributions to https://github.com/urazkagangunes/InflationResearchStudy
 
 ## Overview
 
 This project scrapes product and service price data from various Turkish retailers, markets, and platforms, then processes the data to calculate inflation metrics. The repository focuses on real-time price monitoring and inflation analysis using TÜİK-style weighting standards.
+
+## Dashboard Quick Start
+
+The dashboard uses a **two-process architecture**: a Falcon API backend serves data, and a Streamlit frontend displays it.
+
+```bash
+# 1. Install dependencies
+uv sync
+
+# 2. Start the API server (Terminal 1)
+uv run waitress-serve --port=8000 inflation_dashboard.api.falcon_app:create_app
+
+# 3. Start the dashboard (Terminal 2)
+uv run streamlit run streamlit_app.py
+```
+
+Then open your browser to the Streamlit URL (default `http://localhost:5000`).
+
+## Verification
+
+Run the combined smoke test to verify the stack:
+
+```bash
+uv run python scripts/verify_full_stack.py
+```
+
+See `docs/TESTING.md` for detailed test documentation.
 
 ## Project Structure
 
@@ -19,13 +46,17 @@ inflationstudymirror/
 │   ├── HousesRent/                # Rental property data collection
 │   └── Markets/                   # Marketplace scrapers (Gurmar, etc.)
 ├── Datas/                         # Raw collected data
-│   ├── Cosmetics/
-│   ├── ClothingStores/
-│   ├── HousesRent/
-│   └── Markets/
-└── Inflations/                    # Inflation calculation outputs
-    ├── Codes/                     # Inflation computation scripts
-    └── Datas/                     # Processed inflation results
+├── Inflations/                    # Inflation calculation outputs
+├── inflation_dashboard/           # Dashboard & API package
+│   ├── domain/                    # Parsing and normalization
+│   ├── adapters/                  # CSV storage adapter
+│   ├── application/               # Use cases and chart specs
+│   ├── api/                       # Falcon API (filters, resources, serialization)
+│   └── frontend/                  # Streamlit API client
+├── scripts/                       # Verification scripts
+├── docs/                          # Documentation
+├── streamlit_app.py               # Dashboard entry point
+└── pyproject.toml                 # Project metadata and dependencies
 ```
 
 ## Key Features
@@ -38,6 +69,12 @@ inflationstudymirror/
   - Markets: Grocery items from Gurmar
   - Electronics: Beymen Tech products
 
+### Dashboard (3-Phase Architecture)
+- **Phase 1 ✓**: Hexagonal core extraction — framework-independent domain and application modules
+- **Phase 2 ✓**: Falcon API backend — six REST endpoints with JSON envelopes and bounded CSV loading
+- **Phase 3 ✓**: Streamlit API frontend — all four dashboard tabs read from Falcon API
+- **Phase 4 ✓**: Deployment documentation, combined smoke tests, and dependency management
+
 ### Inflation Analysis
 - **TUIK-style metrics**: Several inflation calculators use tracked TUIK-style category mappings and weights
 - **Category mapping**: Product categories mapped to tracked TUIK-style code groups
@@ -45,13 +82,24 @@ inflationstudymirror/
 - **Statistical validation**: Outlier detection and data quality filtering
 
 ### Key Technologies
-- **Python 3.x** for scrapers, calculators, dashboard logic, and the Falcon API
+- **Python 3.x** for scrapers, calculators, and dashboard
+- **Falcon** — high-performance Python web framework for the API backend
+- **Streamlit** — dashboard frontend framework
+- **Plotly** — interactive charts
 - **Jupyter Notebooks** for analysis and exploration
-- **Data Processing**: pandas-based CSV processing in dashboard/API paths
 - **Web Scraping**: requests, BeautifulSoup, SeleniumBase, Camoufox, cloudscraper, curl-cffi
 - **Data Storage**: CSV, JSON formats
 
 ## Main Components
+
+### Dashboard
+- `streamlit_app.py` — Streamlit frontend consuming the Falcon API
+- `inflation_dashboard/frontend/api_client.py` — HTTP API client with envelope validation
+- `inflation_dashboard/api/falcon_app.py` — Falcon WSGI app factory
+- `inflation_dashboard/api/resources.py` — API endpoint implementations
+- `inflation_dashboard/application/use_cases.py` — Dashboard data aggregation functions
+- `inflation_dashboard/domain/prices.py` — Price normalization and parsing
+- `inflation_dashboard/adapters/csv_price_repository.py` — CSV data loading adapter
 
 ### Scrapers
 - `Codes/HomeGoods/scraper.py` - HomeGoods category-based scraper with retry logic
@@ -66,11 +114,10 @@ inflationstudymirror/
 - `Inflations/Codes/HousesRent/sahibinden_inflation.py` - Rental market inflation
 - `Inflations/Codes/Markets/Gurmar/gurmar_inflation.py` - Market basket inflation
 
-### Data Processing
-- CSV consolidation scripts with date-based file handling
-- Outlier detection and filtering using IQR methodology
-- Price normalization and quality validation
-- Temporal data aggregation and analysis
+### Verification Scripts
+- `scripts/verify_falcon_api.py` — API import boundaries, route contracts, endpoint smoke
+- `scripts/verify_streamlit_api_frontend.py` — Frontend API client and tab wiring
+- `scripts/verify_full_stack.py` — Combined full-stack smoke test (recommended)
 
 ## Usage
 
@@ -100,6 +147,26 @@ python Inflations/Codes/HousesRent/sahibinden_inflation.py --date 2026-03-15
 python Inflations/Codes/Markets/Gurmar/gurmar_inflation.py -i Datas/Markets/Gurmar/gurmar_prices_2026-02-24.csv
 ```
 
+### Running the Dashboard
+
+```bash
+# Terminal 1: Start API server
+uv run waitress-serve --port=8000 inflation_dashboard.api.falcon_app:create_app
+
+# Terminal 2: Start dashboard frontend
+uv run streamlit run streamlit_app.py
+```
+
+## Documentation
+
+- `docs/USER_GUIDE.md` — End-user dashboard walkthrough
+- `docs/GETTING-STARTED.md` — Setup guide for developers
+- `docs/ARCHITECTURE.md` — System architecture and data flow
+- `docs/API.md` — Falcon API endpoint reference
+- `docs/DEVELOPMENT.md` — Development conventions and commands
+- `docs/TESTING.md` — Verification scripts and test documentation
+- `docs/CONFIGURATION.md` — Environment variables and defaults
+
 ## Data Format
 
 ### Raw Data (Datas/)
@@ -124,13 +191,6 @@ The repository includes TUIK-style category mappings and weights used by several
 - **TUIK Codes**: tracked config files define commodity groups including codes 01-13
 - **Base Year**: several category config files document 2026 CPI weights with base year 2025 = 100
 - **Weight Distribution**: Reflects actual consumer spending patterns
-- **Categories Tracked**:
-  - 01: Food & non-alcoholic beverages
-  - 03: Clothing & footwear
-  - 04: Housing, water, electricity, gas
-  - 05: Furniture & home appliances
-  - 08: Information & communication
-  - And more...
 
 ## Methodology
 
@@ -143,16 +203,13 @@ The repository includes TUIK-style category mappings and weights used by several
 
 ## Requirements
 
-- Python `>=3.14` for the minimal `pyproject.toml` / `uv` workflow
-- `falcon` for the API backend
-- `requests`, `beautifulsoup4`, SeleniumBase, Camoufox, cloudscraper, curl-cffi, and python-dotenv for scraper workflows listed in `requirements.txt`
-- pandas, Streamlit, and Plotly for the current dashboard path
+- Python `>=3.14`
+- `uv` for dependency management
 
-Install dependencies:
+Install all dependencies:
+
 ```bash
 uv sync
-python -m pip install -r requirements.txt
-python -m pip install pandas streamlit plotly
 ```
 
 ## Output Examples
@@ -173,122 +230,6 @@ For questions, suggestions, or collaborations:
 
 This project is a personal research mirror for inflation study purposes.
 
-## Installation
-
-The repository is Python-based. The minimal `uv` project metadata in `pyproject.toml` declares Falcon for the API backend, while `requirements.txt` tracks the broader scraper-oriented dependency list.
-
-```bash
-python -m pip install -r requirements.txt
-python -m pip install pandas streamlit plotly
-```
-
-`Codes/ClothingStores/Vakko/vakko_master_scraper.py` also reads `VAKKO_COOKIE` and `VAKKO_USER_AGENT` from the environment through `python-dotenv`.
-
-## Quick Start
-
-1. Install dependencies:
-
-   ```bash
-   python -m pip install -r requirements.txt
-   python -m pip install pandas streamlit plotly
-   ```
-
-2. Run a bounded dashboard locally:
-
-   ```bash
-   streamlit run streamlit_app.py
-   ```
-
-3. Run an individual scraper or inflation calculator when you want to refresh a specific dataset:
-
-   ```bash
-   python Codes/Markets/Gurmar/gurmar_scraper.py
-   python Inflations/Codes/Markets/Gurmar/gurmar_inflation.py -h
-   ```
-
-## Usage Examples
-
-### Launch the current dashboard
-
-```bash
-streamlit run streamlit_app.py
-```
-
-The dashboard reads tracked CSV files from `Datas/`, builds a lazy inventory, and exposes product history, retailer averages, price movers, and coverage views.
-
-### Scrape Gurmar prices
-
-```bash
-python Codes/Markets/Gurmar/gurmar_scraper.py
-```
-
-This writes daily Gurmar CSV files under `Datas/Markets/Gurmar/`.
-
-### Calculate Gurmar inflation
-
-```bash
-python Inflations/Codes/Markets/Gurmar/gurmar_inflation.py -i Datas/Markets/Gurmar/gurmar_prices_2026-02-24.csv
-```
-
-Use `-h` on calculator scripts to inspect their supported arguments.
-
-<!-- generated-by: gsd-doc-writer -->
-## Falcon API Backend
-
-The repository also includes a Falcon WSGI API over the same CSV-backed dashboard core. The app factory is `inflation_dashboard.api.falcon_app:create_app`, and all responses use a stable JSON envelope:
-
-```json
-{"data": {}, "meta": {}, "errors": []}
-```
-
-Registered endpoints:
-
-| Endpoint | Purpose |
-|---|---|
-| `GET /api/health` | Lightweight service health check; does not load CSV history. |
-| `GET /api/inventory` | Lists available retailers plus minimum and maximum discovered data dates. |
-| `GET /api/history` | Returns normalized price history, or a single product history when `product_name` is provided. |
-| `GET /api/retailer-averages` | Returns average or median price trends by date and retailer. |
-| `GET /api/movers` | Returns biggest price drops and gains for repeated product observations. |
-| `GET /api/coverage` | Returns dataset coverage summary, coverage-over-time rows, category coverage, and skipped-file diagnostics. |
-
-Common query parameters for data endpoints:
-
-- `retailer`: repeatable retailer filter, for example `retailer=Markets%20/%20Gurmar`.
-- `start_date` / `end_date`: ISO dates (`YYYY-MM-DD`). Defaults to the latest 60-day window discovered in `Datas/`.
-- `max_files`: maximum CSV files per retailer to load. Use `0` only when you intentionally want uncapped history.
-- `all_history`: boolean shortcut for uncapped history; may be slow on large tracked datasets.
-
-Endpoint-specific parameters:
-
-- `/api/history`: `product_name` and, when multiple retailers are selected, `product_retailer`.
-- `/api/retailer-averages`: `aggregation=Average` or `aggregation=Median`.
-- `/api/movers`: `scope_retailer=All retailers` or a selected retailer, plus `limit` from 5 to 30.
-- `/api/coverage`: `category_limit` for category coverage rows.
-
-A bounded in-process smoke check is available and does not bind a port:
-
-```bash
-uv run python scripts/verify_falcon_api.py
-```
-
-For local serving, install Falcon plus the dashboard data dependencies (`pandas` and any WSGI server you choose), then point the server at `inflation_dashboard.api.falcon_app:create_app`.
-
-## Additional Developer Documentation
-
-- `docs/ARCHITECTURE.md` describes the scraper, CSV, dashboard, extracted core, and API boundaries.
-- `docs/GETTING-STARTED.md` gives a short setup path for new contributors.
-- `docs/DEVELOPMENT.md` covers local development conventions.
-- `docs/TESTING.md` documents the current ad-hoc verification posture, including Falcon API smoke checks.
-- `docs/CONFIGURATION.md` lists environment variables and configuration files discovered in the repository.
-
-## Notes
-
-- Review each target website's terms of service before running scraper scripts
-- Several calculators use TUIK-style category mappings and weights
-- Time-series data enables trend analysis
-- Results reflect Turkish market dynamics and consumer behavior
-
 ---
 
-*Last Updated: June 30, 2026*
+*Last Updated: July 2026*

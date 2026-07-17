@@ -13,3 +13,8 @@ beautifulsoup4
 seleniumbase
 cloudscraper
 curl-cffi
+
+# Dashboard dependencies
+pandas>=2.0
+plotly
+streamlit

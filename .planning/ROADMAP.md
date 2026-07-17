@@ -102,7 +102,7 @@ Plans:
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
-- [ ] 03-02: Refactor all four tabs to use API payloads and preserve existing UX behavior.
+- [x] 03-02: Refactor all four tabs to use API payloads and preserve existing UX behavior.
 
 ### Phase 4: Deployment & Verification Hardening
 
@@ -123,8 +123,13 @@ Plans:
 
 Plans:
 
-- [ ] 04-01: Add run/deployment documentation and dependency notes.
-- [ ] 04-02: Add focused verification scripts/checks and final cleanup.
+- [ ] 04-01-PLAN.md
+- [ ] 04-02-PLAN.md
+
+**Wave 1**
+
+- [ ] 04-01: Documentation update: update all docs to full 3-phase arch, add run commands, create USER_GUIDE, update deps.
+- [ ] 04-02: Combined smoke test: create verify_full_stack.py and update TESTING.md.
 
 ## Progress
 
@@ -140,4 +145,4 @@ Independent plans inside a phase may run in parallel when they do not touch the 
 | 4. Deployment & Verification Hardening | 0/2 | Not started | - |
 
 ---
-*Last updated: 2026-07-16 after Phase 2 runtime verification*
+*Last updated: 2026-07-17 after Phase 4 execution*

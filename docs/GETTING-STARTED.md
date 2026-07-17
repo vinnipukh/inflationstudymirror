@@ -5,21 +5,17 @@ This guide gets a new local checkout to a working dashboard/API development stat
 
 ## What You Can Run Locally
 
-The repository currently has three practical workflows:
+The repository has three practical workflows:
 
-1. **Streamlit dashboard**: `streamlit_app.py` reads tracked CSV files under `Datas/` through the shared `inflation_dashboard` core package and renders Streamlit/Plotly views directly.
-2. **Falcon API backend**: `inflation_dashboard.api.falcon_app:create_app` exposes the same CSV-backed core use cases as JSON endpoints under `/api/*`.
-3. **Standalone scrapers and inflation calculators**: scripts under `Codes/` and `Inflations/Codes/` can be run independently when their dependencies and any required secrets are available.
-
-Phase 3 has not yet moved Streamlit to consume the Falcon API over HTTP. The current Streamlit app imports the shared adapter, use-case, and chart-spec modules directly.
+1. **Falcon API backend**: `inflation_dashboard.api.falcon_app:create_app` exposes CSV-backed dashboard use cases as JSON endpoints served over HTTP.
+2. **Streamlit dashboard frontend**: `streamlit_app.py` reads dashboard data from the Falcon API through `inflation_dashboard.frontend.api_client` and renders views with Streamlit/Plotly.
+3. **Standalone scrapers and inflation calculators**: scripts under `Codes/` and `Inflations/Codes/`.
 
 ## Prerequisites
 
-- Python. `pyproject.toml` declares `requires-python = ">=3.14"`; checked GitHub Actions workflows still use Python 3.10, 3.11, or 3.12 for individual scrapers. Use the Python version required by the workflow or script you are running.
-- `uv` for the minimal project/Falcon workflow. The current lockfile includes Falcon through `pyproject.toml`.
-- `pip` or `python -m pip` for legacy scraper/dashboard dependency installs when you are not using a fully populated local environment.
-- Optional dashboard packages: `pandas`, `streamlit`, and `plotly`. These are imported by `streamlit_app.py` but are not currently declared in `pyproject.toml` or `requirements.txt`.
-- Optional scraper packages and browser tooling from `requirements.txt` for source-specific scraper runs.
+- Python. `pyproject.toml` declares `requires-python = ">=3.14"`; checked GitHub Actions workflows still use Python 3.10, 3.11, or 3.12 for individual scrapers.
+- `uv` for the project/Falcon/Streamlit workflow.
+- `pip` or `python -m pip` for legacy scraper/dashboard dependency installs.
 
 ## Clone and Enter the Project
 
@@ -28,41 +24,111 @@ git clone <repository-url>
 cd inflationstudymirror
 ```
 
-If you are already in this repository, run commands from the repository root so relative paths such as `Datas/`, `scripts/verify_falcon_api.py`, and `streamlit_app.py` resolve correctly.
+Run commands from the repository root so relative paths such as `Datas/`, `scripts/`, and `streamlit_app.py` resolve correctly.
 
 ## Install Dependencies
 
-### Minimal Falcon API/core environment
+### Full dashboard environment (recommended)
 
-Use the repository's `uv` metadata when you want to work on or verify the Falcon API package path:
+All dependencies are now declared in `pyproject.toml` and `requirements.txt`:
 
 ```bash
 uv sync
 ```
 
-Then run commands through `uv run ...` so they use the synced environment.
-
 ### Legacy scraper dependency path
-
-For scraper scripts and older runtime paths, install the tracked `requirements.txt` dependencies:
 
 ```bash
 python -m pip install -r requirements.txt
 ```
 
-`requirements.txt` contains the broader scraper-oriented dependencies, including `falcon`, `beautifulsoup4`, `seleniumbase`, `cloudscraper`, `curl-cffi`, and related HTTP/runtime packages.
+## Verify the Environment
 
-### Streamlit dashboard dependencies
-
-Install dashboard imports explicitly if your environment does not already have them:
+Run the combined smoke test to confirm everything is wired correctly:
 
 ```bash
-python -m pip install pandas streamlit plotly
+uv run python scripts/verify_full_stack.py
 ```
 
-## Verify the Falcon API Backend
+Expected output:
 
-The current bounded API smoke check is:
+```text
+PASS boundary checks: imports, stdlib-only cache boundary, lightweight health resource
+PASS source contracts: endpoint routes and stable response keys
+PASS endpoint smoke: health, inventory, history, retailer averages, movers, coverage, invalid-filter
+PASS source: final Streamlit tab/API boundary assertions
+PASS source: final frontend API client assertions
+PASS behavior: client params, endpoint wrappers, envelope validation, ApiClientError, timeouts
+PASS final Phase 03 Streamlit API frontend verifier
+PASS full-stack: end-to-end frontend client ↔ Falcon API integration
+```
+
+## Run the Stack
+
+The Falcon API and Streamlit frontend run as **two separate processes**:
+
+### Terminal 1: Start the Falcon API
+
+```bash
+uv run waitress-serve --port=8000 inflation_dashboard.api.falcon_app:create_app
+```
+
+The API is now available at `http://localhost:8000`.
+
+### Terminal 2: Start the Streamlit dashboard
+
+```bash
+uv run streamlit run streamlit_app.py
+```
+
+The dashboard opens in a browser. It connects to the Falcon API at `http://localhost:8000` by default — you can change this in the sidebar.
+
+### Run individual verifiers
+
+```bash
+# Falcon API smoke test (in-process, no server needed)
+uv run python scripts/verify_falcon_api.py
+
+# Streamlit frontend API client test (source + behavior checks)
+uv run python scripts/verify_streamlit_api_frontend.py
+
+# Combined full-stack smoke test
+uv run python scripts/verify_full_stack.py
+```
+
+## What the Dashboard Does
+
+The dashboard provides four tabs:
+
+| Tab | Description | API Endpoint Used |
+|---|---|---|
+| **Product explorer** | Select a product, view its price chart, cheapest date/price, and stats | `/api/history` |
+| **Retailer averages** | Compare average/median prices across retailers over time | `/api/retailer-averages` |
+| **Price movers** | See biggest price drops and gains across products | `/api/movers` |
+| **Coverage overview** | Dataset summary, coverage over time, categories, and skipped files | `/api/coverage` |
+
+## Dashboard Controls
+
+- **Falcon API base URL**: Set in the sidebar (default: `http://localhost:8000`)
+- **Retailer filter**: Select one or more retailers to scope the data
+- **Date range**: Choose start/end dates
+- **Max files per retailer**: Limit recent CSV files loaded (default: 45)
+- **Load all files**: Check to bypass the file cap (may be slow)
+- **Search with autocorrect**: Type partial names — misspellings are handled automatically
+- **Dashboard start prediction**: Optional ML-powered price trend estimation (sidebar toggle)
+
+## Dashboard Dependencies
+
+All dependencies are declared in `pyproject.toml`. The key dashboard packages are:
+
+- `falcon` — API backend
+- `streamlit` — Dashboard frontend framework
+- `plotly` — Interactive charts
+- `pandas` — Data processing
+- `requests` — HTTP client (for API calls from the frontend)
+- `waitress` — Production-quality WSGI server
+
+## Verify the Falcon API Backend
 
 ```bash
 uv run python scripts/verify_falcon_api.py
@@ -70,118 +136,29 @@ uv run python scripts/verify_falcon_api.py
 
 This verification script uses Falcon's in-process `TestClient`; it does not bind a port or start a long-running server. It checks:
 
-- API/core import boundaries.
-- Registered route strings for `/api/health`, `/api/inventory`, `/api/history`, `/api/retailer-averages`, `/api/movers`, and `/api/coverage`.
-- Stable response envelope keys: `data`, `meta`, and `errors`.
-- JSON-safe serialization for pandas/numpy/date values.
-- Bounded endpoint smoke coverage, including invalid-filter handling.
-
-A successful run prints these pass lines:
-
-```text
-PASS boundary checks: imports, stdlib-only cache boundary, lightweight health resource
-PASS source contracts: endpoint routes and stable response keys
-PASS endpoint smoke: health, inventory, history, retailer averages, movers, coverage, invalid-filter
-```
-
-## Run the Streamlit Dashboard
-
-After installing `pandas`, `streamlit`, and `plotly`, start the current dashboard with:
-
-```bash
-streamlit run streamlit_app.py
-```
-
-The dashboard:
-
-- Discovers supported dated CSV files under `Datas/`.
-- Defaults to the shared retailers configured in `inflation_dashboard/adapters/csv_price_repository.py`.
-- Uses a bounded max-file control to avoid loading every tracked CSV file by default.
-- Renders product history, retailer averages, biggest price movers, coverage over time, category coverage, and skipped-file diagnostics.
-- Calls the shared `inflation_dashboard.adapters`, `inflation_dashboard.application`, and `inflation_dashboard.domain` modules directly; it does not call the Falcon API yet.
-
-## Work with the Falcon App Locally
-
-The app factory is:
-
-```text
-inflation_dashboard.api.falcon_app:create_app
-```
-
-The repository does not currently include a checked-in WSGI server command, host, or port configuration. For development, prefer the verified in-process check above until an intended server runner is selected and documented.
-
-Registered API routes are:
-
-| Route | Purpose |
-|---|---|
-| `GET /api/health` | Lightweight health check that does not load CSV history. |
-| `GET /api/inventory` | Lists available retailers plus discovered minimum/maximum dates and file counts. |
-| `GET /api/history` | Returns normalized price history, or a single product history when `product_name` is provided. |
-| `GET /api/retailer-averages` | Returns average or median price trends by date and retailer. |
-| `GET /api/movers` | Returns biggest price drops and gains for repeated product observations. |
-| `GET /api/coverage` | Returns dataset summary, coverage-over-time rows, category coverage, and skipped-file diagnostics. |
-
-Common data-endpoint query parameters include repeatable `retailer`, `start_date`, `end_date`, `max_files`, and `all_history`. See `docs/CONFIGURATION.md` for defaults and validation behavior.
-
-## Run Standalone Scripts Carefully
-
-Start with help or a bounded run before launching scraper/calculator scripts that may write files or contact external services:
-
-```bash
-python Inflations/Codes/Markets/Gurmar/gurmar_inflation.py -h
-```
-
-Example scraper/calculator entry points referenced by the repository include:
-
-```bash
-python Codes/Markets/Gurmar/gurmar_scraper.py
-python Inflations/Codes/Markets/Gurmar/gurmar_inflation.py -h
-```
-
-Some scrapers require source-specific dependencies, browser tooling, or secrets. Check the script and `docs/CONFIGURATION.md` before running them.
-
-## Secrets and Local Configuration
-
-Most dashboard/API behavior is configured in source constants and query parameters, not environment variables. The tracked environment variables currently documented for local use are for the Vakko scraper:
-
-```bash
-export VAKKO_COOKIE="..."
-export VAKKO_USER_AGENT="..."
-python Codes/ClothingStores/Vakko/vakko_master_scraper.py
-```
-
-Keep secrets in shell exports or ignored local files such as `.env`. Do not commit real cookies, tokens, user-agent values, logs, or generated files containing secrets.
+- API/core import boundaries
+- Registered route strings for all six endpoints
+- Stable response envelope keys (`data`, `meta`, `errors`)
+- JSON-native serialization for pandas/numpy/date values
+- Bounded endpoint smoke coverage, including invalid-filter handling
 
 ## Common Setup Issues
 
 ### `pyproject.toml` and script Python versions differ
 
-`pyproject.toml` declares Python `>=3.14`, while checked GitHub Actions workflows use Python 3.10, 3.11, and 3.12 for individual scraper jobs. If tooling refuses to create an environment because of the metadata constraint, use the workflow/script-specific Python version or adjust project metadata intentionally.
-
-### Dashboard dependencies are not fully tracked
-
-`streamlit_app.py` imports `pandas`, `plotly.express`, and `streamlit`, but those packages are not in the current `pyproject.toml` dependency list or `requirements.txt`. Install them explicitly before running the dashboard.
+`pyproject.toml` declares Python `>=3.14`, while checked GitHub Actions workflows use Python 3.10, 3.11, and 3.12 for individual scraper jobs. Use the workflow/script-specific Python version or adjust project metadata intentionally.
 
 ### Falcon verification should use `uv run`
 
-Use:
-
-```bash
-uv run python scripts/verify_falcon_api.py
-```
-
-This matches the current project metadata path and was verified against the repository. Running plain `python scripts/verify_falcon_api.py` can work only if Falcon and the project imports are already available in that Python environment.
+Use `uv run python scripts/verify_falcon_api.py` — this matches the current project metadata path. Running plain `python scripts/verify_falcon_api.py` works only if the dependencies are already available in that Python environment.
 
 ### Large CSV history can be slow
 
-The shared CSV adapter defaults to `DEFAULT_MAX_FILES_PER_RETAILER = 45`. Keep bounded defaults while exploring locally. Use uncapped history only intentionally through dashboard controls or API filters such as `max_files=0` / `all_history=true`.
-
-### Vakko scraper needs local secrets
-
-`Codes/ClothingStores/Vakko/vakko_master_scraper.py` reads `VAKKO_COOKIE` and `VAKKO_USER_AGENT` after loading environment values. Missing or mismatched names will prevent authenticated Vakko scraping from working as intended.
+The shared CSV adapter defaults to `DEFAULT_MAX_FILES_PER_RETAILER = 45`. Keep bounded defaults while exploring locally. Use uncapped history only intentionally through `max_files=0` / `all_history=true`.
 
 ## Next Steps
 
 - Read `docs/ARCHITECTURE.md` for component boundaries, data flow, API routes, and verification scope.
 - Read `docs/CONFIGURATION.md` for environment variables, dependency metadata, dashboard/API defaults, and GitHub Actions runtime settings.
 - Read `README.md` for the broader scraper and inflation-analysis overview.
+- Read `docs/USER_GUIDE.md` for a step-by-step walkthrough of using the dashboard.
