@@ -171,7 +171,6 @@ def fetch_inventory(api_base_url: str) -> ApiEnvelope:
 def fetch_history(
     api_base_url: str,
     filters: DashboardFilters,
-    *,
     product_name: str | None = None,
     product_retailer: str | None = None,
 ) -> ApiEnvelope:
@@ -183,19 +182,19 @@ def fetch_history(
     return fetch_endpoint(api_base_url, "/api/history", params, timeout=DATA_TIMEOUT_SECONDS)
 
 
-def fetch_retailer_averages(api_base_url: str, filters: DashboardFilters, *, aggregation: str = "Average") -> ApiEnvelope:
+def fetch_retailer_averages(api_base_url: str, filters: DashboardFilters, aggregation: str = "Average") -> ApiEnvelope:
     params = build_common_params(filters)
     params.append(("aggregation", aggregation))
     return fetch_endpoint(api_base_url, "/api/retailer-averages", params, timeout=DATA_TIMEOUT_SECONDS)
 
 
-def fetch_movers(api_base_url: str, filters: DashboardFilters, *, scope_retailer: str = "All retailers", limit: int = 10) -> ApiEnvelope:
+def fetch_movers(api_base_url: str, filters: DashboardFilters, scope_retailer: str = "All retailers", limit: int = 10) -> ApiEnvelope:
     params = build_common_params(filters)
     params.extend([("scope_retailer", scope_retailer), ("limit", limit)])
     return fetch_endpoint(api_base_url, "/api/movers", params, timeout=DATA_TIMEOUT_SECONDS)
 
 
-def fetch_coverage(api_base_url: str, filters: DashboardFilters, *, category_limit: int = 20) -> ApiEnvelope:
+def fetch_coverage(api_base_url: str, filters: DashboardFilters, category_limit: int = 20) -> ApiEnvelope:
     params = build_common_params(filters)
     params.append(("category_limit", category_limit))
     return fetch_endpoint(api_base_url, "/api/coverage", params, timeout=DATA_TIMEOUT_SECONDS)
