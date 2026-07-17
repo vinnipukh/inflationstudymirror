@@ -92,8 +92,12 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
+**Wave 1**
 
 - [ ] 03-01: Add API client layer and wire sidebar/filter flows to API calls.
+
+**Wave 2** *(blocked on Wave 1 completion)*
+
 - [ ] 03-02: Refactor all four tabs to use API payloads and preserve existing UX behavior.
 
 ### Phase 4: Deployment & Verification Hardening
