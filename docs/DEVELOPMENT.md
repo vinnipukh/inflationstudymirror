@@ -56,7 +56,7 @@ python Codes/ClothingStores/Vakko/vakko_master_scraper.py
 
 | Command | Purpose |
 |---|---|
-| `uv run waitress-serve --port=8000 inflation_dashboard.api.falcon_app:create_app` | Start the Falcon API server |
+| `uv run waitress-serve --port=8000 --call inflation_dashboard.api.falcon_app:create_app` | Start the Falcon API server |
 | `uv run streamlit run streamlit_app.py` | Launch the Streamlit dashboard frontend |
 | `uv run python scripts/verify_falcon_api.py` | Run bounded Falcon API smoke verification |
 | `uv run python scripts/verify_streamlit_api_frontend.py` | Run frontend API client verification |
@@ -75,7 +75,7 @@ Development expectations:
 - API client logic, endpoint wrappers, and envelope validation belong in `inflation_dashboard/frontend/api_client.py`.
 - Reusable data loading, normalization, filtering, and use cases belong under `inflation_dashboard/` (domain, adapters, application, api).
 - The dashboard no longer directly scans CSVs — all tab data flows through the Falcon API.
-- Keep dashboard data loading bounded while iterating (`DEFAULT_MAX_FILES_PER_RETAILER = 45`).
+- Keep dashboard data loading bounded while iterating (`DEFAULT_MAX_FILES_PER_RETAILER = 25`).
 
 ## Falcon API Development
 
