@@ -89,12 +89,16 @@ Plans:
   3. Search/autocorrection controls still guide user selection.
   4. Streamlit no longer directly scans raw CSVs for dashboard tab data.
 
-**Plans**: 2 plans
+**Plans**: 1/2 plans executed
 
 Plans:
+
+- [x] 03-01-PLAN.md
+- [ ] 03-02-PLAN.md
+
 **Wave 1**
 
-- [ ] 03-01: Add API client layer and wire sidebar/filter flows to API calls.
+- [x] 03-01: Add API client layer and wire sidebar/filter flows to API calls.
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
@@ -132,7 +136,7 @@ Independent plans inside a phase may run in parallel when they do not touch the 
 |-------|----------------|--------|-----------|
 | 1. Hexagonal Core Extraction | 2/2 | Complete    | 2026-07-16 |
 | 2. Falcon API Backend | 2/2 | Complete    | 2026-07-16 |
-| 3. Streamlit API Frontend | 0/2 | Not started | - |
+| 3. Streamlit API Frontend | 1/2 | In Progress|  |
 | 4. Deployment & Verification Hardening | 0/2 | Not started | - |
 
 ---
