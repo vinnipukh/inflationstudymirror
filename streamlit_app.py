@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from datetime import date
 from difflib import get_close_matches
 import re
 import unicodedata
@@ -8,12 +9,6 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-from inflation_dashboard.adapters.csv_price_repository import (
-    DEFAULT_MAX_FILES_PER_RETAILER,
-    DEFAULT_RETAILERS,
-    discover_csv_inventory as discover_csv_inventory_uncached,
-    load_price_history as load_price_history_uncached,
-)
 from inflation_dashboard.application.chart_specs import (
     BIGGEST_DROPS_COLUMNS,
     BIGGEST_GAINS_COLUMNS,
@@ -23,14 +18,17 @@ from inflation_dashboard.application.chart_specs import (
     product_price_chart_spec,
     retailer_average_chart_spec,
 )
-from inflation_dashboard.application.use_cases import (
-    calculate_category_coverage,
-    calculate_coverage_over_time,
-    calculate_coverage_summary,
-    calculate_price_movers,
-    calculate_retailer_average_trends,
-    get_product_history,
-    summarize_product_history,
+from inflation_dashboard.frontend.api_client import (
+    ApiClientError,
+    ApiEnvelope,
+    DATA_TIMEOUT_SECONDS,
+    DEFAULT_API_BASE_URL,
+    DashboardFilters,
+    FRONTEND_DEFAULT_MAX_FILES_PER_RETAILER,
+    FRONTEND_DEFAULT_RETAILERS,
+    build_common_params,
+    fetch_endpoint,
+    fetch_inventory,
 )
 
 MAX_AUTOCORRECT_OPTIONS = 80
@@ -115,26 +113,18 @@ def autocorrect_multiselect(
     return st.multiselect(label, display_options, default=current_selection, key=key)
 
 
-@st.cache_data(show_spinner=False)
-def discover_csv_inventory() -> pd.DataFrame:
-    return discover_csv_inventory_uncached()
+@st.cache_data(show_spinner=False, ttl=300)
+def cached_fetch_inventory(api_base_url: str) -> ApiEnvelope:
+    return fetch_inventory(api_base_url)
 
 
-@st.cache_data(show_spinner="Loading selected scraped CSV files...")
-def load_price_history(
-    selected_retailers: tuple[str, ...],
-    start_date,
-    end_date,
-    max_files_per_retailer: int,
-) -> tuple[pd.DataFrame, pd.DataFrame]:
-    inventory = discover_csv_inventory()
-    return load_price_history_uncached(
-        selected_retailers,
-        start_date,
-        end_date,
-        max_files_per_retailer,
-        inventory=inventory,
-    )
+@st.cache_data(show_spinner="Loading API data...", ttl=120, max_entries=64)
+def cached_fetch_api_endpoint(
+    api_base_url: str,
+    endpoint_path: str,
+    params: tuple[tuple[str, object], ...],
+) -> ApiEnvelope:
+    return fetch_endpoint(api_base_url, endpoint_path, list(params), timeout=DATA_TIMEOUT_SECONDS)
 
 
 def format_currency(value: float | int | None) -> str:
@@ -166,134 +156,120 @@ def render_chart(data: pd.DataFrame, spec: dict[str, object]):
     st.plotly_chart(chart, use_container_width=True)
 
 
-def render_product_explorer(history: pd.DataFrame):
+def _parse_inventory_date(value: object) -> date | None:
+    if not value:
+        return None
+    try:
+        return date.fromisoformat(str(value)[:10])
+    except ValueError:
+        return None
+
+
+def _extract_inventory_payload(inventory_envelope: ApiEnvelope) -> tuple[list[str], date | None, date | None]:
+    data = inventory_envelope.data if isinstance(inventory_envelope.data, dict) else {}
+    retailers = [str(retailer) for retailer in data.get("retailers", []) if retailer]
+    min_date = _parse_inventory_date(data.get("min_date"))
+    max_date = _parse_inventory_date(data.get("max_date"))
+    return sorted(retailers), min_date, max_date
+
+
+def _display_meta(prefix: str, meta: dict[str, object]) -> None:
+    warnings = meta.get("warnings")
+    if isinstance(warnings, list):
+        for warning in warnings:
+            st.sidebar.warning(str(warning))
+
+    count = meta.get("selected_inventory_file_count")
+    if count is None:
+        count = meta.get("inventory_file_count", meta.get("file_count"))
+    if count is not None:
+        st.sidebar.caption(f"{prefix}: {count:,} files" if isinstance(count, int) else f"{prefix}: {count} files")
+
+
+def _show_api_error(error: ApiClientError) -> None:
+    st.error(f"Falcon API error: {error.message}")
+    if error.meta:
+        with st.expander("API error metadata"):
+            st.json(error.meta)
+
+
+def render_product_explorer(api_base_url: str, filters: DashboardFilters, retailer_options: list[str]):
     st.subheader("1. Product price explorer")
-    retailer_options = sorted(history["retailer"].unique())
     selected_retailer = autocorrect_selectbox(
         "Retailer",
         retailer_options,
         key="product_retailer",
         help_text="Search supports close matches, so small typos still guide you to the right retailer.",
     )
-
-    retailer_slice = history[history["retailer"] == selected_retailer].copy()
-    product_labels = retailer_slice["product_name"].drop_duplicates().sort_values().tolist()
-    selected_product = autocorrect_selectbox(
-        "Product",
-        product_labels,
-        key="product_name",
-        help_text="Type part of the product name; the closest spelling is surfaced first.",
-    )
-
-    product_history = get_product_history(history, selected_retailer, selected_product)
-    summary = summarize_product_history(product_history)
-
-    c1, c2, c3, c4 = st.columns(4)
-    c1.metric("Latest price", format_currency(summary["latest_price"]))
-    c2.metric("Cheapest price", format_currency(summary["cheapest_price"]))
-    cheapest_date = summary["cheapest_date"]
-    c3.metric("Cheapest date", cheapest_date.strftime("%Y-%m-%d") if pd.notna(cheapest_date) else "-")
-    c4.metric("Change vs first seen", f"{summary['change_since_first_pct']:.2f}%")
-
-    spec = product_price_chart_spec(f"{selected_product} price history")
-    render_chart(product_history, spec)
-    st.dataframe(product_history[spec["table_columns"]], use_container_width=True, hide_index=True)
+    st.info("Product option and price-history API rendering will be connected in Plan 03-02.")
+    _render_filter_preview(api_base_url, filters, [("product_retailer", selected_retailer)])
 
 
-
-def render_retailer_average(history: pd.DataFrame):
+def render_retailer_average(api_base_url: str, filters: DashboardFilters, retailer_options: list[str]):
     st.subheader("2. Retailer average price chart")
-    retailer_options = sorted(history["retailer"].unique())
+    default = list(filters.selected_retailers[: min(4, len(filters.selected_retailers))])
     selected_retailers = autocorrect_multiselect(
         "Retailers",
         retailer_options,
-        retailer_options[: min(4, len(retailer_options))],
+        default,
         key="avg_retailers",
         help_text="Search supports close matches before choosing one or more retailers.",
     )
     aggregation = st.radio("Aggregation", ["Average", "Median"], horizontal=True)
-
-    grouped = calculate_retailer_average_trends(history, selected_retailers, aggregation)
-    if grouped.empty:
-        st.info("Select at least one retailer.")
-        return
-
-    spec = retailer_average_chart_spec(aggregation)
-    render_chart(grouped, spec)
-    st.dataframe(grouped[spec["table_columns"]], use_container_width=True, hide_index=True)
+    st.info("Retailer-average API rendering will be connected in Plan 03-02.")
+    _render_filter_preview(api_base_url, filters, [("aggregation", aggregation), *[("retailer", r) for r in selected_retailers]])
 
 
-
-def render_price_movers(history: pd.DataFrame):
+def render_price_movers(api_base_url: str, filters: DashboardFilters, retailer_options: list[str]):
     st.subheader("3. Biggest price movers")
-    retailer_options = ["All retailers"] + sorted(history["retailer"].unique())
-    selected_retailer = autocorrect_selectbox("Retailer scope", retailer_options, key="mover_retailer")
+    scope_options = ["All retailers", *retailer_options]
+    selected_retailer = autocorrect_selectbox("Retailer scope", scope_options, key="mover_retailer")
     mover_count = st.slider("Rows to show", min_value=5, max_value=30, value=10)
-
-    mover_results = calculate_price_movers(history, selected_retailer, mover_count)
-    biggest_drops = mover_results["biggest_drops"]
-    biggest_gains = mover_results["biggest_gains"]
-    if biggest_drops.empty and biggest_gains.empty:
-        st.info("Not enough repeated product observations for this selection.")
-        return
-
-    left, right = st.columns(2)
-    with left:
-        st.markdown("**Best current deals vs peak price**")
-        st.dataframe(
-            biggest_drops[BIGGEST_DROPS_COLUMNS],
-            use_container_width=True,
-            hide_index=True,
-        )
-    with right:
-        st.markdown("**Strongest increases since first seen**")
-        st.dataframe(
-            biggest_gains[BIGGEST_GAINS_COLUMNS],
-            use_container_width=True,
-            hide_index=True,
-        )
+    st.info("Price-mover API rendering will be connected in Plan 03-02.")
+    _render_filter_preview(api_base_url, filters, [("scope_retailer", selected_retailer), ("limit", mover_count)])
 
 
-
-def render_overview(history: pd.DataFrame, skipped: pd.DataFrame):
+def render_overview(api_base_url: str, filters: DashboardFilters):
     st.subheader("4. Dataset coverage overview")
-    summary = calculate_coverage_summary(history, skipped)
+    st.info("Coverage API rendering will be connected in Plan 03-02.")
+    _render_filter_preview(api_base_url, filters, [("category_limit", 20)])
 
-    c1, c2, c3, c4 = st.columns(4)
-    c1.metric("Retailers", summary["retailer_count"])
-    c2.metric("Tracked products", summary["product_count"])
-    c3.metric("Price observations", summary["observation_count"])
-    c4.metric("Date range", summary["date_range"])
 
-    left, right = st.columns(2)
-    with left:
-        coverage = calculate_coverage_over_time(history)
-        render_chart(coverage, coverage_area_chart_spec())
-
-    with right:
-        categories = calculate_category_coverage(history)
-        render_chart(categories, category_coverage_bar_chart_spec())
-
-    if not skipped.empty:
-        with st.expander(f"Skipped files ({len(skipped)})"):
-            columns = [column for column in SKIPPED_DIAGNOSTICS_COLUMNS if column in skipped.columns]
-            st.dataframe(skipped[columns], use_container_width=True, hide_index=True)
-
+def _render_filter_preview(
+    api_base_url: str,
+    filters: DashboardFilters,
+    extra_params: list[tuple[str, object]] | None = None,
+) -> None:
+    params = [*build_common_params(filters), *(extra_params or [])]
+    st.caption(f"API base URL: {api_base_url}")
+    with st.expander("Prepared API query parameters"):
+        st.json([{"name": name, "value": value} for name, value in params])
 
 
 def main() -> None:
     st.set_page_config(page_title="Inflation Study Dashboard", layout="wide")
 
     st.title("Inflation Study Streamlit Dashboard")
-    st.caption("Built directly on the scraped CSV files in the repository.")
+    st.caption("Frontend configured to read dashboard setup data from the Falcon API.")
 
-    inventory = discover_csv_inventory()
-    if inventory.empty:
-        st.error("No supported scraped CSV files were found in the Datas/ directory.")
+    st.sidebar.header("API settings")
+    api_base_url = st.sidebar.text_input("Falcon API base URL", value=DEFAULT_API_BASE_URL)
+
+    try:
+        inventory_envelope = cached_fetch_inventory(api_base_url)
+    except ApiClientError as error:
+        _show_api_error(error)
         st.stop()
 
-    retailer_options = sorted(inventory["retailer"].unique())
-    default_retailers = [retailer for retailer in DEFAULT_RETAILERS if retailer in retailer_options]
+    retailer_options, min_date, max_date = _extract_inventory_payload(inventory_envelope)
+    if not retailer_options:
+        st.info("The Falcon API returned an empty inventory. Check that scraped CSV files are available to the API process.")
+        st.stop()
+    if min_date is None or max_date is None:
+        st.error("The Falcon API inventory response did not include valid min_date and max_date values.")
+        st.stop()
+
+    default_retailers = [retailer for retailer in FRONTEND_DEFAULT_RETAILERS if retailer in retailer_options]
     if not default_retailers:
         default_retailers = retailer_options[: min(3, len(retailer_options))]
 
@@ -307,8 +283,6 @@ def main() -> None:
             help_text="Loading fewer retailers is much faster. Add the large datasets only when needed.",
         )
 
-    min_date = inventory["date"].min().date()
-    max_date = inventory["date"].max().date()
     default_start = max(min_date, (pd.Timestamp(max_date) - pd.Timedelta(days=60)).date())
     start_date, end_date = st.sidebar.date_input(
         "Date range",
@@ -321,45 +295,27 @@ def main() -> None:
         "Max CSV files per retailer",
         min_value=10,
         max_value=160,
-        value=DEFAULT_MAX_FILES_PER_RETAILER,
+        value=FRONTEND_DEFAULT_MAX_FILES_PER_RETAILER,
         step=5,
         help="Uses the newest files in the selected date range. Raise this for deeper history; lower it for faster loading.",
     )
     load_all_history = st.sidebar.checkbox("Load all files in date range", value=False)
     effective_limit = 0 if load_all_history else max_files_per_retailer
 
-    chosen_inventory = inventory[
-        inventory["retailer"].isin(selected_retailers)
-        & (inventory["date"] >= pd.to_datetime(start_date))
-        & (inventory["date"] <= pd.to_datetime(end_date))
-    ]
-    estimated_files = len(chosen_inventory)
-    if not load_all_history:
-        estimated_files = min(estimated_files, len(selected_retailers) * max_files_per_retailer)
-    st.sidebar.caption(f"About {estimated_files} CSV files will be loaded.")
-
-    history, skipped = load_price_history(
-        tuple(selected_retailers),
-        start_date,
-        end_date,
-        effective_limit,
+    filters = DashboardFilters(
+        selected_retailers=tuple(selected_retailers),
+        start_date=start_date,
+        end_date=end_date,
+        max_files=effective_limit,
+        all_history=load_all_history,
     )
+    common_params = tuple(build_common_params(filters))
 
-    if history.empty:
-        st.error("No price rows could be loaded with the current filters.")
-        if not skipped.empty:
-            st.dataframe(skipped, use_container_width=True, hide_index=True)
-        st.stop()
-
-    st.sidebar.header("Loaded dataset summary")
-    st.sidebar.write(f"Retailers: {history['retailer'].nunique()}")
-    st.sidebar.write(f"Products: {history['product_id'].nunique()}")
-    st.sidebar.write(f"Observations: {len(history):,}")
-    st.sidebar.write(f"Window: {history['date'].min():%Y-%m-%d} → {history['date'].max():%Y-%m-%d}")
-
-    with st.sidebar.expander("Loaded retailers"):
-        for retailer_name in sorted(history["retailer"].unique()):
-            st.write(f"- {retailer_name}")
+    st.sidebar.header("API inventory summary")
+    _display_meta("Inventory", inventory_envelope.meta)
+    st.sidebar.caption(f"Prepared {len(common_params)} common query parameters for data endpoints.")
+    if load_all_history:
+        st.sidebar.warning("All-history mode sends all_history=true and max_files=0 to the API.")
 
     product_tab, retailer_tab, movers_tab, overview_tab = st.tabs(
         [
@@ -371,13 +327,13 @@ def main() -> None:
     )
 
     with product_tab:
-        render_product_explorer(history)
+        render_product_explorer(api_base_url, filters, retailer_options)
     with retailer_tab:
-        render_retailer_average(history)
+        render_retailer_average(api_base_url, filters, retailer_options)
     with movers_tab:
-        render_price_movers(history)
+        render_price_movers(api_base_url, filters, retailer_options)
     with overview_tab:
-        render_overview(history, skipped)
+        render_overview(api_base_url, filters)
 
 
 if __name__ == "__main__":
