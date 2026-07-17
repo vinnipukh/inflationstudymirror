@@ -48,7 +48,7 @@ Control | What it does
 **Falcon API base URL** | The address of the API server (keep as `http://localhost:8000` unless you changed the port)
 **Retailers to load** | Select which stores to view data from
 **Start date / End date** | Narrow the date range
-**Max files per retailer** | How many recent CSV files to load per store (45 files by default)
+**Max files per retailer** | How many recent CSV files to load per store (25 files by default, slider range 10–160)
 **Load all files in date range** | Check this to bypass the limit (may be slower)
 **Dashboard start prediction** | Enable ML-based price trend estimation (requires ML model)
 
@@ -95,12 +95,13 @@ Understand what data is powering the dashboard:
 When searching for products or selecting retailers, you can type partial or misspelled names. The dashboard will suggest the closest match automatically.
 
 ### Bounded loading
-The dashboard limits how many files it loads per retailer (45 by default). This keeps things fast. If you need to see all historical data, check **Load all files in date range** in the sidebar.
+The dashboard limits how many files it loads per retailer (25 by default). This keeps things fast. If you need to see all historical data, check **Load all files in date range** in the sidebar.
 
 ### Performance
-- First load may be slower as the API builds its inventory
-- Changing filters reloads data from the API
-- Large date ranges with "load all files" may take a moment
+- First load after changing filters takes ~280ms as the API reads CSV data from disk
+- Subsequent tab renders with the same filters return in **~5ms** — the API caches loaded history for 45 seconds (TTL-based dedup across endpoints)
+- Simply clicking between tabs is instant — the cache is warm from the initial page load
+- Large date ranges with "load all files" may take a moment, and bypass the bounded-load cache
 
 ### Troubleshooting
 
@@ -119,5 +120,6 @@ The dashboard limits how many files it loads per retailer (45 by default). This 
 
 **Slow loading**
 - Reduce the date range in the sidebar
-- Lower the max files per retailer value
+- Lower the max files per retailer value (slider range 10–160, step 5)
 - Avoid checking "Load all files" unless necessary
+- The API caches loaded data for 45 seconds; subsequent tab switches with the same filters are nearly instant

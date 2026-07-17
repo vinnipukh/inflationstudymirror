@@ -1,5 +1,7 @@
 # Inflation Study Mirror
 
+<!-- generated-by: gsd-doc-writer -->
+
 A comprehensive data collection and inflation analysis project tracking price changes across Turkish retailers and services over time.
 
 This project includes my personal contributions to https://github.com/urazkagangunes/InflationResearchStudy

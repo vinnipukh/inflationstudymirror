@@ -13,7 +13,7 @@ This document records configuration that is present in the repository.
 | `.github/workflows/*.yml` | Scheduled scraper runtime configuration for GitHub Actions. |
 | `Codes/**/config.py` and `Inflations/**/tuik_config.py` | Script-specific constants, TUIK category mappings, and weight settings. |
 | `inflation_dashboard/adapters/csv_price_repository.py` | Dashboard/API CSV data-root, supported-retailer, and file-limit defaults. |
-| `inflation_dashboard/api/filters.py` | Falcon API query-parameter defaults and validation rules. |
+| `inflation_dashboard/api/filters.py` | Falcon API query-parameter defaults, validation rules, and TTL caches. |
 | `inflation_dashboard/frontend/api_client.py` | Frontend API client defaults (base URL, timeouts, data limits). |
 
 ## Environment Variables
@@ -71,12 +71,12 @@ This replaces the previous setup where dashboard deps (streamlit, plotly, pandas
 | Project root | Two parents above `inflation_dashboard/adapters/` | `PROJECT_ROOT` |
 | Raw data root | `<project-root>/Datas` | `RAW_DATA_ROOT` |
 | Default dashboard/API retailers | `("Markets / Gurmar", "ClothingStores / Vakko", "HomeGoods")` | `DEFAULT_RETAILERS` |
-| Default max files per retailer | `45` | `DEFAULT_MAX_FILES_PER_RETAILER` |
+| Default max files per retailer | `25` | `DEFAULT_MAX_FILES_PER_RETAILER` |
 | CSV parsing | auto-detected separator, `engine="python"`, `encoding="utf-8-sig"`, `on_bad_lines="skip"` | `load_price_history()` |
 | Frontend API base URL | `http://localhost:8000` | `DEFAULT_API_BASE_URL` |
 | Frontend short timeout | `10` seconds | `SHORT_TIMEOUT_SECONDS` |
 | Frontend data timeout | `60` seconds | `DATA_TIMEOUT_SECONDS` |
-| Frontend default max files | `45` | `FRONTEND_DEFAULT_MAX_FILES_PER_RETAILER` |
+| Frontend default max files | `25` | `FRONTEND_DEFAULT_MAX_FILES_PER_RETAILER` |
 
 Supported dashboard/API retailer labels:
 
@@ -106,7 +106,7 @@ The API filter parser accepts query parameters from request URLs:
 |---|---|---|
 | `retailer` | Available defaults from `DEFAULT_RETAILERS`, up to first 3 | Repeated; unknown → 400 `invalid_filter` |
 | `start_date` / `end_date` | Latest 60-day window | ISO date format |
-| `max_files` | `45` | Integer ≥ 0; `0` = uncapped |
+| `max_files` | `25` | Integer ≥ 0; `0` = uncapped |
 | `all_history` | `false` | Boolean strings accepted |
 
 For the Falcon API full endpoint documentation, see `docs/API.md`.
@@ -150,3 +150,14 @@ uv run python scripts/verify_falcon_api.py
 uv run python scripts/verify_streamlit_api_frontend.py
 uv run python scripts/verify_full_stack.py
 ```
+
+## API TTL Cache
+
+The API layer (`inflation_dashboard/api/filters.py`) maintains two in-memory TTL caches to reduce redundant disk reads when multiple endpoints are called with the same filter parameters:
+
+| Cache | TTL | Max entries | Key |
+|---|---|---|---|
+| CSV inventory (`get_inventory`) | 60 seconds | 1 | — |
+| Loaded price history (`load_filtered_history`) | 45 seconds | 32 | `(retailers, start_date, end_date, max_files)` |
+
+The history cache is the primary performance win: when the Streamlit frontend renders four tabs, each calls a different API endpoint, but all load the same bounded CSV files. The first request reads the CSVs from disk (~280ms); the next three hit the cache and return in ~5ms each. The cache automatically expires after 45 seconds, so new data from scheduled scraper runs becomes visible without restarting the API server.

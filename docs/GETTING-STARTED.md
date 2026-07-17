@@ -112,7 +112,7 @@ The dashboard provides four tabs:
 - **Falcon API base URL**: Set in the sidebar (default: `http://localhost:8000`)
 - **Retailer filter**: Select one or more retailers to scope the data
 - **Date range**: Choose start/end dates
-- **Max files per retailer**: Limit recent CSV files loaded (default: 45)
+- **Max files per retailer**: Limit recent CSV files loaded (default: 25)
 - **Load all files**: Check to bypass the file cap (may be slow)
 - **Search with autocorrect**: Type partial names — misspellings are handled automatically
 - **Dashboard start prediction**: Optional ML-powered price trend estimation (sidebar toggle)
@@ -154,7 +154,7 @@ Use `uv run python scripts/verify_falcon_api.py` — this matches the current pr
 
 ### Large CSV history can be slow
 
-The shared CSV adapter defaults to `DEFAULT_MAX_FILES_PER_RETAILER = 45`. Keep bounded defaults while exploring locally. Use uncapped history only intentionally through `max_files=0` / `all_history=true`.
+The shared CSV adapter defaults to `DEFAULT_MAX_FILES_PER_RETAILER = 25`. Keep bounded defaults while exploring locally. Use uncapped history only intentionally through `max_files=0` / `all_history=true`.
 
 ## Next Steps
 

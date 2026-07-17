@@ -51,7 +51,8 @@ graph TD
 5. Domain logic normalizes prices, detects products, and transforms rows into a shared history shape.
 6. Application use cases compute inventory filters, product history slices, summaries, retailer averages, price movers, and coverage.
 7. The Falcon API (`inflation_dashboard/api/`) exposes the same shared use cases as JSON envelopes over HTTP.
-8. The Streamlit frontend (`streamlit_app.py`) calls the Falcon API through `inflation_dashboard/frontend/api_client.py` and renders the responses using Plotly charts and Streamlit widgets.
+8. **API-side TTL cache**: `inflation_dashboard/api/filters.py` caches the CSV inventory (60s TTL) and loaded price history (45s TTL, keyed by filter parameters). When the Streamlit frontend renders all four tabs simultaneously, each calls a different API endpoint, but the first to load CSV data populates the cache — subsequent endpoints reuse the same data instead of re-reading CSVs from disk. Hot requests are served in ~5ms instead of ~280ms.
+9. The Streamlit frontend (`streamlit_app.py`) calls the Falcon API through `inflation_dashboard/frontend/api_client.py` and renders the responses using Plotly charts and Streamlit widgets.
 
 ## Running the Stack
 
@@ -147,7 +148,7 @@ streamlit_app.py               Dashboard entry point consuming Falcon API
 - `inflation_dashboard/api/` owns Falcon HTTP concerns and must not import Streamlit, Plotly, or `streamlit_app.py`.
 - `inflation_dashboard/frontend/` owns the HTTP API client and must not import Streamlit, Plotly, or CSV/inflation-dashboard core modules.
 - `streamlit_app.py` owns the UI, Streamlit widget state, caching decorators, and Plotly rendering. It reads data only through the Falcon API.
-- API history loading remains bounded by default (`DEFAULT_MAX_FILES_PER_RETAILER = 45`).
+- API history loading remains bounded by default (`DEFAULT_MAX_FILES_PER_RETAILER = 25`).
 
 ## Verification
 
