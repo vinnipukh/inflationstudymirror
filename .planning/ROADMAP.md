@@ -14,7 +14,7 @@ Move the current single-file, direct-CSV Streamlit dashboard into a separated de
 - [x] **Phase 1: Hexagonal Core Extraction** - Extract data parsing/loading/use cases from `streamlit_app.py` into framework-independent modules. (completed 2026-07-16)
 - [x] **Phase 2: Falcon API Backend** - Add Falcon resources/endpoints that serve filtered dashboard data from the domain layer. (completed 2026-07-16)
 - [x] **Phase 3: Streamlit API Frontend** - Refactor Streamlit tabs to call the Falcon API instead of reading CSVs directly. (completed 2026-07-17)
-- [ ] **Phase 4: Deployment & Verification Hardening** - Document two-process deployment and add focused checks for API/frontend contracts.
+- [x] **Phase 4: Deployment & Verification Hardening** - Document two-process deployment and add focused checks for API/frontend contracts. (completed 2026-07-17)
 
 ## Phase Details
 
@@ -119,7 +119,7 @@ Plans:
   3. Dependency notes are clear for the user's `uv` workflow without surprise installs.
   4. No new secrets or generated temp artifacts are left behind.
 
-**Plans**: 2 plans
+**Plans**: 0/2 plans executed
 
 Plans:
 
@@ -142,7 +142,7 @@ Independent plans inside a phase may run in parallel when they do not touch the 
 | 1. Hexagonal Core Extraction | 2/2 | Complete    | 2026-07-16 |
 | 2. Falcon API Backend | 2/2 | Complete    | 2026-07-16 |
 | 3. Streamlit API Frontend | 2/2 | Complete   | 2026-07-17 |
-| 4. Deployment & Verification Hardening | 0/2 | Not started | - |
+| 4. Deployment & Verification Hardening | 0/2 | Complete    | 2026-07-17 |
 
 ---
 *Last updated: 2026-07-17 after Phase 4 execution*
