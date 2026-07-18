@@ -1,0 +1,46 @@
+2026-07-18 04:48:26 [INFO] ==================================================
+2026-07-18 04:48:26 [INFO] Yapimaks Scraper basliyor
+2026-07-18 04:48:26 [INFO] ==================================================
+2026-07-18 04:48:26 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-07-18 04:48:27 [INFO] Cookie basariyla alindi.
+2026-07-18 04:48:27 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-07-18 04:48:28 [INFO] Sitemap'ten toplam 7986 urun URL'si bulundu.
+2026-07-18 04:48:28 [INFO] Bugune ait veri yok. Eski veri (2026-07-17.csv) süzülerek bugune aktariliyor...
+2026-07-18 04:48:28 [INFO] Basarili! 7969 urun dunden bugune aktarildi.
+2026-07-18 04:48:28 [INFO] Guncel dosyada hazir olan urun: 7969 | Sifirdan cekilecek (yeni) urun: 17
+2026-07-18 04:48:28 [INFO] 17 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-18.csv
+2026-07-18 04:48:28 [INFO] [1/17] https://yapimaks.com/ampul-ledbulb-torch-30w-6500-k-beyaz-isik-voltek-p15768
+2026-07-18 04:48:28 [INFO] [15768] 'AMPUL LEDBULB TORCH 30W 6500 K BEYAZ IŞI' | 110.00 TL | SKU: VOLTEK.VLB03065
+2026-07-18 04:48:30 [INFO] [2/17] https://yapimaks.com/ampul-ledbulb-torch-50w-6500-k-beyaz-isik-voltek-p15769
+2026-07-18 04:48:30 [INFO] [15769] 'AMPUL LEDBULB TORCH 50W 6500 K BEYAZ IŞI' | 175.00 TL | SKU: VOLTEK.VLB05065
+2026-07-18 04:48:32 [INFO] [3/17] https://yapimaks.com/aspirator-borusu-aluminyum-2-metre-127-mm-p6783
+2026-07-18 04:48:33 [INFO] [6783] 'ASPİRATÖR BORUSU ALÜMİNYUM 2 METRE 127 M' | 75.00 TL | SKU: NOBEL.706131272
+2026-07-18 04:48:35 [INFO] [4/17] https://yapimaks.com/boru-tutucu-u-kilcik-1-adet-500-p14520
+2026-07-18 04:48:35 [INFO] [14520] 'BORU TUTUCU U (KILÇIK) 1 ADET (500)' | 0.75 TL | SKU: GÜÇLÜ.GP7103
+2026-07-18 04:48:37 [INFO] [5/17] https://yapimaks.com/dubel-yere-tespit-dubeli-ciftli-kilcik-1-ad-p4862
+2026-07-18 04:48:37 [INFO] [4862] 'DÜBEL YERE TESPİT DÜBELİ ÇİFTLİ KILÇIK 1' | 1.50 TL | SKU: KALDE.3595PFP250000
+2026-07-18 04:48:39 [INFO] [6/17] https://yapimaks.com/emniyet-kilidi-pvc-halatli-beyaz-p6441
+2026-07-18 04:48:39 [INFO] [6441] 'EMNİYET KİLİDİ PVC HALATLI BEYAZ' | 95.00 TL | SKU: NOBEL.32339
+2026-07-18 04:48:41 [INFO] [7/17] https://yapimaks.com/kapi-kolu-kumrucan-aynali-oda-nikel-inox-p14436
+2026-07-18 04:48:42 [INFO] [14436] 'KAPI KOLU KUMRUCAN AYNALI ODA NİKEL İNOX' | 160.00 TL | SKU: NOBEL.2500193
+2026-07-18 04:48:44 [INFO] [8/17] https://yapimaks.com/kapi-kolu-kumrucan-aynali-yale-nikel-inox-tek-p14438
+2026-07-18 04:48:44 [INFO] [14438] 'KAPI KOLU KUMRUCAN AYNALI YALE NİKEL İNO' | 83.00 TL | SKU: NOBEL.2500293
+2026-07-18 04:48:46 [INFO] [9/17] https://yapimaks.com/kapi-kolu-polaris-aynali-oda-nikel-saten-p6387
+2026-07-18 04:48:46 [INFO] [6387] 'KAPI KOLU POLARİS AYNALI ODA NİKEL SATEN' | 187.00 TL | SKU: NOBEL.2600193
+2026-07-18 04:48:48 [INFO] [10/17] https://yapimaks.com/kapi-kolu-polaris-aynali-wc-nikel-saten-p6389
+2026-07-18 04:48:48 [INFO] [6389] 'KAPI KOLU POLARİS AYNALI WC NİKEL SATEN' | 204.00 TL | SKU: NOBEL.2600393
+2026-07-18 04:48:50 [INFO] [11/17] https://yapimaks.com/kapi-kolu-polaris-aynali-yale-nikel-saten-tek-p6388
+2026-07-18 04:48:51 [INFO] [6388] 'KAPI KOLU POLARİS AYNALI YALE NİKEL SATE' | 99.00 TL | SKU: NOBEL.2600293
+2026-07-18 04:48:53 [INFO] [12/17] https://yapimaks.com/kapi-yayi-buyuk-15q-25-cm-p6446
+2026-07-18 04:48:53 [INFO] [6446] 'KAPI YAYI BÜYÜK 15Q 25 CM' | 72.00 TL | SKU: NOBEL.32346B
+2026-07-18 04:48:55 [INFO] [13/17] https://yapimaks.com/kimyasal-dubel-300-ml-selena-p13032
+2026-07-18 04:48:55 [INFO] [13032] 'KİMYASAL DÜBEL 300 ML SELENA' | 275.00 TL | SKU: SELENA.10049345
+2026-07-18 04:48:57 [INFO] [14/17] https://yapimaks.com/kornis-montaj-yapistirici-beyaz-290-ml-ultra-tack-selsil-p15763
+2026-07-18 04:48:57 [INFO] [15763] 'KORNİŞ MONTAJ YAPIŞTIRICI BEYAZ 290 ML U' | 199.00 TL | SKU: SELSİL.3753
+2026-07-18 04:48:59 [INFO] [15/17] https://yapimaks.com/mermer-kesici-230x3-5x22-karbosan-p15762
+2026-07-18 04:49:00 [INFO] [15762] 'MERMER KESİCİ  230X3,5X22 KARBOSAN' | 170.00 TL | SKU: KARBOSAN.912750
+2026-07-18 04:49:02 [INFO] [16/17] https://yapimaks.com/priz-toprakli-ikili-beyaz-karre-meridian-viko-p15767
+2026-07-18 04:49:02 [INFO] [15767] 'PRİZ TOPRAKLI İKİLİ BEYAZ KARRE/MERIDIAN' | 170.00 TL | SKU: VİKO.90967056
+2026-07-18 04:49:04 [INFO] [17/17] https://yapimaks.com/sprey-boya-cakil-gri-ral-7032-400ml-selsil-p15761
+2026-07-18 04:49:04 [INFO] [15761] 'SPREY BOYA ÇAKIL GRİ RAL 7032 400ML SELS' | 149.00 TL | SKU: SELSİL.426
+2026-07-18 04:49:06 [INFO] Tamamlandi! Toplam 17 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-18.csv
