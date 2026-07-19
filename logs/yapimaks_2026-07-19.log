@@ -1,0 +1,26 @@
+2026-07-19 05:21:30 [INFO] ==================================================
+2026-07-19 05:21:30 [INFO] Yapimaks Scraper basliyor
+2026-07-19 05:21:30 [INFO] ==================================================
+2026-07-19 05:21:30 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-07-19 05:21:31 [INFO] Cookie basariyla alindi.
+2026-07-19 05:21:31 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-07-19 05:21:32 [INFO] Sitemap'ten toplam 7981 urun URL'si bulundu.
+2026-07-19 05:21:32 [INFO] Bugune ait veri yok. Eski veri (2026-07-18.csv) süzülerek bugune aktariliyor...
+2026-07-19 05:21:32 [INFO] Basarili! 7974 urun dunden bugune aktarildi.
+2026-07-19 05:21:32 [INFO] Guncel dosyada hazir olan urun: 7974 | Sifirdan cekilecek (yeni) urun: 7
+2026-07-19 05:21:32 [INFO] 7 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-19.csv
+2026-07-19 05:21:32 [INFO] [1/7] https://yapimaks.com/betofast-6-3-75-1-ad-p9113
+2026-07-19 05:21:32 [INFO] [9113] 'BETOFAST 6.3*75 1 AD' | 3.15 TL | SKU: STD.900241700
+2026-07-19 05:21:34 [INFO] [2/7] https://yapimaks.com/crystalline-blossoms-dekor-30x60-1k-1-08m2-p2795
+2026-07-19 05:21:34 [INFO] [2795] 'CRYSTALLINE BLOSSOMS DEKOR 30X60 1K (1,0' | 410.00 TL | SKU: EGESER.300X600CRS21
+2026-07-19 05:21:36 [INFO] [3/7] https://yapimaks.com/panel-sivaustu-24w-6500k-yuvarlak-beyaz-285q-yvz-p15770
+2026-07-19 05:21:36 [INFO] [15770] 'PANEL SIVAÜSTÜ 24W 6500K YUVARLAK BEYAZ ' | 470.00 TL | SKU: YVZ.2324.6500
+2026-07-19 05:21:38 [INFO] [4/7] https://yapimaks.com/salome-gri-60x120-2k-tam-parlak-rek-1-44m2-p2865
+2026-07-19 05:21:39 [INFO] [2865] 'SALOME GRİ 60X120 2K TAM PARLAK REK (1,4' | 828.00 TL | SKU: EGESER.600X1200SLM13PAR
+2026-07-19 05:21:41 [INFO] [5/7] https://yapimaks.com/savannah-gri-20x120-2k-1-20m2-p2754
+2026-07-19 05:21:41 [INFO] [2754] 'SAVANNAH GRİ 20X120 2K (1,20M2)' | 515.00 TL | SKU: EGESER.200X1200SVH03.END
+2026-07-19 05:21:43 [INFO] [6/7] https://yapimaks.com/siyah-mat-7-5x30-1k-0-54m2-p2873
+2026-07-19 05:21:43 [INFO] [2873] 'SİYAH MAT 7,5X30 1K (0,54M2)' | 302.00 TL | SKU: EGESER.75X300BEY83
+2026-07-19 05:21:45 [INFO] [7/7] https://yapimaks.com/torino-gri-40x40-2k-1-44m2-p2823
+2026-07-19 05:21:45 [INFO] [2823] 'TORİNO GRİ 40X40 2K (1,44M2)' | 431.00 TL | SKU: EGESER.400X400TRN01.END
+2026-07-19 05:21:47 [INFO] Tamamlandi! Toplam 7 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-19.csv
