@@ -1,0 +1,36 @@
+2026-07-20 05:38:57 [INFO] ==================================================
+2026-07-20 05:38:57 [INFO] Yapimaks Scraper basliyor
+2026-07-20 05:38:57 [INFO] ==================================================
+2026-07-20 05:38:57 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-07-20 05:38:58 [INFO] Cookie basariyla alindi.
+2026-07-20 05:38:58 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-07-20 05:38:58 [INFO] Sitemap'ten toplam 7976 urun URL'si bulundu.
+2026-07-20 05:38:58 [INFO] Bugune ait veri yok. Eski veri (2026-07-19.csv) süzülerek bugune aktariliyor...
+2026-07-20 05:38:58 [INFO] Basarili! 7964 urun dunden bugune aktarildi.
+2026-07-20 05:38:58 [INFO] Guncel dosyada hazir olan urun: 7964 | Sifirdan cekilecek (yeni) urun: 12
+2026-07-20 05:38:58 [INFO] 12 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-20.csv
+2026-07-20 05:38:58 [INFO] [1/12] https://yapimaks.com/aqua-reno-banyo-beyaz-renovasyon-boyasi-0-75-l-10-gr-p15771
+2026-07-20 05:38:58 [INFO] [15771] 'AQUA RENO BANYO BEYAZ RENOVASYON BOYASI ' | 1100.00 TL | SKU: FİLLİ.RENO.3000.2515.11.00001
+2026-07-20 05:39:00 [INFO] [2/12] https://yapimaks.com/gazli-piston-060n-kisa-std-p9163
+2026-07-20 05:39:01 [INFO] [9163] 'GAZLI PİSTON 060N KISA-STD' | 59.00 TL | SKU: STD.928830800
+2026-07-20 05:39:03 [INFO] [3/12] https://yapimaks.com/gazli-piston-080n-kisa-std-p9164
+2026-07-20 05:39:03 [INFO] [9164] 'GAZLI PİSTON 080N KISA-STD' | 59.00 TL | SKU: STD.928831800
+2026-07-20 05:39:05 [INFO] [4/12] https://yapimaks.com/gazli-piston-080n-std-p9172
+2026-07-20 05:39:05 [INFO] [9172] 'GAZLI PİSTON 080N-STD' | 59.00 TL | SKU: STD.936160800
+2026-07-20 05:39:07 [INFO] [5/12] https://yapimaks.com/gazli-piston-100n-kisa-std-p9192
+2026-07-20 05:39:07 [INFO] [9192] 'GAZLI PİSTON 100N KISA-STD' | 59.00 TL | SKU: STD.953480800
+2026-07-20 05:39:09 [INFO] [6/12] https://yapimaks.com/gazli-piston-100n-std-p9173
+2026-07-20 05:39:09 [INFO] [9173] 'GAZLI PİSTON 100N-STD' | 59.00 TL | SKU: STD.936161800
+2026-07-20 05:39:11 [INFO] [7/12] https://yapimaks.com/gazli-piston-120n-std-p9162
+2026-07-20 05:39:11 [INFO] [9162] 'GAZLI PİSTON 120N-STD' | 59.00 TL | SKU: STD.928350800
+2026-07-20 05:39:13 [INFO] [8/12] https://yapimaks.com/gazli-piston-yavas-kapanan-080n-std-p9200
+2026-07-20 05:39:14 [INFO] [9200] 'GAZLI PİSTON YAVAŞ KAPANAN 080N-STD' | 50.00 TL | SKU: STD.959046800
+2026-07-20 05:39:16 [INFO] [9/12] https://yapimaks.com/gazli-piston-yavas-kapanan-100n-std-p9201
+2026-07-20 05:39:16 [INFO] [9201] 'GAZLI PİSTON YAVAŞ KAPANAN 100N-STD' | 99.00 TL | SKU: STD.959047800
+2026-07-20 05:39:18 [INFO] [10/12] https://yapimaks.com/kalip-yagi-30-lt-darkss-ky222-p12628
+2026-07-20 05:39:18 [INFO] [12628] 'KALIP YAĞI 30 LT (DARKSS-KY222)' | 2500.00 TL | SKU: DARKSS.KY.222
+2026-07-20 05:39:20 [INFO] [11/12] https://yapimaks.com/renevasyon-vernik-su-bazli-aqua-reno-a-b-600-gr-480-120-p15772
+2026-07-20 05:39:20 [INFO] [15772] 'RENEVASYON VERNİK SU BAZLI AQUA RENO A+B' | 1300.00 TL | SKU: FİLLİ.RENO.3000.2517.G2.00001
+2026-07-20 05:39:22 [INFO] [12/12] https://yapimaks.com/selsil-hizli-yapistirici-genel-amacli-100-g-ninja-p15764
+2026-07-20 05:39:22 [INFO] [15764] 'SELSİL HIZLI YAPIŞTIRICI GENEL AMAÇLI 10' | 100.00 TL | SKU: SELSİL.4171
+2026-07-20 05:39:24 [INFO] Tamamlandi! Toplam 12 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-20.csv
