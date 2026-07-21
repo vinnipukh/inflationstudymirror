@@ -1,0 +1,16 @@
+2026-07-21 05:20:10 [INFO] ==================================================
+2026-07-21 05:20:10 [INFO] Yapimaks Scraper basliyor
+2026-07-21 05:20:10 [INFO] ==================================================
+2026-07-21 05:20:10 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-07-21 05:20:11 [INFO] Cookie basariyla alindi.
+2026-07-21 05:20:11 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-07-21 05:20:12 [INFO] Sitemap'ten toplam 7976 urun URL'si bulundu.
+2026-07-21 05:20:12 [INFO] Bugune ait veri yok. Eski veri (2026-07-20.csv) süzülerek bugune aktariliyor...
+2026-07-21 05:20:12 [INFO] Basarili! 7974 urun dunden bugune aktarildi.
+2026-07-21 05:20:12 [INFO] Guncel dosyada hazir olan urun: 7974 | Sifirdan cekilecek (yeni) urun: 2
+2026-07-21 05:20:12 [INFO] 2 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-21.csv
+2026-07-21 05:20:12 [INFO] [1/2] https://yapimaks.com/bims-20-39-18-5-120-p1488
+2026-07-21 05:20:12 [INFO] [1488] 'BİMS 20*39*18.5 (120)' | 26.50 TL | SKU: BİMS.005
+2026-07-21 05:20:14 [INFO] [2/2] https://yapimaks.com/blume-deco-mix-20x20-2k-0-72m2-p15484
+2026-07-21 05:20:14 [INFO] [15484] 'BLUME DECO MİX 20X20 2K (0,72M2)' | 261.00 TL | SKU: EGESER.200X200BLD00.2K
+2026-07-21 05:20:16 [INFO] Tamamlandi! Toplam 2 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-21.csv
