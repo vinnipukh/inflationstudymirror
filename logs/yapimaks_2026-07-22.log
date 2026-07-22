@@ -1,0 +1,80 @@
+2026-07-22 05:18:59 [INFO] ==================================================
+2026-07-22 05:18:59 [INFO] Yapimaks Scraper basliyor
+2026-07-22 05:18:59 [INFO] ==================================================
+2026-07-22 05:18:59 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-07-22 05:19:00 [INFO] Cookie basariyla alindi.
+2026-07-22 05:19:00 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-07-22 05:19:00 [INFO] Sitemap'ten toplam 7998 urun URL'si bulundu.
+2026-07-22 05:19:00 [INFO] Bugune ait veri yok. Eski veri (2026-07-21.csv) süzülerek bugune aktariliyor...
+2026-07-22 05:19:00 [INFO] Basarili! 7964 urun dunden bugune aktarildi.
+2026-07-22 05:19:00 [INFO] Guncel dosyada hazir olan urun: 7964 | Sifirdan cekilecek (yeni) urun: 34
+2026-07-22 05:19:00 [INFO] 34 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-22.csv
+2026-07-22 05:19:00 [INFO] [1/34] https://yapimaks.com/100-50-reduksiyon-pis-su-pvc-kalde-p4904
+2026-07-22 05:19:00 [INFO] [4904] '100/50 REDÜKSİYON PİS SU PVC KALDE' | 38.00 TL | SKU: KALDE.5213RDC0M0K00
+2026-07-22 05:19:02 [INFO] [2/34] https://yapimaks.com/asma-tavan-karopan-beyaz-duz-60-60-8mm-1-ad-p772
+2026-07-22 05:19:03 [INFO] [772] 'ASMA TAVAN KAROPAN BEYAZ DÜZ 60*60*8MM 1' | 62.50 TL | SKU: ASMAT.002
+2026-07-22 05:19:05 [INFO] [3/34] https://yapimaks.com/bims-10-39-18-5-243-p1486
+2026-07-22 05:19:05 [INFO] [1486] 'BİMS 10*39*18.5 (243)' | 18.00 TL | SKU: BİMS.001
+2026-07-22 05:19:07 [INFO] [4/34] https://yapimaks.com/cocuk-koltuk-monoblok-eko-kirmizi-4-adet-p15683
+2026-07-22 05:19:07 [INFO] [15683] 'ÇOCUK KOLTUK MONOBLOK EKO KIRMIZI 4 ADET' | 950.00 TL | SKU: SÖNMEZ.178-17.4LÜ
+2026-07-22 05:19:09 [INFO] [5/34] https://yapimaks.com/cocuk-koltuk-monoblok-eko-mavi-4-adet-p15684
+2026-07-22 05:19:09 [INFO] [15684] 'ÇOCUK KOLTUK MONOBLOK EKO MAVİ 4 ADET' | 950.00 TL | SKU: SÖNMEZ.178-16.4LÜ
+2026-07-22 05:19:11 [INFO] [6/34] https://yapimaks.com/duman-dedektoru-ct9451-cata-p1764
+2026-07-22 05:19:11 [INFO] [1764] 'DUMAN DEDEKTÖRÜ CT9451 CATA' | 299.00 TL | SKU: CATA.CT9451
+2026-07-22 05:19:13 [INFO] [7/34] https://yapimaks.com/kapi-kolu-kumrucan-aynali-oda-inox-albrifin-p14433
+2026-07-22 05:19:13 [INFO] [14433] 'KAPI KOLU KUMRUCAN AYNALI ODA İNOX ALBRİ' | 154.00 TL | SKU: NOBEL.2500155
+2026-07-22 05:19:15 [INFO] [8/34] https://yapimaks.com/kapi-kolu-kumrucan-aynali-yale-inox-albrifin-tek-p14435
+2026-07-22 05:19:16 [INFO] [14435] 'KAPI KOLU KUMRUCAN AYNALI YALE İNOX ALBR' | 76.00 TL | SKU: NOBEL.2500255
+2026-07-22 05:19:18 [INFO] [9/34] https://yapimaks.com/koltuk-metal-tavoli-siyah-yucel-2-adet-p15691
+2026-07-22 05:19:18 [INFO] [15691] 'KOLTUK METAL TAVOLİ SİYAH YÜCEL 2 ADET' | 8500.00 TL | SKU: YÜCEL.059.2Lİ
+2026-07-22 05:19:20 [INFO] [10/34] https://yapimaks.com/koltuk-plastik-defne-rattan-demir-ayak-antrasit-4-adet-p15675
+2026-07-22 05:19:20 [INFO] [15675] 'KOLTUK PLASTİK DEFNE RATTAN DEMİR AYAK A' | 3950.00 TL | SKU: SÖNMEZ.687-3.4LÜ
+2026-07-22 05:19:22 [INFO] [11/34] https://yapimaks.com/koltuk-plastik-defne-rattan-demir-ayak-kahve-4-adet-p15674
+2026-07-22 05:19:22 [INFO] [15674] 'KOLTUK PLASTİK DEFNE RATTAN DEMİR AYAK K' | 3950.00 TL | SKU: SÖNMEZ.687-2.4LÜ
+2026-07-22 05:19:24 [INFO] [12/34] https://yapimaks.com/koltuk-plastik-della-orijinal-beyaz-4-adet-p15672
+2026-07-22 05:19:24 [INFO] [15672] 'KOLTUK PLASTİK DELLA ORİJİNAL BEYAZ 4 AD' | 3500.00 TL | SKU: SÖNMEZ.784-1.4LÜ
+2026-07-22 05:19:26 [INFO] [13/34] https://yapimaks.com/koltuk-plastik-elite-beyaz-rattan-4-adet-p15685
+2026-07-22 05:19:26 [INFO] [15685] 'KOLTUK PLASTİK ELİTE BEYAZ RATTAN 4 ADET' | 6390.00 TL | SKU: SÖNMEZ.535.4LÜ
+2026-07-22 05:19:28 [INFO] [14/34] https://yapimaks.com/koltuk-plastik-flora-antrasit-yucel-4-adet-p15690
+2026-07-22 05:19:29 [INFO] [15690] 'KOLTUK PLASTİK FLORA ANTRASİT YÜCEL 4 AD' | 3200.00 TL | SKU: YÜCEL.038.4LÜ
+2026-07-22 05:19:31 [INFO] [15/34] https://yapimaks.com/koltuk-plastik-flora-kahve-yucel-4-adet-p15689
+2026-07-22 05:19:31 [INFO] [15689] 'KOLTUK PLASTİK FLORA KAHVE YÜCEL 4 ADET' | 3200.00 TL | SKU: YÜCEL.037.4LÜ
+2026-07-22 05:19:33 [INFO] [16/34] https://yapimaks.com/koltuk-plastik-sandy-antrasit-4-adet-p15682
+2026-07-22 05:19:33 [INFO] [15682] 'KOLTUK PLASTİK SANDY ANTRASİT 4 ADET' | 3600.00 TL | SKU: SÖNMEZ.544A.4LÜ
+2026-07-22 05:19:35 [INFO] [17/34] https://yapimaks.com/koltuk-plastik-siena-antrasit-rattan-yucel-4-adet-p15677
+2026-07-22 05:19:35 [INFO] [15677] 'KOLTUK PLASTİK SİENA ANTRASİT RATTAN YÜC' | 4950.00 TL | SKU: YÜCEL.062.4LÜ
+2026-07-22 05:19:37 [INFO] [18/34] https://yapimaks.com/koltuk-plastik-siena-beyaz-rattan-yucel-4-adet-p15686
+2026-07-22 05:19:37 [INFO] [15686] 'KOLTUK PLASTİK SİENA BEYAZ RATTAN YÜCEL ' | 5500.00 TL | SKU: YÜCEL.063.4LÜ
+2026-07-22 05:19:39 [INFO] [19/34] https://yapimaks.com/koltuk-plastik-siena-kahve-rattan-yucel-4-adet-p15678
+2026-07-22 05:19:40 [INFO] [15678] 'KOLTUK PLASTİK SİENA KAHVE RATTAN YÜCEL ' | 4950.00 TL | SKU: YÜCEL.061.4LÜ
+2026-07-22 05:19:42 [INFO] [20/34] https://yapimaks.com/koltuk-plastik-sunset-antrasit-dinlenme-2-adet-p15688
+2026-07-22 05:19:42 [INFO] [15688] 'KOLTUK PLASTİK SUNSET ANTRASİT DİNLENME ' | 3300.00 TL | SKU: SÖNMEZ.936A.2Lİ
+2026-07-22 05:19:44 [INFO] [21/34] https://yapimaks.com/koltuk-plastik-sunset-yesil-dinlenme-2-adet-p15687
+2026-07-22 05:19:44 [INFO] [15687] 'KOLTUK PLASTİK SUNSET YEŞİL DİNLENME 2 A' | 3300.00 TL | SKU: SÖNMEZ.936Y.2Lİ
+2026-07-22 05:19:46 [INFO] [22/34] https://yapimaks.com/koltuk-plastik-venus-beyaz-violet-4-adet-p15676
+2026-07-22 05:19:46 [INFO] [15676] 'KOLTUK PLASTİK VENÜS BEYAZ VIOLET 4 ADET' | 2900.00 TL | SKU: KASTAMONU.0630.4LÜ
+2026-07-22 05:19:48 [INFO] [23/34] https://yapimaks.com/koltuk-rattan-flash-eko-antrasit-4-adet-p15681
+2026-07-22 05:19:48 [INFO] [15681] 'KOLTUK RATTAN FLASH EKO ANTRASİT 4 ADET' | 2950.00 TL | SKU: SÖNMEZ.0395-3.4LÜ
+2026-07-22 05:19:50 [INFO] [24/34] https://yapimaks.com/koltuk-rattan-flash-eko-kahverengi-4-adet-p15680
+2026-07-22 05:19:50 [INFO] [15680] 'KOLTUK RATTAN FLASH EKO KAHVERENGİ 4 ADE' | 2950.00 TL | SKU: SÖNMEZ.0395-2.4LÜ
+2026-07-22 05:19:52 [INFO] [25/34] https://yapimaks.com/pu-kopuk-titan-pro-753-str-750ml-35-m-normal-12ad-p8501
+2026-07-22 05:19:53 [INFO] [8501] 'PU KÖPÜK TİTAN PRO 753 STR 750ML (35 M) ' | 229.00 TL | SKU: SELENA.108
+2026-07-22 05:19:55 [INFO] [26/34] https://yapimaks.com/pu-kopuk-titan-pro-753-str-yap-750-ml-tabancali-14-m2-p8494
+2026-07-22 05:19:55 [INFO] [8494] 'PU KÖPÜK TİTAN PRO 753 STR YAP 750 ML TA' | 250.00 TL | SKU: SELENA.10049326
+2026-07-22 05:19:57 [INFO] [27/34] https://yapimaks.com/sandalye-plastik-defne-beyaz-yucel-4-adet-p15654
+2026-07-22 05:19:57 [INFO] [15654] 'SANDALYE PLASTİK DEFNE BEYAZ YÜCEL 4 ADE' | 3690.00 TL | SKU: YÜCEL.011.4LÜ
+2026-07-22 05:19:59 [INFO] [28/34] https://yapimaks.com/sandalye-plastik-defne-kahve-yucel-4-lu-p15779
+2026-07-22 05:19:59 [INFO] [15779] 'SANDALYE PLASTİK DEFNE KAHVE YÜCEL 4 LÜ' | 2450.00 TL | SKU: YÜCEL.012.4LÜ
+2026-07-22 05:20:01 [INFO] [29/34] https://yapimaks.com/sandalye-plastik-defne-rattan-demir-ayak-antrasit-4-adet-p15652
+2026-07-22 05:20:01 [INFO] [15652] 'SANDALYE PLASTİK DEFNE RATTAN DEMİR AYAK' | 2750.00 TL | SKU: SÖNMEZ.688-3.4LÜ
+2026-07-22 05:20:03 [INFO] [30/34] https://yapimaks.com/sandalye-plastik-defne-rattan-demir-ayak-kahve-4-adet-p15651
+2026-07-22 05:20:03 [INFO] [15651] 'SANDALYE PLASTİK DEFNE RATTAN DEMİR AYAK' | 2750.00 TL | SKU: SÖNMEZ.688-2.4LÜ
+2026-07-22 05:20:05 [INFO] [31/34] https://yapimaks.com/sandalye-plastik-selen-eko-gri-4-adet-p15653
+2026-07-22 05:20:06 [INFO] [15653] 'SANDALYE PLASTİK SELEN EKO GRİ 4 ADET' | 2450.00 TL | SKU: SÖNMEZ.785B.4LÜ
+2026-07-22 05:20:08 [INFO] [32/34] https://yapimaks.com/sandalye-plastik-siena-antrasit-rattan-yucel-4-adet-p15655
+2026-07-22 05:20:08 [INFO] [15655] 'SANDALYE PLASTİK SİENA ANTRASİT RATTAN Y' | 4490.00 TL | SKU: YÜCEL.068.4LÜ
+2026-07-22 05:20:10 [INFO] [33/34] https://yapimaks.com/sandalye-plastik-siena-beyaz-rattan-yucel-4-adet-p15656
+2026-07-22 05:20:10 [INFO] [15656] 'SANDALYE PLASTİK SİENA BEYAZ RATTAN YÜCE' | 4500.00 TL | SKU: YÜCEL.070.4LÜ
+2026-07-22 05:20:12 [INFO] [34/34] https://yapimaks.com/sandalye-plastik-siena-kahve-rattan-yucel-4-adet-p15780
+2026-07-22 05:20:12 [INFO] [15780] 'SANDALYE PLASTİK SİENA KAHVE RATTAN YÜCE' | 4490.00 TL | SKU: YÜCEL.069.4LÜ
+2026-07-22 05:20:14 [INFO] Tamamlandi! Toplam 34 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-22.csv
