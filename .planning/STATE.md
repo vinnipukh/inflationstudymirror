@@ -6,8 +6,8 @@ current_phase: 4
 status: executing
 stopped_at: Phase 3 context gathered
 last_updated: "2026-07-17T10:56:45.375Z"
-last_activity: 2026-07-17
-last_activity_desc: Phase 4 complete
+last_activity: 2026-07-22
+last_activity_desc: Quick task: update README with new features
 progress:
   total_phases: 4
   completed_phases: 3
@@ -86,11 +86,12 @@ None yet.
 | Storage | Database/cache layer | Deferred; CSV adapter first | Initialization |
 | Scrapers | Full scraper cleanup | Deferred; dashboard deployment first | Initialization |
 
-|## Quick Tasks Completed
+## Quick Tasks Completed
 
 | Slug | Created | Description |
 |------|---------|-------------|
-| fix-waitress-call-flag | 2026-07-17 | Add `--call` flag to `waitress-serve` command so `create_app()` factory is invoked correctly instead of being called as a direct WSGI app |
+| fix-waitress-call-flag | 2026-07-17 | Add `--call` flag to `waitress-serve` command so `create_app()` factory is invoked correctly |
+| readme-flashy-features | 2026-07-22 | Supplement README with installation guide, flashy features, and ML-ready infrastructure |
 
 ## Session Continuity
 
