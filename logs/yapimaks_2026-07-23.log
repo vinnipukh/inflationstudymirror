@@ -1,0 +1,28 @@
+2026-07-23 05:24:23 [INFO] ==================================================
+2026-07-23 05:24:23 [INFO] Yapimaks Scraper basliyor
+2026-07-23 05:24:23 [INFO] ==================================================
+2026-07-23 05:24:23 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-07-23 05:24:23 [INFO] Cookie basariyla alindi.
+2026-07-23 05:24:23 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-07-23 05:24:24 [INFO] Sitemap'ten toplam 7999 urun URL'si bulundu.
+2026-07-23 05:24:24 [INFO] Bugune ait veri yok. Eski veri (2026-07-22.csv) süzülerek bugune aktariliyor...
+2026-07-23 05:24:24 [INFO] Basarili! 7991 urun dunden bugune aktarildi.
+2026-07-23 05:24:24 [INFO] Guncel dosyada hazir olan urun: 7991 | Sifirdan cekilecek (yeni) urun: 8
+2026-07-23 05:24:24 [INFO] 8 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-23.csv
+2026-07-23 05:24:24 [INFO] [1/8] https://yapimaks.com/batarya-baglantisi-50-cm-p4349
+2026-07-23 05:24:24 [INFO] [4349] 'BATARYA BAĞLANTISI 50 CM' | 100.00 TL | SKU: GMS.FB874
+2026-07-23 05:24:26 [INFO] [2/8] https://yapimaks.com/flex-baglanti-60cm-3-8-3-8-p4314
+2026-07-23 05:24:27 [INFO] [4314] 'FLEX BAĞLANTI 60CM 3/8- 3/8' | 110.00 TL | SKU: GMS.FB805
+2026-07-23 05:24:29 [INFO] [3/8] https://yapimaks.com/flex-baglanti-70cm-3-8-3-8-p4315
+2026-07-23 05:24:29 [INFO] [4315] 'FLEX BAĞLANTI 70CM 3/8- 3/8' | 115.00 TL | SKU: GMS.FB806
+2026-07-23 05:24:31 [INFO] [4/8] https://yapimaks.com/flex-baglanti-80-cm-3-8-3-8-p12402
+2026-07-23 05:24:31 [INFO] [12402] 'FLEX BAĞLANTI 80 CM 3/8- 3/8' | 120.00 TL | SKU: GMS.FB876
+2026-07-23 05:24:33 [INFO] [5/8] https://yapimaks.com/led-solar-sokak-armaturu-grand-200-siyah-200w-horoz-p13662
+2026-07-23 05:24:33 [INFO] [13662] 'LED SOLAR SOKAK ARMATÜRÜ GRAND-200 SİYAH' | 2770.00 TL | SKU: HOROZ.074-009-0200
+2026-07-23 05:24:35 [INFO] [6/8] https://yapimaks.com/led-solar-sokak-armaturu-grand-xl-600-600w-6400k-siyah-horoz-p13671
+2026-07-23 05:24:35 [INFO] [13671] 'LED SOLAR SOKAK ARMATÜRÜ GRAND XL-600 60' | 4370.00 TL | SKU: HOROZ.074-009-0600
+2026-07-23 05:24:37 [INFO] [7/8] https://yapimaks.com/panel-kapi-boyasi-su-bazli-3-1-beyaz-kardelen-p12934
+2026-07-23 05:24:38 [INFO] [12934] 'PANEL KAPI BOYASI SU BAZLI 3/1 BEYAZ KAR' | 925.00 TL | SKU: KARDELEN.2109245
+2026-07-23 05:24:40 [INFO] [8/8] https://yapimaks.com/seramik-yapis-gri-qf121-c1t-25-kg-p1968
+2026-07-23 05:24:40 [INFO] [1968] 'SERAMİK YAPIŞ GRİ QF121 C1T-25 KG.' | 185.00 TL | SKU: DARKSS.YK.QF121G
+2026-07-23 05:24:42 [INFO] Tamamlandi! Toplam 8 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-23.csv
