@@ -1,0 +1,18 @@
+2026-07-24 05:19:52 [INFO] ==================================================
+2026-07-24 05:19:52 [INFO] Yapimaks Scraper basliyor
+2026-07-24 05:19:52 [INFO] ==================================================
+2026-07-24 05:19:52 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-07-24 05:19:52 [INFO] Cookie basariyla alindi.
+2026-07-24 05:19:52 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-07-24 05:19:53 [INFO] Sitemap'ten toplam 8001 urun URL'si bulundu.
+2026-07-24 05:19:53 [INFO] Bugune ait veri yok. Eski veri (2026-07-23.csv) süzülerek bugune aktariliyor...
+2026-07-24 05:19:53 [INFO] Basarili! 7998 urun dunden bugune aktarildi.
+2026-07-24 05:19:53 [INFO] Guncel dosyada hazir olan urun: 7998 | Sifirdan cekilecek (yeni) urun: 3
+2026-07-24 05:19:53 [INFO] 3 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-24.csv
+2026-07-24 05:19:53 [INFO] [1/3] https://yapimaks.com/derz-dolgu-beyaz-silikonlu-1-kg-p1990
+2026-07-24 05:19:53 [INFO] [1990] 'DERZ DOLGU BEYAZ (SİLİKONLU) 1 KG' | 30.00 TL | SKU: DARKSS.YK.0003
+2026-07-24 05:19:55 [INFO] [2/3] https://yapimaks.com/priz-4-lu-2-m-cocuk-korumali-toprakli-p3544
+2026-07-24 05:19:55 [INFO] [3544] 'PRİZ 4 LÜ 2 M ÇOCUK KORUMALI TOPRAKLI' | 315.00 TL | SKU: FAR.15041002
+2026-07-24 05:19:57 [INFO] [3/3] https://yapimaks.com/priz-4-lu-5-m-cocuk-korumali-toprakli-p3546
+2026-07-24 05:19:57 [INFO] [3546] 'PRİZ 4 LÜ 5 M ÇOCUK KORUMALI TOPRAKLI' | 475.00 TL | SKU: FAR.15041005
+2026-07-24 05:19:59 [INFO] Tamamlandi! Toplam 3 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-24.csv
