@@ -1,0 +1,42 @@
+2026-07-25 05:14:29 [INFO] ==================================================
+2026-07-25 05:14:29 [INFO] Yapimaks Scraper basliyor
+2026-07-25 05:14:29 [INFO] ==================================================
+2026-07-25 05:14:29 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-07-25 05:14:30 [INFO] Cookie basariyla alindi.
+2026-07-25 05:14:30 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-07-25 05:14:31 [INFO] Sitemap'ten toplam 8002 urun URL'si bulundu.
+2026-07-25 05:14:31 [INFO] Bugune ait veri yok. Eski veri (2026-07-24.csv) süzülerek bugune aktariliyor...
+2026-07-25 05:14:31 [INFO] Basarili! 7987 urun dunden bugune aktarildi.
+2026-07-25 05:14:31 [INFO] Guncel dosyada hazir olan urun: 7987 | Sifirdan cekilecek (yeni) urun: 15
+2026-07-25 05:14:31 [INFO] 15 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-25.csv
+2026-07-25 05:14:31 [INFO] [1/15] https://yapimaks.com/50-45-pis-su-pvc-dirsek-kalde-p4894
+2026-07-25 05:14:31 [INFO] [4894] '50/45 PİS SU PVC DİRSEK KALDE' | 17.00 TL | SKU: KALDE.5213ELB0K0045
+2026-07-25 05:14:33 [INFO] [2/15] https://yapimaks.com/50-90-pis-su-pvc-dirsek-kalde-p4895
+2026-07-25 05:14:33 [INFO] [4895] '50/90 PİS SU PVC DİRSEK KALDE' | 19.00 TL | SKU: KALDE.5213ELB0K0090
+2026-07-25 05:14:35 [INFO] [3/15] https://yapimaks.com/aster-mix-dekor-30x60-1k-1-08m2-p2771
+2026-07-25 05:14:36 [INFO] [2771] 'ASTER MIX DEKOR 30X60 1K (1,08M2)' | 360.00 TL | SKU: EGESER.300X600ASE00
+2026-07-25 05:14:38 [INFO] [4/15] https://yapimaks.com/bahce-teli-glv-150cm-20mt-2-5m-5-5-5-5-helezon-p1254
+2026-07-25 05:14:38 [INFO] [1254] 'BAHÇE TELİ  GLV 150CM*20MT*2.5M*5,5*5,5 ' | 2700.00 TL | SKU: BAHÇE.TEL.008
+2026-07-25 05:14:40 [INFO] [5/15] https://yapimaks.com/bahce-teli-glv-200cm-20mt-2-0mm-6-6-helezon-p1264
+2026-07-25 05:14:40 [INFO] [1264] 'BAHÇE TELİ  GLV 200CM*20MT*2.0MM*6*6 HEL' | 3250.00 TL | SKU: BAHÇE.TEL.010
+2026-07-25 05:14:42 [INFO] [6/15] https://yapimaks.com/baltimore-acik-gri-30x60-1k-k8-1-26m2-p12706
+2026-07-25 05:14:42 [INFO] [12706] 'BALTİMORE AÇIK GRİ 30X60 1K K8 (1,26M2)' | 478.00 TL | SKU: EGESER.300X600BTM55
+2026-07-25 05:14:44 [INFO] [7/15] https://yapimaks.com/calacatta-sirius-dekor-30x60-1k-k8-1-26m2-p11420
+2026-07-25 05:14:44 [INFO] [11420] 'CALACATTA SİRİUS DEKOR 30X60 1K K8 (1,26' | 420.00 TL | SKU: EGESER.300X600CLD31.END.1.26
+2026-07-25 05:14:46 [INFO] [8/15] https://yapimaks.com/duvar-paneli-pvc-acik-gri-11cm-2-8m-11mm-0-308m2-p13800
+2026-07-25 05:14:47 [INFO] [13800] 'DUVAR PANELİ PVC AÇIK GRİ 11CM 2.8M 11MM' | 225.00 TL | SKU: NTN.001
+2026-07-25 05:14:49 [INFO] [9/15] https://yapimaks.com/duvar-paneli-pvc-altin-mese-11cm-2-8m-11mm-0-308m2-p13803
+2026-07-25 05:14:49 [INFO] [13803] 'DUVAR PANELİ PVC ALTIN MEŞE 11CM 2.8M 11' | 225.00 TL | SKU: NTN.004
+2026-07-25 05:14:51 [INFO] [10/15] https://yapimaks.com/duvar-paneli-pvc-gri-budakli-11-cm-2-8m-11mm-0-308m2-p14812
+2026-07-25 05:14:51 [INFO] [14812] 'DUVAR PANELİ PVC GRİ BUDAKLI 11 CM 2.8M ' | 225.00 TL | SKU: NTN.005
+2026-07-25 05:14:53 [INFO] [11/15] https://yapimaks.com/duvar-paneli-pvc-maun-11cm-2-8m-11mm-0-308m2-p13802
+2026-07-25 05:14:53 [INFO] [13802] 'DUVAR PANELİ PVC MAUN 11CM 2.8M 11MM (0,' | 225.00 TL | SKU: NTN.003
+2026-07-25 05:14:55 [INFO] [12/15] https://yapimaks.com/duvar-paneli-pvc-mese-11cm-2-8m-11mm-0-308m2-p13801
+2026-07-25 05:14:55 [INFO] [13801] 'DUVAR PANELİ PVC MEŞE 11CM 2.8M 11MM (0,' | 225.00 TL | SKU: NTN.002
+2026-07-25 05:14:57 [INFO] [13/15] https://yapimaks.com/nevada-siyah-29x58-2k-tam-parlak-rek-1-0m2-p11500
+2026-07-25 05:14:58 [INFO] [11500] 'NEVADA SİYAH 29X58 2K TAM PARLAK REK (1,' | 429.00 TL | SKU: EGESER.300X600NVD93PAR.2K
+2026-07-25 05:15:00 [INFO] [14/15] https://yapimaks.com/santiago-samarra-gri-38x76-1k-tam-parlak-1-16m2-p2820
+2026-07-25 05:15:00 [INFO] [2820] 'SANTIAGO SAMARRA GRI 38X76 1K TAM PARLAK' | 615.00 TL | SKU: EGESER.380X760SNG03PAR
+2026-07-25 05:15:02 [INFO] [15/15] https://yapimaks.com/sds-max-18x400-mm-keski-fivestar-p8462
+2026-07-25 05:15:02 [INFO] [8462] 'SDS MAX 18X400 MM KESKİ FİVESTAR' | 225.00 TL | SKU: FİVESTAR.18400
+2026-07-25 05:15:04 [INFO] Tamamlandi! Toplam 15 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-25.csv
