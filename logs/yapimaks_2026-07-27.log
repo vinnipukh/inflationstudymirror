@@ -1,0 +1,14 @@
+2026-07-27 05:50:01 [INFO] ==================================================
+2026-07-27 05:50:01 [INFO] Yapimaks Scraper basliyor
+2026-07-27 05:50:01 [INFO] ==================================================
+2026-07-27 05:50:01 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-07-27 05:50:02 [INFO] Cookie basariyla alindi.
+2026-07-27 05:50:02 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-07-27 05:50:03 [INFO] Sitemap'ten toplam 8000 urun URL'si bulundu.
+2026-07-27 05:50:03 [INFO] Bugune ait veri yok. Eski veri (2026-07-26.csv) süzülerek bugune aktariliyor...
+2026-07-27 05:50:03 [INFO] Basarili! 7999 urun dunden bugune aktarildi.
+2026-07-27 05:50:03 [INFO] Guncel dosyada hazir olan urun: 7999 | Sifirdan cekilecek (yeni) urun: 1
+2026-07-27 05:50:03 [INFO] 1 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-27.csv
+2026-07-27 05:50:03 [INFO] [1/1] https://yapimaks.com/el-arabasi-feza-dolgu-teker-p6185
+2026-07-27 05:50:03 [INFO] [6185] 'EL ARABASI FEZA + DOLGU TEKER' | 1500.00 TL | SKU: KESKİN.150.062
+2026-07-27 05:50:05 [INFO] Tamamlandi! Toplam 1 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-27.csv
