@@ -1,0 +1,38 @@
+2026-07-28 05:14:01 [INFO] ==================================================
+2026-07-28 05:14:01 [INFO] Yapimaks Scraper basliyor
+2026-07-28 05:14:01 [INFO] ==================================================
+2026-07-28 05:14:01 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-07-28 05:14:02 [INFO] Cookie basariyla alindi.
+2026-07-28 05:14:02 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-07-28 05:14:03 [INFO] Sitemap'ten toplam 7999 urun URL'si bulundu.
+2026-07-28 05:14:03 [INFO] Bugune ait veri yok. Eski veri (2026-07-27.csv) süzülerek bugune aktariliyor...
+2026-07-28 05:14:03 [INFO] Basarili! 7986 urun dunden bugune aktarildi.
+2026-07-28 05:14:03 [INFO] Guncel dosyada hazir olan urun: 7986 | Sifirdan cekilecek (yeni) urun: 13
+2026-07-28 05:14:03 [INFO] 13 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-28.csv
+2026-07-28 05:14:03 [INFO] [1/13] https://yapimaks.com/kapi-kolu-avanti-aynali-oda-nikel-inox-p6317
+2026-07-28 05:14:03 [INFO] [6317] 'KAPI KOLU AVANTİ AYNALI ODA NİKEL İNOX' | 260.00 TL | SKU: NOBEL.113206233
+2026-07-28 05:14:05 [INFO] [2/13] https://yapimaks.com/zebo-zb-444-zemin-boyasi-acik-gri-rall-7035-akrilik-20-kg-p15692
+2026-07-28 05:14:05 [INFO] [15692] 'ZEBO ZB-444 ZEMİN BOYASI AÇIK GRİ RALL 7' | 6900.00 TL | SKU: ZEBO.7035-20KG
+2026-07-28 05:14:07 [INFO] [3/13] https://yapimaks.com/zebo-zb-444-zemin-boyasi-acik-gri-rall-7035-akrilik-3-5-kg-p15693
+2026-07-28 05:14:07 [INFO] [15693] 'ZEBO ZB-444 ZEMİN BOYASI AÇIK GRİ RALL 7' | 1500.00 TL | SKU: ZEBO.7035-3.5KG
+2026-07-28 05:14:09 [INFO] [4/13] https://yapimaks.com/zebo-zb-444-zemin-boyasi-kirmizi-rall-3028-akrilik-20-kg-p15696
+2026-07-28 05:14:10 [INFO] [15696] 'ZEBO ZB-444 ZEMİN BOYASI KIRMIZI RALL 30' | 6900.00 TL | SKU: ZEBO.3028-20KG
+2026-07-28 05:14:12 [INFO] [5/13] https://yapimaks.com/zebo-zb-444-zemin-boyasi-kirmizi-rall-3028-akrilik-3-5-kg-p15697
+2026-07-28 05:14:12 [INFO] [15697] 'ZEBO ZB-444 ZEMİN BOYASI KIRMIZI RALL 30' | 1500.00 TL | SKU: ZEBO.3028-3.5KG
+2026-07-28 05:14:14 [INFO] [6/13] https://yapimaks.com/zebo-zb-444-zemin-boyasi-koyu-gri-rall-7040-akrilik-20-kg-p15694
+2026-07-28 05:14:14 [INFO] [15694] 'ZEBO ZB-444 ZEMİN BOYASI KOYU GRİ RALL 7' | 6900.00 TL | SKU: ZEBO.7040-20KG
+2026-07-28 05:14:16 [INFO] [7/13] https://yapimaks.com/zebo-zb-444-zemin-boyasi-koyu-gri-rall-7040-akrilik-3-5-kg-p15695
+2026-07-28 05:14:16 [INFO] [15695] 'ZEBO ZB-444 ZEMİN BOYASI KOYU GRİ RALL 7' | 1500.00 TL | SKU: ZEBO.7040-3.5KG
+2026-07-28 05:14:18 [INFO] [8/13] https://yapimaks.com/zebo-zb-444-zemin-boyasi-mavi-rall-5012-akrilik-20-kg-p15700
+2026-07-28 05:14:18 [INFO] [15700] 'ZEBO ZB-444 ZEMİN BOYASI MAVİ RALL 5012 ' | 6900.00 TL | SKU: ZEBO.5012-20KG
+2026-07-28 05:14:20 [INFO] [9/13] https://yapimaks.com/zebo-zb-444-zemin-boyasi-mavi-rall-5012-akrilik-3-5-kg-p15701
+2026-07-28 05:14:21 [INFO] [15701] 'ZEBO ZB-444 ZEMİN BOYASI MAVİ RALL 5012 ' | 1500.00 TL | SKU: ZEBO.5012-3.5KG
+2026-07-28 05:14:23 [INFO] [10/13] https://yapimaks.com/zebo-zb-444-zemin-boyasi-sari-rall-1018-akrilik-20-kg-p15698
+2026-07-28 05:14:23 [INFO] [15698] 'ZEBO ZB-444 ZEMİN BOYASI SARI RALL 1018 ' | 6900.00 TL | SKU: ZEBO.1018-20KG
+2026-07-28 05:14:25 [INFO] [11/13] https://yapimaks.com/zebo-zb-444-zemin-boyasi-sari-rall-1018-akrilik-3-5-kg-p15699
+2026-07-28 05:14:25 [INFO] [15699] 'ZEBO ZB-444 ZEMİN BOYASI SARI RALL 1018 ' | 1500.00 TL | SKU: ZEBO.1018-3.5KG
+2026-07-28 05:14:27 [INFO] [12/13] https://yapimaks.com/zebo-zb-444-zemin-boyasi-yesil-rall-6037-akrilik-20-kg-p15702
+2026-07-28 05:14:27 [INFO] [15702] 'ZEBO ZB-444 ZEMİN BOYASI YEŞİL RALL 6037' | 6900.00 TL | SKU: ZEBO.6037-20KG
+2026-07-28 05:14:29 [INFO] [13/13] https://yapimaks.com/zebo-zb-444-zemin-boyasi-yesil-rall-6037-akrilik-3-5kg-p15703
+2026-07-28 05:14:29 [INFO] [15703] 'ZEBO ZB-444 ZEMİN BOYASI YEŞİL RALL 6037' | 1500.00 TL | SKU: ZEBO.6037-3.5KG
+2026-07-28 05:14:31 [INFO] Tamamlandi! Toplam 13 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-28.csv
