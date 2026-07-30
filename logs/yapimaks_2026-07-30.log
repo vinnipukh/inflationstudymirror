@@ -1,0 +1,48 @@
+2026-07-30 04:57:37 [INFO] ==================================================
+2026-07-30 04:57:37 [INFO] Yapimaks Scraper basliyor
+2026-07-30 04:57:37 [INFO] ==================================================
+2026-07-30 04:57:37 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-07-30 04:57:38 [INFO] Cookie basariyla alindi.
+2026-07-30 04:57:38 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-07-30 04:57:39 [INFO] Sitemap'ten toplam 8211 urun URL'si bulundu.
+2026-07-30 04:57:39 [INFO] Bugune ait veri yok. Eski veri (2026-07-29.csv) süzülerek bugune aktariliyor...
+2026-07-30 04:57:39 [INFO] Basarili! 8193 urun dunden bugune aktarildi.
+2026-07-30 04:57:39 [INFO] Guncel dosyada hazir olan urun: 8193 | Sifirdan cekilecek (yeni) urun: 18
+2026-07-30 04:57:39 [INFO] 18 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-30.csv
+2026-07-30 04:57:39 [INFO] [1/18] https://yapimaks.com/duvar-paneli-agt-mdf-lb-3771-bianco-krem-12-1x280-0-336m2-p15778
+2026-07-30 04:57:39 [INFO] [15778] 'DUVAR PANELİ AGT MDF LB-3771 BİANCO KREM' | 465.00 TL | SKU: AGT.120028431
+2026-07-30 04:57:41 [INFO] [2/18] https://yapimaks.com/manyetik-somun-adaptoru-8x45-p15796
+2026-07-30 04:57:42 [INFO] [15796] 'MANYETİK SOMUN ADAPTÖRÜ 8x45' | 90.00 TL | SKU: FİVESTAR.BSA0845
+2026-07-30 04:57:44 [INFO] [3/18] https://yapimaks.com/ondulin-mahya-kirmizi-2-mt-p7053
+2026-07-30 04:57:44 [INFO] [7053] 'ONDULİN MAHYA KIRMIZI 2 MT' | 450.00 TL | SKU: ONDULİN. 003
+2026-07-30 04:57:46 [INFO] [4/18] https://yapimaks.com/ondulin-oluklu-levha-kirmizi-2-mt-p7051
+2026-07-30 04:57:46 [INFO] [7051] 'ONDULİN OLUKLU LEVHA KIRMIZI 2-MT' | 475.00 TL | SKU: ONDULİN. 001
+2026-07-30 04:57:48 [INFO] [5/18] https://yapimaks.com/pu-kopuk-titan-pro-753-str-750ml-35-m-pipetli-12ad-p8501
+2026-07-30 04:57:48 [INFO] [8501] 'PU KÖPÜK TİTAN PRO 753 STR 750ML (35 M) ' | 229.00 TL | SKU: SELENA.108
+2026-07-30 04:57:50 [INFO] [6/18] https://yapimaks.com/sds-matkap-ucu-7x310-mm-p8470
+2026-07-30 04:57:51 [INFO] [8470] 'SDS MATKAP UCU 7x310 MM' | 115.00 TL | SKU: FİVESTAR.7310
+2026-07-30 04:57:53 [INFO] [7/18] https://yapimaks.com/sprey-boya-gri-ral7015-400ml-selena-p15090
+2026-07-30 04:57:53 [INFO] [15090] 'SPREY BOYA GRİ (RAL7015) 400ML SELENA' | 129.00 TL | SKU: SELENA.10052494
+2026-07-30 04:57:55 [INFO] [8/18] https://yapimaks.com/zebo-zb-444-zemin-boyasi-acik-gri-ral-7035-akrilik-20-kg-p15692
+2026-07-30 04:57:55 [INFO] [15692] 'ZEBO ZB-444 ZEMİN BOYASI AÇIK GRİ RAL 70' | 6900.00 TL | SKU: ZEBO.7035-20KG
+2026-07-30 04:57:57 [INFO] [9/18] https://yapimaks.com/zebo-zb-444-zemin-boyasi-acik-gri-ral-7035-akrilik-3-5-kg-p15693
+2026-07-30 04:57:57 [INFO] [15693] 'ZEBO ZB-444 ZEMİN BOYASI AÇIK GRİ RAL 70' | 1500.00 TL | SKU: ZEBO.7035-3.5KG
+2026-07-30 04:57:59 [INFO] [10/18] https://yapimaks.com/zebo-zb-444-zemin-boyasi-kirmizi-ral-3028-akrilik-20-kg-p15696
+2026-07-30 04:58:00 [INFO] [15696] 'ZEBO ZB-444 ZEMİN BOYASI KIRMIZI RAL 302' | 6900.00 TL | SKU: ZEBO.3028-20KG
+2026-07-30 04:58:02 [INFO] [11/18] https://yapimaks.com/zebo-zb-444-zemin-boyasi-kirmizi-ral-3028-akrilik-3-5-kg-p15697
+2026-07-30 04:58:02 [INFO] [15697] 'ZEBO ZB-444 ZEMİN BOYASI KIRMIZI RAL 302' | 1500.00 TL | SKU: ZEBO.3028-3.5KG
+2026-07-30 04:58:04 [INFO] [12/18] https://yapimaks.com/zebo-zb-444-zemin-boyasi-koyu-gri-ral-7040-akrilik-20-kg-p15694
+2026-07-30 04:58:04 [INFO] [15694] 'ZEBO ZB-444 ZEMİN BOYASI KOYU GRİ RAL 70' | 6900.00 TL | SKU: ZEBO.7040-20KG
+2026-07-30 04:58:06 [INFO] [13/18] https://yapimaks.com/zebo-zb-444-zemin-boyasi-koyu-gri-ral-7040-akrilik-3-5-kg-p15695
+2026-07-30 04:58:06 [INFO] [15695] 'ZEBO ZB-444 ZEMİN BOYASI KOYU GRİ RAL 70' | 1500.00 TL | SKU: ZEBO.7040-3.5KG
+2026-07-30 04:58:08 [INFO] [14/18] https://yapimaks.com/zebo-zb-444-zemin-boyasi-mavi-ral-5012-akrilik-20-kg-p15700
+2026-07-30 04:58:09 [INFO] [15700] 'ZEBO ZB-444 ZEMİN BOYASI MAVİ RAL 5012 A' | 6900.00 TL | SKU: ZEBO.5012-20KG
+2026-07-30 04:58:11 [INFO] [15/18] https://yapimaks.com/zebo-zb-444-zemin-boyasi-mavi-ral-5012-akrilik-3-5-kg-p15701
+2026-07-30 04:58:11 [INFO] [15701] 'ZEBO ZB-444 ZEMİN BOYASI MAVİ RAL 5012 A' | 1500.00 TL | SKU: ZEBO.5012-3.5KG
+2026-07-30 04:58:13 [INFO] [16/18] https://yapimaks.com/zebo-zb-444-zemin-boyasi-sari-ral-1018-akrilik-3-5-kg-p15699
+2026-07-30 04:58:13 [INFO] [15699] 'ZEBO ZB-444 ZEMİN BOYASI SARI RAL 1018 A' | 1500.00 TL | SKU: ZEBO.1018-3.5KG
+2026-07-30 04:58:15 [INFO] [17/18] https://yapimaks.com/zebo-zb-444-zemin-boyasi-yesil-ral-6037-akrilik-20-kg-p15702
+2026-07-30 04:58:15 [INFO] [15702] 'ZEBO ZB-444 ZEMİN BOYASI YEŞİL RAL 6037 ' | 6900.00 TL | SKU: ZEBO.6037-20KG
+2026-07-30 04:58:17 [INFO] [18/18] https://yapimaks.com/zebo-zb-444-zemin-boyasi-yesil-ral-6037-akrilik-3-5kg-p15703
+2026-07-30 04:58:18 [INFO] [15703] 'ZEBO ZB-444 ZEMİN BOYASI YEŞİL RAL 6037 ' | 1500.00 TL | SKU: ZEBO.6037-3.5KG
+2026-07-30 04:58:20 [INFO] Tamamlandi! Toplam 18 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-30.csv
