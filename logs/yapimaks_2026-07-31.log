@@ -1,0 +1,16 @@
+2026-07-31 05:34:54 [INFO] ==================================================
+2026-07-31 05:34:54 [INFO] Yapimaks Scraper basliyor
+2026-07-31 05:34:54 [INFO] ==================================================
+2026-07-31 05:34:54 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-07-31 05:34:55 [INFO] Cookie basariyla alindi.
+2026-07-31 05:34:55 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-07-31 05:34:55 [INFO] Sitemap'ten toplam 8211 urun URL'si bulundu.
+2026-07-31 05:34:55 [INFO] Bugune ait veri yok. Eski veri (2026-07-30.csv) süzülerek bugune aktariliyor...
+2026-07-31 05:34:55 [INFO] Basarili! 8209 urun dunden bugune aktarildi.
+2026-07-31 05:34:55 [INFO] Guncel dosyada hazir olan urun: 8209 | Sifirdan cekilecek (yeni) urun: 2
+2026-07-31 05:34:55 [INFO] 2 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-31.csv
+2026-07-31 05:34:55 [INFO] [1/2] https://yapimaks.com/is-tisort-suprem-uzun-kol-p12541
+2026-07-31 05:34:56 [INFO] [12541] 'İŞ TİŞÖRT SÜPREM UZUN KOL' | 275.00 TL | SKU: İŞGÜVENLİĞİ.05
+2026-07-31 05:34:58 [INFO] [2/2] https://yapimaks.com/lavabo-knidos-latte-60-cm-batarya-delikli-p2919
+2026-07-31 05:34:58 [INFO] [2919] 'LAVABO KNİDOS LATTE 60 CM BATARYA DELİKL' | 5405.00 TL | SKU: EGEVİT.88611117
+2026-07-31 05:35:00 [INFO] Tamamlandi! Toplam 2 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-07-31.csv
