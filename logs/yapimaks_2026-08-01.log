@@ -1,0 +1,40 @@
+2026-08-01 05:26:27 [INFO] ==================================================
+2026-08-01 05:26:27 [INFO] Yapimaks Scraper basliyor
+2026-08-01 05:26:27 [INFO] ==================================================
+2026-08-01 05:26:27 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-08-01 05:26:28 [INFO] Cookie basariyla alindi.
+2026-08-01 05:26:28 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-08-01 05:26:28 [INFO] Sitemap'ten toplam 8219 urun URL'si bulundu.
+2026-08-01 05:26:28 [INFO] Bugune ait veri yok. Eski veri (2026-07-31.csv) süzülerek bugune aktariliyor...
+2026-08-01 05:26:28 [INFO] Basarili! 8205 urun dunden bugune aktarildi.
+2026-08-01 05:26:28 [INFO] Guncel dosyada hazir olan urun: 8205 | Sifirdan cekilecek (yeni) urun: 14
+2026-08-01 05:26:28 [INFO] 14 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-08-01.csv
+2026-08-01 05:26:28 [INFO] [1/14] https://yapimaks.com/inci-60-cm-alt-beyaz-derinlik-34-cm-p5493
+2026-08-01 05:26:28 [INFO] [5493] 'İNCİ 60 CM ALT BEYAZ (DERİNLİK=34 CM)' | 5450.00 TL | SKU: LINEART.059
+2026-08-01 05:26:30 [INFO] [2/14] https://yapimaks.com/mars-65-cm-ust-ayna-atlantis-beyaz-p5481
+2026-08-01 05:26:31 [INFO] [5481] 'MARS 65 CM ÜST AYNA ATLANTİS  BEYAZ' | 3500.00 TL | SKU: LINEART.047
+2026-08-01 05:26:33 [INFO] [3/14] https://yapimaks.com/mars-80-cm-alt-koyu-gri-beyaz-p12693
+2026-08-01 05:26:33 [INFO] [12693] 'MARS 80 CM ALT KOYU GRİ BEYAZ' | 7450.00 TL | SKU: LINEART.123
+2026-08-01 05:26:35 [INFO] [4/14] https://yapimaks.com/nova-50-cm-alt-koyu-gri-p12052
+2026-08-01 05:26:35 [INFO] [12052] 'NOVA 50 CM ALT KOYU GRİ' | 5150.00 TL | SKU: LINEART.112
+2026-08-01 05:26:37 [INFO] [5/14] https://yapimaks.com/nova-50-cm-ust-ayna-koyu-gri-p12053
+2026-08-01 05:26:37 [INFO] [12053] 'NOVA 50 CM ÜST AYNA KOYU GRİ' | 3000.00 TL | SKU: LINEART.113
+2026-08-01 05:26:39 [INFO] [6/14] https://yapimaks.com/tas-stop-ultra-slv-recine-solvent-bazli-3-kg-p15790
+2026-08-01 05:26:39 [INFO] [15790] 'TAŞ STOP ULTRA SLV REÇİNE SOLVENT BAZLI ' | 1900.00 TL | SKU: TAŞSTOP.152.MM.00401
+2026-08-01 05:26:41 [INFO] [7/14] https://yapimaks.com/tas-stop-wb-recine-su-bazli-5-kg-p15791
+2026-08-01 05:26:42 [INFO] [15791] 'TAŞ STOP WB REÇİNE SU BAZLI 5 KG' | 1900.00 TL | SKU: TAŞSTOP.152.MM.00402
+2026-08-01 05:26:44 [INFO] [8/14] https://yapimaks.com/tasstop-dolomit-beyaz-10-20-mm-10kg-p15781
+2026-08-01 05:26:44 [INFO] [15781] 'TAŞSTOP DOLOMİT BEYAZ 10-20 MM 10KG' | 299.00 TL | SKU: TAŞSTOP.152.MM.00396
+2026-08-01 05:26:46 [INFO] [9/14] https://yapimaks.com/tasstop-dolomit-beyaz-20-40-mm-10kg-p15782
+2026-08-01 05:26:46 [INFO] [15782] 'TAŞSTOP DOLOMİT BEYAZ 20-40 MM 10KG' | 299.00 TL | SKU: TAŞSTOP.152.MM.00397
+2026-08-01 05:26:48 [INFO] [10/14] https://yapimaks.com/tasstop-dolomit-beyaz-40-60-mm-10kg-p15783
+2026-08-01 05:26:48 [INFO] [15783] 'TAŞSTOP DOLOMİT BEYAZ 40-60 MM 10KG' | 299.00 TL | SKU: TAŞSTOP.152.MM.00398
+2026-08-01 05:26:50 [INFO] [11/14] https://yapimaks.com/tasstop-mermer-beyaz-10-20-mm-10kg-p15784
+2026-08-01 05:26:50 [INFO] [15784] 'TAŞSTOP MERMER BEYAZ 10-20 MM 10KG' | 250.00 TL | SKU: TAŞSTOP.152.MM.00174
+2026-08-01 05:26:52 [INFO] [12/14] https://yapimaks.com/tasstop-mermer-beyaz-20-40-mm-10kg-p15785
+2026-08-01 05:26:53 [INFO] [15785] 'TAŞSTOP MERMER BEYAZ 20-40 MM 10KG' | 250.00 TL | SKU: TAŞSTOP.152.MM.00399
+2026-08-01 05:26:55 [INFO] [13/14] https://yapimaks.com/tasstop-mermer-beyaz-40-60-mm-10kg-p15786
+2026-08-01 05:26:55 [INFO] [15786] 'TAŞSTOP MERMER BEYAZ 40-60 MM 10KG' | 250.00 TL | SKU: TAŞSTOP.152.MM.00400
+2026-08-01 05:26:57 [INFO] [14/14] https://yapimaks.com/trend-65-cm-ust-ayna-beyaz-p5490
+2026-08-01 05:26:57 [INFO] [5490] 'TREND 65 CM ÜST AYNA BEYAZ' | 3450.00 TL | SKU: LINEART.056
+2026-08-01 05:26:59 [INFO] Tamamlandi! Toplam 14 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-08-01.csv
