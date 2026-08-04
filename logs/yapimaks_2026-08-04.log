@@ -1,0 +1,32 @@
+2026-08-04 05:14:13 [INFO] ==================================================
+2026-08-04 05:14:13 [INFO] Yapimaks Scraper basliyor
+2026-08-04 05:14:13 [INFO] ==================================================
+2026-08-04 05:14:13 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-08-04 05:14:14 [INFO] Cookie basariyla alindi.
+2026-08-04 05:14:14 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-08-04 05:14:14 [INFO] Sitemap'ten toplam 8209 urun URL'si bulundu.
+2026-08-04 05:14:14 [INFO] Bugune ait veri yok. Eski veri (2026-08-03.csv) süzülerek bugune aktariliyor...
+2026-08-04 05:14:15 [INFO] Basarili! 8199 urun dunden bugune aktarildi.
+2026-08-04 05:14:15 [INFO] Guncel dosyada hazir olan urun: 8199 | Sifirdan cekilecek (yeni) urun: 10
+2026-08-04 05:14:15 [INFO] 10 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-08-04.csv
+2026-08-04 05:14:15 [INFO] [1/10] https://yapimaks.com/imagine-acik-gri-60x120-2k-mat-rek-2-16m2-p15397
+2026-08-04 05:14:15 [INFO] [15397] 'İMAGİNE AÇIK GRİ 60X120 2K MAT REK (2,16' | 1134.00 TL | SKU: EGESER.600X1200IMA57REK.2K
+2026-08-04 05:14:17 [INFO] [2/10] https://yapimaks.com/knauf-earthwool-043m-10cm-folyolu-9-6m2-p5242
+2026-08-04 05:14:17 [INFO] [5242] 'KNAUF EARTHWOOL 043M-10CM FOLYOLU(9,6m2)' | 1300.00 TL | SKU: KNAUF.IP044
+2026-08-04 05:14:19 [INFO] [3/10] https://yapimaks.com/orlando-gri-60x120-1k-tam-parlak-1-44m2-p15802
+2026-08-04 05:14:19 [INFO] [15802] 'ORLANDO GRİ 60X120 1K TAM PARLAK (1,44M2' | 1062.72 TL | SKU: EGESER.600X1200ORL03PAR.1K
+2026-08-04 05:14:21 [INFO] [4/10] https://yapimaks.com/orlando-gri-60x120-1k-tam-parlak-2-16m2-p13842
+2026-08-04 05:14:21 [INFO] [13842] 'ORLANDO GRİ 60X120 1K TAM PARLAK (2,16M2' | 1590.84 TL | SKU: EGESER.600X1200ORL03PAR.1K.2,16
+2026-08-04 05:14:23 [INFO] [5/10] https://yapimaks.com/sunta-vidasi-3-5x45-meridyen-500-p15806
+2026-08-04 05:14:24 [INFO] [15806] 'SUNTA VİDASI 3,5x45 MERİDYEN (500)' | 240.00 TL | SKU: MERİDYEN.VSUN3545
+2026-08-04 05:14:26 [INFO] [6/10] https://yapimaks.com/sunta-vidasi-4x30-std-500-p15803
+2026-08-04 05:14:26 [INFO] [15803] 'SUNTA VİDASI 4x30 STD (500)' | 225.00 TL | SKU: STD.900012700
+2026-08-04 05:14:28 [INFO] [7/10] https://yapimaks.com/sunta-vidasi-4x50-akdeniz-500-p15804
+2026-08-04 05:14:28 [INFO] [15804] 'SUNTA VİDASI 4x50 AKDENİZ (500)' | 325.00 TL | SKU: AKDENİZ.VSUN450
+2026-08-04 05:14:30 [INFO] [8/10] https://yapimaks.com/sunta-vidasi-5x120-akdeniz-100-p15801
+2026-08-04 05:14:30 [INFO] [15801] 'SUNTA VİDASI 5x120 AKDENİZ (100)' | 325.00 TL | SKU: AKDENİZ.VSUN5120
+2026-08-04 05:14:32 [INFO] [9/10] https://yapimaks.com/sunta-vidasi-5x40-akdeniz-200-p15805
+2026-08-04 05:14:32 [INFO] [15805] 'SUNTA VİDASI 5x40 AKDENİZ (200)' | 150.00 TL | SKU: AKDENİZ.VSUN540
+2026-08-04 05:14:34 [INFO] [10/10] https://yapimaks.com/sunta-vidasi-6x150-std-50-p9101
+2026-08-04 05:14:34 [INFO] [9101] 'SUNTA VİDASI 6x150 STD (50)' | 225.00 TL | SKU: STD.900057700
+2026-08-04 05:14:36 [INFO] Tamamlandi! Toplam 10 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-08-04.csv
