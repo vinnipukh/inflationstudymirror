@@ -1,0 +1,18 @@
+2026-08-06 05:15:53 [INFO] ==================================================
+2026-08-06 05:15:53 [INFO] Yapimaks Scraper basliyor
+2026-08-06 05:15:53 [INFO] ==================================================
+2026-08-06 05:15:53 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-08-06 05:15:54 [INFO] Cookie basariyla alindi.
+2026-08-06 05:15:54 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-08-06 05:15:55 [INFO] Sitemap'ten toplam 8210 urun URL'si bulundu.
+2026-08-06 05:15:55 [INFO] Bugune ait veri yok. Eski veri (2026-08-05.csv) süzülerek bugune aktariliyor...
+2026-08-06 05:15:55 [INFO] Basarili! 8207 urun dunden bugune aktarildi.
+2026-08-06 05:15:55 [INFO] Guncel dosyada hazir olan urun: 8207 | Sifirdan cekilecek (yeni) urun: 3
+2026-08-06 05:15:55 [INFO] 3 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-08-06.csv
+2026-08-06 05:15:55 [INFO] [1/3] https://yapimaks.com/el-feneri-pt-4060-usb-sarjli-3w-led-1000lm-p15810
+2026-08-06 05:15:55 [INFO] [15810] 'EL FENERİ PT-4060 USB ŞARJLI  3W LED 100' | 225.00 TL | SKU: PANTHER PT-4060
+2026-08-06 05:15:57 [INFO] [2/3] https://yapimaks.com/gaz-beton-05-cm-60x25x05-1ad-0-15-m2-p9344
+2026-08-06 05:15:57 [INFO] [9344] 'GAZ BETON 05-CM (60x25X05) 1AD 0.15 M2' | 31.50 TL | SKU: STT.017
+2026-08-06 05:15:59 [INFO] [3/3] https://yapimaks.com/gaz-beton-20-cm-60x25x20-1ad-0-15-m2-p9347
+2026-08-06 05:15:59 [INFO] [9347] 'GAZ BETON 20-CM (60x25x20) 1AD 0.15 M2' | 121.00 TL | SKU: STT.021
+2026-08-06 05:16:01 [INFO] Tamamlandi! Toplam 3 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-08-06.csv
