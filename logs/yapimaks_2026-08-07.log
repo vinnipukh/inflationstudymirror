@@ -1,0 +1,26 @@
+2026-08-07 04:24:50 [INFO] ==================================================
+2026-08-07 04:24:50 [INFO] Yapimaks Scraper basliyor
+2026-08-07 04:24:50 [INFO] ==================================================
+2026-08-07 04:24:50 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-08-07 04:24:50 [INFO] Cookie basariyla alindi.
+2026-08-07 04:24:50 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-08-07 04:24:51 [INFO] Sitemap'ten toplam 8210 urun URL'si bulundu.
+2026-08-07 04:24:51 [INFO] Bugune ait veri yok. Eski veri (2026-08-06.csv) süzülerek bugune aktariliyor...
+2026-08-07 04:24:51 [INFO] Basarili! 8203 urun dunden bugune aktarildi.
+2026-08-07 04:24:51 [INFO] Guncel dosyada hazir olan urun: 8203 | Sifirdan cekilecek (yeni) urun: 7
+2026-08-07 04:24:51 [INFO] 7 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-08-07.csv
+2026-08-07 04:24:51 [INFO] [1/7] https://yapimaks.com/0-50-86-2000-trapez-bordo-p7691
+2026-08-07 04:24:51 [INFO] [7691] '0.50*86*2000 TRAPEZ (BORDO)' | 450.00 TL | SKU: RALL.3009.050.2000
+2026-08-07 04:24:53 [INFO] [2/7] https://yapimaks.com/celik-dubel-gomlekli-8x55-mm-1-ad-p5907
+2026-08-07 04:24:54 [INFO] [5907] 'ÇELİK DÜBEL GÖMLEKLİ 8x55 MM 1 AD' | 6.00 TL | SKU: STD.910959800
+2026-08-07 04:24:56 [INFO] [3/7] https://yapimaks.com/celik-dubel-klipsli-20x200-mm-1-ad-p13074
+2026-08-07 04:24:56 [INFO] [13074] 'ÇELİK DÜBEL KLİPSLİ 20x200 mm 1 AD' | 105.00 TL | SKU: STD.978929800
+2026-08-07 04:24:58 [INFO] [4/7] https://yapimaks.com/lavabo-lissa-50-cm-oval-b-dlk-beyaz-p2890
+2026-08-07 04:24:58 [INFO] [2890] 'LAVABO LİSSA 50 CM OVAL B.DLK BEYAZ' | 1455.00 TL | SKU: EGEVİT.20501
+2026-08-07 04:25:00 [INFO] [5/7] https://yapimaks.com/led-panel-sensorlu-6400k-220q-slim-beyaz-yuv-18w-siva-ustu-ct-9247-p15404
+2026-08-07 04:25:00 [INFO] [15404] 'LED PANEL SENSÖRLÜ 6400K 220Q SLİM BEYAZ' | 440.00 TL | SKU: CATA.9247B
+2026-08-07 04:25:02 [INFO] [6/7] https://yapimaks.com/matkap-uclu-vida-siyah-rysb-3-9x16-2000-ad-p15814
+2026-08-07 04:25:02 [INFO] [15814] 'MATKAP UÇLU VİDA SİYAH RYSB 3.9x16 (2000' | 1150.00 TL | SKU: STD.120018900
+2026-08-07 04:25:04 [INFO] [7/7] https://yapimaks.com/sunta-vidasi-4x70-std-200-p9100
+2026-08-07 04:25:05 [INFO] [9100] 'SUNTA VİDASI 4x70 STD (200)' | 200.00 TL | SKU: STD.900053700
+2026-08-07 04:25:07 [INFO] Tamamlandi! Toplam 7 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-08-07.csv
