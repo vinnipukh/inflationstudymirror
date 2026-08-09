@@ -1,0 +1,14 @@
+2026-08-09 03:40:54 [INFO] ==================================================
+2026-08-09 03:40:54 [INFO] Yapimaks Scraper basliyor
+2026-08-09 03:40:54 [INFO] ==================================================
+2026-08-09 03:40:54 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-08-09 03:40:55 [INFO] Cookie basariyla alindi.
+2026-08-09 03:40:55 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-08-09 03:40:55 [INFO] Sitemap'ten toplam 8206 urun URL'si bulundu.
+2026-08-09 03:40:55 [INFO] Bugune ait veri yok. Eski veri (2026-08-08.csv) süzülerek bugune aktariliyor...
+2026-08-09 03:40:55 [INFO] Basarili! 8205 urun dunden bugune aktarildi.
+2026-08-09 03:40:55 [INFO] Guncel dosyada hazir olan urun: 8205 | Sifirdan cekilecek (yeni) urun: 1
+2026-08-09 03:40:55 [INFO] 1 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-08-09.csv
+2026-08-09 03:40:55 [INFO] [1/1] https://yapimaks.com/hidrofor-rtm846-600w-35-mt-rtrmax-p11197
+2026-08-09 03:40:56 [INFO] [11197] 'HİDROFOR RTM846 600W 35 MT RTRMAX' | 8750.00 TL | SKU: RTRMAX.RTM846
+2026-08-09 03:40:58 [INFO] Tamamlandi! Toplam 1 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-08-09.csv
