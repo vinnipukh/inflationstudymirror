@@ -1,0 +1,28 @@
+2026-08-10 03:53:08 [INFO] ==================================================
+2026-08-10 03:53:08 [INFO] Yapimaks Scraper basliyor
+2026-08-10 03:53:08 [INFO] ==================================================
+2026-08-10 03:53:08 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-08-10 03:53:09 [INFO] Cookie basariyla alindi.
+2026-08-10 03:53:09 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-08-10 03:53:10 [INFO] Sitemap'ten toplam 8211 urun URL'si bulundu.
+2026-08-10 03:53:10 [INFO] Bugune ait veri yok. Eski veri (2026-08-09.csv) süzülerek bugune aktariliyor...
+2026-08-10 03:53:10 [INFO] Basarili! 8203 urun dunden bugune aktarildi.
+2026-08-10 03:53:10 [INFO] Guncel dosyada hazir olan urun: 8203 | Sifirdan cekilecek (yeni) urun: 8
+2026-08-10 03:53:10 [INFO] 8 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-08-10.csv
+2026-08-10 03:53:10 [INFO] [1/8] https://yapimaks.com/acil-durum-led-aydinlatma-1200-lm-ac02-00330-p15812
+2026-08-10 03:53:11 [INFO] [15812] 'ACİL DURUM LED AYDINLATMA 1200 LM AC02-0' | 2300.00 TL | SKU: ACK.AC02-00330
+2026-08-10 03:53:13 [INFO] [2/8] https://yapimaks.com/acil-durum-led-aydinlatma-armatur-400-lm-cata-ct-9171-p15811
+2026-08-10 03:53:13 [INFO] [15811] 'ACİL DURUM LED AYDINLATMA ARMATÜR 400 LM' | 580.00 TL | SKU: CATA.CT9171
+2026-08-10 03:53:15 [INFO] [3/8] https://yapimaks.com/acili-cektirme-seffaf-t-baglanti-100-adet-p15816
+2026-08-10 03:53:15 [INFO] [15816] 'AÇILI ÇEKTİRME ŞEFFAF T BAĞLANTI 100 ADE' | 10.00 TL | SKU: NOBEL.3333195
+2026-08-10 03:53:17 [INFO] [4/8] https://yapimaks.com/batarya-sirma-mix-tek-giris-duvardan-lavabo-p11908
+2026-08-10 03:53:17 [INFO] [11908] 'BATARYA SIRMA MİX TEK GİRİŞ DUVARDAN LAV' | 820.00 TL | SKU: GMS.SR233
+2026-08-10 03:53:19 [INFO] [5/8] https://yapimaks.com/batarya-sirma-mix-tek-giris-mermer-ustu-lavabo-sr241-p15813
+2026-08-10 03:53:20 [INFO] [15813] 'BATARYA SIRMA MİX TEK GİRİŞ MERMER ÜSTÜ ' | 1165.00 TL | SKU: GMS.SR241
+2026-08-10 03:53:22 [INFO] [6/8] https://yapimaks.com/firca-arac-ici-temizleme-fiber-killi-fa-1353-p15809
+2026-08-10 03:53:22 [INFO] [15809] 'FIRÇA ARAÇ İÇİ TEMİZLEME FİBER KILLI FA-' | 99.00 TL | SKU: AUTOKİT.FA2-1353
+2026-08-10 03:53:24 [INFO] [7/8] https://yapimaks.com/tabanca-basincli-arac-yikama-fa2-1365-p15808
+2026-08-10 03:53:24 [INFO] [15808] 'TABANCA BASINÇLI ARAÇ YIKAMA  FA2-1365' | 599.00 TL | SKU: AUTOKİT.FA2-1365
+2026-08-10 03:53:26 [INFO] [8/8] https://yapimaks.com/tabanca-yuksek-basincli-oto-yikama-sulama-sarjli-48w-fa2-1349-p15807
+2026-08-10 03:53:26 [INFO] [15807] 'TABANCA YÜKSEK BASINÇLI OTO YIKAMA SULAM' | 1599.00 TL | SKU: AUTOKİT.FA2-1349
+2026-08-10 03:53:28 [INFO] Tamamlandi! Toplam 8 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-08-10.csv
