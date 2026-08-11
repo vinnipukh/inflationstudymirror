@@ -1,0 +1,20 @@
+2026-08-11 03:42:43 [INFO] ==================================================
+2026-08-11 03:42:43 [INFO] Yapimaks Scraper basliyor
+2026-08-11 03:42:43 [INFO] ==================================================
+2026-08-11 03:42:43 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-08-11 03:42:44 [INFO] Cookie basariyla alindi.
+2026-08-11 03:42:44 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-08-11 03:42:44 [INFO] Sitemap'ten toplam 7534 urun URL'si bulundu.
+2026-08-11 03:42:44 [INFO] Bugune ait veri yok. Eski veri (2026-08-10.csv) süzülerek bugune aktariliyor...
+2026-08-11 03:42:45 [INFO] Basarili! 7530 urun dunden bugune aktarildi.
+2026-08-11 03:42:45 [INFO] Guncel dosyada hazir olan urun: 7530 | Sifirdan cekilecek (yeni) urun: 4
+2026-08-11 03:42:45 [INFO] 4 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-08-11.csv
+2026-08-11 03:42:45 [INFO] [1/4] https://yapimaks.com/acil-cikis-armatur-3w-exit-ok-hl330l-horoz-p4540
+2026-08-11 03:42:45 [INFO] [4540] 'ACİL ÇIKIŞ ARMATÜR 3W EXİT OK HL330L HOR' | 204.00 TL | SKU: HOROZ.084-020-0002
+2026-08-11 03:42:47 [INFO] [2/4] https://yapimaks.com/batarya-acik-kol-35-lik-p5122
+2026-08-11 03:42:47 [INFO] [5122] "BATARYA AÇIK KOL 35'LİK" | 75.00 TL | SKU: GMS.ZM010
+2026-08-11 03:42:49 [INFO] [3/4] https://yapimaks.com/batarya-acik-kol-40-lik-p15817
+2026-08-11 03:42:50 [INFO] [15817] "BATARYA AÇIK KOL 40'LIK" | 75.00 TL | SKU: GMS.ZM004
+2026-08-11 03:42:52 [INFO] [4/4] https://yapimaks.com/sinek-oldurucu-raket-ltd-002-p11376
+2026-08-11 03:42:52 [INFO] [11376] 'SİNEK ÖLDÜRÜCÜ RAKET LTD-002' | 350.00 TL | SKU: PANTHER.LTD-002
+2026-08-11 03:42:54 [INFO] Tamamlandi! Toplam 4 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-08-11.csv
