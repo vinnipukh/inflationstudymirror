@@ -1,0 +1,58 @@
+2026-08-14 04:07:09 [INFO] ==================================================
+2026-08-14 04:07:09 [INFO] Yapimaks Scraper basliyor
+2026-08-14 04:07:09 [INFO] ==================================================
+2026-08-14 04:07:09 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-08-14 04:07:10 [INFO] Cookie basariyla alindi.
+2026-08-14 04:07:10 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-08-14 04:07:10 [INFO] Sitemap'ten toplam 8387 urun URL'si bulundu.
+2026-08-14 04:07:10 [INFO] Bugune ait veri yok. Eski veri (2026-08-13.csv) süzülerek bugune aktariliyor...
+2026-08-14 04:07:11 [INFO] Basarili! 8364 urun dunden bugune aktarildi.
+2026-08-14 04:07:11 [INFO] Guncel dosyada hazir olan urun: 8364 | Sifirdan cekilecek (yeni) urun: 23
+2026-08-14 04:07:11 [INFO] 23 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-08-14.csv
+2026-08-14 04:07:11 [INFO] [1/23] https://yapimaks.com/eviye-440020-granit-luster-6s-50x100-antrasit-tezgah-ustu-p11107
+2026-08-14 04:07:11 [INFO] [11107] 'EVİYE 440020 GRANİT LUSTER 6S 50X100 ANT' | 8200.00 TL | SKU: QUARSTONE.440020
+2026-08-14 04:07:13 [INFO] [2/23] https://yapimaks.com/eviye-440023-granit-luster-6s-50x100-metalik-gri-tezgah-ustu-p11108
+2026-08-14 04:07:13 [INFO] [11108] 'EVİYE 440023 GRANİT LUSTER 6S 50X100 MET' | 8200.00 TL | SKU: QUARSTONE.440023
+2026-08-14 04:07:15 [INFO] [3/23] https://yapimaks.com/eviye-440031-granit-luster-6-50x60-metalik-gri-tezgah-ustu-p11104
+2026-08-14 04:07:16 [INFO] [11104] 'EVİYE 440031 GRANİT LUSTER 6 50X60 METAL' | 6500.00 TL | SKU: QUARSTONE.440031
+2026-08-14 04:07:18 [INFO] [4/23] https://yapimaks.com/eviye-440038-granit-cielo-70-u-40x70-beyaz-tezgah-alti-p11111
+2026-08-14 04:07:18 [INFO] [11111] 'EVİYE 440038 GRANİT CİELO 70 U 40X70 BEY' | 7400.00 TL | SKU: QUARSTONE.440038
+2026-08-14 04:07:20 [INFO] [5/23] https://yapimaks.com/eviye-440044-granit-vetro-xl-6s-50x100-krem-tezgah-ustu-p15367
+2026-08-14 04:07:20 [INFO] [15367] 'EVİYE 440044 GRANİT VETRO XL 6S 50X100 K' | 7100.00 TL | SKU: QUARSTONE.440044
+2026-08-14 04:07:22 [INFO] [6/23] https://yapimaks.com/eviye-440045-granit-vetro-xl-6s-50x100-siyah-tezgah-ustu-p15364
+2026-08-14 04:07:22 [INFO] [15364] 'EVİYE 440045 GRANİT VETRO XL 6S 50X100 S' | 7100.00 TL | SKU: QUARSTONE.440045
+2026-08-14 04:07:24 [INFO] [7/23] https://yapimaks.com/eviye-440047-granit-vetro-xl-6s-50x100-beyaz-tezgah-ustu-p15365
+2026-08-14 04:07:25 [INFO] [15365] 'EVİYE 440047 GRANİT VETRO XL 6S 50X100 B' | 7100.00 TL | SKU: QUARSTONE.440047
+2026-08-14 04:07:27 [INFO] [8/23] https://yapimaks.com/eviye-440053-granit-cielo-50-u-40x50-siyah-tezgah-alti-p15366
+2026-08-14 04:07:27 [INFO] [15366] 'EVİYE 440053 GRANİT CİELO 50 U 40X50 SİY' | 6500.00 TL | SKU: QUARSTONE.440053
+2026-08-14 04:07:29 [INFO] [9/23] https://yapimaks.com/eviye-440056-granit-cielo-70-u-40x70-krem-tezgah-alti-p15369
+2026-08-14 04:07:29 [INFO] [15369] 'EVİYE 440056 GRANİT CİELO 70 U 40X70 KRE' | 7400.00 TL | SKU: QUARSTONE.440056
+2026-08-14 04:07:31 [INFO] [10/23] https://yapimaks.com/eviye-440060-granit-vetro-5s-50x86-krem-tezgah-ustu-p15360
+2026-08-14 04:07:31 [INFO] [15360] 'EVİYE 440060 GRANİT VETRO 5S 50X86 KREM ' | 6500.00 TL | SKU: QUARSTONE.440060
+2026-08-14 04:07:33 [INFO] [11/23] https://yapimaks.com/eviye-440060-granit-vetro-5s-50x86-siyah-tezgah-ustu-p15361
+2026-08-14 04:07:34 [INFO] [15361] 'EVİYE 440060 GRANİT VETRO 5S 50X86 SİYAH' | 6500.00 TL | SKU: QUARSTONE.440061
+2026-08-14 04:07:36 [INFO] [12/23] https://yapimaks.com/eviye-440068-granit-cielo-50-u-40x50-metalik-gri-tezgah-alti-p15363
+2026-08-14 04:07:36 [INFO] [15363] 'EVİYE 440068 GRANİT CİELO 50 U 40X50 MET' | 6500.00 TL | SKU: QUARSTONE.440068
+2026-08-14 04:07:38 [INFO] [13/23] https://yapimaks.com/eviye-440073-granit-vetro-5s-50x86-metalik-gri-tezgah-ustu-p15368
+2026-08-14 04:07:38 [INFO] [15368] 'EVİYE 440073 GRANİT VETRO 5S 50X86 METAL' | 6500.00 TL | SKU: QUARSTONE.440073
+2026-08-14 04:07:40 [INFO] [14/23] https://yapimaks.com/eviye-440074-granit-vetro-xl-6s-50x100-metalik-gri-tezgah-ustu-p15359
+2026-08-14 04:07:40 [INFO] [15359] 'EVİYE 440074 GRANİT VETRO XL 6S 50X100 M' | 7100.00 TL | SKU: QUARSTONE.440074
+2026-08-14 04:07:42 [INFO] [15/23] https://yapimaks.com/eviye-440075-granit-cielo-70-u-40x70-metalik-gri-tezgah-alti-p13790
+2026-08-14 04:07:43 [INFO] [13790] 'EVİYE 440075 GRANİT CİELO 70 U 40X70 MET' | 7400.00 TL | SKU: QUARSTONE.440075
+2026-08-14 04:07:45 [INFO] [16/23] https://yapimaks.com/glassy-100-sivi-cam-0-8-lt-likit-membran-zemin-koruma-a-b-p2627
+2026-08-14 04:07:45 [INFO] [2627] 'GLASSY -100 SIVI CAM 0.8 LT LİKİT MEMBRA' | 1250.00 TL | SKU: DRYFİX.013
+2026-08-14 04:07:47 [INFO] [17/23] https://yapimaks.com/led-solar-sokak-armaturu-grand-100-100w-6400k-siyah-horoz-p13669
+2026-08-14 04:07:47 [INFO] [13669] 'LED SOLAR SOKAK ARMATÜRÜ GRAND-100 100W ' | 1600.00 TL | SKU: HOROZ.074-009-0100
+2026-08-14 04:07:49 [INFO] [18/23] https://yapimaks.com/mantolama-dubeli-pvc-civili-06-cm-speco-1-ad-p2006
+2026-08-14 04:07:49 [INFO] [2006] 'MANTOLAMA DÜBELİ PVC ÇİVİLİ 06-CM SPECO ' | 1.50 TL | SKU: SPECO.MD.06
+2026-08-14 04:07:51 [INFO] [19/23] https://yapimaks.com/mantolama-dubeli-pvc-civili-10-cm-speco-1-ad-p2008
+2026-08-14 04:07:52 [INFO] [2008] 'MANTOLAMA DÜBELİ PVC ÇİVİLİ  10-CM SPECO' | 1.75 TL | SKU: SPECO.MD.10
+2026-08-14 04:07:54 [INFO] [20/23] https://yapimaks.com/mantolama-dubeli-pvc-civili-12-cm-speco-1-ad-p2009
+2026-08-14 04:07:54 [INFO] [2009] 'MANTOLAMA DÜBELİ PVC ÇİVİLİ 12-CM SPECO ' | 2.00 TL | SKU: SPECO.MD.12
+2026-08-14 04:07:56 [INFO] [21/23] https://yapimaks.com/mantolama-dubeli-pvc-civili-14-cm-speco-1-ad-p2010
+2026-08-14 04:07:56 [INFO] [2010] 'MANTOLAMA DÜBELİ PVC ÇİVİLİ 14-CM SPECO ' | 2.25 TL | SKU: SPECO.MD.14
+2026-08-14 04:07:58 [INFO] [22/23] https://yapimaks.com/mantolama-dubeli-pvc-civili-16-cm-speco-1-ad-p2013
+2026-08-14 04:07:58 [INFO] [2013] 'MANTOLAMA DÜBELİ PVC ÇİVİLİ 16-CM SPECO ' | 2.50 TL | SKU: SPECO.MD.16
+2026-08-14 04:08:00 [INFO] [23/23] https://yapimaks.com/mantolama-dubeli-pvc-civili-18-cm-speco-1-ad-p2012
+2026-08-14 04:08:01 [INFO] [2012] 'MANTOLAMA DÜBELİ PVC ÇİVİLİ 18-CM SPECO ' | 2.75 TL | SKU: SPECO.MD.18
+2026-08-14 04:08:03 [INFO] Tamamlandi! Toplam 23 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-08-14.csv
