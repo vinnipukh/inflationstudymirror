@@ -1,0 +1,20 @@
+2026-08-15 02:50:45 [INFO] ==================================================
+2026-08-15 02:50:45 [INFO] Yapimaks Scraper basliyor
+2026-08-15 02:50:45 [INFO] ==================================================
+2026-08-15 02:50:45 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-08-15 02:50:46 [INFO] Cookie basariyla alindi.
+2026-08-15 02:50:46 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-08-15 02:50:46 [INFO] Sitemap'ten toplam 8384 urun URL'si bulundu.
+2026-08-15 02:50:46 [INFO] Bugune ait veri yok. Eski veri (2026-08-14.csv) süzülerek bugune aktariliyor...
+2026-08-15 02:50:46 [INFO] Basarili! 8380 urun dunden bugune aktarildi.
+2026-08-15 02:50:46 [INFO] Guncel dosyada hazir olan urun: 8380 | Sifirdan cekilecek (yeni) urun: 4
+2026-08-15 02:50:46 [INFO] 4 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-08-15.csv
+2026-08-15 02:50:46 [INFO] [1/4] https://yapimaks.com/100-45-pis-su-pvc-dirsek-kalde-p4899
+2026-08-15 02:50:47 [INFO] [4899] '100/45 PİS SU PVC DİRSEK KALDE' | 62.00 TL | SKU: KALDE.5213ELB0M0045
+2026-08-15 02:50:49 [INFO] [2/4] https://yapimaks.com/led-ampul-crystal-30w-6400k-175-265v-e27-p13797
+2026-08-15 02:50:49 [INFO] [13797] 'LED AMPUL CRYSTAL-30W 6400K 175-265V E27' | 95.00 TL | SKU: HOROZ.001-016-1030
+2026-08-15 02:50:51 [INFO] [3/4] https://yapimaks.com/led-ampul-crystal-50w-6400k-175-265v-e27-p13752
+2026-08-15 02:50:51 [INFO] [13752] 'LED AMPUL CRYSTAL-50W 6400K 175-265V E27' | 150.00 TL | SKU: HOROZ.001-016-1050
+2026-08-15 02:50:53 [INFO] [4/4] https://yapimaks.com/woodmax-teak-yagi-0-75-lt-p13513
+2026-08-15 02:50:53 [INFO] [13513] 'WOODMAX TEAK YAĞI 0.75  LT' | 750.00 TL | SKU: FİLLİ.WOODMAX.1011
+2026-08-15 02:50:55 [INFO] Tamamlandi! Toplam 4 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-08-15.csv
