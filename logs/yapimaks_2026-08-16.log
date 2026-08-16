@@ -1,0 +1,60 @@
+2026-08-16 02:58:31 [INFO] ==================================================
+2026-08-16 02:58:31 [INFO] Yapimaks Scraper basliyor
+2026-08-16 02:58:31 [INFO] ==================================================
+2026-08-16 02:58:31 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-08-16 02:58:32 [INFO] Cookie basariyla alindi.
+2026-08-16 02:58:32 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-08-16 02:58:32 [INFO] Sitemap'ten toplam 8401 urun URL'si bulundu.
+2026-08-16 02:58:32 [INFO] Bugune ait veri yok. Eski veri (2026-08-15.csv) süzülerek bugune aktariliyor...
+2026-08-16 02:58:32 [INFO] Basarili! 8377 urun dunden bugune aktarildi.
+2026-08-16 02:58:33 [INFO] Guncel dosyada hazir olan urun: 8377 | Sifirdan cekilecek (yeni) urun: 24
+2026-08-16 02:58:33 [INFO] 24 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-08-16.csv
+2026-08-16 02:58:33 [INFO] [1/24] https://yapimaks.com/armatur-ledbant-beyaz-100w-120cm-7000k-gama-100-horoz-p15830
+2026-08-16 02:58:33 [INFO] [15830] 'ARMATÜR LEDBANT BEYAZ 100W 120CM 7000K G' | 440.00 TL | SKU: HOROZ.052-006-0100-0005
+2026-08-16 02:58:35 [INFO] [2/24] https://yapimaks.com/armatur-ledbant-beyaz-80w-120cm-8000k-gama-80-horoz-p14739
+2026-08-16 02:58:35 [INFO] [14739] 'ARMATÜR LEDBANT BEYAZ 80W 120CM 8000K GA' | 299.00 TL | SKU: HOROZ.056-003-0007
+2026-08-16 02:58:37 [INFO] [3/24] https://yapimaks.com/atlas-bej-mix-30x60-1k-0-97m2-p2777
+2026-08-16 02:58:38 [INFO] [2777] 'ATLAS BEJ MİX 30X60 1K (0,97M2)' | 368.00 TL | SKU: EGESER.300X600ATS22
+2026-08-16 02:58:40 [INFO] [4/24] https://yapimaks.com/kapi-zili-kablosuz-4-5vdc-full-siyah-nero-d-horoz-p15834
+2026-08-16 02:58:40 [INFO] [15834] 'KAPI ZİLİ KABLOSUZ 4,5VDC FULL SİYAH NER' | 330.00 TL | SKU: HOROZ.086-003-00001
+2026-08-16 02:58:42 [INFO] [5/24] https://yapimaks.com/led-ampul-crystal-30w-6400k-beyaz-175-265v-e27-p13797
+2026-08-16 02:58:42 [INFO] [13797] 'LED AMPUL CRYSTAL 30W 6400K BEYAZ 175-26' | 95.00 TL | SKU: HOROZ.001-016-1030
+2026-08-16 02:58:44 [INFO] [6/24] https://yapimaks.com/led-ampul-crystal-40w-6400k-beyaz-175-265v-e27-p15831
+2026-08-16 02:58:44 [INFO] [15831] 'LED AMPUL CRYSTAL 40W 6400K BEYAZ 175-26' | 130.00 TL | SKU: HOROZ.001-016-1040
+2026-08-16 02:58:46 [INFO] [7/24] https://yapimaks.com/led-ampul-crystal-50w-beyaz-6400k-175-265v-e27-p13752
+2026-08-16 02:58:47 [INFO] [13752] 'LED AMPUL CRYSTAL 50W BEYAZ 6400K 175-26' | 150.00 TL | SKU: HOROZ.001-016-1050
+2026-08-16 02:58:49 [INFO] [8/24] https://yapimaks.com/led-ampul-ekola-9-9w-e27-4200k-horoz-p15829
+2026-08-16 02:58:49 [INFO] [15829] 'LED AMPUL EKOLA-9 9W E27 4200K HOROZ' | 29.00 TL | SKU: HOROZ.001-006-2009-030
+2026-08-16 02:58:51 [INFO] [9/24] https://yapimaks.com/led-bahce-armaturu-palace-20w-3000k-siyah-horoz-p15828
+2026-08-16 02:58:51 [INFO] [15828] 'LED BAHÇE ARMATÜRÜ PALACE 20W 3000K SİYA' | 500.00 TL | SKU: HOROZ.076-081-0020.030
+2026-08-16 02:58:53 [INFO] [10/24] https://yapimaks.com/led-smd-armatur-fortis-50-50w-3000k-118-cm-siyah-kasa-horoz-p15836
+2026-08-16 02:58:53 [INFO] [15836] 'LED SMD ARMATÜR FORTIS-50 50W 3000K 118 ' | 750.00 TL | SKU: HOROZ.019-068-0050
+2026-08-16 02:58:55 [INFO] [11/24] https://yapimaks.com/led-smd-armatur-yuvarlak-doralin-24-24w-6400k-beyaz-kasa-horoz-p15833
+2026-08-16 02:58:56 [INFO] [15833] 'LED SMD ARMATÜR YUVARLAK DORALIN-24 24W ' | 315.00 TL | SKU: HOROZ.400-002-146
+2026-08-16 02:58:58 [INFO] [12/24] https://yapimaks.com/lokma-tornavida-10-mm-prscr-p14569
+2026-08-16 02:58:58 [INFO] [14569] 'LOKMA TORNAVİDA 10 MM PRSCR' | 79.00 TL | SKU: PROSCR.02677.10MM
+2026-08-16 02:59:00 [INFO] [13/24] https://yapimaks.com/lokma-tornavida-7-mm-prscr-p14567
+2026-08-16 02:59:00 [INFO] [14567] 'LOKMA TORNAVİDA 7 MM PRSCR' | 74.00 TL | SKU: PROSCR.02677.07MM
+2026-08-16 02:59:02 [INFO] [14/24] https://yapimaks.com/lokma-tornavida-8-mm-prscr-p14568
+2026-08-16 02:59:03 [INFO] [14568] 'LOKMA TORNAVİDA 8 MM PRSCR' | 76.00 TL | SKU: PROSCR.02677.08MM
+2026-08-16 02:59:05 [INFO] [15/24] https://yapimaks.com/priz-4-lu-3-m-anahtarli-deco-horoz-p15835
+2026-08-16 02:59:05 [INFO] [15835] 'PRİZ 4 LÜ 3 M ANAHTARLI DECO HOROZ' | 480.00 TL | SKU: HOROZ.210-003-402
+2026-08-16 02:59:07 [INFO] [16/24] https://yapimaks.com/smd-panel-led-beyaz-18w-slim-6400k-beyaz-horoz-p15832
+2026-08-16 02:59:07 [INFO] [15832] 'SMD PANEL LED BEYAZ 18W SLİM 6400K BEYAZ' | 199.00 TL | SKU: HOROZ.056-003-0018
+2026-08-16 02:59:09 [INFO] [17/24] https://yapimaks.com/smd-panel-led-beyaz-3w-slim-6400k-beyaz-horoz-p13675
+2026-08-16 02:59:09 [INFO] [13675] 'SMD PANEL LED BEYAZ 3W SLİM 6400K BEYAZ ' | 72.00 TL | SKU: HOROZ.056-003-0003
+2026-08-16 02:59:11 [INFO] [18/24] https://yapimaks.com/smd-panel-led-beyaz-6w-slim-6400k-beyaz-horoz-p13676
+2026-08-16 02:59:12 [INFO] [13676] 'SMD PANEL LED BEYAZ 6W SLİM 6400K BEYAZ ' | 105.00 TL | SKU: HOROZ.056-003-0006
+2026-08-16 02:59:14 [INFO] [19/24] https://yapimaks.com/tavan-armaturu-belinda-48-led-48w-6400k-yuvarlak-beyaz-kasa-p15837
+2026-08-16 02:59:14 [INFO] [15837] 'TAVAN ARMATÜRÜ BELİNDA-48 LED 48W 6400K ' | 720.00 TL | SKU: HOROZ.016-094-0048
+2026-08-16 02:59:16 [INFO] [20/24] https://yapimaks.com/tornavida-yildiz-kirmizi-3x100-p14579
+2026-08-16 02:59:16 [INFO] [14579] 'TORNAVİDA YILDIZ KIRMIZI 3X100' | 40.00 TL | SKU: PROSCR.02649.3X100
+2026-08-16 02:59:18 [INFO] [21/24] https://yapimaks.com/tornavida-yildiz-kirmizi-4x100-p14580
+2026-08-16 02:59:18 [INFO] [14580] 'TORNAVİDA YILDIZ KIRMIZI 4X100' | 45.00 TL | SKU: PROSCR.02649.4X100
+2026-08-16 02:59:20 [INFO] [22/24] https://yapimaks.com/tornavida-yildiz-kirmizi-5x100-p14581
+2026-08-16 02:59:21 [INFO] [14581] 'TORNAVİDA YILDIZ KIRMIZI 5X100' | 49.00 TL | SKU: PROSCR.02649.5X100
+2026-08-16 02:59:23 [INFO] [23/24] https://yapimaks.com/tornavida-yildiz-kirmizi-6x100-p14582
+2026-08-16 02:59:23 [INFO] [14582] 'TORNAVİDA YILDIZ KIRMIZI 6X100' | 55.00 TL | SKU: PROSCR.02649.6X100
+2026-08-16 02:59:25 [INFO] [24/24] https://yapimaks.com/tornavida-yildiz-kirmizi-6x150-p14583
+2026-08-16 02:59:25 [INFO] [14583] 'TORNAVİDA YILDIZ KIRMIZI 6X150' | 59.00 TL | SKU: PROSCR.02649.6X150
+2026-08-16 02:59:27 [INFO] Tamamlandi! Toplam 24 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/yapimaks/2026-08-16.csv
