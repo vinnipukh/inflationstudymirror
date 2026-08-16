@@ -52,3 +52,21 @@ proven pattern from urazkagangunes' IstanbulAvrupa scraper (3 months daily, 24.5
   extract/URL/split checks all pass. **Day-1 ritual required**: run once headed, solve the
   Turnstile manually, profile saved → warm sessions thereafter.
 - Run: `python Codes/HousesRent/KayseriSivasTokat/engine_selenium.py --city kayseri --rooms 3+1`
+
+## Addendum 2 (same task, 2026-08-16) — full alignment rewrite
+
+Line-by-line review per user request ("rewrite anything not inline with friend's
+tactics + our talks"). Result: the folder is now a single aligned path.
+
+| File | Action |
+|---|---|
+| `scraper.py` (2,322 lines, Playwright+rayobrowse monolith) | **DELETED** — JS patching / jittery mouse / auto-Turnstile / console all superseded by friend's tactics (git history preserves) |
+| `run_scraper.py` (rayobrowse daemon check) | **DELETED** |
+| `main.py` (174 lines) | **REWRITTEN** — thin entry over engine_selenium (--city/--rooms/--resume/-v) |
+| `config.py` | **REWRITTEN** — removed all RAYOBROWSE_*/viewport/login-retry legacy; friend-aligned: PAGE_LOAD_DELAY 2.5s, adaptive factors, MAX_RETRIES/backoff, PROFILE_DIR, MAX_LISTINGS_PER_QUERY, MAX_BRACKET_SPLIT_DEPTH; kept compliance ROOMS_FILTER + output paths |
+| `engine_selenium.py` | **UPGRADED** — + checkpoint save/load/clear (atomic, per-day brackets cache + done markers), + fetch retry w/ exponential backoff, + tqdm progress, + typed signatures, ruff-clean |
+
+Also: requirements.txt += tqdm; ruff (uvx) clean with `select` defaults + targeted noqa
+(DTZ011 date, S110 best-effort excepts); all offline checks pass (parse/filter/
+normalize/extract/CSV-header/checkpoint-atomic/adaptive-delay/bracket-URL).
+Docs updated: DEVELOPMENT.md run command, CONFIGURATION.md engine note.

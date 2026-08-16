@@ -16,6 +16,7 @@ curl-cffi
 selenium
 undetected-chromedriver
 lxml
+tqdm
 
 # Dashboard dependencies
 pandas>=2.0

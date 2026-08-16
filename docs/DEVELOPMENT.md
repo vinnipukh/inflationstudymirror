@@ -62,7 +62,7 @@ python Codes/ClothingStores/Vakko/vakko_master_scraper.py
 | `uv run python scripts/verify_streamlit_api_frontend.py` | Run frontend API client verification |
 | `uv run python scripts/verify_full_stack.py` | Run combined full-stack smoke test |
 | `python Codes/Markets/Gurmar/gurmar_scraper.py` | Run the Gurmar scraper |
-| `python Codes/HousesRent/KayseriSivasTokat/main.py --city kayseri` | Run the rental scraper (sarı site; interactive console: pause/go/skip/stop) — see `docs/APPROACH.md` first |
+| `python Codes/HousesRent/KayseriSivasTokat/main.py --city kayseri --rooms 3+1` | Run the rental scraper (sarı site; selenium engine — persistent profile, manual-solve loop). See `docs/APPROACH.md` first |
 | `python Inflations/Codes/Markets/Gurmar/gurmar_inflation.py -h` | Inspect Gurmar inflation calculator options |
 | `python -m py_compile <path>` | Syntax-check a changed Python file |
 

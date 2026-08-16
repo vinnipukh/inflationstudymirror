@@ -151,7 +151,7 @@ The rental scraper (sarı site — Kayseri/Sivas/Tokat) is configured entirely i
 | `PATCH_BROWSER_DETECTION_LEAKS` | True | Fingerprint JS patching |
 | Output | `Datas/HousesRent/{City}/{date}.csv` | `District, Rooms, Price` columns |
 
-⚠️ Known drift (per `docs/APPROACH.md` §7): the hardcoded Turnstile sitekey in `scraper.py` is stale — read `#cloudflareTurnStileSiteKey` live instead. The planned modernization (snapshot-aware storage, browser-only default, reconciliation) is documented in `docs/APPROACH.md`.
+The engine (`engine_selenium.py`) uses the friend-tactics pattern: persistent SeleniumProfile + manual solve-retry loop (no auto-Turnstile code needed). Planned evolution (snapshot-aware storage, reconciliation) is documented in `docs/APPROACH.md`.
 
 ## Running the Stack Locally
 
