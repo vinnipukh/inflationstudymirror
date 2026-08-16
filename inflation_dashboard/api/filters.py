@@ -1,8 +1,11 @@
 from __future__ import annotations
 
+from collections import OrderedDict
 from dataclasses import dataclass
 from datetime import date
 from functools import lru_cache
+import threading
+import time
 from typing import Any
 
 import pandas as pd
@@ -10,6 +13,7 @@ import pandas as pd
 from inflation_dashboard.adapters.csv_price_repository import (
     DEFAULT_MAX_FILES_PER_RETAILER,
     DEFAULT_RETAILERS,
+    clear_price_cache,
     discover_csv_inventory,
     load_price_history,
 )
@@ -48,9 +52,137 @@ def get_inventory() -> pd.DataFrame:
 
 
 def clear_inventory_cache() -> None:
-    """Clear cached inventory for tests and one-off verification scripts."""
+    """Clear cached inventory for tests and one-off verification scripts.
+
+    Also clears the derived data caches (parsed filters, loaded history,
+    per-file frames) because new/changed scraped CSVs invalidate all of them.
+    """
 
     get_inventory.cache_clear()
+    clear_history_cache()
+    clear_price_cache()
+
+
+# --- Server-side request caches --------------------------------------------------
+# A single Streamlit rerun fires ~5 data requests with identical/overlapping
+# filters (options, retailer averages, movers, coverage, product detail). Without
+# caching every request re-reads and re-parses the same CSVs from disk (~4.4s for
+# the default 3-retailer x 45-file selection). These stdlib-only TTL caches keep
+# repeat requests in the millisecond range. Stdlib only (verifier boundary).
+
+HISTORY_CACHE_TTL_SECONDS = 300
+MAX_HISTORY_CACHE_BYTES = 300 * 1024 * 1024
+MAX_HISTORY_FRAME_BYTES = 120 * 1024 * 1024
+PARSE_CACHE_TTL_SECONDS = 300
+
+_history_cache: "OrderedDict[tuple, tuple[float, pd.DataFrame, pd.DataFrame, int]]" = OrderedDict()
+_parse_cache: "OrderedDict[tuple, tuple[float, ParsedFilters]]" = OrderedDict()
+_data_cache_lock = threading.RLock()
+
+
+def _history_cache_key(parsed_filters: ParsedFilters) -> tuple:
+    return (
+        tuple(parsed_filters.selected_retailers),
+        parsed_filters.start_date.isoformat() if parsed_filters.start_date else None,
+        parsed_filters.end_date.isoformat() if parsed_filters.end_date else None,
+        parsed_filters.max_files_per_retailer,
+        parsed_filters.all_history,
+    )
+
+
+def _history_cache_get(key: tuple) -> tuple[pd.DataFrame, pd.DataFrame] | None:
+    with _data_cache_lock:
+        entry = _history_cache.get(key)
+        if entry is None:
+            return None
+        timestamp, history, skipped, _ = entry
+        if time.monotonic() - timestamp > HISTORY_CACHE_TTL_SECONDS:
+            del _history_cache[key]
+            return None
+        _history_cache.move_to_end(key)
+        return history, skipped
+
+
+def _frame_size_estimate(frame: pd.DataFrame) -> int:
+    """Cheap byte estimate: object/string columns ~64B/row, numeric ~16B/row.
+
+    Used instead of `memory_usage(deep=True)`, which walks every string object
+    and itself costs seconds on a 350k-row frame.
+    """
+
+    size = 0
+    for column in frame.columns:
+        if frame[column].dtype == object:
+            size += len(frame) * 64
+        else:
+            size += len(frame) * 16
+    return size
+
+
+def _history_cache_put(key: tuple, history: pd.DataFrame, skipped: pd.DataFrame) -> None:
+    if history.empty:
+        return
+    size_bytes = _frame_size_estimate(history)
+    if size_bytes > MAX_HISTORY_FRAME_BYTES:
+        return
+    with _data_cache_lock:
+        now = time.monotonic()
+        for stale_key in [k for k, (ts, _, _, _) in _history_cache.items() if now - ts > HISTORY_CACHE_TTL_SECONDS]:
+            del _history_cache[stale_key]
+        total_bytes = sum(size for (_, _, _, size) in _history_cache.values())
+        while _history_cache and total_bytes + size_bytes > MAX_HISTORY_CACHE_BYTES:
+            _, _, _, oldest_size = _history_cache.popitem(last=False)
+            total_bytes -= oldest_size
+        _history_cache[key] = (now, history, skipped, size_bytes)
+        _history_cache.move_to_end(key)
+
+
+def _parse_cache_key(req: Any) -> tuple:
+    return (
+        tuple(req.get_param_as_list("retailer") or []),
+        req.get_param("start_date", default=None),
+        req.get_param("end_date", default=None),
+        req.get_param("max_files", default=None),
+        req.get_param("all_history", default=None),
+    )
+
+
+def _parse_cache_get(key: tuple) -> ParsedFilters | None:
+    with _data_cache_lock:
+        entry = _parse_cache.get(key)
+        if entry is None:
+            return None
+        timestamp, parsed_filters = entry
+        if time.monotonic() - timestamp > PARSE_CACHE_TTL_SECONDS:
+            del _parse_cache[key]
+            return None
+        _parse_cache.move_to_end(key)
+        return ParsedFilters(
+            selected_retailers=list(parsed_filters.selected_retailers),
+            start_date=parsed_filters.start_date,
+            end_date=parsed_filters.end_date,
+            max_files_per_retailer=parsed_filters.max_files_per_retailer,
+            all_history=parsed_filters.all_history,
+            meta=dict(parsed_filters.meta),
+            inventory=parsed_filters.inventory,
+        )
+
+
+def _parse_cache_put(key: tuple, parsed_filters: ParsedFilters) -> None:
+    with _data_cache_lock:
+        now = time.monotonic()
+        for stale_key in [k for k, (ts, _) in _parse_cache.items() if now - ts > PARSE_CACHE_TTL_SECONDS]:
+            del _parse_cache[stale_key]
+        _parse_cache[key] = (now, parsed_filters)
+        _parse_cache.move_to_end(key)
+
+
+def clear_history_cache() -> None:
+    """Clear the derived-data caches (parsed filters + loaded history)."""
+
+    with _data_cache_lock:
+        _history_cache.clear()
+        _parse_cache.clear()
 
 
 def parse_bool_param(req: Any, name: str, default: bool = False) -> bool:
@@ -66,6 +198,23 @@ def parse_bool_param(req: Any, name: str, default: bool = False) -> bool:
 
 
 def parse_common_filters(req: Any) -> ParsedFilters:
+    """Parse and validate common filters, cached per raw request signature.
+
+    Inventory-derived ranges are deterministic while the inventory cache is
+    warm, so identical requests (same retailers/dates/max_files flags) skip the
+    ~0.4s of per-request range/file-count recomputation.
+    """
+
+    key = _parse_cache_key(req)
+    cached = _parse_cache_get(key)
+    if cached is not None:
+        return cached
+    parsed_filters = _parse_common_filters_uncached(req)
+    _parse_cache_put(key, parsed_filters)
+    return parsed_filters
+
+
+def _parse_common_filters_uncached(req: Any) -> ParsedFilters:
     inventory = get_inventory()
     inventory_filters = list_inventory_filters(inventory)
     available_retailers = list(inventory_filters.get("retailers") or [])
@@ -143,13 +292,26 @@ def parse_common_filters(req: Any) -> ParsedFilters:
 
 
 def load_filtered_history(parsed_filters: ParsedFilters) -> tuple[pd.DataFrame, pd.DataFrame, dict[str, object]]:
-    history, skipped = load_price_history(
-        tuple(parsed_filters.selected_retailers),
-        parsed_filters.start_date,
-        parsed_filters.end_date,
-        parsed_filters.max_files_per_retailer,
-        inventory=parsed_filters.inventory,
-    )
+    """Load filtered price history, served from the in-process cache when the
+    same filter signature was loaded recently.
+
+    Cached frames are returned as copies so downstream consumers (use cases,
+    serializers) can never mutate the shared cache entry.
+    """
+
+    key = _history_cache_key(parsed_filters)
+    cached = _history_cache_get(key)
+    if cached is not None:
+        history, skipped = cached
+    else:
+        history, skipped = load_price_history(
+            tuple(parsed_filters.selected_retailers),
+            parsed_filters.start_date,
+            parsed_filters.end_date,
+            parsed_filters.max_files_per_retailer,
+            inventory=parsed_filters.inventory,
+        )
+        _history_cache_put(key, history, skipped)
     warnings = list(parsed_filters.meta.get("warnings", []))
     if history.empty and len(skipped) > 0 and parsed_filters.meta.get("selected_inventory_file_count", 0):
         warnings.append("selected files skipped; no usable rows loaded")
@@ -159,7 +321,7 @@ def load_filtered_history(parsed_filters: ParsedFilters) -> tuple[pd.DataFrame, 
         "skipped_file_count": int(len(skipped)),
         "warnings": warnings,
     }
-    return history, skipped, meta
+    return history.copy(), skipped.copy(), meta
 
 
 def _parse_date_param(req: Any, name: str, default: date | None) -> date | None:

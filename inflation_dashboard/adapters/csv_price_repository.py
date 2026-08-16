@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+from collections import OrderedDict
 from pathlib import Path
+import time
 
 import pandas as pd
 
@@ -28,6 +30,55 @@ DEFAULT_RETAILERS = (
     "HomeGoods",
 )
 DEFAULT_MAX_FILES_PER_RETAILER = 45
+
+# --- Per-file parsed-frame cache -------------------------------------------------
+# Re-reading and re-building the same CSVs on every API request is the dominant
+# cost (one rerun fires ~5 overlapping data requests). Cache the *built product
+# frame* per file, keyed on path + mtime + size, so overlapping filter sets
+# (options vs product detail vs date-range tweaks) reuse parsed files.
+
+_MAX_CACHED_FILES = 512
+_FILE_CACHE_TTL_SECONDS = 600
+_MAX_CACHED_FRAME_ROWS = 200_000
+
+_file_frame_cache: "OrderedDict[str, tuple[float, pd.DataFrame]]" = OrderedDict()
+
+
+def _file_cache_key(csv_path: Path) -> str | None:
+    try:
+        stat = csv_path.stat()
+    except OSError:
+        return None
+    return f"{csv_path}|{stat.st_mtime_ns}|{stat.st_size}"
+
+
+def _cache_product_frame(key: str, frame: pd.DataFrame) -> None:
+    if frame.empty or len(frame) > _MAX_CACHED_FRAME_ROWS:
+        return
+    now = time.monotonic()
+    _file_frame_cache[key] = (now, frame)
+    _file_frame_cache.move_to_end(key)
+    while len(_file_frame_cache) > _MAX_CACHED_FILES:
+        _file_frame_cache.popitem(last=False)
+    for stale_key in [k for k, (ts, _) in _file_frame_cache.items() if now - ts > _FILE_CACHE_TTL_SECONDS]:
+        del _file_frame_cache[stale_key]
+
+
+def _cached_product_frame(key: str) -> pd.DataFrame | None:
+    entry = _file_frame_cache.get(key)
+    if entry is None:
+        return None
+    timestamp, frame = entry
+    if time.monotonic() - timestamp > _FILE_CACHE_TTL_SECONDS:
+        del _file_frame_cache[key]
+        return None
+    return frame
+
+
+def clear_price_cache() -> None:
+    """Clear the per-file frame cache (new or changed scraped CSVs)."""
+
+    _file_frame_cache.clear()
 
 
 def detect_retailer(path: Path) -> str:
@@ -101,6 +152,12 @@ def load_price_history(
         retailer = file_info.retailer
         date_value = file_info.date
 
+        cache_key = _file_cache_key(csv_path)
+        cached_product_data = _cached_product_frame(cache_key) if cache_key else None
+        if cached_product_data is not None:
+            rows.append(cached_product_data)
+            continue
+
         try:
             frame = pd.read_csv(
                 csv_path,
@@ -131,6 +188,8 @@ def load_price_history(
         )
         if not product_data.empty:
             rows.append(product_data)
+            if cache_key is not None:
+                _cache_product_frame(cache_key, product_data)
 
     history = pd.concat(rows, ignore_index=True) if rows else pd.DataFrame(columns=HISTORY_COLUMNS)
     skipped_df = pd.DataFrame(skipped, columns=["file", "reason"])

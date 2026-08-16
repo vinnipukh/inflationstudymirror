@@ -22,3 +22,4 @@ tqdm
 pandas>=2.0
 plotly
 streamlit
+orjson>=3.12.0

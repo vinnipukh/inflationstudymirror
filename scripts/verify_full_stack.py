@@ -281,7 +281,7 @@ def _assert_client_source() -> None:
         "DEFAULT_API_BASE_URL", "SHORT_TIMEOUT_SECONDS", "DATA_TIMEOUT_SECONDS",
         "ApiClientError", "DashboardFilters", "ApiEnvelope",
         "normalize_api_base_url", "build_common_params", "fetch_endpoint",
-        "fetch_health", *CLIENT_METHODS, "requests.get",
+        "fetch_health", *CLIENT_METHODS, "requests.Session",
     ):
         assert token in source, f"api_client.py missing expected token: {token}"
     for path in ENDPOINT_PATHS:
@@ -329,7 +329,8 @@ def _assert_client_behavior() -> None:
     }
 
     # Test each client method against fake responses
-    with patch("requests.get") as mock_get:
+    with patch("inflation_dashboard.frontend.api_client._SESSION") as mock_session:
+        mock_get = mock_session.get
         mock_get.side_effect = [
             FakeResponse(200, fake_inventory),
             FakeResponse(200, fake_history),
@@ -350,7 +351,8 @@ def _assert_client_behavior() -> None:
         print("PASS behavior: client params, endpoint wrappers, envelope validation, ApiClientError, timeouts")
 
     # Test error handling
-    with patch("requests.get") as mock_get:
+    with patch("inflation_dashboard.frontend.api_client._SESSION") as mock_session:
+        mock_get = mock_session.get
         mock_get.return_value = FakeResponse(400, {"errors": [{"code": "invalid_filter"}], "data": None, "meta": {}})
         try:
             fetch_history("http://localhost:8000", filters)

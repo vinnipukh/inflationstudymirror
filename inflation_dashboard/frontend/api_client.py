@@ -13,6 +13,10 @@ SHORT_TIMEOUT_SECONDS = 10
 DATA_TIMEOUT_SECONDS = 60
 ENVELOPE_KEYS = {"data", "meta", "errors"}
 
+# Reused HTTP session: keeps connections alive between the many per-rerun
+# requests instead of opening a fresh TCP connection for each call.
+_SESSION = requests.Session()
+
 ParamValue = str | int | bool | None
 QueryParams = list[tuple[str, ParamValue]]
 
@@ -131,7 +135,7 @@ def fetch_endpoint(
     request_params = list(params or [])
 
     try:
-        response = requests.get(url, params=request_params, timeout=timeout)
+        response = _SESSION.get(url, params=request_params, timeout=timeout)
     except requests.Timeout as exc:
         raise ApiClientError(f"API request to {path} timed out after {timeout} seconds.") from exc
     except requests.RequestException as exc:

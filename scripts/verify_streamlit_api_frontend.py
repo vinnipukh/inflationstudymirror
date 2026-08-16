@@ -14,7 +14,7 @@ import re
 import sys
 from pathlib import Path
 from typing import Any
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
@@ -182,7 +182,7 @@ def _assert_client_source() -> None:
         "fetch_endpoint",
         "fetch_health",
         *CLIENT_METHODS,
-        "requests.get",
+        "requests.Session",
     ):
         assert token in source, f"api_client.py missing expected token: {token}"
     for path in ENDPOINT_PATHS:
@@ -237,14 +237,21 @@ def _assert_client_behavior() -> None:
         seen_calls.append({"url": url, "params": params, "timeout": timeout})
         return FakeResponse(200, {"data": {"ok": True}, "meta": {"request_id": "test"}, "errors": []})
 
-    with patch.object(api_client.requests, "get", side_effect=fake_get):
+    def _patched_session(**get_kwargs: Any) -> Any:
+        """Patch api_client._SESSION with a mock whose .get honors get_kwargs."""
+
+        mock_session = MagicMock()
+        mock_session.get.configure_mock(**get_kwargs)
+        return patch.object(api_client, "_SESSION", mock_session)
+
+    with _patched_session(side_effect=fake_get):
         envelope = api_client.fetch_endpoint("http://localhost:8000/", "/api/history", params, timeout=60)
     assert envelope.data == {"ok": True}
     assert seen_calls[-1]["url"] == "http://localhost:8000/api/history"
     assert seen_calls[-1]["params"] == params, "request must preserve list-of-pairs params"
     assert seen_calls[-1]["timeout"] == 60
 
-    with patch.object(api_client.requests, "get", side_effect=fake_get):
+    with _patched_session(side_effect=fake_get):
         api_client.fetch_inventory("http://localhost:8000")
         api_client.fetch_history("http://localhost:8000", filters)
         api_client.fetch_history("http://localhost:8000", filters, "Milk", "Markets / Gurmar")
@@ -268,11 +275,7 @@ def _assert_client_behavior() -> None:
         assert call["timeout"] == api_client.DATA_TIMEOUT_SECONDS
         assert [name for name, _ in call["params"]].count("retailer") == 2
 
-    with patch.object(
-        api_client.requests,
-        "get",
-        return_value=FakeResponse(200, {"data": {}, "meta": {}}),
-    ):
+    with _patched_session(return_value=FakeResponse(200, {"data": {}, "meta": {}})):
         try:
             api_client.fetch_inventory("http://localhost:8000")
         except api_client.ApiClientError as exc:
@@ -280,11 +283,7 @@ def _assert_client_behavior() -> None:
         else:
             raise AssertionError("missing envelope keys should raise ApiClientError")
 
-    with patch.object(
-        api_client.requests,
-        "get",
-        return_value=FakeResponse(200, {"data": None, "meta": {}, "errors": [{"code": "invalid_filter", "message": "Bad"}]}),
-    ):
+    with _patched_session(return_value=FakeResponse(200, {"data": None, "meta": {}, "errors": [{"code": "invalid_filter", "message": "Bad"}]})):
         try:
             api_client.fetch_inventory("http://localhost:8000")
         except api_client.ApiClientError as exc:
@@ -292,11 +291,7 @@ def _assert_client_behavior() -> None:
         else:
             raise AssertionError("non-empty errors should raise ApiClientError")
 
-    with patch.object(
-        api_client.requests,
-        "get",
-        return_value=FakeResponse(503, {"data": {"ignored": True}, "meta": {}, "errors": []}),
-    ):
+    with _patched_session(return_value=FakeResponse(503, {"data": {"ignored": True}, "meta": {}, "errors": []})):
         try:
             api_client.fetch_inventory("http://localhost:8000")
         except api_client.ApiClientError as exc:
@@ -304,11 +299,7 @@ def _assert_client_behavior() -> None:
         else:
             raise AssertionError("non-2xx response should raise ApiClientError")
 
-    with patch.object(
-        api_client.requests,
-        "get",
-        return_value=FakeResponse(200, json_error=ValueError("no json")),
-    ):
+    with _patched_session(return_value=FakeResponse(200, json_error=ValueError("no json"))):
         try:
             api_client.fetch_inventory("http://localhost:8000")
         except api_client.ApiClientError as exc:

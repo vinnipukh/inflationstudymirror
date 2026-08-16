@@ -111,6 +111,29 @@ The API filter parser accepts query parameters from request URLs:
 
 For the Falcon API full endpoint documentation, see `docs/API.md`.
 
+### Server-side caching & performance (2026-08-16)
+
+The Falcon API keeps in-process, stdlib-only TTL caches so repeated/interleaved
+requests do not re-read CSVs from disk (the original hot path cost ~4.4s per
+request; a single Streamlit rerun fired ~5 overlapping data requests):
+
+- **Loaded history cache** (`filters.py`): `load_filtered_history` results
+  keyed by `(retailers, start, end, max_files, all_history)`; TTL 300s, LRU
+  with a ~300MB byte budget, entries > 120MB skipped, copy-on-return.
+- **Per-file frame cache** (`csv_price_repository.py`): built product frames
+  keyed by `(path, mtime_ns, size)`; TTL 600s, maxsize 512, frames > 200k
+  rows skipped. Overlapping filter sets reuse parsed files.
+- **Filter-parse dedupe** (`filters.py`): `parse_common_filters` results keyed
+  by the raw request signature, TTL 300s.
+- **Fast serialization** (`serialization.py`): vectorized per-column JSON
+  conversion (typed fast paths + distinct-value date mapping); output is
+  byte-identical to the generic walk. `orjson` is the Falcon JSON media
+  handler (`falcon_app.py`) for large payloads.
+
+Caches clear automatically on TTL expiry; `clear_inventory_cache()` (api
+filters) also clears the derived history/parse/file caches for tests and when
+new scraped CSVs land. New data becomes visible within ≤5 minutes of landing.
+
 ## Frontend API Client
 
 The frontend API client (`inflation_dashboard/frontend/api_client.py`) configures:
