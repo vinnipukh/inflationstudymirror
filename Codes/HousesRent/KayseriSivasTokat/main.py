@@ -152,9 +152,10 @@ async def run(args):
 
 
 def _build_parser():
-    p = argparse.ArgumentParser(description="Sahibinden kira scraper")
+    p = argparse.ArgumentParser(description="Sarı site kira scraper")
     p.add_argument("--resume",  action="store_true", help="Checkpoint'ten devam et")
     p.add_argument("--city",    type=str, default=None, help="Tek şehir (url slug)")
+    p.add_argument("--rooms",   type=str, default=None, help="Oda filtresi (örn: 3+1); boş = tümü")
     p.add_argument("-v", "--verbose", action="store_true", help="Debug loglama")
     return p
 
@@ -163,6 +164,10 @@ def main():
     args = _build_parser().parse_args()
     if args.verbose:
         logging.getLogger().setLevel(logging.DEBUG)
+    if args.rooms is not None:
+        config.ROOMS_FILTER = args.rooms or None
+        if config.ROOMS_FILTER:
+            logging.getLogger(__name__).info("🏠 Oda filtresi: %s", config.ROOMS_FILTER)
     asyncio.run(run(args))
 
 

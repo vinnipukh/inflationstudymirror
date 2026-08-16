@@ -1,5 +1,5 @@
 """
-scraper.py — Sahibinden kira scraper (rayobrowse + Playwright)
+scraper.py — Sarı site kira scraper (rayobrowse + Playwright)
 
 Fixes applied in this version (see spec doc for full analysis):
   #3 Singleton browser — browser created ONCE per city, not per retry attempt.
@@ -378,7 +378,7 @@ async def enforce_viewport(page):
 async def patch_browser_detection_leaks(page):
     """
     Inject JavaScript to hide the most common browser-automation fingerprints
-    that sahibinden.com's bot detection checks for.
+    that sarı site's bot detection checks for.
 
     Must be called AFTER page creation but BEFORE the first navigation.
     Rayobrowse already handles many of these at the Chromium level, but
@@ -477,7 +477,7 @@ async def patch_browser_detection_leaks(page):
 # Page classification
 #
 # ROOT CAUSE of "everything is a login page":
-#   sahibinden.com embeds a hidden login modal (type="password" + type="email")
+#   sarı site embeds a hidden login modal (type="password" + type="email")
 #   into EVERY page for the header login button.  The old code fired on any
 #   page with those fields anywhere in the DOM.
 #
@@ -873,7 +873,7 @@ async def auto_solve_turnstile(page, reason, loop, cmd_queue=None):
     """
     Dispatcher: routes to the correct solver based on challenge type.
 
-    sahibinden.com uses Enterprise Turnstile (render=explicit, sitekey starting
+    sarı site uses Enterprise Turnstile (render=explicit, sitekey starting
     with 0x4AAAAAAA).  The widget must be activated by calling
     turnstile.render('#turnStileWidget') from JS before a checkbox or token
     appears.  Free-tier Turnstile renders automatically.
@@ -906,7 +906,12 @@ async def _is_enterprise_turnstile(page):
     """
     try:
         result = await page.evaluate("""() => {
-            // Method 1: enterprise sitekey hidden input
+            // Method 1: live sitekey input (recon-verified 2026-08-15)
+            const liveKey = document.querySelector('#cloudflareTurnStileSiteKey');
+            if (liveKey && liveKey.value && liveKey.value.startsWith('0x4AAAAAAA')) {
+                return {enterprise: true, reason: 'cloudflareTurnStileSiteKey'};
+            }
+            // Method 1b: legacy enterprise sitekey hidden input (stale key)
             const keyEl = document.querySelector('#sitekeyEnterprise');
             if (keyEl && keyEl.value && keyEl.value.startsWith('0x4AAAAAAA')) {
                 return {enterprise: true, reason: 'sitekeyEnterprise'};
@@ -935,7 +940,7 @@ async def solve_enterprise_turnstile(page, loop=None, cmd_queue=None, timeout=90
     """
     Solve Cloudflare ENTERPRISE Turnstile (render=explicit mode).
 
-    The /cs/tloading page on sahibinden.com works as follows:
+    The /cs/tloading page on sarı site works as follows:
       1. api.js loads with `defer` → window.turnstile becomes available
       2. turnstile.render('#turnStileWidget') must be called explicitly
       3. Cloudflare verifies the browser in the background (~2-10 s)
@@ -993,7 +998,8 @@ async def solve_enterprise_turnstile(page, loop=None, cmd_queue=None, timeout=90
                 if (typeof turnstile === 'undefined' || typeof turnstile.render !== 'function') {
                     return {error: 'turnstile_not_available'};
                 }
-                const sitekeyEl = document.querySelector('#sitekeyEnterprise');
+                const sitekeyEl = document.querySelector('#cloudflareTurnStileSiteKey')
+                    || document.querySelector('#sitekeyEnterprise');
                 const sitekey   = sitekeyEl ? sitekeyEl.value : null;
                 if (!sitekey) {
                     return {error: 'sitekey_not_found'};
@@ -1233,7 +1239,7 @@ async def safe_goto(page, url, loop, cmd_queue=None):
 
 def extract_total_listings(soup):
     """
-    Extract total listing count from a sahibinden results page.
+    Extract total listing count from a sarı site results page.
     Tries three strategies in order of reliability.
     Returns int or None.
     """
@@ -1505,9 +1511,14 @@ def get_room_col_index(soup):
 
 def parse_page(html):
     soup = BeautifulSoup(html, "html.parser")
-    rows = soup.select("#searchResultsTable tbody tr.searchResultsItem")
+    # B6: quoted attribute selectors; tr[data-id] is the recon-verified row marker,
+    # .searchResultsItem kept as fallback for older markup.
+    rows = soup.select("#searchResultsTable tbody tr[data-id]") or soup.select(
+        "#searchResultsTable tbody tr.searchResultsItem"
+    )
     ri   = get_room_col_index(soup)
     recs = []
+    rooms_filter = getattr(config, "ROOMS_FILTER", None)
 
     for row in rows:
         try:
@@ -1524,8 +1535,14 @@ def parse_page(html):
                 else (attrs[1].text.strip() if len(attrs) > 1 else "N/A")
             )
 
+            # Compliance scope (docs/APPROACH.md B0): ilanId + District + Rooms + Price ONLY.
+            ilan_id = row.get("data-id")
+
+            if rooms_filter and ro.strip() != rooms_filter:
+                continue
+
             if pr and d != "N/A":
-                recs.append({"District": d, "Rooms": ro, "Price": pr})
+                recs.append({"ilanId": ilan_id, "District": d, "Rooms": ro, "Price": pr})
         except Exception as e:
             logger.debug("Satır ayrıştırma hatası: %s", e)
 
@@ -1538,8 +1555,10 @@ def save_incremental(city_name, batch):
     path = config.get_city_csv_path(city_name)
     os.makedirs(config.get_city_output_dir(city_name), exist_ok=True)
     file_exists = os.path.isfile(path)
+    # Compliance scope: ilanId + District + Rooms + Price ONLY (docs/APPROACH.md B0).
+    fieldnames = ["ilanId", "District", "Rooms", "Price"]
     with open(path, "a", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["District", "Rooms", "Price"])
+        writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
         if not file_exists:
             writer.writeheader()
         writer.writerows(batch)

@@ -31,7 +31,7 @@ See: `.planning/PROJECT.md` (updated 2026-07-16)
 Phase: 4
 Plan: Not started
 Status: Executing Phase 4
-Last activity: 2026-07-17 — Phase 4 complete
+Last activity: 2026-08-16 — Completed quick task 260816-fx3: Modernize KayseriSivasTokat rental scraper
 
 Progress: [█████░░░░░] 50%
 
@@ -92,6 +92,7 @@ None yet.
 |------|---------|-------------|
 | fix-waitress-call-flag | 2026-07-17 | Add `--call` flag to `waitress-serve` command so `create_app()` factory is invoked correctly |
 | readme-flashy-features | 2026-07-22 | Supplement README with installation guide, flashy features, and ML-ready infrastructure |
+| modernize-kayserisivastokat-rental-scrap | 2026-08-16 | Modernize rental scraper: ilanId from tr[data-id], ROOMS_FILTER=3+1 + --rooms CLI, live Turnstile sitekey, CSV schema ilanId,District,Rooms,Price |
 
 ## Session Continuity
 

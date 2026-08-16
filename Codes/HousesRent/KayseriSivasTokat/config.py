@@ -33,6 +33,13 @@ def get_checkpoint_file() -> str:
     return str(_Path(CHECKPOINT_DIR) / f"checkpoint_{TODAY}.json")
 
 # ---------------------------------------------------------------------------
+# Rooms filter — compliance scope (docs/APPROACH.md B0)
+# Only rows whose Rooms cell matches exactly are saved. "3+1" = 3+1 daireler.
+# Set to None to collect all room types.
+# ---------------------------------------------------------------------------
+ROOMS_FILTER = "3+1"
+
+# ---------------------------------------------------------------------------
 # Timing (seconds) — all randomised per-call between (min, max)
 # ---------------------------------------------------------------------------
 PAGE_LOAD_AFTER_GOTO  = (8.0,  12.0)
