@@ -2,19 +2,19 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_phase: 4
+current_phase: 5
 status: executing
-stopped_at: Phase 3 context gathered
-last_updated: "2026-07-17T10:56:45.375Z"
-last_activity: 2026-07-22
-last_activity_desc: Quick task: update README with new features
+stopped_at: Phase 5 context gathered (wave 1 planned)
+last_updated: "2026-08-16T22:00:00.000Z"
+last_activity: 2026-08-16
+last_activity_desc: Added Phase 5 (sarı site rental scraper modernization) with plans 05-01 and 05-02
 progress:
-  total_phases: 4
+  total_phases: 5
   completed_phases: 3
-  total_plans: 8
+  total_plans: 10
   completed_plans: 6
-  percent: 75
-current_phase_name: Deployment & Verification Hardening
+  percent: 60
+current_phase_name: Sarı Site Rental Scraper Modernization
 ---
 
 # Project State
@@ -24,24 +24,24 @@ current_phase_name: Deployment & Verification Hardening
 See: `.planning/PROJECT.md` (updated 2026-07-16)
 
 **Core value:** Users can explore scraped product prices quickly and reliably from a Streamlit dashboard whose data access is served through a Falcon API instead of direct frontend CSV scanning.
-**Current focus:** Phase 4 — Deployment & Verification Hardening
+**Current focus:** Phase 5 — Sarı Site Rental Scraper Modernization
 
 ## Current Position
 
-Phase: 4
-Plan: Not started
-Status: Executing Phase 4
-Last activity: 2026-08-16 — Completed quick task 260816-fx3: Modernize KayseriSivasTokat rental scraper
+Phase: 5
+Plan: 05-01 (Live Gate G0, Test Suite & Daily Scheduling) — planned, not started
+Status: Executing Phase 5
+Last activity: 2026-08-16 — Added Phase 5 planning docs; completed quick task 260816-fx3 (engine + alignment rewrite)
 
-Progress: [█████░░░░░] 50%
+Progress: [█████░░░░░] 60%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 4
+- Total plans completed: 6
 - Average duration: n/a
-- Total execution time: 0.55 hours
+- Total execution time: n/a
 
 **By Phase:**
 
@@ -49,53 +49,22 @@ Progress: [█████░░░░░] 50%
 |-------|-------|-------|----------|
 | 1. Hexagonal Core Extraction | 2 | 2 | - |
 | 2. Falcon API Backend | 2 | 2 | 17 min |
-| 3. Streamlit API Frontend | 0 | 2 | - |
+| 3. Streamlit API Frontend | 2 | 2 | - |
 | 4. Deployment & Verification Hardening | 0 | 2 | - |
-| 4 | 0 | - | - |
+| 5. Sarı Site Rental Scraper Modernization | 0 | 2 | - |
 
 ## Accumulated Context
 
 ### Decisions
 
 Decisions are logged in PROJECT.md Key Decisions table.
-Recent decisions affecting current work:
 
-- Use Falcon Python Web Framework for the API.
-- Streamlit dashboard must read from Falcon API, not direct CSV scans.
-- Use hexagonal architecture with CSV as the first storage adapter.
-- Keep planning coarse and use parallel execution when safe.
-- Phase 2 API code is a thin Falcon adapter under `inflation_dashboard/api/` with uniform `{data, meta, errors}` envelopes and no Streamlit/Plotly imports.
-- Plan 02-02 added bounded Falcon `TestClient` smoke verification plus source boundary checks for imports, response contracts, JSON-native payloads, invalid filters, and lightweight health behavior.
-- Falcon dependency metadata is declared and runtime TestClient endpoint smoke verification passed under the user's `uv` workflow.
+### Phase Context Handoff
 
-### Pending Todos
-
-None yet.
-
-### Blockers/Concerns
-
-- No canonical test suite exists; use focused ad-hoc verification until tests are added.
-- Dataset is large; preserve filter/cap-driven loading to avoid slow startup.
-- Dependency metadata is inconsistent between `pyproject.toml`, `requirements.txt`, GitHub Actions, and local runtime.
-- Phase 2 runtime verification passed with `uv run python scripts/verify_falcon_api.py`; preserve this verifier as the API contract check for Phase 3.
-
-## Deferred Items
-
-| Category | Item | Status | Deferred At |
-|----------|------|--------|-------------|
-| Storage | Database/cache layer | Deferred; CSV adapter first | Initialization |
-| Scrapers | Full scraper cleanup | Deferred; dashboard deployment first | Initialization |
-
-## Quick Tasks Completed
-
-| Slug | Created | Description |
-|------|---------|-------------|
-| fix-waitress-call-flag | 2026-07-17 | Add `--call` flag to `waitress-serve` command so `create_app()` factory is invoked correctly |
-| readme-flashy-features | 2026-07-22 | Supplement README with installation guide, flashy features, and ML-ready infrastructure |
-| modernize-kayserisivastokat-rental-scrap | 2026-08-16 | Modernize rental scraper: ilanId from tr[data-id], ROOMS_FILTER=3+1 + --rooms CLI, live Turnstile sitekey, CSV schema ilanId,District,Rooms,Price |
-
-## Session Continuity
-
-Last session: 2026-07-17T10:56:22.789Z
-Stopped at: Phase 3 context gathered
-Resume file: .planning/phases/03-streamlit-api-frontend/03-CONTEXT.md
+- **Phases 1–4**: hexagonal dashboard architecture (core → Falcon API →
+  Streamlit), verified and shipped. Phase 4's two plans (docs + full-stack
+  smoke test) are planned but not yet executed.
+- **Phase 5**: sarı site rental scraper modernization — engine built and
+  aligned (quick task 260816-fx3, commits 2a84926…7d2edb4); live gate G0
+  pending site cooldown; pytest suite, scheduler, and Mongo storage planned
+  (05-01, 05-02). See `.planning/phases/05-*/` and `docs/APPROACH.md`.

@@ -48,6 +48,8 @@ Important existing facts:
 - [ ] Refactor Streamlit frontend so all dashboard tabs read from Falcon endpoints, not directly from CSV files.
 - [ ] Preserve four dashboard tabs: product price chart/cheapest date, retailer average chart, price movers, and coverage/overview.
 - [ ] Preserve performance controls: retailer selection, date filters, max files per retailer, and cached/limited loading.
+- [ ] Modernize the sarı site (sahibinden) rental scraper: friend-tactics selenium engine (undetected-chromedriver + persistent profile), live gate G0, daily scheduling (Phase 5).
+- [ ] Snapshot-aware Mongo storage for rental listings (listings_current + listing_observations + crawl_runs) with reconciliation (Phase 5).
 - [ ] Provide deploy/run documentation for running Falcon API and Streamlit frontend as separate processes.
 - [ ] Add focused lightweight verification for domain logic and API-backed dashboard data calls.
 

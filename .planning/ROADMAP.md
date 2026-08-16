@@ -15,6 +15,7 @@ Move the current single-file, direct-CSV Streamlit dashboard into a separated de
 - [x] **Phase 2: Falcon API Backend** - Add Falcon resources/endpoints that serve filtered dashboard data from the domain layer. (completed 2026-07-16)
 - [x] **Phase 3: Streamlit API Frontend** - Refactor Streamlit tabs to call the Falcon API instead of reading CSVs directly. (completed 2026-07-17)
 - [x] **Phase 4: Deployment & Verification Hardening** - Document two-process deployment and add focused checks for API/frontend contracts. (completed 2026-07-17)
+- [ ] **Phase 5: Sarı Site Rental Scraper Modernization** - Replace the legacy rayobrowse/Playwright rental scraper with the friend-tactics selenium engine (undetected-chromedriver + persistent profile), pass live gate G0, add pytest suite + daily scheduling, and add snapshot-aware Mongo storage. (planned 2026-08-16)
 
 ## Phase Details
 
@@ -103,6 +104,37 @@ Plans:
 **Wave 2** *(blocked on Wave 1 completion)*
 
 - [x] 03-02: Refactor all four tabs to use API payloads and preserve existing UX behavior.
+
+### Phase 5: Sarı Site Rental Scraper Modernization
+
+**Goal**: Daily, compliant (District/Rooms/Price/ilanId only) rental-listing collection from the sarı site (sahibinden.com) for Kayseri/Sivas/Tokat via a resilient selenium engine, verified live and stored durably.
+
+**Depends on**: Phase 4 (docs conventions); external — site IP cooldown before live gate G0
+
+**Requirements**: REQ-B0 (compliance scope, docs/APPROACH.md), research report B8–B12 (browser-only default, snapshot-aware storage)
+
+**Success Criteria** (what must be TRUE):
+
+  1. G0 gate passes: cold-profile day-1 manual-solve ritual succeeds; warm sessions collect listings with zero manual solves.
+  2. All three cities produce compliant CSVs (`District,Rooms,Price,ilanId`) with row counts within ±15% of recon estimates.
+  3. `uv run pytest` passes with Turkish fixtures (no live site required).
+  4. Daily runs scheduled (GitHub Actions cron or Windows Task Scheduler) with `--resume` crash safety.
+  5. Snapshot-aware Mongo storage (listings_current + listing_observations + crawl_runs) with idempotent daily sync and drift reconciliation.
+
+**Plans**: 0/2 plans executed
+
+Plans:
+
+- [ ] 05-01-PLAN.md
+- [ ] 05-02-PLAN.md
+
+**Wave 1** *(ready — blocked on site cooldown for live tasks)*
+
+- [ ] 05-01: Live Gate G0, pytest suite with Turkish fixtures, daily-run scheduler.
+
+**Wave 2** *(blocked on Wave 1)*
+
+- [ ] 05-02: Snapshot-aware Mongo storage + observability.
 
 ### Phase 4: Deployment & Verification Hardening
 
