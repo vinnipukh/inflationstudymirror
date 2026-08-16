@@ -151,17 +151,17 @@ Plans:
   3. Dependency notes are clear for the user's `uv` workflow without surprise installs.
   4. No new secrets or generated temp artifacts are left behind.
 
-**Plans**: 0/2 plans executed
+**Plans**: 2/2 plans executed
 
 Plans:
 
-- [ ] 04-01-PLAN.md
-- [ ] 04-02-PLAN.md
+- [x] 04-01-PLAN.md (04-01: documentation + dependency metadata)
+- [x] 04-02-PLAN.md (04-02: combined full-stack smoke test)
 
-**Wave 1**
+**Wave 1** *(single wave — both plans executed together)
 
-- [ ] 04-01: Documentation update: update all docs to full 3-phase arch, add run commands, create USER_GUIDE, update deps.
-- [ ] 04-02: Combined smoke test: create verify_full_stack.py and update TESTING.md.
+- [x] 04-01: Documentation update: update all docs to full 3-phase arch, add run commands, create USER_GUIDE, update deps.
+- [x] 04-02: Combined smoke test: create verify_full_stack.py and update TESTING.md.
 
 ## Progress
 
@@ -174,7 +174,7 @@ Independent plans inside a phase may run in parallel when they do not touch the 
 | 1. Hexagonal Core Extraction | 2/2 | Complete    | 2026-07-16 |
 | 2. Falcon API Backend | 2/2 | Complete    | 2026-07-16 |
 | 3. Streamlit API Frontend | 2/2 | Complete   | 2026-07-17 |
-| 4. Deployment & Verification Hardening | 0/2 | Complete    | 2026-07-17 |
+| 4. Deployment & Verification Hardening | 2/2 | Complete    | 2026-07-17 (re-verified 2026-08-16) |
 
 ---
-*Last updated: 2026-07-17 after Phase 4 execution*
+*Last updated: 2026-08-16 after Phase 4 bookkeeping closure + re-verification*

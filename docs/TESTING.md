@@ -53,7 +53,7 @@ PASS source: final Streamlit tab/API boundary assertions
 PASS source: final frontend API client assertions
 PASS behavior: client params, endpoint wrappers, envelope validation, ApiClientError, timeouts
 PASS final Phase 03 Streamlit API frontend verifier
-PASS full-stack: end-to-end frontend client ↔ Falcon API integration
+PASS full-stack: end-to-end frontend client <-> Falcon API integration
 ```
 
 This is the recommended single command for verifying the entire dashboard/API stack.

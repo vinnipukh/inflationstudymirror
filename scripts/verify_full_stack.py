@@ -22,6 +22,12 @@ from pathlib import Path
 from typing import Any
 from unittest.mock import patch
 
+# Windows consoles default to cp1252, which cannot encode broad Unicode (e.g. arrows,
+# emoji). Fail hard on real test failures only, never on console encoding:
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
@@ -409,7 +415,7 @@ def run_cross_layer_integration() -> None:
     health_json = health_result.json
     assert health_json["data"] == {"status": "ok"}
 
-    print("PASS full-stack: end-to-end frontend client ↔ Falcon API integration")
+    print("PASS full-stack: end-to-end frontend client <-> Falcon API integration")
 
 
 # ── 4. MAIN ───────────────────────────────────────────────────────────────────

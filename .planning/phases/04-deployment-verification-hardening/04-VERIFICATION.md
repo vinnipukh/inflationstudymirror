@@ -2,6 +2,7 @@
 phase: 04-deployment-verification-hardening
 status: passed
 verified: 2026-07-17T13:55:00+03:00
+re-verified: 2026-08-16T20:35:00Z
 requirements: [REQ-12, NFR-01, NFR-02, NFR-03, NFR-04, NFR-05, NFR-06]
 automated_checks: passed
 human_verification_required: false
@@ -61,9 +62,20 @@ PASS source: final frontend API client assertions
 PASS behavior: client params, endpoint wrappers, envelope validation, ApiClientError, timeouts
 PASS error handling: ApiClientError for 400, invalid envelope, and bad JSON
 PASS final Phase 03 Streamlit API frontend verifier
-PASS full-stack: end-to-end frontend client ↔ Falcon API integration
+PASS full-stack: end-to-end frontend client <-> Falcon API integration
 EXIT_CODE=0
 ```
+
+### Re-verification 2026-08-16 (phase bookkeeping closure)
+
+Re-ran all three verifiers (`verify_full_stack.py`, `verify_falcon_api.py`,
+`verify_streamlit_api_frontend.py`) with exit 0. The re-run caught one real
+bug: the final PASS line printed the U+2194 arrow character, which crashed
+with `UnicodeEncodeError` on Windows cp1252 consoles after all checks had
+passed. Fixed by replacing the arrow with ASCII `<->` and adding a
+`sys.stdout/stderr.reconfigure(encoding="utf-8", errors="replace")` guard at
+the top of the script. `docs/TESTING.md` and `docs/GETTING-STARTED.md`
+expected output updated to match.
 
 ## Requirements Verification
 
