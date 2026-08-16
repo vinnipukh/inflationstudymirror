@@ -1555,8 +1555,8 @@ def save_incremental(city_name, batch):
     path = config.get_city_csv_path(city_name)
     os.makedirs(config.get_city_output_dir(city_name), exist_ok=True)
     file_exists = os.path.isfile(path)
-    # Compliance scope: ilanId + District + Rooms + Price ONLY (docs/APPROACH.md B0).
-    fieldnames = ["ilanId", "District", "Rooms", "Price"]
+    # Compliance scope: District + Rooms + Price + ilanId last (docs/APPROACH.md B0).
+    fieldnames = ["District", "Rooms", "Price", "ilanId"]
     with open(path, "a", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
         if not file_exists:

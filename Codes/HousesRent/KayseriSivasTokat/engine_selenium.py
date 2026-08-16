@@ -302,7 +302,7 @@ def save_incremental(city_name: str, batch: list[dict]) -> None:
     path = config.get_city_csv_path(city_name)
     os.makedirs(config.get_city_output_dir(city_name), exist_ok=True)
     file_exists = os.path.isfile(path)
-    fieldnames = ["ilanId", "District", "Rooms", "Price"]
+    fieldnames = ["District", "Rooms", "Price", "ilanId"]
     with open(path, "a", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
         if not file_exists:

@@ -11,7 +11,7 @@ description: Modernize KayseriSivasTokat rental scraper — ilanId, 3+1 filter, 
 
 | File | Change |
 |---|---|
-| `Codes/HousesRent/KayseriSivasTokat/scraper.py` | `parse_page`: rows via `tr[data-id]` (quoted, B6) with `.searchResultsItem` fallback; captures **ilanId** from `data-id`; applies `ROOMS_FILTER`. `save_incremental`: CSV header now `ilanId,District,Rooms,Price` (compliance scope). `_is_enterprise_turnstile` + `solve_enterprise_turnstile`: **sitekey read live** from `#cloudflareTurnStileSiteKey` (recon-verified), stale `#sitekeyEnterprise` kept as fallback |
+| `Codes/HousesRent/KayseriSivasTokat/scraper.py` | `parse_page`: rows via `tr[data-id]` (quoted, B6) with `.searchResultsItem` fallback; captures **ilanId** from `data-id`; applies `ROOMS_FILTER`. `save_incremental`: CSV header now `District,Rooms,Price,ilanId` (compliance scope). `_is_enterprise_turnstile` + `solve_enterprise_turnstile`: **sitekey read live** from `#cloudflareTurnStileSiteKey` (recon-verified), stale `#sitekeyEnterprise` kept as fallback |
 | `Codes/HousesRent/KayseriSivasTokat/config.py` | New `ROOMS_FILTER = "3+1"` (default; `None` = all) with compliance comment |
 | `Codes/HousesRent/KayseriSivasTokat/main.py` | New `--rooms` CLI flag overriding `config.ROOMS_FILTER` |
 
@@ -19,7 +19,7 @@ description: Modernize KayseriSivasTokat rental scraper — ilanId, 3+1 filter, 
 
 - ✅ All three files compile (`py_compile`)
 - ✅ parse_page fixture: `data-id` row → `ilanId` captured; `ROOMS_FILTER="3+1"` keeps only the 3+1 row; `None` keeps all; `22.000 TL` → `22000.0`
-- ✅ save_incremental (real temp file): header `ilanId,District,Rooms,Price` + row written
+- ✅ save_incremental (real temp file): header `District,Rooms,Price,ilanId` + row written
 - ✅ `--rooms` flag present in CLI help; default `ROOMS_FILTER=3+1`
 - ✅ Quoted-selector sweep: no unquoted attribute selectors remain
 
@@ -45,7 +45,7 @@ proven pattern from urazkagangunes' IstanbulAvrupa scraper (3 months daily, 24.5
   solves in Chrome window → ENTER → verify listings) · adaptive delay tracker (2.5s base,
   ±50% jitter, 1.5–8s adaptive) · adaptive bracket splitting at the 1,000-listing query cap
   · result-text + pager fallback count extraction · reuses our parse_page/ilanId/ROOMS_FILTER/
-  compliance schema (ilanId, District, Rooms, Price)
+  compliance schema (District, Rooms, Price, ilanId)
 - **config.py**: + MAX_LISTINGS_PER_QUERY, MIN_BRACKET_WIDTH, ADAPTIVE_MIN/MAX_DELAY
 - **requirements.txt**: + selenium, undetected-chromedriver, lxml
 - Verified offline only (site cooldown — IP flagged after today's tests): compile + parse/

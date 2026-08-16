@@ -131,7 +131,7 @@ Collect daily rental listings for Kayseri (~2,020), Sivas (~1,020), Tokat (~960)
 
 **Exit criteria:** 3 cities scraped daily within SLO; ≥99.5% page success AND zero unexplained ID deficits over 7 days; zero manual interventions in last 3 days; snapshot-aware inventory in Mongo; compliance decision documented.
 
-**Data scope (locked 2026-08-16, law-faculty confirmed):** output fields are exactly **`ilanId, District, Rooms, Price`** (+ run date via filename/run metadata). The `ilanId` comes from `tr[data-id]` in the public search table — it is a listing identifier, not personal data. No detail-page crawling ever (contact info, advertiser names, photos live there). Existing CSVs (`District,Rooms,Price`) remain valid; the modernization adds the ID column.
+**Data scope (locked 2026-08-16, law-faculty confirmed):** output fields are exactly **`District, Rooms, Price, ilanId`** (+ run date via filename/run metadata). The `ilanId` comes from `tr[data-id]` in the public search table — it is a listing identifier, not personal data. No detail-page crawling ever (contact info, advertiser names, photos live there). Existing CSVs (`District,Rooms,Price`) remain valid; the modernization adds the ID column.
 
 ---
 
