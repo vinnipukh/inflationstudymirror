@@ -88,5 +88,5 @@ def baslat_scraper(csv_yolu, cikti_json="kategori_haritasi.json"):
 
 
 if __name__ == "__main__":
-    HEDEF_CSV = r"C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\yapimaks\2026-03-28.csv"
+    HEDEF_CSV = r"C:\Users\arhan\PycharmProjects\inflationstudymirror\Datas\ConstructionSuppliesMarkets\yapimaks\2026-03-28.csv"
     baslat_scraper(HEDEF_CSV)

@@ -34,7 +34,7 @@ focus: structure
 
 - Gurmar raw: `Datas/Markets/Gurmar/gurmar_prices_YYYY-MM-DD.csv`.
 - Vakko raw: `Datas/ClothingStores/Vakko/vakko_YYYY-MM-DD.csv`.
-- Yapimaks raw: `Datas/yapimaks/YYYY-MM-DD.csv`.
+- Yapimaks raw: `Datas/ConstructionSuppliesMarkets/yapimaks/YYYY-MM-DD.csv`.
 - HomeGoods raw: `Datas/HomeGoods/chakra_all_categories_YYYY_MM_DD.csv`.
 - Inflation summaries: `Inflations/Datas/**/inflation_summary.csv` or city-specific summaries.
 

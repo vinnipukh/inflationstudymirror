@@ -87,7 +87,7 @@ Supported dashboard/API retailer labels:
 - `Cosmetics / Watson`
 - `ConstructionSuppliesMarkets / TasciYapiMarket`
 - `HousesRent / Kayseri`, `Sivas`, `Tokat`
-- `yapimaks`
+- `ConstructionSuppliesMarkets / yapimaks`
 
 ### Falcon API routes and filter parameters
 

@@ -16,10 +16,10 @@ SUPPORTED_RETAILERS = {
     "Technology",
     "Cosmetics / Watson",
     "ConstructionSuppliesMarkets / TasciYapiMarket",
+    "ConstructionSuppliesMarkets / yapimaks",
     "HousesRent / Kayseri",
     "HousesRent / Sivas",
     "HousesRent / Tokat",
-    "yapimaks",
 }
 
 DEFAULT_RETAILERS = (
