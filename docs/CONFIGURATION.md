@@ -133,6 +133,26 @@ The frontend API client (`inflation_dashboard/frontend/api_client.py`) configure
 | `beymen.yml` | `0 10 * * *` | 3.10 | `Codes/Technology/scraper.py` |
 | `tasciyapi.yml` | `0 14 * * *` | 3.11 | `Codes/ConstructionMarkets/tasciyapimarket/tasciyapi_scraper.py` |
 
+## Rental Scraper Configuration (`Codes/HousesRent/KayseriSivasTokat/config.py`)
+
+The rental scraper (sarı site — Kayseri/Sivas/Tokat) is configured entirely in its own `config.py` — no environment variables:
+
+| Setting | Default | Notes |
+|---|---|---|
+| `BASE_URL` | `https://www.sahibinden.com` | Site domain (kept literal — required by the scraper) |
+| `CITIES` | kayseri, sivas, tokat | Each with `DEFAULT_BRACKETS` |
+| `DEFAULT_BRACKETS` | 5 TL ranges: 0–19,999 → 100,000–9,999,999 | Price segmentation for pagination |
+| `PAGE_SIZE` | 50 | Listings per page (`pagingSize` param) |
+| `MAX_PAGES_PER_BRACKET` | 20 | Safety page cap per price range |
+| `RAYOBROWSE_ENDPOINT` | `http://localhost:9222` | Anti-detect browser daemon (v0.2.1, Chromium 146 pin) |
+| `FORCE_VIEWPORT_*` | 1920×1080, min 1200 | Viewport enforcement for Turnstile layout |
+| `MAX_LOGIN_RETRIES_PER_BRACKET` | 3 | Per-bracket login retry + exponential backoff |
+| Timings | `PAGE_LOAD_AFTER_GOTO` 8–12 s, `BETWEEN_PAGES` 8–12 s, `BETWEEN_BRACKETS` 4–6 s, `COOLDOWN_AFTER_N_PAGES` 20, `COOLDOWN_DURATION` 30–90 s | Human-pacing and rate-limit cooldowns (all randomised per-call) |
+| `PATCH_BROWSER_DETECTION_LEAKS` | True | Fingerprint JS patching |
+| Output | `Datas/HousesRent/{City}/{date}.csv` | `District, Rooms, Price` columns |
+
+⚠️ Known drift (per `docs/APPROACH.md` §7): the hardcoded Turnstile sitekey in `scraper.py` is stale — read `#cloudflareTurnStileSiteKey` live instead. The planned modernization (snapshot-aware storage, browser-only default, reconciliation) is documented in `docs/APPROACH.md`.
+
 ## Running the Stack Locally
 
 ```bash

@@ -297,6 +297,10 @@ uv run streamlit run streamlit_app.py
 - `docs/DEVELOPMENT.md` — Development conventions and commands
 - `docs/TESTING.md` — Verification scripts and test documentation
 - `docs/CONFIGURATION.md` — Environment variables and defaults
+- `docs/APPROACH.md` — **Recommended data-acquisition flow** for the rental scraper: threat model, architecture, decision gates, live site recon (§7)
+- `docs/TECH-STACK-SEARCH.md` — Tech-stack & skill search registry: tool catalog, install set, integration blueprint
+- `docs/RESEARCH-PROMPT.md` + `docs/RESEARCH-REPORT-2026-08-16.md` — Deep-research validation of the scraping approach
+- `docs/scraping-wiki/` — Local snapshot of TheWebScrapingClub knowledge base (anti-bot technique truth)
 
 ---
 
@@ -384,4 +388,4 @@ This project is a personal research mirror for inflation study purposes.
 
 ---
 
-*Last Updated: July 2026*
+*Last Updated: August 2026*

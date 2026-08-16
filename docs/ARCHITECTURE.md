@@ -122,6 +122,10 @@ Phase 3 refactored `streamlit_app.py` to consume the Falcon API via `inflation_d
 | `create_app()` | `inflation_dashboard/api/falcon_app.py` | Creates the Falcon app and attaches all API resources. |
 | `fetch_endpoint()` | `inflation_dashboard/frontend/api_client.py` | Generic API endpoint caller with timeout, envelope validation, and error handling. |
 
+## Scraper Sub-Architectures
+
+Most `Codes/` scrapers are simple request-based collectors. The rental scraper (`Codes/HousesRent/KayseriSivasTokat/`) is the notable exception — an async Playwright + rayobrowse anti-detect browser pipeline with cookie pooling, checkpoint/resume, price-bracket pagination, and an interactive console. Its recommended architecture (threat model, decision gates, tool assignments) is documented in `docs/APPROACH.md`, with the supporting tool catalog in `docs/TECH-STACK-SEARCH.md`. A deep-research validation report (`docs/RESEARCH-REPORT-2026-08-16.md`) revises that plan toward a browser-only default with reconciliation-first gates.
+
 ## Directory Structure Rationale
 
 ```text
@@ -129,6 +133,7 @@ Codes/                         Source-specific scraper scripts
 Datas/                         Tracked raw scraped CSV data
 Inflations/Codes/              Source-specific inflation calculators and config
 Inflations/Datas/              Generated inflation details and summaries
+forecasting/                   ML-based price trend prediction notebook
 inflation_dashboard/domain/    Framework-independent parsing and normalization helpers
 inflation_dashboard/adapters/  CSV storage adapter over tracked Datas/ files
 inflation_dashboard/application/ Dashboard use cases plus chart/table specs
@@ -136,6 +141,7 @@ inflation_dashboard/api/       Falcon resources, filter parsing, and JSON serial
 inflation_dashboard/frontend/  Streamlit API client and frontend-only helpers
 scripts/                       Focused verification scripts and smoke tests
 streamlit_app.py               Dashboard entry point consuming Falcon API
+.planning/                     Project planning notes and workflow state (GSD)
 .github/workflows/             Scheduled scraper automation when workflow files are present
 ```
 

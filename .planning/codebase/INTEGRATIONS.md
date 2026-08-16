@@ -10,7 +10,7 @@ focus: integrations
 - Gurmar API: `Codes/Markets/Gurmar/gurmar_scraper.py` calls `https://api.gurmar.com.tr/api/home/slug/{slug}?page={page}` and writes daily CSVs to `Datas/Markets/Gurmar/`.
 - Vakko API: `Codes/ClothingStores/Vakko/vakko_master_scraper.py` calls `https://api.vakko.com/occ/v2/vsite/products/search` using category IDs extracted from `Codes/ClothingStores/Vakko/vakko_categories.xml`.
 - Yapimaks API: `Codes/ConstructionMarkets/yapimaks/scraper.py` reads `https://yapimaks.com/sitemap/products1.xml`, derives product IDs, then calls `https://yapimaks.com/api/tr/v1/layouts/b2c/products/{product_id}.json`.
-- Sahibinden rental pages: `Codes/HousesRent/KayseriSivasTokat/scraper.py` uses browser automation and anti-bot handling to collect rental listings.
+- Sarı site rental pages: `Codes/HousesRent/KayseriSivasTokat/scraper.py` uses browser automation and anti-bot handling to collect rental listings.
 - Additional categories exist under `Codes/Cosmetics/Watson/`, `Codes/HomeGoods/`, `Codes/Technology/`, and `Codes/Health/Diagnostic&Surgical Services/`.
 
 ## Secrets and credentials
