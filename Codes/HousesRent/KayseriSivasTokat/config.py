@@ -40,6 +40,16 @@ def get_checkpoint_file() -> str:
 ROOMS_FILTER = "3+1"
 
 # ---------------------------------------------------------------------------
+# Selenium engine (engine_selenium.py) — friend-tactics settings
+# Persistent profile = cookie-saving trust strategy (cf_clearance/_px3 survive
+# daily runs). Adaptive delays mirror the proven IstanbulAvrupa scraper.
+# ---------------------------------------------------------------------------
+MAX_LISTINGS_PER_QUERY = 1000   # Sarı site query cap (20 pages × 50) — split above
+MIN_BRACKET_WIDTH      = 50     # Safety valve against infinite splitting
+ADAPTIVE_MIN_DELAY     = 1.5    # Adaptive delay floor (seconds)
+ADAPTIVE_MAX_DELAY     = 8.0    # Adaptive delay cap (seconds)
+
+# ---------------------------------------------------------------------------
 # Timing (seconds) — all randomised per-call between (min, max)
 # ---------------------------------------------------------------------------
 PAGE_LOAD_AFTER_GOTO  = (8.0,  12.0)

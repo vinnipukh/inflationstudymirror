@@ -13,6 +13,9 @@ beautifulsoup4
 seleniumbase
 cloudscraper
 curl-cffi
+selenium
+undetected-chromedriver
+lxml
 
 # Dashboard dependencies
 pandas>=2.0

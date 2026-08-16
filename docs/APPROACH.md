@@ -87,7 +87,7 @@ Collect daily rental listings for Kayseri (~2,020), Sivas (~1,020), Tokat (~960)
 
 | Layer | Tool | Why |
 |---|---|---|
-| Driver | **Existing warm driver (rayobrowse)** — CloakBrowser FAILED G0 (2026-08-16: "Doğrulama Başarısız" on cold AND vanilla flows; free binary v146 not v150); Scrapling StealthyFetcher remains the only untested candidate | The existing warm session already succeeded in recon; no evidence a switch improves anything |
+| Driver | **engine_selenium.py (NEW — friend-tactics, proven 3-month pattern)**: undetected-chromedriver + **persistent SeleniumProfile** (cookie-saving trust strategy; solve Turnstile once on day 1 → warm sessions after) + manual solve-retry loop + adaptive 2.5s pacing. rayobrowse/Playwright kept as legacy path. CloakBrowser FAILED G0 (2026-08-16: "Doğrulama Başarısız" cold+vanilla; free binary v146 not v150) | The friend's IstanbulAvrupa scraper ran daily for 3 months (24.5k rows/day) with this exact pattern — strongest evidence in the stack |
 | Humanisation | `humanize=True`-class behavior **only under B0 authorisation** (ToS clause conflict otherwise) | Compliance gate |
 | Extraction | Recon selectors (`tr[data-id]`, quoted attrs) + **schema assertions**; adaptive selectors as emergency recovery only | Deterministic contract > similarity |
 | Normalization | **price-parser** + **dateparser** (`languages=["tr"]`) with exact Turkish fixtures in unit tests | Drift fix |

@@ -34,3 +34,21 @@ description: Modernize KayseriSivasTokat rental scraper — ilanId, 3+1 filter, 
 - Snapshot-aware MongoDB storage (B10) — future phase
 - Unit test suite (pytest) for parse_page/normalize_price — future
 - Recon refresh of live sitekey value on next run (sitekey read live now, so self-healing)
+
+## Addendum (same task, 2026-08-16) — engine_selenium.py (friend-tactics)
+
+CloakBrowser and vanilla Playwright both FAILED cold-session Turnstile tests. Adopted the
+proven pattern from urazkagangunes' IstanbulAvrupa scraper (3 months daily, 24.5k rows/day):
+
+- **`engine_selenium.py`** (new): undetected-chromedriver + persistent `SeleniumProfile/`
+  (--user-data-dir) = cookie-saving trust strategy · manual solve-retry loop (pause → human
+  solves in Chrome window → ENTER → verify listings) · adaptive delay tracker (2.5s base,
+  ±50% jitter, 1.5–8s adaptive) · adaptive bracket splitting at the 1,000-listing query cap
+  · result-text + pager fallback count extraction · reuses our parse_page/ilanId/ROOMS_FILTER/
+  compliance schema (ilanId, District, Rooms, Price)
+- **config.py**: + MAX_LISTINGS_PER_QUERY, MIN_BRACKET_WIDTH, ADAPTIVE_MIN/MAX_DELAY
+- **requirements.txt**: + selenium, undetected-chromedriver, lxml
+- Verified offline only (site cooldown — IP flagged after today's tests): compile + parse/
+  extract/URL/split checks all pass. **Day-1 ritual required**: run once headed, solve the
+  Turnstile manually, profile saved → warm sessions thereafter.
+- Run: `python Codes/HousesRent/KayseriSivasTokat/engine_selenium.py --city kayseri --rooms 3+1`
