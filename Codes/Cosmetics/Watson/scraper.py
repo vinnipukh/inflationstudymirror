@@ -1,15 +1,14 @@
 import csv
 import os
 import re
+import sys
 import time
+import random
 import xml.etree.ElementTree as ET
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
-from concurrent.futures import ThreadPoolExecutor, as_completed
-import threading
 import traceback
-import random
 
 from curl_cffi import requests
 
@@ -28,23 +27,81 @@ TARGET_CATEGORIES = [str(i) for i in range(100, 111)]
 
 LANG = "tr_TR"
 CURRENCY = "TRY"
-PAGE_SIZE = 28
-MAX_PAGES_PER_CATEGORY = 50
-MAX_WORKERS = 1
-MAX_RETRIES = 5
-BACKOFF_BASE = 2.0
-BACKOFF_MAX = 30.0
-MIN_DELAY = 8.0
-MAX_DELAY = 18.0
+# API'nin desteklediği en büyük pageSize -> istek sayısını ~yarıya indirir.
+PAGE_SIZE = 60
 
-progress_lock = threading.Lock()
+# --- Hız / anti-bot profili ---
+# Ölçüm: Akamai, tek IP'den API endpoint'ine PARALEL bağlantıları (eş zamanlı
+# in-flight istekleri) bayraklıyor. Sıralı ~1 istek/sn ise 120+ istekte bile
+# 0 adet 403 alındı. Bu yüzden istekler SIRALI ve ritmik gönderilir:
+#   * Paralel 12 thread + küçük jitter  -> ~280 istekte 403 yağmuru
+#   * Sıralı ~0.85 istek/sn             -> 120/120 başarılı
+# Hız buradan gelir: pageSize=60 ile tam veri ~170 sayfa -> ~3 dk, eski kodun
+# (50 sayfa cap + 8-18 sn bekleme = ~40-60 dk) aksine eksiksiz ve hızlı.
+BASE_INTERVAL = 0.55   # istek başlatma arası sn (~1 istek/sn)
+MIN_INTERVAL = 0.35
+MAX_INTERVAL = 6.0
+PAUSE_ON_BLOCK = 30.0  # 403/429 görülürse filoyu bu kadar saniye durdur
+MAX_RETRIES = 4
+BACKOFF_BASE = 2.0
+BACKOFF_MAX = 12.0
+REQUEST_TIMEOUT = 30
+
+# Güvenlik sigortası (kategori başına en fazla bu sayfa):
+MAX_PAGES_PER_CATEGORY = 500
+
+import threading
 print_lock = threading.Lock()
+
+# --- Tek session (sıralı) + uyarlanabilir ritim ---
+_next_start = 0.0
+_interval = BASE_INTERVAL
+_pause_until = 0.0
+_rate_lock = threading.Lock()
+
+
+def _wait_my_turn() -> None:
+    global _next_start, _interval, _pause_until
+    while True:
+        with _rate_lock:
+            now = time.time()
+            if now < _pause_until:
+                wait = _pause_until - now
+                _next_start = now + _interval
+            else:
+                wait = max(0.0, _next_start - now)
+        if wait > 0:
+            time.sleep(wait)
+            continue
+        with _rate_lock:
+            _next_start = max(_next_start, now) + _interval
+        return
+
+
+def _note_result(ok: bool, blocked: bool = False) -> None:
+    global _interval, _pause_until
+    with _rate_lock:
+        if blocked:
+            _pause_until = time.time() + PAUSE_ON_BLOCK
+            _interval = min(MAX_INTERVAL, _interval * 3.0)
+        elif not ok:
+            _interval = min(MAX_INTERVAL, _interval * 1.5)
 
 
 def tprint(*args, **kwargs):
-    thread_name = threading.current_thread().name
     with print_lock:
-        print(f"[{thread_name}]", *args, **kwargs)
+        print(*args, **kwargs)
+
+
+def create_session() -> requests.Session:
+    session = requests.Session(impersonate="chrome124")
+    session.headers.update({
+        "Accept": "application/json, text/plain, */*",
+        "Accept-Language": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7",
+        "Referer": BASE_DOMAIN,
+        "Origin": BASE_DOMAIN,
+    })
+    return session
 
 
 def clean_name(name: Any) -> str:
@@ -122,61 +179,52 @@ def parse_sitemap(sitemap_path: str, category_filter: Optional[List[str]] = None
         return []
 
 
-def create_session() -> requests.Session:
-    session = requests.Session(impersonate="chrome124")
-    session.headers.update({
-        "Accept": "application/json, text/plain, */*",
-        "Accept-Language": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7",
-        "Referer": BASE_DOMAIN,
-        "Origin": BASE_DOMAIN,
-    })
-    return session
-
-
 def fetch_api_page(session: requests.Session, category_code: str, page: int) -> Optional[Dict[str, Any]]:
+    params = {
+        "fields": "FULL",
+        "searchType": "PRODUCT",
+        "categoryCode": category_code,
+        "lang": LANG,
+        "curr": CURRENCY,
+        "currentPage": page,
+        "pageSize": PAGE_SIZE,
+    }
+
     backoff = BACKOFF_BASE
-    attempts = 0
+    for attempt in range(MAX_RETRIES):
+        _wait_my_turn()
 
-    while attempts < MAX_RETRIES:
         try:
-            params = {
-                "fields": "FULL",
-                "searchType": "PRODUCT",
-                "categoryCode": category_code,
-                "lang": LANG,
-                "curr": CURRENCY,
-                "currentPage": page,
-                "pageSize": PAGE_SIZE,
-            }
+            response = session.get(API_URL, params=params, timeout=REQUEST_TIMEOUT)
 
-            response = session.get(API_URL, params=params, timeout=30)
-
-            if response.status_code == 429:
-                tprint(f"[WARN] 429 Rate Limited on category {category_code} page {page}. Sleeping {backoff:.1f}s.")
+            if response.status_code in (429, 403):
+                _note_result(ok=False, blocked=True)
+                tprint(f"[WARN] {response.status_code} on category {category_code} page {page} "
+                       f"(attempt {attempt + 1}). Backing off {min(backoff, BACKOFF_MAX):.1f}s.")
                 time.sleep(min(backoff, BACKOFF_MAX))
                 backoff *= 2
-                attempts += 1
                 continue
 
-            if response.status_code == 403:
-                tprint(f"[WARN] 403 Forbidden on category {category_code} page {page}. Retrying in {backoff:.1f}s.")
+            if response.status_code >= 500:
+                _note_result(ok=False)
+                tprint(f"[WARN] HTTP {response.status_code} on category {category_code} page {page}. Retrying...")
                 time.sleep(min(backoff, BACKOFF_MAX))
                 backoff *= 2
-                attempts += 1
                 continue
 
             response.raise_for_status()
             return response.json()
 
         except requests.exceptions.Timeout:
+            _note_result(ok=False)
             tprint(f"[WARN] Timeout on category {category_code} page {page}. Retrying...")
-            attempts += 1
-            time.sleep(1.0)
-
+            time.sleep(min(backoff, BACKOFF_MAX))
+            backoff *= 2
         except Exception as e:
+            _note_result(ok=False)
             tprint(f"[WARN] Error on category {category_code} page {page}: {e}")
-            attempts += 1
-            time.sleep(2.0)
+            time.sleep(min(backoff, BACKOFF_MAX))
+            backoff *= 2
 
     tprint(f"[ERROR] Exhausted retries for category {category_code} page {page}.")
     return None
@@ -193,6 +241,7 @@ def extract_products(data: Dict[str, Any], seen_codes: Set[str]) -> List[Tuple[s
 
             if code in seen_codes:
                 continue
+            seen_codes.add(code)
 
             name = clean_name(product.get("name"))
             price_value = None
@@ -213,58 +262,12 @@ def extract_products(data: Dict[str, Any], seen_codes: Set[str]) -> List[Tuple[s
             if not name or price_value is None:
                 continue
 
-            seen_codes.add(code)
             rows.append((name, float(price_value)))
 
         except Exception:
             continue
 
     return rows
-
-
-def scrape_category(category_code: str, seen_codes: Set[str], category_num: int, total_categories: int) -> Tuple[
-    List[Tuple[str, float]], str, bool]:
-    tprint(f"Starting Category {category_num}/{total_categories}: Code={category_code}")
-
-    session = create_session()
-    category_rows = []
-    failed = False
-
-    for page in range(0, MAX_PAGES_PER_CATEGORY):
-        # Human delay before every page fetch (skip first page)
-        if page > 0:
-            delay = random.uniform(MIN_DELAY, MAX_DELAY)
-            tprint(f"Sleeping {delay:.2f}s to mimic human...")
-            time.sleep(delay)
-
-        data = fetch_api_page(session, category_code, page)
-
-        if data is None:
-            tprint(f"[WARN] Failed category {category_code} page {page}. Stopping category.")
-            failed = True
-            break
-
-        with progress_lock:
-            page_rows = extract_products(data, seen_codes)
-
-        category_rows.extend(page_rows)
-
-        pagination = data.get("pagination", {})
-        total_pages = int(pagination.get("totalPages", 1))
-
-        tprint(f"[Cat {category_code}] Page {page + 1}/{total_pages}: +{len(page_rows)} products")
-
-        if page >= total_pages - 1:
-            break
-
-    tprint(f"Category {category_code} done: {len(category_rows)} products")
-
-    # Extra delay between categories
-    cat_delay = random.uniform(15.0, 25.0)
-    tprint(f"Category finished. Sleeping {cat_delay:.2f}s before next category...")
-    time.sleep(cat_delay)
-
-    return category_rows, category_code, failed
 
 
 def remove_duplicate_rows(rows: List[Tuple[str, float]]) -> Tuple[List[Tuple[str, float]], int]:
@@ -298,9 +301,9 @@ def write_csv(rows: List[Tuple[str, float]], output_file: str) -> None:
 
 
 def main() -> None:
-    all_rows = []
-    seen_codes = set()
-    failed_categories = []
+    all_rows: List[Tuple[str, float]] = []
+    seen_codes: Set[str] = set()
+    coverage: Dict[str, List[int]] = {}  # category -> [ok, failed]
 
     try:
         start_time = time.time()
@@ -313,35 +316,68 @@ def main() -> None:
             return
 
         print(f"[INFO] Total categories: {len(category_codes)}")
-        print(f"[INFO] Starting parallel scraping with {MAX_WORKERS} workers using curl_cffi...")
+        print(f"[INFO] Probing categories (pageSize={PAGE_SIZE})...")
         print("=" * 60)
 
-        with ThreadPoolExecutor(max_workers=MAX_WORKERS, thread_name_prefix="Scraper") as executor:
-            future_to_category = {
-                executor.submit(scrape_category, cat_code, seen_codes, idx, len(category_codes)): cat_code
-                for idx, cat_code in enumerate(category_codes, 1)
-            }
+        session = create_session()
 
-            for future in as_completed(future_to_category):
-                category_code = future_to_category[future]
-                try:
-                    category_rows, cat_code, failed = future.result()
-                    with progress_lock:
-                        all_rows.extend(category_rows)
-                        if failed:
-                            failed_categories.append(cat_code)
-                except Exception as e:
-                    print(f"[ERROR] Category {category_code} raised exception: {e}")
-                    traceback.print_exc()
-                    failed_categories.append(category_code)
+        # Kategori başına sayfa planını kur (page 0 = pagination öğrenme).
+        tasks: List[Tuple[str, int]] = []
+        for idx, cat_code in enumerate(category_codes, 1):
+            tprint(f"Probing Category {idx}/{len(category_codes)}: Code={cat_code}")
+            data = fetch_api_page(session, cat_code, 0)
+            if data is None:
+                tprint(f"[WARN] Category {cat_code} page 0 failed; skipping category.")
+                continue
+
+            total_pages = int(data.get("pagination", {}).get("totalPages", 1))
+            total_results = data.get("pagination", {}).get("totalResults", "?")
+            pages = min(total_pages, MAX_PAGES_PER_CATEGORY)
+            tprint(f"[Cat {cat_code}] totalResults={total_results} -> {pages} pages")
+
+            # page 0 satırlarını da topla
+            rows = extract_products(data, seen_codes)
+            all_rows.extend(rows)
+            coverage[cat_code] = [1, 0]
+
+            for page in range(1, pages):
+                tasks.append((cat_code, page))
+
+        if not tasks:
+            print("[ERROR] No pages to fetch. Exiting.")
+            return
+
+        print(f"[INFO] Fetching {len(tasks)} more pages serially at ~{1/BASE_INTERVAL:.0f} req/s "
+              f"(Akamai parallel-connection guard) ...")
+        print("=" * 60)
+
+        total = len(tasks)
+        for i, (cat_code, page) in enumerate(tasks, 1):
+            if i % 25 == 0 or i == total:
+                tprint(f"[Progress] {i}/{total} pages")
+
+            data = fetch_api_page(session, cat_code, page)
+            if data is None:
+                coverage[cat_code][1] += 1
+                continue
+
+            rows = extract_products(data, seen_codes)
+            all_rows.extend(rows)
+            with print_lock:
+                coverage[cat_code][0] += 1
 
         print("\n" + "=" * 60)
-        print("[INFO] POST-PROCESSING: Removing duplicates...")
+        print("PAGE FETCH REPORT")
+        print("=" * 60)
+        for cat in category_codes:
+            if cat in coverage:
+                ok, fail = coverage[cat]
+                print(f"  Cat {cat}: {ok} pages OK, {fail} failed ({'COMPLETE' if fail == 0 else 'MISSING PAGES'})")
         print("=" * 60)
 
+        print("[INFO] POST-PROCESSING: Removing duplicates...")
         total_before = len(all_rows)
         all_rows, duplicates_removed = remove_duplicate_rows(all_rows)
-        total_after = len(all_rows)
 
         output_file = generate_output_filename()
         if Path(output_file).exists():
@@ -355,27 +391,27 @@ def main() -> None:
         elapsed = time.time() - start_time
         minutes, seconds = divmod(elapsed, 60)
 
+        categories_ok = len([c for c in coverage if coverage[c][1] == 0])
+
         print("\n" + "=" * 60)
         print("SCRAPING COMPLETE")
         print("=" * 60)
-        print(f"Total products (unique)    : {len(all_rows)}")
-        print(f"Categories processed       : {len(category_codes) - len(failed_categories)}/{len(category_codes)}")
-        print(f"Time elapsed               : {int(minutes)}m {int(seconds)}s")
-        print(f"Output file                : {output_file}")
+        print(f"Raw rows extracted             : {total_before}")
+        print(f"Duplicates removed             : {duplicates_removed}")
+        print(f"Total products (unique)        : {len(all_rows)}")
+        print(f"Categories fully scraped       : {categories_ok}/{len(category_codes)}")
+        print(f"Time elapsed                   : {int(minutes)}m {int(seconds)}s")
+        print(f"Output file                    : {output_file}")
         print("=" * 60)
 
     except KeyboardInterrupt:
         if all_rows:
-            all_rows, dupes = remove_duplicate_rows(all_rows)
-            out = generate_output_filename()
-            write_csv(all_rows, out)
+            all_rows, _ = remove_duplicate_rows(all_rows)
+            write_csv(all_rows, generate_output_filename())
 
     except Exception as e:
         traceback.print_exc()
-        if all_rows:
-            all_rows, dupes = remove_duplicate_rows(all_rows)
-            out = generate_output_filename()
-            write_csv(all_rows, out)
+        sys.exit(1)
 
 
 if __name__ == "__main__":
