@@ -1,0 +1,14 @@
+2026-08-18 02:54:09 [INFO] ==================================================
+2026-08-18 02:54:09 [INFO] Yapimaks Scraper basliyor
+2026-08-18 02:54:09 [INFO] ==================================================
+2026-08-18 02:54:09 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-08-18 02:54:10 [INFO] Cookie basariyla alindi.
+2026-08-18 02:54:10 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-08-18 02:54:11 [INFO] Sitemap'ten toplam 8396 urun URL'si bulundu.
+2026-08-18 02:54:11 [INFO] Bugune ait veri yok. Eski veri (2026-08-17.csv) süzülerek bugune aktariliyor...
+2026-08-18 02:54:11 [INFO] Basarili! 8395 urun dunden bugune aktarildi.
+2026-08-18 02:54:11 [INFO] Guncel dosyada hazir olan urun: 8395 | Sifirdan cekilecek (yeni) urun: 1
+2026-08-18 02:54:11 [INFO] 1 yeni urun scrapelanacak -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/ConstructionSuppliesMarkets/yapimaks/2026-08-18.csv
+2026-08-18 02:54:11 [INFO] [1/1] https://yapimaks.com/seramik-yapistirici-beyaz-qf121-c1t-25-kg-p1969
+2026-08-18 02:54:12 [INFO] [1969] 'SERAMİK YAPIŞTIRICI BEYAZ QF121 C1T-25 K' | 235.00 TL | SKU: DARKSS.YK.QF121B
+2026-08-18 02:54:14 [INFO] Tamamlandi! Toplam 1 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/ConstructionSuppliesMarkets/yapimaks/2026-08-18.csv
