@@ -1,0 +1,31 @@
+# Line-ending policy. Makes CD/LF handling explicit and identical on every
+# machine instead of depending on each developer's global core.autocrlf.
+#
+# "text=auto" means: store LF in the repository, and let each OS use its
+# native ending in the working tree.
+* text=auto
+
+# Code / CI files must always stay LF on every OS.
+# - GitHub Actions workflow files (.yml) can misbehave with CRLF.
+# - Shell scripts (.sh) break if they carry a CRLF carriage return.
+*.py    text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.sh    text eol=lf
+*.toml  text eol=lf
+*.cfg   text eol=lf
+*.ini   text eol=lf
+*.json  text eol=lf
+
+# Binary files Git must never touch.
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.pdf   binary
+*.zip   binary
+*.7z    binary
+*.gz    binary
+*.exe   binary
+*.dll   binary

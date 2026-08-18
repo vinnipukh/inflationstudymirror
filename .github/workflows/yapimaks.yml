@@ -12,6 +12,8 @@ permissions:
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    timeout-minutes: 480  # ilk toparlama (catch-up) ~7600 urun ≈ 4.5 sa sürer
+
 
     steps:
       - name: Checkout repository

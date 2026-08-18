@@ -7,6 +7,90 @@ import time
 import re
 import random
 import os
+from html import unescape
+
+
+# ---------------------------------------------------------------------------
+# Site-structure helpers
+#
+# On 2026-08-13 chakra.com.tr (Akinon platform) stripped product names (and
+# offers) from the JSON-LD ItemList: entries now carry only @type/position/url.
+# The full catalog data (id, item_sku, name, price, brand, category) still
+# ships server-side inside the hidden <div class="analytics-data"> as a
+# 'productListViewed' analytics payload. Prices kept coming from the
+# <pz-price> card fallback below, so only the name source had to change.
+# ---------------------------------------------------------------------------
+
+
+def extract_analytics_product_names(page_html):
+    """Parse the hidden analytics-data div's productListViewed payload.
+
+    Returns (names_by_id, entries) where names_by_id maps {product_id: name}
+    and entries is a list of (product_id, name) pairs for URL-segment matching
+    (variant URLs like /...-8699147026572-1/ truncate to an unusable id).
+
+    The analytics-data div holds concatenated analytics JSON blobs whose raw
+    text can contain HTML-ish sequences, so it must be scanned on the RAW
+    response text — BeautifulSoup's parser mangles the blob into elements.
+    """
+    names = {}
+    entries = []
+    for match in re.finditer(
+        r'"type"\s*:\s*"productListViewed".*?"payload"\s*:', page_html, re.S
+    ):
+        try:
+            payload, _ = json.JSONDecoder().raw_decode(page_html[match.end():].lstrip())
+        except json.JSONDecodeError:
+            continue
+        if isinstance(payload, list):
+            for product in payload:
+                product_id = product.get('id')
+                name = product.get('name')
+                if product_id and name:
+                    clean_name = unescape(str(name)).strip()
+                    names[str(product_id)] = clean_name
+                    entries.append((str(product_id), clean_name))
+    return names, entries
+
+
+def find_product_wrapper(soup, product_id):
+    """Locate the .product-item card for a product id (data-sku attribute).
+
+    The href fallback only runs for real-length ids: variant URLs
+    (/...-<ean>-1/) truncate to collision-prone ids like '1', where an
+    anchored href match could hit an unrelated card.
+    """
+    wrapper = soup.find(attrs={'data-sku': product_id})
+    if wrapper is None and len(product_id) >= 6:
+        product_link = soup.find(
+            'a', href=re.compile(re.escape('/' + product_id + '/') + r'$')
+        )
+        if product_link:
+            wrapper = product_link.find_parent('div', class_=re.compile(r'product-item'))
+    return wrapper
+
+
+def extract_name_from_card(wrapper):
+    """Server-rendered product name: the card's image alt attribute."""
+    img = wrapper.find('img', alt=True)
+    if img:
+        alt = (img.get('alt') or '').strip()
+        if alt:
+            return alt
+    return ''
+
+
+def humanize_slug(product_url):
+    """Last-resort name from the URL slug.
+
+    /bled-tekli-koltuk-88x92x69-cm-bej-8682313223325/ ->
+    'Bled Tekli Koltuk 88x92x69 Cm Bej'
+    """
+    match = re.search(r'/([^/]+?)(?:-\d+)?/?$', product_url)
+    if not match:
+        return ''
+    slug = match.group(1)
+    return ' '.join(word for word in slug.split('-') if word).title()
 
 
 def scrape_chakra_category(base_url, category_name):
@@ -47,6 +131,12 @@ def scrape_chakra_category(base_url, category_name):
             break
 
         soup = BeautifulSoup(response.text, 'html.parser')
+
+        # Product names moved out of the JSON-LD on 2026-08-13; read the
+        # analytics payload once per page instead (raw text, not the soup:
+        # the parser mangles the analytics JSON blob).
+        analytics_names, analytics_entries = extract_analytics_product_names(response.text)
+
         ld_json_script = soup.find('script', type='application/ld+json')
 
         if not ld_json_script:
@@ -68,7 +158,33 @@ def scrape_chakra_category(base_url, category_name):
 
         for item in items:
             product_url = item.get('url', '')
-            name = item.get('name', 'İsimsiz Ürün')
+            match = re.search(r'-(\d+)/?$', product_url)
+            product_id = match.group(1) if match else product_url
+
+            # Name resolution order: analytics payload (current site) ->
+            # JSON-LD name (pre-2026-08-13 structure) -> card image alt ->
+            # URL slug -> explicit fallback.
+            name = analytics_names.get(product_id, '')
+            if not name:
+                # Variant URLs (/...-<ean>-1/) truncate the id to something
+                # unusable ('1'); match payload entries by URL segment instead,
+                # longest id first so a shorter id can't shadow a longer one.
+                for payload_id, payload_name in sorted(
+                    analytics_entries, key=lambda t: len(t[0]), reverse=True
+                ):
+                    if re.search(r'-' + re.escape(payload_id) + r'(?:-\d+)?/?$', product_url):
+                        name = payload_name
+                        break
+            if not name:
+                name = item.get('name', '').strip()
+            wrapper = None
+            if not name:
+                wrapper = find_product_wrapper(soup, product_id)
+                name = extract_name_from_card(wrapper) if wrapper else ''
+            if not name:
+                name = humanize_slug(product_url)
+            if not name:
+                name = 'İsimsiz Ürün'
 
             offers = item.get('offers')
             if isinstance(offers, list) and len(offers) > 0:
@@ -83,16 +199,9 @@ def scrape_chakra_category(base_url, category_name):
             else:
                 price = str(price_val).strip()
 
-            match = re.search(r'-(\d+)/?$', product_url)
-            product_id = match.group(1) if match else product_url
-
             if price == '0' or price == 'None':
-                wrapper = soup.find(attrs={'data-sku': product_id})
-
-                if not wrapper:
-                    product_link = soup.find('a', href=re.compile(f"{product_id}"))
-                    if product_link:
-                        wrapper = product_link.find_parent('div', class_=re.compile(r'product-item'))
+                if wrapper is None:
+                    wrapper = find_product_wrapper(soup, product_id)
 
                 if wrapper:
                     for pz_price_tag in wrapper.find_all('pz-price'):

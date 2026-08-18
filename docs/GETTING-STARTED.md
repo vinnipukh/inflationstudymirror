@@ -162,4 +162,4 @@ The shared CSV adapter defaults to `DEFAULT_MAX_FILES_PER_RETAILER = 25`. Keep b
 - Read `docs/CONFIGURATION.md` for environment variables, dependency metadata, dashboard/API defaults, and GitHub Actions runtime settings.
 - Read `README.md` for the broader scraper and inflation-analysis overview.
 - Read `docs/USER_GUIDE.md` for a step-by-step walkthrough of using the dashboard.
-- For work on the rental scraper (`Codes/HousesRent/KayseriSivasTokat/`), start with `docs/APPROACH.md` (recommended data-acquisition flow) and `docs/TECH-STACK-SEARCH.md` (tool catalog).
+- For work on rental scrapers, read `Codes/HousesRent/README.md`; the existing `KayseriSivasTokat/` scraper has its site-specific plan in `docs/APPROACH.md`, while the Emlakjet adapter uses the browser-backed contract documented in that README and `docs/TECH-STACK-SEARCH.md`.

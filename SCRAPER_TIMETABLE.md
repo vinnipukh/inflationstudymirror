@@ -13,10 +13,11 @@ All times in **Istanbul time (UTC+3)**. Türkiye uses UTC+3 year-round (no dayli
 | 11:00                | 08:00 | Chakra         | `chakra_scraper.yml`  | `Codes/HomeGoods/scraper.py`              | `Datas/HomeGoods/*.csv`          |
 | 13:00                | 10:00 | Beymen         | `beymen.yml`          | `Codes/Technology/scraper.py`             | `Datas/Technology/`              |
 | 17:00                | 14:00 | TasciYapi      | `tasciyapi.yml`       | `Codes/ConstructionMarkets/tasciyapimarket/tasciyapi_scraper.py` | `Datas/ConstructionSuppliesMarkets/TasciYapiMarket/*.csv` |
+| 19:00                | 16:00 | Emlakjet       | `emlakjet_scraper.yml` | `Codes/HousesRent/Emlakjet/scraper.py` | `Datas/HousesRent/Emlakjet/*.csv` |
 
 ## Notes
 
 - All workflows run **daily** (`* * *` in cron) and can also be triggered manually via `workflow_dispatch`.
-- Scrapers run in sequence through the day (UTC+3): Gurmar just after midnight, construction markets and clothing before breakfast, cosmetics at 09:00, home goods at 11:00, technology at lunchtime, and the last construction supplier run at 17:00.
+- Scrapers run in sequence through the day (UTC+3): Gurmar just after midnight, construction markets and clothing before breakfast, cosmetics at 09:00, home goods at 11:00, technology at lunchtime, TasciYapi at 17:00, and Emlakjet at 19:00.
 - All workflows use `ubuntu-latest`, commit output CSV/logs via the `github-actions[bot]`, and skip commits when there are no changes.
-- TasciYapi is the only one with an explicit `timeout-minutes: 60` limit.
+- TasciYapi has an explicit `timeout-minutes: 60` limit; Emlakjet has a `timeout-minutes: 240` limit because its full geographic crawl is substantially longer.

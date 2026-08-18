@@ -12,3 +12,152 @@
 2026-08-18 02:54:11 [INFO] [1/1] https://yapimaks.com/seramik-yapistirici-beyaz-qf121-c1t-25-kg-p1969
 2026-08-18 02:54:12 [INFO] [1969] 'SERAMİK YAPIŞTIRICI BEYAZ QF121 C1T-25 K' | 235.00 TL | SKU: DARKSS.YK.QF121B
 2026-08-18 02:54:14 [INFO] Tamamlandi! Toplam 1 yeni urun eklendi -> /home/runner/work/inflationstudymirror/inflationstudymirror/Datas/ConstructionSuppliesMarkets/yapimaks/2026-08-18.csv
+2026-08-18 21:42:25 [INFO] ==================================================
+2026-08-18 21:42:25 [INFO] Yapimaks Scraper basliyor
+2026-08-18 21:42:25 [INFO] ==================================================
+2026-08-18 21:42:25 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-08-18 21:42:25 [INFO] Cookie basariyla alindi.
+2026-08-18 21:42:25 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-08-18 21:42:25 [INFO] Sitemap'ten toplam 8396 urun URL'si bulundu.
+2026-08-18 21:42:25 [INFO] Dunun dosyasi: 2026-08-17.csv
+2026-08-18 21:42:25 [INFO] Dunun dosyasinda 8396 urun var.
+2026-08-18 21:42:25 [INFO] State dosyasi yok, dunun satirlariyla baslatildi.
+2026-08-18 21:42:25 [WARNING] TEST MODU: --limit 25 — yalnizca ilk 25 urun cekilecek
+2026-08-18 21:42:25 [INFO] Tasinacak (degismeyen) urun: 8396 | Yeniden cekilecek: 25
+2026-08-18 21:42:25 [INFO] [1/25] https://yapimaks.com/0-30-875-200-oluklu-p4257
+2026-08-18 21:42:25 [INFO] [4257] '0.30*875*200 OLUKLU' | 300.00 TL | SKU: GLV.SAC.030.2000
+2026-08-18 21:42:27 [INFO] [2/25] https://yapimaks.com/0-40-86-3000-trapez-gri-p13726
+2026-08-18 21:42:27 [INFO] [13726] '0.40*86*3000 TRAPEZ (GRİ)' | 645.00 TL | SKU: RALL.7016.040.3000
+2026-08-18 21:42:29 [INFO] [3/25] https://yapimaks.com/0-50-3009-rulo-sac-100-cm-p7711
+2026-08-18 21:42:29 [INFO] [7711] '0.50*3009 RULO SAC 100-CM' | 61.50 TL | SKU: RALL.3009.1000.02
+2026-08-18 21:42:31 [INFO] [4/25] https://yapimaks.com/0-50-86-1250-trapez-bordo-p15008
+2026-08-18 21:42:32 [INFO] [15008] '0.50*86*1250 TRAPEZ (BORDO)' | 295.00 TL | SKU: RALL.3009.050.1250
+2026-08-18 21:42:34 [INFO] [5/25] https://yapimaks.com/0-50-86-3000-trapez-bordo-p7693
+2026-08-18 21:42:34 [INFO] [7693] '0.50*86*3000 TRAPEZ (BORDO)' | 705.00 TL | SKU: RALL.3009.050.3000
+2026-08-18 21:42:36 [INFO] [6/25] https://yapimaks.com/0-50-86-3000-trapez-gri-p7716
+2026-08-18 21:42:36 [INFO] [7716] '0.50*86*3000 TRAPEZ (GRİ)' | 735.00 TL | SKU: RALL.7016.050.3000
+2026-08-18 21:42:38 [INFO] [7/25] https://yapimaks.com/0-50-86-3500-trapez-gri-p7717
+2026-08-18 21:42:38 [INFO] [7717] '0.50*86*3500 TRAPEZ (GRİ)' | 857.50 TL | SKU: RALL.7016.050.3500
+2026-08-18 21:42:40 [INFO] [8/25] https://yapimaks.com/0-50-86-4000-trapez-bordo-p7695
+2026-08-18 21:42:40 [INFO] [7695] '0.50*86*4000 TRAPEZ (BORDO)' | 940.00 TL | SKU: RALL.3009.050.4000
+2026-08-18 21:42:42 [INFO] [9/25] https://yapimaks.com/0-50-86-5000-trapez-bordo-p7697
+2026-08-18 21:42:42 [INFO] [7697] '0.50*86*5000 TRAPEZ (BORDO)' | 1175.00 TL | SKU: RALL.3009.050.5000
+2026-08-18 21:42:44 [INFO] [10/25] https://yapimaks.com/0-50-86-6000-trapez-beyaz-p7734
+2026-08-18 21:42:44 [INFO] [7734] '0.50*86*6000 TRAPEZ (BEYAZ)' | 1410.00 TL | SKU: RALL.9002.050.6000
+2026-08-18 21:42:46 [INFO] [11/25] https://yapimaks.com/0-50-86-6000-trapez-bordo-p7699
+2026-08-18 21:42:46 [INFO] [7699] '0.50*86*6000 TRAPEZ (BORDO)' | 1410.00 TL | SKU: RALL.3009.050.6000
+2026-08-18 21:42:48 [INFO] [12/25] https://yapimaks.com/100-100-100-cift-catal-pis-su-pvc-kalde-p4893
+2026-08-18 21:42:48 [INFO] [4893] '100/100/100 ÇİFT ÇATAL PİS SU PVC KALDE' | 271.00 TL | SKU: KALDE.5213DBR0M0M45
+2026-08-18 21:42:50 [INFO] [13/25] https://yapimaks.com/100-100-catal-pis-su-pvc-kalde-p4916
+2026-08-18 21:42:50 [INFO] [4916] '100/100 ÇATAL PİS SU PVC KALDE' | 118.00 TL | SKU: KALDE.5213SBR0M0M45
+2026-08-18 21:42:52 [INFO] [14/25] https://yapimaks.com/100-100-te-pis-su-pvc-kalde-p4917
+2026-08-18 21:42:52 [INFO] [4917] '100/100 TE PİS SU PVC KALDE' | 117.00 TL | SKU: KALDE.5213SBR0M0M87
+2026-08-18 21:42:54 [INFO] [15/25] https://yapimaks.com/100-1000-pis-su-boru-kalde-p4873
+2026-08-18 21:42:54 [INFO] [4873] '100/1000 PİS SU BORU KALDE' | 181.00 TL | SKU: KALDE.5203TBE0M1000
+2026-08-18 21:42:56 [INFO] [16/25] https://yapimaks.com/100-150-pis-su-boru-kalde-p4935
+2026-08-18 21:42:56 [INFO] [4935] '100/150 PİS SU BORU KALDE' | 74.00 TL | SKU: KALDE.5203TBEXM0150
+2026-08-18 21:42:58 [INFO] [17/25] https://yapimaks.com/100-2000-pis-su-boru-kalde-p4870
+2026-08-18 21:42:58 [INFO] [4870] '100/2000 PİS SU BORU KALDE' | 346.00 TL | SKU: KALDE.5203TBE0M2000
+2026-08-18 21:43:00 [INFO] [18/25] https://yapimaks.com/100-250-pis-su-borusu-kalde-p4884
+2026-08-18 21:43:00 [INFO] [4884] '100/250 PİS SU BORUSU KALDE' | 102.00 TL | SKU: KALDE.5203TBEXM0250
+2026-08-18 21:43:02 [INFO] [19/25] https://yapimaks.com/100-3000-pis-su-boru-kalde-p4874
+2026-08-18 21:43:02 [INFO] [4874] '100/3000 PİS SU BORU KALDE' | 511.00 TL | SKU: KALDE.5203TBE0M3000
+2026-08-18 21:43:04 [INFO] [20/25] https://yapimaks.com/100-45-pis-su-pvc-dirsek-kalde-p4899
+2026-08-18 21:43:05 [INFO] [4899] '100/45 PİS SU PVC DİRSEK KALDE' | 62.00 TL | SKU: KALDE.5213ELB0M0045
+2026-08-18 21:43:07 [INFO] [21/25] https://yapimaks.com/100-50-100-cift-catal-pis-su-pvc-kalde-p4892
+2026-08-18 21:43:07 [INFO] [4892] '100/50/100 ÇİFT ÇATAL PİS SU PVC KALDE' | 180.00 TL | SKU: KALDE.5213DBR0M0K45
+2026-08-18 21:43:09 [INFO] [22/25] https://yapimaks.com/100-50-catal-pis-su-pvc-kalde-p4914
+2026-08-18 21:43:09 [INFO] [4914] '100/50 ÇATAL PİS SU PVC KALDE' | 85.00 TL | SKU: KALDE.5213SBR0M0K45
+2026-08-18 21:43:11 [INFO] [23/25] https://yapimaks.com/100-50-reduksiyon-pis-su-pvc-kalde-p4904
+2026-08-18 21:43:11 [INFO] [4904] '100/50 REDÜKSİYON PİS SU PVC KALDE' | 38.00 TL | SKU: KALDE.5213RDC0M0K00
+2026-08-18 21:43:13 [INFO] [24/25] https://yapimaks.com/100-50-te-pis-su-pvc-kalde-p12648
+2026-08-18 21:43:13 [INFO] [12648] '100/50 TE PİS SU PVC KALDE' | 84.00 TL | SKU: KALDE.5213SBR0M0K87
+2026-08-18 21:43:15 [INFO] [25/25] https://yapimaks.com/100-500-pis-su-boru-pprc-kalde-p4869
+2026-08-18 21:43:15 [INFO] [4869] '100/500 PİS SU BORU PPRC KALDE' | 127.00 TL | SKU: KALDE.5203TBE0M0500
+2026-08-18 21:43:17 [INFO] ==================================================
+2026-08-18 21:43:17 [INFO] Tamamlandi! Tasinan: 8371 | Tazelenen: 25 | Basarisiz: 0 | Dusurulen: 0
+2026-08-18 21:43:17 [INFO] Dosya: C:\Users\arhan\AppData\Local\Temp\tmp.7mLnUmAA6J\2026-08-18.csv (toplam 8396 urun)
+2026-08-18 21:43:17 [INFO] ==================================================
+2026-08-18 21:43:59 [INFO] ==================================================
+2026-08-18 21:43:59 [INFO] Yapimaks Scraper basliyor
+2026-08-18 21:43:59 [INFO] ==================================================
+2026-08-18 21:43:59 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-08-18 21:43:59 [INFO] Cookie basariyla alindi.
+2026-08-18 21:43:59 [INFO] Sitemap'ten toplam 7000 urun URL'si bulundu.
+2026-08-18 21:43:59 [INFO] Dunun dosyasi: 2026-08-17.csv
+2026-08-18 21:43:59 [INFO] Dunun dosyasinda 8396 urun var.
+2026-08-18 21:43:59 [INFO] State dosyasi yok, dunun satirlariyla baslatildi.
+2026-08-18 21:43:59 [WARNING] TEST MODU: --limit 5 — yalnizca ilk 5 urun cekilecek
+2026-08-18 21:43:59 [INFO] Tasinacak (degismeyen) urun: 8396 | Yeniden cekilecek: 5
+2026-08-18 21:43:59 [INFO] [1/5] https://yapimaks.com/0-30-875-200-oluklu-p4257
+2026-08-18 21:43:59 [WARNING] [https://yapimaks.com/0-30-875-200-oluklu-p4257] Eski satir korundu, yarin tekrar denenir.
+2026-08-18 21:44:01 [INFO] [2/5] https://yapimaks.com/0-40-86-3000-trapez-gri-p13726
+2026-08-18 21:44:01 [WARNING] [https://yapimaks.com/0-40-86-3000-trapez-gri-p13726] Eski satir korundu, yarin tekrar denenir.
+2026-08-18 21:44:03 [INFO] [3/5] https://yapimaks.com/0-50-3009-rulo-sac-100-cm-p7711
+2026-08-18 21:44:03 [WARNING] [https://yapimaks.com/0-50-3009-rulo-sac-100-cm-p7711] Eski satir korundu, yarin tekrar denenir.
+2026-08-18 21:44:05 [INFO] [4/5] https://yapimaks.com/0-50-86-3000-trapez-bordo-p7693
+2026-08-18 21:44:05 [WARNING] [https://yapimaks.com/0-50-86-3000-trapez-bordo-p7693] Eski satir korundu, yarin tekrar denenir.
+2026-08-18 21:44:07 [INFO] [5/5] https://yapimaks.com/0-50-86-3000-trapez-gri-p7716
+2026-08-18 21:44:07 [WARNING] [https://yapimaks.com/0-50-86-3000-trapez-gri-p7716] Eski satir korundu, yarin tekrar denenir.
+2026-08-18 21:44:09 [INFO] ==================================================
+2026-08-18 21:44:09 [INFO] Tamamlandi! Tasinan: 8391 | Tazelenen: 0 | Basarisiz: 5 | Dusurulen: 0
+2026-08-18 21:44:09 [INFO] Dosya: C:\Users\arhan\AppData\Local\Temp\tmpjkn5fusq\2026-08-18.csv (toplam 8391 urun)
+2026-08-18 21:44:09 [INFO] ==================================================
+2026-08-18 21:44:32 [INFO] ==================================================
+2026-08-18 21:44:32 [INFO] Yapimaks Scraper basliyor
+2026-08-18 21:44:32 [INFO] ==================================================
+2026-08-18 21:44:32 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-08-18 21:44:32 [INFO] Cookie basariyla alindi.
+2026-08-18 21:44:32 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-08-18 21:44:32 [INFO] Sitemap'ten toplam 8396 urun URL'si bulundu.
+2026-08-18 21:44:32 [INFO] Dunun dosyasi: 2026-08-17.csv
+2026-08-18 21:44:32 [INFO] Dunun dosyasinda 8396 urun var.
+2026-08-18 21:44:32 [INFO] State dosyasi yok, dunun satirlariyla baslatildi.
+2026-08-18 21:44:32 [WARNING] TEST MODU: --limit 10 — yalnizca ilk 10 urun cekilecek
+2026-08-18 21:44:32 [INFO] Tasinacak (degismeyen) urun: 8396 | Yeniden cekilecek: 10
+2026-08-18 21:44:32 [INFO] [1/10] https://yapimaks.com/0-30-875-200-oluklu-p4257
+2026-08-18 21:44:32 [INFO] [4257] '0.30*875*200 OLUKLU' | 300.00 TL | SKU: GLV.SAC.030.2000
+2026-08-18 21:44:34 [INFO] [2/10] https://yapimaks.com/0-40-86-3000-trapez-gri-p13726
+2026-08-18 21:44:34 [INFO] [13726] '0.40*86*3000 TRAPEZ (GRİ)' | 645.00 TL | SKU: RALL.7016.040.3000
+2026-08-18 21:44:36 [INFO] [3/10] https://yapimaks.com/0-50-3009-rulo-sac-100-cm-p7711
+2026-08-18 21:44:36 [INFO] [7711] '0.50*3009 RULO SAC 100-CM' | 61.50 TL | SKU: RALL.3009.1000.02
+2026-08-18 21:44:38 [INFO] [4/10] https://yapimaks.com/0-50-86-1250-trapez-bordo-p15008
+2026-08-18 21:44:38 [INFO] [15008] '0.50*86*1250 TRAPEZ (BORDO)' | 295.00 TL | SKU: RALL.3009.050.1250
+2026-08-18 21:44:40 [INFO] [5/10] https://yapimaks.com/0-50-86-3000-trapez-bordo-p7693
+2026-08-18 21:44:40 [INFO] [7693] '0.50*86*3000 TRAPEZ (BORDO)' | 705.00 TL | SKU: RALL.3009.050.3000
+2026-08-18 21:44:42 [INFO] [6/10] https://yapimaks.com/0-50-86-3000-trapez-gri-p7716
+2026-08-18 21:44:42 [INFO] [7716] '0.50*86*3000 TRAPEZ (GRİ)' | 735.00 TL | SKU: RALL.7016.050.3000
+2026-08-18 21:44:44 [INFO] [7/10] https://yapimaks.com/0-50-86-3500-trapez-gri-p7717
+2026-08-18 21:44:44 [INFO] [7717] '0.50*86*3500 TRAPEZ (GRİ)' | 857.50 TL | SKU: RALL.7016.050.3500
+2026-08-18 21:44:46 [INFO] [8/10] https://yapimaks.com/0-50-86-4000-trapez-bordo-p7695
+2026-08-18 21:44:46 [INFO] [7695] '0.50*86*4000 TRAPEZ (BORDO)' | 940.00 TL | SKU: RALL.3009.050.4000
+2026-08-18 21:44:48 [INFO] [9/10] https://yapimaks.com/0-50-86-5000-trapez-bordo-p7697
+2026-08-18 21:44:48 [INFO] [7697] '0.50*86*5000 TRAPEZ (BORDO)' | 1175.00 TL | SKU: RALL.3009.050.5000
+2026-08-18 21:44:50 [INFO] [10/10] https://yapimaks.com/0-50-86-6000-trapez-beyaz-p7734
+2026-08-18 21:44:50 [INFO] [7734] '0.50*86*6000 TRAPEZ (BEYAZ)' | 1410.00 TL | SKU: RALL.9002.050.6000
+2026-08-18 21:44:52 [INFO] ==================================================
+2026-08-18 21:44:52 [INFO] Tamamlandi! Tasinan: 8386 | Tazelenen: 10 | Basarisiz: 0 | Korunan eski satir: 0 | Dusurulen: 0
+2026-08-18 21:44:52 [INFO] Dosya: C:\Users\arhan\AppData\Local\Temp\tmptk31c5o4\2026-08-18.csv (toplam 8396 urun)
+2026-08-18 21:44:52 [INFO] ==================================================
+2026-08-18 21:46:00 [INFO] ==================================================
+2026-08-18 21:46:00 [INFO] Yapimaks Scraper basliyor
+2026-08-18 21:46:00 [INFO] ==================================================
+2026-08-18 21:46:00 [INFO] Ana sayfa ziyaret ediliyor, cookie aliniyor...
+2026-08-18 21:46:00 [INFO] Cookie basariyla alindi.
+2026-08-18 21:46:00 [INFO] Sitemap indiriliyor: https://yapimaks.com/sitemap/products1.xml
+2026-08-18 21:46:00 [INFO] Sitemap'ten toplam 8396 urun URL'si bulundu.
+2026-08-18 21:46:00 [INFO] Dunun dosyasi: 2026-08-17.csv
+2026-08-18 21:46:00 [INFO] Dunun dosyasinda 8396 urun var.
+2026-08-18 21:46:00 [INFO] State dosyasi yok, dunun satirlariyla baslatildi.
+2026-08-18 21:46:00 [WARNING] TEST MODU: --limit 3 — yalnizca ilk 3 urun cekilecek
+2026-08-18 21:46:00 [INFO] Tasinacak (degismeyen) urun: 8396 | Yeniden cekilecek: 3
+2026-08-18 21:46:00 [INFO] [1/3] https://yapimaks.com/0-30-875-200-oluklu-p4257
+2026-08-18 21:46:00 [INFO] [4257] '0.30*875*200 OLUKLU' | 300.00 TL | SKU: GLV.SAC.030.2000
+2026-08-18 21:46:02 [INFO] [2/3] https://yapimaks.com/0-40-86-3000-trapez-gri-p13726
+2026-08-18 21:46:03 [INFO] [13726] '0.40*86*3000 TRAPEZ (GRİ)' | 645.00 TL | SKU: RALL.7016.040.3000
+2026-08-18 21:46:05 [INFO] [3/3] https://yapimaks.com/0-50-3009-rulo-sac-100-cm-p7711
+2026-08-18 21:46:05 [INFO] [7711] '0.50*3009 RULO SAC 100-CM' | 61.50 TL | SKU: RALL.3009.1000.02
+2026-08-18 21:46:07 [INFO] ==================================================
+2026-08-18 21:46:07 [INFO] Tamamlandi! Tasinan: 8393 | Tazelenen: 3 | Basarisiz: 0 | Korunan eski satir: 0 | Dusurulen: 0
+2026-08-18 21:46:07 [INFO] Dosya: C:\Users\arhan\AppData\Local\Temp\tmpa_sluwwp\2026-08-18.csv (toplam 8396 urun)
+2026-08-18 21:46:07 [INFO] ==================================================

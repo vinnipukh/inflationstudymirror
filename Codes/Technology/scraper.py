@@ -18,15 +18,52 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 def get_stealth_cookies(target_url):
     print(f"Fetch cookies: {target_url}")
-    with SB(uc=True, headless=True) as sb:
-        sb.uc_open_with_reconnect(target_url, reconnect_time=5)
-        sb.sleep(8)
-        sb.execute_script("window.scrollBy(0, 300)")
-        sb.sleep(2)
+    # seleniumbase's undetected launcher probes 127.0.0.1:9222 to pick its
+    # debug port: if that port answers non-200 it assumes the port is free
+    # and tries to launch Chrome on 9222. When another Chrome instance is
+    # already listening there (e.g. the user's own Chrome started with
+    # --remote-debugging-port, or chrome-relay), that launch collides and
+    # fails with "cannot connect to chrome at 127.0.0.1:9222". Work around
+    # it by making the probe see a healthy 200, so seleniumbase picks its
+    # own random free port. When 9222 is truly free nothing is patched and
+    # the original behavior is unchanged.
+    import requests as _requests
 
-        raw_cookies = sb.get_cookies()
-        print("Cookies good.")
-        return {c['name']: c['value'] for c in raw_cookies}
+    port_taken_by_other = False
+    try:
+        r = _requests.get("http://127.0.0.1:9222", timeout=2)
+        port_taken_by_other = r.status_code != 200
+    except Exception:
+        port_taken_by_other = False
+
+    probe_patch = None
+    if port_taken_by_other:
+        orig_get = _requests.Session.get
+
+        class _FakeProbeResponse:
+            status_code = 200
+
+        def _patched_get(self, url, *args, **kwargs):
+            if url == "http://127.0.0.1:9222":
+                return _FakeProbeResponse()
+            return orig_get(self, url, *args, **kwargs)
+
+        _requests.Session.get = _patched_get
+        probe_patch = _patched_get
+
+    try:
+        with SB(uc=True, headless=True) as sb:
+            sb.uc_open_with_reconnect(target_url, reconnect_time=5)
+            sb.sleep(8)
+            sb.execute_script("window.scrollBy(0, 300)")
+            sb.sleep(2)
+
+            raw_cookies = sb.get_cookies()
+            print("Cookies good.")
+            return {c['name']: c['value'] for c in raw_cookies}
+    finally:
+        if probe_patch is not None:
+            _requests.Session.get = orig_get
 
 
 def scrape_beymen():
@@ -54,11 +91,20 @@ def scrape_beymen():
         writer = csv.writer(file, delimiter=",", quotechar='"', quoting=csv.QUOTE_MINIMAL)
         writer.writerow(["product-name", "product-price"])
 
+        # The catalog has outgrown a fixed page cap (previously 200 pages =
+        # 9,600 items; the API now reports ~10,600+). Dedup by product id:
+        # a slow scrape lets the live catalog shift, so one product can
+        # reappear on a later page. Never dedup by name alone - distinct
+        # variants legitimately share a name + price.
+        seen_ids = set()
+
         with requests.Session() as session:
             session.headers.update(headers)
             session.cookies.update(cookies)
 
-            for page in range(1, 201):
+            total_pages = None
+
+            for page in range(1, 501):  # hard safety cap; normal stop is below
                 params = {
                     "languageCode": "tr",
                     "sayfa": page,
@@ -79,6 +125,11 @@ def scrape_beymen():
                     inner_data = json_data.get("data", {})
                     products = inner_data.get("productList") or inner_data.get("products") or []
 
+                    if total_pages is None:
+                        total_pages = inner_data.get("totalPageCount") or 0
+                        total_items = inner_data.get("totalItemCount") or 0
+                        print(f"Catalog reports {total_items} items across {total_pages} pages.")
+
                     if not products:
                         print(f"No products page {page}. Done. File saves automatically.")
                         break
@@ -95,11 +146,23 @@ def scrape_beymen():
                         else:
                             price_str = ""
 
+                        product_id = item.get("productId")
+                        if product_id is None:
+                            product_id = (name, price_str)  # no id: fall back
+
+                        if product_id in seen_ids:
+                            continue
+                        seen_ids.add(product_id)
+
                         writer.writerow([name, price_str])
 
                     file.flush()
                     print(f"Page {page} saved. {len(products)} items. File updated.")
                     time.sleep(random.uniform(1.5, 3.5))
+
+                    if total_pages and page >= total_pages:
+                        print(f"Reached last reported page {total_pages}. Done.")
+                        break
 
                 except Exception as e:
                     print(f"Loop fail (Page {page}): {e}. Save data and stop.")

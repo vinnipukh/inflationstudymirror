@@ -1,0 +1,1 @@
+"""Emlakjet residential rental adapter."""

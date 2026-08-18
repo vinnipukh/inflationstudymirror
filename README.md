@@ -68,7 +68,7 @@ inflationstudymirror/
 │   ├── HomeGoods/                 # HomeGoods product scraper
 │   ├── Cosmetics/                 # Cosmetics stores (Watson, etc.)
 │   ├── ClothingStores/            # Clothing retailers (Vakko, etc.)
-│   ├── HousesRent/                # Rental property data collection
+│   ├── HousesRent/                # Rental property data collection (all sources)
 │   └── Markets/                   # Marketplace scrapers (Gurmar, etc.)
 ├── Datas/                         # Raw collected data (CSV files)
 ├── Inflations/                    # Inflation calculation outputs
@@ -188,7 +188,7 @@ Then open your browser to the Streamlit URL (default `http://localhost:5000`).
 - **Multi-store scraping**: Automated data collection from diverse Turkish retailers including:
   - Cosmetics: Watson
   - Clothing: Vakko
-  - Real Estate: Rental property data from Sarı site
+  - Real Estate: Rental property data from Sarı site and Emlakjet
   - Markets: Grocery items from Gurmar
   - Electronics: Beymen Tech products
 
@@ -235,7 +235,8 @@ Then open your browser to the Streamlit URL (default `http://localhost:5000`).
 - `Codes/HomeGoods/scraper.py` - HomeGoods category-based scraper with retry logic
 - `Codes/Cosmetics/Watson/debugscraper.py` - Watson cosmetics product scraper
 - `Codes/ClothingStores/Vakko/vakko_master_scraper.py` - Vakko fashion items
-- `Codes/HousesRent/KayseriSivasTokat/main.py` - Rental property data collection
+- `Codes/HousesRent/KayseriSivasTokat/main.py` - Existing Sarı site rental collection
+- `Codes/HousesRent/Emlakjet/scraper.py` - Emlakjet Turkey residential rentals
 - `Codes/Markets/Gurmar/gurmar_scraper.py` - Gurmar supermarket products
 
 ### Forecasting
@@ -256,8 +257,11 @@ Then open your browser to the Streamlit URL (default `http://localhost:5000`).
 # Scrape cosmetics data
 python Codes/Cosmetics/Watson/debugscraper.py
 
-# Scrape rental properties (Kayseri, Sivas, Tokat)
+# Scrape existing Sarı site rental properties (Kayseri, Sivas, Tokat)
 python Codes/HousesRent/KayseriSivasTokat/main.py
+
+# Scrape regular residential rental listings in Turkey
+python -m Codes.HousesRent.Emlakjet.scraper
 
 # Scrape market products
 python Codes/Markets/Gurmar/gurmar_scraper.py

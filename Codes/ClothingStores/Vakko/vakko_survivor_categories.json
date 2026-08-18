@@ -1,0 +1,96 @@
+{
+  "tarih": "2026-08-18",
+  "survivor_kategoriler": [
+    {
+      "grup": "Kadin",
+      "id": "301",
+      "url": "https://www.vakko.com/kadin-c-301"
+    },
+    {
+      "grup": "Erkek",
+      "id": "302",
+      "url": "https://www.vakko.com/erkek-c-302"
+    },
+    {
+      "grup": "Shoes_Bags",
+      "id": "303",
+      "url": "https://www.vakko.com/ayakkabi-canta-c-303"
+    },
+    {
+      "grup": "Erkek",
+      "id": "vk13",
+      "url": "https://www.vakko.com/erkek-infiniti-c-vk13"
+    },
+    {
+      "grup": "Kadin",
+      "id": "vk18",
+      "url": "https://www.vakko.com/kadin-infiniti-c-vk18"
+    },
+    {
+      "grup": "Kadin",
+      "id": "vk40",
+      "url": "https://www.vakko.com/kadin-sezonun-one-cikan-urunleri-c-vk40"
+    },
+    {
+      "grup": "Erkek",
+      "id": "vk60",
+      "url": "https://www.vakko.com/erkek-sezonun-one-cikanlari-c-vk60"
+    },
+    {
+      "grup": "Shoes_Bags",
+      "id": "vk61",
+      "url": "https://www.vakko.com/ayakkabi-canta-sezonun-one-cikanlari-c-vk61"
+    },
+    {
+      "grup": "Shoes_Bags",
+      "id": "30603",
+      "url": "https://www.vakko.com/mare/ayakkabi-canta-c-30603"
+    },
+    {
+      "grup": "Kadin",
+      "id": "30701",
+      "url": "https://www.vakko.com/v2k-designers/kadin-c-30701"
+    },
+    {
+      "grup": "Kadin",
+      "id": "vk106",
+      "url": "https://www.vakko.com/kadin-koleksiyon-c-vk106"
+    },
+    {
+      "grup": "Kadin",
+      "id": "vk169",
+      "url": "https://www.vakko.com/kadin-plaj-giyim-c-vk169"
+    },
+    {
+      "grup": "Kadin",
+      "id": "vk212",
+      "url": "https://www.vakko.com/kadin-kemer-c-vk212"
+    },
+    {
+      "grup": "Kadin",
+      "id": "vk422",
+      "url": "https://www.vakko.com/kadin-jean-koleksiyonu-c-vk422"
+    },
+    {
+      "grup": "Erkek",
+      "id": "3090101",
+      "url": "https://www.vakko.com/kozmetik/erkek-parfum-c-3090101"
+    },
+    {
+      "grup": "Kadin",
+      "id": "3090102",
+      "url": "https://www.vakko.com/kozmetik/kadin-parfum-c-3090102"
+    },
+    {
+      "grup": "Kadin",
+      "id": "3090201",
+      "url": "https://www.vakko.com/kozmetik/kadin-hediye-setleri-c-3090201"
+    }
+  ],
+  "istatistik": {
+    "toplam_benzersiz": 7838,
+    "sayfa_tumu": 729,
+    "sayfa_survivor": 177,
+    "test_suresi_sn": 282
+  }
+}
