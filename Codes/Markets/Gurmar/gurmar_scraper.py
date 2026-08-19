@@ -1,5 +1,6 @@
 import requests
 import csv
+import glob
 import time
 import os
 import sys
@@ -105,6 +106,23 @@ def discover_categories(session):
 
     print(f"  🗂️  initialize-v2'den {len(kategoriler)} kategori bulundu")
     return kategoriler
+
+
+def unique_product_count(csv_path):
+    """CSV'deki benzersiz product-id sayısını döndürür (okunamayan dosyada 0)."""
+    try:
+        with open(csv_path, newline="", encoding="utf-8-sig") as fh:
+            ids = {row.get("product-id", "") for row in csv.DictReader(fh, delimiter=";") if row.get("product-id")}
+        return len(ids)
+    except OSError:
+        return 0
+
+
+def coverage_baseline(target_dir):
+    """Son 7 günlük CSV'nin en yüksek benzersiz ürün sayısı (regresyon eşiği)."""
+    dosyalar = sorted(glob.glob(os.path.join(target_dir, "gurmar_prices_*.csv")))
+    sayilar = [unique_product_count(d) for d in dosyalar[-7:]]
+    return max(sayilar) if sayilar else 0
 
 
 def main():
@@ -254,12 +272,52 @@ def main():
           f"hatalı kategori: {hatali_kategori} | "
           f"bütünlük uyarısı: {uyari_sayisi}")
 
-    # Veri bütünlüğü sorunu varsa non-zero exit →
-    # GitHub Actions çalışması kırmızıya döner ve sorun görünür olur.
-    if hatali_kategori > 0 or uyari_sayisi > 0:
-        print("\n🚨 DİKKAT: Veri bütünlüğü sorunları tespit edildi! "
-              "Detaylar yukarıda. CSV yine de yazıldı.")
-        sys.exit(1)
+    # GH Actions step summary (varsa) — run sayfasında kapsam görünür olur
+    ozet_dosya = os.environ.get("GITHUB_STEP_SUMMARY")
+    if ozet_dosya:
+        try:
+            with open(ozet_dosya, "a", encoding="utf-8") as f:
+                f.write(f"### Gurmar {bugunun_tarihi}\n\n")
+                f.write("| Kategori | Katalog (totalRecords) | Benzersiz ürün | "
+                        "Hatalı kategori | Bütünlük uyarısı |\n"
+                        "|---|---|---|---|---|\n")
+                f.write(f"| {len(kategoriler)} | {toplam_beklenen} | "
+                        f"{len(tum_urunler)} | {hatali_kategori} | "
+                        f"{uyari_sayisi} |\n")
+        except OSError:
+            pass
+
+    # ── çıkış politikası ─────────────────────────────────────────────
+    # Gurmar API'sindeki BİLİNEN sayfalama bozukluğu tek başına run'ı
+    # kırmızıya çevirmez: CSV en iyi kapsamla yazılır, durum özetten
+    # (stdout + GH Actions step summary) izlenir.
+    #
+    # Run yalnızca YENİ bir bozulma belirtisi olduğunda başarısız olur:
+    #   1) Kategorilerin %5'inden fazlası hiç ürün döndürmüyorsa
+    #   2) Benzersiz ürün sayısı son 7 günün rekorunun %80'inin altına
+    #      düştüyse (kapsam çökmesi)
+    bugun_benzersiz = len(tum_urunler)
+    rekor = coverage_baseline(target_dir)
+    hatali_oran = hatali_kategori / len(kategoriler) if kategoriler else 1.0
+
+    basarisiz = False
+    if hatali_oran > 0.05:
+        print(f"\n🚨 HATA: Kategorilerin %{hatali_oran * 100:.1f}'i ürün "
+              f"döndürmedi ({hatali_kategori}/{len(kategoriler)}).")
+        basarisiz = True
+    if rekor > 0 and bugun_benzersiz < 0.8 * rekor:
+        print(f"\n🚨 HATA: Kapsam çöktü! Benzersiz ürün: {bugun_benzersiz} "
+              f"(son 7 günün rekoru: {rekor}, eşik: {0.8 * rekor:.0f}).")
+        basarisiz = True
+
+    if basarisiz:
+        print("\n❌ Run başarısız: yukarıdaki sorunlar nedeniyle dikkat gerekli. "
+              "CSV yine de yazıldı.")
+    else:
+        print("\n✅ Durum tamam — bilinen sayfalama kısıtıyla en iyi kapsam "
+              "yazıldı (uyarılar bilgilendirme amaçlıdır).")
+
+    sys.exit(1 if basarisiz else 0)
 
 
 if __name__ == "__main__":
