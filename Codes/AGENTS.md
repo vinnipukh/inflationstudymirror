@@ -10,7 +10,9 @@ directory (or its subdirectories, e.g. `Codes/HousesRent/`):
 1. Read `docs/scraping-wiki/README.md` (snapshot index + relevance table).
 2. Read the entity/concept pages relevant to the change (at minimum the
    pages listed in the README table for the touched subsystem:
-   driver → `entities/rayobrowse.md`, `entities/camoufox.md`; anti-bot →
+   driver → `entities/rayobrowse.md`, `entities/camoufox.md`; browser-backed
+   rental adapters also → `Codes/HousesRent/README.md` (Emlakjet contract) and
+   `undetected-chromedriver`/persistent-profile findings; anti-bot →
    `concepts/mouse-movement-emulation.md`, `concepts/cookie-session-reuse.md`,
    `concepts/homepage-first-navigation.md`; data layer →
    `concepts/inventory-tracking.md`, `concepts/hybrid-scraping.md`).

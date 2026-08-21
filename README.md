@@ -188,8 +188,10 @@ Then open your browser to the Streamlit URL (default `http://localhost:5000`).
 - **Multi-store scraping**: Automated data collection from diverse Turkish retailers including:
   - Cosmetics: Watson
   - Clothing: Vakko
-  - Real Estate: Rental property data from Sarı site and Emlakjet
+  - Construction markets: TasciYapi, Yapımaks
+  - Real Estate: Rental property data from Sarı site (Kayseri/Sivas/Tokat) and Emlakjet
   - Markets: Grocery items from Gurmar
+  - Home goods: Chakra
   - Electronics: Beymen Tech products
 
 ### Dashboard (3-Phase Architecture)
@@ -211,7 +213,7 @@ Then open your browser to the Streamlit URL (default `http://localhost:5000`).
 - **Plotly** — interactive charts
 - **waitress** — production-quality WSGI server
 - **Jupyter Notebooks** for analysis and exploration
-- **Web Scraping**: requests, BeautifulSoup, SeleniumBase, Camoufox, cloudscraper, curl-cffi
+- **Web Scraping**: requests, BeautifulSoup, SeleniumBase, selenium + undetected-chromedriver, Camoufox, cloudscraper, curl-cffi
 - **Data Storage**: CSV, JSON formats
 - **ML Stack**: scikit-learn, xgboost, lightgbm, catboost
 
@@ -232,12 +234,15 @@ Then open your browser to the Streamlit URL (default `http://localhost:5000`).
 - `inflation_dashboard/adapters/csv_price_repository.py` — CSV data loading adapter
 
 ### Scrapers
-- `Codes/HomeGoods/scraper.py` - HomeGoods category-based scraper with retry logic
-- `Codes/Cosmetics/Watson/debugscraper.py` - Watson cosmetics product scraper
-- `Codes/ClothingStores/Vakko/vakko_master_scraper.py` - Vakko fashion items
-- `Codes/HousesRent/KayseriSivasTokat/main.py` - Existing Sarı site rental collection
-- `Codes/HousesRent/Emlakjet/scraper.py` - Emlakjet Turkey residential rentals
+- `Codes/HomeGoods/scraper.py` - HomeGoods category-based scraper (analytics-payload name extraction)
+- `Codes/Cosmetics/Watson/scraper.py` - Watsons cosmetics scraper (serialised `curl_cffi`, full pagination)
+- `Codes/ClothingStores/Vakko/vakko_master_scraper.py` - Vakko fashion items (live sitemap + cookie factory)
+- `Codes/Technology/scraper.py` - Beymen tech products (dynamic pagination)
+- `Codes/ConstructionMarkets/tasciyapimarket/scraper.py` - TasciYapi construction supplies
+- `Codes/ConstructionMarkets/yapimaks/scraper.py` - Yapımaks construction supplies
 - `Codes/Markets/Gurmar/gurmar_scraper.py` - Gurmar supermarket products
+- `Codes/HousesRent/KayseriSivasTokat/main.py` - Sarı site rentals (Kayseri/Sivas/Tokat; friend-tactics selenium engine — see `docs/APPROACH.md` first)
+- `Codes/HousesRent/Emlakjet/scraper.py` - Emlakjet Turkey residential rentals (browser-backed; see `Codes/HousesRent/README.md`)
 
 ### Forecasting
 - `forecasting/forecastingtest.ipynb` — ML-based price trend prediction notebook
@@ -255,7 +260,7 @@ Then open your browser to the Streamlit URL (default `http://localhost:5000`).
 
 ```bash
 # Scrape cosmetics data
-python Codes/Cosmetics/Watson/debugscraper.py
+python Codes/Cosmetics/Watson/scraper.py
 
 # Scrape existing Sarı site rental properties (Kayseri, Sivas, Tokat)
 python Codes/HousesRent/KayseriSivasTokat/main.py
@@ -368,7 +373,7 @@ All dependencies are declared in `pyproject.toml`. Key packages:
 | **Dashboard Frontend** | `streamlit`, `plotly` |
 | **Data Processing** | `pandas`, `numpy` |
 | **Machine Learning** | `scikit-learn`, `xgboost`, `lightgbm`, `catboost` |
-| **Web Scraping** | `requests`, `beautifulsoup4`, `seleniumbase`, `camoufox`, `cloudscraper`, `curl-cffi` |
+| **Web Scraping** | `requests`, `beautifulsoup4`, `seleniumbase`, `selenium`, `undetected-chromedriver`, `camoufox`, `cloudscraper`, `curl-cffi` |
 | **Notebooks** | `jupyter`, `ipykernel`, `notebook` |
 
 Install all at once:

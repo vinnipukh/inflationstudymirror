@@ -124,7 +124,18 @@ Phase 3 refactored `streamlit_app.py` to consume the Falcon API via `inflation_d
 
 ## Scraper Sub-Architectures
 
-Most `Codes/` scrapers are simple request-based collectors. The rental scraper (`Codes/HousesRent/KayseriSivasTokat/`) is the notable exception — an async Playwright + rayobrowse anti-detect browser pipeline with cookie pooling, checkpoint/resume, price-bracket pagination, and an interactive console. Its recommended architecture (threat model, decision gates, tool assignments) is documented in `docs/APPROACH.md`, with the supporting tool catalog in `docs/TECH-STACK-SEARCH.md`. A deep-research validation report (`docs/RESEARCH-REPORT-2026-08-16.md`) revises that plan toward a browser-only default with reconciliation-first gates.
+Most `Codes/` scrapers are single-file request-based collectors (requests / `curl_cffi`), but several have moved to more specialised transports and data-integrity policies:
+
+- **Vakko** (`Codes/ClothingStores/Vakko/vakko_master_scraper.py`) — live sitemap-driven category discovery + Selenium cookie factory (fresh cookies/UA each run), retry-with-backoff, product-level outlet filtering.
+- **Beymen / Technology** (`Codes/Technology/scraper.py`) — SeleniumBase UC session; dynamic pagination from the API-reported `totalPageCount` (hard safety cap 500) with in-memory `productId` dedupe; seleniumbase port-9222 collision guard.
+- **Emlakjet** (`Codes/HousesRent/Emlakjet/`) — browser-backed residential-rental adapter: visible Chrome by default, optional CDP attach (`--debugger-address`/`CHROME_DEBUGGER_ADDRESS`), recursive district/neighbourhood subdivision past the site's 50-page geometric cap, stops (rather than solves) on challenges, writes checkpoint for `--resume`. Documented in `Codes/HousesRent/README.md`.
+- **Sarı site rentals** (`Codes/HousesRent/KayseriSivasTokat/`) — the **friend-tactics** engine: `undetected-chromedriver` + persistent profile (`SeleniumProfile/`) with a manual-solve-retry loop and adaptive pacing; price-bracket pagination; `District, Rooms, Price, ilanId` output (B0 compliance).
+- **Gurmar** (`Codes/Markets/Gurmar/`) — plain `requests`; dynamic category discovery from `initialize-v2` + regression-based exit policy (fails only on new breakage, not the known broken-pagination state).
+- **TasciYapi** (`Codes/ConstructionMarkets/tasciyapimarket/`) — two-stage discover→parallel crawl using the CodeIgniter paginator's last-page link, `curl_cffi` Chrome TLS impersonation (requests fallback), base64 product-ID dedupe, Cloudflare-challenge detection, loud exit codes.
+- **Watsons** (`Codes/Cosmetics/Watson/`) — serialised single `curl_cffi` session at ~1 req/s (`pageSize=60`), full pagination, adaptive 403/429 pause + exponential backoff.
+- **Yapımaks** (`Codes/ConstructionMarkets/yapimaks/`) — sitemap-driven full-catalog refresh built on yesterday's snapshot: `<lastmod>` re-scrape, 7-day grace via `last_seen.json`, empty rows never written, 429 Retry-After/backoff.
+
+The rental scrapers' recommended architecture (threat model, decision gates, tool assignments) is documented in `docs/APPROACH.md`, with the supporting tool catalog in `docs/TECH-STACK-SEARCH.md`. A deep-research validation report (`docs/RESEARCH-REPORT-2026-08-16.md`) revises that plan toward a browser-only default with reconciliation-first gates.
 
 ## Directory Structure Rationale
 

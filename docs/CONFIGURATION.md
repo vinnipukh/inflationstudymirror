@@ -22,6 +22,8 @@ This document records configuration that is present in the repository.
 |---|---|---|---|
 | `VAKKO_COOKIE` | Required for Vakko scraping | `None` | `Codes/ClothingStores/Vakko/vakko_master_scraper.py` |
 | `VAKKO_USER_AGENT` | Required for Vakko scraping | `None` | `Codes/ClothingStores/Vakko/vakko_master_scraper.py` |
+| `VAKKO_HEADED` | Optional; `=1` runs Vakko's cookie-factory Chrome headed | `None` (headless) | `Codes/ClothingStores/Vakko/vakko_master_scraper.py` |
+| `CHROME_DEBUGGER_ADDRESS` | Optional Emlakjet CDP attach endpoint (e.g. `127.0.0.1:9222`) | `None` | `Codes/HousesRent/Emlakjet/scraper.py` |
 
 No checked-in `.env.example` or `.env.sample` file is present. `.gitignore` ignores `.env`, `.env.*`, and `.streamlit/secrets.toml`.
 
@@ -44,11 +46,13 @@ dependencies = [
     "lightgbm>=4.6.0",
     "matplotlib>=3.11.0",
     "notebook>=7.6.0",
+    "orjson>=3.12.0",
     "pandas>=2.0",
     "plotly",
     "requests>=2.32.0",
     "scikit-learn>=1.9.0",
     "seaborn>=0.13.2",
+    "selenium>=4.47.0",
     "streamlit",
     "waitress>=3.0.2",
     "xgboost>=3.3.0",
@@ -62,7 +66,7 @@ This replaces the previous setup where dashboard deps (streamlit, plotly, pandas
 `requirements.txt` contains both scraper and dashboard dependencies:
 
 - **Pinned packages**: `certifi`, `charset-normalizer`, `idna`, `packaging`, `python-dotenv`, `requests`, `urllib3`, `wheel`
-- **Unpinned packages**: `falcon`, `camoufox`, `beautifulsoup4`, `seleniumbase`, `cloudscraper`, `curl-cffi`, `pandas`, `plotly`, `streamlit`
+- **Unpinned packages**: `falcon`, `camoufox`, `beautifulsoup4`, `seleniumbase`, `cloudscraper`, `curl-cffi`, `selenium`, `undetected-chromedriver`, `lxml`, `tqdm`, `pandas`, `plotly`, `streamlit`
 
 ## Dashboard and API Defaults
 
@@ -87,6 +91,7 @@ Supported dashboard/API retailer labels:
 - `Cosmetics / Watson`
 - `ConstructionSuppliesMarkets / TasciYapiMarket`
 - `HousesRent / Kayseri`, `Sivas`, `Tokat`
+- `HousesRent / Emlakjet`
 - `ConstructionSuppliesMarkets / yapimaks`
 
 ### Falcon API routes and filter parameters
@@ -154,27 +159,27 @@ The frontend API client (`inflation_dashboard/frontend/api_client.py`) configure
 | `watsons.yml` | `0 6 * * *` | 3.10 | `Codes/Cosmetics/Watson/scraper.py` |
 | `chakra_scraper.yml` | `0 8 * * *` | 3.10 | `Codes/HomeGoods/scraper.py` |
 | `beymen.yml` | `0 10 * * *` | 3.10 | `Codes/Technology/scraper.py` |
-| `tasciyapi.yml` | `0 14 * * *` | 3.11 | `Codes/ConstructionMarkets/tasciyapimarket/tasciyapi_scraper.py` |
+| `tasciyapi.yml` | `0 14 * * *` | 3.11 | `Codes/ConstructionMarkets/tasciyapimarket/scraper.py` |
+| `emlakjet_scraper.yml` | `0 16 * * *` | 3.11 | `Codes/HousesRent/Emlakjet/scraper.py` |
 
 ## Rental Scraper Configuration (`Codes/HousesRent/KayseriSivasTokat/config.py`)
 
-The rental scraper (sarı site — Kayseri/Sivas/Tokat) is configured entirely in its own `config.py` — no environment variables:
+The rental scraper (sarı site — Kayseri/Sivas/Tokat) is configured entirely in its own `config.py` — no environment variables. It uses the **friend-tactics** engine (`engine_selenium.py`): `undetected-chromedriver` bound to a **persistent** Chrome profile + a manual-solve-retry loop + adaptive pacing (no auto-Turnstile code; the day-one Turnstile is solved manually and the warm session is reused thereafter).
 
 | Setting | Default | Notes |
 |---|---|---|
 | `BASE_URL` | `https://www.sahibinden.com` | Site domain (kept literal — required by the scraper) |
 | `CITIES` | kayseri, sivas, tokat | Each with `DEFAULT_BRACKETS` |
 | `DEFAULT_BRACKETS` | 5 TL ranges: 0–19,999 → 100,000–9,999,999 | Price segmentation for pagination |
-| `PAGE_SIZE` | 50 | Listings per page (`pagingSize` param) |
-| `MAX_PAGES_PER_BRACKET` | 20 | Safety page cap per price range |
-| `RAYOBROWSE_ENDPOINT` | `http://localhost:9222` | Anti-detect browser daemon (v0.2.1, Chromium 146 pin) |
-| `FORCE_VIEWPORT_*` | 1920×1080, min 1200 | Viewport enforcement for Turnstile layout |
-| `MAX_LOGIN_RETRIES_PER_BRACKET` | 3 | Per-bracket login retry + exponential backoff |
-| Timings | `PAGE_LOAD_AFTER_GOTO` 8–12 s, `BETWEEN_PAGES` 8–12 s, `BETWEEN_BRACKETS` 4–6 s, `COOLDOWN_AFTER_N_PAGES` 20, `COOLDOWN_DURATION` 30–90 s | Human-pacing and rate-limit cooldowns (all randomised per-call) |
-| `PATCH_BROWSER_DETECTION_LEAKS` | True | Fingerprint JS patching |
-| Output | `Datas/HousesRent/{City}/{date}.csv` | `District, Rooms, Price` columns |
+| `ROOMS_FILTER` | `"3+1"` | Only rows whose Rooms cell matches exactly are saved (compliance scope). `None` = all room types (e.g. via `--rooms` CLI flag) |
+| `PAGE_SIZE` | 50 | Listings per page (`pagingSize`) |
+| `MAX_PAGES_PER_BRACKET` | 20 | Safety page cap per price range (`MAX_LISTINGS_PER_QUERY` = 1000) |
+| `PROFILE_DIR` | `SeleniumProfile/` | Persistent `--user-data-dir` carrying `cf_clearance`/`_px3` across daily runs |
+| Adaptive pacing | `PAGE_LOAD_DELAY` 2.5 s (±50%), `ADAPTIVE_*` shrink/grow 1.5–8.0 s | Success streaks shrink delay; errors grow it |
+| Retry / backoff | `MAX_RETRIES` 3, `RETRY_BACKOFF_BASE` 2.0 s, `RETRY_BACKOFF_MAX` 30 s | Exponential backoff on failed page fetches |
+| Output | `Datas/HousesRent/{City}/{date}.csv` | `District, Rooms, Price, ilanId` columns (B0 compliance — `docs/APPROACH.md`) |
 
-The engine (`engine_selenium.py`) uses the friend-tactics pattern: persistent SeleniumProfile + manual solve-retry loop (no auto-Turnstile code needed). Planned evolution (snapshot-aware storage, reconciliation) is documented in `docs/APPROACH.md`.
+The engine (`engine_selenium.py`) uses the friend-tactics pattern: persistent SeleniumProfile + manual solve-retry loop (no auto-Turnstile code needed). The sister browser-backed Emlakjet adapter is documented in `Codes/HousesRent/README.md`; its live-site recon and the planned evolution of both rental scrapers are in `docs/APPROACH.md` and `docs/TECH-STACK-SEARCH.md`.
 
 ## Running the Stack Locally
 
