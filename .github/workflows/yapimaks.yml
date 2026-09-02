@@ -12,7 +12,11 @@ permissions:
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 480  # ilk toparlama (catch-up) ~7600 urun ≈ 4.5 sa sürer
+    # Public repo'da GitHub job'lari EN FAZLA 6 saat (360 dk) çalışır;
+    # timeout-minutes bunun üstüne çıkamaz. Scraper artık async + günlük
+    # yenileme bütçesi (--refresh-budget 2500) + koşu bütçesi (--max-duration 240)
+    # ile çalışır; catch-up bile ~1-1.5 saatte biter, asla 6 saate takılmaz.
+    timeout-minutes: 360
 
 
     steps:
@@ -27,7 +31,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests
+          pip install aiohttp
 
       - name: Run Scraper
         # Belirttiğin tam dizindeki scripti çalıştırır
