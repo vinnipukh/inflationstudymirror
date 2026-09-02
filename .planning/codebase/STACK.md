@@ -16,17 +16,17 @@ focus: tech
 ## Core dependencies
 
 - HTTP/API scraping: `requests`, `urllib3`, `cloudscraper`, `curl-cffi` in `requirements.txt`.
-- HTML parsing: `beautifulsoup4`, used by `Codes/HousesRent/KayseriSivasTokat/scraper.py`.
-- Browser automation / anti-bot workflows: `seleniumbase`, `camoufox`, and Playwright-style code in `Codes/HousesRent/KayseriSivasTokat/scraper.py`.
+- HTML parsing: `beautifulsoup4`, used by `InflationItems/Codes/HousesRent/KayseriSivasTokat/scraper.py`.
+- Browser automation / anti-bot workflows: `seleniumbase`, `camoufox`, and Playwright-style code in `InflationItems/Codes/HousesRent/KayseriSivasTokat/scraper.py`.
 - Data analysis: `pandas` is used across inflation calculators such as `Inflations/Codes/Markets/Gurmar/gurmar_inflation.py` and dashboard code in `streamlit_app.py`.
 - Dashboard visualization: `plotly` and `streamlit` in `streamlit_app.py`.
-- Environment loading: `python-dotenv`, used by `Codes/ClothingStores/Vakko/vakko_master_scraper.py`.
+- Environment loading: `python-dotenv`, used by `InflationItems/Codes/ClothingStores/Vakko/vakko_master_scraper.py`.
 
 ## Automation
 
-- `.github/workflows/vakko_scraper.yml` runs the Vakko scraper daily at 04:00 UTC and commits new `Datas/ClothingStores/Vakko/*.csv` files.
+- `.github/workflows/vakko_scraper.yml` runs the Vakko scraper daily at 04:00 UTC and commits new `InflationItems/Datas/ClothingStores/Vakko/*.csv` files.
 - Workflow installs `requests pandas beautifulsoup4 python-dotenv` directly rather than using `requirements.txt`.
-- There are many generated CSV and log artifacts under `Datas/`, `Inflations/Datas/`, and `logs/`.
+- There are many generated CSV and log artifacts under `InflationItems/Datas/`, `Inflations/Datas/`, and `logs/`.
 
 ## Configuration files
 

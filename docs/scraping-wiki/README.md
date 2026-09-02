@@ -3,7 +3,7 @@
 Local reference copy of selected pages from
 [TheWebScrapingClub/scraping-wiki](https://github.com/TheWebScrapingClub/scraping-wiki)
 (main branch), fetched **2026-08-15** for use during the
-`Codes/HousesRent/` modernization.
+`InflationItems/Codes/HousesRent/` modernization.
 
 The wiki is updated **daily** — refresh this snapshot periodically:
 

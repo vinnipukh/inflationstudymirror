@@ -13,12 +13,12 @@ This guide describes the development workflow for the repository. For related co
 
 | Path | Development role |
 |---|---|
-| `Codes/` | Source-specific scraper scripts that collect raw retailer/service data. |
-| `Datas/` | Tracked raw CSV data consumed by calculators, the dashboard, and the API. |
+| `InflationItems/Codes/` | Source-specific scraper scripts that collect raw retailer/service data. |
+| `InflationItems/Datas/` | Tracked raw CSV data consumed by calculators, the dashboard, and the API. |
 | `Inflations/Codes/` | Inflation calculation scripts and TUIK-style category/weight configuration. |
 | `Inflations/Datas/` | Tracked calculated inflation outputs. |
 | `inflation_dashboard/domain/` | Framework-independent parsing and normalization helpers. |
-| `inflation_dashboard/adapters/` | CSV repository adapter over `Datas/`. |
+| `inflation_dashboard/adapters/` | CSV repository adapter over `InflationItems/Datas/`. |
 | `inflation_dashboard/application/` | Use cases and chart/table output contracts shared by UI and API. |
 | `inflation_dashboard/api/` | Falcon HTTP resources, query parsing, and JSON serialization. |
 | `inflation_dashboard/frontend/` | Streamlit API client for HTTP communication with Falcon. |
@@ -49,7 +49,7 @@ The Vakko scraper reads `VAKKO_COOKIE` and `VAKKO_USER_AGENT` through `python-do
 ```bash
 export VAKKO_COOKIE="..."
 export VAKKO_USER_AGENT="..."
-python Codes/ClothingStores/Vakko/vakko_master_scraper.py
+python InflationItems/Codes/ClothingStores/Vakko/vakko_master_scraper.py
 ```
 
 ## Common Development Commands
@@ -61,8 +61,8 @@ python Codes/ClothingStores/Vakko/vakko_master_scraper.py
 | `uv run python scripts/verify_falcon_api.py` | Run bounded Falcon API smoke verification |
 | `uv run python scripts/verify_streamlit_api_frontend.py` | Run frontend API client verification |
 | `uv run python scripts/verify_full_stack.py` | Run combined full-stack smoke test |
-| `python Codes/Markets/Gurmar/gurmar_scraper.py` | Run the Gurmar scraper |
-| `python Codes/HousesRent/KayseriSivasTokat/main.py --city kayseri --rooms 3+1` | Run the rental scraper (sarı site; selenium engine — persistent profile, manual-solve loop). See `docs/APPROACH.md` first |
+| `python InflationItems/Codes/Markets/Gurmar/gurmar_scraper.py` | Run the Gurmar scraper |
+| `python InflationItems/Codes/HousesRent/KayseriSivasTokat/main.py --city kayseri --rooms 3+1` | Run the rental scraper (sarı site; selenium engine — persistent profile, manual-solve loop). See `docs/APPROACH.md` first |
 | `python Inflations/Codes/Markets/Gurmar/gurmar_inflation.py -h` | Inspect Gurmar inflation calculator options |
 | `python -m py_compile <path>` | Syntax-check a changed Python file |
 
@@ -103,9 +103,9 @@ API development expectations:
 
 Preserve these boundaries when changing code:
 
-- `Codes/` owns website/API ingestion and scraper behavior.
+- `InflationItems/Codes/` owns website/API ingestion and scraper behavior.
 - `Inflations/Codes/` owns inflation calculations and TUIK-style weighting.
-- `Datas/` and `Inflations/Datas/` are tracked data stores.
+- `InflationItems/Datas/` and `Inflations/Datas/` are tracked data stores.
 - `inflation_dashboard/domain/`, `adapters/`, and `application/` must remain free of Streamlit, Plotly, and Falcon imports.
 - `inflation_dashboard/api/` owns Falcon HTTP concerns and must not import Streamlit/Plotly/streamlit_app.py.
 - `inflation_dashboard/frontend/` owns the HTTP API client and must not import Streamlit/Plotly/core modules.
@@ -115,8 +115,8 @@ Boundary checks are built into `scripts/verify_falcon_api.py` and `scripts/verif
 
 ## Data and CSV Conventions
 
-- Raw scraper outputs are stored under `Datas/` and are intentionally tracked in git.
-- Avoid broad `.gitignore` changes for `Datas/`, `Inflations/Datas/`, or `logs/`.
+- Raw scraper outputs are stored under `InflationItems/Datas/` and are intentionally tracked in git.
+- Avoid broad `.gitignore` changes for `InflationItems/Datas/`, `Inflations/Datas/`, or `logs/`.
 - Date extraction expects filenames containing a `20xx-MM-DD` or `20xx_MM_DD` pattern.
 - When adding a new data source, update the supported retailer logic and verify date parsing, price column detection, and row normalization.
 

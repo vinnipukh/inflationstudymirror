@@ -15,7 +15,7 @@ focus: testing
 
 - Python syntax can be checked with `python -m py_compile <file>`; this was used for `streamlit_app.py`.
 - Focused helper behavior can be checked with temporary scripts under `C:/Users/arhan/AppData/Local/Temp/hermes-verify-*.py`.
-- Scraper outputs are verified by row counts and CSV presence in `Datas/...` directories.
+- Scraper outputs are verified by row counts and CSV presence in `InflationItems/Datas/...` directories.
 - Inflation calculators can be verified by generated detail CSVs and `inflation_summary.csv` updates under `Inflations/Datas/...`.
 
 ## CI coverage

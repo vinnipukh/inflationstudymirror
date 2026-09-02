@@ -7,8 +7,8 @@ focus: structure
 
 ## Top-level layout
 
-- `Codes/` — source scrapers grouped by domain and retailer/service.
-- `Datas/` — raw scraped CSV data grouped by domain and retailer/service.
+- `InflationItems/Codes/` — source scrapers grouped by domain and retailer/service.
+- `InflationItems/Datas/` — raw scraped CSV data grouped by domain and retailer/service.
 - `Inflations/Codes/` — inflation calculation scripts grouped by domain and retailer/service.
 - `Inflations/Datas/` — processed inflation detail and summary CSV outputs.
 - `logs/` — runtime logs, especially Yapimaks daily logs.
@@ -18,10 +18,10 @@ focus: structure
 
 ## Scraper examples
 
-- `Codes/Markets/Gurmar/gurmar_scraper.py` writes raw Gurmar market prices.
-- `Codes/ClothingStores/Vakko/vakko_master_scraper.py` writes raw Vakko clothing prices.
-- `Codes/ConstructionMarkets/yapimaks/scraper.py` writes raw Yapimaks construction market prices.
-- `Codes/HousesRent/KayseriSivasTokat/` contains a more complex async/browser scraper with `main.py`, `scraper.py`, `config.py`, and checkpoints.
+- `InflationItems/Codes/Markets/Gurmar/gurmar_scraper.py` writes raw Gurmar market prices.
+- `InflationItems/Codes/ClothingStores/Vakko/vakko_master_scraper.py` writes raw Vakko clothing prices.
+- `InflationItems/Codes/ConstructionMarkets/yapimaks/scraper.py` writes raw Yapimaks construction market prices.
+- `InflationItems/Codes/HousesRent/KayseriSivasTokat/` contains a more complex async/browser scraper with `main.py`, `scraper.py`, `config.py`, and checkpoints.
 
 ## Inflation examples
 
@@ -32,10 +32,10 @@ focus: structure
 
 ## Data naming patterns
 
-- Gurmar raw: `Datas/Markets/Gurmar/gurmar_prices_YYYY-MM-DD.csv`.
-- Vakko raw: `Datas/ClothingStores/Vakko/vakko_YYYY-MM-DD.csv`.
-- Yapimaks raw: `Datas/ConstructionSuppliesMarkets/yapimaks/YYYY-MM-DD.csv`.
-- HomeGoods raw: `Datas/HomeGoods/chakra_all_categories_YYYY_MM_DD.csv`.
+- Gurmar raw: `InflationItems/Datas/Markets/Gurmar/gurmar_prices_YYYY-MM-DD.csv`.
+- Vakko raw: `InflationItems/Datas/ClothingStores/Vakko/vakko_YYYY-MM-DD.csv`.
+- Yapimaks raw: `InflationItems/Datas/ConstructionSuppliesMarkets/yapimaks/YYYY-MM-DD.csv`.
+- HomeGoods raw: `InflationItems/Datas/HomeGoods/chakra_all_categories_YYYY_MM_DD.csv`.
 - Inflation summaries: `Inflations/Datas/**/inflation_summary.csv` or city-specific summaries.
 
 ## Naming conventions

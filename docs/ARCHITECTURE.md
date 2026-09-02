@@ -7,7 +7,7 @@ Inflation Study Mirror is a Python repository for collecting Turkish retailer an
 
 The application architecture has two generations that coexist:
 
-1. **Legacy collection and inflation scripts**: standalone scraper scripts under `Codes/`, raw CSV data under `Datas/`, calculator scripts under `Inflations/Codes/`, and calculated outputs under `Inflations/Datas/`.
+1. **Legacy collection and inflation scripts**: standalone scraper scripts under `InflationItems/Codes/`, raw CSV data under `InflationItems/Datas/`, calculator scripts under `Inflations/Codes/`, and calculated outputs under `Inflations/Datas/`.
 2. **Three-phase dashboard architecture**: a framework-independent `inflation_dashboard/` package that separates CSV access, domain normalization, application use cases, chart/table contracts, a Falcon API backend, and a Streamlit frontend that consumes the API over HTTP. All three phases are complete:
    - **Phase 1 (Hexagonal Core Extraction)**: Extracted data parsing, loading, and use cases from `streamlit_app.py` into framework-independent modules under `inflation_dashboard/domain/`, `inflation_dashboard/adapters/`, and `inflation_dashboard/application/`.
    - **Phase 2 (Falcon API Backend)**: Added Falcon HTTP resources, filter parsing, and JSON serialization under `inflation_dashboard/api/`.
@@ -17,8 +17,8 @@ The application architecture has two generations that coexist:
 
 ```mermaid
 graph TD
-    Sources[Retailer and service websites/APIs] --> Scrapers[Codes/* scraper scripts]
-    Scrapers --> RawCSV[Datas/* raw CSV files]
+    Sources[Retailer and service websites/APIs] --> Scrapers[InflationItems/Codes/* scraper scripts]
+    Scrapers --> RawCSV[InflationItems/Datas/* raw CSV files]
     RawCSV --> Calculators[Inflations/Codes/* calculators]
     Calculators --> InflationCSV[Inflations/Datas/* inflation outputs]
 
@@ -39,15 +39,15 @@ graph TD
 | `scripts/verify_falcon_api.py` | Falcon API verification | Uses Falcon's in-process `TestClient`; does not bind ports or start a persistent server. |
 | `scripts/verify_streamlit_api_frontend.py` | Frontend API client verification | Source-scans and behavior-checks the frontend API client and Streamlit tab wiring. |
 | `scripts/verify_full_stack.py` | Combined full-stack smoke test | Exercises API endpoints through TestClient AND the frontend API client through the same test server. |
-| `Codes/.../*.py` | Scrapers | Source-specific scripts that collect raw CSV data into `Datas/`. |
+| `InflationItems/Codes/.../*.py` | Scrapers | Source-specific scripts that collect raw CSV data into `InflationItems/Datas/`. |
 | `Inflations/Codes/.../*.py` | Inflation calculators | Source-specific scripts that produce processed inflation outputs under `Inflations/Datas/`. |
 
 ## Data Flow
 
 1. Source-specific scraper scripts fetch product data from websites/APIs.
-2. Scrapers write date-bearing CSV files into `Datas/` subdirectories.
+2. Scrapers write date-bearing CSV files into `InflationItems/Datas/` subdirectories.
 3. Inflation calculators read source CSVs and write outputs into `Inflations/Datas/`.
-4. The dashboard/API path reads raw `Datas/` CSV files through `inflation_dashboard.adapters.csv_price_repository`.
+4. The dashboard/API path reads raw `InflationItems/Datas/` CSV files through `inflation_dashboard.adapters.csv_price_repository`.
 5. Domain logic normalizes prices, detects products, and transforms rows into a shared history shape.
 6. Application use cases compute inventory filters, product history slices, summaries, retailer averages, price movers, and coverage.
 7. The Falcon API (`inflation_dashboard/api/`) exposes the same shared use cases as JSON envelopes over HTTP.
@@ -124,29 +124,29 @@ Phase 3 refactored `streamlit_app.py` to consume the Falcon API via `inflation_d
 
 ## Scraper Sub-Architectures
 
-Most `Codes/` scrapers are single-file request-based collectors (requests / `curl_cffi`), but several have moved to more specialised transports and data-integrity policies:
+Most `InflationItems/Codes/` scrapers are single-file request-based collectors (requests / `curl_cffi`), but several have moved to more specialised transports and data-integrity policies:
 
-- **Vakko** (`Codes/ClothingStores/Vakko/vakko_master_scraper.py`) — live sitemap-driven category discovery + Selenium cookie factory (fresh cookies/UA each run), retry-with-backoff, product-level outlet filtering.
-- **Beymen / Technology** (`Codes/Technology/scraper.py`) — SeleniumBase UC session; dynamic pagination from the API-reported `totalPageCount` (hard safety cap 500) with in-memory `productId` dedupe; seleniumbase port-9222 collision guard.
-- **Emlakjet** (`Codes/HousesRent/Emlakjet/`) — browser-backed residential-rental adapter: visible Chrome by default, optional CDP attach (`--debugger-address`/`CHROME_DEBUGGER_ADDRESS`), recursive district/neighbourhood subdivision past the site's 50-page geometric cap, stops (rather than solves) on challenges. CI-hardened 2026-09-02: `BrowserSession` watchdog restarts Chrome when the session stalls and retries the page; checkpoints live under the tracked `Datas/HousesRent/Emlakjet/state/` dir and `--resume` continues interrupted crawls across runs (stale/done-day checkpoints are ignored/deleted). Documented in `Codes/HousesRent/README.md`.
-- **Sarı site rentals** (`Codes/HousesRent/KayseriSivasTokat/`) — the **friend-tactics** engine: `undetected-chromedriver` + persistent profile (`SeleniumProfile/`) with a manual-solve-retry loop and adaptive pacing; price-bracket pagination; `District, Rooms, Price, ilanId` output (B0 compliance).
-- **Gurmar** (`Codes/Markets/Gurmar/`) — plain `requests`; dynamic category discovery from `initialize-v2` + regression-based exit policy (fails only on new breakage, not the known broken-pagination state).
-- **TasciYapi** (`Codes/ConstructionMarkets/tasciyapimarket/`) — two-stage discover→parallel crawl using the CodeIgniter paginator's last-page link, `curl_cffi` Chrome TLS impersonation (requests fallback), base64 product-ID dedupe, Cloudflare-challenge detection, loud exit codes.
-- **Watsons** (`Codes/Cosmetics/Watson/`) — serialised single `curl_cffi` session at ~1 req/s (`pageSize=60`), full pagination, adaptive 403/429 pause + exponential backoff.
-- **Yapımaks** (`Codes/ConstructionMarkets/yapimaks/`) — sitemap-driven full-catalog refresh built on yesterday's snapshot: `<lastmod>` re-scrape, 7-day grace via `last_seen.json`, empty rows never written, 429 Retry-After/backoff. Async since 2026-09-02 (aiohttp workers, shared token-bucket rate limiter, adaptive halving on 429), with a daily refresh budget (`--refresh-budget 2500`, stalest-first) and a wall-clock budget (`--max-duration 240`) so a catch-up run fits GitHub's 6 h public-repo job cap with a large margin; un-refreshed products keep yesterday's row and are re-picked next day (self-heal).
+- **Vakko** (`InflationItems/Codes/ClothingStores/Vakko/vakko_master_scraper.py`) — live sitemap-driven category discovery + Selenium cookie factory (fresh cookies/UA each run), retry-with-backoff, product-level outlet filtering.
+- **Beymen / Technology** (`InflationItems/Codes/Technology/scraper.py`) — SeleniumBase UC session; dynamic pagination from the API-reported `totalPageCount` (hard safety cap 500) with in-memory `productId` dedupe; seleniumbase port-9222 collision guard.
+- **Emlakjet** (`InflationItems/Codes/HousesRent/Emlakjet/`) — browser-backed residential-rental adapter: visible Chrome by default, optional CDP attach (`--debugger-address`/`CHROME_DEBUGGER_ADDRESS`), recursive district/neighbourhood subdivision past the site's 50-page geometric cap, stops (rather than solves) on challenges. CI-hardened 2026-09-02: `BrowserSession` watchdog restarts Chrome when the session stalls and retries the page; checkpoints live under the tracked `InflationItems/Datas/HousesRent/Emlakjet/state/` dir and `--resume` continues interrupted crawls across runs (stale/done-day checkpoints are ignored/deleted). Documented in `InflationItems/Codes/HousesRent/README.md`.
+- **Sarı site rentals** (`InflationItems/Codes/HousesRent/KayseriSivasTokat/`) — the **friend-tactics** engine: `undetected-chromedriver` + persistent profile (`SeleniumProfile/`) with a manual-solve-retry loop and adaptive pacing; price-bracket pagination; `District, Rooms, Price, ilanId` output (B0 compliance).
+- **Gurmar** (`InflationItems/Codes/Markets/Gurmar/`) — plain `requests`; dynamic category discovery from `initialize-v2` + regression-based exit policy (fails only on new breakage, not the known broken-pagination state).
+- **TasciYapi** (`InflationItems/Codes/ConstructionMarkets/tasciyapimarket/`) — two-stage discover→parallel crawl using the CodeIgniter paginator's last-page link, `curl_cffi` Chrome TLS impersonation (requests fallback), base64 product-ID dedupe, Cloudflare-challenge detection, loud exit codes.
+- **Watsons** (`InflationItems/Codes/Cosmetics/Watson/`) — serialised single `curl_cffi` session at ~1 req/s (`pageSize=60`), full pagination, adaptive 403/429 pause + exponential backoff.
+- **Yapımaks** (`InflationItems/Codes/ConstructionMarkets/yapimaks/`) — sitemap-driven full-catalog refresh built on yesterday's snapshot: `<lastmod>` re-scrape, 7-day grace via `last_seen.json`, empty rows never written, 429 Retry-After/backoff. Async since 2026-09-02 (aiohttp workers, shared token-bucket rate limiter, adaptive halving on 429), with a daily refresh budget (`--refresh-budget 2500`, stalest-first) and a wall-clock budget (`--max-duration 240`) so a catch-up run fits GitHub's 6 h public-repo job cap with a large margin; un-refreshed products keep yesterday's row and are re-picked next day (self-heal).
 
 The rental scrapers' recommended architecture (threat model, decision gates, tool assignments) is documented in `docs/APPROACH.md`, with the supporting tool catalog in `docs/TECH-STACK-SEARCH.md`. A deep-research validation report (`docs/RESEARCH-REPORT-2026-08-16.md`) revises that plan toward a browser-only default with reconciliation-first gates.
 
 ## Directory Structure Rationale
 
 ```text
-Codes/                         Source-specific scraper scripts
-Datas/                         Tracked raw scraped CSV data
+InflationItems/Codes/                         Source-specific scraper scripts
+InflationItems/Datas/                         Tracked raw scraped CSV data
 Inflations/Codes/              Source-specific inflation calculators and config
 Inflations/Datas/              Generated inflation details and summaries
 forecasting/                   ML-based price trend prediction notebook
 inflation_dashboard/domain/    Framework-independent parsing and normalization helpers
-inflation_dashboard/adapters/  CSV storage adapter over tracked Datas/ files
+inflation_dashboard/adapters/  CSV storage adapter over tracked InflationItems/Datas/ files
 inflation_dashboard/application/ Dashboard use cases plus chart/table specs
 inflation_dashboard/api/       Falcon resources, filter parsing, and JSON serialization
 inflation_dashboard/frontend/  Streamlit API client and frontend-only helpers
@@ -158,8 +158,8 @@ streamlit_app.py               Dashboard entry point consuming Falcon API
 
 ## Boundaries and Constraints
 
-- `Codes/` owns ingestion from websites and APIs.
-- `Datas/` and `Inflations/Datas/` are data stores, not application code.
+- `InflationItems/Codes/` owns ingestion from websites and APIs.
+- `InflationItems/Datas/` and `Inflations/Datas/` are data stores, not application code.
 - `Inflations/Codes/` owns inflation calculations and TUIK-style weighting logic.
 - `inflation_dashboard/domain/`, `inflation_dashboard/adapters/`, and `inflation_dashboard/application/` must remain free of Streamlit, Plotly, and Falcon imports.
 - `inflation_dashboard/api/` owns Falcon HTTP concerns and must not import Streamlit, Plotly, or `streamlit_app.py`.

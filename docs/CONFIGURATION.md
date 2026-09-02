@@ -11,7 +11,7 @@ This document records configuration that is present in the repository.
 | `uv.lock` | Locked `uv` dependency state. |
 | `requirements.txt` | Alternative dependency list for non-`uv` environments. |
 | `.github/workflows/*.yml` | Scheduled scraper runtime configuration for GitHub Actions. |
-| `Codes/**/config.py` and `Inflations/**/tuik_config.py` | Script-specific constants, TUIK category mappings, and weight settings. |
+| `InflationItems/Codes/**/config.py` and `Inflations/**/tuik_config.py` | Script-specific constants, TUIK category mappings, and weight settings. |
 | `inflation_dashboard/adapters/csv_price_repository.py` | Dashboard/API CSV data-root, supported-retailer, and file-limit defaults. |
 | `inflation_dashboard/api/filters.py` | Falcon API query-parameter defaults, validation rules, and TTL caches. |
 | `inflation_dashboard/frontend/api_client.py` | Frontend API client defaults (base URL, timeouts, data limits). |
@@ -20,10 +20,10 @@ This document records configuration that is present in the repository.
 
 | Variable | Required | Default | Read by |
 |---|---|---|---|
-| `VAKKO_COOKIE` | Required for Vakko scraping | `None` | `Codes/ClothingStores/Vakko/vakko_master_scraper.py` |
-| `VAKKO_USER_AGENT` | Required for Vakko scraping | `None` | `Codes/ClothingStores/Vakko/vakko_master_scraper.py` |
-| `VAKKO_HEADED` | Optional; `=1` runs Vakko's cookie-factory Chrome headed | `None` (headless) | `Codes/ClothingStores/Vakko/vakko_master_scraper.py` |
-| `CHROME_DEBUGGER_ADDRESS` | Optional Emlakjet CDP attach endpoint (e.g. `127.0.0.1:9222`) | `None` | `Codes/HousesRent/Emlakjet/scraper.py` |
+| `VAKKO_COOKIE` | Required for Vakko scraping | `None` | `InflationItems/Codes/ClothingStores/Vakko/vakko_master_scraper.py` |
+| `VAKKO_USER_AGENT` | Required for Vakko scraping | `None` | `InflationItems/Codes/ClothingStores/Vakko/vakko_master_scraper.py` |
+| `VAKKO_HEADED` | Optional; `=1` runs Vakko's cookie-factory Chrome headed | `None` (headless) | `InflationItems/Codes/ClothingStores/Vakko/vakko_master_scraper.py` |
+| `CHROME_DEBUGGER_ADDRESS` | Optional Emlakjet CDP attach endpoint (e.g. `127.0.0.1:9222`) | `None` | `InflationItems/Codes/HousesRent/Emlakjet/scraper.py` |
 
 No checked-in `.env.example` or `.env.sample` file is present. `.gitignore` ignores `.env`, `.env.*`, and `.streamlit/secrets.toml`.
 
@@ -153,14 +153,14 @@ The frontend API client (`inflation_dashboard/frontend/api_client.py`) configure
 
 | Workflow | Schedule | Python | Script |
 |---|---|---|---|
-| `gurmar.yml` | `0 0 * * *` | 3.10 | `Codes/Markets/Gurmar/gurmar_scraper.py` |
-| `yapimaks.yml` | `0 2 * * *` | 3.10 | `Codes/ConstructionMarkets/yapimaks/scraper.py` |
-| `vakko_scraper.yml` | `0 4 * * *` | 3.12 | `Codes/ClothingStores/Vakko/vakko_master_scraper.py` |
-| `watsons.yml` | `0 6 * * *` | 3.10 | `Codes/Cosmetics/Watson/scraper.py` |
-| `chakra_scraper.yml` | `0 8 * * *` | 3.10 | `Codes/HomeGoods/scraper.py` |
-| `beymen.yml` | `0 10 * * *` | 3.10 | `Codes/Technology/scraper.py` |
-| `tasciyapi.yml` | `0 14 * * *` | 3.11 | `Codes/ConstructionMarkets/tasciyapimarket/scraper.py` |
-| `emlakjet_scraper.yml` | `0 16 * * *` | 3.11 | `Codes/HousesRent/Emlakjet/scraper.py` |
+| `gurmar.yml` | `0 0 * * *` | 3.10 | `InflationItems/Codes/Markets/Gurmar/gurmar_scraper.py` |
+| `yapimaks.yml` | `0 2 * * *` | 3.10 | `InflationItems/Codes/ConstructionMarkets/yapimaks/scraper.py` |
+| `vakko_scraper.yml` | `0 4 * * *` | 3.12 | `InflationItems/Codes/ClothingStores/Vakko/vakko_master_scraper.py` |
+| `watsons.yml` | `0 6 * * *` | 3.10 | `InflationItems/Codes/Cosmetics/Watson/scraper.py` |
+| `chakra_scraper.yml` | `0 8 * * *` | 3.10 | `InflationItems/Codes/HomeGoods/scraper.py` |
+| `beymen.yml` | `0 10 * * *` | 3.10 | `InflationItems/Codes/Technology/scraper.py` |
+| `tasciyapi.yml` | `0 14 * * *` | 3.11 | `InflationItems/Codes/ConstructionMarkets/tasciyapimarket/scraper.py` |
+| `emlakjet_scraper.yml` | `0 16 * * *` | 3.11 | `InflationItems/Codes/HousesRent/Emlakjet/scraper.py` |
 
 Runtime notes (2026-09-02):
 
@@ -171,11 +171,11 @@ Runtime notes (2026-09-02):
   are CLI-overridable (`--workers`, `--rate`, `--refresh-budget`,
   `--max-duration`).
 - **emlakjet_scraper.yml**: runs with `--resume` and commits the whole
-  `Datas/HousesRent/Emlakjet/` dir (CSV + checkpoint state), so an
+  `InflationItems/Datas/HousesRent/Emlakjet/` dir (CSV + checkpoint state), so an
   interrupted crawl continues on the next run. `--max-page-retries` (default
   3) and `--page-timeout` (45 s) tune the browser-restart behavior.
 
-## Rental Scraper Configuration (`Codes/HousesRent/KayseriSivasTokat/config.py`)
+## Rental Scraper Configuration (`InflationItems/Codes/HousesRent/KayseriSivasTokat/config.py`)
 
 The rental scraper (sarı site — Kayseri/Sivas/Tokat) is configured entirely in its own `config.py` — no environment variables. It uses the **friend-tactics** engine (`engine_selenium.py`): `undetected-chromedriver` bound to a **persistent** Chrome profile + a manual-solve-retry loop + adaptive pacing (no auto-Turnstile code; the day-one Turnstile is solved manually and the warm session is reused thereafter).
 
@@ -190,9 +190,9 @@ The rental scraper (sarı site — Kayseri/Sivas/Tokat) is configured entirely i
 | `PROFILE_DIR` | `SeleniumProfile/` | Persistent `--user-data-dir` carrying `cf_clearance`/`_px3` across daily runs |
 | Adaptive pacing | `PAGE_LOAD_DELAY` 2.5 s (±50%), `ADAPTIVE_*` shrink/grow 1.5–8.0 s | Success streaks shrink delay; errors grow it |
 | Retry / backoff | `MAX_RETRIES` 3, `RETRY_BACKOFF_BASE` 2.0 s, `RETRY_BACKOFF_MAX` 30 s | Exponential backoff on failed page fetches |
-| Output | `Datas/HousesRent/{City}/{date}.csv` | `District, Rooms, Price, ilanId` columns (B0 compliance — `docs/APPROACH.md`) |
+| Output | `InflationItems/Datas/HousesRent/{City}/{date}.csv` | `District, Rooms, Price, ilanId` columns (B0 compliance — `docs/APPROACH.md`) |
 
-The engine (`engine_selenium.py`) uses the friend-tactics pattern: persistent SeleniumProfile + manual solve-retry loop (no auto-Turnstile code needed). The sister browser-backed Emlakjet adapter is documented in `Codes/HousesRent/README.md`; its live-site recon and the planned evolution of both rental scrapers are in `docs/APPROACH.md` and `docs/TECH-STACK-SEARCH.md`.
+The engine (`engine_selenium.py`) uses the friend-tactics pattern: persistent SeleniumProfile + manual solve-retry loop (no auto-Turnstile code needed). The sister browser-backed Emlakjet adapter is documented in `InflationItems/Codes/HousesRent/README.md`; its live-site recon and the planned evolution of both rental scrapers are in `docs/APPROACH.md` and `docs/TECH-STACK-SEARCH.md`.
 
 ## Running the Stack Locally
 

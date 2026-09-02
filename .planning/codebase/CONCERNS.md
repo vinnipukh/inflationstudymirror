@@ -13,18 +13,18 @@ focus: concerns
 
 ## Secret handling
 
-- ~~`Codes/ConstructionMarkets/yapimaks/scraper.py` contains a hardcoded session cookie~~ **RESOLVED 2026-09-02**: the hardcoded `_epower_session` cookie was removed; the async rewrite (aiohttp) collects cookies from the server's Set-Cookie on the homepage visit.
-- `Codes/ClothingStores/Vakko/vakko_master_scraper.py` correctly expects `VAKKO_COOKIE` and `VAKKO_USER_AGENT`, but the workflow uses `USER_AGENT` as the environment variable name while the script reads `VAKKO_USER_AGENT`; this mismatch can break scheduled scraping.
+- ~~`InflationItems/Codes/ConstructionMarkets/yapimaks/scraper.py` contains a hardcoded session cookie~~ **RESOLVED 2026-09-02**: the hardcoded `_epower_session` cookie was removed; the async rewrite (aiohttp) collects cookies from the server's Set-Cookie on the homepage visit.
+- `InflationItems/Codes/ClothingStores/Vakko/vakko_master_scraper.py` correctly expects `VAKKO_COOKIE` and `VAKKO_USER_AGENT`, but the workflow uses `USER_AGENT` as the environment variable name while the script reads `VAKKO_USER_AGENT`; this mismatch can break scheduled scraping.
 
 ## Fragile scraping areas
 
 - Websites may change API schemas, pagination, anti-bot behavior, and cookie/session requirements.
-- `Codes/HousesRent/KayseriSivasTokat/scraper.py` is complex and contains manual solve, Turnstile, browser-block, and checkpoint logic; it should be treated as fragile.
+- `InflationItems/Codes/HousesRent/KayseriSivasTokat/scraper.py` is complex and contains manual solve, Turnstile, browser-block, and checkpoint logic; it should be treated as fragile.
 - Several scripts print/log Turkish status with emoji symbols; fine for manual runs, but logs may be noisy in automation.
 
 ## Data volume and performance
 
-- `Datas/` and `Inflations/Datas/` contain hundreds of CSV files and hundreds of MB of data.
+- `InflationItems/Datas/` and `Inflations/Datas/` contain hundreds of CSV files and hundreds of MB of data.
 - Naively loading all CSVs made `streamlit_app.py` slow; the dashboard now uses retailer/date/file caps, but new features should preserve that constraint.
 - Generated logs under `logs/` are numerous and may grow indefinitely.
 

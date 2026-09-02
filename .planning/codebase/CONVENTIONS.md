@@ -29,7 +29,7 @@ focus: conventions
 
 - Scrapers generally log or print errors and continue with remaining pages/categories.
 - Inflation calculators usually return early when required files or columns are missing.
-- Houses rent scraper uses explicit control-flow exceptions like `SkipCitySignal`, `SkipBracketSignal`, `StopSignal`, and `RestartBrowserSignal` in `Codes/HousesRent/KayseriSivasTokat/scraper.py`.
+- Houses rent scraper uses explicit control-flow exceptions like `SkipCitySignal`, `SkipBracketSignal`, `StopSignal`, and `RestartBrowserSignal` in `InflationItems/Codes/HousesRent/KayseriSivasTokat/scraper.py`.
 
 ## UI/dashboard conventions
 

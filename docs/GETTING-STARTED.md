@@ -9,7 +9,7 @@ The repository has three practical workflows:
 
 1. **Falcon API backend**: `inflation_dashboard.api.falcon_app:create_app` exposes CSV-backed dashboard use cases as JSON endpoints served over HTTP.
 2. **Streamlit dashboard frontend**: `streamlit_app.py` reads dashboard data from the Falcon API through `inflation_dashboard.frontend.api_client` and renders views with Streamlit/Plotly.
-3. **Standalone scrapers and inflation calculators**: scripts under `Codes/` and `Inflations/Codes/`.
+3. **Standalone scrapers and inflation calculators**: scripts under `InflationItems/Codes/` and `Inflations/Codes/`.
 
 ## Prerequisites
 
@@ -24,7 +24,7 @@ git clone <repository-url>
 cd inflationstudymirror
 ```
 
-Run commands from the repository root so relative paths such as `Datas/`, `scripts/`, and `streamlit_app.py` resolve correctly.
+Run commands from the repository root so relative paths such as `InflationItems/Datas/`, `scripts/`, and `streamlit_app.py` resolve correctly.
 
 ## Install Dependencies
 
@@ -162,4 +162,4 @@ The shared CSV adapter defaults to `DEFAULT_MAX_FILES_PER_RETAILER = 25`. Keep b
 - Read `docs/CONFIGURATION.md` for environment variables, dependency metadata, dashboard/API defaults, and GitHub Actions runtime settings.
 - Read `README.md` for the broader scraper and inflation-analysis overview.
 - Read `docs/USER_GUIDE.md` for a step-by-step walkthrough of using the dashboard.
-- For work on rental scrapers, read `Codes/HousesRent/README.md`; the existing `KayseriSivasTokat/` scraper has its site-specific plan in `docs/APPROACH.md`, while the Emlakjet adapter uses the browser-backed contract documented in that README and `docs/TECH-STACK-SEARCH.md`.
+- For work on rental scrapers, read `InflationItems/Codes/HousesRent/README.md`; the existing `KayseriSivasTokat/` scraper has its site-specific plan in `docs/APPROACH.md`, while the Emlakjet adapter uses the browser-backed contract documented in that README and `docs/TECH-STACK-SEARCH.md`.

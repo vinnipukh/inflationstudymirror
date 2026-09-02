@@ -141,9 +141,9 @@ Good first targets for a test suite:
 - `inflation_dashboard/api/filters.py` — filter validation logic
 - `inflation_dashboard/api/serialization.py` — JSON-safe conversion of pandas/numpy values
 
-**Rental scrapers:** per the project principle in `AGENTS.md` (added 2026-09-02), scraper code under `Codes/` carries **no unit or smoke tests** — the way to test a scraper is to *use* it. The previous fixture-driven Emlakjet parser/pagination tests (`tests/test_houses_rent_scrapers.py`) were deleted on that date. Verification happens via bounded live runs (e.g. `--start-url <small province> --max-pages-per-scope N`), scheduled runs, and the CSVs/checkpoints/logs they produce. See `docs/TECH-STACK-SEARCH.md` §3.1 for the Emlakjet verification runs.
+**Rental scrapers:** per the project principle in `AGENTS.md` (added 2026-09-02), scraper code under `InflationItems/Codes/` carries **no unit or smoke tests** — the way to test a scraper is to *use* it. The previous fixture-driven Emlakjet parser/pagination tests (`tests/test_houses_rent_scrapers.py`) were deleted on that date. Verification happens via bounded live runs (e.g. `--start-url <small province> --max-pages-per-scope N`), scheduled runs, and the CSVs/checkpoints/logs they produce. See `docs/TECH-STACK-SEARCH.md` §3.1 for the Emlakjet verification runs.
 
-When adding tests, keep data fixtures small and synthetic. Avoid tests that scan every CSV under `Datas/` unless explicitly marked as slow.
+When adding tests, keep data fixtures small and synthetic. Avoid tests that scan every CSV under `InflationItems/Datas/` unless explicitly marked as slow.
 
 ## Coverage
 
