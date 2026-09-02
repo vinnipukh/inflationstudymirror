@@ -24,12 +24,12 @@ jobs:
           pip install requests beautifulsoup4
 
       - name: Run Scraper
-        run: python Codes/HomeGoods/scraper.py
+        run: python InflationItems/Codes/HomeGoods/scraper.py
 
       - name: Commit and Push Changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add Datas/HomeGoods/*.csv
+          git add InflationItems/Datas/HomeGoods/*.csv
           git commit -m "data(chakra): günlük ev dekorasyonu ve mobilya verileri eklendi" || exit 0
           git push

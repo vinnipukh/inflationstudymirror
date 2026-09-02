@@ -12,7 +12,7 @@ import requests
 
 ROOT = Path(__file__).resolve().parents[1]
 CSV_PATH = Path(sys.argv[1]) if len(sys.argv) > 1 else max(
-    (ROOT / "Datas" / "ClothingStores" / "Vakko").glob("vakko_*.csv")
+    (ROOT / "InflationItems" / "Datas" / "ClothingStores" / "Vakko").glob("vakko_*.csv")
 )
 
 API_URL = "https://api.vakko.com/occ/v2/vsite/products/search"

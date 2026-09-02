@@ -29,7 +29,7 @@ from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 from bs4 import BeautifulSoup
 
 try:
-    from Codes.HousesRent.common import (
+    from InflationItems.Codes.HousesRent.common import (
         CsvSink,
         absolute_url,
         clean_text,
@@ -43,10 +43,10 @@ try:
         save_checkpoint,
     )
 except ModuleNotFoundError:  # pragma: no cover - direct-script compatibility
-    _ROOT = Path(__file__).resolve().parents[3]
+    _ROOT = Path(__file__).resolve().parents[4]
     if str(_ROOT) not in sys.path:
         sys.path.insert(0, str(_ROOT))
-    from Codes.HousesRent.common import (
+    from InflationItems.Codes.HousesRent.common import (
         CsvSink,
         absolute_url,
         clean_text,
@@ -75,11 +75,12 @@ _NON_PROVINCE_SLUGS = {
     # the Republic of Türkiye, so leave it out of the default crawl.
     "kktc",
 }
-DEFAULT_OUTPUT = Path("Datas/HousesRent/Emlakjet")
+_REPO_ROOT = Path(__file__).resolve().parents[4]
+DEFAULT_OUTPUT = _REPO_ROOT / "InflationItems" / "Datas" / "HousesRent" / "Emlakjet"
 # Tracked under Datas/ so the workflow can commit it and --resume survives
 # across GitHub Actions runs.  Named "state/" because .gitignore excludes any
 # directory called "checkpoints".
-DEFAULT_CHECKPOINT = Path("Datas/HousesRent/Emlakjet/state/checkpoint.json")
+DEFAULT_CHECKPOINT = DEFAULT_OUTPUT / "state" / "checkpoint.json"
 
 
 def _text(node: Any) -> str:
@@ -278,7 +279,7 @@ def scrape(
 
         browser = None
     else:
-        from Codes.HousesRent.browser import BrowserSession
+        from InflationItems.Codes.HousesRent.browser import BrowserSession
 
         browser = BrowserSession(
             driver_factory,
@@ -419,7 +420,7 @@ def _build_driver_factory(args: argparse.Namespace) -> Any:
     every browser restart starts clean instead of reusing a possibly locked or
     corrupted profile directory.
     """
-    from Codes.HousesRent.browser import create_chrome_driver
+    from InflationItems.Codes.HousesRent.browser import create_chrome_driver
 
     def factory() -> Any:
         return create_chrome_driver(
@@ -451,7 +452,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 
-    from Codes.HousesRent.browser import ChallengeDetected
+    from InflationItems.Codes.HousesRent.browser import ChallengeDetected
 
     driver_factory = _build_driver_factory(args)
     try:

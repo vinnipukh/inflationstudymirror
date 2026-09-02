@@ -55,8 +55,9 @@ import aiohttp
 
 # ─── DİZİN YAPISI ────────────────────────────────────────────────────────────
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_ROOT = os.path.abspath(os.path.join(BASE_DIR, "..", "..", ".."))
-OUTPUT_DIR = os.path.join(PROJECT_ROOT, "Datas", "ConstructionSuppliesMarkets", "yapimaks")
+PROJECT_ROOT = os.path.abspath(os.path.join(BASE_DIR, "..", "..", "..", ".."))
+ITEMS_ROOT = os.path.abspath(os.path.join(BASE_DIR, "..", "..", ".."))
+OUTPUT_DIR = os.path.join(ITEMS_ROOT, "Datas", "ConstructionSuppliesMarkets", "yapimaks")
 LOG_DIR = os.path.join(PROJECT_ROOT, "logs")
 
 # ─── AYARLAR ─────────────────────────────────────────────────────────────────

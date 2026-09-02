@@ -10,7 +10,8 @@ import datetime as _dt
 from pathlib import Path as _Path
 
 _SCRIPTS_DIR = _Path(__file__).resolve().parent
-_PROJECT_ROOT = _SCRIPTS_DIR.parent.parent.parent
+_ITEMS_ROOT = _SCRIPTS_DIR.parent.parent.parent
+_PROJECT_ROOT = _ITEMS_ROOT.parent
 
 # ── City settings ────────────────────────────────────────────────────────────
 DEFAULT_BRACKETS = [
@@ -29,7 +30,7 @@ CITIES = [
 
 TODAY = _dt.date.today().strftime("%Y-%m-%d")  # noqa: DTZ011 — daily-run date, local tz is intended
 
-OUTPUT_BASE_DIR = str(_PROJECT_ROOT / "Datas" / "HousesRent")
+OUTPUT_BASE_DIR = str(_ITEMS_ROOT / "Datas" / "HousesRent")
 CHECKPOINT_DIR = str(_SCRIPTS_DIR / "checkpoints")
 
 

@@ -59,6 +59,7 @@ temp/
 # Scraper/runtime checkpoints
 checkpoints/
 Codes/**/checkpoints/
+InflationItems/Codes/**/checkpoints/
 
 # Streamlit local config
 .streamlit/secrets.toml

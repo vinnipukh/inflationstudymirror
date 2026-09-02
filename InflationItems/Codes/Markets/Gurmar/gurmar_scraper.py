@@ -249,12 +249,12 @@ def main():
     # ── CSV'ye kaydet ────────────────────────────────────────────────
     bugunun_tarihi = datetime.now().strftime("%Y-%m-%d")
 
-    # Dynamically find the project root directory (3 levels up from this script)
+    # Dynamically find the InflationItems root directory (3 levels up from this script)
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    project_root = os.path.abspath(os.path.join(script_dir, "..", "..", ".."))
+    items_root = os.path.abspath(os.path.join(script_dir, "..", "..", ".."))
 
-    # Target the root-level Datas/Markets/Gurmar folder
-    target_dir = os.path.join(project_root, "Datas", "Markets", "Gurmar")
+    # Target the InflationItems/Datas/Markets/Gurmar folder
+    target_dir = os.path.join(items_root, "Datas", "Markets", "Gurmar")
     csv_dosyasi = os.path.join(target_dir, f"gurmar_prices_{bugunun_tarihi}.csv")
 
     os.makedirs(target_dir, exist_ok=True)

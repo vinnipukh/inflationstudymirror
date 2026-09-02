@@ -31,7 +31,7 @@ jobs:
 
       - name: Run the scraper script
         run: |
-          python Codes/Markets/Gurmar/gurmar_scraper.py
+          python InflationItems/Codes/Markets/Gurmar/gurmar_scraper.py
 
       - name: Commit and push CSV data
         run: |
@@ -40,7 +40,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
           
           # Stage the newly created CSV file
-          git add Datas/Markets/Gurmar/*.csv
+          git add InflationItems/Datas/Markets/Gurmar/*.csv
           
           # Commit only if there are changes (prevents pipeline failure if no files changed)
           git commit -m "data: add daily ideal_prices for Gurmar market" || echo "No changes to commit"

@@ -64,13 +64,14 @@ The **dashboard stack** consists of a **Falcon REST API** (high-performance WSGI
 
 ```
 inflationstudymirror/
-├── Codes/                          # Web scrapers for different retailers
+├── InflationItems/
+│   ├── Codes/                          # Web scrapers for different retailers
 │   ├── HomeGoods/                 # HomeGoods product scraper
 │   ├── Cosmetics/                 # Cosmetics stores (Watson, etc.)
 │   ├── ClothingStores/            # Clothing retailers (Vakko, etc.)
 │   ├── HousesRent/                # Rental property data collection (all sources)
 │   └── Markets/                   # Marketplace scrapers (Gurmar, etc.)
-├── Datas/                         # Raw collected data (CSV files)
+│   └── Datas/                         # Raw collected data (CSV files)
 ├── Inflations/                    # Inflation calculation outputs
 ├── inflation_dashboard/           # Dashboard & API package
 │   ├── domain/                    # Parsing and normalization
@@ -234,15 +235,15 @@ Then open your browser to the Streamlit URL (default `http://localhost:5000`).
 - `inflation_dashboard/adapters/csv_price_repository.py` — CSV data loading adapter
 
 ### Scrapers
-- `Codes/HomeGoods/scraper.py` - HomeGoods category-based scraper (analytics-payload name extraction)
-- `Codes/Cosmetics/Watson/scraper.py` - Watsons cosmetics scraper (serialised `curl_cffi`, full pagination)
-- `Codes/ClothingStores/Vakko/vakko_master_scraper.py` - Vakko fashion items (live sitemap + cookie factory)
-- `Codes/Technology/scraper.py` - Beymen tech products (dynamic pagination)
-- `Codes/ConstructionMarkets/tasciyapimarket/scraper.py` - TasciYapi construction supplies
-- `Codes/ConstructionMarkets/yapimaks/scraper.py` - Yapımaks construction supplies
-- `Codes/Markets/Gurmar/gurmar_scraper.py` - Gurmar supermarket products
-- `Codes/HousesRent/KayseriSivasTokat/main.py` - Sarı site rentals (Kayseri/Sivas/Tokat; friend-tactics selenium engine — see `docs/APPROACH.md` first)
-- `Codes/HousesRent/Emlakjet/scraper.py` - Emlakjet Turkey residential rentals (browser-backed; see `Codes/HousesRent/README.md`)
+- `InflationItems/Codes/HomeGoods/scraper.py` - HomeGoods category-based scraper (analytics-payload name extraction)
+- `InflationItems/Codes/Cosmetics/Watson/scraper.py` - Watsons cosmetics scraper (serialised `curl_cffi`, full pagination)
+- `InflationItems/Codes/ClothingStores/Vakko/vakko_master_scraper.py` - Vakko fashion items (live sitemap + cookie factory)
+- `InflationItems/Codes/Technology/scraper.py` - Beymen tech products (dynamic pagination)
+- `InflationItems/Codes/ConstructionMarkets/tasciyapimarket/scraper.py` - TasciYapi construction supplies
+- `InflationItems/Codes/ConstructionMarkets/yapimaks/scraper.py` - Yapımaks construction supplies
+- `InflationItems/Codes/Markets/Gurmar/gurmar_scraper.py` - Gurmar supermarket products
+- `InflationItems/Codes/HousesRent/KayseriSivasTokat/main.py` - Sarı site rentals (Kayseri/Sivas/Tokat; friend-tactics selenium engine — see `docs/APPROACH.md` first)
+- `InflationItems/Codes/HousesRent/Emlakjet/scraper.py` - Emlakjet Turkey residential rentals (browser-backed; see `InflationItems/Codes/HousesRent/README.md`)
 
 ### Forecasting
 - `forecasting/forecastingtest.ipynb` — ML-based price trend prediction notebook
@@ -260,29 +261,29 @@ Then open your browser to the Streamlit URL (default `http://localhost:5000`).
 
 ```bash
 # Scrape cosmetics data
-python Codes/Cosmetics/Watson/scraper.py
+python InflationItems/Codes/Cosmetics/Watson/scraper.py
 
 # Scrape existing Sarı site rental properties (Kayseri, Sivas, Tokat)
-python Codes/HousesRent/KayseriSivasTokat/main.py
+python InflationItems/Codes/HousesRent/KayseriSivasTokat/main.py
 
 # Scrape regular residential rental listings in Turkey
 python -m Codes.HousesRent.Emlakjet.scraper
 
 # Scrape market products
-python Codes/Markets/Gurmar/gurmar_scraper.py
+python InflationItems/Codes/Markets/Gurmar/gurmar_scraper.py
 ```
 
 ### Calculating Inflation
 
 ```bash
 # Calculate cosmetics inflation
-python Inflations/Codes/Cosmetics/inflation.py --date 2026-03-15
+python Inflations/InflationItems/Codes/Cosmetics/inflation.py --date 2026-03-15
 
 # Calculate housing rental inflation
-python Inflations/Codes/HousesRent/sahibinden_inflation.py --date 2026-03-15
+python Inflations/InflationItems/Codes/HousesRent/sahibinden_inflation.py --date 2026-03-15
 
 # Calculate market inflation
-python Inflations/Codes/Markets/Gurmar/gurmar_inflation.py -i Datas/Markets/Gurmar/gurmar_prices_2026-02-24.csv
+python Inflations/InflationItems/Codes/Markets/Gurmar/gurmar_inflation.py -i InflationItems/Datas/Markets/Gurmar/gurmar_prices_2026-02-24.csv
 ```
 
 ### Running the Dashboard

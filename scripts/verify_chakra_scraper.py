@@ -29,7 +29,7 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-DATA_DIR = REPO_ROOT / "Datas" / "HomeGoods"
+DATA_DIR = REPO_ROOT / "InflationItems" / "Datas" / "HomeGoods"
 
 UNNAMED_FALLBACK = "İsimsiz Ürün"
 UNNAMED_FAIL_SHARE = 0.02      # 2% of rows may legitimately lack names

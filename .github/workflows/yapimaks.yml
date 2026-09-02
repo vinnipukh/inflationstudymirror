@@ -35,7 +35,7 @@ jobs:
 
       - name: Run Scraper
         # Belirttiğin tam dizindeki scripti çalıştırır
-        run: python Codes/ConstructionMarkets/yapimaks/scraper.py
+        run: python InflationItems/Codes/ConstructionMarkets/yapimaks/scraper.py
 
       - name: Commit and Push Changes
         run: |
@@ -43,7 +43,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
           
           # Datas klasörünün altındaki tüm değişiklikleri ve logları kaydeder
-          git add Datas/ logs/
+          git add InflationItems/Datas/ logs/
           
           git commit -m "Auto-update: Tüm Datas ve log değişiklikleri eklendi [skip ci]" || echo "Değişiklik bulunamadı, commit atlandı."
           git push

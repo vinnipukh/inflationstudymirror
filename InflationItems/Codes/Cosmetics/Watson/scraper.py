@@ -14,8 +14,9 @@ from curl_cffi import requests
 
 # ==================== YOL (PATH) AYARLARI ====================
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "..", ".."))
-OUTPUT_DIR = os.path.join(PROJECT_ROOT, "Datas", "Cosmetics", "Watson")
+PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "..", "..", ".."))
+ITEMS_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "..", ".."))
+OUTPUT_DIR = os.path.join(ITEMS_ROOT, "Datas", "Cosmetics", "Watson")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # ==================== CONFIGURATION ====================

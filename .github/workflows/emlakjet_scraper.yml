@@ -43,16 +43,16 @@ jobs:
       - name: Run Emlakjet scraper
         run: |
           # --resume continues an interrupted crawl through the tracked
-          # checkpoint under Datas/HousesRent/Emlakjet/state/; the scraper
+          # checkpoint under InflationItems/Datas/HousesRent/Emlakjet/state/; the scraper
           # also restarts Chrome itself when the session stalls.
           xvfb-run --auto-servernum --server-args='-screen 0 1920x1080x24' \
-            python -m Codes.HousesRent.Emlakjet.scraper --resume
+            python -m InflationItems.Codes.HousesRent.Emlakjet.scraper --resume
 
       - name: Commit and push Emlakjet data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add Datas/HousesRent/Emlakjet/
+          git add InflationItems/Datas/HousesRent/Emlakjet/
           if git diff --staged --quiet; then
             echo "No new Emlakjet data to commit."
           else

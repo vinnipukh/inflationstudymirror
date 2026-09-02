@@ -32,13 +32,13 @@ jobs:
         env:
           VAKKO_COOKIE: ${{ secrets.VAKKO_COOKIE }}
           USER_AGENT: ${{ secrets.VAKKO_USER_AGENT }}
-        run: python Codes/ClothingStores/Vakko/vakko_master_scraper.py
+        run: python InflationItems/Codes/ClothingStores/Vakko/vakko_master_scraper.py
 
       # 5. Çekilen ve 'Datas' klasörüne kaydedilen CSV dosyasını repoya Pushla
       - name: Yeni Verileri GitHub'a Pushla
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
-          git add Datas/ClothingStores/Vakko/*.csv
+          git add InflationItems/Datas/ClothingStores/Vakko/*.csv
           git commit -m "🤖 Otomatik Veri Çekimi: Vakko Günlük Ürün Fiyatları" || echo "Kaydedilecek yeni bir veri bulunamadı."
           git push

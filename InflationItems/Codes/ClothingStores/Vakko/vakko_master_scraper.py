@@ -11,7 +11,7 @@ print("🚀 Vakko Master Scraper Başlatılıyor...\n")
 
 # .env dosyası varsa elle oku (yalnızca webdriver devre dışıyken kullanılan yedek değişkenler)
 try:
-    _env_yolu = Path(__file__).resolve().parents[3] / ".env"
+    _env_yolu = Path(__file__).resolve().parents[4] / ".env"
     if _env_yolu.exists():
         for satir in _env_yolu.read_text(encoding="utf-8").splitlines():
             satir = satir.strip()
@@ -308,8 +308,8 @@ if atlanan_kategoriler:
     print(f"⚠️ {len(atlanan_kategoriler)} kategori atlandı: {', '.join(atlanan_kategoriler)}")
 
 mevcut_dosya = Path(__file__).resolve()
-proje_koku = mevcut_dosya.parents[3]
-hedef_klasor = proje_koku / "Datas" / "ClothingStores" / "Vakko"
+items_koku = mevcut_dosya.parents[3]
+hedef_klasor = items_koku / "Datas" / "ClothingStores" / "Vakko"
 hedef_klasor.mkdir(parents=True, exist_ok=True)
 
 bugunun_tarihi = datetime.datetime.now().strftime("%Y-%m-%d")

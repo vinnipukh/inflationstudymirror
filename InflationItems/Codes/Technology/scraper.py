@@ -10,9 +10,9 @@ from seleniumbase import SB
 
 # ==================== PATH SETUP ====================
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-# Script is in Codes/Technology. Go up 2 levels to reach inflationstudymirror.
-PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, "..", ".."))
-OUTPUT_DIR = os.path.join(PROJECT_ROOT, "Datas", "Technology")
+# Script is in InflationItems/Codes/Technology. Go up 2 levels to reach InflationItems.
+ITEMS_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, "..", ".."))
+OUTPUT_DIR = os.path.join(ITEMS_ROOT, "Datas", "Technology")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 

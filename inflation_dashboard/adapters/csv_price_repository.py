@@ -9,7 +9,11 @@ import pandas as pd
 from inflation_dashboard.domain.prices import HISTORY_COLUMNS, PRICE_COLUMNS, build_product_frame, parse_date_from_name
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-RAW_DATA_ROOT = PROJECT_ROOT / "Datas"
+RAW_DATA_ROOT = (
+    PROJECT_ROOT / "InflationItems" / "Datas"
+    if (PROJECT_ROOT / "InflationItems" / "Datas").exists()
+    else PROJECT_ROOT / "Datas"
+)
 
 SUPPORTED_RETAILERS = {
     "ClothingStores / Vakko",

@@ -6,14 +6,14 @@ All times in **Istanbul time (UTC+3)**. Türkiye uses UTC+3 year-round (no dayli
 
 | Istanbul Time (UTC+3) | UTC  | Scraper        | Workflow File         | Script                                   | Output Data                      |
 |-----------------------|------|----------------|-----------------------|------------------------------------------|----------------------------------|
-| 03:00                | 00:00 | Gurmar         | `gurmar.yml`          | `Codes/Markets/Gurmar/gurmar_scraper.py` | `Datas/Markets/Gurmar/*.csv`     |
-| 05:00                | 02:00 | Yapımaks       | `yapimaks.yml`        | `Codes/ConstructionMarkets/yapimaks/scraper.py` | `Datas/ConstructionSuppliesMarkets/yapimaks/` + `logs/` |
-| 07:00                | 04:00 | Vakko          | `vakko_scraper.yml`   | `Codes/ClothingStores/Vakko/vakko_master_scraper.py` | `Datas/ClothingStores/Vakko/*.csv` |
-| 09:00                | 06:00 | Watsons        | `watsons.yml`         | `Codes/Cosmetics/Watson/scraper.py`       | `Datas/` + `logs/`               |
-| 11:00                | 08:00 | Chakra         | `chakra_scraper.yml`  | `Codes/HomeGoods/scraper.py`              | `Datas/HomeGoods/*.csv`          |
-| 13:00                | 10:00 | Beymen         | `beymen.yml`          | `Codes/Technology/scraper.py`             | `Datas/Technology/`              |
-| 17:00                | 14:00 | TasciYapi      | `tasciyapi.yml`       | `Codes/ConstructionMarkets/tasciyapimarket/scraper.py` | `Datas/ConstructionSuppliesMarkets/TasciYapiMarket/*.csv` |
-| 19:00                | 16:00 | Emlakjet       | `emlakjet_scraper.yml` | `Codes/HousesRent/Emlakjet/scraper.py` | `Datas/HousesRent/Emlakjet/*.csv` |
+| 03:00                | 00:00 | Gurmar         | `gurmar.yml`          | `InflationItems/Codes/Markets/Gurmar/gurmar_scraper.py` | `InflationItems/Datas/Markets/Gurmar/*.csv`     |
+| 05:00                | 02:00 | Yapımaks       | `yapimaks.yml`        | `InflationItems/Codes/ConstructionMarkets/yapimaks/scraper.py` | `InflationItems/Datas/ConstructionSuppliesMarkets/yapimaks/` + `logs/` |
+| 07:00                | 04:00 | Vakko          | `vakko_scraper.yml`   | `InflationItems/Codes/ClothingStores/Vakko/vakko_master_scraper.py` | `InflationItems/Datas/ClothingStores/Vakko/*.csv` |
+| 09:00                | 06:00 | Watsons        | `watsons.yml`         | `InflationItems/Codes/Cosmetics/Watson/scraper.py`       | `InflationItems/Datas/` + `logs/`               |
+| 11:00                | 08:00 | Chakra         | `chakra_scraper.yml`  | `InflationItems/Codes/HomeGoods/scraper.py`              | `InflationItems/Datas/HomeGoods/*.csv`          |
+| 13:00                | 10:00 | Beymen         | `beymen.yml`          | `InflationItems/Codes/Technology/scraper.py`             | `InflationItems/Datas/Technology/`              |
+| 17:00                | 14:00 | TasciYapi      | `tasciyapi.yml`       | `InflationItems/Codes/ConstructionMarkets/tasciyapimarket/scraper.py` | `InflationItems/Datas/ConstructionSuppliesMarkets/TasciYapiMarket/*.csv` |
+| 19:00                | 16:00 | Emlakjet       | `emlakjet_scraper.yml` | `InflationItems/Codes/HousesRent/Emlakjet/scraper.py` | `InflationItems/Datas/HousesRent/Emlakjet/*.csv` |
 
 ## Notes
 

@@ -9,7 +9,7 @@ import pandas as pd
 import requests
 
 ROOT = Path(__file__).resolve().parents[1]
-CSV_PATH = ROOT / "Datas" / "ClothingStores" / "Vakko" / "vakko_2026-08-18.csv"
+CSV_PATH = ROOT / "InflationItems" / "Datas" / "ClothingStores" / "Vakko" / "vakko_2026-08-18.csv"
 XML_PATH = ROOT / "Codes" / "ClothingStores" / "Vakko" / "vakko_categories.xml"
 API_URL = "https://api.vakko.com/occ/v2/vsite/products/search"
 HEADERS = {

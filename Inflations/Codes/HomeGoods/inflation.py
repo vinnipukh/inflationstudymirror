@@ -15,7 +15,7 @@ from tuik_config import (  # noqa: E402
 )
 
 # Root data directory for HomeGoods
-DATA_DIR = _PROJECT_ROOT / "Datas" / "HomeGoods"
+DATA_DIR = _PROJECT_ROOT / "InflationItems" / "Datas" / "HomeGoods"
 
 logger = logging.getLogger(__name__)
 
