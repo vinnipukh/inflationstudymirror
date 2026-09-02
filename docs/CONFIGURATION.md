@@ -162,6 +162,19 @@ The frontend API client (`inflation_dashboard/frontend/api_client.py`) configure
 | `tasciyapi.yml` | `0 14 * * *` | 3.11 | `Codes/ConstructionMarkets/tasciyapimarket/scraper.py` |
 | `emlakjet_scraper.yml` | `0 16 * * *` | 3.11 | `Codes/HousesRent/Emlakjet/scraper.py` |
 
+Runtime notes (2026-09-02):
+
+- **yapimaks.yml**: `timeout-minutes: 360` — the platform hard cap for public
+  repos (the previous `480` was never reachable). The scraper runs async
+  (aiohttp) with `--refresh-budget 2500` (daily, stalest-first) and
+  `--max-duration 240` (min); a full catch-up completes in ≈1 h. All limits
+  are CLI-overridable (`--workers`, `--rate`, `--refresh-budget`,
+  `--max-duration`).
+- **emlakjet_scraper.yml**: runs with `--resume` and commits the whole
+  `Datas/HousesRent/Emlakjet/` dir (CSV + checkpoint state), so an
+  interrupted crawl continues on the next run. `--max-page-retries` (default
+  3) and `--page-timeout` (45 s) tune the browser-restart behavior.
+
 ## Rental Scraper Configuration (`Codes/HousesRent/KayseriSivasTokat/config.py`)
 
 The rental scraper (sarı site — Kayseri/Sivas/Tokat) is configured entirely in its own `config.py` — no environment variables. It uses the **friend-tactics** engine (`engine_selenium.py`): `undetected-chromedriver` bound to a **persistent** Chrome profile + a manual-solve-retry loop + adaptive pacing (no auto-Turnstile code; the day-one Turnstile is solved manually and the warm session is reused thereafter).

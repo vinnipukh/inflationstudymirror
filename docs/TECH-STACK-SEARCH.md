@@ -393,3 +393,106 @@ GitHub topics: `topic:web-scraping`, `topic:computer-use`, `topic:agent-skills`,
 - [x] Skills installed so far: **playwright, webapp-testing, modern-python, mongodb-schema-design, mongodb-connection, playwright-skill (testdino), full-page-screenshot, test-driven-development + 11 meta-skills** (agent-interface-design, blindspot-pass, brainstorm-prototypes, change-quiz, context-audit, implementation-notes, implementation-plan, interview-me, pitch-packager, progressive-disclosure, reference-hunt) — remaining: pytest (testmu-ai), scrapling-official
 - [x] **browser-act SCRAPPED (2026-08-16)**: account-gated engine (API key required even for local chrome-direct) — user declined service signups; skill + CLI uninstalled. ⚠️ cookie-sync similarly requires BROWSERBASE_API_KEY (paid) — dormant unless Browserbase is adopted
 - [ ] Skill set validated against a live modernization run
+
+---
+
+## 2.10 Agent-environment browser/search evaluation (2026-09-02)
+
+Evaluation for the *agent's own* web workflow (Exa + browser routing), not the scraper stack — logged per AGENTS.md convention.
+
+| Tool | Verdict (agent use) | Evidence |
+|---|---|---|
+| **Exa API** (`api.exa.ai/search`, Bearer auth) | ⭐ Primary search — semantic, structured, cheapest | Verified live; ~$0.007/search; highlights/text modes; free $20 + $10/mo credits |
+| **Obscura** (`h4ckf0r0day/obscura`, Rust, Apache-2.0, ★24k) | ⭐ Primary browser for page reads — zero-dep binary, markdown dumps, built-in stealth | Installed `~/.local/bin` v0.2.1; stealth fingerprint verified (webdriver=false, Chrome/143 UA); **emlakjet.com/kiralik-konut passed with stealth (real listings, 42k ads)**; sahibinden.com still Cloudflare-walled; young engine (2026-04), long-tail CSS risk |
+| **camoufox-cli** (`Bin-Huang/camoufox-cli`, MIT, ★340) | Candidate specialist for hard anti-bot walls (sahibinden-class) | Camoufox engine proven (wiki + DEV article: Turnstile green check ~7s); Firefox-class runs in WSL with local-lib fix; not yet installed |
+| **playwright-cli** (chromium/firefox) | Backup browser | Works from WSL; vanilla = detectable on protected sites |
+
+**Routing:** Exa → search · Obscura(--stealth) → pages · camoufox-cli → hard walls (pending) · playwright-cli → backup · curl → plain fetches.
+
+
+---
+
+## 3.1 Emlakjet CI hardening (2026-09-02)
+
+Fix for the Emlakjet rental scraper failing on GitHub Actions (`ReadTimeoutError` on
+the Selenium wire at `localhost:<port>` after ~4 min, i.e. Chrome stopped answering).
+
+Root causes observed:
+- Brute symptom: browser hang → Selenium's default **120 s wire read timeout** kills
+  the job; no recovery path existed.
+- Container/chromedriver flags missing on the runner: no `--disable-dev-shm-usage`
+  (tiny `/dev/shm` crashes Chrome) and no `--no-sandbox`.
+- `pageLoadStrategy=normal` lets `driver.get()` block indefinitely on slow
+  trackers/subresources.
+- Checkpoints lived under `Codes/HousesRent/Emlakjet/checkpoints/` = gitignored and
+  the workflow never passed `--resume` → every run crawled from scratch, and any
+  mid-run session death wasted the whole crawl.
+
+Applied (files):
+- `Codes/HousesRent/browser.py`:
+  - stability args (`--disable-dev-shm-usage`, `--no-sandbox`, `--disable-gpu`,
+    background/extension/sync off) for launched drivers;
+  - `pageLoadStrategy=eager` for launched (non-attach) sessions;
+  - wire command timeout lowered to 90 s (`_configure_driver`), script timeout 45 s;
+  - `_run_bounded()` watchdog (daemon thread + deadline, raises `DriverStall`);
+  - `BrowserSession` — owns the driver, runs each page under the watchdog, discards
+    the dead session, starts a fresh driver via factory, retries the page up to
+    `max_retries` (default 3); `ChallengeDetected` is never retried.
+- `Codes/HousesRent/Emlakjet/scraper.py`:
+  - `scrape()` now takes `driver_factory`/`max_page_retries`/`page_timeout` and uses
+    `BrowserSession`; legacy `driver`+`load_page` injection still supported (tests);
+  - CLI: `--max-page-retries`, `--page-timeout`; launched drivers use a fresh temp
+    profile (`fresh_profile=True`) so restarts never hit profile locks;
+  - default checkpoint moved to `Datas/HousesRent/Emlakjet/state/checkpoint.json`
+    (tracked; `checkpoints/` dir name stays gitignored), stamped with
+    `checkpoint_date`; `--resume` ignores stale (previous-day) checkpoints and the
+    file is deleted after a completed crawl.
+- `.github/workflows/emlakjet_scraper.yml`: runs `--resume`; commits the whole
+  `Datas/HousesRent/Emlakjet/` dir (CSV + state).
+- Per project principle (AGENTS.md), scraper code carries NO unit/smoke tests;
+  verification is by running it: headless bounded run 2026-09-02
+  (`--start-url /kiralik-konut/isparta --max-pages-per-scope 8`) crawled 8 live
+  pages with page-load retries + checkpoint resume intact.
+
+ETL note: emlakjet listing grid is server-rendered (31 `article[data-listing-id]`
+cards in raw HTML) — parser checked against live pages 2026-09-02 (30 rows/page,
+Isparta total 225 → 8 pages).
+
+
+---
+
+## 3.2 Yapimaks async rewrite (2026-09-02)
+
+Failure: yapimaks.yml catch-up (~8400 products at serial ~2.2 s/req ≈ 6 h) hit
+GitHub's **hard 6 h per-job cap for public repos** (`timeout-minutes: 480` cannot
+exceed 360) → job killed, no data committed since 2026-08-18.
+
+Rewrite (`Codes/ConstructionMarkets/yapimaks/scraper.py`):
+- **async (aiohttp)** workers (default 8), shared token-bucket rate limiter
+  (default 0.8 req/s; halves on 429 down to 0.2, recovers on success streaks),
+  small bucket capacity (3) so cuts apply immediately.
+- Global concurrency-safe CSV writing (single asyncio event loop, no races),
+  `last_seen.json` state unchanged (carry + GRACE_DAYS drop semantics intact).
+- Session cookies now come from the server's Set-Cookie (hard-coded
+  `_epower_session` cookie removed); homepage/sitemap fetches got 429/5xx retry
+  loops (they previously had none — a single 429 there aborted the run).
+- **--refresh-budget** (default 2500/day): stalest-first ordering (new products
+  first, then oldest scraped_at); if the due set exceeds the budget the tail is
+  deferred to the next run (self-heal), so one run never takes hours.
+- **--max-duration** (default 240 min): hard wall-clock stop; unfinished items
+  keep yesterday's rows and are re-picked tomorrow.
+- Verification = running it (per AGENTS.md principle):
+  * 25-product async run: clean, ~5 s, 6 workers in flight.
+  * 300-product run under an HTTP-429 storm: recovered 286/300 via
+    Retry-After/backoff, 8 exhausted retries, partial data preserved.
+  * Full CI-flow rehearsal (2026-09-02 22:00, real 08-18 snapshot as base,
+    no state file): 7928 products due -> daily budget (2500) warning ->
+    stalest-first order (115 new products first, then oldest scraped_at) ->
+    150/150 fetched at 0.5 req/s, **0 HTTP 429s**, 0 failures; output CSV
+    stayed a complete snapshot (8362 carried + 150 refreshed = 8512 rows,
+    no duplicates); last_seen.json persisted; exit 0. Extrapolated default
+    catch-up (~2500/day at 0.8 req/s): ≈ 1 h per run.
+  * NOTE: burst tests (4–8 req/s) from this machine put the local test IP in
+    a rate-limit penalty window (homepage 429s) — the GitHub runner IP pool is
+    unaffected (historical runs saw occasional 429s and always recovered with
+    backoff; 08-13 catch-up had 322 429 events and still completed).

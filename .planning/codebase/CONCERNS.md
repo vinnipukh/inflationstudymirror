@@ -13,7 +13,7 @@ focus: concerns
 
 ## Secret handling
 
-- `Codes/ConstructionMarkets/yapimaks/scraper.py` contains a hardcoded session cookie in `make_session()`; this should be moved to environment variables before sharing or committing further automation around it.
+- ~~`Codes/ConstructionMarkets/yapimaks/scraper.py` contains a hardcoded session cookie~~ **RESOLVED 2026-09-02**: the hardcoded `_epower_session` cookie was removed; the async rewrite (aiohttp) collects cookies from the server's Set-Cookie on the homepage visit.
 - `Codes/ClothingStores/Vakko/vakko_master_scraper.py` correctly expects `VAKKO_COOKIE` and `VAKKO_USER_AGENT`, but the workflow uses `USER_AGENT` as the environment variable name while the script reads `VAKKO_USER_AGENT`; this mismatch can break scheduled scraping.
 
 ## Fragile scraping areas

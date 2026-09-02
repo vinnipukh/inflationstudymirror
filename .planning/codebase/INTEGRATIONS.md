@@ -17,7 +17,7 @@ focus: integrations
 
 - `Codes/ClothingStores/Vakko/vakko_master_scraper.py` reads `VAKKO_COOKIE` and `VAKKO_USER_AGENT` from environment variables via `python-dotenv`.
 - `.github/workflows/vakko_scraper.yml` passes `secrets.VAKKO_COOKIE` and `secrets.VAKKO_USER_AGENT` to the scraper job.
-- `Codes/ConstructionMarkets/yapimaks/scraper.py` contains a hardcoded session cookie string in `make_session()`; do not copy the value into docs or logs.
+- ~~`Codes/ConstructionMarkets/yapimaks/scraper.py` contains a hardcoded session cookie string~~ **RESOLVED 2026-09-02**: removed with the async rewrite; `aiohttp.ClientSession` cookie jar picks up server Set-Cookie values (homepage visit) and refreshes them when the API stops accepting the session.
 - `.env` and `.env.*` are ignored in `.gitignore`.
 
 ## Outputs

@@ -141,7 +141,7 @@ Good first targets for a test suite:
 - `inflation_dashboard/api/filters.py` — filter validation logic
 - `inflation_dashboard/api/serialization.py` — JSON-safe conversion of pandas/numpy values
 
-**Rental scrapers:** the Emlakjet adapter (`Codes/HousesRent/Emlakjet/`) has fixture-driven parser and pagination tests (stdlib `unittest`, no site visits): `uv run python -m unittest discover -s tests -v`. The sarı site scraper (`Codes/HousesRent/KayseriSivasTokat/`) has **ZERO tests** (known pain point — see `docs/TECH-STACK-SEARCH.md`). Highest-value first targets there: `normalize_price`, `parse_page`, `is_login_page`, pagination offset math, and Turkish price/date fixtures (`17.900 TL`, `10 Ağustos 2026`) per `docs/RESEARCH-REPORT-2026-08-16.md`.
+**Rental scrapers:** per the project principle in `AGENTS.md` (added 2026-09-02), scraper code under `Codes/` carries **no unit or smoke tests** — the way to test a scraper is to *use* it. The previous fixture-driven Emlakjet parser/pagination tests (`tests/test_houses_rent_scrapers.py`) were deleted on that date. Verification happens via bounded live runs (e.g. `--start-url <small province> --max-pages-per-scope N`), scheduled runs, and the CSVs/checkpoints/logs they produce. See `docs/TECH-STACK-SEARCH.md` §3.1 for the Emlakjet verification runs.
 
 When adding tests, keep data fixtures small and synthetic. Avoid tests that scan every CSV under `Datas/` unless explicitly marked as slow.
 

@@ -47,3 +47,13 @@ Related references:
   analysis in chat logs.
 - When adding or changing scraper behavior, update the relevant docs
   (this file, TECH-STACK-SEARCH.md) so the next agent inherits the context.
+
+## Testing principle
+
+- **No unit tests or smoke tests for scrapers.** The way to test a scraper is
+  to *use* it: bounded runs against the live site (`--limit`, `--start-url`
+  scoped runs), scheduled/full runs, and the CSVs/checkpoints/logs they
+  produce. Do not add unit tests, mocks, or synthetic HTML fixtures for
+  scraper code under `Codes/` (`tests/test_houses_rent_scrapers.py` was
+  removed 2026-09-02 for this reason). This also applies to scripts — verify
+  scrapers by running them, not with one-off verify scripts where avoidable.
