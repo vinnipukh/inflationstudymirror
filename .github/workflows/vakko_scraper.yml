@@ -6,6 +6,9 @@ on:
     - cron: '0 4 * * *' # Her sabah UTC saatiyle 04:00'te (Türkiye saatiyle 07:00) çalışır.
   workflow_dispatch: # GitHub sitesinden manuel olarak tetikleme butonu ekler.
 
+permissions:
+  contents: write
+
 jobs:
   scrape-and-save:
     runs-on: ubuntu-latest # Kodu sanal bir Linux makinesinde çalıştır
