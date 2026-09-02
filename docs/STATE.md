@@ -21,7 +21,7 @@ current_phase_name: Sarı Site Rental Scraper Modernization
 
 ## Project Reference
 
-See: `.planning/PROJECT.md` (updated 2026-07-16)
+See: `docs/PROJECT.md` (updated 2026-07-16)
 
 **Core value:** Users can explore scraped product prices quickly and reliably from a Streamlit dashboard whose data access is served through a Falcon API instead of direct frontend CSV scanning.
 **Current focus:** Phase 5 — Sarı Site Rental Scraper Modernization

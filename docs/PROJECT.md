@@ -17,7 +17,7 @@ Users can explore scraped product prices quickly and reliably from a Streamlit d
 
 ## Context
 
-This is an existing repository, not a greenfield app. Current capabilities and constraints are documented in `.planning/codebase/`.
+This is an existing repository, not a greenfield app. Current capabilities and constraints are documented in `docs/`.
 
 Important existing facts:
 

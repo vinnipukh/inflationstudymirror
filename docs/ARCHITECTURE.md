@@ -152,7 +152,7 @@ inflation_dashboard/api/       Falcon resources, filter parsing, and JSON serial
 inflation_dashboard/frontend/  Streamlit API client and frontend-only helpers
 scripts/                       Focused verification scripts and smoke tests
 streamlit_app.py               Dashboard entry point consuming Falcon API
-.planning/                     Project planning notes and workflow state (GSD)
+docs/                         Unified project documentation, architecture, and specifications
 .github/workflows/             Scheduled scraper automation when workflow files are present
 ```
 
