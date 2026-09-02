@@ -22,7 +22,7 @@ from pathlib import Path
 import requests
 
 ROOT = Path(__file__).resolve().parents[1]
-VAKKO_DIR = ROOT / "Codes" / "ClothingStores" / "Vakko"
+VAKKO_DIR = ROOT / "InflationItems" / "Codes" / "ClothingStores" / "Vakko"
 XML_PATH = VAKKO_DIR / "vakko_categories.xml"
 CSV_PATH = ROOT / "InflationItems" / "Datas" / "ClothingStores" / "Vakko" / "vakko_2026-08-18.csv"
 API_URL = "https://api.vakko.com/occ/v2/vsite/products/search"

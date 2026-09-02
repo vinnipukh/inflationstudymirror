@@ -16,7 +16,7 @@ Kodun doğru çalışması için ham verilerin (CSV) belirli bir hiyerarşide ol
 
 ```text
 inflationstudymirror/
-├── Datas/
+├── InflationItems/Datas/
 │   └── HousesRent/
 │       ├── Kayseri/
 │       │   ├── 2026-03-27.csv
@@ -27,7 +27,7 @@ inflationstudymirror/
     ├── Codes/
     │   └── HousesRent/
     │       └── sahibinden_inflation.py   <-- Bu betik
-    └── Datas/
+    └── InflationItems/Datas/
         └── HousesRent/                   <-- Çıktılar buraya kaydedilir
             ├── Kayseri/
             ├── Sivas/

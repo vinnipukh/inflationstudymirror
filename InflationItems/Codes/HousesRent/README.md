@@ -35,9 +35,9 @@ adapter documented by `docs/APPROACH.md`.
 
 ## Output
 
-By default, Emlakjet writes a dated CSV under `Datas/HousesRent/Emlakjet/`
+By default, Emlakjet writes a dated CSV under `InflationItems/Datas/HousesRent/Emlakjet/`
 and its resume checkpoint under the **tracked** directory
-`Datas/HousesRent/Emlakjet/state/checkpoint.json` (under `Datas/` so the
+`InflationItems/Datas/HousesRent/Emlakjet/state/checkpoint.json` (under `Datas/` so the
 workflow can commit it and `--resume` works across GitHub Actions runs — any
 directory literally named `checkpoints/` would be gitignored). Checkpoints
 are stamped with their date: a stale (previous-day) checkpoint is ignored,
@@ -81,15 +81,15 @@ Run from the repository root:
 
 ```bash
 # Small live smoke run
-uv run python -m Codes.HousesRent.Emlakjet.scraper \
+uv run python -m InflationItems.Codes.HousesRent.Emlakjet.scraper \
   --start-url https://www.emlakjet.com/kiralik-konut/tokat \
   --max-pages-per-scope 1
 
 # Full Turkey residential inventory
-uv run python -m Codes.HousesRent.Emlakjet.scraper
+uv run python -m InflationItems.Codes.HousesRent.Emlakjet.scraper
 
 # Continue a paused run after a browser challenge or interruption
-uv run python -m Codes.HousesRent.Emlakjet.scraper --resume
+uv run python -m InflationItems.Codes.HousesRent.Emlakjet.scraper --resume
 ```
 
 For a running Chrome relay, add `--debugger-address HOST:PORT`. If a
@@ -109,7 +109,7 @@ URL for controlled verification.
 `.github/workflows/emlakjet_scraper.yml` runs the full scraper every day at
 **16:00 UTC (19:00 Türkiye time, UTC+3)**. It can also be started manually
 from the GitHub Actions interface. The workflow runs Chrome under Xvfb with
-`--resume`, writes and commits the whole `Datas/HousesRent/Emlakjet/` dir
+`--resume`, writes and commits the whole `InflationItems/Datas/HousesRent/Emlakjet/` dir
 (CSV + checkpoint state) with the repository's GitHub Actions bot account. A
 CAPTCHA or anti-bot challenge causes the run to stop rather than attempting
 an automated bypass.

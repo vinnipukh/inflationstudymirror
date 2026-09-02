@@ -267,7 +267,7 @@ python InflationItems/Codes/Cosmetics/Watson/scraper.py
 python InflationItems/Codes/HousesRent/KayseriSivasTokat/main.py
 
 # Scrape regular residential rental listings in Turkey
-python -m Codes.HousesRent.Emlakjet.scraper
+python -m InflationItems.Codes.HousesRent.Emlakjet.scraper
 
 # Scrape market products
 python InflationItems/Codes/Markets/Gurmar/gurmar_scraper.py
@@ -277,13 +277,13 @@ python InflationItems/Codes/Markets/Gurmar/gurmar_scraper.py
 
 ```bash
 # Calculate cosmetics inflation
-python Inflations/InflationItems/Codes/Cosmetics/inflation.py --date 2026-03-15
+python Inflations/Codes/Cosmetics/inflation.py --date 2026-03-15
 
 # Calculate housing rental inflation
-python Inflations/InflationItems/Codes/HousesRent/sahibinden_inflation.py --date 2026-03-15
+python Inflations/Codes/HousesRent/sahibinden_inflation.py --date 2026-03-15
 
 # Calculate market inflation
-python Inflations/InflationItems/Codes/Markets/Gurmar/gurmar_inflation.py -i InflationItems/Datas/Markets/Gurmar/gurmar_prices_2026-02-24.csv
+python Inflations/Codes/Markets/Gurmar/gurmar_inflation.py -i InflationItems/Datas/Markets/Gurmar/gurmar_prices_2026-02-24.csv
 ```
 
 ### Running the Dashboard
@@ -316,7 +316,7 @@ uv run streamlit run streamlit_app.py
 
 ## Data Format
 
-### Raw Data (Datas/)
+### Raw Data (InflationItems/Datas/)
 CSV files with timestamps containing:
 - Product name/ID
 - Product price
