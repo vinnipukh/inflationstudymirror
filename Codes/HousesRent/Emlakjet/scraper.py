@@ -5,6 +5,12 @@ therefore starts at ``/kiralik-konut``, discovers province routes, and splits
 large provinces into the district/neighborhood routes advertised by the site.
 It uses the allowed ``?sayfa=`` parameter and does not use the robots-disallowed
 ``filtreler=ilan-sayisi=50`` shortcut.
+
+Reliability (CI): pages load through :class:`Codes.HousesRent.browser.BrowserSession`,
+which watchdog-times every command and restarts Chrome when a session stalls or
+dies.  Run state is checkpointed under ``Datas/HousesRent/Emlakjet/state/``
+(tracked, committed by the workflow) so ``--resume`` continues an interrupted
+crawl across GitHub Actions runs; a finished day's checkpoint is deleted.
 """
 
 from __future__ import annotations
@@ -70,7 +76,10 @@ _NON_PROVINCE_SLUGS = {
     "kktc",
 }
 DEFAULT_OUTPUT = Path("Datas/HousesRent/Emlakjet")
-DEFAULT_CHECKPOINT = Path("Codes/HousesRent/Emlakjet/checkpoints")
+# Tracked under Datas/ so the workflow can commit it and --resume survives
+# across GitHub Actions runs.  Named "state/" because .gitignore excludes any
+# directory called "checkpoints".
+DEFAULT_CHECKPOINT = Path("Datas/HousesRent/Emlakjet/state/checkpoint.json")
 
 
 def _text(node: Any) -> str:
@@ -239,8 +248,9 @@ def _has_listing_cards(html: str) -> bool:
 
 
 def scrape(
-    driver: Any,
+    driver: Any | None = None,
     *,
+    driver_factory: Any | None = None,
     start_url: str = START_URL,
     output_path: str | Path | None = None,
     checkpoint_path: str | Path | None = None,
@@ -248,18 +258,51 @@ def scrape(
     max_pages_per_scope: int = MAX_PAGES_PER_SCOPE,
     delay: float = 2.0,
     load_page: Any | None = None,
+    max_page_retries: int = 3,
+    page_timeout: float = 45.0,
 ) -> int:
-    """Scrape all reachable rental scopes with checkpointed geographic splits."""
-    if load_page is None:
-        from Codes.HousesRent.browser import load_rendered_page
+    """Scrape all reachable rental scopes with checkpointed geographic splits.
 
-        load_page = load_rendered_page
+    ``driver`` remains accepted for callers that already own a browser (and
+    for tests injecting a ``load_page`` callable).  The normal CLI path passes
+    ``driver_factory`` instead: :class:`BrowserSession` then restarts the
+    browser up to ``max_page_retries`` times when the session stalls or dies
+    (the CI failure mode), so a single hung page no longer kills the crawl.
+    """
+    if load_page is not None:
+
+        def page_loader(url: str, *, wait_selector: str) -> str:
+            if driver is None:  # pragma: no cover - defensive
+                raise RuntimeError("load_page was injected without a driver")
+            return load_page(driver, url, wait_selector=wait_selector)
+
+        browser = None
+    else:
+        from Codes.HousesRent.browser import BrowserSession
+
+        browser = BrowserSession(
+            driver_factory,
+            max_retries=max_page_retries,
+            page_timeout=page_timeout,
+            logger=LOGGER,
+        )
+        if driver is not None:
+            browser.driver = driver
+
+        def page_loader(url: str, *, wait_selector: str) -> str:
+            assert browser is not None
+            return browser.load(url, wait_selector=wait_selector)
 
     max_pages_per_scope = max(1, max_pages_per_scope)
     output = Path(output_path) if output_path else _default_output()
     checkpoint_file = Path(checkpoint_path) if checkpoint_path else _default_checkpoint()
     sink = CsvSink(output)
     state = load_checkpoint(checkpoint_file) if resume else {}
+    # Resume only the crawl started today.  A checkpoint left by an earlier
+    # day must not suppress a fresh daily crawl (all scopes are re-visited and
+    # new listings are picked up; CsvSink deduplicates by ilanId).
+    if state.get("checkpoint_date") != time.strftime("%Y-%m-%d"):
+        state = {}
     processed = set(state.get("processed_scopes", []))
     pending = list(state.get("pending_scopes", []))
     active = state.get("active_scope")
@@ -268,11 +311,17 @@ def scrape(
     if not pending:
         pending = [_canonical_scope_url(start_url)]
 
-    homepage_html = load_page(driver, BASE_URL, wait_selector="body")
+    homepage_html = page_loader(BASE_URL, wait_selector="body")
     if not homepage_html:
         raise RuntimeError("Emlakjet homepage returned an empty document")
 
-    state.update({"page_size": PAGE_SIZE, "max_pages_per_scope": max_pages_per_scope})
+    state.update(
+        {
+            "checkpoint_date": time.strftime("%Y-%m-%d"),
+            "page_size": PAGE_SIZE,
+            "max_pages_per_scope": max_pages_per_scope,
+        }
+    )
     save_checkpoint(checkpoint_file, state)
     written = 0
 
@@ -285,7 +334,7 @@ def scrape(
             state["pending_scopes"] = pending
             save_checkpoint(checkpoint_file, state)
 
-            first_html = load_page(driver, scope_url, wait_selector="article[data-listing-id]")
+            first_html = page_loader(scope_url, wait_selector="article[data-listing-id]")
             total = extract_result_count(first_html)
             state.setdefault("scope_counts", {})[scope_url] = total
             scope_pages = _scope_page_count(total)
@@ -324,7 +373,7 @@ def scrape(
 
             for page in range(1, scope_pages + 1):
                 url = build_page_url(scope_url, page)
-                html = first_html if page == 1 else load_page(driver, url, wait_selector="article[data-listing-id]")
+                html = first_html if page == 1 else page_loader(url, wait_selector="article[data-listing-id]")
                 rows = parse_page(html)
                 written += sink.write(rows)
                 state["active_page"] = page
@@ -346,32 +395,52 @@ def scrape(
         state["status"] = "complete_with_warnings" if state.get("partial_scopes") else "complete"
         state["pending_scopes"] = []
         save_checkpoint(checkpoint_file, state)
+        # The daily crawl finished; drop the checkpoint so tomorrow's --resume
+        # starts a fresh crawl instead of replaying a completed day.
+        try:
+            checkpoint_file.unlink()
+        except OSError:
+            pass
     except Exception:
         state["status"] = "paused"
         state["pending_scopes"] = pending
         save_checkpoint(checkpoint_file, state)
         raise
+    finally:
+        if browser is not None:
+            browser.close()
     return written
 
 
-def _build_driver(args: argparse.Namespace) -> tuple[Any, bool]:
+def _build_driver_factory(args: argparse.Namespace) -> Any:
+    """Return a callable that creates a fresh Chrome for the crawl.
+
+    CI runs launch with a brand-new temporary profile (``fresh_profile``) so
+    every browser restart starts clean instead of reusing a possibly locked or
+    corrupted profile directory.
+    """
     from Codes.HousesRent.browser import create_chrome_driver
 
-    driver = create_chrome_driver(
-        debugger_address=args.debugger_address,
-        profile_dir=args.profile_dir,
-        headless=args.headless,
-        disable_images=not args.images,
-    )
-    return driver, not bool(args.debugger_address)
+    def factory() -> Any:
+        return create_chrome_driver(
+            debugger_address=args.debugger_address,
+            profile_dir=args.profile_dir,
+            headless=args.headless,
+            disable_images=not args.images,
+            fresh_profile=not bool(args.profile_dir or args.debugger_address),
+        )
+
+    return factory
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Scrape Emlakjet long-term residential rentals")
-    parser.add_argument("--resume", action="store_true", help="resume the dated geographic checkpoint")
+    parser.add_argument("--resume", action="store_true", help="resume today's geographic checkpoint (kept under Datas/ so CI runs can continue)")
     parser.add_argument("--start-url", default=START_URL, help="initial residential route; use a province/district for a bounded smoke run")
     parser.add_argument("--max-pages-per-scope", type=int, default=MAX_PAGES_PER_SCOPE, help="cap pages in one geographic route")
     parser.add_argument("--delay", type=float, default=2.0, help="seconds between listing pages")
+    parser.add_argument("--max-page-retries", type=int, default=3, help="restart the browser and retry a page up to this many times")
+    parser.add_argument("--page-timeout", type=float, default=45.0, help="seconds to wait for the listing grid on one page")
     parser.add_argument("--output", type=Path, default=None, help="CSV output path")
     parser.add_argument("--checkpoint", type=Path, default=None, help="checkpoint JSON path")
     parser.add_argument("--debugger-address", default=os.getenv("CHROME_DEBUGGER_ADDRESS"), help="attach to an existing Chrome, e.g. 127.0.0.1:9222")
@@ -384,23 +453,22 @@ def main(argv: list[str] | None = None) -> int:
 
     from Codes.HousesRent.browser import ChallengeDetected
 
-    driver, owns_driver = _build_driver(args)
+    driver_factory = _build_driver_factory(args)
     try:
         return scrape(
-            driver,
+            driver_factory=driver_factory,
             start_url=args.start_url,
             output_path=args.output,
             checkpoint_path=args.checkpoint,
             resume=args.resume,
             max_pages_per_scope=args.max_pages_per_scope,
             delay=args.delay,
+            max_page_retries=args.max_page_retries,
+            page_timeout=args.page_timeout,
         )
     except ChallengeDetected as exc:
         LOGGER.error("%s", exc)
         return 2
-    finally:
-        if owns_driver:
-            driver.quit()
 
 
 if __name__ == "__main__":
