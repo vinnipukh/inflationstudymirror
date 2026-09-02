@@ -198,7 +198,7 @@ The engine (`engine_selenium.py`) uses the friend-tactics pattern: persistent Se
 
 ```bash
 # Terminal 1: Start the Falcon API
-uv run waitress-serve --port=8000 inflation_dashboard.api.falcon_app:create_app
+uv run waitress-serve --port=8000 --call inflation_dashboard.api.falcon_app:create_app
 
 # Terminal 2: Start the Streamlit frontend
 uv run streamlit run streamlit_app.py

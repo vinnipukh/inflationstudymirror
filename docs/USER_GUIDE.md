@@ -18,7 +18,7 @@ uv sync
 Open a terminal and run:
 
 ```bash
-uv run waitress-serve --port=8000 inflation_dashboard.api.falcon_app:create_app
+uv run waitress-serve --port=8000 --call inflation_dashboard.api.falcon_app:create_app
 ```
 
 You should see output like:

@@ -1,13 +1,13 @@
 # Documentation Index
 
-Welcome to the **Inflation Study Mirror** documentation. This directory is the unified knowledge base and specification reference for the entire repository.
+Welcome to the **Inflation Study Mirror** documentation. This directory is the unified technical knowledge base and reference manual for the entire repository.
 
 ---
 
 ## 1. System Architecture & Codebase Overview
 
 - **[Architecture](ARCHITECTURE.md)**: System overview, hexagonal architecture, Falcon API backend, Streamlit frontend, and data flows.
-- **[Structure](STRUCTURE.md)**: Directory layout, file conventions, repository boundaries, and artifact locations.
+- **[Structure](STRUCTURE.md)**: Top-level directory layout, file conventions, repository boundaries, and artifact locations.
 - **[Stack](STACK.md)**: Languages, web frameworks, machine learning dependencies, browser automation engines, and transports.
 - **[Integrations](INTEGRATIONS.md)**: Retailer and rental scraping integrations, external endpoints, secrets, and daily timetable.
 - **[Conventions](CONVENTIONS.md)**: Coding standards, naming schemes, signal patterns, and testing principles (no unit tests for scrapers).
@@ -20,7 +20,7 @@ Welcome to the **Inflation Study Mirror** documentation. This directory is the u
 - **[Getting Started](GETTING-STARTED.md)**: Local installation, environment setup, and running the Falcon API and Streamlit dashboard.
 - **[Development Guide](DEVELOPMENT.md)**: Common developer workflows, running scrapers, executing calculators, and verification commands.
 - **[Configuration](CONFIGURATION.md)**: Environment variables, secret keys, scraper arguments, and CI workflow configurations.
-- **[API Documentation](API.md)**: Falcon REST API endpoints, request parameters, response envelopes, and error codes.
+- **[API Reference](API.md)**: Falcon REST API endpoints, request parameters, response envelopes, and error codes.
 - **[User Guide](USER_GUIDE.md)**: Guide to using the interactive Streamlit dashboard tabs and analytical features.
 
 ---
@@ -34,12 +34,13 @@ Welcome to the **Inflation Study Mirror** documentation. This directory is the u
 
 ---
 
-## 4. Project Planning, Requirements & Phase History
+## 4. Project Planning & Phase History
 
-- **[Project Definition](PROJECT.md)**: Project vision, architectural goals, target state, and operational constraints.
-- **[Requirements](REQUIREMENTS.md)**: Functional and non-functional requirements and acceptance criteria.
-- **[Roadmap](ROADMAP.md)**: Milestone roadmap covering Phases 1 through 5 and ongoing modernization.
-- **[Project State](STATE.md)**: Milestone status, phase progression, decisions, and performance metrics.
-- **[Phases History](phases/)**: Complete phase execution plans, research, discussions, and verification reports (Phases 01–05).
-- **[Quick Tasks](quick/)**: Ad-hoc architectural fixes, waitress optimization, and quick-patch records.
-- **[Research](research/SUMMARY.md)**: Deep research summaries and investigative findings.
+- **[Planning Hub](planning/README.md)**: Overview of project requirements, roadmap, milestone state, and historical execution records.
+  - **[Project Definition](planning/PROJECT.md)**: Vision, goals, scope boundaries, and deployment architecture target.
+  - **[Requirements](planning/REQUIREMENTS.md)**: System requirements and acceptance criteria.
+  - **[Roadmap](planning/ROADMAP.md)**: Multi-phase milestones and roadmap.
+  - **[Project State](planning/STATE.md)**: Milestone progression, decisions, and metrics.
+  - **[Phases History](planning/phases/)**: Detailed execution logs for Phases 01 through 05.
+  - **[Quick Tasks](planning/quick/)**: Summaries for quick-patch and speedup tasks.
+  - **[Research](planning/research/SUMMARY.md)**: Deep research summaries and scraping gap analysis.

@@ -69,7 +69,7 @@ uv run python scripts/verify_streamlit_api_frontend.py
 uv run python scripts/verify_full_stack.py
 
 # Start the API server for manual testing
-uv run waitress-serve --port=8000 inflation_dashboard.api.falcon_app:create_app
+uv run waitress-serve --port=8000 --call inflation_dashboard.api.falcon_app:create_app
 
 # Start the Streamlit frontend
 uv run streamlit run streamlit_app.py

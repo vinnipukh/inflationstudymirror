@@ -70,7 +70,7 @@ The Falcon API and Streamlit frontend run as **two separate processes**:
 ### Terminal 1: Start the Falcon API
 
 ```bash
-uv run waitress-serve --port=8000 inflation_dashboard.api.falcon_app:create_app
+uv run waitress-serve --port=8000 --call inflation_dashboard.api.falcon_app:create_app
 ```
 
 The API is now available at `http://localhost:8000`.
