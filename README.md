@@ -1,8 +1,6 @@
 # Inflation Study Mirror
 
-<!-- generated-by: gsd-doc-writer -->
-
-A comprehensive data collection and inflation analysis project tracking price changes across Turkish retailers and services over time, **powered by a high-performance Falcon REST API and an interactive Streamlit dashboard with smart search, caching, and ML-ready infrastructure.**
+A comprehensive data collection and inflation analysis project tracking price changes across Turkish retailers and services over time, **powered by a high-performance Falcon REST API (SQLite-backed), a minimal Svelte 5 dashboard, and ML-ready infrastructure.**
 
 This project includes my personal contributions to https://github.com/urazkagangunes/InflationResearchStudy
 
@@ -13,6 +11,7 @@ This project includes my personal contributions to https://github.com/urazkagang
 ### Prerequisites
 
 - **Python** `>=3.14` (declared in `pyproject.toml`)
+- **Node.js `>=20` / npm** (for the Svelte frontend, `frontend/`)
 - **uv** — fast Python package installer and resolver
 - **Git** (to clone the repository)
 
@@ -22,27 +21,32 @@ This project includes my personal contributions to https://github.com/urazkagang
 git clone <repository-url>
 cd inflationstudymirror
 uv sync
+cd frontend && npm install && cd ..
 ```
 
-This installs everything: the Falcon API server, Streamlit dashboard, Plotly charts, pandas, ML libraries (scikit-learn, xgboost, lightgbm, catboost), and all scraping dependencies.
+Python dependencies install everything for the Falcon API, scrapers, and inflation
+calculators. `npm install` installs the Svelte frontend toolchain (SvelteKit, ECharts).
 
 ### Quick Start
 
-Once installed, start the dashboard stack in two terminals:
+Once installed, start the stack in two terminals:
 
 ```bash
-# Terminal 1: Start the Falcon API backend
-uv run waitress-serve --port=8000 inflation_dashboard.api.falcon_app:create_app
+# Terminal 1: Start the Falcon API backend (SQLite-backed, CORS open by default)
+uv run waitress-serve --port=8000 --call inflation_dashboard.api.falcon_app:create_app
 
-# Terminal 2: Start the Streamlit dashboard frontend
-uv run streamlit run streamlit_app.py
+# Terminal 2: Start the Svelte frontend (production UI)
+cd frontend && npm run dev
 ```
 
-Open `http://localhost:5000` in your browser.
+Open `http://localhost:5173` in your browser.
+
+> The legacy Streamlit dashboard (`streamlit_app.py`) remains available for
+> administrative use: `uv run streamlit run streamlit_app.py`.
 
 ### Verify the Installation
 
-Run the combined full-stack smoke test to confirm everything is wired correctly:
+Run the combined full-stack smoke test to confirm the Python stack is wired correctly:
 
 ```bash
 uv run python scripts/verify_full_stack.py
@@ -50,13 +54,25 @@ uv run python scripts/verify_full_stack.py
 
 Expected output includes `PASS` across all checks: API imports, route contracts, endpoint smoke tests, frontend client, and end-to-end integration.
 
+Verify the frontend:
+
+```bash
+cd frontend
+npm run check    # svelte-check: types + a11y + CSS
+npm run build    # production static build → frontend/build/
+```
+
 ---
 
 ## Overview
 
 This project scrapes product and service price data from various Turkish retailers, markets, and platforms, then processes the data to calculate inflation metrics. The repository focuses on real-time price monitoring and inflation analysis using TÜİK-style weighting standards.
 
-The **dashboard stack** consists of a **Falcon REST API** (high-performance WSGI backend) that serves CSV-backed data, and a **Streamlit frontend** with **four interactive tabs**, smart autocorrect search, TTL-based performance caching, and production-quality infrastructure.
+The **dashboard stack** consists of:
+
+- **Falcon REST API** — high-performance WSGI backend serving a stable `{data, meta, errors}` JSON envelope. Reads from the SQLite WAL database (`InflationItems/prices.db`) with transparent CSV fallback, multi-worker serving (Granian/Gunicorn), in-memory orjson caching, and open CORS for browser clients.
+- **Svelte 5 / SvelteKit frontend** (`frontend/`) — a minimal, information-first static SPA (Apache ECharts) with four tabs, fuzzy autocorrect search, monthly-average and daily price charts, and light/dark themes.
+- **Legacy Streamlit dashboard** (`streamlit_app.py`) — kept for administrative review and prototypes.
 
 ---
 
@@ -66,47 +82,37 @@ The **dashboard stack** consists of a **Falcon REST API** (high-performance WSGI
 inflationstudymirror/
 ├── InflationItems/
 │   ├── Codes/                          # Web scrapers for different retailers
-│   ├── HomeGoods/                 # HomeGoods product scraper
-│   ├── Cosmetics/                 # Cosmetics stores (Watson, etc.)
-│   ├── ClothingStores/            # Clothing retailers (Vakko, etc.)
-│   ├── HousesRent/                # Rental property data collection (all sources)
-│   └── Markets/                   # Marketplace scrapers (Gurmar, etc.)
-│   └── Datas/                         # Raw collected data (CSV files)
-├── Inflations/                    # Inflation calculation outputs
-├── inflation_dashboard/           # Dashboard & API package
-│   ├── domain/                    # Parsing and normalization
-│   ├── adapters/                  # CSV storage adapter
-│   ├── application/               # Use cases and chart specs
-│   ├── api/                       # Falcon API (resources, filters, serialization)
-│   └── frontend/                  # Streamlit API client
-├── forecasting/                   # ML-based price trend prediction
-├── scripts/                       # Verification scripts
-├── docs/                          # Documentation
-├── streamlit_app.py               # Dashboard entry point
-└── pyproject.toml                 # Project metadata and dependencies
+│   │   ├── Markets/                    # Gurmar scraper
+│   │   ├── ClothingStores/             # Vakko scraper
+│   │   ├── HomeGoods/                  # Chakra scraper
+│   │   ├── Cosmetics/                  # Watson scraper
+│   │   ├── Technology/                 # Beymen tech scraper
+│   │   ├── ConstructionMarkets/        # TasciYapi, Yapimaks scrapers
+│   │   └── HousesRent/                 # Rental property scrapers (sarı site, Emlakjet)
+│   └── Datas/                          # Raw collected data (CSV files, tracked)
+├── InflationItems/prices_json/         # Clean partitioned JSON time series
+├── InflationItems/prices.db            # SQLite WAL database (built, gitignored)
+├── Inflations/                         # Inflation calculation outputs
+├── inflation_dashboard/                # Dashboard & API package
+│   ├── domain/                         # Parsing and normalization
+│   ├── adapters/                       # SQLite + CSV storage adapters
+│   ├── application/                    # Use cases and chart specs
+│   ├── api/                            # Falcon API (resources, filters, serialization)
+│   └── frontend/                       # Legacy Streamlit API client
+├── frontend/                           # Svelte 5 / SvelteKit dashboard (production UI)
+│   ├── src/lib/api/                    # Falcon API client + TypeScript types
+│   ├── src/lib/views/                  # One Svelte component per dashboard tab
+│   └── ...
+├── scripts/                            # Verification, DB build, benchmark scripts
+├── docs/                               # Documentation (see below)
+└── streamlit_app.py                    # Legacy Streamlit dashboard
 ```
 
 ---
 
-## Flashy Features 🚀
+## Features
 
-### Smart Autocorrect Search 🔍
-
-Type partial or misspelled product/retailer names — the dashboard intelligently ranks suggestions using:
-- **Unicode normalization** (NFKD) so Turkish characters (İ, ğ, ü, ş, ö, ç) match correctly
-- **Starts-with** matches ranked first
-- **Contains matches** ranked second
-- **Fuzzy close matches** (difflib, cutoff 0.45) for typo-tolerant search
-- A caption shows the closest match when it differs from your typed text
-
-### Blazing-Fast TTL Caching ⚡
-
-- **45-second history cache** (32 entries max) — deduplicates CSV reads across all four tabs so only the first request per filter combo hits disk
-- **60-second inventory cache** — available retailers and date ranges are cached with TTL expiry
-- **Subsequent tab switches with the same filters return in ~5ms**
-- First load per filter combo takes ~280ms as CSV data is read from disk
-
-### 6 Production-Ready REST API Endpoints
+### 8 Production-Ready REST API Endpoints
 
 | Endpoint | Purpose |
 |---|---|
@@ -115,37 +121,47 @@ Type partial or misspelled product/retailer names — the dashboard intelligentl
 | `GET /api/history` | Price history, filterable by product & retailer |
 | `GET /api/retailer-averages` | Average/Median price trends per retailer |
 | `GET /api/movers` | Biggest price drops and gains |
-| `GET /api/coverage` | Dataset coverage summary, trends, category breakdown & diagnostics |
+| `GET /api/coverage` | Dataset coverage summary, category breakdown & diagnostics |
+| `GET /api/products/search` | Fast product autocomplete (SQLite) |
+| `GET /api/product` | Single-product full price history + summary (SQLite) |
 
-All endpoints return a stable `{data, meta, errors}` JSON envelope with proper pandas/numpy/date serialization.
+All endpoints return a stable `{data, meta, errors}` JSON envelope with JSON-safe
+serialization (no NaN/NaT), filter validation (HTTP 400 with error codes), and
+open CORS (`FALCON_CORS_ORIGINS`, default `*`).
 
-### 4 Interactive Dashboard Tabs
+### 4 Dashboard Tabs (Svelte frontend)
 
 | Tab | What It Shows |
 |---|---|
-| **Product Explorer** | Price chart, latest price, cheapest price+date, % change since first observation |
+| **Product Explorer** | Latest/cheapest metrics, **monthly average price chart** (default), optional **daily price chart** via a “Show daily chart” toggle, raw history table |
 | **Retailer Averages** | Compare mean or median prices across selected retailers over time |
 | **Price Movers** | Biggest drops vs. peak price & biggest gains since first observation |
 | **Coverage Overview** | Total products/observations, tracked products per day, category breakdown, skipped file diagnostics |
 
-### Flexible Filtering System
+Additional frontend behaviors:
+
+- **Gurmar auto-load**: opens with `Markets / Gurmar` selected by default; add retailers via the searchable multi-select.
+- **Smart autocorrect search** — Unicode-normalized (NFKD, Turkish characters), starts-with → contains → fuzzy ranking, with closest-match hints.
+- **Minimal design system** — Minimalism & Swiss Style (UI/UX Pro Max): near-black ink + gold accent, Fira Sans/Fira Code, hairline grid, whitespace-driven; light/dark themes; reduced-motion and keyboard support.
+- **Monthly vs. daily view** — the monthly average chart aggregates the full observed history (months on X, ₺ on Y); the daily chart is an optional overlay bound to the date-range filter.
+
+### Flexible Filtering System (sidebar)
 
 - **Multi-retailer selection** — pick any subset of available stores
 - **Date range picker** — defaults to last 60 days
-- **Max CSV files per retailer** — slider from 10–160 files (default 25)
-- **Load all files** — checkbox to bypass the file cap when you need the full picture
+- **Max CSV files per retailer** — slider (default 45)
+- **Load all files** — checkbox to bypass the file cap
 - All filters sync across tabs via the API
 
-### ML-Ready Infrastructure 🧠
+### ML-Ready Infrastructure
 
 - **Forecasting module** (`forecasting/`) — Jupyter notebook for ML-based price trend prediction
 - Pre-installed ML stack: **scikit-learn, xgboost, lightgbm, catboost**
-- In-dashboard price prediction toggle (sidebar) — ready for ML model integration
-- Sits alongside scrape-and-analyze pipeline for AI-powered inflation forecasting
 
 ### Robust API Envelope Pattern
 
 Every endpoint returns:
+
 ```json
 {
   "data": { ... },           // Payload (JSON-safe, no NaN/NaT)
@@ -154,15 +170,17 @@ Every endpoint returns:
 }
 ```
 
-With comprehensive error handling — invalid filters return HTTP 400 with descriptive error codes and metadata.
+Invalid filters return HTTP 400 with descriptive error codes and metadata.
 
-### Full-Stack Smoke Tests ✅
+### Verification
 
 ```bash
+# Python stack
 uv run python scripts/verify_full_stack.py
-```
 
-Validates every layer in a single command: import boundaries, route contracts, endpoint responses, frontend API client, and end-to-end integration with Falcon's TestClient.
+# Svelte frontend
+cd frontend && npm run check && npm run build
+```
 
 ---
 
@@ -171,15 +189,19 @@ Validates every layer in a single command: import boundaries, route contracts, e
 ```bash
 # 1. Install dependencies
 uv sync
+cd frontend && npm install && cd ..
 
 # 2. Start the API server (Terminal 1)
-uv run waitress-serve --port=8000 inflation_dashboard.api.falcon_app:create_app
+uv run waitress-serve --port=8000 --call inflation_dashboard.api.falcon_app:create_app
+# (or the production launcher: python scripts/run_falcon_server.py --engine gunicorn --workers 4 --port 8000)
 
-# 3. Start the dashboard (Terminal 2)
-uv run streamlit run streamlit_app.py
+# 3. Start the Svelte dashboard (Terminal 2)
+cd frontend && npm run dev
 ```
 
-Then open your browser to the Streamlit URL (default `http://localhost:5000`).
+Then open your browser to `http://localhost:5173` (Svelte dev server). The Vite
+dev server proxies `/api` to `http://localhost:8000`, so same-origin API calls
+work out of the box.
 
 ---
 
@@ -195,11 +217,13 @@ Then open your browser to the Streamlit URL (default `http://localhost:5000`).
   - Home goods: Chakra
   - Electronics: Beymen Tech products
 
-### Dashboard (3-Phase Architecture)
+### Architecture Phases
 - **Phase 1 ✓**: Hexagonal core extraction — framework-independent domain and application modules
-- **Phase 2 ✓**: Falcon API backend — six REST endpoints with JSON envelopes and bounded CSV loading
-- **Phase 3 ✓**: Streamlit API frontend — all four dashboard tabs read from Falcon API
+- **Phase 2 ✓**: Falcon API backend — REST endpoints with JSON envelopes and bounded loading
+- **Phase 3 ✓**: Streamlit API frontend — four dashboard tabs reading from the Falcon API
 - **Phase 4 ✓**: Deployment documentation, combined smoke tests, and dependency management
+- **Phase 5 ✓**: SQLite database adapter + new `/api/products/search` & `/api/product` endpoints (2026-09)
+- **Phase 6 ✓**: **Svelte 5 / SvelteKit production frontend** (`frontend/`) — minimal SPA replacing Streamlit as the default UI; CORS middleware registered in the API (2026-09)
 
 ### Inflation Analysis
 - **TUIK-style metrics**: Several inflation calculators use tracked TUIK-style category mappings and weights
@@ -208,14 +232,16 @@ Then open your browser to the Streamlit URL (default `http://localhost:5000`).
 - **Statistical validation**: Outlier detection and data quality filtering
 
 ### Key Technologies
-- **Python 3.x** for scrapers, calculators, and dashboard
+- **Python 3.x** for scrapers, calculators, API, and DB tooling
 - **Falcon** — high-performance Python web framework for the API backend
-- **Streamlit** — dashboard frontend framework
-- **Plotly** — interactive charts
-- **waitress** — production-quality WSGI server
-- **Jupyter Notebooks** for analysis and exploration
+- **SQLite WAL** — read-only high-concurrency time-series store (`InflationItems/prices.db`)
+- **Svelte 5 / SvelteKit** — production frontend (static SPA, adapter-static)
+- **Apache ECharts** — canvas charts (line, area, bar)
+- **Fira Sans / Fira Code** — Swiss minimal design system
+- **Streamlit** — legacy dashboard frontend
+- **waitress / gunicorn / granian** — WSGI servers
 - **Web Scraping**: requests, BeautifulSoup, SeleniumBase, selenium + undetected-chromedriver, Camoufox, cloudscraper, curl-cffi
-- **Data Storage**: CSV, JSON formats
+- **Data Storage**: CSV, JSON, SQLite formats
 - **ML Stack**: scikit-learn, xgboost, lightgbm, catboost
 
 ---
@@ -223,16 +249,19 @@ Then open your browser to the Streamlit URL (default `http://localhost:5000`).
 ## Main Components
 
 ### Dashboard
-- `streamlit_app.py` — Streamlit frontend consuming the Falcon API
-- `inflation_dashboard/frontend/api_client.py` — HTTP API client with envelope validation
-- `inflation_dashboard/api/falcon_app.py` — Falcon WSGI app factory
+- `frontend/` — Svelte 5 / SvelteKit production dashboard (static SPA)
+- `frontend/src/lib/api/client.ts` — typed Falcon API client (`$lib/api`)
+- `frontend/src/lib/types/api.ts` — TypeScript contract matching `docs/FALCON_API_CONTRACT.md`
+- `streamlit_app.py` — legacy Streamlit frontend (admin use)
+- `inflation_dashboard/frontend/api_client.py` — legacy Python API client
+- `inflation_dashboard/api/falcon_app.py` — Falcon WSGI app factory (CORS middleware)
 - `inflation_dashboard/api/resources.py` — API endpoint implementations
-- `inflation_dashboard/api/filters.py` — TTL-cached filter parsing and CSV loading
+- `inflation_dashboard/api/filters.py` — TTL-cached filter parsing, SQLite/CSV routing
 - `inflation_dashboard/api/serialization.py` — JSON-safe envelope serialization
-- `inflation_dashboard/application/use_cases.py` — Dashboard data aggregation functions
-- `inflation_dashboard/application/chart_specs.py` — Declarative chart configuration
-- `inflation_dashboard/domain/prices.py` — Price normalization and parsing
-- `inflation_dashboard/adapters/csv_price_repository.py` — CSV data loading adapter
+- `inflation_dashboard/application/use_cases.py` — dashboard data aggregation functions
+- `inflation_dashboard/adapters/sqlite_price_repository.py` — SQLite data loading adapter
+- `inflation_dashboard/adapters/csv_price_repository.py` — CSV fallback data loading adapter
+- `inflation_dashboard/domain/prices.py` — price normalization and parsing
 
 ### Scrapers
 - `InflationItems/Codes/HomeGoods/scraper.py` - HomeGoods category-based scraper (analytics-payload name extraction)
@@ -245,13 +274,12 @@ Then open your browser to the Streamlit URL (default `http://localhost:5000`).
 - `InflationItems/Codes/HousesRent/KayseriSivasTokat/main.py` - Sarı site rentals (Kayseri/Sivas/Tokat; friend-tactics selenium engine — see `docs/APPROACH.md` first)
 - `InflationItems/Codes/HousesRent/Emlakjet/scraper.py` - Emlakjet Turkey residential rentals (browser-backed; see `InflationItems/Codes/HousesRent/README.md`)
 
-### Forecasting
-- `forecasting/forecastingtest.ipynb` — ML-based price trend prediction notebook
-
 ### Verification Scripts
 - `scripts/verify_falcon_api.py` — API import boundaries, route contracts, endpoint smoke
-- `scripts/verify_streamlit_api_frontend.py` — Frontend API client and tab wiring
-- `scripts/verify_full_stack.py` — Combined full-stack smoke test (recommended)
+- `scripts/verify_streamlit_api_frontend.py` — legacy Streamlit API client and tab wiring
+- `scripts/verify_full_stack.py` — combined full-stack smoke test (recommended)
+- `scripts/build_sqlite_from_json.py` — rebuild `prices.db` from JSON time series (~18 s)
+- `scripts/benchmark_concurrent_api.py` — concurrency load testing
 
 ---
 
@@ -290,9 +318,12 @@ python Inflations/Codes/Markets/Gurmar/gurmar_inflation.py -i InflationItems/Dat
 
 ```bash
 # Terminal 1: Start API server
-uv run waitress-serve --port=8000 inflation_dashboard.api.falcon_app:create_app
+uv run waitress-serve --port=8000 --call inflation_dashboard.api.falcon_app:create_app
 
-# Terminal 2: Start dashboard frontend
+# Terminal 2: Start the production Svelte dashboard
+cd frontend && npm run dev
+
+# Terminal 2 (alternative): legacy Streamlit dashboard
 uv run streamlit run streamlit_app.py
 ```
 
@@ -300,14 +331,15 @@ uv run streamlit run streamlit_app.py
 
 ## Documentation
 
-- `docs/USER_GUIDE.md` — End-user dashboard walkthrough with tabs, filters, and search tips
+- `docs/USER_GUIDE.md` — End-user dashboard walkthrough (Svelte frontend) with tabs, filters, and search tips
+- `docs/FALCON_API_CONTRACT.md` — **Canonical** Falcon REST API spec with TypeScript interfaces for the Svelte frontend
+- `docs/API.md` — Quick Falcon API endpoint reference (paraphrases the canonical contract)
 - `docs/GETTING-STARTED.md` — Setup guide for developers
 - `docs/ARCHITECTURE.md` — System architecture and data flow
-- `docs/API.md` — Falcon API endpoint reference
 - `docs/DEVELOPMENT.md` — Development conventions and commands
-- `docs/TESTING.md` — Verification scripts and test documentation
-- `docs/CONFIGURATION.md` — Environment variables and defaults
-- `docs/APPROACH.md` — **Recommended data-acquisition flow** for the rental scraper: threat model, architecture, decision gates, live site recon (§7)
+- `docs/TESTING.md` — Verification scripts, frontend checks, and test documentation
+- `docs/CONFIGURATION.md` — Environment variables and defaults (incl. `FALCON_CORS_ORIGINS`, `VITE_API_BASE_URL`)
+- `docs/APPROACH.md` — **Recommended data-acquisition flow** for the rental scraper
 - `docs/TECH-STACK-SEARCH.md` — Tech-stack & skill search registry: tool catalog, install set, integration blueprint
 - `docs/RESEARCH-PROMPT.md` + `docs/RESEARCH-REPORT-2026-08-16.md` — Deep-research validation of the scraping approach
 - `docs/scraping-wiki/` — Local snapshot of TheWebScrapingClub knowledge base (anti-bot technique truth)
@@ -317,20 +349,17 @@ uv run streamlit run streamlit_app.py
 ## Data Format
 
 ### Raw Data (InflationItems/Datas/)
-CSV files with timestamps containing:
-- Product name/ID
-- Product price
-- Category classification
-- Collection date
+CSV files with timestamps containing product name/ID, price, category (where the source provides one), and collection date:
 
 Example: `Datas/Cosmetics/Watson/watsons_30-05-2026.csv`
 
+> **Note on “Uncategorized”**: some sources (Gurmar, HomeGoods) write CSVs without
+> a category column, so the pipeline labels those products `Uncategorized`. The
+> Svelte dashboard blanks this meaningless label (`—`) in product tables. Sources
+> that provide categories (e.g. Vakko: Kadin/Erkek/Shoes_Bags) display them.
+
 ### Processed Data (Inflations/Datas/)
-Inflation outputs including:
-- Basic inflation per product (%)
-- Average inflation rate
-- Basket-level price index changes
-- TUIK-weighted inflation metrics
+Inflation outputs including basic inflation per product (%), average inflation rate, basket-level price index changes, and TUIK-weighted inflation metrics.
 
 ---
 
@@ -354,33 +383,22 @@ The repository includes TUIK-style category mappings and weights used by several
 
 ---
 
-## Output Examples
-
-The project generates inflation and price-analysis outputs including:
-- Daily price movement summaries
-- Category-level inflation breakdown
-- Cross-store price comparisons
-- Outlier and data quality reports
-
----
-
 ## Dependencies
 
-All dependencies are declared in `pyproject.toml`. Key packages:
+All Python dependencies are declared in `pyproject.toml`; the frontend uses npm
+(`frontend/package.json`). Key packages:
 
 | Category | Packages |
 |---|---|
-| **API Backend** | `falcon`, `waitress` |
-| **Dashboard Frontend** | `streamlit`, `plotly` |
+| **API Backend** | `falcon`, `orjson`, `waitress` |
+| **Svelte Frontend** | `svelte` 5, `@sveltejs/kit` (adapter-static), `echarts` |
+| **Legacy Dashboard** | `streamlit`, `plotly` |
 | **Data Processing** | `pandas`, `numpy` |
 | **Machine Learning** | `scikit-learn`, `xgboost`, `lightgbm`, `catboost` |
 | **Web Scraping** | `requests`, `beautifulsoup4`, `seleniumbase`, `selenium`, `undetected-chromedriver`, `camoufox`, `cloudscraper`, `curl-cffi` |
 | **Notebooks** | `jupyter`, `ipykernel`, `notebook` |
 
-Install all at once:
-```bash
-uv sync
-```
+Install with `uv sync` (Python) and `cd frontend && npm install` (frontend).
 
 ---
 
@@ -398,4 +416,4 @@ This project is a personal research mirror for inflation study purposes.
 
 ---
 
-*Last Updated: August 2026*
+*Last Updated: September 2026*

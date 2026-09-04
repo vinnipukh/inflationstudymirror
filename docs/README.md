@@ -6,7 +6,8 @@ Welcome to the **Inflation Study Mirror** documentation. This directory is the u
 
 ## 1. System Architecture & Codebase Overview
 
-- **[Architecture](ARCHITECTURE.md)**: System overview, hexagonal architecture, Falcon API backend, Streamlit frontend, and data flows.
+- **[Architecture](ARCHITECTURE.md)**: System overview, SQLite WAL database, JSON time series, Falcon API backend, production concurrency, and Svelte frontend architecture (**live** since 2026-09; Streamlit is legacy).
+- **[Falcon API Contract (for Svelte)](FALCON_API_CONTRACT.md)**: Full REST API specification, endpoint schemas, and TypeScript interfaces for the Svelte frontend.
 - **[Structure](STRUCTURE.md)**: Top-level directory layout, file conventions, repository boundaries, and artifact locations.
 - **[Stack](STACK.md)**: Languages, web frameworks, machine learning dependencies, browser automation engines, and transports.
 - **[Integrations](INTEGRATIONS.md)**: Retailer and rental scraping integrations, external endpoints, secrets, and daily timetable.
@@ -17,11 +18,11 @@ Welcome to the **Inflation Study Mirror** documentation. This directory is the u
 
 ## 2. Getting Started & Development Guides
 
-- **[Getting Started](GETTING-STARTED.md)**: Local installation, environment setup, and running the Falcon API and Streamlit dashboard.
+- **[Getting Started](GETTING-STARTED.md)**: Local installation, environment setup, and running the Falcon API and **Svelte dashboard** (legacy Streamlit alternative included).
 - **[Development Guide](DEVELOPMENT.md)**: Common developer workflows, running scrapers, executing calculators, and verification commands.
 - **[Configuration](CONFIGURATION.md)**: Environment variables, secret keys, scraper arguments, and CI workflow configurations.
-- **[API Reference](API.md)**: Falcon REST API endpoints, request parameters, response envelopes, and error codes.
-- **[User Guide](USER_GUIDE.md)**: Guide to using the interactive Streamlit dashboard tabs and analytical features.
+- **[API Reference](API.md)**: Complete Falcon REST API reference, endpoints (`/api/products/search`, `/api/product`), request parameters, response envelopes, and latency benchmarks.
+- **[User Guide](USER_GUIDE.md)**: Guide to using the Svelte dashboard tabs, filters, monthly/daily charts, and analytical features.
 
 ---
 
@@ -44,3 +45,7 @@ Welcome to the **Inflation Study Mirror** documentation. This directory is the u
   - **[Phases History](planning/phases/)**: Detailed execution logs for Phases 01 through 05.
   - **[Quick Tasks](planning/quick/)**: Summaries for quick-patch and speedup tasks.
   - **[Research](planning/research/SUMMARY.md)**: Deep research summaries and scraping gap analysis.
+
+> **2026-09 consolidation:** the former `docs/SUBAGENT_*.md` reports (SQLite adapter, API optimization, query
+> performance, server concurrency, verification & contract) were merged into
+> `ARCHITECTURE.md`, `API.md`, `CONFIGURATION.md`, `DEVELOPMENT.md`, and `TESTING.md`, then removed.

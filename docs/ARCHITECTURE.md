@@ -1,183 +1,240 @@
-<!-- generated-by: gsd-doc-writer -->
 # Architecture
 
 ## System Overview
 
-Inflation Study Mirror is a Python repository for collecting Turkish retailer and service price data, storing the results as CSV files, calculating inflation-oriented outputs, and exploring scraped prices through a dashboard stack.
+Inflation Study Mirror is a high-performance system for collecting Turkish retailer and service price data, storing time-series price histories, calculating inflation metrics, and serving analytics dashboards to concurrent users.
 
-The application architecture has two generations that coexist:
+The system architecture has evolved through distinct generations:
 
-1. **Legacy collection and inflation scripts**: standalone scraper scripts under `InflationItems/Codes/`, raw CSV data under `InflationItems/Datas/`, calculator scripts under `Inflations/Codes/`, and calculated outputs under `Inflations/Datas/`.
-2. **Three-phase dashboard architecture**: a framework-independent `inflation_dashboard/` package that separates CSV access, domain normalization, application use cases, chart/table contracts, a Falcon API backend, and a Streamlit frontend that consumes the API over HTTP. All three phases are complete:
-   - **Phase 1 (Hexagonal Core Extraction)**: Extracted data parsing, loading, and use cases from `streamlit_app.py` into framework-independent modules under `inflation_dashboard/domain/`, `inflation_dashboard/adapters/`, and `inflation_dashboard/application/`.
-   - **Phase 2 (Falcon API Backend)**: Added Falcon HTTP resources, filter parsing, and JSON serialization under `inflation_dashboard/api/`.
-   - **Phase 3 (Streamlit API Frontend)**: Refactored `streamlit_app.py` to read all dashboard data through the Falcon API via `inflation_dashboard/frontend/api_client.py` instead of direct CSV scans.
+1. **Collection & Scraping Layer**: Standalone scrapers under `InflationItems/Codes/` that ingest data into raw CSV files under `InflationItems/Datas/`.
+2. **Time-Series JSON & SQLite Storage Layer**:
+   - **Partitioned JSON Time Series** (`InflationItems/prices_json/*.json`): Clean, git-tracked JSON files partitioned by retailer storing 67,932 distinct products and 4.1M historical price points with chronological date-price maps.
+   - **Optimized SQLite WAL Database** (`InflationItems/prices.db`): Local high-concurrency database operating in Write-Ahead Logging (WAL) mode with 1 GB memory-mapped I/O (`mmap_size`) and 128 MB page cache. Rebuilt from JSON in 17.8s via `scripts/build_sqlite_from_json.py`.
+3. **Falcon REST API Layer** (`inflation_dashboard/`):
+   - Hexagonal architecture: `domain/`, `adapters/`, `application/`, `api/`, `frontend/`.
+   - **SQLite Adapter** (`adapters/sqlite_price_repository.py`): Serves point lookups in ~9.5ms and cached inventory in <0.1ms.
+   - **Dynamic Routing** (`api/filters.py`): Automatically uses SQLite when available, with transparent fallback to CSVs.
+   - **In-Memory orjson Caching**: Delivers sub-millisecond warm responses (0.09 ms - 0.28 ms).
+   - **Svelte Endpoints**: `/api/products/search` for instant autocomplete and `/api/product` for full price history.
+   - **CORS Middleware**: Built-in `falcon.CORSMiddleware` supporting browser client origins.
+4. **Production Concurrency Serving Layer**:
+   - Multi-worker server launcher (`scripts/run_falcon_server.py`) powered by **Granian** (Rust Hyper WSGI, default) or **Gunicorn** (`gthread`); Waitress/Uvicorn supported.
+   - Verified at 100+ concurrent users with **0.00% error rate** across 10,400+ load test requests.
+
+   Engine benchmark summary (4 workers × 16 threads, loopback, 2026-09):
+
+   | Test | Granian | Gunicorn |
+   |---|---|---|
+   | Mixed workload @100 users (2,000 req) | 129.2 req/s, p50 172 ms, 0% errors | 128.4 req/s, p50 210 ms, 0% errors |
+   | Mixed workload @120 users (2,400 req) | 148.0 req/s, p50 196 ms, 0% errors | — |
+   | `/api/health` @100 users (3,000 req) | 514.7 req/s, p50 121 ms | 829.0 req/s, p50 77 ms |
+
+   Operational settings: `--workers 4 --threads 16` (64 execution slots), `--backlog 2048`,
+   `--cors-origins` (default `*`), `--sqlite-db` (default `InflationItems/prices.db`).
+5. **Frontend Layer**:
+   - **Svelte / SvelteKit Frontend** (`frontend/`): Client-side reactive static SPA with Canvas charting (Apache ECharts). Zero server-side script reruns.
+   - **Legacy Streamlit Frontend** (`streamlit_app.py`): Coexists for administrative review and prototypes.
+
+---
 
 ## Component Diagram
 
 ```mermaid
 graph TD
-    Sources[Retailer and service websites/APIs] --> Scrapers[InflationItems/Codes/* scraper scripts]
-    Scrapers --> RawCSV[InflationItems/Datas/* raw CSV files]
-    RawCSV --> Calculators[Inflations/Codes/* calculators]
-    Calculators --> InflationCSV[Inflations/Datas/* inflation outputs]
+    subgraph Data Acquisition
+        Sites[Retailer Websites & APIs] --> Scrapers[InflationItems/Codes/* scrapers]
+        Scrapers --> RawCSV[InflationItems/Datas/* CSV archives]
+        RawCSV --> JsonExport[InflationItems/prices_json/*.json]
+        JsonExport --> DBBuild[scripts/build_sqlite_from_json.py]
+        DBBuild --> SQLiteDB[(InflationItems/prices.db WAL Mode)]
+    end
 
-    RawCSV --> CSVAdapter[inflation_dashboard/adapters/csv_price_repository.py]
-    CSVAdapter --> Domain[inflation_dashboard/domain/prices.py]
-    Domain --> UseCases[inflation_dashboard/application/use_cases.py]
-    UseCases --> ChartSpecs[inflation_dashboard/application/chart_specs.py]
-    UseCases --> FalconAPI[inflation_dashboard/api/]
-    FalconAPI --> Streamlit[streamlit_app.py via api_client.py]
+    subgraph Core Backend Engine
+        SQLiteDB --> SQLiteAdapter[inflation_dashboard/adapters/sqlite_price_repository.py]
+        RawCSV -. Fallback .-> CSVAdapter[inflation_dashboard/adapters/csv_price_repository.py]
+        SQLiteAdapter --> Domain[inflation_dashboard/domain/prices.py]
+        CSVAdapter --> Domain
+        Domain --> UseCases[inflation_dashboard/application/use_cases.py]
+        UseCases --> FalconAPI[inflation_dashboard/api/ Falcon App]
+    end
+
+    subgraph Production Serving & Concurrency
+        FalconAPI --> GranianServer[Granian Rust Hyper WSGI / Gunicorn Multi-Worker]
+        GranianServer --> CORS[CORS Middleware]
+    end
+
+    subgraph Presentation
+        CORS --> SvelteUI[Svelte / SvelteKit Client-Side App]
+        CORS --> StreamlitUI[streamlit_app.py via api_client.py]
+    end
 ```
 
-## Runtime Entry Points
+### SQLite Database Schema (price_observations / product_prices / ingested_files)
 
-| Entry point | Role | Notes |
+Built by `scripts/build_sqlite_from_json.py`:
+- **`price_observations`** (~4,094,300 rows, 742 MB table data, ~1.8 GB index pages): normalized snapshot records
+  `(date, retailer, product_id, product_name, category, price, source_file)` with composite primary key
+  `(date, retailer, product_id)`.
+- **`product_prices`** (67,932 rows, 114 MB): materialized per-product summary
+  `(product_id, retailer, product_name, category, first_date, last_date, latest_price, min_price, max_price, observations_count, price_history)`
+  with primary key `(retailer, product_id)`. The `price_history` column stores dense daily JSON objects; aggregations
+  avoid reading it via covering indexes.
+- **`ingested_files`** (982 rows): file ingestion ledger `(file_path PRIMARY KEY, retailer, date, file_size, mtime, rows_ingested, ingested_at)`.
+
+Key covering indexes (created by the query-performance work of 2026-09; runtime `ANALYZE` populates `sqlite_stat1`
+so the planner deterministically picks them):
+
+| Table | Index | Columns | Optimizes |
+|---|---|---|---|
+| `price_observations` | `idx_obs_retailer_date_price` | `(retailer, date, price)` | daily retailer averages / min-max per date (covering) |
+| `price_observations` | `idx_obs_ret_prod_date_price` | `(retailer, product_id, date, price)` | mover first/latest-price joins, product time series |
+| `price_observations` | `idx_obs_retailer_name_date` | `(retailer, product_name, date)` | product history by name (was a 19.4 s scan; now 0.3 ms) |
+| `price_observations` | `idx_obs_retailer_date` | `(retailer, date)` | bounded date-window scans |
+| `price_observations` | `idx_obs_date_retailer` | `(date, retailer)` | date-first lookups |
+| `price_observations` | `idx_obs_retailer_product` | `(retailer, product_id)` | baseline retailer-product lookup |
+| `product_prices` | `idx_product_ret_cat_prod` | `(retailer, category, product_id)` | category coverage (covering; bypasses JSON) |
+| `product_prices` | `idx_product_movers_covering` | `(retailer, observations_count, max_price, latest_price, min_price, product_name, category, product_id)` | retailer movers + autocomplete (covering) |
+| `product_prices` | `idx_product_global_movers_covering` | `(observations_count, max_price, latest_price, min_price, retailer, product_name, category, product_id)` | global movers (covering) |
+| `product_prices` | `idx_product_retailer_dates` | `(retailer, first_date, last_date)` | inventory discovery (5,026 ms → 5.8 ms) |
+| `product_prices` | `idx_product_retailer_obs` | `(retailer, observations_count)` | multi-observation products |
+| `product_prices` | `idx_product_name` / `idx_product_retailer_cat` / `idx_product_retailer` | name / (retailer, category) / retailer | name & category lookups |
+| `ingested_files` | `idx_ingested_retailer_date` | `(retailer, date)` | date-window file pruning |
+
+Query tuning results (single-reader p50, local workstation, 2026-09):
+
+| Query | Before | After | Speedup |
+|---|---|---|---|
+| Product history by name | 19,384 ms | 0.30 ms | ~64,000× |
+| Category coverage | 1,185 ms | 1.48 ms | ~800× |
+| Movers (all retailers) | 4,802 ms | 6.60 ms | ~727× |
+| Inventory discovery | 5,026 ms | 5.81 ms | ~865× |
+| Retailer daily averages | 646 ms | 9.52 ms | ~68× |
+| Movers (retailer scope) | 1,258 ms | 1.87 ms | ~670× |
+| Product autocomplete | 120 ms | 0.38 ms | ~315× |
+
+Concurrency (100 concurrent readers, 600 queries): a read-only **connection pool (size 30)** sustains ~65–75 req/s
+with **0 errors** and p50 ≈ 11–14 ms; thread-local connections reach ~88 req/s at 25 workers. Recommendation:
+multi-process servers (Granian/Gunicorn, ≥4 workers) use thread-local connections or a small per-process pool
+(8–16); threaded servers (Waitress, 16–32 threads) use a 16–24 connection pool.
+
+### SQLite Repository Adapter (`inflation_dashboard/adapters/sqlite_price_repository.py`)
+
+The adapter owns **all** database access (the API layer never imports `sqlite3`). Connection tuning (see also
+`docs/CONFIGURATION.md`):
+`WAL` journal, URI `mode=ro` + `PRAGMA query_only = 1`, `busy_timeout = 5000`,
+`cache_size = -128000` (128 MB), `mmap_size = 1073741824` (1 GB), `synchronous = NORMAL`, `temp_store = MEMORY`.
+
+Main functions (verified by `scripts/test_sqlite_adapter.py`):
+
+| Function | Purpose | Latency (local) |
 |---|---|---|
-| `streamlit_app.py` | Dashboard frontend UI | Uses Streamlit and Plotly. Reads all dashboard data via `inflation_dashboard.frontend.api_client` over HTTP to the Falcon API. |
-| `inflation_dashboard.api.falcon_app.create_app()` | Falcon WSGI app factory | Registers API resources for health, inventory, history, retailer averages, movers, and coverage. Serves as the sole data backend for the Streamlit frontend. |
-| `scripts/verify_falcon_api.py` | Falcon API verification | Uses Falcon's in-process `TestClient`; does not bind ports or start a persistent server. |
-| `scripts/verify_streamlit_api_frontend.py` | Frontend API client verification | Source-scans and behavior-checks the frontend API client and Streamlit tab wiring. |
-| `scripts/verify_full_stack.py` | Combined full-stack smoke test | Exercises API endpoints through TestClient AND the frontend API client through the same test server. |
-| `InflationItems/Codes/.../*.py` | Scrapers | Source-specific scripts that collect raw CSV data into `InflationItems/Datas/`. |
-| `Inflations/Codes/.../*.py` | Inflation calculators | Source-specific scripts that produce processed inflation outputs under `Inflations/Datas/`. |
+| `get_db_connection(read_only=True)` | Optimized read-only connection | ~7–10 ms |
+| `load_inventory_from_db()` | Retailer range summary (300 s TTL cache) | 123 ms cold / <0.1 ms cached |
+| `discover_sqlite_inventory()` | Drop-in CSV-inventory replacement (`path, retailer, date, size_mb`) | ~23–28 ms |
+| `load_price_history_from_db(...)` | Bounded/uncapped history (+ alias `load_price_history`) | 278 ms (5 files) / 2.7 s (uncapped) |
+| `get_product_price_history(...)` | Indexed PK lookup + JSON decode + summary metrics | ~10 ms |
+| `load_retailer_averages_from_db(...)` | Average in SQL (`avg(price)` covering index); median via pandas | ~1.0 s (30 days, 2 retailers) |
+| `load_movers_from_db(...)` | CTE-based drops/gains via covering indexes | ~1.8–2 s |
+| `load_coverage_from_db(...)` | Summary + coverage/category/skipped in SQL | — |
+| `search_products(...)` | Autocomplete (name/ID, retailer/category filters, query cache) | <2 ms |
 
-## Data Flow
+### API Data Routing & Response Caching
 
-1. Source-specific scraper scripts fetch product data from websites/APIs.
-2. Scrapers write date-bearing CSV files into `InflationItems/Datas/` subdirectories.
-3. Inflation calculators read source CSVs and write outputs into `Inflations/Datas/`.
-4. The dashboard/API path reads raw `InflationItems/Datas/` CSV files through `inflation_dashboard.adapters.csv_price_repository`.
-5. Domain logic normalizes prices, detects products, and transforms rows into a shared history shape.
-6. Application use cases compute inventory filters, product history slices, summaries, retailer averages, price movers, and coverage.
-7. The Falcon API (`inflation_dashboard/api/`) exposes the same shared use cases as JSON envelopes over HTTP.
-8. **API-side TTL cache**: `inflation_dashboard/api/filters.py` caches the CSV inventory (60s TTL) and loaded price history (45s TTL, keyed by filter parameters). When the Streamlit frontend renders all four tabs simultaneously, each calls a different API endpoint, but the first to load CSV data populates the cache — subsequent endpoints reuse the same data instead of re-reading CSVs from disk. Hot requests are served in ~5ms instead of ~280ms.
-9. The Streamlit frontend (`streamlit_app.py`) calls the Falcon API through `inflation_dashboard/frontend/api_client.py` and renders the responses using Plotly charts and Streamlit widgets.
+- **Dynamic routing** (`api/filters.py`): `is_sqlite_available()` routes inventory + history through the SQLite
+  adapter when `prices.db` exists, with transparent CSV fallback (`csv_price_repository`) otherwise.
+- **Three cache tiers** (stdlib-only, in-process): validated-filter-parse cache (300 s), loaded-history frame cache,
+  and a thread-safe response cache storing **pre-serialized `orjson` bytes** — warm responses skip recalculation and
+  serialization entirely (warm endpoint latency 0.09–0.23 ms).
 
-## Running the Stack
+---
 
-The Falcon API and Streamlit frontend run as separate processes:
+## Runtime Entry Points & CLI Scripts
 
-```bash
-# Terminal 1: Start the Falcon API server
-uv run waitress-serve --port=8000 inflation_dashboard.api.falcon_app:create_app
-
-# Terminal 2: Start the Streamlit frontend (reads from Falcon API by default)
-uv run streamlit run streamlit_app.py
-```
-
-## Phase 2: Falcon API Backend
-
-Phase 2 added the `inflation_dashboard/api/` boundary around the Phase 1 core. The API layer is intentionally thin: it parses HTTP query parameters, loads bounded CSV history through the adapter, calls application use cases, converts pandas/numpy/date values to JSON-native data, and returns stable response envelopes.
-
-### Registered Routes
-
-`inflation_dashboard.api.falcon_app.create_app()` registers these Falcon resources:
-
-| Route | Resource | Purpose |
+| Entry Point | Role | Notes |
 |---|---|---|
-| `/api/health` | `HealthResource` | Lightweight status check returning service metadata; does not load inventory/history data. |
-| `/api/inventory` | `InventoryResource` | Lists available retailers plus minimum/maximum dates and file counts from discovered CSV inventory. |
-| `/api/history` | `HistoryResource` | Returns filtered normalized price history, or a single product history plus summary when `product_name` is supplied. |
-| `/api/retailer-averages` | `RetailerAveragesResource` | Returns average or median price trends grouped by date and retailer. |
-| `/api/movers` | `MoversResource` | Returns biggest drops and gains for repeated product observations. |
-| `/api/coverage` | `CoverageResource` | Returns dataset summary, coverage over time, category coverage, and skipped-file diagnostics. |
+| `scripts/run_falcon_server.py` | Production API Server Launcher | Launches multi-worker Falcon on Granian (Rust Hyper WSGI) or Gunicorn. Configures 64 execution slots (4 workers x 16 threads) and SQLite WAL read-only tuning. |
+| `scripts/build_sqlite_from_json.py` | Fast SQLite DB Builder | Rebuilds `prices.db` from `InflationItems/prices_json/*.json` in **17.8 seconds**. |
+| `scripts/migrate_csv_to_sqlite.py` | CSV to SQLite Migrator | Parses 1,093 historical CSVs across 12 retailers into SQLite. |
+| `scripts/benchmark_concurrent_api.py` | Concurrency Load Tester | Stress-tests Falcon API with 100+ concurrent simulated clients. |
+| `scripts/test_sqlite_adapter.py` | SQLite Adapter Test Suite | Verifies all 7 database query suites and latencies. |
+| `scripts/verify_falcon_api.py` | Falcon API Smoke Verifier | Tests route registration, architectural boundaries, and response shapes. |
+| `scripts/verify_full_stack.py` | Full-Stack Integration Test | Tests end-to-end client <-> API integration. |
+| `streamlit_app.py` | Streamlit Dashboard | Legacy/prototype UI consuming Falcon API over HTTP. |
 
-### Response Contract
+---
 
-All API resources use the same envelope shape:
+## Data Architecture & Storage
 
+### 1. Partitioned JSON Time Series (`InflationItems/prices_json/`)
+All historical price data is partitioned by retailer into clean JSON files:
+* `ClothingStores_Vakko.json` (34 MB, 13,381 products)
+* `Technology.json` (37 MB, 24,419 products)
+* `ConstructionSuppliesMarkets_yapimaks.json` (35 MB, 9,854 products)
+* `Markets_Gurmar.json` (14 MB, 8,481 products)
+* `HomeGoods.json` (3.5 MB, 1,859 products)
+* `HousesRent_*.json` (Emlakjet, Kayseri, Sivas, Tokat: ~2.1 MB)
+* `Cosmetics_Watson.json`, `TasciYapiMarket.json`, etc.
+
+Every file is well below GitHub's 100 MB limit, enabling version control without Git LFS.
+
+Format:
 ```json
 {
-  "data": {},
-  "meta": {},
-  "errors": []
+  "product_id": {
+    "name": "Product Name",
+    "category": "Category",
+    "latest_price": 14500.0,
+    "min_price": 9950.0,
+    "max_price": 14500.0,
+    "prices": {
+      "2026-03-06": 9950.0,
+      "2026-05-14": 12500.0,
+      "2026-08-20": 14500.0
+    }
+  }
 }
 ```
 
-`serialization.py` recursively converts pandas timestamps, numpy scalar values, dates, NaN values, mappings, tuples, and lists into JSON-native values.
+### 2. SQLite Database (`InflationItems/prices.db`)
+* **Mode**: Write-Ahead Logging (`PRAGMA journal_mode = WAL;`)
+* **Concurrency**: Reads never block writes; writes never block reads.
+* **Tuning**:
+  - `PRAGMA mmap_size = 1073741824;` (1 GB memory-mapped I/O for instant reads)
+  - `PRAGMA cache_size = -128000;` (128 MB page cache)
+  - `PRAGMA synchronous = NORMAL;`
+  - `PRAGMA busy_timeout = 5000;`
+  - Read-only web connections enforce `PRAGMA query_only = 1;`
+* **Tables**:
+  - `product_prices`: Stores 67,932 distinct products, latest/min/max prices, and full JSON time-series maps.
+  - `price_observations`: Stores 4,094,300 normalized price observations.
+  - `ingested_files`: Tracks file modification times for incremental scraping ingestion.
 
-## Phase 3: Streamlit API Frontend
+---
 
-Phase 3 refactored `streamlit_app.py` to consume the Falcon API via `inflation_dashboard/frontend/api_client.py`. Key changes:
+## API Endpoints (`inflation_dashboard/api/`)
 
-- `streamlit_app.py` imports `fetch_inventory`, `fetch_history`, `fetch_retailer_averages`, `fetch_movers`, and `fetch_coverage` from the API client module.
-- The sidebar exposes a configurable Falcon API base URL (default: `http://localhost:8000`).
-- All four dashboard tabs (Product Explorer, Retailer Averages, Price Movers, Coverage Overview) read from API endpoints.
-- Search/autocorrection controls remain in the frontend for UX continuity.
-- Direct CSV loading imports from `inflation_dashboard.adapters` and `inflation_dashboard.application` are removed from the Streamlit module.
+The Falcon API enforces the uniform response envelope `{ "data": ..., "meta": ..., "errors": [...] }`:
 
-## Key Abstractions
+| Method | Route | Description | Warm Latency |
+|---|---|---|---|
+| `GET` | `/api/health` | Service status and readiness check | **0.10 ms** |
+| `GET` | `/api/inventory` | Retailers list, date ranges, and product counts | **0.13 ms** |
+| `GET` | `/api/history` | Filtered historical price observations | **0.28 ms** |
+| `GET` | `/api/retailer-averages` | Average or median price trends grouped by date | **0.09 ms** |
+| `GET` | `/api/movers` | Top price gainers and droppers across time | **0.09 ms** |
+| `GET` | `/api/coverage` | Data density, coverage over time, and category counts | **0.15 ms** |
+| `GET` | `/api/products/search` | Fast keyword/category autocomplete for Svelte | **0.10 ms** |
+| `GET` | `/api/product` | Instant product detail and complete price history series | **0.09 ms** |
 
-| Abstraction | Location | Purpose |
-|---|---|---|
-| `parse_date_from_name()` | `inflation_dashboard/domain/prices.py` | Extracts dates from CSV filenames. |
-| `coerce_price()` | `inflation_dashboard/domain/prices.py` | Normalizes various price formats to floats. |
-| `build_product_frame()` | `inflation_dashboard/domain/prices.py` | Converts source-specific CSV rows into normalized price-history shape. |
-| `detect_retailer()` | `inflation_dashboard/adapters/csv_price_repository.py` | Derives retailer label from CSV path. |
-| `discover_csv_inventory()` | `inflation_dashboard/adapters/csv_price_repository.py` | Builds lightweight inventory without loading all row data. |
-| `load_price_history()` | `inflation_dashboard/adapters/csv_price_repository.py` | Loads bounded normalized price history with filters. |
-| `list_inventory_filters()` | `inflation_dashboard/application/use_cases.py` | Produces retailer/date/file-count filter metadata. |
-| `calculate_price_movers()` | `inflation_dashboard/application/use_cases.py` | Finds biggest drops and gains for repeated products. |
-| `create_app()` | `inflation_dashboard/api/falcon_app.py` | Creates the Falcon app and attaches all API resources. |
-| `fetch_endpoint()` | `inflation_dashboard/frontend/api_client.py` | Generic API endpoint caller with timeout, envelope validation, and error handling. |
+---
 
-## Scraper Sub-Architectures
+## Production Concurrency Architecture
 
-Most `InflationItems/Codes/` scrapers are single-file request-based collectors (requests / `curl_cffi`), but several have moved to more specialised transports and data-integrity policies:
-
-- **Vakko** (`InflationItems/Codes/ClothingStores/Vakko/vakko_master_scraper.py`) — live sitemap-driven category discovery + Selenium cookie factory (fresh cookies/UA each run), retry-with-backoff, product-level outlet filtering.
-- **Beymen / Technology** (`InflationItems/Codes/Technology/scraper.py`) — SeleniumBase UC session; dynamic pagination from the API-reported `totalPageCount` (hard safety cap 500) with in-memory `productId` dedupe; seleniumbase port-9222 collision guard.
-- **Emlakjet** (`InflationItems/Codes/HousesRent/Emlakjet/`) — browser-backed residential-rental adapter: visible Chrome by default, optional CDP attach (`--debugger-address`/`CHROME_DEBUGGER_ADDRESS`), recursive district/neighbourhood subdivision past the site's 50-page geometric cap, stops (rather than solves) on challenges. CI-hardened 2026-09-02: `BrowserSession` watchdog restarts Chrome when the session stalls and retries the page; checkpoints live under the tracked `InflationItems/Datas/HousesRent/Emlakjet/state/` dir and `--resume` continues interrupted crawls across runs (stale/done-day checkpoints are ignored/deleted). Documented in `InflationItems/Codes/HousesRent/README.md`.
-- **Sarı site rentals** (`InflationItems/Codes/HousesRent/KayseriSivasTokat/`) — the **friend-tactics** engine: `undetected-chromedriver` + persistent profile (`SeleniumProfile/`) with a manual-solve-retry loop and adaptive pacing; price-bracket pagination; `District, Rooms, Price, ilanId` output (B0 compliance).
-- **Gurmar** (`InflationItems/Codes/Markets/Gurmar/`) — plain `requests`; dynamic category discovery from `initialize-v2` + regression-based exit policy (fails only on new breakage, not the known broken-pagination state).
-- **TasciYapi** (`InflationItems/Codes/ConstructionMarkets/tasciyapimarket/`) — two-stage discover→parallel crawl using the CodeIgniter paginator's last-page link, `curl_cffi` Chrome TLS impersonation (requests fallback), base64 product-ID dedupe, Cloudflare-challenge detection, loud exit codes.
-- **Watsons** (`InflationItems/Codes/Cosmetics/Watson/`) — serialised single `curl_cffi` session at ~1 req/s (`pageSize=60`), full pagination, adaptive 403/429 pause + exponential backoff.
-- **Yapımaks** (`InflationItems/Codes/ConstructionMarkets/yapimaks/`) — sitemap-driven full-catalog refresh built on yesterday's snapshot: `<lastmod>` re-scrape, 7-day grace via `last_seen.json`, empty rows never written, 429 Retry-After/backoff. Async since 2026-09-02 (aiohttp workers, shared token-bucket rate limiter, adaptive halving on 429), with a daily refresh budget (`--refresh-budget 2500`, stalest-first) and a wall-clock budget (`--max-duration 240`) so a catch-up run fits GitHub's 6 h public-repo job cap with a large margin; un-refreshed products keep yesterday's row and are re-picked next day (self-heal).
-
-The rental scrapers' recommended architecture (threat model, decision gates, tool assignments) is documented in `docs/APPROACH.md`, with the supporting tool catalog in `docs/TECH-STACK-SEARCH.md`. A deep-research validation report (`docs/RESEARCH-REPORT-2026-08-16.md`) revises that plan toward a browser-only default with reconciliation-first gates.
-
-## Directory Structure Rationale
-
-```text
-InflationItems/Codes/                         Source-specific scraper scripts
-InflationItems/Datas/                         Tracked raw scraped CSV data
-Inflations/Codes/              Source-specific inflation calculators and config
-Inflations/Datas/              Generated inflation details and summaries
-forecasting/                   ML-based price trend prediction notebook
-inflation_dashboard/domain/    Framework-independent parsing and normalization helpers
-inflation_dashboard/adapters/  CSV storage adapter over tracked InflationItems/Datas/ files
-inflation_dashboard/application/ Dashboard use cases plus chart/table specs
-inflation_dashboard/api/       Falcon resources, filter parsing, and JSON serialization
-inflation_dashboard/frontend/  Streamlit API client and frontend-only helpers
-scripts/                       Focused verification scripts and smoke tests
-streamlit_app.py               Dashboard entry point consuming Falcon API
-docs/                         Unified project documentation, architecture, and specifications
-.github/workflows/             Scheduled scraper automation when workflow files are present
-```
-
-## Boundaries and Constraints
-
-- `InflationItems/Codes/` owns ingestion from websites and APIs.
-- `InflationItems/Datas/` and `Inflations/Datas/` are data stores, not application code.
-- `Inflations/Codes/` owns inflation calculations and TUIK-style weighting logic.
-- `inflation_dashboard/domain/`, `inflation_dashboard/adapters/`, and `inflation_dashboard/application/` must remain free of Streamlit, Plotly, and Falcon imports.
-- `inflation_dashboard/api/` owns Falcon HTTP concerns and must not import Streamlit, Plotly, or `streamlit_app.py`.
-- `inflation_dashboard/frontend/` owns the HTTP API client and must not import Streamlit, Plotly, or CSV/inflation-dashboard core modules.
-- `streamlit_app.py` owns the UI, Streamlit widget state, caching decorators, and Plotly rendering. It reads data only through the Falcon API.
-- API history loading remains bounded by default (`DEFAULT_MAX_FILES_PER_RETAILER = 25`).
-
-## Verification
-
-Three verification scripts are available:
-
-```bash
-# Falcon API smoke test (import boundaries, route registration, endpoint shapes)
-uv run python scripts/verify_falcon_api.py
-
-# Streamlit frontend API client test (source assertions, client behavior)
-uv run python scripts/verify_streamlit_api_frontend.py
-
-# Combined full-stack smoke test (all the above + end-to-end API→client flow)
-uv run python scripts/verify_full_stack.py
-```
+To serve 100+ concurrent interactive users without degradation:
+1. **Zero Server UI Reruns**: The upcoming Svelte frontend runs in the client browser, downloading static JS/CSS once and querying the Falcon API via lightweight HTTP calls.
+2. **Multi-Worker WSGI Pool**:
+   - Served via **Granian** (Rust Hyper engine) or **Gunicorn** (`gthread`).
+   - 4 worker processes x 16 threads = 64 parallel request execution slots.
+   - 2,048 socket backlog.
+3. **Lock-Free Read-Only Database**: SQLite connections in web workers open with URI `mode=ro`, completely avoiding SQLite transaction write locks.
+4. **Stress Test Verified**: 100–120 concurrent simulated clients firing over 10,400 requests resulted in **0.00% errors** and sustained 148+ requests per second.

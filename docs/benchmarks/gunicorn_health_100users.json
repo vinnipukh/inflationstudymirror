@@ -1,0 +1,30 @@
+{
+  "engine": "gunicorn",
+  "target_url": "http://127.0.0.1:58035",
+  "suite": "health",
+  "concurrent_users": 100,
+  "total_requests": 3000,
+  "successful_requests": 3000,
+  "failed_requests": 0,
+  "error_rate_pct": 0.0,
+  "duration_seconds": 3.619,
+  "rps": 829.05,
+  "latency_mean_ms": 109.29,
+  "latency_p50_ms": 77.05,
+  "latency_p75_ms": 151.23,
+  "latency_p90_ms": 246.6,
+  "latency_p95_ms": 313.8,
+  "latency_p99_ms": 465.09,
+  "latency_min_ms": 0.96,
+  "latency_max_ms": 923.48,
+  "endpoint_breakdown": {
+    "/api/health": {
+      "requests": 3000,
+      "success": 3000,
+      "errors": 0,
+      "latency_mean_ms": 109.29,
+      "latency_p50_ms": 77.05,
+      "latency_p95_ms": 313.8
+    }
+  }
+}

@@ -24,8 +24,10 @@ This document records configuration that is present in the repository.
 | `VAKKO_USER_AGENT` | Required for Vakko scraping | `None` | `InflationItems/Codes/ClothingStores/Vakko/vakko_master_scraper.py` |
 | `VAKKO_HEADED` | Optional; `=1` runs Vakko's cookie-factory Chrome headed | `None` (headless) | `InflationItems/Codes/ClothingStores/Vakko/vakko_master_scraper.py` |
 | `CHROME_DEBUGGER_ADDRESS` | Optional Emlakjet CDP attach endpoint (e.g. `127.0.0.1:9222`) | `None` | `InflationItems/Codes/HousesRent/Emlakjet/scraper.py` |
+| `FALCON_CORS_ORIGINS` | Comma-separated allowed CORS origins for the API | `*` (all origins) | `inflation_dashboard/api/falcon_app.py` (+ `--cors-origins` on `scripts/run_falcon_server.py`) |
+| `VITE_API_BASE_URL` | Falcon API base URL compiled into the Svelte frontend (empty = same origin, uses the Vite dev proxy `/api`) | `http://localhost:8000` | `frontend/` (see `frontend/.env.example`) |
 
-No checked-in `.env.example` or `.env.sample` file is present. `.gitignore` ignores `.env`, `.env.*`, and `.streamlit/secrets.toml`.
+The Svelte frontend ships `.env.example` (`frontend/.env.example`). `.gitignore` ignores `.env`, `.env.*`, and `.streamlit/secrets.toml`.
 
 ## Python Project Metadata
 
@@ -77,10 +79,12 @@ This replaces the previous setup where dashboard deps (streamlit, plotly, pandas
 | Default dashboard/API retailers | `("Markets / Gurmar", "ClothingStores / Vakko", "HomeGoods")` | `DEFAULT_RETAILERS` |
 | Default max files per retailer | `25` | `DEFAULT_MAX_FILES_PER_RETAILER` |
 | CSV parsing | auto-detected separator, `engine="python"`, `encoding="utf-8-sig"`, `on_bad_lines="skip"` | `load_price_history()` |
-| Frontend API base URL | `http://localhost:8000` | `DEFAULT_API_BASE_URL` |
-| Frontend short timeout | `10` seconds | `SHORT_TIMEOUT_SECONDS` |
-| Frontend data timeout | `60` seconds | `DATA_TIMEOUT_SECONDS` |
-| Frontend default max files | `25` | `FRONTEND_DEFAULT_MAX_FILES_PER_RETAILER` |
+| Frontend API base URL (legacy client) | `http://localhost:8000` | `DEFAULT_API_BASE_URL` (python client) / `VITE_API_BASE_URL` (Svelte build) |
+| Frontend short timeout | `10` seconds | `SHORT_TIMEOUT_SECONDS` (python client) |
+| Frontend data timeout | `60` seconds | `DATA_TIMEOUT_SECONDS` (python client) |
+| Frontend default max files (legacy client) | `45` | `FRONTEND_DEFAULT_MAX_FILES_PER_RETAILER` |
+| Svelte default retailers on open | `("Markets / Gurmar",)` — auto-loads Gurmar only | `frontend/src/lib/stores/filters.svelte.ts` → `DEFAULT_RETAILERS` |
+| Svelte default max files | `45` | `frontend/.../filters.svelte.ts` → `maxFiles` |
 
 Supported dashboard/API retailer labels:
 
@@ -96,22 +100,18 @@ Supported dashboard/API retailer labels:
 
 ### Falcon API routes and filter parameters
 
-`inflation_dashboard/api/falcon_app.py` registers:
+`inflation_dashboard/api/falcon_app.py` registers (with `falcon.CORSMiddleware`):
 
-- `/api/health`
-- `/api/inventory`
-- `/api/history`
-- `/api/retailer-averages`
-- `/api/movers`
-- `/api/coverage`
+- `/api/health`, `/api/inventory`, `/api/history`, `/api/retailer-averages`, `/api/movers`, `/api/coverage`
+- `/api/products/search`, `/api/product` (SQLite-backed fast lookups)
 
 The API filter parser accepts query parameters from request URLs:
 
 | Query parameter | Default | Validation |
 |---|---|---|
-| `retailer` | Available defaults from `DEFAULT_RETAILERS`, up to first 3 | Repeated; unknown → 400 `invalid_filter` |
+| `retailer` | `DEFAULT_RETAILERS` (API-level) | Repeated; unknown → 400 `invalid_filter` |
 | `start_date` / `end_date` | Latest 60-day window | ISO date format |
-| `max_files` | `25` | Integer ≥ 0; `0` = uncapped |
+| `max_files` | `45` | Integer ≥ 0; `0` = uncapped |
 | `all_history` | `false` | Boolean strings accepted |
 
 For the Falcon API full endpoint documentation, see `docs/API.md`.
@@ -194,13 +194,47 @@ The rental scraper (sarı site — Kayseri/Sivas/Tokat) is configured entirely i
 
 The engine (`engine_selenium.py`) uses the friend-tactics pattern: persistent SeleniumProfile + manual solve-retry loop (no auto-Turnstile code needed). The sister browser-backed Emlakjet adapter is documented in `InflationItems/Codes/HousesRent/README.md`; its live-site recon and the planned evolution of both rental scrapers are in `docs/APPROACH.md` and `docs/TECH-STACK-SEARCH.md`.
 
+## SQLite Production Configuration
+
+Recommended read-only SQLite configuration for the Falcon WSGI servers (implemented by
+`scripts/run_falcon_server.py` and `sqlite_price_repository.get_db_connection()`; consolidated from the
+2026-09 query-performance work):
+
+```python
+uri = f"file:{db_path.resolve().as_posix()}?mode=ro"
+conn = sqlite3.connect(uri, uri=True, check_same_thread=False, timeout=15.0)
+# PRAGMAs:
+#   journal_mode = WAL       -- readers never block writers or each other
+#   synchronous  = NORMAL    -- WAL-safe, fewer fsync barriers
+#   busy_timeout = 5000      -- wait rather than fail on transient locks
+#   cache_size   = -64000    -- 64 MB page cache per connection (adapter uses -128000 / 128 MB)
+#   mmap_size    = 1073741824 -- 1 GB memory-mapped I/O
+#   temp_store   = MEMORY    -- temp B-trees in RAM
+#   query_only   = 1         -- prevents accidental lock upgrades
+```
+
+- Run `ANALYZE` after building indexes so the planner uses covering indexes (`sqlite_stat1` populated).
+- **Multi-process servers** (Granian/Gunicorn, workers ≥ 4): thread-local connections or a small per-process
+  pool (8–16). **Threaded servers** (Waitress, 16–32 threads): a `ConnectionPool` of 16–24 with
+  `check_same_thread=False`. Verified: 100 concurrent readers, 0 errors, ~65–75 req/s with a size-30 pool.
+- `scripts/run_falcon_server.py` exports `SQLITE_DB_PATH`, `SQLITE_READ_ONLY=1`, `SQLITE_JOURNAL_MODE=WAL`,
+  `SQLITE_MMAP_SIZE=268435456` (256 MB), and `SQLITE_URI` to child worker processes.
+- The launcher also exposes `--engine {granian|gunicorn|waitress|uvicorn}`, `--workers` (default
+  `min(cpu_count, 8)`), `--threads` (default 16), `--backlog` (default 2048), `--cors-origins` (default `*`),
+  and `--sqlite-db`; `--dry-run` prints the generated command.
+- DB benchmarks: `scripts/benchmark_db_queries.py` (connection-strategy comparison, concurrency scaling,
+  `--json-out docs/db_benchmark_results.json`) and `scripts/benchmark_falcon_api.py` (endpoint warm latency).
+
 ## Running the Stack Locally
 
 ```bash
 # Terminal 1: Start the Falcon API
 uv run waitress-serve --port=8000 --call inflation_dashboard.api.falcon_app:create_app
 
-# Terminal 2: Start the Streamlit frontend
+# Terminal 2: Start the Svelte frontend (production dashboard)
+cd frontend && npm run dev
+
+# Terminal 2 (alternative): legacy Streamlit frontend
 uv run streamlit run streamlit_app.py
 ```
 

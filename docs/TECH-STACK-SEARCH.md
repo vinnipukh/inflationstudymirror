@@ -496,3 +496,25 @@ Rewrite (`InflationItems/Codes/ConstructionMarkets/yapimaks/scraper.py`):
     a rate-limit penalty window (homepage 429s) — the GitHub runner IP pool is
     unaffected (historical runs saw occasional 429s and always recovered with
     backoff; 08-13 catch-up had 322 429 events and still completed).
+
+
+---
+
+## Falcon API backend optimization research (2026-09-03)
+
+Deep-research synthesis: `docs/FALCON-API-OPTIMIZATION-REPORT-2026-09-03.md`
+(summary + prioritized P0–P3 action plan). Evidence notes with full citations:
+
+- `docs/research-notes-falcon-framework-optimization.md` — framework internals (middleware/routing/media/ETag-304/WSGI-vs-ASGI), verified against installed Falcon 4.3.1.
+- `docs/FALCON-DEPLOYMENT-TUNING-RESEARCH.md` — server selection (Granian ≫ gthread ≈ Waitress > sync), worker/thread sizing (GIL), launcher engine bugs (waitress/uvicorn 500s), OS/proxy tuning.
+- `docs/research/falcon-benchmarks-case-studies.md` — TechEmpower R22/R23 data, independent benchmarks, production users, SQLite-WAL pitfalls.
+- `docs/research-notes-profiling-db-caching-falcon.md` — measured hot paths (2.4–15 s first SQLite load), SQLite pragmas, serialization, caching, precompute strategy.
+
+Key flags for future work: ETag/304 + Cache-Control + gzip missing (biggest win);
+per-thread SQLite connection reuse missing; adapter vs launcher pragma mismatch
+(1 GB vs 256 MB mmap); SQL-pushdown helpers measured slower than pandas — do not wire in;
+only `waitress` is declared in pyproject (granian/gunicorn missing).
+
+## ASGI scaling refactor (2026-09-03)
+
+Added the high-scale ASGI entry point (falcon.asgi.App + uvicorn/granian), structlog JSON logging with trace IDs, Redis-backed cache-aside / token-bucket rate limiting / idempotency / queue, SQLAlchemy async repository (aiosqlite), cursor pagination, and centralized edge-cache headers. Full mapping of the 10 scaling principles to code is in `docs/ASGI-SCALING-REFACTOR.md`. WSGI path unchanged.

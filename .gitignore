@@ -71,3 +71,16 @@ Thumbs.db
 
 # JetBrains / IntelliJ / PyCharm
 .idea*
+
+# SQLite Database files
+*.db
+*.db-wal
+*.db-shm
+InflationItems/prices.db
+
+# Derived price data (regenerable from InflationItems/Datas CSVs)
+InflationItems/prices_json/
+
+# Local server run logs
+logs/falcon.log
+logs/frontend.log

@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap');
+
+/* ── Design tokens: Minimalism & Swiss Style (UI/UX Pro Max) ─────────────── */
+:root {
+  --color-primary: #171717;          /* near-black ink */
+  --color-on-primary: #ffffff;
+  --color-secondary: #404040;
+  --color-accent: #a16207;           /* gold, used sparingly */
+  --color-background: #ffffff;
+  --color-foreground: #171717;
+  --color-card: #ffffff;
+  --color-card-foreground: #171717;
+  --color-muted: #f4f4f5;
+  --color-muted-foreground: #52525b;
+  --color-border: #e5e5e5;           /* hairline */
+  --color-destructive: #dc2626;
+  --color-positive: #15803d;
+
+  --font-sans: 'Fira Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Fira Code', ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+:root.dark {
+  --color-primary: #ededed;
+  --color-on-primary: #0a0a0a;
+  --color-secondary: #a1a1aa;
+  --color-accent: #e0b13c;
+  --color-background: #0a0a0a;
+  --color-foreground: #ededed;
+  --color-card: #111111;
+  --color-card-foreground: #ededed;
+  --color-muted: #1b1b1b;
+  --color-muted-foreground: #a1a1aa;
+  --color-border: #262626;
+  --color-destructive: #f87171;
+  --color-positive: #4ade80;
+}
+
+/* ── Base ────────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-background);
+  color: var(--color-card-foreground);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.55;
+  min-height: 100vh;
+  font-feature-settings: 'tnum';
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--color-foreground);
+  line-height: 1.25;
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+a {
+  color: var(--color-foreground);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+button {
+  font-family: var(--font-sans);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-foreground);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-accent) 30%, transparent);
+}
+
+/* Slim scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

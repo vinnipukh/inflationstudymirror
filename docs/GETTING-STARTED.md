@@ -8,13 +8,13 @@ This guide gets a new local checkout to a working dashboard/API development stat
 The repository has three practical workflows:
 
 1. **Falcon API backend**: `inflation_dashboard.api.falcon_app:create_app` exposes CSV-backed dashboard use cases as JSON endpoints served over HTTP.
-2. **Streamlit dashboard frontend**: `streamlit_app.py` reads dashboard data from the Falcon API through `inflation_dashboard.frontend.api_client` and renders views with Streamlit/Plotly.
+2. **Svelte dashboard frontend** (`frontend/`, production): a client-side static SPA (SvelteKit + ECharts) reading dashboard data from the Falcon API over HTTP. The legacy Streamlit dashboard (`streamlit_app.py`) is kept for administrative use.
 3. **Standalone scrapers and inflation calculators**: scripts under `InflationItems/Codes/` and `Inflations/Codes/`.
 
 ## Prerequisites
 
 - Python. `pyproject.toml` declares `requires-python = ">=3.14"`; checked GitHub Actions workflows still use Python 3.10, 3.11, or 3.12 for individual scrapers.
-- `uv` for the project/Falcon/Streamlit workflow.
+- `uv` for the project/Falcon/legacy-Streamlit workflow; Node.js >= 20 + npm for the Svelte frontend (see `frontend/README.md`).
 - `pip` or `python -m pip` for legacy scraper/dashboard dependency installs.
 
 ## Clone and Enter the Project
@@ -24,7 +24,7 @@ git clone <repository-url>
 cd inflationstudymirror
 ```
 
-Run commands from the repository root so relative paths such as `InflationItems/Datas/`, `scripts/`, and `streamlit_app.py` resolve correctly.
+Run Python commands from the repository root so relative paths such as `InflationItems/Datas/` and `scripts/` resolve correctly; run frontend commands from `frontend/`.
 
 ## Install Dependencies
 
@@ -65,7 +65,7 @@ PASS full-stack: end-to-end frontend client <-> Falcon API integration
 
 ## Run the Stack
 
-The Falcon API and Streamlit frontend run as **two separate processes**:
+The Falcon API and the frontends run as **separate processes**.
 
 ### Terminal 1: Start the Falcon API
 
@@ -73,15 +73,31 @@ The Falcon API and Streamlit frontend run as **two separate processes**:
 uv run waitress-serve --port=8000 --call inflation_dashboard.api.falcon_app:create_app
 ```
 
-The API is now available at `http://localhost:8000`.
+The API is now available at `http://localhost:8000` (CORS is open by default so browser
+clients on any origin can call it; restrict via `FALCON_CORS_ORIGINS` if needed).
 
-### Terminal 2: Start the Streamlit dashboard
+### Terminal 2: Start the Svelte frontend (production UI, recommended)
+
+```bash
+cd frontend
+npm install        # first time only
+npm run dev        # development server on http://localhost:5173
+```
+
+- The Svelte app is a static client-side SPA in `frontend/` (Svelte 5 / SvelteKit, Apache ECharts).
+- It calls the Falcon API at `http://localhost:8000` by default. Override at build time with
+  `VITE_API_BASE_URL`, or edit the API base URL in the sidebar at runtime (persists per page load).
+- Production build: `npm run build` → static site in `frontend/build/`, preview with `npm run preview`.
+- The Vite dev server proxies `/api` to `http://localhost:8000`, so `VITE_API_BASE_URL=` (same-origin) also works.
+
+### Terminal 2 (alternative): Legacy Streamlit dashboard
 
 ```bash
 uv run streamlit run streamlit_app.py
 ```
 
-The dashboard opens in a browser. It connects to the Falcon API at `http://localhost:8000` by default — you can change this in the sidebar.
+The Streamlit app is the legacy/admin dashboard. It connects to the Falcon API at
+`http://localhost:8000` by default — you can change this in its sidebar.
 
 ### Run individual verifiers
 
@@ -122,7 +138,7 @@ The dashboard provides four tabs:
 All dependencies are declared in `pyproject.toml`. The key dashboard packages are:
 
 - `falcon` — API backend
-- `streamlit` — Dashboard frontend framework
+- `streamlit` — legacy dashboard frontend framework (production UI is the Svelte app in `frontend/`, Node-based)
 - `plotly` — Interactive charts
 - `pandas` — Data processing
 - `requests` — HTTP client (for API calls from the frontend)

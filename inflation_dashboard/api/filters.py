@@ -4,6 +4,8 @@ from collections import OrderedDict
 from dataclasses import dataclass
 from datetime import date
 from functools import lru_cache
+import gzip
+import hashlib
 import threading
 import time
 from typing import Any
@@ -17,10 +19,26 @@ from inflation_dashboard.adapters.csv_price_repository import (
     discover_csv_inventory,
     load_price_history,
 )
+try:
+    from inflation_dashboard.adapters import sqlite_price_repository
+except ImportError:
+    sqlite_price_repository = None
+
 from inflation_dashboard.application.use_cases import list_inventory_filters
 from inflation_dashboard.api.serialization import json_safe_mapping
 
 UNCAPPED_WARNING = "all_history requested; CSV load is uncapped"
+
+
+def is_sqlite_available() -> bool:
+    """Return True if sqlite_price_repository is imported and prices.db exists and is non-empty."""
+    if sqlite_price_repository is None:
+        return False
+    try:
+        db_path = sqlite_price_repository.get_db_path()
+        return db_path.is_file() and db_path.stat().st_size > 0
+    except Exception:
+        return False
 
 
 class ApiFilterError(ValueError):
@@ -46,8 +64,16 @@ class ParsedFilters:
 
 @lru_cache(maxsize=1)
 def get_inventory() -> pd.DataFrame:
-    """Return cached CSV inventory for API filter discovery."""
+    """Return cached CSV or SQLite inventory for API filter discovery.
 
+    Uses sqlite_price_repository.discover_sqlite_inventory() when prices.db exists,
+    falling back gracefully to csv_price_repository.discover_csv_inventory().
+    """
+    if is_sqlite_available():
+        try:
+            return sqlite_price_repository.discover_sqlite_inventory()
+        except Exception:
+            pass
     return discover_csv_inventory()
 
 
@@ -55,12 +81,18 @@ def clear_inventory_cache() -> None:
     """Clear cached inventory for tests and one-off verification scripts.
 
     Also clears the derived data caches (parsed filters, loaded history,
-    per-file frames) because new/changed scraped CSVs invalidate all of them.
+    per-file frames, response cache) because new/changed scraped data invalidates all of them.
     """
 
     get_inventory.cache_clear()
     clear_history_cache()
     clear_price_cache()
+    clear_response_cache()
+    if is_sqlite_available():
+        try:
+            sqlite_price_repository.clear_price_cache()
+        except Exception:
+            pass
 
 
 # --- Server-side request caches --------------------------------------------------
@@ -177,12 +209,90 @@ def _parse_cache_put(key: tuple, parsed_filters: ParsedFilters) -> None:
         _parse_cache.move_to_end(key)
 
 
+RESPONSE_CACHE_TTL_SECONDS = 300
+MAX_RESPONSE_CACHE_ENTRIES = 512
+MAX_RESPONSE_CACHE_BYTES = 1024 * 1024 * 1024  # 1 GiB total cached bytes (raw + gzip variants)
+GZIP_MIN_BYTES = 1024  # only pay gzip CPU for payloads where it matters
+
+# Entry: (expires_at, raw_bytes, gzip_bytes|None, etag, gzip_etag|None).
+# Stores bytes + ETag digests only, not the envelope dict: a 77 MB payload used
+# to be cached twice (dict + orjson bytes). The gzip variant and ETags are
+# derived once per entry here instead of per request.
+_response_cache: "OrderedDict[tuple[str, str], tuple[float, bytes, bytes | None, str, str | None]]" = OrderedDict()
+_response_cache_lock = threading.RLock()
+
+
+def make_etag(data: bytes) -> str:
+    """Return a strong opaque ETag (RFC 7232) for pre-serialized bytes.
+
+    The md5 digest is deterministic and identical across workers, so 304
+    validation stays correct under multi-process Granian/Gunicorn serving.
+    """
+
+    return hashlib.md5(data).hexdigest()
+
+
+def _gzip_variant(raw_bytes: bytes) -> bytes | None:
+    """Compress once per cache entry (deterministic; mtime=0 for reproducibility)."""
+
+    if len(raw_bytes) < GZIP_MIN_BYTES:
+        return None
+    return gzip.compress(raw_bytes, compresslevel=6, mtime=0)
+
+
+def get_cached_response(endpoint: str, query_string: str) -> tuple[bytes, bytes | None, str, str | None] | None:
+    """Return (raw_bytes, gzip_bytes|None, etag, gzip_etag|None), or None on miss/expiry."""
+
+    key = (endpoint, query_string)
+    with _response_cache_lock:
+        entry = _response_cache.get(key)
+        if entry is None:
+            return None
+        timestamp, raw_bytes, gzip_bytes, etag, gzip_etag = entry
+        if time.monotonic() - timestamp > RESPONSE_CACHE_TTL_SECONDS:
+            del _response_cache[key]
+            return None
+        _response_cache.move_to_end(key)
+        return raw_bytes, gzip_bytes, etag, gzip_etag
+
+
+def put_cached_response(endpoint: str, query_string: str, raw_bytes: bytes) -> None:
+    """Store pre-serialized bytes with a one-time gzip variant and ETag digests."""
+
+    key = (endpoint, query_string)
+    gzip_bytes = _gzip_variant(raw_bytes)
+    etag = make_etag(raw_bytes)
+    gzip_etag = make_etag(gzip_bytes) if gzip_bytes is not None else None
+    with _response_cache_lock:
+        now = time.monotonic()
+        for stale_key in [k for k, (ts, _, _, _, _) in _response_cache.items() if now - ts > RESPONSE_CACHE_TTL_SECONDS]:
+            del _response_cache[stale_key]
+        while len(_response_cache) >= MAX_RESPONSE_CACHE_ENTRIES:
+            _response_cache.popitem(last=False)
+        total_bytes = sum(
+            len(entry_raw) + (len(entry_gzip) if entry_gzip is not None else 0)
+            for (_, entry_raw, entry_gzip, _, _) in _response_cache.values()
+        )
+        new_bytes = len(raw_bytes) + (len(gzip_bytes) if gzip_bytes is not None else 0)
+        while _response_cache and total_bytes + new_bytes > MAX_RESPONSE_CACHE_BYTES:
+            _, oldest_raw, oldest_gzip, _, _ = _response_cache.popitem(last=False)
+            total_bytes -= len(oldest_raw) + (len(oldest_gzip) if oldest_gzip is not None else 0)
+        _response_cache[key] = (now, raw_bytes, gzip_bytes, etag, gzip_etag)
+        _response_cache.move_to_end(key)
+
+
+def clear_response_cache() -> None:
+    with _response_cache_lock:
+        _response_cache.clear()
+
+
 def clear_history_cache() -> None:
-    """Clear the derived-data caches (parsed filters + loaded history)."""
+    """Clear the derived-data caches (parsed filters + loaded history + response cache)."""
 
     with _data_cache_lock:
         _history_cache.clear()
         _parse_cache.clear()
+    clear_response_cache()
 
 
 def parse_bool_param(req: Any, name: str, default: bool = False) -> bool:
@@ -291,6 +401,27 @@ def _parse_common_filters_uncached(req: Any) -> ParsedFilters:
     )
 
 
+def _load_history_from_repository(parsed_filters: ParsedFilters) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Route history loading through sqlite_price_repository when available, falling back to CSV."""
+    if is_sqlite_available():
+        try:
+            return sqlite_price_repository.load_price_history_from_db(
+                tuple(parsed_filters.selected_retailers),
+                parsed_filters.start_date,
+                parsed_filters.end_date,
+                parsed_filters.max_files_per_retailer,
+            )
+        except Exception:
+            pass
+    return load_price_history(
+        tuple(parsed_filters.selected_retailers),
+        parsed_filters.start_date,
+        parsed_filters.end_date,
+        parsed_filters.max_files_per_retailer,
+        inventory=parsed_filters.inventory,
+    )
+
+
 def load_filtered_history(parsed_filters: ParsedFilters) -> tuple[pd.DataFrame, pd.DataFrame, dict[str, object]]:
     """Load filtered price history, served from the in-process cache when the
     same filter signature was loaded recently.
@@ -304,13 +435,7 @@ def load_filtered_history(parsed_filters: ParsedFilters) -> tuple[pd.DataFrame, 
     if cached is not None:
         history, skipped = cached
     else:
-        history, skipped = load_price_history(
-            tuple(parsed_filters.selected_retailers),
-            parsed_filters.start_date,
-            parsed_filters.end_date,
-            parsed_filters.max_files_per_retailer,
-            inventory=parsed_filters.inventory,
-        )
+        history, skipped = _load_history_from_repository(parsed_filters)
         _history_cache_put(key, history, skipped)
     warnings = list(parsed_filters.meta.get("warnings", []))
     if history.empty and len(skipped) > 0 and parsed_filters.meta.get("selected_inventory_file_count", 0):

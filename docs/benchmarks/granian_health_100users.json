@@ -1,0 +1,30 @@
+{
+  "engine": "granian",
+  "target_url": "http://127.0.0.1:59035",
+  "suite": "health",
+  "concurrent_users": 100,
+  "total_requests": 3000,
+  "successful_requests": 3000,
+  "failed_requests": 0,
+  "error_rate_pct": 0.0,
+  "duration_seconds": 5.828,
+  "rps": 514.74,
+  "latency_mean_ms": 184.18,
+  "latency_p50_ms": 121.07,
+  "latency_p75_ms": 245.93,
+  "latency_p90_ms": 436.38,
+  "latency_p95_ms": 567.38,
+  "latency_p99_ms": 917.51,
+  "latency_min_ms": 0.88,
+  "latency_max_ms": 1427.62,
+  "endpoint_breakdown": {
+    "/api/health": {
+      "requests": 3000,
+      "success": 3000,
+      "errors": 0,
+      "latency_mean_ms": 184.18,
+      "latency_p50_ms": 121.07,
+      "latency_p95_ms": 567.38
+    }
+  }
+}

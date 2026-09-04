@@ -119,7 +119,7 @@ def _assert_import_boundaries() -> None:
     core_files = _iter_python_files(
         "inflation_dashboard/domain",
         "inflation_dashboard/application",
-        "inflation_dashboard/adapters/csv_price_repository.py",
+        "inflation_dashboard/adapters",
     )
     for path in api_files:
         source = path.read_text(encoding="utf-8")

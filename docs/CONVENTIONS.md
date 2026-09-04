@@ -12,7 +12,9 @@ focus: conventions
 - Inflation calculation scripts and weighting configuration live under `Inflations/Codes/`.
 - Processed inflation output CSVs land under `Inflations/Datas/`.
 - Hexagonal core, domain models, and Falcon REST API backend live under `inflation_dashboard/`.
-- Frontend dashboard lives in `streamlit_app.py`.
+- Production frontend lives in `frontend/` (Svelte 5 / SvelteKit static SPA) and consumes the Falcon API over HTTP (see `docs/FALCON_API_CONTRACT.md`).
+- Legacy Streamlit dashboard lives in `streamlit_app.py` and is kept for administrative/prototype use.
+- The Svelte dashboard (`frontend/`) blanks the pipeline's `Uncategorized` fill-in label (`—`) in product tables; it is not a real category (sources like Gurmar/HomeGoods write no category column). Coverage diagnostics keep the raw label.
 - Documentation, architecture, and scraping knowledge base live under `docs/`.
 
 ## General Style

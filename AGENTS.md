@@ -29,8 +29,9 @@ Related references:
 | `InflationItems/Codes/` | Source-specific scraper scripts that collect raw retailer/service data |
 | `InflationItems/Datas/` | Tracked raw CSV data consumed by calculators, the dashboard, and the API |
 | `Inflations/` | Inflation calculation scripts and TUIK-style category/weight configuration |
-| `inflation_dashboard/` | Domain, adapters, application use cases, Falcon API, Streamlit frontend |
-| `streamlit_app.py` | Dashboard frontend that reads data from the Falcon API |
+| `inflation_dashboard/` | Domain, adapters, application use cases, Falcon API |
+| `frontend/` | **Svelte 5 / SvelteKit frontend (production UI)** — client-side static SPA consuming the Falcon API; docs: `frontend/README.md`, `docs/FALCON_API_CONTRACT.md` |
+| `streamlit_app.py` | Legacy Streamlit dashboard (admin/prototype use) that reads data from the Falcon API |
 | `scripts/` | Verification/smoke-test scripts (`verify_*.py`) |
 | `docs/` | Project documentation (see docs/ for API, config, testing guides) |
 | `docs/APPROACH.md` | **Recommended data-acquisition flow** — per-blocker anti-bot strategy, architecture, recon (§7), decision gates, milestones (start here before touching `InflationItems/Codes/`) |

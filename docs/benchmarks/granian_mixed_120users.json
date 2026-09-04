@@ -1,0 +1,54 @@
+{
+  "engine": "granian",
+  "target_url": "http://127.0.0.1:43751",
+  "suite": "mixed",
+  "concurrent_users": 120,
+  "total_requests": 2400,
+  "successful_requests": 2400,
+  "failed_requests": 0,
+  "error_rate_pct": 0.0,
+  "duration_seconds": 16.213,
+  "rps": 148.03,
+  "latency_mean_ms": 646.82,
+  "latency_p50_ms": 196.09,
+  "latency_p75_ms": 498.88,
+  "latency_p90_ms": 1127.87,
+  "latency_p95_ms": 2161.6,
+  "latency_p99_ms": 8880.59,
+  "latency_min_ms": 2.91,
+  "latency_max_ms": 9127.14,
+  "endpoint_breakdown": {
+    "/api/health": {
+      "requests": 960,
+      "success": 960,
+      "errors": 0,
+      "latency_mean_ms": 459.06,
+      "latency_p50_ms": 147.32,
+      "latency_p95_ms": 1556.64
+    },
+    "/api/inventory": {
+      "requests": 480,
+      "success": 480,
+      "errors": 0,
+      "latency_mean_ms": 711.1,
+      "latency_p50_ms": 151.63,
+      "latency_p95_ms": 6973.28
+    },
+    "/api/movers?retailer=Markets%20/%20Gurmar&max_files=1&limit=5": {
+      "requests": 480,
+      "success": 480,
+      "errors": 0,
+      "latency_mean_ms": 951.45,
+      "latency_p50_ms": 380.5,
+      "latency_p95_ms": 8849.5
+    },
+    "/api/retailer-averages?retailer=Markets%20/%20Gurmar&max_files=1&aggregation=Average": {
+      "requests": 480,
+      "success": 480,
+      "errors": 0,
+      "latency_mean_ms": 653.42,
+      "latency_p50_ms": 231.97,
+      "latency_p95_ms": 2263.06
+    }
+  }
+}

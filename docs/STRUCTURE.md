@@ -13,11 +13,15 @@ focus: structure
 - `Inflations/Datas/` — processed inflation detail and summary CSV outputs.
 - `logs/` — runtime logs, especially Yapimaks daily logs.
 - `.github/workflows/` — GitHub Actions automation for scheduled scrapes.
-- `inflation_dashboard/` — domain, adapters (CSV repository), use cases, Falcon REST API, Waitress runner.
-- `streamlit_app.py` — root-level Streamlit dashboard consuming the Falcon API.
-- `scripts/` — scraper verification, pagination tests, and diagnostics.
+- `inflation_dashboard/` — domain, adapters (SQLite + CSV repositories), use cases, Falcon REST API.
+- `frontend/` — **Svelte 5 / SvelteKit production dashboard** (static SPA, Apache ECharts) consuming the Falcon API over HTTP; see `frontend/README.md` and `docs/FALCON_API_CONTRACT.md`.
+- `inflation_dashboard/frontend/` — legacy Python API client used by the Streamlit app.
+- `streamlit_app.py` — root-level legacy Streamlit dashboard consuming the Falcon API.
+- `InflationItems/prices_json/` — clean partitioned JSON time series per retailer.
+- `InflationItems/prices.db` — SQLite WAL database (built from JSON/CSV; gitignored).
+- `scripts/` — DB build/migrate, benchmarks, and verification scripts.
 - `docs/` — comprehensive technical documentation, architecture, and scraping knowledge base.
-- `requirements.txt` and `pyproject.toml` — dependency/project metadata.
+- `requirements.txt` and `pyproject.toml` — Python dependency/project metadata (`frontend/package.json` for the Svelte app).
 
 ## Scraper examples
 
@@ -50,4 +54,5 @@ focus: structure
 ## Generated files
 
 - CSV and log files are large and numerous; code should avoid scanning all of them unless necessary.
-- `streamlit_app.py` now caps loaded files by retailer/date to keep app startup manageable.
+- The API (and the Svelte/Streamlit clients) cap loaded files by retailer/date to keep app startup manageable.
+- The Svelte dashboard blanks the pipeline's `Uncategorized` fill-in label (`—`) in product tables (see root `README.md`).

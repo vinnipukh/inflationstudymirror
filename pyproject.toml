@@ -5,6 +5,8 @@ requires-python = ">=3.14"
 dependencies = [
     "catboost>=1.2.10",
     "falcon",
+    "granian>=2.8.2",
+    "gunicorn>=26.2.0",
     "ipykernel>=7.3.0",
     "jupyter>=1.1.1",
     "lightgbm>=4.6.0",
@@ -20,4 +22,16 @@ dependencies = [
     "streamlit",
     "waitress>=3.0.2",
     "xgboost>=3.3.0",
+    # High-scale ASGI API (scaling refactor): falcon.asgi.App + uvicorn,
+    # structlog JSON logs, Redis state store, SQLAlchemy async engine.
+    "uvicorn>=0.52.3",
+    "structlog>=26.1.0",
+    "redis>=8.1.0",
+    "sqlalchemy>=2.0.52",
+    "aiosqlite>=0.22.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "fakeredis>=2.37.1",  # Redis-path verification without a Redis server
 ]
