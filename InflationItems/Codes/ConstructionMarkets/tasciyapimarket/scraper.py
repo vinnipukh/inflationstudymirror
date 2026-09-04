@@ -332,7 +332,7 @@ def main(argv: list[str] | None = None) -> int:
         save_dir = args.out
     else:
         script_dir = Path(__file__).resolve().parent
-        items_root = script_dir.parents[2]
+        items_root = script_dir.parents[3]
         save_dir = items_root / "Datas" / "ConstructionSuppliesMarkets" / "TasciYapiMarket"
     save_dir.mkdir(parents=True, exist_ok=True)
 
