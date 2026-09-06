@@ -125,11 +125,17 @@ function buildCharts(){
     data:{ labels, datasets: [
       {label:'Avg (Carli)', data:series('avg_inflation'), borderColor:t.avg, backgroundColor:t.avg, borderWidth:2, pointRadius:1.5, tension:.15},
       {label:'Basket (Dutot)', data:series('basic_index'), borderColor:t.gold, backgroundColor:t.gold, borderWidth:2, pointRadius:1.5, tension:.15},
-      {label:'Weighted', data:series('tuik_weighted'), borderColor:t.gray, backgroundColor:t.gray, borderWidth:1.5, borderDash:[4,3], pointRadius:1.5, tension:.15},
+      {label:'TÜİK-weighted', data:series('tuik_weighted'), borderColor:t.gold, backgroundColor:t.gold, borderWidth:3.5, pointRadius:3, pointStyle:'circle', tension:.15, order:1},
       {label:'Chained index (RHS)', data:DATA.monthly_index, yAxisID:'y1', borderColor:t.idx, borderWidth:1.2, borderDash:[2,2], pointRadius:0, tension:.15}
     ]},
     options:{ responsive:true, maintainAspectRatio:false, interaction:{mode:'index', intersect:false},
-      plugins:{ legend:{position:'top', labels:{boxWidth:12, boxHeight:8, usePointStyle:true, font:{size:11}, color:t.text}},
+      plugins:{ legend:{position:'top', labels:{boxWidth:12, boxHeight:8, usePointStyle:true, font:{size:11}, color:t.text,
+          generateLabels:(chart)=>{ const ds=chart.data.datasets; return ds.map((d,i)=>({ text:d.label,
+            fillStyle:d.borderColor, strokeStyle:d.borderColor, lineWidth:d.borderWidth,
+            hidden:!chart.isDatasetVisible(i), pointStyle:'line',
+            font:{size:11, weight:i===2?'bold':undefined}, datasetIndex:i })); }},
+          onClick:(e, li, legend)=>{ if(li.datasetIndex===2) return; /* TÜİK-weighted stays visible */
+            const meta=legend.chart.getDatasetMeta(li.datasetIndex); meta.hidden = !meta.hidden; legend.chart.update(); }},
         tooltip:{ callbacks:{ label:(c)=> ' '+c.dataset.label+': '+(c.parsed.y==null?'—':c.parsed.y.toLocaleString('tr-TR',{maximumFractionDigits:2})+(c.dataset.yAxisID==='y1'?'':'%')) } } },
       scales:{ x:{grid:{display:false}, ticks:{font:{size:10}, color:t.text}},
         y:{ grid:{color:t.grid}, ticks:{callback:v=>v+'%', color:t.text}, title:{display:true, text:'% change', color:t.text}},
