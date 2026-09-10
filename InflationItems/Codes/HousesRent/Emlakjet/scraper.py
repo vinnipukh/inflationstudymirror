@@ -456,7 +456,7 @@ def main(argv: list[str] | None = None) -> int:
 
     driver_factory = _build_driver_factory(args)
     try:
-        return scrape(
+        written = scrape(
             driver_factory=driver_factory,
             start_url=args.start_url,
             output_path=args.output,
@@ -467,6 +467,8 @@ def main(argv: list[str] | None = None) -> int:
             max_page_retries=args.max_page_retries,
             page_timeout=args.page_timeout,
         )
+        LOGGER.info("Emlakjet scrape finished: %d new rows", written)
+        return 0
     except ChallengeDetected as exc:
         LOGGER.error("%s", exc)
         return 2
