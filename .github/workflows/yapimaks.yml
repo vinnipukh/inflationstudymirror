@@ -44,6 +44,21 @@ jobs:
           
           # Datas klasörünün altındaki tüm değişiklikleri ve logları kaydeder
           git add InflationItems/Datas/ logs/
-          
-          git commit -m "Auto-update: Tüm Datas ve log değişiklikleri eklendi [skip ci]" || echo "Değişiklik bulunamadı, commit atlandı."
-          git push
+          if git diff --cached --quiet; then
+            echo "Değişiklik bulunamadı, commit atlandı."
+            exit 0
+          fi
+          git commit -m "Auto-update: Tüm Datas ve log değişiklikleri eklendi [skip ci]"
+          # Aynı anda birden fazla günlük workflow main'e push edebildiği için
+          # non-fast-forward reddinde rebase + retry yap.
+          for i in 1 2 3 4 5; do
+            if git push; then
+              echo "PUSH OK"
+              exit 0
+            fi
+            echo "Push rejected (concurrent güncelleme); rebase + retry ($i/5)..."
+            sleep 15
+            git pull --rebase origin main || echo "Rebase çakışması; push tekrar deneniyor."
+          done
+          echo "Push 5 denemede de başarısız oldu."
+          exit 1
