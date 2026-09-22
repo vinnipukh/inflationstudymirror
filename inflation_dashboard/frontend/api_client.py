@@ -8,7 +8,7 @@ import requests
 
 DEFAULT_API_BASE_URL = "http://localhost:8000"
 FRONTEND_DEFAULT_RETAILERS = ("Markets / Gurmar", "ClothingStores / Vakko", "HomeGoods")
-FRONTEND_DEFAULT_MAX_FILES_PER_RETAILER = 45
+FRONTEND_DEFAULT_MAX_FILES_PER_RETAILER = 25
 SHORT_TIMEOUT_SECONDS = 10
 DATA_TIMEOUT_SECONDS = 60
 ENVELOPE_KEYS = {"data", "meta", "errors"}

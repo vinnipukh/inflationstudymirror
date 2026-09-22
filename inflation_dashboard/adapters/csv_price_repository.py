@@ -33,7 +33,7 @@ DEFAULT_RETAILERS = (
     "ClothingStores / Vakko",
     "HomeGoods",
 )
-DEFAULT_MAX_FILES_PER_RETAILER = 45
+DEFAULT_MAX_FILES_PER_RETAILER = 25
 
 # --- Per-file parsed-frame cache -------------------------------------------------
 # Re-reading and re-building the same CSVs on every API request is the dominant
@@ -121,6 +121,19 @@ def discover_csv_inventory(raw_data_root: Path = RAW_DATA_ROOT) -> pd.DataFrame:
     return pd.DataFrame(rows).sort_values(["retailer", "date"])
 
 
+def _sniff_separator(csv_path: Path) -> str | None:
+    """Detect the delimiter from the header line (cheap), else None."""
+    try:
+        with csv_path.open("r", encoding="utf-8-sig", errors="replace") as handle:
+            first_line = handle.readline()
+    except OSError:
+        return None
+    for separator in (",", ";", "\t", "|"):
+        if separator in first_line:
+            return separator
+    return None
+
+
 def load_price_history(
     selected_retailers: tuple[str, ...],
     start_date,
@@ -163,10 +176,11 @@ def load_price_history(
             continue
 
         try:
+            separator = _sniff_separator(csv_path)
             frame = pd.read_csv(
                 csv_path,
-                sep=None,
-                engine="python",
+                sep=separator,
+                engine="c" if separator else "python",
                 encoding="utf-8-sig",
                 on_bad_lines="skip",
             )

@@ -526,7 +526,7 @@ def main() -> None:
         "Max CSV files per retailer",
         min_value=10,
         max_value=160,
-        value=FRONTEND_DEFAULT_MAX_FILES_PER_RETAILER,
+        value=25,
         step=5,
         help="Uses the newest files in the selected date range. Raise this for deeper history; lower it for faster loading.",
     )
