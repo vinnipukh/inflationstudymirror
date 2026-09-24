@@ -4,13 +4,7 @@ Data acquisition and inflation-analysis repository for the Inflation Study proje
 
 This repository tracks retailer/service scrapers, raw price observations, partitioned JSON histories, inflation calculators, TÜİK-style category configuration and generated inflation reports.
 
-The Svelte dashboard, Falcon API and SQLite serving layer have been separated into the sibling web repository:
-
-```text
-E:\Projects\
-├── inflationstudymirror\       # this repository: scrapers + inflation
-└── inflationstudymirror-web\   # Svelte + Falcon API + SQLite runtime
-```
+The Svelte dashboard, Falcon API and SQLite serving layer have been separated into the sibling `inflationstudymirror-web` repository. This repository remains responsible only for scrapers, raw data and inflation computation.
 
 ## Repository structure
 

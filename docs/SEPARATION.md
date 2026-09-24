@@ -1,10 +1,10 @@
 # Repository Separation
 
-The former monorepo has been split into two local repositories.
+The former monorepo has been split into two separate repositories.
 
 ## Data repository
 
-`E:\Projects\inflationstudymirror`
+`inflationstudymirror` (this repository)
 
 Contains:
 
@@ -16,7 +16,7 @@ Contains:
 
 ## Web repository
 
-`E:\Projects\inflationstudymirror-web`
+`inflationstudymirror-web` (separate sibling repository)
 
 Contains:
 
