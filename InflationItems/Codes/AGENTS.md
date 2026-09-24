@@ -1,59 +1,41 @@
 # AGENTS.md
 
-Project instructions for coding agents (pi, Claude Code, Codex, Cursor, etc.).
+Instructions for agents modifying scraper code under `InflationItems/Codes/`.
 
-## Mandatory reading before touching scrapers
+## Mandatory knowledge base
 
-> **Any agent that will modify, refactor, or modernize anything under
-> `InflationItems/Codes/` MUST first read the local scraping knowledge base:
-> `docs/scraping-wiki/` (README.md + relevant entity/concept pages).**
+Before modifying, refactoring or modernizing any scraper, parser, browser driver or anti-bot path, read:
 
-This applies to every file under `InflationItems/Codes/` — scrapers, parsers, browser
-drivers, anti-bot code, and related scripts. The wiki snapshot contains
-hard-won, tested findings (mouse-movement emulation, cookie factory
-patterns, CDP detection, hybrid scraping, driver risk assessments) that
-directly govern the correctness of these scrapers.
+- `docs/scraping-wiki/README.md`
+- the relevant concept/entity pages
+- `docs/APPROACH.md` for rental acquisition
+- `docs/TECH-STACK-SEARCH.md` for source/tool history
+- the source-specific README/config when present
 
-Related references:
+The wiki snapshot contains tested findings about bot detection, fingerprinting, CDP detection, homepage-first navigation, cookie/session reuse, hybrid scraping, driver lifecycle and mouse movement. These findings govern correctness.
 
-- `docs/TECH-STACK-SEARCH.md` — tech-stack search registry, skill registry, resource evaluations, and the
-  modernization plan for `InflationItems/Codes/HousesRent/` (check before starting work).
-- The wiki is a dated snapshot; if the work depends on current anti-bot
-  behavior, refresh it from
-  https://github.com/TheWebScrapingClub/scraping-wiki before relying on it.
+The snapshot is dated; refresh it before relying on current anti-bot behavior.
 
-## Repository shape
+## Repository role
 
-| Path | Role |
-|---|---|
-| `InflationItems/Codes/` | Source-specific scraper scripts that collect raw retailer/service data |
-| `InflationItems/Datas/` | Tracked raw CSV data consumed by calculators, the dashboard, and the API |
-| `Inflations/` | Inflation calculation scripts and TUIK-style category/weight configuration |
-| `inflation_dashboard/` | Domain, adapters, application use cases, Falcon API, Streamlit frontend |
-| `streamlit_app.py` | Dashboard frontend that reads data from the Falcon API |
-| `scripts/` | Verification/smoke-test scripts (`verify_*.py`) |
-| `docs/` | Project documentation (see docs/ for API, config, testing guides) |
-| `docs/APPROACH.md` | **Recommended data-acquisition flow** — per-blocker anti-bot strategy, architecture, recon (§7), decision gates, milestones (start here before touching `InflationItems/Codes/`) |
-| `docs/TECH-STACK-SEARCH.md` | Tech-stack + skill search registry — tool catalog, install set, integration blueprint, doc map |
-| `docs/RESEARCH-PROMPT.md` | Deep-research agent prompt for validating the approach (gap hunt) |
-| `docs/RESEARCH-REPORT-2026-08-16.md` | Deep-research validation report — corrections, B0 compliance gate, revised gates G0–G4 |
+This subtree owns website/API ingestion only. It writes source data/state under `InflationItems/Datas/` and may update generated partitions under `InflationItems/prices_json/`.
 
-## Conventions
+The Svelte frontend, Falcon API and SQLite serving database are not part of this repository.
 
-- Scraper data lands in `InflationItems/Datas/` — never commit scraped output that is
-  transient or regenerable without checking the repo's gitignore policy.
-- `docs/TECH-STACK-SEARCH.md` and `docs/scraping-wiki/` are living documents:
-  add findings and resource evaluations there rather than scattering
-  analysis in chat logs.
-- When adding or changing scraper behavior, update the relevant docs
-  (this file, TECH-STACK-SEARCH.md) so the next agent inherits the context.
+## Data rules
 
-## Testing principle
+- Preserve source CSV compatibility unless a versioned migration is explicit.
+- Keep source-specific parsing and schema checks deterministic.
+- Never commit cookies, secrets, browser profiles, challenge tokens or transient checkpoints.
+- Prefer preserving the last valid snapshot over writing empty rows after a failed refresh.
+- Use bounded live runs before scheduled/full runs.
 
-- **No unit tests or smoke tests for scrapers.** The way to test a scraper is
-  to *use* it: bounded runs against the live site (`--limit`, `--start-url`
-  scoped runs), scheduled/full runs, and the CSVs/checkpoints/logs they
-  produce. Do not add unit tests, mocks, or synthetic HTML fixtures for
-  scraper code under `InflationItems/Codes/` (`tests/test_houses_rent_scrapers.py` was
-  removed 2026-09-02 for this reason). This also applies to scripts — verify
-  scrapers by running them, not with one-off verify scripts where avoidable.
+## Verification policy
+
+There are no unit tests, mock tests, synthetic HTML fixtures or one-off smoke tests for scraper code. Verify by running the scraper against a bounded live scope and inspecting its CSV, state/checkpoint and log outputs.
+
+Do not add verification scripts under this subtree merely to avoid running the scraper.
+
+## Documentation
+
+Update the source README and, when behavior/tooling changes, `docs/TECH-STACK-SEARCH.md` or `docs/APPROACH.md` in the same change. Update `docs/DATA_PUBLICATION.md` if a web-consumed artifact changes.

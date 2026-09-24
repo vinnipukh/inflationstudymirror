@@ -22,10 +22,9 @@ Design notes (see docs/scraping-wiki/ and docs/TECH-STACK-SEARCH.md):
   ("1.234,56 TL" -> 1234.56).
 
 Compatibility: CSV columns are a superset of the previous
-"Product Name,Price,Category" schema so the dashboard reader
-(inflation_dashboard/adapters/csv_price_repository.py) keeps working:
-filename pattern tasciyapi_products_YYYY-MM-DD.csv (date regex parses), plus
-product_id column (ID_COLUMNS contains "product_id").
+"Product Name,Price,Category" schema so downstream data consumers keep
+working: filename pattern tasciyapi_products_YYYY-MM-DD.csv (date regex
+parses), plus a stable product_id column.
 
 Usage:
     python scraper.py                     # full daily run

@@ -1,43 +1,33 @@
----
-last_mapped: 2026-09-02
-focus: integrations
----
+# Data Source Integrations
 
-# Integrations
+## Retail and service sources
 
-## Retailer and service sources
+- **Gurmar** — `InflationItems/Codes/Markets/Gurmar/gurmar_scraper.py` uses the Gurmar initialization/category API, dynamically discovers categories, writes dated CSVs under `InflationItems/Datas/Markets/Gurmar/`, and reports coverage/integrity regressions.
+- **Vakko** — `InflationItems/Codes/ClothingStores/Vakko/vakko_master_scraper.py` reads the live category sitemap, queries the Vakko product API, optionally creates a browser session/cookie factory, and writes under `InflationItems/Datas/ClothingStores/Vakko/`.
+- **Yapımaks** — `InflationItems/Codes/ConstructionMarkets/yapimaks/scraper.py` parses the product sitemap and asynchronously refreshes products through the Yapımaks JSON API. It carries forward the previous complete snapshot, refreshes stale/empty rows and writes `InflationItems/Datas/ConstructionSuppliesMarkets/yapimaks/`.
+- **Taşçı Yapı Market** — `InflationItems/Codes/ConstructionMarkets/tasciyapimarket/scraper.py` uses BeautifulSoup with `curl_cffi` TLS impersonation and a `requests` fallback, writing under `InflationItems/Datas/ConstructionSuppliesMarkets/TasciYapiMarket/`.
+- **Watsons** — `InflationItems/Codes/Cosmetics/Watson/scraper.py` uses a serialized `curl_cffi` session against the Watsons search API and writes under `InflationItems/Datas/Cosmetics/Watson/`.
+- **Chakra** — `InflationItems/Codes/HomeGoods/scraper.py` collects category data and extracts analytics payload fields, writing under `InflationItems/Datas/HomeGoods/`.
+- **Beymen Tech** — `InflationItems/Codes/Technology/scraper.py` uses SeleniumBase/cookies and dynamic pagination against the Beymen product-list API, writing under `InflationItems/Datas/Technology/`.
+- **Emlakjet rentals** — `InflationItems/Codes/HousesRent/Emlakjet/` uses a visible browser-backed collection flow, serial pacing, deduplication and tracked checkpoint state. Output lives under `InflationItems/Datas/HousesRent/Emlakjet/`.
+- **Rental listing source (Kayseri/Sivas/Tokat)** — `InflationItems/Codes/HousesRent/KayseriSivasTokat/` uses a persistent undetected-chromedriver profile and writes `District, Rooms, Price, ilanId` snapshots under `InflationItems/Datas/HousesRent/<City>/`.
+- **EpeyKatfg** — `InflationItems/Codes/EpeyKatfg/` builds a catalog from official sitemaps, pulls price-history series and materializes/updates the canonical history store under `InflationItems/Datas/EpeyKatfg/` and `InflationItems/prices_json/`.
+- **Health services** — `InflationItems/Codes/Health/` contains service-price collection paths and monthly source data.
 
-- **Gurmar API**: `InflationItems/Codes/Markets/Gurmar/gurmar_scraper.py` calls `https://api.gurmar.com.tr/api/home/initialize-v2` for dynamic category discovery and `https://api.gurmar.com.tr/api/home/slug/{slug}?page={page}` for products, writing daily CSVs to `InflationItems/Datas/Markets/Gurmar/`.
-- **Vakko API**: `InflationItems/Codes/ClothingStores/Vakko/vakko_master_scraper.py` reads live sitemaps from `https://www.vakko.com/sitemap.xml` and queries `https://api.vakko.com/occ/v2/vsite/products/search`, writing daily CSVs to `InflationItems/Datas/ClothingStores/Vakko/`.
-- **Yapimaks API**: `InflationItems/Codes/ConstructionMarkets/yapimaks/scraper.py` reads `https://yapimaks.com/sitemap/products1.xml`, parses `<lastmod>`, and queries `https://yapimaks.com/api/tr/v1/layouts/b2c/products/{product_id}.json` using an async `aiohttp` rate-limited pool, writing daily CSVs to `InflationItems/Datas/ConstructionSuppliesMarkets/yapimaks/`.
-- **TasciYapi**: `InflationItems/Codes/ConstructionMarkets/tasciyapimarket/scraper.py` scrapes `https://tasciyapimarket.com/` with `curl_cffi` TLS impersonation and writes to `InflationItems/Datas/ConstructionSuppliesMarkets/TasciYapiMarket/`.
-- **Watsons**: `InflationItems/Codes/Cosmetics/Watson/scraper.py` queries `https://api.watsons.com.tr/api/v2/wtctr-spa/search` using serialised `curl_cffi` sessions and writes to `InflationItems/Datas/Cosmetics/Watson/`.
-- **Chakra**: `InflationItems/Codes/HomeGoods/scraper.py` scrapes Chakra categories and extracts JSON analytics payloads, writing to `InflationItems/Datas/HomeGoods/`.
-- **Beymen Tech**: `InflationItems/Codes/Technology/scraper.py` queries `https://www.beymen.com/api/product/list` with SeleniumBase stealth cookies and writes to `InflationItems/Datas/Technology/`.
-- **Emlakjet**: `InflationItems/Codes/HousesRent/Emlakjet/scraper.py` crawls residential rental listings via browser automation and checkpoints state under `InflationItems/Datas/HousesRent/Emlakjet/state/`.
-- **Sarı site rentals**: `InflationItems/Codes/HousesRent/KayseriSivasTokat/main.py` uses persistent Selenium profiles to collect `District, Rooms, Price, ilanId` rental listings.
+## Credentials and sessions
 
-## Secrets and credentials
-
-- `InflationItems/Codes/ClothingStores/Vakko/vakko_master_scraper.py` reads `VAKKO_COOKIE` and `VAKKO_USER_AGENT` from environment variables, or automatically fetches them via an automated headless browser session.
-- `.github/workflows/vakko_scraper.yml` passes `secrets.VAKKO_COOKIE` and `secrets.VAKKO_USER_AGENT`.
-- `.env` and `.env.*` are ignored in `.gitignore`.
+- Vakko supports `VAKKO_COOKIE` and `VAKKO_USER_AGENT` as optional authenticated fallbacks. The scheduled workflow supplies the cookie secret and `USER_AGENT`; keep source/workflow variable names aligned when changing them.
+- Browser-backed scrapers may use local Chrome, SeleniumBase or persistent profiles.
+- Never commit cookies, user-agent bindings tied to secrets, browser profiles, `.env` files or challenge tokens.
 
 ## Outputs
 
-- Raw scraped data is written under `InflationItems/Datas/...` by domain and retailer.
-- Inflation outputs are written under `Inflations/Datas/...` by domain and retailer.
-- Scraper logs are written to `logs/` (e.g. `logs/yapimaks_YYYY-MM-DD.log`).
-- The Falcon API backend (`inflation_dashboard/`) serves data from `InflationItems/Datas/`.
+- Raw source data: `InflationItems/Datas/<Domain>/<Source>/`.
+- Source state/checkpoints: beside the relevant source data, gitignored where transient.
+- Partitioned price histories: `InflationItems/prices_json/`.
+- Inflation reports: `Inflations/Datas/`.
+- Operational logs: `logs/`.
 
-## Automation Schedule
+## Automation
 
-All 8 main scrapers are automated via GitHub Actions in `.github/workflows/`:
-- `00:00 UTC` — Gurmar (`gurmar.yml`)
-- `02:00 UTC` — Yapımaks (`yapimaks.yml`)
-- `04:00 UTC` — Vakko (`vakko_scraper.yml`)
-- `06:00 UTC` — Watsons (`watsons.yml`)
-- `08:00 UTC` — Chakra (`chakra_scraper.yml`)
-- `10:00 UTC` — Beymen (`beymen.yml`)
-- `14:00 UTC` — TasciYapi (`tasciyapi.yml`)
-- `16:00 UTC` — Emlakjet (`emlakjet_scraper.yml`)
+Eight primary GitHub Actions workflows run daily. See `SCRAPER_TIMETABLE.md` for UTC/Istanbul times, scripts and output paths. Workflows are operational collection jobs, not a substitute for source-specific verification.

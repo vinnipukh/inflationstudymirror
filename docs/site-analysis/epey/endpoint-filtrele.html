@@ -1,0 +1,2482 @@
+
+
+
+
+<script>
+$(document).ready(function () {
+  $(".filtrele_inc").on("mousewheel DOMMouseScroll", function (e) {
+    var delta = e.originalEvent.wheelDelta || -e.originalEvent.detail;
+
+    // Kaydırma miktarını ayarla (20 değeri isteğe bağlı)
+    this.scrollTop += (delta < 0 ? 1 : -1) * 20;
+    e.preventDefault();
+  });
+});
+</script>
+
+
+
+
+
+		
+			<h2 id="ozelliste">Öne Çıkan Filtreler</h2>
+	<ul id="filtreozel" class="filter ozelliste max-h" style="font-weight:bold;min-height:60px;">
+				<li id="ozel1" data-position="1"><input type="checkbox" id="ozelid1" name="ozel1" onClick="filtre('ozel:firsat')" > <label for="ozelid1"><span></span> Telefon Fırsatları (2)</label></li>				
+				
+				
+				
+						<li id="ozel5" data-position="5">
+			<input type="checkbox" id="ozelid5" name="ozel5" onClick="filtre('ozel:satista')" >
+			<label for="ozelid5"><span></span> Satıştakiler</label>
+		</li>		
+		<li id="ozel6" data-position="1"><input type="checkbox" id="ozelid6" name="ozel6" onClick="filtre('ozel:coksatan')" > <label for="ozelid6"><span></span> Çok Satanlar</label></li>		
+				
+				<li id="ozel8" data-position="8"><input type="checkbox" id="ozelid8" name="ozel8" onClick="filtre('ozel:outlet')" > <label for="ozelid8"><span></span> Outlet Telefonlar (307)</label></li>		
+	</ul>
+		
+
+
+			
+	<h2 id="markaliste">Markalar	<div id="harictut">
+	  <input id="a" type="checkbox" value="marka" onClick="filtre('harictut:marka')" >
+	  <label for="a"><div class="harictut__switch" data-checked="hariç tut" data-unchecked="dahil et"></div></label>
+	</div></h2>
+	<input type="text" id="filter" class="markaliste" placeholder="marka ara...">
+		
+	<ul id="filtremarka" class="filter markaliste max-h">
+	
+			
+			<li id="marka1" data-position="2111" class=""><input type="checkbox" id="markaid1" name="marka1" onClick="filtre('marka:1')" > <label for="markaid1"><span></span> Samsung (626)</label></li>
+			
+			<li id="marka2" data-position="2112" class=""><input type="checkbox" id="markaid2" name="marka2" onClick="filtre('marka:2')" > <label for="markaid2"><span></span> Apple (165)</label></li>
+			
+			<li id="marka58" data-position="2113" class=""><input type="checkbox" id="markaid58" name="marka58" onClick="filtre('marka:58')" > <label for="markaid58"><span></span> Xiaomi (536)</label></li>
+			
+			<li id="marka2611" data-position="2114" class=""><input type="checkbox" id="markaid2611" name="marka2611" onClick="filtre('marka:2611')" > <label for="markaid2611"><span></span> Honor (209)</label></li>
+			
+			<li id="marka10" data-position="2115" class=""><input type="checkbox" id="markaid10" name="marka10" onClick="filtre('marka:10')" > <label for="markaid10"><span></span> Huawei (328)</label></li>
+			
+			<li id="marka69" data-position="2116" class=""><input type="checkbox" id="markaid69" name="marka69" onClick="filtre('marka:69')" > <label for="markaid69"><span></span> Oppo (249)</label></li>
+			
+			<li id="marka3080" data-position="2117" class=""><input type="checkbox" id="markaid3080" name="marka3080" onClick="filtre('marka:3080')" > <label for="markaid3080"><span></span> Vivo (227)</label></li>
+			
+			<li id="marka9522" data-position="2118" class=""><input type="checkbox" id="markaid9522" name="marka9522" onClick="filtre('marka:9522')" > <label for="markaid9522"><span></span> Poco (106)</label></li>
+			
+			<li id="marka6" data-position="2119" class=""><input type="checkbox" id="markaid6" name="marka6" onClick="filtre('marka:6')" > <label for="markaid6"><span></span> General Mobile (71)</label></li>
+			
+			<li id="marka57" data-position="2120" class=""><input type="checkbox" id="markaid57" name="marka57" onClick="filtre('marka:57')" > <label for="markaid57"><span></span> Alcatel (61)</label></li>
+			
+			<li id="marka51" data-position="2121" class=""><input type="checkbox" id="markaid51" name="marka51" onClick="filtre('marka:51')" > <label for="markaid51"><span></span> Asus (97)</label></li>
+			
+			<li id="marka53" data-position="2122" class=""><input type="checkbox" id="markaid53" name="marka53" onClick="filtre('marka:53')" > <label for="markaid53"><span></span> Avea (2)</label></li>
+			
+			<li id="marka150" data-position="2123" class=""><input type="checkbox" id="markaid150" name="marka150" onClick="filtre('marka:150')" > <label for="markaid150"><span></span> BB Mobile (1)</label></li>
+			
+			<li id="marka9" data-position="2124" class=""><input type="checkbox" id="markaid9" name="marka9" onClick="filtre('marka:9')" > <label for="markaid9"><span></span> BlackBerry (25)</label></li>
+			
+			<li id="marka1805" data-position="2125" class=""><input type="checkbox" id="markaid1805" name="marka1805" onClick="filtre('marka:1805')" > <label for="markaid1805"><span></span> Blackview (3)</label></li>
+			
+			<li id="marka2305" data-position="2126" class=""><input type="checkbox" id="markaid2305" name="marka2305" onClick="filtre('marka:2305')" > <label for="markaid2305"><span></span> C5 Mobile (3)</label></li>
+			
+			<li id="marka12" data-position="2127" class=""><input type="checkbox" id="markaid12" name="marka12" onClick="filtre('marka:12')" > <label for="markaid12"><span></span> Casper (61)</label></li>
+			
+			<li id="marka122" data-position="2128" class=""><input type="checkbox" id="markaid122" name="marka122" onClick="filtre('marka:122')" > <label for="markaid122"><span></span> CAT (15)</label></li>
+			
+			<li id="marka30" data-position="2129" class=""><input type="checkbox" id="markaid30" name="marka30" onClick="filtre('marka:30')" > <label for="markaid30"><span></span> Dark (4)</label></li>
+			
+			<li id="marka790" data-position="2130" class=""><input type="checkbox" id="markaid790" name="marka790" onClick="filtre('marka:790')" > <label for="markaid790"><span></span> Dewalt (1)</label></li>
+			
+			<li id="marka535" data-position="2131" class=""><input type="checkbox" id="markaid535" name="marka535" onClick="filtre('marka:535')" > <label for="markaid535"><span></span> Dijitsu (2)</label></li>
+			
+			<li id="marka114" data-position="2132" class=""><input type="checkbox" id="markaid114" name="marka114" onClick="filtre('marka:114')" > <label for="markaid114"><span></span> Doogee (9)</label></li>
+			
+			<li id="marka534" data-position="2133" class=""><input type="checkbox" id="markaid534" name="marka534" onClick="filtre('marka:534')" > <label for="markaid534"><span></span> Elephone (9)</label></li>
+			
+			<li id="marka1891" data-position="2134" class=""><input type="checkbox" id="markaid1891" name="marka1891" onClick="filtre('marka:1891')" > <label for="markaid1891"><span></span> Essential (1)</label></li>
+			
+			<li id="marka55" data-position="2135" class=""><input type="checkbox" id="markaid55" name="marka55" onClick="filtre('marka:55')" > <label for="markaid55"><span></span> EvoBT (2)</label></li>
+			
+			<li id="marka32" data-position="2136" class=""><input type="checkbox" id="markaid32" name="marka32" onClick="filtre('marka:32')" > <label for="markaid32"><span></span> Excon (4)</label></li>
+			
+			<li id="marka6461" data-position="2137" class=""><input type="checkbox" id="markaid6461" name="marka6461" onClick="filtre('marka:6461')" > <label for="markaid6461"><span></span> Fairphone (5)</label></li>
+			
+			<li id="marka773" data-position="2138" class=""><input type="checkbox" id="markaid773" name="marka773" onClick="filtre('marka:773')" > <label for="markaid773"><span></span> Fluo (11)</label></li>
+			
+			<li id="marka54" data-position="2139" class=""><input type="checkbox" id="markaid54" name="marka54" onClick="filtre('marka:54')" > <label for="markaid54"><span></span> Fly (6)</label></li>
+			
+			<li id="marka14" data-position="2140" class=""><input type="checkbox" id="markaid14" name="marka14" onClick="filtre('marka:14')" > <label for="markaid14"><span></span> Gigabyte (2)</label></li>
+			
+			<li id="marka439" data-position="2141" class=""><input type="checkbox" id="markaid439" name="marka439" onClick="filtre('marka:439')" > <label for="markaid439"><span></span> Gigaset (3)</label></li>
+			
+			<li id="marka1305" data-position="2142" class=""><input type="checkbox" id="markaid1305" name="marka1305" onClick="filtre('marka:1305')" > <label for="markaid1305"><span></span> Google (37)</label></li>
+			
+			<li id="marka118" data-position="2143" class=""><input type="checkbox" id="markaid118" name="marka118" onClick="filtre('marka:118')" > <label for="markaid118"><span></span> Haier (2)</label></li>
+			
+			<li id="marka527" data-position="2144" class=""><input type="checkbox" id="markaid527" name="marka527" onClick="filtre('marka:527')" > <label for="markaid527"><span></span> Hiking (36)</label></li>
+			
+			<li id="marka133" data-position="2145" class=""><input type="checkbox" id="markaid133" name="marka133" onClick="filtre('marka:133')" > <label for="markaid133"><span></span> HP (1)</label></li>
+			
+			<li id="marka3" data-position="2146" class=""><input type="checkbox" id="markaid3" name="marka3" onClick="filtre('marka:3')" > <label for="markaid3"><span></span> HTC (108)</label></li>
+			
+			<li id="marka4920" data-position="2147" class=""><input type="checkbox" id="markaid4920" name="marka4920" onClick="filtre('marka:4920')" > <label for="markaid4920"><span></span> Infinix (140)</label></li>
+			
+			<li id="marka11407" data-position="2148" class=""><input type="checkbox" id="markaid11407" name="marka11407" onClick="filtre('marka:11407')" > <label for="markaid11407"><span></span> itel (2)</label></li>
+			
+			<li id="marka4794" data-position="2149" class=""><input type="checkbox" id="markaid4794" name="marka4794" onClick="filtre('marka:4794')" > <label for="markaid4794"><span></span> JCB (2)</label></li>
+			
+			<li id="marka880" data-position="2150" class=""><input type="checkbox" id="markaid880" name="marka880" onClick="filtre('marka:880')" > <label for="markaid880"><span></span> Kaan (3)</label></li>
+			
+			<li id="marka873" data-position="2151" class=""><input type="checkbox" id="markaid873" name="marka873" onClick="filtre('marka:873')" > <label for="markaid873"><span></span> LeEco (6)</label></li>
+			
+			<li id="marka36" data-position="2152" class=""><input type="checkbox" id="markaid36" name="marka36" onClick="filtre('marka:36')" > <label for="markaid36"><span></span> Lenovo (102)</label></li>
+			
+			<li id="marka4" data-position="2153" class=""><input type="checkbox" id="markaid4" name="marka4" onClick="filtre('marka:4')" > <label for="markaid4"><span></span> LG (179)</label></li>
+			
+			<li id="marka131" data-position="2154" class=""><input type="checkbox" id="markaid131" name="marka131" onClick="filtre('marka:131')" > <label for="markaid131"><span></span> Meizu (82)</label></li>
+			
+			<li id="marka112" data-position="2155" class=""><input type="checkbox" id="markaid112" name="marka112" onClick="filtre('marka:112')" > <label for="markaid112"><span></span> Microsoft (14)</label></li>
+			
+			<li id="marka11306" data-position="2156" class=""><input type="checkbox" id="markaid11306" name="marka11306" onClick="filtre('marka:11306')" > <label for="markaid11306"><span></span> Mipo (8)</label></li>
+			
+			<li id="marka5" data-position="2157" class=""><input type="checkbox" id="markaid5" name="marka5" onClick="filtre('marka:5')" > <label for="markaid5"><span></span> Motorola (82)</label></li>
+			
+			<li id="marka7" data-position="2158" class=""><input type="checkbox" id="markaid7" name="marka7" onClick="filtre('marka:7')" > <label for="markaid7"><span></span> Nokia (72)</label></li>
+			
+			<li id="marka5110" data-position="2159" class=""><input type="checkbox" id="markaid5110" name="marka5110" onClick="filtre('marka:5110')" > <label for="markaid5110"><span></span> Nomu (1)</label></li>
+			
+			<li id="marka10041" data-position="2160" class=""><input type="checkbox" id="markaid10041" name="marka10041" onClick="filtre('marka:10041')" > <label for="markaid10041"><span></span> Nothing (22)</label></li>
+			
+			<li id="marka8988" data-position="2161" class=""><input type="checkbox" id="markaid8988" name="marka8988" onClick="filtre('marka:8988')" > <label for="markaid8988"><span></span> Omix (24)</label></li>
+			
+			<li id="marka70" data-position="2162" class=""><input type="checkbox" id="markaid70" name="marka70" onClick="filtre('marka:70')" > <label for="markaid70"><span></span> OnePlus (84)</label></li>
+			
+			<li id="marka5138" data-position="2163" class=""><input type="checkbox" id="markaid5138" name="marka5138" onClick="filtre('marka:5138')" > <label for="markaid5138"><span></span> Oukitel (7)</label></li>
+			
+			<li id="marka11584" data-position="2164" class=""><input type="checkbox" id="markaid11584" name="marka11584" onClick="filtre('marka:11584')" > <label for="markaid11584"><span></span> Ovion (8)</label></li>
+			
+			<li id="marka533" data-position="2165" class=""><input type="checkbox" id="markaid533" name="marka533" onClick="filtre('marka:533')" > <label for="markaid533"><span></span> Oxiron (2)</label></li>
+			
+			<li id="marka4343" data-position="2166" class=""><input type="checkbox" id="markaid4343" name="marka4343" onClick="filtre('marka:4343')" > <label for="markaid4343"><span></span> Palm (1)</label></li>
+			
+			<li id="marka15" data-position="2167" class=""><input type="checkbox" id="markaid15" name="marka15" onClick="filtre('marka:15')" > <label for="markaid15"><span></span> Philips (2)</label></li>
+			
+			<li id="marka37" data-position="2168" class=""><input type="checkbox" id="markaid37" name="marka37" onClick="filtre('marka:37')" > <label for="markaid37"><span></span> Piranha (7)</label></li>
+			
+			<li id="marka115" data-position="2169" class=""><input type="checkbox" id="markaid115" name="marka115" onClick="filtre('marka:115')" > <label for="markaid115"><span></span> Premier (2)</label></li>
+			
+			<li id="marka2859" data-position="2170" class=""><input type="checkbox" id="markaid2859" name="marka2859" onClick="filtre('marka:2859')" > <label for="markaid2859"><span></span> Preo (3)</label></li>
+			
+			<li id="marka27" data-position="2171" class=""><input type="checkbox" id="markaid27" name="marka27" onClick="filtre('marka:27')" > <label for="markaid27"><span></span> Prestigio (20)</label></li>
+			
+			<li id="marka117" data-position="2172" class=""><input type="checkbox" id="markaid117" name="marka117" onClick="filtre('marka:117')" > <label for="markaid117"><span></span> Quatro (7)</label></li>
+			
+			<li id="marka875" data-position="2173" class=""><input type="checkbox" id="markaid875" name="marka875" onClick="filtre('marka:875')" > <label for="markaid875"><span></span> Razer (2)</label></li>
+			
+			<li id="marka3444" data-position="2174" class=""><input type="checkbox" id="markaid3444" name="marka3444" onClick="filtre('marka:3444')" > <label for="markaid3444"><span></span> realme (202)</label></li>
+			
+			<li id="marka39" data-position="2175" class=""><input type="checkbox" id="markaid39" name="marka39" onClick="filtre('marka:39')" > <label for="markaid39"><span></span> Reeder (63)</label></li>
+			
+			<li id="marka19" data-position="2176" class=""><input type="checkbox" id="markaid19" name="marka19" onClick="filtre('marka:19')" > <label for="markaid19"><span></span> Sharp (3)</label></li>
+			
+			<li id="marka8" data-position="2177" class=""><input type="checkbox" id="markaid8" name="marka8" onClick="filtre('marka:8')" > <label for="markaid8"><span></span> Sony (99)</label></li>
+			
+			<li id="marka23" data-position="2178" class=""><input type="checkbox" id="markaid23" name="marka23" onClick="filtre('marka:23')" > <label for="markaid23"><span></span> Sunny (7)</label></li>
+			
+			<li id="marka4346" data-position="2179" class=""><input type="checkbox" id="markaid4346" name="marka4346" onClick="filtre('marka:4346')" > <label for="markaid4346"><span></span> TCL (37)</label></li>
+			
+			<li id="marka4915" data-position="2180" class=""><input type="checkbox" id="markaid4915" name="marka4915" onClick="filtre('marka:4915')" > <label for="markaid4915"><span></span> Tecno (138)</label></li>
+			
+			<li id="marka1817" data-position="2181" class=""><input type="checkbox" id="markaid1817" name="marka1817" onClick="filtre('marka:1817')" > <label for="markaid1817"><span></span> Tinmo (4)</label></li>
+			
+			<li id="marka817" data-position="2182" class=""><input type="checkbox" id="markaid817" name="marka817" onClick="filtre('marka:817')" > <label for="markaid817"><span></span> TP-Link (17)</label></li>
+			
+			<li id="marka2080" data-position="2183" class=""><input type="checkbox" id="markaid2080" name="marka2080" onClick="filtre('marka:2080')" > <label for="markaid2080"><span></span> Trident (10)</label></li>
+			
+			<li id="marka59" data-position="2184" class=""><input type="checkbox" id="markaid59" name="marka59" onClick="filtre('marka:59')" > <label for="markaid59"><span></span> Türk Telekom (5)</label></li>
+			
+			<li id="marka13" data-position="2185" class=""><input type="checkbox" id="markaid13" name="marka13" onClick="filtre('marka:13')" > <label for="markaid13"><span></span> Turkcell (6)</label></li>
+			
+			<li id="marka1386" data-position="2186" class=""><input type="checkbox" id="markaid1386" name="marka1386" onClick="filtre('marka:1386')" > <label for="markaid1386"><span></span> Ulefone (4)</label></li>
+			
+			<li id="marka470" data-position="2187" class=""><input type="checkbox" id="markaid470" name="marka470" onClick="filtre('marka:470')" > <label for="markaid470"><span></span> Ultron (2)</label></li>
+			
+			<li id="marka1387" data-position="2188" class=""><input type="checkbox" id="markaid1387" name="marka1387" onClick="filtre('marka:1387')" > <label for="markaid1387"><span></span> UmiDigi (13)</label></li>
+			
+			<li id="marka119" data-position="2189" class=""><input type="checkbox" id="markaid119" name="marka119" onClick="filtre('marka:119')" > <label for="markaid119"><span></span> Utoo (1)</label></li>
+			
+			<li id="marka24" data-position="2190" class=""><input type="checkbox" id="markaid24" name="marka24" onClick="filtre('marka:24')" > <label for="markaid24"><span></span> Vestel (36)</label></li>
+			
+			<li id="marka110" data-position="2191" class=""><input type="checkbox" id="markaid110" name="marka110" onClick="filtre('marka:110')" > <label for="markaid110"><span></span> VIAtech (1)</label></li>
+			
+			<li id="marka56" data-position="2192" class=""><input type="checkbox" id="markaid56" name="marka56" onClick="filtre('marka:56')" > <label for="markaid56"><span></span> Victor (2)</label></li>
+			
+			<li id="marka66" data-position="2193" class=""><input type="checkbox" id="markaid66" name="marka66" onClick="filtre('marka:66')" > <label for="markaid66"><span></span> Vodafone (15)</label></li>
+			
+			<li id="marka874" data-position="2194" class=""><input type="checkbox" id="markaid874" name="marka874" onClick="filtre('marka:874')" > <label for="markaid874"><span></span> Vsun (4)</label></li>
+			
+			<li id="marka6794" data-position="2195" class=""><input type="checkbox" id="markaid6794" name="marka6794" onClick="filtre('marka:6794')" > <label for="markaid6794"><span></span> Wiko (1)</label></li>
+			
+			<li id="marka3745" data-position="2196" class=""><input type="checkbox" id="markaid3745" name="marka3745" onClick="filtre('marka:3745')" > <label for="markaid3745"><span></span> Yandex (1)</label></li>
+			
+			<li id="marka121" data-position="2197" class=""><input type="checkbox" id="markaid121" name="marka121" onClick="filtre('marka:121')" > <label for="markaid121"><span></span> YotaPhone (1)</label></li>
+			
+			<li id="marka11" data-position="2198" class=""><input type="checkbox" id="markaid11" name="marka11" onClick="filtre('marka:11')" > <label for="markaid11"><span></span> ZTE (173)</label></li>
+	
+	</ul>
+	
+	<script type="text/javascript">
+		$(function() {
+		  $("#filtremarka li").sort(sort_li).appendTo('#filtremarka');
+		  function sort_li(a, b) {
+			return ($(b).data('position')) < ($(a).data('position')) ? 1 : -1;
+		  }
+		});
+	</script>
+		
+
+	
+
+
+	<h2>Fiyat Aralığı</h2>
+	<ul>
+			
+				
+	<div id="fiyat" class="deger"><input type="number" name="mindeger" id="fiyat_min" class="min" placeholder="1900 TL" value="" min="0"> - <input type="number" name="maxdeger" id="fiyat_max" class="max" placeholder="180000 TL" value="" min="0">
+		<input type="hidden" name="minall" class="minall" value="1900">
+		<input type="hidden" name="maxall" class="maxall" value="180000">
+				<ul class="degeroner hide">
+					<li onClick="filtre('fiyat:3000[e]5000')">3000 - 5000 TL</li>
+						<li onClick="filtre('fiyat:5000[e]7000')">5000 - 7000 TL</li>
+						<li onClick="filtre('fiyat:7000[e]9000')">7000 - 9000 TL</li>
+						<li onClick="filtre('fiyat:9000[e]12000')">9000 - 12000 TL</li>
+						<li onClick="filtre('fiyat:12000[e]15000')">12000 - 15000 TL</li>
+						<li onClick="filtre('fiyat:15000[e]20000')">15000 - 20000 TL</li>
+						<li onClick="filtre('fiyat:20000[e]30000')">20000 - 30000 TL</li>
+						<li onClick="filtre('fiyat:30000[e]40000')">30000 - 40000 TL</li>
+						<li onClick="filtre('fiyat:40000[e]50000')">40000 - 50000 TL</li>
+						<li onClick="filtre('fiyat:50000[e]60000')">50000 - 60000 TL</li>
+						<li onClick="filtre('fiyat:60000[e]800000')">60000 - 800000 TL</li>
+						<li onClick="filtre('fiyat:800000[e]100000')">800000 - 100000 TL</li>
+						<li onClick="filtre('fiyat:100000[e]200000')">100000 - 200000 TL</li>
+					</ul>
+			</div>
+			
+			
+	<script>
+	$(document).ready(function () {
+		var $range = $("#range_fiyat"),
+			$from = $("#fiyat_min"),
+			$to = $("#fiyat_max"),
+			range,
+			min = 1900,
+			max = 180000,
+						values = [0,2500,3000,3500,4000,4500,5000,5500,6000,6500,7000,7500,8000,8500,9000,9500,10000,11000,12000,13000,14000,15000,16000,17000,18000,19000,20000,21000,22000,23000,24000,25000,26000,27000,28000,29000,30000,32000,34000,36000,38000,40000,45000,50000,55000,60000,70000,80000,90000,100000,125000,150000,175000,200000],
+			from = jQuery.inArray(0, values),
+			to = jQuery.inArray(180000, values),
+			fromval = 0,
+			toval = 180000;
+			
+			console.log("test3");
+			
+			if(from==-1) {
+				values.push(fromval);
+				values.sort(function(a, b){return a-b});
+				from = jQuery.inArray(fromval, values);
+			}
+			if(to==-1) {
+				values.push(toval);
+				values.sort(function(a, b){return a-b});
+				to = jQuery.inArray(toval, values);
+			}
+					
+		var updateValues = function () {
+						$from.prop("value", values[from]);
+			$to.prop("value", values[to]);
+						
+		};
+		
+		$range.ionRangeSlider({
+			values: values,            min: min,
+            max: max,
+            from: from,   
+            to: to,
+            type: 'double',
+			skin: "round",
+            postfix: " TL",
+            prettify_enabled: true,
+			prettify_separator: ".",
+						onChange: function(obj) {
+				from = obj.from;
+				to = obj.to;
+				updateValues();
+			},
+			onFinish: function(obj){
+				disable: true;
+								var degerler = values[obj.from] + "[e]" + values[obj.to];
+								filtre('fiyat:'+degerler);
+			}
+        });
+	
+		range = $range.data("ionRangeSlider");
+
+		var updateRange = function () {
+			range.update({
+				from: from,
+				to: to
+			});
+		};
+		
+		$from.on("change", function () {
+						fromval = +$(this).prop("value");
+			from = jQuery.inArray(from, values);
+			if(from==-1) {
+				values.push(fromval);
+				values.sort(function(a, b){return a-b});
+				from = jQuery.inArray(fromval, values);
+				to = jQuery.inArray(toval, values);
+			}
+						updateValues();    
+			updateRange();
+		});
+
+		$to.on("change", function () {
+						toval = +$(this).prop("value");
+			to = jQuery.inArray(toval, values);
+			if(to==-1) {
+				values.push(toval);
+				values.sort(function(a, b){return a-b});
+				to = jQuery.inArray(toval, values);
+				from = jQuery.inArray(fromval, values);
+			}
+						updateValues();    
+			updateRange();
+		});
+	});
+	</script>
+	
+	<input type="text" id="range_fiyat" class="hide" />
+
+	</ul>
+
+
+	
+				
+	<h2 id="outletliste" class="close">Outlet/2.El Fiyat Aralığı</h2>
+	
+		
+	<div id="outletliste" class="hide">
+		
+		</div>
+	
+
+		
+			
+	<h2 id="ozellikliste1870" class="">Çıkış Yılı</h2>
+		
+	
+
+	
+		
+	<div id="ozellikliste1870" style="float:left;">
+		<input type="text" id="filter" class="ozellikliste1870" placeholder="özellik ara...">		<ul id="filtre1870" class="filtre1 ozellikliste1870 filter">
+	
+	
+		
+			<li class="li1870" data-position="2111"><input type="checkbox" id="degerid2653885" name="deger2653885" onClick="filtre('1870:2653885')" ><label for="degerid2653885"><span></span>2026 (240)</label></li>
+				
+			<li class="li1870" data-position="2112"><input type="checkbox" id="degerid2515093" name="deger2515093" onClick="filtre('1870:2515093')" ><label for="degerid2515093"><span></span>2025 (375)</label></li>
+				
+			<li class="li1870" data-position="2113"><input type="checkbox" id="degerid2386547" name="deger2386547" onClick="filtre('1870:2386547')" ><label for="degerid2386547"><span></span>2024 (396)</label></li>
+				
+			<li class="li1870" data-position="2114"><input type="checkbox" id="degerid2199415" name="deger2199415" onClick="filtre('1870:2199415')" ><label for="degerid2199415"><span></span>2023 (394)</label></li>
+				
+			<li class="li1870" data-position="2115"><input type="checkbox" id="degerid2067271" name="deger2067271" onClick="filtre('1870:2067271')" ><label for="degerid2067271"><span></span>2022 (387)</label></li>
+				
+			<li class="li1870" data-position="2116"><input type="checkbox" id="degerid1942467" name="deger1942467" onClick="filtre('1870:1942467')" ><label for="degerid1942467"><span></span>2021 (377)</label></li>
+				
+			<li class="li1870" data-position="2117"><input type="checkbox" id="degerid1511700" name="deger1511700" onClick="filtre('1870:1511700')" ><label for="degerid1511700"><span></span>2020 (422)</label></li>
+				
+			<li class="li1870" data-position="2118"><input type="checkbox" id="degerid448218" name="deger448218" onClick="filtre('1870:448218')" ><label for="degerid448218"><span></span>2019 (363)</label></li>
+				
+			<li class="li1870" data-position="2119"><input type="checkbox" id="degerid381449" name="deger381449" onClick="filtre('1870:381449')" ><label for="degerid381449"><span></span>2018 (412)</label></li>
+				
+			<li class="li1870" data-position="2120"><input type="checkbox" id="degerid223285" name="deger223285" onClick="filtre('1870:223285')" ><label for="degerid223285"><span></span>2017 (340)</label></li>
+				
+			<li class="li1870" data-position="2121"><input type="checkbox" id="degerid211007" name="deger211007" onClick="filtre('1870:211007')" ><label for="degerid211007"><span></span>2016 (359)</label></li>
+				
+			<li class="li1870" data-position="2122"><input type="checkbox" id="degerid211006" name="deger211006" onClick="filtre('1870:211006')" ><label for="degerid211006"><span></span>2015 (310)</label></li>
+				
+			<li class="li1870" data-position="2123"><input type="checkbox" id="degerid211000" name="deger211000" onClick="filtre('1870:211000')" ><label for="degerid211000"><span></span>2014 (223)</label></li>
+				
+			<li class="li1870" data-position="2124"><input type="checkbox" id="degerid211005" name="deger211005" onClick="filtre('1870:211005')" ><label for="degerid211005"><span></span>2013 (86)</label></li>
+				
+			<li class="li1870" data-position="2125"><input type="checkbox" id="degerid211004" name="deger211004" onClick="filtre('1870:211004')" ><label for="degerid211004"><span></span>2012 (42)</label></li>
+				
+			<li class="li1870" data-position="2126"><input type="checkbox" id="degerid211003" name="deger211003" onClick="filtre('1870:211003')" ><label for="degerid211003"><span></span>2011 (16)</label></li>
+				
+			<li class="li1870" data-position="2127"><input type="checkbox" id="degerid211002" name="deger211002" onClick="filtre('1870:211002')" ><label for="degerid211002"><span></span>2010 (6)</label></li>
+				
+			<li class="li1870" data-position="2128"><input type="checkbox" id="degerid211001" name="deger211001" onClick="filtre('1870:211001')" ><label for="degerid211001"><span></span>2009 (2)</label></li>
+				
+			<li class="li1870" data-position="2129"><input type="checkbox" id="degerid2425594" name="deger2425594" onClick="filtre('1870:2425594')" ><label for="degerid2425594"><span></span>Belirtilmemiş (7)</label></li>
+				
+			</ul>
+	
+	<script type="text/javascript">
+			$(function() {
+		  $("#filtre1870 li").sort(sort_li).appendTo('#filtre1870');
+		  function sort_li(a, b) {
+			return ($(b).data('position')) < ($(a).data('position')) ? 1 : -1;
+		  }
+		});
+		</script>
+	
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste14" class="">Bellek (RAM)</h2>
+		
+	
+
+	
+		
+	<div id="ozellikliste14" style="float:left;">
+				<ul id="filtre14" class="filtre2 ozellikliste14 ">
+	
+		
+		
+		<div id="14" class="deger"><input type="number" name="mindeger" id="14" class="min" placeholder="0 GB" value="" min="0"> - <input type="number" name="maxdeger" id="14" class="max" placeholder="24 GB" value="" min="0">
+
+		<input type="hidden" name="minall" class="minall" value="0">
+		<input type="hidden" name="maxall" class="maxall" value="24">
+				<ul class="degeroner hide">
+					<li onClick="filtre('14:2[e]24')">2 GB ve üzeri</li>
+						<li onClick="filtre('14:4[e]24')">4 GB ve üzeri</li>
+						<li onClick="filtre('14:6[e]24')">6 GB ve üzeri</li>
+						<li onClick="filtre('14:8[e]24')">8 GB ve üzeri</li>
+					</ul>
+				</div>
+		
+		<script>
+	$(document).ready(function () {
+		var $range = $("#range_14"),
+			$from = $("#14 .min"),
+			$to = $("#14 .max"),
+			range,
+			min = 0,
+			max = 24,
+						from = 0,
+			to =  24;
+					
+		var updateValues = function () {
+						$from.prop("value", from);
+			$to.prop("value", to);
+						
+		};
+		
+		$range.ionRangeSlider({
+			step: 1,            min: min,
+            max: max,			
+            from: from,   
+            to: to,
+            type: 'double',
+			skin: "round",
+            			postfix: " GB",
+			            prettify_enabled: true,
+			prettify_separator: ".",						onChange: function(obj) {
+				from = obj.from;
+				to = obj.to;
+				updateValues();
+			},			
+			onFinish: function(obj){
+				disable: true;
+								var degerler = obj.from + "[e]" + obj.to;
+								filtre('14:'+degerler);
+			}
+        });
+	
+		range = $range.data("ionRangeSlider");
+	
+		var updateRange = function () {
+			range.update({
+				from: from,
+				to: to
+			});
+		};
+
+		$from.on("change", function () {
+						from = +$(this).prop("value");
+						updateValues();    
+			updateRange();
+		});
+
+		$to.on("change", function () {
+						to = +$(this).prop("value");
+						updateValues();    
+			updateRange();
+		});
+	});
+	</script>
+	
+    <input type="text" id="range_14" value="" name="range_14" class="hide" />
+			
+		
+		</ul>
+	
+	<script type="text/javascript">
+		</script>
+	
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste21" class="">Dahili Depolama</h2>
+		
+	
+
+	
+		
+	<div id="ozellikliste21" style="float:left;">
+				<ul id="filtre21" class="filtre2 ozellikliste21 ">
+	
+		
+		
+		<div id="21" class="deger"><input type="number" name="mindeger" id="21" class="min" placeholder="0 GB" value="" min="0"> - <input type="number" name="maxdeger" id="21" class="max" placeholder="2048 GB" value="" min="0">
+
+		<input type="hidden" name="minall" class="minall" value="0">
+		<input type="hidden" name="maxall" class="maxall" value="2048">
+				<ul class="degeroner hide">
+				</ul>
+				</div>
+		
+		<script>
+	$(document).ready(function () {
+		var $range = $("#range_21"),
+			$from = $("#21 .min"),
+			$to = $("#21 .max"),
+			range,
+			min = 0,
+			max = 2048,
+						values = [1,2,4,8,16,32,64,128,256,512,1024,2048],
+			from = jQuery.inArray(0, values),
+			to = jQuery.inArray(2048, values),
+			fromval = 0,
+			toval = 2048;
+			
+			console.log("test1");
+			
+			if(from==-1) {
+				values.push(fromval);
+				values.sort(function(a, b){return a-b});
+				from = jQuery.inArray(fromval, values);
+				from = from+1;
+				to = to+1;
+			}
+			if(to==-1) {
+				values.push(toval);
+				values.sort(function(a, b){return a-b});
+				to = jQuery.inArray(toval, values);
+				from = from+1;
+				to = to+1;
+			}
+					
+		var updateValues = function () {
+						$from.prop("value", values[from]);
+			$to.prop("value", values[to]);		
+						
+		};
+		
+		$range.ionRangeSlider({
+			values: values,            min: min,
+            max: max,			
+            from: from,   
+            to: to,
+            type: 'double',
+			skin: "round",
+            			postfix: " GB",
+			            prettify_enabled: true,
+			prettify_separator: ".",						onChange: function(obj) {
+				from = obj.from;
+				to = obj.to;
+				updateValues();
+			},			
+			onFinish: function(obj){
+				disable: true;
+								var degerler = values[obj.from] + "[e]" + values[obj.to];
+								filtre('21:'+degerler);
+			}
+        });
+	
+		range = $range.data("ionRangeSlider");
+	
+		var updateRange = function () {
+			range.update({
+				from: from,
+				to: to
+			});
+		};
+
+		$from.on("change", function () {
+						fromval = +$(this).prop("value");
+			from = jQuery.inArray(from, values);
+			if(from==-1) {
+				values.push(fromval);
+				values.sort(function(a, b){return a-b});
+				from = jQuery.inArray(fromval, values);
+				to = jQuery.inArray(toval, values);
+			}
+						updateValues();    
+			updateRange();
+		});
+
+		$to.on("change", function () {
+						toval = +$(this).prop("value");
+			to = jQuery.inArray(toval, values);
+			if(to==-1) {
+				values.push(toval);
+				values.sort(function(a, b){return a-b});
+				to = jQuery.inArray(toval, values);
+				from = jQuery.inArray(fromval, values);
+			}
+						updateValues();    
+			updateRange();
+		});
+	});
+	</script>
+	
+    <input type="text" id="range_21" value="" name="range_21" class="hide" />
+			
+		
+		</ul>
+	
+	<script type="text/javascript">
+		</script>
+	
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste1" class="">Ekran Boyutu</h2>
+		
+	
+
+	
+		
+	<div id="ozellikliste1" style="float:left;">
+				<ul id="filtre1" class="filtre2 ozellikliste1 ">
+	
+		
+		
+		<div id="1" class="deger"><input type="number" name="mindeger" id="1" class="min" placeholder="2.3 İnç" value="" min="0"> - <input type="number" name="maxdeger" id="1" class="max" placeholder="8 İnç" value="" min="0">
+
+		<input type="hidden" name="minall" class="minall" value="2.3">
+		<input type="hidden" name="maxall" class="maxall" value="8">
+				<ul class="degeroner hide">
+					<li onClick="filtre('1:2[e]4')">2 - 4 İnç</li>
+						<li onClick="filtre('1:4[e]4.7')">4 - 4.7 İnç</li>
+						<li onClick="filtre('1:4.7[e]5.2')">4.7 - 5.2 İnç</li>
+						<li onClick="filtre('1:5.2[e]5.5')">5.2 - 5.5 İnç</li>
+						<li onClick="filtre('1:5.5[e]6')">5.5 - 6 İnç</li>
+						<li onClick="filtre('1:6[e]8')">6 İnç ve üzeri</li>
+					</ul>
+				</div>
+		
+		<script>
+	$(document).ready(function () {
+		var $range = $("#range_1"),
+			$from = $("#1 .min"),
+			$to = $("#1 .max"),
+			range,
+			min = 2.3,
+			max = 8,
+						from = 2.3,
+			to =  8;
+					
+		var updateValues = function () {
+						$from.prop("value", from);
+			$to.prop("value", to);
+						
+		};
+		
+		$range.ionRangeSlider({
+			step: 0.1,            min: min,
+            max: max,			
+            from: from,   
+            to: to,
+            type: 'double',
+			skin: "round",
+            			postfix: " İnç",
+			            prettify_enabled: true,
+			prettify_separator: ".",						onChange: function(obj) {
+				from = obj.from;
+				to = obj.to;
+				updateValues();
+			},			
+			onFinish: function(obj){
+				disable: true;
+								var degerler = obj.from + "[e]" + obj.to;
+								filtre('1:'+degerler);
+			}
+        });
+	
+		range = $range.data("ionRangeSlider");
+	
+		var updateRange = function () {
+			range.update({
+				from: from,
+				to: to
+			});
+		};
+
+		$from.on("change", function () {
+						from = +$(this).prop("value");
+						updateValues();    
+			updateRange();
+		});
+
+		$to.on("change", function () {
+						to = +$(this).prop("value");
+						updateValues();    
+			updateRange();
+		});
+	});
+	</script>
+	
+    <input type="text" id="range_1" value="" name="range_1" class="hide" />
+			
+		
+		</ul>
+	
+	<script type="text/javascript">
+		</script>
+	
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste7" class="">Batarya Kapasitesi (Tipik)</h2>
+		
+	
+
+	
+		
+	<div id="ozellikliste7" style="float:left;">
+				<ul id="filtre7" class="filtre2 ozellikliste7 ">
+	
+		
+		
+		<div id="7" class="deger"><input type="number" name="mindeger" id="7" class="min" placeholder="800 mAh" value="" min="0"> - <input type="number" name="maxdeger" id="7" class="max" placeholder="13000 mAh" value="" min="0">
+
+		<input type="hidden" name="minall" class="minall" value="800">
+		<input type="hidden" name="maxall" class="maxall" value="13000">
+				<ul class="degeroner hide">
+					<li onClick="filtre('7:1000[e]13000')">1000 mAh ve üzeri</li>
+						<li onClick="filtre('7:2000[e]13000')">2000 mAh ve üzeri</li>
+						<li onClick="filtre('7:3000[e]13000')">3000 mAh ve üzeri</li>
+						<li onClick="filtre('7:4000[e]13000')">4000 mAh ve üzeri</li>
+					</ul>
+				</div>
+		
+		<script>
+	$(document).ready(function () {
+		var $range = $("#range_7"),
+			$from = $("#7 .min"),
+			$to = $("#7 .max"),
+			range,
+			min = 800,
+			max = 13000,
+						from = 800,
+			to =  13000;
+					
+		var updateValues = function () {
+						$from.prop("value", from);
+			$to.prop("value", to);
+						
+		};
+		
+		$range.ionRangeSlider({
+			step: 100,            min: min,
+            max: max,			
+            from: from,   
+            to: to,
+            type: 'double',
+			skin: "round",
+            			postfix: " mAh",
+			            prettify_enabled: true,
+			prettify_separator: ".",						onChange: function(obj) {
+				from = obj.from;
+				to = obj.to;
+				updateValues();
+			},			
+			onFinish: function(obj){
+				disable: true;
+								var degerler = obj.from + "[e]" + obj.to;
+								filtre('7:'+degerler);
+			}
+        });
+	
+		range = $range.data("ionRangeSlider");
+	
+		var updateRange = function () {
+			range.update({
+				from: from,
+				to: to
+			});
+		};
+
+		$from.on("change", function () {
+						from = +$(this).prop("value");
+						updateValues();    
+			updateRange();
+		});
+
+		$to.on("change", function () {
+						to = +$(this).prop("value");
+						updateValues();    
+			updateRange();
+		});
+	});
+	</script>
+	
+    <input type="text" id="range_7" value="" name="range_7" class="hide" />
+			
+		
+		</ul>
+	
+	<script type="text/javascript">
+		</script>
+	
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste5711" class="">5G</h2>
+		
+	
+
+	
+		
+	<div id="ozellikliste5711" style="float:left;">
+				<ul id="filtre5711" class="filtre1 ozellikliste5711 ">
+	
+	
+		
+			<li class="li5711" data-position="2111"><input type="checkbox" id="degerid464004" name="deger464004" onClick="filtre('5711:464004')" ><label for="degerid464004"><span></span>Var (1498)</label></li>
+				
+			<li class="li5711" data-position="2112"><input type="checkbox" id="degerid464003" name="deger464003" onClick="filtre('5711:464003')" ><label for="degerid464003"><span></span>Yok (3216)</label></li>
+				
+			<li class="li5711" data-position="2113"><input type="checkbox" id="degerid1118558" name="deger1118558" onClick="filtre('5711:1118558')" ><label for="degerid1118558"><span></span>Belirtilmemiş (43)</label></li>
+				
+			</ul>
+	
+	<script type="text/javascript">
+			$(function() {
+		  $("#filtre5711 li").sort(sort_li).appendTo('#filtre5711');
+		  function sort_li(a, b) {
+			return ($(b).data('position')) < ($(a).data('position')) ? 1 : -1;
+		  }
+		});
+		</script>
+	
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste15" class="close">Yonga Seti (Chipset)</h2>
+		
+	<div id="ozellikliste15" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste4" class="close">Ekran Teknolojisi</h2>
+		
+	<div id="ozellikliste4" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste6737" class="close">Ekran Yenileme Hızı</h2>
+		
+	<div id="ozellikliste6737" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste6104" class="">Hızlı Şarj</h2>
+		
+	
+
+	
+		
+	<div id="ozellikliste6104" style="float:left;">
+				<ul id="filtre6104" class="filtre1 ozellikliste6104 ">
+	
+	
+		
+			<li class="li6104" data-position="2111"><input type="checkbox" id="degerid1133261" name="deger1133261" onClick="filtre('6104:1133261')" ><label for="degerid1133261"><span></span>Var (3021)</label></li>
+				
+			<li class="li6104" data-position="2112"><input type="checkbox" id="degerid1133263" name="deger1133263" onClick="filtre('6104:1133263')" ><label for="degerid1133263"><span></span>Yok (1665)</label></li>
+				
+			<li class="li6104" data-position="2113"><input type="checkbox" id="degerid1133271" name="deger1133271" onClick="filtre('6104:1133271')" ><label for="degerid1133271"><span></span>Belirtilmemiş (71)</label></li>
+				
+			</ul>
+	
+	<script type="text/javascript">
+			$(function() {
+		  $("#filtre6104 li").sort(sort_li).appendTo('#filtre6104');
+		  function sort_li(a, b) {
+			return ($(b).data('position')) < ($(a).data('position')) ? 1 : -1;
+		  }
+		});
+		</script>
+	
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste6641" class="close">Kablosuz Şarj</h2>
+		
+	<div id="ozellikliste6641" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste19" class="">Kamera Çözünürlüğü</h2>
+		
+	
+
+	
+		
+	<div id="ozellikliste19" style="float:left;">
+				<ul id="filtre19" class="filtre2 ozellikliste19 ">
+	
+		
+		
+		<div id="19" class="deger"><input type="number" name="mindeger" id="19" class="min" placeholder="2 MP" value="" min="0"> - <input type="number" name="maxdeger" id="19" class="max" placeholder="200 MP" value="" min="0">
+
+		<input type="hidden" name="minall" class="minall" value="2">
+		<input type="hidden" name="maxall" class="maxall" value="200">
+				</div>
+		
+		<script>
+	$(document).ready(function () {
+		var $range = $("#range_19"),
+			$from = $("#19 .min"),
+			$to = $("#19 .max"),
+			range,
+			min = 2,
+			max = 200,
+						from = 2,
+			to =  200;
+					
+		var updateValues = function () {
+						$from.prop("value", from);
+			$to.prop("value", to);
+						
+		};
+		
+		$range.ionRangeSlider({
+			step: 1,            min: min,
+            max: max,			
+            from: from,   
+            to: to,
+            type: 'double',
+			skin: "round",
+            			postfix: " MP",
+			            prettify_enabled: true,
+			prettify_separator: ".",						onChange: function(obj) {
+				from = obj.from;
+				to = obj.to;
+				updateValues();
+			},			
+			onFinish: function(obj){
+				disable: true;
+								var degerler = obj.from + "[e]" + obj.to;
+								filtre('19:'+degerler);
+			}
+        });
+	
+		range = $range.data("ionRangeSlider");
+	
+		var updateRange = function () {
+			range.update({
+				from: from,
+				to: to
+			});
+		};
+
+		$from.on("change", function () {
+						from = +$(this).prop("value");
+						updateValues();    
+			updateRange();
+		});
+
+		$to.on("change", function () {
+						to = +$(this).prop("value");
+						updateValues();    
+			updateRange();
+		});
+	});
+	</script>
+	
+    <input type="text" id="range_19" value="" name="range_19" class="hide" />
+			
+		
+		</ul>
+	
+	<script type="text/javascript">
+		</script>
+	
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste18" class="">Ön Kamera Çözünürlüğü</h2>
+		
+	
+
+	
+		
+	<div id="ozellikliste18" style="float:left;">
+				<ul id="filtre18" class="filtre2 ozellikliste18 ">
+	
+		
+		
+		<div id="18" class="deger"><input type="number" name="mindeger" id="18" class="min" placeholder="0 MP" value="" min="0"> - <input type="number" name="maxdeger" id="18" class="max" placeholder="64 MP" value="" min="0">
+
+		<input type="hidden" name="minall" class="minall" value="0">
+		<input type="hidden" name="maxall" class="maxall" value="64">
+				</div>
+		
+		<script>
+	$(document).ready(function () {
+		var $range = $("#range_18"),
+			$from = $("#18 .min"),
+			$to = $("#18 .max"),
+			range,
+			min = 0,
+			max = 64,
+						from = 0,
+			to =  64;
+					
+		var updateValues = function () {
+						$from.prop("value", from);
+			$to.prop("value", to);
+						
+		};
+		
+		$range.ionRangeSlider({
+			step: 1,            min: min,
+            max: max,			
+            from: from,   
+            to: to,
+            type: 'double',
+			skin: "round",
+            			postfix: " MP",
+			            prettify_enabled: true,
+			prettify_separator: ".",						onChange: function(obj) {
+				from = obj.from;
+				to = obj.to;
+				updateValues();
+			},			
+			onFinish: function(obj){
+				disable: true;
+								var degerler = obj.from + "[e]" + obj.to;
+								filtre('18:'+degerler);
+			}
+        });
+	
+		range = $range.data("ionRangeSlider");
+	
+		var updateRange = function () {
+			range.update({
+				from: from,
+				to: to
+			});
+		};
+
+		$from.on("change", function () {
+						from = +$(this).prop("value");
+						updateValues();    
+			updateRange();
+		});
+
+		$to.on("change", function () {
+						to = +$(this).prop("value");
+						updateValues();    
+			updateRange();
+		});
+	});
+	</script>
+	
+    <input type="text" id="range_18" value="" name="range_18" class="hide" />
+			
+		
+		</ul>
+	
+	<script type="text/javascript">
+		</script>
+	
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste2592" class="">Optik Görüntü Sabitleyici (OIS)</h2>
+		
+	
+
+	
+		
+	<div id="ozellikliste2592" style="float:left;">
+				<ul id="filtre2592" class="filtre1 ozellikliste2592 ">
+	
+	
+		
+			<li class="li2592" data-position="2111"><input type="checkbox" id="degerid299193" name="deger299193" onClick="filtre('2592:299193')" ><label for="degerid299193"><span></span>Var (1370)</label></li>
+				
+			<li class="li2592" data-position="2112"><input type="checkbox" id="degerid299195" name="deger299195" onClick="filtre('2592:299195')" ><label for="degerid299195"><span></span>Yok (3204)</label></li>
+				
+			<li class="li2592" data-position="2113"><input type="checkbox" id="degerid302434" name="deger302434" onClick="filtre('2592:302434')" ><label for="degerid302434"><span></span>Belirtilmemiş (183)</label></li>
+				
+			</ul>
+	
+	<script type="text/javascript">
+			$(function() {
+		  $("#filtre2592 li").sort(sort_li).appendTo('#filtre2592');
+		  function sort_li(a, b) {
+			return ($(b).data('position')) < ($(a).data('position')) ? 1 : -1;
+		  }
+		});
+		</script>
+	
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste886" class="">Ekran / Gövde Oranı</h2>
+		
+	
+
+	
+		
+	<div id="ozellikliste886" style="float:left;">
+				<ul id="filtre886" class="filtre2 ozellikliste886 ">
+	
+		
+		
+		<div id="886" class="deger"><input type="number" name="mindeger" id="886" class="min" placeholder="27 %" value="" min="0"> - <input type="number" name="maxdeger" id="886" class="max" placeholder="181 %" value="" min="0">
+
+		<input type="hidden" name="minall" class="minall" value="27">
+		<input type="hidden" name="maxall" class="maxall" value="181">
+				</div>
+		
+		<script>
+	$(document).ready(function () {
+		var $range = $("#range_886"),
+			$from = $("#886 .min"),
+			$to = $("#886 .max"),
+			range,
+			min = 27,
+			max = 181,
+						from = 27,
+			to =  181;
+					
+		var updateValues = function () {
+						$from.prop("value", from);
+			$to.prop("value", to);
+						
+		};
+		
+		$range.ionRangeSlider({
+			step: 1,            min: min,
+            max: max,			
+            from: from,   
+            to: to,
+            type: 'double',
+			skin: "round",
+            			postfix: " %",
+			            prettify_enabled: true,
+			prettify_separator: ".",						onChange: function(obj) {
+				from = obj.from;
+				to = obj.to;
+				updateValues();
+			},			
+			onFinish: function(obj){
+				disable: true;
+								var degerler = obj.from + "[e]" + obj.to;
+								filtre('886:'+degerler);
+			}
+        });
+	
+		range = $range.data("ionRangeSlider");
+	
+		var updateRange = function () {
+			range.update({
+				from: from,
+				to: to
+			});
+		};
+
+		$from.on("change", function () {
+						from = +$(this).prop("value");
+						updateValues();    
+			updateRange();
+		});
+
+		$to.on("change", function () {
+						to = +$(this).prop("value");
+						updateValues();    
+			updateRange();
+		});
+	});
+	</script>
+	
+    <input type="text" id="range_886" value="" name="range_886" class="hide" />
+			
+		
+		</ul>
+	
+	<script type="text/javascript">
+		</script>
+	
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste329" class="">Suya Dayanıklılık</h2>
+		
+	
+
+	
+		
+	<div id="ozellikliste329" style="float:left;">
+				<ul id="filtre329" class="filtre1 ozellikliste329 ">
+	
+	
+		
+			<li class="li329" data-position="2111"><input type="checkbox" id="degerid7477" name="deger7477" onClick="filtre('329:7477')" ><label for="degerid7477"><span></span>Var (1726)</label></li>
+				
+			<li class="li329" data-position="2112"><input type="checkbox" id="degerid7523" name="deger7523" onClick="filtre('329:7523')" ><label for="degerid7523"><span></span>Yok (2883)</label></li>
+				
+			<li class="li329" data-position="2113"><input type="checkbox" id="degerid22258" name="deger22258" onClick="filtre('329:22258')" ><label for="degerid22258"><span></span>Belirtilmemiş (148)</label></li>
+				
+			</ul>
+	
+	<script type="text/javascript">
+			$(function() {
+		  $("#filtre329 li").sort(sort_li).appendTo('#filtre329');
+		  function sort_li(a, b) {
+			return ($(b).data('position')) < ($(a).data('position')) ? 1 : -1;
+		  }
+		});
+		</script>
+	
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste44" class="">SIM</h2>
+		
+	
+
+	
+		
+	<div id="ozellikliste44" style="float:left;">
+				<ul id="filtre44" class="filtre1 ozellikliste44 filter">
+	
+	
+		
+			<li class="li44" data-position="2111"><input type="checkbox" id="degerid439842" name="deger439842" onClick="filtre('44:439842')" ><label for="degerid439842"><span></span>eSIM (406)</label></li>
+				
+			<li class="li44" data-position="2112"><input type="checkbox" id="degerid108" name="deger108" onClick="filtre('44:108')" ><label for="degerid108"><span></span>Mikro-SIM (3FF) (589)</label></li>
+				
+			<li class="li44" data-position="2113"><input type="checkbox" id="degerid107" name="deger107" onClick="filtre('44:107')" ><label for="degerid107"><span></span>Mini-SIM (2FF) (146)</label></li>
+				
+			<li class="li44" data-position="2114"><input type="checkbox" id="degerid374" name="deger374" onClick="filtre('44:374')" ><label for="degerid374"><span></span>Nano-SIM (4FF) (3991)</label></li>
+				
+			<li class="li44" data-position="2115"><input type="checkbox" id="degerid22331" name="deger22331" onClick="filtre('44:22331')" ><label for="degerid22331"><span></span>Belirtilmemiş (127)</label></li>
+				
+			</ul>
+	
+	<script type="text/javascript">
+			$(function() {
+		  $("#filtre44 li").sort(sort_li).appendTo('#filtre44');
+		  function sort_li(a, b) {
+			return ($(b).data('position')) < ($(a).data('position')) ? 1 : -1;
+		  }
+		});
+		</script>
+	
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste61" class="">NFC</h2>
+		
+	
+
+	
+		
+	<div id="ozellikliste61" style="float:left;">
+				<ul id="filtre61" class="filtre1 ozellikliste61 ">
+	
+	
+		
+			<li class="li61" data-position="2111"><input type="checkbox" id="degerid272" name="deger272" onClick="filtre('61:272')" ><label for="degerid272"><span></span>Var (2622)</label></li>
+				
+			<li class="li61" data-position="2112"><input type="checkbox" id="degerid6448" name="deger6448" onClick="filtre('61:6448')" ><label for="degerid6448"><span></span>Yok (1564)</label></li>
+				
+			<li class="li61" data-position="2113"><input type="checkbox" id="degerid1778408" name="deger1778408" onClick="filtre('61:1778408')" ><label for="degerid1778408"><span></span>Opsiyonel (2)</label></li>
+				
+			<li class="li61" data-position="2114"><input type="checkbox" id="degerid22247" name="deger22247" onClick="filtre('61:22247')" ><label for="degerid22247"><span></span>Belirtilmemiş (567)</label></li>
+				
+			</ul>
+	
+	<script type="text/javascript">
+			$(function() {
+		  $("#filtre61 li").sort(sort_li).appendTo('#filtre61');
+		  function sort_li(a, b) {
+			return ($(b).data('position')) < ($(a).data('position')) ? 1 : -1;
+		  }
+		});
+		</script>
+	
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste104" class="close">Hat Sayısı</h2>
+		
+	<div id="ozellikliste104" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste92" class="">SAR Değeri 10g (Baş)</h2>
+		
+	
+
+	
+		
+	<div id="ozellikliste92" style="float:left;">
+				<ul id="filtre92" class="filtre2 ozellikliste92 ">
+	
+		
+		
+		<div id="92" class="deger"><input type="number" name="mindeger" id="92" class="min" placeholder="0.1 W/kg" value="" min="0"> - <input type="number" name="maxdeger" id="92" class="max" placeholder="2 W/kg" value="" min="0">
+
+		<input type="hidden" name="minall" class="minall" value="0.1">
+		<input type="hidden" name="maxall" class="maxall" value="2">
+				<ul class="degeroner hide">
+					<li onClick="filtre('92:0.1[e]1.6')">1.6 W/kg ve altı</li>
+						<li onClick="filtre('92:0.1[e]1')">1 W/kg ve altı</li>
+						<li onClick="filtre('92:0.1[e]0.5')">0.5 W/kg ve altı</li>
+					</ul>
+				</div>
+		
+		<script>
+	$(document).ready(function () {
+		var $range = $("#range_92"),
+			$from = $("#92 .min"),
+			$to = $("#92 .max"),
+			range,
+			min = 0.1,
+			max = 2,
+						from = 0.1,
+			to =  2;
+					
+		var updateValues = function () {
+						$from.prop("value", from);
+			$to.prop("value", to);
+						
+		};
+		
+		$range.ionRangeSlider({
+			step: 0.1,            min: min,
+            max: max,			
+            from: from,   
+            to: to,
+            type: 'double',
+			skin: "round",
+            			postfix: " W/kg",
+			            prettify_enabled: true,
+			prettify_separator: ".",						onChange: function(obj) {
+				from = obj.from;
+				to = obj.to;
+				updateValues();
+			},			
+			onFinish: function(obj){
+				disable: true;
+								var degerler = obj.from + "[e]" + obj.to;
+								filtre('92:'+degerler);
+			}
+        });
+	
+		range = $range.data("ionRangeSlider");
+	
+		var updateRange = function () {
+			range.update({
+				from: from,
+				to: to
+			});
+		};
+
+		$from.on("change", function () {
+						from = +$(this).prop("value");
+						updateValues();    
+			updateRange();
+		});
+
+		$to.on("change", function () {
+						to = +$(this).prop("value");
+						updateValues();    
+			updateRange();
+		});
+	});
+	</script>
+	
+    <input type="text" id="range_92" value="" name="range_92" class="hide" />
+			
+		
+		</ul>
+	
+	<script type="text/javascript">
+		</script>
+	
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste91" class="">SAR Değeri 10g (Vücut)</h2>
+		
+	
+
+	
+		
+	<div id="ozellikliste91" style="float:left;">
+				<ul id="filtre91" class="filtre2 ozellikliste91 ">
+	
+		
+		
+		<div id="91" class="deger"><input type="number" name="mindeger" id="91" class="min" placeholder="0.1 W/kg" value="" min="0"> - <input type="number" name="maxdeger" id="91" class="max" placeholder="2 W/kg" value="" min="0">
+
+		<input type="hidden" name="minall" class="minall" value="0.1">
+		<input type="hidden" name="maxall" class="maxall" value="2">
+				</div>
+		
+		<script>
+	$(document).ready(function () {
+		var $range = $("#range_91"),
+			$from = $("#91 .min"),
+			$to = $("#91 .max"),
+			range,
+			min = 0.1,
+			max = 2,
+						from = 0.1,
+			to =  2;
+					
+		var updateValues = function () {
+						$from.prop("value", from);
+			$to.prop("value", to);
+						
+		};
+		
+		$range.ionRangeSlider({
+			step: 0.1,            min: min,
+            max: max,			
+            from: from,   
+            to: to,
+            type: 'double',
+			skin: "round",
+            			postfix: " W/kg",
+			            prettify_enabled: true,
+			prettify_separator: ".",						onChange: function(obj) {
+				from = obj.from;
+				to = obj.to;
+				updateValues();
+			},			
+			onFinish: function(obj){
+				disable: true;
+								var degerler = obj.from + "[e]" + obj.to;
+								filtre('91:'+degerler);
+			}
+        });
+	
+		range = $range.data("ionRangeSlider");
+	
+		var updateRange = function () {
+			range.update({
+				from: from,
+				to: to
+			});
+		};
+
+		$from.on("change", function () {
+						from = +$(this).prop("value");
+						updateValues();    
+			updateRange();
+		});
+
+		$to.on("change", function () {
+						to = +$(this).prop("value");
+						updateValues();    
+			updateRange();
+		});
+	});
+	</script>
+	
+    <input type="text" id="range_91" value="" name="range_91" class="hide" />
+			
+		
+		</ul>
+	
+	<script type="text/javascript">
+		</script>
+	
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste1511" class="">Parmak izi Okuyucu</h2>
+		
+	
+
+	
+		
+	<div id="ozellikliste1511" style="float:left;">
+				<ul id="filtre1511" class="filtre1 ozellikliste1511 ">
+	
+	
+		
+			<li class="li1511" data-position="2111"><input type="checkbox" id="degerid119225" name="deger119225" onClick="filtre('1511:119225')" ><label for="degerid119225"><span></span>Var (3637)</label></li>
+				
+			<li class="li1511" data-position="2112"><input type="checkbox" id="degerid119226" name="deger119226" onClick="filtre('1511:119226')" ><label for="degerid119226"><span></span>Yok (1087)</label></li>
+				
+			<li class="li1511" data-position="2113"><input type="checkbox" id="degerid210687" name="deger210687" onClick="filtre('1511:210687')" ><label for="degerid210687"><span></span>Belirtilmemiş (33)</label></li>
+				
+			</ul>
+	
+	<script type="text/javascript">
+			$(function() {
+		  $("#filtre1511 li").sort(sort_li).appendTo('#filtre1511');
+		  function sort_li(a, b) {
+			return ($(b).data('position')) < ($(a).data('position')) ? 1 : -1;
+		  }
+		});
+		</script>
+	
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste26" class="">Boy</h2>
+		
+	
+
+	
+		
+	<div id="ozellikliste26" style="float:left;">
+				<ul id="filtre26" class="filtre2 ozellikliste26 ">
+	
+		
+		
+		<div id="26" class="deger"><input type="number" name="mindeger" id="26" class="min" placeholder="55 mm" value="" min="0"> - <input type="number" name="maxdeger" id="26" class="max" placeholder="189 mm" value="" min="0">
+
+		<input type="hidden" name="minall" class="minall" value="55">
+		<input type="hidden" name="maxall" class="maxall" value="189">
+				</div>
+		
+		<script>
+	$(document).ready(function () {
+		var $range = $("#range_26"),
+			$from = $("#26 .min"),
+			$to = $("#26 .max"),
+			range,
+			min = 55,
+			max = 189,
+						from = 55,
+			to =  189;
+					
+		var updateValues = function () {
+						$from.prop("value", from);
+			$to.prop("value", to);
+						
+		};
+		
+		$range.ionRangeSlider({
+			step: 1,            min: min,
+            max: max,			
+            from: from,   
+            to: to,
+            type: 'double',
+			skin: "round",
+            			postfix: " mm",
+			            prettify_enabled: true,
+			prettify_separator: ".",						onChange: function(obj) {
+				from = obj.from;
+				to = obj.to;
+				updateValues();
+			},			
+			onFinish: function(obj){
+				disable: true;
+								var degerler = obj.from + "[e]" + obj.to;
+								filtre('26:'+degerler);
+			}
+        });
+	
+		range = $range.data("ionRangeSlider");
+	
+		var updateRange = function () {
+			range.update({
+				from: from,
+				to: to
+			});
+		};
+
+		$from.on("change", function () {
+						from = +$(this).prop("value");
+						updateValues();    
+			updateRange();
+		});
+
+		$to.on("change", function () {
+						to = +$(this).prop("value");
+						updateValues();    
+			updateRange();
+		});
+	});
+	</script>
+	
+    <input type="text" id="range_26" value="" name="range_26" class="hide" />
+			
+		
+		</ul>
+	
+	<script type="text/javascript">
+		</script>
+	
+	
+		</div>
+
+	
+		
+
+	
+	<h2 id="garantiliste">Garanti</h2>
+	<ul id="filtregaranti" class="filtre1">
+		
+	<li class="garanti1"><input type="checkbox" id="garanti1" name="garanti1" onClick="filtre('garanti:1')" ><label for="garanti1"><span></span>Distribütör Garantili</label></li>
+	</ul>
+
+
+		
+			
+	<h2 id="ozellikliste80" class="close">Renk Seçenekleri</h2>
+		
+	<div id="ozellikliste80" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste25" class="close">İşletim Sistemi Versiyonu</h2>
+		
+	<div id="ozellikliste25" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste12" class="close">CPU Çekirdeği</h2>
+		
+	<div id="ozellikliste12" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste3" class="close">Ekran Çözünürlüğü</h2>
+		
+	<div id="ozellikliste3" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste1737" class="close">4.5G Desteği</h2>
+		
+	<div id="ozellikliste1737" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste5931" class="close">Ekran Çözünürlüğü Standardı</h2>
+		
+	<div id="ozellikliste5931" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste81" class="close">Şarj</h2>
+		
+	<div id="ozellikliste81" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste6593" class="close">Hızlı Şarj Gücü (Maks.)</h2>
+		
+	<div id="ozellikliste6593" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste1557" class="close">Hafıza Kartı Desteği</h2>
+		
+	<div id="ozellikliste1557" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste114" class="close">Suya Dayanıklılık Seviyesi</h2>
+		
+	<div id="ozellikliste114" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste73" class="close">Diyafram Açıklığı</h2>
+		
+	<div id="ozellikliste73" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste27" class="close">Ön Kamera Video Çözünürlüğü</h2>
+		
+	<div id="ozellikliste27" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste337" class="close">Ön Kamera Diyafram Açıklığı</h2>
+		
+	<div id="ozellikliste337" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste70" class="close">Video FPS Değeri</h2>
+		
+	<div id="ozellikliste70" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste74" class="close">Kamera Sensör Boyutu</h2>
+		
+	<div id="ozellikliste74" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste8" class="close">En</h2>
+		
+	<div id="ozellikliste8" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste10" class="close">Kalınlık</h2>
+		
+	<div id="ozellikliste10" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste9" class="close">Ağırlık</h2>
+		
+	<div id="ozellikliste9" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste880" class="close">Batarya Özellikleri</h2>
+		
+	<div id="ozellikliste880" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste1768" class="close">Dahili Depolama Biçimi</h2>
+		
+	<div id="ozellikliste1768" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste111" class="close">Bildirim Işığı (LED)</h2>
+		
+	<div id="ozellikliste111" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste76" class="close">Radyo</h2>
+		
+	<div id="ozellikliste76" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste48" class="close">Bluetooth Versiyonu</h2>
+		
+	<div id="ozellikliste48" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste62" class="close">Kızılötesi</h2>
+		
+	<div id="ozellikliste62" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste2" class="close">Piksel Yoğunluğu</h2>
+		
+	<div id="ozellikliste2" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste3544" class="close">İşlemci (SOC) Markası</h2>
+		
+	<div id="ozellikliste3544" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste2033" class="close">CPU Üretim Teknolojisi</h2>
+		
+	<div id="ozellikliste2033" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste11" class="close">CPU Frekansı</h2>
+		
+	<div id="ozellikliste11" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste330" class="close">Toza Dayanıklılık</h2>
+		
+	<div id="ozellikliste330" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste10504" class="close">AnTuTu Puanı (v11)</h2>
+		
+	<div id="ozellikliste10504" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste9550" class="close">AnTuTu Puanı (v10)</h2>
+		
+	<div id="ozellikliste9550" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste7541" class="close">AnTuTu Puanı (v9)</h2>
+		
+	<div id="ozellikliste7541" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste6064" class="close">AnTuTu Puanı (v8)</h2>
+		
+	<div id="ozellikliste6064" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste4591" class="close">AnTuTu Puanı (v7)</h2>
+		
+	<div id="ozellikliste4591" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste1672" class="close">AnTuTu Puanı (v6)</h2>
+		
+	<div id="ozellikliste1672" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste24" class="close">İşletim Sistemi</h2>
+		
+	<div id="ozellikliste24" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste35" class="close">Kullanıcı Arayüzü</h2>
+		
+	<div id="ozellikliste35" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste5" class="close">Ekran Özellikleri</h2>
+		
+	<div id="ozellikliste5" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste47" class="close">Ekran Dayanıklılığı</h2>
+		
+	<div id="ozellikliste47" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste6269" class="close">Ekran Oranı (Aspect Ratio)</h2>
+		
+	<div id="ozellikliste6269" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste6255" class="close">Ekran Alanı</h2>
+		
+	<div id="ozellikliste6255" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste17" class="close">Grafik İşlemcisi (GPU)</h2>
+		
+	<div id="ozellikliste17" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste1321" class="close">Gövde Malzemesi (Çerçeve)</h2>
+		
+	<div id="ozellikliste1321" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste1320" class="close">Gövde Malzemesi (Kapak)</h2>
+		
+	<div id="ozellikliste1320" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste318" class="close">Hoparlör Özellikleri</h2>
+		
+	<div id="ozellikliste318" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste75" class="close">Sensörler</h2>
+		
+	<div id="ozellikliste75" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste36" class="close">Wi-Fi Kanalları</h2>
+		
+	<div id="ozellikliste36" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste65" class="close">USB Bağlantı Tipi</h2>
+		
+	<div id="ozellikliste65" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste64" class="close">USB Versiyonu</h2>
+		
+	<div id="ozellikliste64" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste324" class="close">Ses Çıkışı</h2>
+		
+	<div id="ozellikliste324" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste102" class="close">Değişir Batarya</h2>
+		
+	<div id="ozellikliste102" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste71" class="close">Video Kayıt Çözünürlüğü</h2>
+		
+	<div id="ozellikliste71" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste876" class="close">İkinci Arka Kamera</h2>
+		
+	<div id="ozellikliste876" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste79" class="close">Navigasyon Özellikleri</h2>
+		
+	<div id="ozellikliste79" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste10426" class="close">Şarj Sonrası Pil Süresi</h2>
+		
+	<div id="ozellikliste10426" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste10427" class="close">Şarj Döngü Sayısı (AB)</h2>
+		
+	<div id="ozellikliste10427" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+			
+	<h2 id="ozellikliste10428" class="close">Düşme Direnci Sınıfı</h2>
+		
+	<div id="ozellikliste10428" class="hide">
+	
+		</div>
+
+	
+		
+
+		
+				
+	<h2 id="siteliste" class="close">Siteler</h2>
+	
+		
+	<div id="siteliste" class="hide">
+		
+		</div>
+
+
+	<script>
+		$(document).on("keyup", "#filtrele input[type='text']", function(e) {
+			var className = $(this).attr('class');
+			var regEx = new RegExp($.map($(this).val().trim().split(' '), function(v) {
+				v = v.replace("i", "[iİ]");
+				return '(?=.*?' + v + ')';
+			}).join(''), 'i');
+			$('.' + className + ' li').hide().filter(function() {
+				return regEx.exec($(this).text());
+			}).show();
+		});
+	</script>
+
+
+<script type="text/javascript">
+	$("#filtrele h2").click(function() {
+		var durum = $(this).attr('class');
+		var id = $(this).attr('id');
+		if(id) {
+		ozellik_id = id.replace("ozellikliste","");
+		if(durum=="close" || durum=="open") {
+		if(ozellik_id=='siteliste') {
+		$(this).next("div").load('https://www.epey.com/kat/inc_filtresite/', {kategori_id:1, ozellik_id:ozellik_id, durum:durum, marka_id:'', fiyat:':'});
+		} else if(ozellik_id=='outletliste') {
+		$(this).next("div").load('https://www.epey.com/kat/inc_filtreoutlet/', {kategori_id:1, ozellik_id:ozellik_id, durum:durum, marka_id:'', fiyat:':'});
+		} else {
+		$(this).next("div").load('https://www.epey.com/kat/inc_filtrele/', {kategori_id:1, ozellik_id:ozellik_id, durum:durum, marka_id:'', fiyat:':'});
+		}
+		}
+		if(durum=="close") {
+			$(this).removeClass('close');
+			$(this).addClass('open');
+			$(this).next("div").removeClass('hide');
+		} else if(durum=="open") {
+			$(this).removeClass('open');
+			$(this).addClass('close');
+			$(this).next("div").addClass('hide');
+		}
+		}
+	});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function () {window.arraystr = {};});
+$(document).ready(function () {
+	$(".deger input").keyup(function(e) {
+		var id = $(this).attr('id');
+		$("#"+id+" .degeroner").hide();
+		var fmin = $("#"+id+" .min").val(); if(fmin.length==0) {var fmin = $("#"+id+" .minall").val();}
+		var fmax = $("#"+id+" .max").val(); if(fmax.length==0) {var fmax = $("#"+id+" .maxall").val();}
+		var str = id + ":" + fmin + "[e]" + fmax;
+		str = str.replace(/\s+/g, '-');
+		arraystr[id] = str;
+		console.log("#id: " + id);
+		console.log(".min: " + $("#"+id+" .min").val());
+		console.log(".max: " + $("#"+id+" .max").val());
+		console.log(".minall: " + $("#"+id+" .minall").val());	
+		console.log(".maxall: " + $("#"+id+" .maxall").val());	
+		if ($('#'+id+' #uygula').length === 1) {
+			$('#'+id).append('<div id="uygula">&#10095;</div>');
+			$('#uygula').on("click", function() {
+				filtre(arraystr[id]);
+				return false;
+			});
+		}
+		if (e.which == '13') {
+			filtre(arraystr[id]);
+		};
+	});
+	$(".deger input").click(function(e) {
+		var id = $(this).attr('id');
+		$("#"+id+" .degeroner").show();
+		$(document).mouseup(function(e) {
+			var container = $(".degeroner");
+			if (!container.is(e.target) && container.has(e.target).length === 0) {
+				container.hide();
+			}
+		});
+	});
+});
+</script>
+
+

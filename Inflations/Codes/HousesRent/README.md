@@ -27,7 +27,7 @@ inflationstudymirror/
     ├── Codes/
     │   └── HousesRent/
     │       └── sahibinden_inflation.py   <-- Bu betik
-    └── InflationItems/Datas/
+    └── Datas/
         └── HousesRent/                   <-- Çıktılar buraya kaydedilir
             ├── Kayseri/
             ├── Sivas/

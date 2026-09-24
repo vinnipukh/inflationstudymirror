@@ -1,0 +1,82 @@
+SIGN IN
+Articles
+About 17,900 results (0.23 sec)
+My profile
+My library
+Any time
+Since 2026
+Since 2025
+Since 2022
+Custom range...
+Sort by relevance
+Sort by date
+Any type
+Review articles
+include patents
+include citations
+Create alert
+	
+[PDF] wiley.com
+Tracking and modelling prices using web‐scraped price microdata: towards automated daily consumer price index forecasting
+B Powell, G Nason, D Elliott, M Mayhew… - Journal of the Royal …, 2018 - Wiley Online Library
+… Web-scraped data sets of prices tend to be much larger and … disaggregated inflation statistics
+based on web-scraped data … relevance of the web-scraped data to inflation estimation in …
+Save Cite Cited by 31 Related articles All 14 versions
+Is Big Data a Big Help? Evidence From Nowcasting Food Inflation During Covid‐19 and Wartime
+K Szafranek, P Macias, D Stelmasiak… - … of Forecasting, 2025 - Wiley Online Library
+… 250 million web- scraped prices makes it possible to closely track official inflation and …
+been examined so far in forecasting exercises based on large- scale web scraping projects. …
+Save Cite Cited by 3 Related articles All 3 versions
+[PDF] emerald.com
+Measuring food inflation during the COVID-19 pandemic in real time using online data: a case study of Poland
+K Jaworski - British Food Journal, 2021 - emerald.com
+… Other studies developed the topic of using online prices to forecast inflation even further. …
+(ie web scraping) used in this study to prepare a unique dataset of online prices for analysis. …
+Save Cite Cited by 42 Related articles All 5 versions
+[PDF] nbp.pl
+[BOOK] Food inflation nowcasting with web scraped data
+P Macias, D Stelmasiak - 2019 - nbp.pl
+… the optimal way to incorporate web scraped data into regular forecasting is to include them
+in … We assess the forecasting accuracy of online prices aggregate alone and within simple …
+Save Cite Cited by 20 Related articles All 4 versions 
+[PDF] econstor.eu
+Improving disaggregated short-term food inflation forecasts with webscraped data
+C Beer, R Ferstl, B Graf - 2025 - econstor.eu
+… -on-month inflation rates based on these price indices to forecasts of time series models
+com… inflation forecasting using webscraped data by developing a nowcasting and forecasting …
+Save Cite Cited by 3 Related articles All 6 versions 
+[PDF] unitus.it
+[PDF] Web scraping data for socio-economic research
+L Palumbo - 2023 - dspace.unitus.it
+… ability of web-scraped price data to predict the monthly CPI … the forecasting error into two
+components: prediction error – … utilizes web scraping data to perform a nowcast of food inflation …
+Save Cite Cited by 1 Related articles All 2 versions 
+[PDF] ssrn.com
+Real-Time Inflation Surveillance Using Machine Learning and Alternative Economic Data Sources
+L Aydin, V Ashford, C Thorn - Available at SSRN 7173958, 2026 - papers.ssrn.com
+… Additionally, high-frequency web scraping of online retail prices must comply with legal
+frameworks, … China’s inflation forecasting in a data-rich environment: based on machine learning …
+Save Cite Related articles 
+[PDF] nbs.rs
+[PDF] NOWCASTING INFLATION USING PRICES FROM THE WEB
+M Đukić, I Krsmanović, M Petković - 2023 - nbs.rs
+… inflation in real time, based on prices from the web, downloaded automatically using web
+scraping. … the out-of-sample forecasting errors of some of the inflation models, we have to wait …
+Save Cite Related articles All 3 versions 
+[PDF] unece.org
+[PDF] Online price data, high frequency inflation measures, and formulation of monetary policy in New Zealand
+A Bentley, K Chipeniuk, F Krsinich - 2024 - stats.unece.org
+… We investigate the scope for timely and accurate nowcasting and forecasting, given the low
+… the collection of offline prices alongside the web scraping of online prices across 10 countries…
+Save Cite Cited by 1 Related articles 
+[PDF] researchsquare.com
+[PDF] Nowcasting Inflation Using Online Prices
+ME Yazgan, U Adıgüzel, B Soybilgen, MC Polat - 2026 - assets-eu.researchsquare.com
+… They also produced quarterly forecasts for the US inflation … We collect web-scraped food
+price data daily from five major online … that summarizes our web scraping and data processing …
+Save Cite Related articles All 2 versions 
+Related searches
+disaggregated short term food inflation forecastsweb scraping techniques consumer price indexesweb scraping techniques price statisticsinflation measurement web scrapingreal time inflation forecastingmassive amount online priceshidden signals web scrapinginternet search data forecasting inflationintelligent machine learning inflation forecastingprice forecasting of mango lucknow marketfood price inflation convergencebank of russia forecasting pricesfood price forecasting rapid economic changeconsumer price inflation scanner datawebscraped data food inflation forecastsweb scraping techniques romanian experience
+	1	2	3	4	5	6	7	8	9	10	
+Next
+PrivacyTermsHelp

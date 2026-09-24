@@ -10,6 +10,8 @@ _THIS_DIR = Path(__file__).resolve().parent
 _PROJECT_ROOT = _THIS_DIR.parent.parent.parent  # inflationstudymirror
 
 sys.path.insert(0, str(_THIS_DIR))
+sys.path.insert(0, str(_PROJECT_ROOT / "Inflations" / "Codes"))
+from detail_store import append_detail  # noqa: E402
 from tuik_config import (  # noqa: E402
     normalised_weights,
 )
@@ -151,9 +153,8 @@ def calculate_inflation(target_date=None, compare_date=None):
         summary_row[f"avg_inflation_{label}"] = avg_inf
         summary_row[f"tuik_weighted_{label}"] = tuik_w
 
-    detail_file = INFLATION_OUT_DIR / f"watsons_inflation_{today_str}.csv"
-    detail_base.to_csv(detail_file, index=False, encoding="utf-8")
-    logger.info(f"Saved detailed inflation data to: {detail_file}")
+    append_detail(INFLATION_OUT_DIR, "watsons_inflation.csv", today_str, detail_base)
+    logger.info("Saved detailed inflation data to: watsons_inflation.csv (%s)", today_str)
 
     summary_file = INFLATION_OUT_DIR / "inflation_summary.csv"
     df_summary = pd.DataFrame([summary_row])

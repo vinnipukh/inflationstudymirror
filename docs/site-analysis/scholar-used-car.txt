@@ -1,0 +1,36 @@
+SIGN IN
+Articles
+My profile
+My library
+Any time
+Since 2026
+Since 2025
+Since 2022
+Custom range...
+Sort by relevance
+Sort by date
+Any type
+Review articles
+include patents
+include citations
+	
+Used car price prediction using machine learning: A case study
+M Hankar, M Birjali… - 2022 11th International …, 2022 - ieeexplore.ieee.org
+In many business fields that are related to statistics and machine learning (ML), multiple
+linear regression (MLR) models are often used to estimate and fit a linear relationship
+between a continuous response variable and other explanatory variables. In our case study,
+we applied several regression techniques based on supervised machine learning to predict
+the resale price of used cars given many factors such as mileage, fuel type, fiscal power,
+mark, model, and the production year of the car. In all tested models, gradient boosting …
+Save Cite Cited by 46 Related articles All 2 versions
+Used car price prediction using machine learning
+ASJ Alexstan, KM Monesh, M Poonkodi… - Advances in Science …, 2023 - Trans Tech Publ
+The increase in new cars and customers' economic inability, global sales of old cars are
+expanding. As a result, there exists a pressing need for a second-hand automobile method
+for predicting prices that accurately calculates the value of a car based on number of factors.
+In the current circumstance, the existing system involves a mechanism in which a seller sets
+a price at random and the buyer has no knowledge of the car or its value. In fact, the seller
+doesn't even know the current value of the car or the price at which the car should be sold …
+Save Cite Cited by 10 Related articles
+Showing the best results for this search. See all results
+PrivacyTermsHelp

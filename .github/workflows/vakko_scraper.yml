@@ -34,7 +34,7 @@ jobs:
       - name: Master Scraper'ı Çalıştır
         env:
           VAKKO_COOKIE: ${{ secrets.VAKKO_COOKIE }}
-          USER_AGENT: ${{ secrets.VAKKO_USER_AGENT }}
+          VAKKO_USER_AGENT: ${{ secrets.VAKKO_USER_AGENT }}
         run: python InflationItems/Codes/ClothingStores/Vakko/vakko_master_scraper.py
 
       # 5. Çekilen ve 'Datas' klasörüne kaydedilen CSV dosyasını repoya Pushla

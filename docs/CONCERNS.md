@@ -1,34 +1,36 @@
----
-last_mapped: 2026-09-02
-focus: concerns
----
-
 # Concerns
 
-## Dependency and environment drift
+## Environment drift
 
-- Scrapers in GitHub Actions install specific subsets of packages inline on Ubuntu runners (e.g. `curl_cffi==0.15.0` pinned for Python 3.10 compatibility on Watsons).
-- Scrapers require distinct browser drivers and network settings (e.g. Chrome headless, Xvfb for Emlakjet, undetected-chromedriver for rental, seleniumbase for Beymen).
+Scrapers use different browser engines, network stacks and Python versions. Source workflows intentionally install small pinned dependency sets; a package upgrade can change TLS/browser behavior even when imports still succeed.
+
+## Anti-bot and source fragility
+
+- Watsons/Akamai requires serialized, paced requests.
+- Protected rental sources require coherent persistent sessions and explicit challenge-stop behavior.
+- Browser/driver lifecycle changes can break pagination or memory/session stability.
+- Selectors and source APIs change without notice.
+
+Use the mandatory wiki, bounded live runs and source diagnostics before changing behavior.
 
 ## Secret handling
 
-- `InflationItems/Codes/ClothingStores/Vakko/vakko_master_scraper.py` supports automated cookie retrieval via a headless browser, falling back to `VAKKO_COOKIE` and `VAKKO_USER_AGENT` environment variables.
-- `.env` files must remain strictly local and gitignored.
+Cookies, user-agent bindings and browser profiles are sensitive. Keep them in environment variables/secret stores and out of source, logs, docs and workflow output.
 
-## Anti-bot and Fragile Scraper Areas
+## Data quality
 
-- **Watsons**: Akamai flags parallel in-flight requests from a single IP; requests must remain strictly serialized (~1 req/s) with adaptive exponential backoff.
-- **Yapimaks**: High catalog volume (~8,400 items) requires token-bucket rate limiting (0.8 req/s) and daily refresh budgets (`--refresh-budget 2500`) to fit within GitHub's 6-hour job ceiling.
-- **Sarı site rentals**: Complex anti-bot measures require persistent profiles (`SeleniumProfile/`) and manual-solve checkpoints rather than automated bypass attempts.
-- **Emlakjet**: Pagination is geometrically capped at 50 pages per scope; deep recursive crawling and watchdog session restarts (`BrowserSession`) are required to prevent memory/session stalls.
+- Retailer schemas and date coverage vary.
+- Product IDs/names may drift or be reused.
+- Some sources expose lowest-offer prices rather than representative transaction prices.
+- Partial scraper runs must not masquerade as complete daily snapshots.
+- Inflation results depend on matched products and category mappings.
 
-## Data volume and performance
+## Data volume and Git history
 
-- `InflationItems/Datas/` and `Inflations/Datas/` contain over a thousand CSV files and hundreds of megabytes of tracked data.
-- The Falcon API (`inflation_dashboard/`) implements bounded loading and an LRU/TTL file cache (`_file_frame_cache`) to prevent redundant disk I/O on dashboard queries.
-- Git repository size grows as daily snapshots are committed; git history should be monitored.
+Daily CSV and log commits grow repository history quickly. Track required source data, but do not commit regenerable partitions, databases, browser profiles or transient state without an explicit policy decision.
 
-## Data quality risks
+## Calculation coverage
 
-- Retailer schemas vary (e.g. semicolon vs comma delimiters, differing column headers).
-- Inflation calculators rely on product IDs and names remaining consistent across daily snapshots.
+TÜİK-style weighted metrics are normalized over covered groups, not a complete official CPI basket when sectors are missing. Methodology and coverage notes must travel with generated outputs.
+
+Legacy calculator-specific configs are not always consistent with the canonical 2026 main-group codes. In particular, some older personal-care mappings still use `12`, while the repository-wide configuration reserves `12` for insurance/finance and uses `13` for personal care. Reconcile and regenerate affected artifacts before cross-sector aggregation.

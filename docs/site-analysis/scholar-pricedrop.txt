@@ -1,0 +1,81 @@
+SIGN IN
+Articles
+About 22,100 results (0.32 sec)
+My profile
+My library
+Any time
+Since 2026
+Since 2025
+Since 2022
+Custom range...
+Sort by relevance
+Sort by date
+Any type
+Review articles
+include patents
+include citations
+Create alert
+	
+[HTML] mdpi.com
+[HTML] Forecasting e-commerce products prices by combining an autoregressive integrated moving average (ARIMA) model and google trends data
+S Carta, A Medda, A Pili, D Reforgiato Recupero… - Future Internet, 2018 - mdpi.com
+… Its primary aim is to predict the future price trend of products … score could lead to a price
+decrease; this has been validated … Our RESTful back-end of Price Probe collects and stores all …
+Save Cite Cited by 69 Related articles All 12 versions 
+[PDF] mecs-press.org
+[PDF] PriceCop–price monitor and prediction using linear regression and LSVM-ABC methods for e-commerce platform
+MZ Shahrel, S Mutalib… - International Journal of …, 2021 - mecs-press.org
+… offers price prediction features to help users analyse product … the product prices against the
+retail prices set by retailers. In … but an insufficient supply of goods and decrease if there is less …
+Save Cite Cited by 62 Related articles All 3 versions 
+[PDF] acm.org
+Markdowns in e-commerce fresh retail: A counterfactual prediction and multi-period optimization approach
+J Hua, L Yan, H Xu, C Yang - Proceedings of the 27th ACM SIGKDD …, 2021 - dl.acm.org
+… sales of a product with price A and B, we aim to predict the sales of a product with price C, …
+the best RMAE performance and its variance is reduced with the increase of the number of …
+Save Cite Cited by 31 Related articles All 3 versions
+[HTML] academia.edu
+[HTML] Optimizing real-time dynamic pricing strategies in retail and e-commerce using machine learning models
+B Bhattacharjee - The American Journal of Engineering and …, 2024 - academia.edu
+… The percentage of mating may be reduced by the following: (… contains detailed transactional
+and product-related data. The … , we plotted predicted prices against actual prices for each …
+Save Cite Cited by 29 Related articles All 2 versions 
+[PDF] arxiv.org
+Price optimization in fashion e-commerce
+S Kedia, S Jain, A Sharma - arXiv preprint arXiv:2007.05216, 2020 - arxiv.org
+… fashion e-commerce is very price sensitive and shopping be… to predict the quantity sold of
+all products at any given price. … among products, ie, if we decrease the discount of a product, it …
+Save Cite Cited by 21 Related articles All 4 versions 
+[PDF] nature.com
+Design of e-commerce product price prediction model based on generative adversarial network with adaptive weight adjustment
+A Abudureheman, Y Zhao, A Nilupaer - Scientific Reports, 2025 - nature.com
+… has become a critical factor in enhancing platform competitiveness and meeting consumer
+… This decline is primarily attributed to higher system resource consumption and increased …
+Save Cite Cited by 6 Related articles All 8 versions
+[PDF] peerj.com
+Predicting e-commerce product prices through the integration of variational mode decomposition and deep neural networks
+H Wu - PeerJ Computer Science, 2024 - peerj.com
+… the E-commerce Price Prediction Dataset and Online Retail … This corresponds to a remarkable
+error reduction rate of 66.5… excels in predicting ecommerce product prices through DNN, …
+Save Cite Cited by 5 Related articles All 5 versions 
+Real-Time Dynamic Pricing Using Machine Learning: Integrating Customer Sentiment and Predictive Models for E-Commerce
+AM Yoshi, A Rohan, SA Mitu… - International …, 2025 - search.proquest.com
+… on over 1,200 products from an Italian e-commerce company. … Moreover, the neural network
+reduced the mean squared … in price prediction by calculating the average magnitude of …
+Save Cite Cited by 27 Related articles All 3 versions
+Price prediction of e-commerce products through Internet sentiment analysis
+KK Tseng, RFY Lin, H Zhou, KJ Kurniajaya… - Electronic commerce …, 2018 - Springer
+… the price of products, and establish a new model for price … price forecasts. Thus, the contribution
+of this paper is to propose a new forecasting model for the price of e-commerce products. …
+Save Cite Cited by 64 Related articles All 7 versions
+[PDF] alkindipublisher.com
+Optimizing e-commerce profits: A comprehensive machine learning framework for dynamic pricing and predicting online purchases
+M Sarkar, EH Ayon, MT Mia, RK Ray… - Journal of …, 2023 - alkindipublisher.com
+… for small-scale retailers is underscored in conclusion, with a … where the same product is
+offered at a fixed price for a … system and reduced errors in predicting customer purchases offered …
+Save Cite Cited by 67 Related articles 
+Related searches
+smartphone price prediction retail industryproduct price prediction intelligent business modelprice prediction e-commerce productsmachine learning price predictionprice prediction models purchasing strategiesstock price prediction modelgenerative adversarial network stock price predictionlarge scale price optimization fashion retailervegetable price prediction intelligent optimizationonline retailer price optimizationmedical product industry price warproduct recommendations price optimizationinternational crude oil price prediction modelproduct price prediction machine learning approachvegetable price prediction variational mode decompositionvegetable price prediction hybrid model
+	1	2	3	4	5	6	7	8	9	10	
+Next
+PrivacyTermsHelp

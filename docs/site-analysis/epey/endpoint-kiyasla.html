@@ -1,0 +1,48 @@
+<script type="text/javascript">$("#altbar").fadeIn("slow");</script>
+
+<script type="text/javascript">
+</script>	
+
+
+<script>
+$("ul.secili li").hover(function() {
+		$(this).find("div.tip").fadeIn("fast").show();
+    $(this).mouseleave(function () {
+        $(this).find(".tip").fadeOut("fast").hide();
+    });
+});
+</script>
+
+
+	<script type="text/javascript">$("#altbar").fadeIn("slow");</script>
+	
+		
+		
+		<span style="margin-top:5px"><strong>Karşılaştır (1)</strong></span>
+	
+	<ul class="secili">
+			
+	<li><a href="https://www.epey.com/akilli-telefonlar/samsung-galaxy-j2.html" class="resim resimkiyas"><img src="https://resim.epey.com/31122/s_samsung-galaxy-j2-2.png" /></a>
+		<div class="tip">
+        <ul>
+          <li class="li1"><a href="https://www.epey.com/akilli-telefonlar/samsung-galaxy-j2.html"><img src="https://resim.epey.com/31122/k_samsung-galaxy-j2-2.png" /></a></li>
+		  <li class="li2"><a href="https://www.epey.com/akilli-telefonlar/samsung-galaxy-j2.html">Samsung Galaxy J2 (Tek Hat / 4G)</a></li>
+		  <li class="li3"><span class="iptalikon" onclick="kiyassil(31122)"></span></li>
+        </ul>  
+      </div>
+	</li>
+
+		</ul>
+		
+			<span style="margin-top:5px"></span>
+			<a href="#" onClick="kiyas('tumunusil')" class="button">Temizle</a>
+		
+	<script type="text/javascript">
+	function kiyassil(e){
+		$("#kiyasla").load("https://www.epey.com/kat/kiyasla/",{kategori_id:1,kiyasla:e,islem:'sil'});
+		$("input[name=urun"+e+"]").attr("checked",false);
+	}
+	</script>
+	
+
+

@@ -1,18 +1,21 @@
-# --- Python / virtualenv ---
+# Python / virtual environments
 .venv/
+.venv-win/
 venv/
 env/
 ENV/
-artifacts/.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
 
-# Python packaging / build outputs
-build/
-dist/
-*.egg-info/
-*.egg
-pip-wheel-metadata/
-
-# Environment variables / secrets
+# Secrets and local configuration
 .env
 .env.*
 !.env.example
@@ -23,64 +26,27 @@ pip-wheel-metadata/
 id_rsa
 id_rsa.pub
 
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
-*.pyd
-*.so
-
-# Caches / tooling
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-.pyre/
-.tox/
-.nox/
-.hypothesis/
-.cache/
-.coverage
-.coverage.*
-htmlcov/
-
-# Type checker / language server
-pyrightconfig.json
-typings/
-
-# Jupyter
-.ipynb_checkpoints/
-
-# Runtime artifacts
+# Temporary/runtime files
 *.tmp
 *.temp
 tmp/
 temp/
-
-# Scraper/runtime checkpoints
 checkpoints/
 Codes/**/checkpoints/
 InflationItems/Codes/**/checkpoints/
+.playwright-cli/
 
-# Streamlit local config
-.streamlit/secrets.toml
-
-# OS / editor
-.DS_Store
-Thumbs.db
-.vscode/
-
-# JetBrains / IntelliJ / PyCharm
-.idea*
-
-# SQLite Database files
+# Generated serving/derived artifacts (owned by the web repository or regenerable)
 *.db
 *.db-wal
 *.db-shm
 InflationItems/prices.db
-
-# Derived price data (regenerable from InflationItems/Datas CSVs)
 InflationItems/prices_json/
+/epeykatfg_daily_csvs.zip
+/inflation_per_date_csvs.zip
 
-# Local server run logs
-logs/falcon.log
-logs/frontend.log
+# Editors / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

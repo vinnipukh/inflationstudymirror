@@ -19,6 +19,8 @@ os.makedirs(INFLATION_OUT_DIR, exist_ok=True)
 
 # Config dosyasını bulabilmesi için dizin ekliyoruz
 sys.path.insert(0, SCRIPT_DIR)
+sys.path.insert(0, os.path.join(PROJECT_ROOT, "Inflations", "Codes"))
+from detail_store import append_detail  # noqa: E402
 
 logger = logging.getLogger(__name__)
 
@@ -183,8 +185,7 @@ def calculate_inflation(target_date=None, compare_date=None):
         matched_count = merged.dropna(subset=[f'basic_inflation']).shape[0] if 'basic_inflation' in merged.columns else 0
         logger.info(f"{today_str} vs {past_str} ({label}): Eşleşen ürün: {matched_count} | Ort. Enf: {avg_inf}")
 
-    detail_file = os.path.join(INFLATION_OUT_DIR, f"vakko_inflation_{today_str}.csv")
-    detail_base.to_csv(detail_file, index=False, encoding='utf-8-sig')
+    append_detail(INFLATION_OUT_DIR, "vakko_inflation.csv", today_str, detail_base)
 
     summary_file = os.path.join(INFLATION_OUT_DIR, "inflation_summary.csv")
     df_summary = pd.DataFrame([summary_row])

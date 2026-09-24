@@ -1,0 +1,1316 @@
+
+<!--<style>.hide {display:none;}</style><div id="gecis" class="hide" style="cursor:pointer"><div class="loading"><img src="https://resim.epey.com/tema/yukleniyor.gif"></div></div>-->
+
+
+
+<script type="text/javascript">
+(function(e){e.fn.circliful=function(t){var n=e.extend({foregroundColor:"#556b2f",backgroundColor:"#eee",fillColor:false,width:15,dimension:200,size:15,percent:50,animationStep:1},t);return this.each(function(){function A(e){d.clearRect(0,0,p.width,p.height);d.beginPath();d.arc(v,m,b,E,w,false);d.lineWidth=s-1;d.strokeStyle=l;d.stroke();if(L){d.fillStyle=L;d.fill()}d.beginPath();d.arc(v,m,b,-C,N*e-C,false);d.lineWidth=s;d.strokeStyle=f;d.stroke();if(x<a){x+=T;requestAnimationFrame(function(){A(Math.min(x,a)/100)})}}var t="";var r="";var i="";var s="";var o=0;var u=0;var a=100;var f="";var l="";var c="";var h=0;e(this).addClass("circliful");if(e(this).data("dimension")!=undefined){t=e(this).data("dimension")}else{t=n.dimension}if(e(this).data("width")!=undefined){s=e(this).data("width")}else{s=n.width}if(e(this).data("fontsize")!=undefined){o=e(this).data("fontsize")}else{o=n.size}if(e(this).data("percent")!=undefined){u=e(this).data("percent")/100;a=e(this).data("percent")}else{u=n.percent/100}if(e(this).data("fgcolor")!=undefined){f=e(this).data("fgcolor")}else{f=n.foregroundColor}if(e(this).data("bgcolor")!=undefined){l=e(this).data("bgcolor")}else{l=n.backgroundColor}if(e(this).data("animation-step")!=undefined){h=parseFloat(e(this).data("animation-step"))}else{h=n.animationStep}if(e(this).data("text")!=undefined){r=e(this).data("text");if(e(this).data("icon")!=undefined){c='<i class="fa '+e(this).data("icon")+'"></i>'}if(e(this).data("type")!=undefined){k=e(this).data("type");if(k=="half"){e(this).append('<span class="circle-text-half">'+c+r+"</span>");e(this).find(".circle-text-half").css({"line-height":t/1.45+"px","font-size":o+"px"})}else{e(this).append('<span class="circle-text">'+c+r+"</span>");e(this).find(".circle-text").css({"line-height":t+"px","font-size":o+"px"})}}else{e(this).append('<span class="circle-text" itemprop="ratingValue">'+c+r+"</span>");e(this).find(".circle-text").css({"line-height":t+"px","font-size":o+"px"})}}else if(e(this).data("icon")!=undefined){}if(e(this).data("info")!=undefined){i=e(this).data("info");if(e(this).data("type")!=undefined){k=e(this).data("type");if(k=="half"){e(this).append('<span class="circle-info-half">'+i+"</span>");e(this).find(".circle-info-half").css({"line-height":t*.9+"px"})}else{e(this).append('<span class="circle-info">'+i+"</span>");e(this).find(".circle-info").css({"line-height":t*1.25+"px"})}}else{e(this).append('<span class="circle-info">'+i+"</span>");e(this).find(".circle-info").css({"line-height":t*1.25+"px"})}}e(this).width(t+"px");var p=e("<canvas></canvas>").attr({width:t,height:t}).appendTo(e(this)).get(0);var d=p.getContext("2d");var v=p.width/2;var m=p.height/2;var g=u*370;var y=g*(Math.PI/180);var b=p.width/2.5;var w=2.3*Math.PI;var E=0;var S=false;var x=h===0?a:0;var T=Math.max(h,0);var N=Math.PI*2;var C=Math.PI/2;var k="";var L=false;if(e(this).data("type")!=undefined){k=e(this).data("type");if(k=="half"){var w=2*Math.PI;var E=3.13;var N=Math.PI*1;var C=Math.PI/.996}}if(e(this).data("fill")!=undefined){L=e(this).data("fill")}else{L=n.fillColor}A(x/100)})}})(jQuery)
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+
+<script>
+window.epeyDinamikReklamGoster =
+window.epeyDinamikReklamGoster ||
+function (adUnitPath, sizes, elementId) {
+    window.googletag = window.googletag || { cmd: [] };
+
+    googletag.cmd.push(function () {
+        var element = document.getElementById(elementId);
+
+        if (!element || element.getAttribute('data-gpt-init') === '1') {
+            return;
+        }
+
+        var slot = googletag.defineSlot(
+            adUnitPath,
+            sizes,
+            elementId
+        );
+
+        if (!slot) {
+            return;
+        }
+
+        slot.addService(googletag.pubads());
+        element.setAttribute('data-gpt-init', '1');
+
+        window.epeyDinamikGptSlotlari =
+            window.epeyDinamikGptSlotlari || [];
+
+        window.epeyDinamikGptSlotlari.push(slot);
+        googletag.display(elementId);
+    });
+};
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+	window.filtreler = [];
+	window.filtercount = 0;
+});
+
+function filtre(e){
+		
+ if(e=="temizle") {
+
+		$("#filtrele").find("input, textarea, button, select, label, span, a").attr("disabled","disabled");   
+		$("#listele").load("https://www.epey.com/kat/listele/",{tarih:1788635441,kategori_id:1,cerez:'',limit:31,filtrele:e});
+		$("#filtrele").delay(1).queue(function(t){$(this).load("https://www.epey.com/kat/filtrele/",{kategori_id:1,cerez:'',filtrele:e});t()});
+		filtreler.length = 0;
+		
+ } else {
+	
+	var simdi1 = new Date().getTime();
+
+	$.cookie('filterdate', simdi1, { expires: 10 });
+	
+	if(jQuery.inArray(e, filtreler) === -1) {
+		
+		window.filtercount++;
+		//filtreler[filtercount] = e;
+		filtreler.push(e);
+							
+	} else {				
+			
+		filtreler = jQuery.grep(filtreler, function(value) {
+			return value != e;
+		});
+			
+		//filtreler.splice( $.inArray(removeItem,filtreler), e );
+		
+	}
+	
+	function sayilariGoster(index) {
+    if (index <= 5) { 
+	
+		var simdi2 = new Date().getTime();
+		var filterdate = $.cookie("filterdate");
+						
+		if(simdi1 == filterdate && index == 2) {
+		
+		$("#gecissonuc").removeClass("hide");
+		$("#filtrele").find("input, textarea, button, select, label, span, a").attr("disabled","disabled");  
+		$("#listele").load("https://www.epey.com/kat/listele/",{tarih:1788635441,kategori_id:1,cerez:'',limit:31,filtrele:filtreler});
+		$("#filtrele").delay(1).queue(function(t){$(this).load("https://www.epey.com/kat/filtrele/",{kategori_id:1,cerez:'',filtrele:filtreler});t()});
+			
+		}
+
+      setTimeout(function() {
+        sayilariGoster(index + 1);
+      }, 1000);
+    }
+  }
+
+  sayilariGoster(1);
+
+ }
+	
+}
+
+function kiyas(e,t){if(t=='ekle'||t=='sil'){}else if($("input[name=urun"+e+"]").is(":checked")){var t="ekle"}else{var t="sil"}$("#kiyasla").load("https://www.epey.com/kat/kiyasla/",{kategori_id:1,cerez:'',kiyasla:e,islem:t});if(e=="tumunusil"){$("input[name*=urun]").attr("checked",false);$(".kiyasla").html(Karşılaştır)}else{$(".kiyasla"+e).load("https://www.epey.com/kat/kiyaslink/",{kategori_id:1,cerez:'',urun_id:e})}if(t=="sil"){$("input[name=urun"+e+"]").attr("checked",false)}}
+function sayfa(e){
+	$("#gecissonuc").removeClass("hide");
+	$('html').animate({scrollTop : 0},'slow');
+	$("#listele").load("https://www.epey.com/kat/listele/",{kategori_id:1,cerez:'',limit:31,sayfa:e});
+	
+}
+function sirala(e){
+	if(e.value){var e=e.value}
+	$("#gecissonuc").removeClass("hide");
+	$('html').animate({scrollTop : 0},'slow');
+	$("#listele").load("https://www.epey.com/kat/listele/",{kategori_id:1,cerez:'',limit:31,sirala:e});
+}
+</script>
+
+
+
+<div id="filtre">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span id="temizle">
+
+</span>
+
+</div>
+
+
+	<div class="listele table" style="margin:0;position:relative;">
+	
+	<style>
+	#gecissonuc {position:fixed;top:0;float:left;background:#D96142;text-align:center;-moz-border-radius:0 0 3px 3px;-webkit-border-radius:0 0 3px 3px;color:#FFF;font-weight:bold;padding:5px 20px;z-index:999;opacity:0.7;margin-left:50px;}
+	</style>
+	<div id="gecissonuc" class="hide">yükleniyor...</div>
+		
+		
+		<ul class="baslik row">
+		<li class="adi  cell" onClick="sirala('adi:ASC')">Ürün Adı</li>
+				<li class="fiyat ASC cell" onClick="sirala('fiyat:DESC')">Fiyat</li>
+												<li class="ozellik  cell" onClick="sirala('1:DESC')">Ekran Boyutu</li>
+				<li class="ozellik  cell" onClick="sirala('21:DESC')">Dahili Depolama</li>
+				<li class="ozellik  cell" onClick="sirala('14:DESC')">Bellek (RAM)</li>
+				<li class="ozellik  cell" onClick="sirala('7:DESC')">Batarya Kapasitesi (Tipik)</li>
+				<li class="puan  cell" onClick="sirala('puan:DESC')" title="">Teknik Puan</li>	</ul>
+		
+
+		
+		
+			
+		
+		<ul id="1058579" class="metin row" style="background:#F5F5F5;position:relative;">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/go/2098/7/" class="urunresmi" title="Xiaomi 17T Pro" target="_blank" rel="nofollow">
+					<img style="max-width:120px;max-height:120px;" src="https://resim.epey.com/reklam/2098_369607719_ust.jpg?v=5" alt="Xiaomi 17T Pro resim" />
+				</a>
+			</div>
+			<div class="detay cell" style="height:50px;padding-bottom:0px;">
+			<a href="https://www.epey.com/go/2098/7/" class="urunadi" title="Xiaomi 17T Pro" target="_blank" rel="nofollow">Xiaomi 17T Pro (512 GB)</a>
+			<a href="https://www.epey.com/go/2098/7/" title="Xiaomi 17T Pro" target="_blank" rel="nofollow"><span class="aile" style="font-size:15px">Okula Dönüş Heyecanı Teknosa'da! </span></a>
+			</div>
+		</li>
+		<li class="fiyat cell"><a href="https://www.epey.com/go/2098/7/" title="Xiaomi 17T Pro Fiyatı" target="_blank" rel="nofollow">
+		<strong></strong>
+		<span class="button">Hemen Satın Al</span>
+		</a></li>
+										
+				<li class="ozellik ozellik1 cell">6.83 İnç</li>
+				<li class="ozellik ozellik21 cell">512 GB</li>
+				<li class="ozellik ozellik14 cell">12 GB</li>
+				<li class="ozellik ozellik7 cell">7000 mAh</li>
+								<li class="cell">
+			<span class="sponsormetni" style="top:5px;right:15px">Reklam</span>
+		</li>
+	</ul>
+	<script>$('#sponsor1058579').circliful();</script>
+	<img src="https://track.adform.net/adfserve/?bn=90131172;1x1inv=1;srctype=3;gdpr=${GDPR};gdpr_consent=${GDPR_CONSENT_50};ord=[timestamp]" border="0" width="1" height="1"/>
+
+<script src="https://run.admost.com/adx/count.ashx?pbk=528201-376021-65689&preredir={amClickThru}" referrerpolicy="no-referrer-when-downgrade"></script>	
+		<script>$('#puan1058579').circliful();</script>		
+	
+	
+		
+			
+	
+		<ul id="1057543" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/hiking-a29.html" class="urunresmi" title="Hiking A29 Cep Telefonu">
+					<img src="https://resim.epey.com/1057543/k_hiking-a29-2.png" alt="Hiking A29 resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/hiking-a29.html" class="urunadi" title="Hiking A29 Cep Telefonu">Hiking A29</a>
+						<span class="degergetir"></span>			
+			<input type="checkbox" id="urun1057543" name="urun1057543" onClick="kiyas('1057543')" autocomplete="off" value="1" /><label for="urun1057543"><span></span><div class="kiyasla kiyasla1057543">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/hiking-a29.html#fiyatlar" title="Hiking A29 Cep Telefonu Fiyatı">5.999,00 TL<span>1 site, 3 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.52 İnç</li>
+				<li class="ozellik ozellik21 cell">128 GB</li>
+				<li class="ozellik ozellik14 cell">4 GB</li>
+				<li class="ozellik ozellik7 cell">4500 mAh</li>
+						<li class="puan cell"></li>
+			</ul>	
+			<script>$('#puan1057543').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="1043140" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/mipo-m28.html" class="urunresmi" title="Mipo M28 Cep Telefonu">
+					<img src="https://resim.epey.com/1043140/k_mipo-m28-1.png" alt="Mipo M28 resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/mipo-m28.html" class="urunadi" title="Mipo M28 Cep Telefonu">Mipo M28</a>
+						<span class="degergetir">Android 14 (U)</span>			
+			<input type="checkbox" id="urun1043140" name="urun1043140" onClick="kiyas('1043140')" autocomplete="off" value="1" /><label for="urun1043140"><span></span><div class="kiyasla kiyasla1043140">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/mipo-m28.html#fiyatlar" title="Mipo M28 Cep Telefonu Fiyatı">6.075,00 TL<span>5 site, 8 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.51 İnç</li>
+				<li class="ozellik ozellik21 cell">128 GB</li>
+				<li class="ozellik ozellik14 cell">4 GB</li>
+				<li class="ozellik ozellik7 cell">4000 mAh</li>
+						<li class="puan cell"></li>
+			</ul>	
+			<script>$('#puan1043140').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="365740" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/redmi-8-64gb.html" class="urunresmi" title="Xiaomi Redmi 8 64 GB Cep Telefonu">
+					<img src="https://resim.epey.com/365740/k_xiaomi-redmi-8-64gb-4.png" alt="Xiaomi Redmi 8 resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/redmi-8-64gb.html" class="urunadi" title="Xiaomi Redmi 8 64 GB Cep Telefonu">Xiaomi Redmi 8</a>
+						<span class="aile">64 GB</span>			
+			<input type="checkbox" id="urun365740" name="urun365740" onClick="kiyas('365740')" autocomplete="off" value="1" /><label for="urun365740"><span></span><div class="kiyasla kiyasla365740">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/redmi-8-64gb.html#fiyatlar" title="Xiaomi Redmi 8 64 GB Cep Telefonu Fiyatı">6.076,00 TL<span>1 site, 1 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.22 İnç</li>
+				<li class="ozellik ozellik21 cell">64 GB</li>
+				<li class="ozellik ozellik14 cell">4 GB</li>
+				<li class="ozellik ozellik7 cell">5000 mAh</li>
+						<li class="puan cell"><div id="puan365740" data-dimension="70" data-text="35" data-info="puan" data-width="7" data-fontsize="22" data-percent="35" data-fgcolor="#D96041" data-bgcolor="#F8F4E0"></div></li>
+			</ul>	
+			<script>$('#puan365740').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="47110" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/sony-xperia-xa.html" class="urunresmi" title="Sony Xperia XA (F3111) Cep Telefonu">
+					<img src="https://resim.epey.com/47110/k_sony-xperia-xa-5.png" alt="Sony Xperia XA resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/sony-xperia-xa.html" class="urunadi" title="Sony Xperia XA (F3111) Cep Telefonu">Sony Xperia XA</a>
+			<span class="urunkodu">F3111</span>			<span class="degergetir">Android 6.0.1 (Marshmallow)</span>			
+			<input type="checkbox" id="urun47110" name="urun47110" onClick="kiyas('47110')" autocomplete="off" value="1" /><label for="urun47110"><span></span><div class="kiyasla kiyasla47110">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/sony-xperia-xa.html#fiyatlar" title="Sony Xperia XA (F3111) Cep Telefonu Fiyatı">6.175,90 TL<span>4 site, 7 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">5.0 İnç</li>
+				<li class="ozellik ozellik21 cell">16 GB</li>
+				<li class="ozellik ozellik14 cell">2 GB</li>
+				<li class="ozellik ozellik7 cell">2300 mAh</li>
+						<li class="puan cell"><div id="puan47110" data-dimension="70" data-text="22" data-info="puan" data-width="7" data-fontsize="22" data-percent="22" data-fgcolor="#D96041" data-bgcolor="#F8F4E0"></div></li>
+			</ul>	
+			<script>$('#puan47110').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="942627" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/hiking-a44.html" class="urunresmi" title="Hiking A44 Cep Telefonu">
+					<img src="https://resim.epey.com/942627/k_hiking-a44-1.png" alt="Hiking A44 resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/hiking-a44.html" class="urunadi" title="Hiking A44 Cep Telefonu">Hiking A44</a>
+						<span class="degergetir">Android 13 (T)</span>			
+			<input type="checkbox" id="urun942627" name="urun942627" onClick="kiyas('942627')" autocomplete="off" value="1" /><label for="urun942627"><span></span><div class="kiyasla kiyasla942627">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/hiking-a44.html#fiyatlar" title="Hiking A44 Cep Telefonu Fiyatı">6.240,00 TL<span>5 site, 26 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.59 İnç</li>
+				<li class="ozellik ozellik21 cell">128 GB</li>
+				<li class="ozellik ozellik14 cell">6 GB</li>
+				<li class="ozellik ozellik7 cell">4120 mAh</li>
+						<li class="puan cell"></li>
+			</ul>	
+			<script>$('#puan942627').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="728066" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/reeder-p13-blue-max-pro-2021.html" class="urunresmi" title="Reeder P13 Blue Max Pro 2021 6 GB Cep Telefonu">
+					<img src="https://resim.epey.com/728066/k_reeder-p13-blue-max-pro-2021-1.png" alt="Reeder P13 Blue Max Pro 2021 resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/reeder-p13-blue-max-pro-2021.html" class="urunadi" title="Reeder P13 Blue Max Pro 2021 6 GB Cep Telefonu">Reeder P13 Blue Max Pro 2021</a>
+						<span class="aile">6 GB</span>			
+			<input type="checkbox" id="urun728066" name="urun728066" onClick="kiyas('728066')" autocomplete="off" value="1" /><label for="urun728066"><span></span><div class="kiyasla kiyasla728066">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/reeder-p13-blue-max-pro-2021.html#fiyatlar" title="Reeder P13 Blue Max Pro 2021 6 GB Cep Telefonu Fiyatı">6.269,05 TL<span>2 site, 2 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.51 İnç</li>
+				<li class="ozellik ozellik21 cell">128 GB</li>
+				<li class="ozellik ozellik14 cell">6 GB</li>
+				<li class="ozellik ozellik7 cell">5380 mAh</li>
+						<li class="puan cell"></li>
+			</ul>	
+			<script>$('#puan728066').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="858541" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/hiking-a40.html" class="urunresmi" title="Hiking A40 4 GB Cep Telefonu">
+					<img src="https://resim.epey.com/858541/k_hiking-a40-2.png" alt="Hiking A40 resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/hiking-a40.html" class="urunadi" title="Hiking A40 4 GB Cep Telefonu">Hiking A40</a>
+						<span class="aile">4 GB</span>			
+			<input type="checkbox" id="urun858541" name="urun858541" onClick="kiyas('858541')" autocomplete="off" value="1" /><label for="urun858541"><span></span><div class="kiyasla kiyasla858541">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/hiking-a40.html#fiyatlar" title="Hiking A40 4 GB Cep Telefonu Fiyatı">6.350,00 TL<span>2 site, 5 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.52 İnç</li>
+				<li class="ozellik ozellik21 cell">128 GB</li>
+				<li class="ozellik ozellik14 cell">4 GB</li>
+				<li class="ozellik ozellik7 cell">5000 mAh</li>
+						<li class="puan cell"></li>
+			</ul>	
+			<script>$('#puan858541').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="766091" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/redmi-10a.html" class="urunresmi" title="Redmi 10A 4 GB / 64 GB Cep Telefonu">
+					<img src="https://resim.epey.com/766091/k_redmi-10a-1.png" alt="Redmi 10A resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/redmi-10a.html" class="urunadi" title="Redmi 10A 4 GB / 64 GB Cep Telefonu">Redmi 10A</a>
+						<span class="aile">4 GB / 64 GB</span>			
+			<input type="checkbox" id="urun766091" name="urun766091" onClick="kiyas('766091')" autocomplete="off" value="1" /><label for="urun766091"><span></span><div class="kiyasla kiyasla766091">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/redmi-10a.html#fiyatlar" title="Redmi 10A 4 GB / 64 GB Cep Telefonu Fiyatı">6.419,00 TL<span>1 site, 2 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.53 İnç</li>
+				<li class="ozellik ozellik21 cell">64 GB</li>
+				<li class="ozellik ozellik14 cell">4 GB</li>
+				<li class="ozellik ozellik7 cell">5000 mAh</li>
+						<li class="puan cell"><div id="puan766091" data-dimension="70" data-text="30" data-info="puan" data-width="7" data-fontsize="22" data-percent="30" data-fgcolor="#D96041" data-bgcolor="#F8F4E0"></div></li>
+			</ul>	
+			<script>$('#puan766091').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="848164" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/reeder-s19-max-pro-128gb.html" class="urunresmi" title="Reeder S19 Max Pro 4 GB / 128 GB Cep Telefonu">
+					<img src="https://resim.epey.com/848164/k_reeder-s19-max-pro-4gb-4.png" alt="Reeder S19 Max Pro resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/reeder-s19-max-pro-128gb.html" class="urunadi" title="Reeder S19 Max Pro 4 GB / 128 GB Cep Telefonu">Reeder S19 Max Pro</a>
+						<span class="aile">4 GB / 128 GB</span>			
+			<input type="checkbox" id="urun848164" name="urun848164" onClick="kiyas('848164')" autocomplete="off" value="1" /><label for="urun848164"><span></span><div class="kiyasla kiyasla848164">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/reeder-s19-max-pro-128gb.html#fiyatlar" title="Reeder S19 Max Pro 4 GB / 128 GB Cep Telefonu Fiyatı">6.431,04 TL<span>3 site, 7 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.7 İnç</li>
+				<li class="ozellik ozellik21 cell">128 GB</li>
+				<li class="ozellik ozellik14 cell">4 GB</li>
+				<li class="ozellik ozellik7 cell">5000 mAh</li>
+						<li class="puan cell"></li>
+			</ul>	
+			<script>$('#puan848164').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="1034987" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/hiking-a49.html" class="urunresmi" title="Hiking A49 Cep Telefonu">
+					<img src="https://resim.epey.com/1034987/k_hiking-a49-2.png" alt="Hiking A49 resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/hiking-a49.html" class="urunadi" title="Hiking A49 Cep Telefonu">Hiking A49</a>
+						<span class="degergetir">Android 15 (V)</span>			
+			<input type="checkbox" id="urun1034987" name="urun1034987" onClick="kiyas('1034987')" autocomplete="off" value="1" /><label for="urun1034987"><span></span><div class="kiyasla kiyasla1034987">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/hiking-a49.html#fiyatlar" title="Hiking A49 Cep Telefonu Fiyatı">6.434,00 TL<span>3 site, 7 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.75 İnç</li>
+				<li class="ozellik ozellik21 cell">128 GB</li>
+				<li class="ozellik ozellik14 cell">4 GB</li>
+				<li class="ozellik ozellik7 cell">5000 mAh</li>
+						<li class="puan cell"></li>
+			</ul>	
+			<script>$('#puan1034987').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="909735" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/mipo-m25.html" class="urunresmi" title="Mipo M25 Cep Telefonu">
+					<img src="https://resim.epey.com/909735/k_mipo-m25-1.png" alt="Mipo M25 resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/mipo-m25.html" class="urunadi" title="Mipo M25 Cep Telefonu">Mipo M25</a>
+						<span class="degergetir">Android 13 (T)</span>			
+			<input type="checkbox" id="urun909735" name="urun909735" onClick="kiyas('909735')" autocomplete="off" value="1" /><label for="urun909735"><span></span><div class="kiyasla kiyasla909735">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/mipo-m25.html#fiyatlar" title="Mipo M25 Cep Telefonu Fiyatı">6.499,00 TL<span>2 site, 2 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.51 İnç</li>
+				<li class="ozellik ozellik21 cell">128 GB</li>
+				<li class="ozellik ozellik14 cell">4 GB</li>
+				<li class="ozellik ozellik7 cell">4000 mAh</li>
+						<li class="puan cell"></li>
+			</ul>	
+			<script>$('#puan909735').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="673572" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/reeder-p13-blue-max-pro.html" class="urunresmi" title="Reeder P13 Blue Max Pro Cep Telefonu">
+					<img src="https://resim.epey.com/673572/k_reeder-p13-blue-max-pro-1.png" alt="Reeder P13 Blue Max Pro resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/reeder-p13-blue-max-pro.html" class="urunadi" title="Reeder P13 Blue Max Pro Cep Telefonu">Reeder P13 Blue Max Pro</a>
+						<span class="degergetir">Android 11 (R)</span>			
+			<input type="checkbox" id="urun673572" name="urun673572" onClick="kiyas('673572')" autocomplete="off" value="1" /><label for="urun673572"><span></span><div class="kiyasla kiyasla673572">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/reeder-p13-blue-max-pro.html#fiyatlar" title="Reeder P13 Blue Max Pro Cep Telefonu Fiyatı">6.569,00 TL<span>2 site, 4 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.55 İnç</li>
+				<li class="ozellik ozellik21 cell">128 GB</li>
+				<li class="ozellik ozellik14 cell">8 GB</li>
+				<li class="ozellik ozellik7 cell">4000 mAh</li>
+						<li class="puan cell"></li>
+			</ul>	
+			<script>$('#puan673572').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="744172" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/hiking-a27.html" class="urunresmi" title="Hiking A27 Cep Telefonu">
+					<img src="https://resim.epey.com/744172/k_hiking-a27-128-gb-1.png" alt="Hiking A27 resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/hiking-a27.html" class="urunadi" title="Hiking A27 Cep Telefonu">Hiking A27</a>
+						<span class="degergetir">Android 11 (R)</span>			
+			<input type="checkbox" id="urun744172" name="urun744172" onClick="kiyas('744172')" autocomplete="off" value="1" /><label for="urun744172"><span></span><div class="kiyasla kiyasla744172">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/hiking-a27.html#fiyatlar" title="Hiking A27 Cep Telefonu Fiyatı">6.599,00 TL<span>1 site, 1 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.53 İnç</li>
+				<li class="ozellik ozellik21 cell">128 GB</li>
+				<li class="ozellik ozellik14 cell">8 GB</li>
+				<li class="ozellik ozellik7 cell">4250 mAh</li>
+						<li class="puan cell"></li>
+			</ul>	
+			<script>$('#puan744172').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="755908" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/tcl-30-se.html" class="urunresmi" title="TCL 30 SE 64 GB (6165H) Cep Telefonu">
+					<img src="https://resim.epey.com/755908/k_tcl-30-se-2.png" alt="TCL 30 SE resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/tcl-30-se.html" class="urunadi" title="TCL 30 SE 64 GB (6165H) Cep Telefonu">TCL 30 SE</a>
+			<span class="urunkodu">6165H</span>			<span class="aile">64 GB</span>			
+			<input type="checkbox" id="urun755908" name="urun755908" onClick="kiyas('755908')" autocomplete="off" value="1" /><label for="urun755908"><span></span><div class="kiyasla kiyasla755908">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/tcl-30-se.html#fiyatlar" title="TCL 30 SE 64 GB (6165H) Cep Telefonu Fiyatı">6.649,05 TL<span>2 site, 2 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.52 İnç</li>
+				<li class="ozellik ozellik21 cell">64 GB</li>
+				<li class="ozellik ozellik14 cell">4 GB</li>
+				<li class="ozellik ozellik7 cell">5000 mAh</li>
+						<li class="puan cell"><div id="puan755908" data-dimension="70" data-text="36" data-info="puan" data-width="7" data-fontsize="22" data-percent="36" data-fgcolor="#D96041" data-bgcolor="#F8F4E0"></div></li>
+			</ul>	
+			<script>$('#puan755908').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="707242" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/infinix-smart-5.html" class="urunresmi" title="Infinix Smart 5 (X657B) Cep Telefonu">
+					<img src="https://resim.epey.com/707242/k_infinix-smart-5-1.png" alt="Infinix Smart 5 resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/infinix-smart-5.html" class="urunadi" title="Infinix Smart 5 (X657B) Cep Telefonu">Infinix Smart 5</a>
+			<span class="urunkodu">X657B</span>			<span class="degergetir">Android 10 (Go Edition)</span>			
+			<input type="checkbox" id="urun707242" name="urun707242" onClick="kiyas('707242')" autocomplete="off" value="1" /><label for="urun707242"><span></span><div class="kiyasla kiyasla707242">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/infinix-smart-5.html#fiyatlar" title="Infinix Smart 5 (X657B) Cep Telefonu Fiyatı">6.664,00 TL<span>1 site, 1 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.6 İnç</li>
+				<li class="ozellik ozellik21 cell">64 GB</li>
+				<li class="ozellik ozellik14 cell">3 GB</li>
+				<li class="ozellik ozellik7 cell">5000 mAh</li>
+						<li class="puan cell"><div id="puan707242" data-dimension="70" data-text="30" data-info="puan" data-width="7" data-fontsize="22" data-percent="30" data-fgcolor="#D96041" data-bgcolor="#F8F4E0"></div></li>
+			</ul>	
+			<script>$('#puan707242').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="1058043" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/hiking-a52.html" class="urunresmi" title="Hiking A52 Cep Telefonu">
+					<img src="https://resim.epey.com/1058043/k_hiking-a52-1.png" alt="Hiking A52 resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/hiking-a52.html" class="urunadi" title="Hiking A52 Cep Telefonu">Hiking A52</a>
+						<span class="degergetir"></span>			
+			<input type="checkbox" id="urun1058043" name="urun1058043" onClick="kiyas('1058043')" autocomplete="off" value="1" /><label for="urun1058043"><span></span><div class="kiyasla kiyasla1058043">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/hiking-a52.html#fiyatlar" title="Hiking A52 Cep Telefonu Fiyatı">6.673,06 TL<span>5 site, 28 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.74 İnç</li>
+				<li class="ozellik ozellik21 cell">128 GB</li>
+				<li class="ozellik ozellik14 cell">6 GB</li>
+				<li class="ozellik ozellik7 cell">4500 mAh</li>
+						<li class="puan cell"></li>
+			</ul>	
+			<script>$('#puan1058043').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="625903" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/reeder-p13-blue-plus.html" class="urunresmi" title="Reeder P13 Blue Plus Cep Telefonu">
+					<img src="https://resim.epey.com/625903/k_reeder-p13-blue-plus-8.png" alt="Reeder P13 Blue Plus resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/reeder-p13-blue-plus.html" class="urunadi" title="Reeder P13 Blue Plus Cep Telefonu">Reeder P13 Blue Plus</a>
+						<span class="degergetir">Android 10 (Q)</span>			
+			<input type="checkbox" id="urun625903" name="urun625903" onClick="kiyas('625903')" autocomplete="off" value="1" /><label for="urun625903"><span></span><div class="kiyasla kiyasla625903">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/reeder-p13-blue-plus.html#fiyatlar" title="Reeder P13 Blue Plus Cep Telefonu Fiyatı">6.719,04 TL<span>1 site, 1 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.088 İnç</li>
+				<li class="ozellik ozellik21 cell">64 GB</li>
+				<li class="ozellik ozellik14 cell">4 GB</li>
+				<li class="ozellik ozellik7 cell">4080 mAh</li>
+						<li class="puan cell"></li>
+			</ul>	
+			<script>$('#puan625903').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="845140" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/casper-via-m30.html" class="urunresmi" title="Casper VIA M30 Cep Telefonu">
+					<img src="https://resim.epey.com/845140/k_casper-via-m30-1.png" alt="Casper VIA M30 resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/casper-via-m30.html" class="urunadi" title="Casper VIA M30 Cep Telefonu">Casper VIA M30</a>
+						<span class="degergetir">Android 12 (S)</span>			
+			<input type="checkbox" id="urun845140" name="urun845140" onClick="kiyas('845140')" autocomplete="off" value="1" /><label for="urun845140"><span></span><div class="kiyasla kiyasla845140">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/casper-via-m30.html#fiyatlar" title="Casper VIA M30 Cep Telefonu Fiyatı">6.822,27 TL<span>2 site, 3 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.5 İnç</li>
+				<li class="ozellik ozellik21 cell">64 GB</li>
+				<li class="ozellik ozellik14 cell">3 GB</li>
+				<li class="ozellik ozellik7 cell">5000 mAh</li>
+						<li class="puan cell"></li>
+			</ul>	
+			<script>$('#puan845140').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="965099" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/hiking-a45-8gb.html" class="urunresmi" title="Hiking A45 8 GB Cep Telefonu">
+					<img src="https://resim.epey.com/965099/k_hiking-a45-8gb-2.png" alt="Hiking A45 resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/hiking-a45-8gb.html" class="urunadi" title="Hiking A45 8 GB Cep Telefonu">Hiking A45</a>
+						<span class="aile">8 GB</span>			
+			<input type="checkbox" id="urun965099" name="urun965099" onClick="kiyas('965099')" autocomplete="off" value="1" /><label for="urun965099"><span></span><div class="kiyasla kiyasla965099">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/hiking-a45-8gb.html#fiyatlar" title="Hiking A45 8 GB Cep Telefonu Fiyatı">6.900,00 TL<span>3 site, 6 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.79 İnç</li>
+				<li class="ozellik ozellik21 cell">128 GB</li>
+				<li class="ozellik ozellik14 cell">8 GB</li>
+				<li class="ozellik ozellik7 cell">5000 mAh</li>
+						<li class="puan cell"></li>
+			</ul>	
+			<script>$('#puan965099').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="1027290" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/ovion-v15-lite.html" class="urunresmi" title="Ovion V15 Lite Cep Telefonu">
+					<img src="https://resim.epey.com/1027290/k_ovion-v15-lite-2.png" alt="Ovion V15 Lite resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/ovion-v15-lite.html" class="urunadi" title="Ovion V15 Lite Cep Telefonu">Ovion V15 Lite</a>
+						<span class="degergetir">Android 15 (V)</span>			
+			<input type="checkbox" id="urun1027290" name="urun1027290" onClick="kiyas('1027290')" autocomplete="off" value="1" /><label for="urun1027290"><span></span><div class="kiyasla kiyasla1027290">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/ovion-v15-lite.html#fiyatlar" title="Ovion V15 Lite Cep Telefonu Fiyatı">6.949,00 TL<span>3 site, 4 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.56 İnç</li>
+				<li class="ozellik ozellik21 cell">128 GB</li>
+				<li class="ozellik ozellik14 cell">4 GB</li>
+				<li class="ozellik ozellik7 cell">5000 mAh</li>
+						<li class="puan cell"></li>
+			</ul>	
+			<script>$('#puan1027290').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="747034" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/reeder-p13-blue-max-pro-lite-2022.html" class="urunresmi" title="Reeder P13 Blue Max Pro Lite 2022 Cep Telefonu">
+					<img src="https://resim.epey.com/747034/k_reeder-p13-blue-max-pro-lite-2022-2.png" alt="Reeder P13 Blue Max Pro Lite 2022 resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/reeder-p13-blue-max-pro-lite-2022.html" class="urunadi" title="Reeder P13 Blue Max Pro Lite 2022 Cep Telefonu">Reeder P13 Blue Max Pro Lite 2022</a>
+						<span class="degergetir">Android 11 (R)</span>			
+			<input type="checkbox" id="urun747034" name="urun747034" onClick="kiyas('747034')" autocomplete="off" value="1" /><label for="urun747034"><span></span><div class="kiyasla kiyasla747034">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/reeder-p13-blue-max-pro-lite-2022.html#fiyatlar" title="Reeder P13 Blue Max Pro Lite 2022 Cep Telefonu Fiyatı">6.999,00 TL<span>1 site, 1 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.51 İnç</li>
+				<li class="ozellik ozellik21 cell">64 GB</li>
+				<li class="ozellik ozellik14 cell">4 GB</li>
+				<li class="ozellik ozellik7 cell">3950 mAh</li>
+						<li class="puan cell"></li>
+			</ul>	
+			<script>$('#puan747034').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="813165" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/tcl-30-se-128gb.html" class="urunresmi" title="TCL 30 SE 128 GB Cep Telefonu">
+					<img src="https://resim.epey.com/813165/k_tcl-30-se-128gb-2.png" alt="TCL 30 SE resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/tcl-30-se-128gb.html" class="urunadi" title="TCL 30 SE 128 GB Cep Telefonu">TCL 30 SE</a>
+						<span class="aile">128 GB</span>			
+			<input type="checkbox" id="urun813165" name="urun813165" onClick="kiyas('813165')" autocomplete="off" value="1" /><label for="urun813165"><span></span><div class="kiyasla kiyasla813165">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/tcl-30-se-128gb.html#fiyatlar" title="TCL 30 SE 128 GB Cep Telefonu Fiyatı">7.285,00 TL<span>6 site, 8 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.52 İnç</li>
+				<li class="ozellik ozellik21 cell">128 GB</li>
+				<li class="ozellik ozellik14 cell">4 GB</li>
+				<li class="ozellik ozellik7 cell">5000 mAh</li>
+						<li class="puan cell"><div id="puan813165" data-dimension="70" data-text="39" data-info="puan" data-width="7" data-fontsize="22" data-percent="39" data-fgcolor="#D96041" data-bgcolor="#F8F4E0"></div></li>
+			</ul>	
+			<script>$('#puan813165').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="859293" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/trident-a55.html" class="urunresmi" title="Trident A55 Cep Telefonu">
+					<img src="https://resim.epey.com/859293/k_trident-a55-1.png" alt="Trident A55 resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/trident-a55.html" class="urunadi" title="Trident A55 Cep Telefonu">Trident A55</a>
+						<span class="degergetir">Android 12 (S)</span>			
+			<input type="checkbox" id="urun859293" name="urun859293" onClick="kiyas('859293')" autocomplete="off" value="1" /><label for="urun859293"><span></span><div class="kiyasla kiyasla859293">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/trident-a55.html#fiyatlar" title="Trident A55 Cep Telefonu Fiyatı">7.299,00 TL<span>1 site, 1 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.52 İnç</li>
+				<li class="ozellik ozellik21 cell">128 GB</li>
+				<li class="ozellik ozellik14 cell">6 GB</li>
+				<li class="ozellik ozellik7 cell">4500 mAh</li>
+						<li class="puan cell"></li>
+			</ul>	
+			<script>$('#puan859293').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="704623" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/samsung-galaxy-m32-hindistan.html" class="urunresmi" title="Samsung Galaxy M32 (Hindistan) Cep Telefonu">
+					<img src="https://resim.epey.com/704623/k_samsung-galaxy-m32-hindistan-1.png" alt="Samsung Galaxy M32 (Hindistan) resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/samsung-galaxy-m32-hindistan.html" class="urunadi" title="Samsung Galaxy M32 (Hindistan) Cep Telefonu">Samsung Galaxy M32 (Hindistan)</a>
+						<span class="degergetir">Android 11 (R)</span>			
+			<input type="checkbox" id="urun704623" name="urun704623" onClick="kiyas('704623')" autocomplete="off" value="1" /><label for="urun704623"><span></span><div class="kiyasla kiyasla704623">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/samsung-galaxy-m32-hindistan.html#fiyatlar" title="Samsung Galaxy M32 (Hindistan) Cep Telefonu Fiyatı">7.349,00 TL<span>1 site, 1 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.4 İnç</li>
+				<li class="ozellik ozellik21 cell">64 GB</li>
+				<li class="ozellik ozellik14 cell">4 GB</li>
+				<li class="ozellik ozellik7 cell">6000 mAh</li>
+						<li class="puan cell"></li>
+			</ul>	
+			<script>$('#puan704623').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="861952" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/omix-x5.html" class="urunresmi" title="Omix X5 64 GB / 4 GB Cep Telefonu">
+					<img src="https://resim.epey.com/861952/k_omix-x5-1.png" alt="Omix X5 resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/omix-x5.html" class="urunadi" title="Omix X5 64 GB / 4 GB Cep Telefonu">Omix X5</a>
+						<span class="aile">64 GB / 4 GB</span>			
+			<input type="checkbox" id="urun861952" name="urun861952" onClick="kiyas('861952')" autocomplete="off" value="1" /><label for="urun861952"><span></span><div class="kiyasla kiyasla861952">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/omix-x5.html#fiyatlar" title="Omix X5 64 GB / 4 GB Cep Telefonu Fiyatı">7.362,75 TL<span>1 site, 1 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.56 İnç</li>
+				<li class="ozellik ozellik21 cell">64 GB</li>
+				<li class="ozellik ozellik14 cell">4 GB</li>
+				<li class="ozellik ozellik7 cell">5000 mAh</li>
+						<li class="puan cell"><div id="puan861952" data-dimension="70" data-text="37" data-info="puan" data-width="7" data-fontsize="22" data-percent="37" data-fgcolor="#D96041" data-bgcolor="#F8F4E0"></div></li>
+			</ul>	
+			<script>$('#puan861952').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="1027288" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/ovion-v8-lite.html" class="urunresmi" title="Ovion V8 Lite Cep Telefonu">
+					<img src="https://resim.epey.com/1027288/k_ovion-v8-lite-3.png" alt="Ovion V8 Lite resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/ovion-v8-lite.html" class="urunadi" title="Ovion V8 Lite Cep Telefonu">Ovion V8 Lite</a>
+						<span class="degergetir">Android 14 (U)</span>			
+			<input type="checkbox" id="urun1027288" name="urun1027288" onClick="kiyas('1027288')" autocomplete="off" value="1" /><label for="urun1027288"><span></span><div class="kiyasla kiyasla1027288">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/ovion-v8-lite.html#fiyatlar" title="Ovion V8 Lite Cep Telefonu Fiyatı">7.382,43 TL<span>5 site, 5 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.56 İnç</li>
+				<li class="ozellik ozellik21 cell">128 GB</li>
+				<li class="ozellik ozellik14 cell">4 GB</li>
+				<li class="ozellik ozellik7 cell">5000 mAh</li>
+						<li class="puan cell"></li>
+			</ul>	
+			<script>$('#puan1027288').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="905610" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/omix-x3.html" class="urunresmi" title="Omix X3 Cep Telefonu">
+					<img src="https://resim.epey.com/905610/k_omix-x3-1.png" alt="Omix X3 resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/omix-x3.html" class="urunadi" title="Omix X3 Cep Telefonu">Omix X3</a>
+						<span class="degergetir">Android 12 (S)</span>			
+			<input type="checkbox" id="urun905610" name="urun905610" onClick="kiyas('905610')" autocomplete="off" value="1" /><label for="urun905610"><span></span><div class="kiyasla kiyasla905610">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/omix-x3.html#fiyatlar" title="Omix X3 Cep Telefonu Fiyatı">7.499,00 TL<span>2 site, 3 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.51 İnç</li>
+				<li class="ozellik ozellik21 cell">64 GB</li>
+				<li class="ozellik ozellik14 cell">4 GB</li>
+				<li class="ozellik ozellik7 cell">4500 mAh</li>
+						<li class="puan cell"></li>
+			</ul>	
+			<script>$('#puan905610').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="910296" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/infinix-smart-8-hd.html" class="urunresmi" title="Infinix Smart 8 HD Cep Telefonu">
+					<img src="https://resim.epey.com/910296/k_infinix-smart-8-hd-1.png" alt="Infinix Smart 8 HD resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/infinix-smart-8-hd.html" class="urunadi" title="Infinix Smart 8 HD Cep Telefonu">Infinix Smart 8 HD</a>
+						<span class="degergetir">Android 13 (Go Edition)</span>			
+			<input type="checkbox" id="urun910296" name="urun910296" onClick="kiyas('910296')" autocomplete="off" value="1" /><label for="urun910296"><span></span><div class="kiyasla kiyasla910296">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/infinix-smart-8-hd.html#fiyatlar" title="Infinix Smart 8 HD Cep Telefonu Fiyatı">7.499,00 TL<span>2 site, 6 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.6 İnç</li>
+				<li class="ozellik ozellik21 cell">64 GB</li>
+				<li class="ozellik ozellik14 cell">3 GB</li>
+				<li class="ozellik ozellik7 cell">5000 mAh</li>
+						<li class="puan cell"></li>
+			</ul>	
+			<script>$('#puan910296').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="941358" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/trident-a60.html" class="urunresmi" title="Trident A60 Cep Telefonu">
+					<img src="https://resim.epey.com/941358/k_trident-a60-1.png" alt="Trident A60 resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/trident-a60.html" class="urunadi" title="Trident A60 Cep Telefonu">Trident A60</a>
+						<span class="degergetir">Android 13 (T)</span>			
+			<input type="checkbox" id="urun941358" name="urun941358" onClick="kiyas('941358')" autocomplete="off" value="1" /><label for="urun941358"><span></span><div class="kiyasla kiyasla941358">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/trident-a60.html#fiyatlar" title="Trident A60 Cep Telefonu Fiyatı">7.500,00 TL<span>3 site, 4 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.59 İnç</li>
+				<li class="ozellik ozellik21 cell">128 GB</li>
+				<li class="ozellik ozellik14 cell">6 GB</li>
+				<li class="ozellik ozellik7 cell">-</li>
+						<li class="puan cell"></li>
+			</ul>	
+			<script>$('#puan941358').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="897749" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/casper-via-m35.html" class="urunresmi" title="Casper VIA M35 Cep Telefonu">
+					<img src="https://resim.epey.com/897749/k_casper-via-m35-128gb-4.png" alt="Casper VIA M35 resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/casper-via-m35.html" class="urunadi" title="Casper VIA M35 Cep Telefonu">Casper VIA M35</a>
+						<span class="degergetir">Android 13 (T)</span>			
+			<input type="checkbox" id="urun897749" name="urun897749" onClick="kiyas('897749')" autocomplete="off" value="1" /><label for="urun897749"><span></span><div class="kiyasla kiyasla897749">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/casper-via-m35.html#fiyatlar" title="Casper VIA M35 Cep Telefonu Fiyatı">7.504,05 TL<span>3 site, 5 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.5 İnç</li>
+				<li class="ozellik ozellik21 cell">128 GB</li>
+				<li class="ozellik ozellik14 cell">4 GB</li>
+				<li class="ozellik ozellik7 cell">5000 mAh</li>
+						<li class="puan cell"></li>
+			</ul>	
+			<script>$('#puan897749').circliful();</script>	
+			
+	
+	
+		
+			
+	
+		<ul id="941665" class="metin row">
+		<li class="adi cell">
+			<div class="resim cell">
+				<a href="https://www.epey.com/akilli-telefonlar/zte-nubia-music.html" class="urunresmi" title="ZTE nubia Music (Z2353) Cep Telefonu">
+					<img src="https://resim.epey.com/941665/k_zte-nubia-music-1.png" alt="ZTE nubia Music resim" />
+				</a>
+			</div>
+			<div class="detay cell">
+			<a href="https://www.epey.com/akilli-telefonlar/zte-nubia-music.html" class="urunadi" title="ZTE nubia Music (Z2353) Cep Telefonu">ZTE nubia Music</a>
+			<span class="urunkodu">Z2353</span>			<span class="degergetir">Android 13 (T)</span>			
+			<input type="checkbox" id="urun941665" name="urun941665" onClick="kiyas('941665')" autocomplete="off" value="1" /><label for="urun941665"><span></span><div class="kiyasla kiyasla941665">Karşılaştır</div></label>			</div>
+		</li>
+				
+		<li class="fiyat cell">		
+		<a href="https://www.epey.com/akilli-telefonlar/zte-nubia-music.html#fiyatlar" title="ZTE nubia Music (Z2353) Cep Telefonu Fiyatı">7.599,00 TL<span>4 site, 8 fiyat</span></a>
+		
+						
+					
+				
+				
+				
+				<li class="ozellik ozellik1 cell">6.6 İnç</li>
+				<li class="ozellik ozellik21 cell">128 GB</li>
+				<li class="ozellik ozellik14 cell">4 GB</li>
+				<li class="ozellik ozellik7 cell">5000 mAh</li>
+						<li class="puan cell"><div id="puan941665" data-dimension="70" data-text="36" data-info="puan" data-width="7" data-fontsize="22" data-percent="36" data-fgcolor="#D96041" data-bgcolor="#F8F4E0"></div></li>
+			</ul>	
+			<script>$('#puan941665').circliful();</script>	
+		
+	</div>
+
+<div id="sayfala">
+<a href="https://www.epey.com/akilli-telefonlar/1/" onClick="sayfa(1); return false;" class="ilk"></a><a href="https://www.epey.com/akilli-telefonlar/1/" onClick="sayfa(1); return false;" class="geri">Geri</a>        <a href="https://www.epey.com/akilli-telefonlar/1/" onClick="sayfa(1); return false;">1</a>
+            <span class="sayfa">2</span>
+            <a href="https://www.epey.com/akilli-telefonlar/3/" onClick="sayfa(3); return false;">3</a>
+            <a href="https://www.epey.com/akilli-telefonlar/4/" onClick="sayfa(4); return false;">4</a>
+            <a href="https://www.epey.com/akilli-telefonlar/5/" onClick="sayfa(5); return false;">5</a>
+            <a href="https://www.epey.com/akilli-telefonlar/6/" onClick="sayfa(6); return false;">6</a>
+            <a href="https://www.epey.com/akilli-telefonlar/7/" onClick="sayfa(7); return false;">7</a>
+            <a href="https://www.epey.com/akilli-telefonlar/8/" onClick="sayfa(8); return false;">8</a>
+            <a href="https://www.epey.com/akilli-telefonlar/9/" onClick="sayfa(9); return false;">9</a>
+            <a href="https://www.epey.com/akilli-telefonlar/10/" onClick="sayfa(10); return false;">10</a>
+            <a href="https://www.epey.com/akilli-telefonlar/11/" onClick="sayfa(11); return false;">11</a>
+            <a href="https://www.epey.com/akilli-telefonlar/12/" onClick="sayfa(12); return false;">12</a>
+            <a href="https://www.epey.com/akilli-telefonlar/13/" onClick="sayfa(13); return false;">13</a>
+            <a href="https://www.epey.com/akilli-telefonlar/14/" onClick="sayfa(14); return false;">14</a>
+            <a href="https://www.epey.com/akilli-telefonlar/15/" onClick="sayfa(15); return false;">15</a>
+    <a href="https://www.epey.com/akilli-telefonlar/3/" onClick="sayfa(3); return false;" class="ileri">İleri</a><a href="https://www.epey.com/akilli-telefonlar/154/" onClick="sayfa(154); return false;" class="son"></a>
+</div>
+
+
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+		pageurl = "https://www.epey.com/akilli-telefonlar/e/Tjtfczo5OiJmaXlhdDpBU0MiOw==/2/";
+		window.history.pushState({path:pageurl},'',pageurl);
+	});
+	</script>
+
+
+<script type="text/javascript">
+$("#ustbilgi").load("https://www.epey.com/kat/ustbilgi/",{kategori_id:1,elink:'Tjtfczo5OiJmaXlhdDpBU0MiOw=='});
+</script>
+
+
+
+
+<script>
+function filtreyikaydet() {
+	var e = "Tjtfczo5OiJmaXlhdDpBU0MiOw==";
+	var k = 1;
+	var f = $(".filtre_adi").val();
+
+	$.ajax({
+		type: "POST",
+		url: "https://www.epey.com/uye/",
+		data: {e: e, k: k, f: f},
+		success: function() {
+			// $(".filtre_bolumu").load(" .filtre_bolumu");
+			// location.reload();
+			$(".filtre_kaydet_cerceve").css("display", "none");
+		}
+	})
+}
+</script>
+
+

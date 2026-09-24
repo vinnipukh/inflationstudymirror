@@ -23,6 +23,8 @@ logger = logging.getLogger(__name__)
 # ── STRICT RELATIVE PATH SETUP ──────────────────────────────────────────────
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "..", "..", ".."))
+sys.path.insert(0, os.path.join(PROJECT_ROOT, "Inflations", "Codes"))
+from detail_store import append_detail  # noqa: E402
 
 DEFAULT_RAW_DIR = os.path.join(PROJECT_ROOT, "InflationItems", "Datas", "Markets", "Gurmar")
 DEFAULT_OUT_DIR = os.path.join(PROJECT_ROOT, "Inflations", "Datas", "Markets", "Gurmar")
@@ -33,13 +35,15 @@ def _build_category_mapping(out_dir_path):
     if not out_dir_path.exists():
         return mapping
 
-    for f in out_dir_path.glob("gurmar_inflation_*.csv"):
+    store = out_dir_path / "gurmar_inflation.csv"
+    if store.exists():
         try:
-            temp_df = pd.read_csv(f, usecols=['id', 'category'], on_bad_lines='skip', engine='python')
-            temp_dict = temp_df.dropna(subset=['id', 'category']).set_index('id')['category'].to_dict()
+            temp_df = pd.read_csv(store, usecols=['product_id', 'category'],
+                                  on_bad_lines='skip', engine='python')
+            temp_dict = temp_df.dropna(subset=['product_id', 'category']).set_index('product_id')['category'].to_dict()
             mapping.update(temp_dict)
         except Exception:
-            continue
+            pass
     return mapping
 
 
@@ -208,9 +212,8 @@ def calculate_inflation(input_file, output_dir=None, compare_file=None):
         summary_row[f'avg_inflation_{label}'] = avg_inf
         summary_row[f'tuik_weighted_{label}'] = tuik_w
 
-    detail_file = out_dir_path / f"gurmar_inflation_{today_str}.csv"
-    detail_base.to_csv(detail_file, index=False, encoding='utf-8-sig')
-    logger.info(f"Detaylı enflasyon verisi kaydedildi: {detail_file}")
+    append_detail(out_dir_path, "gurmar_inflation.csv", today_str, detail_base)
+    logger.info("Günlük detay verisi birleşik dosyaya eklendi: gurmar_inflation.csv (%s)", today_str)
 
     summary_file = out_dir_path / "inflation_summary.csv"
     df_summary = pd.DataFrame([summary_row])

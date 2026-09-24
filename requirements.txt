@@ -1,36 +1,25 @@
-certifi==2026.1.4
-charset-normalizer==3.4.4
-idna==3.11
-packaging==26.0
-python-dotenv==1.2.1
-requests==2.32.5
-aiohttp
-urllib3==2.6.3
-wheel==0.46.3
-falcon
+# HTTP clients and parsing
+aiohttp>=3.9
+beautifulsoup4>=4.12
+cloudscraper>=1.2
+curl-cffi>=0.7
+httpx>=0.27
+lxml>=5.0
+requests>=2.32
 
-camoufox
-beautifulsoup4
-seleniumbase
-cloudscraper
-curl-cffi
-selenium
-undetected-chromedriver
-lxml
-tqdm
+# Browser automation
+camoufox>=0.4
+DrissionPage>=4.1
+selenium>=4.20
+seleniumbase>=4.20
+undetected-chromedriver>=3.5
 
-# Dashboard dependencies
+# Data processing and legacy calculators
+matplotlib>=3.8
+numpy>=1.26
+openpyxl>=3.1
 pandas>=2.0
-plotly
-streamlit
-orjson>=3.12.0
-
-# High-scale ASGI API (scaling refactor)
-uvicorn>=0.52.3
-structlog>=26.1.0
-redis>=8.1.0
-sqlalchemy>=2.0.52
-aiosqlite>=0.22.1
-
-# Dev/verification (not required at runtime)
-fakeredis>=2.37.1
+regex>=2024.0
+seaborn>=0.13
+tqdm>=4.66
+python-dotenv>=1.0

@@ -1,0 +1,80 @@
+SIGN IN
+Articles
+About 656,000 results (0.34 sec)
+My profile
+My library
+Any time
+Since 2026
+Since 2025
+Since 2022
+Custom range...
+Sort by relevance
+Sort by date
+Any type
+Review articles
+include patents
+include citations
+Create alert
+	
+[PDF] academia.edu
+A smart system for short-term price prediction using time series models
+HV Nguyen, MA Naeem, N Wichitaksorn… - Computers & Electrical …, 2019 - Elsevier
+… price prediction for various products using time series models. The system includes a series
+of … a smart system for short-term price prediction for retail products based on the use of time …
+Save Cite Cited by 110 Related articles All 3 versions
+Deep learning-driven intelligent pricing model in retail: from sales forecasting to dynamic price optimization: D. Li, J. Xin
+D Li, J Xin - Soft Computing, 2024 - Springer
+… net model which integrates multiple components to process time series data in smart
+pricing in the retail industry in a more comprehensive and flexible way. The ensemble …
+Save Cite Cited by 16 Related articles All 5 versions
+[PDF] tandfonline.com
+Full View
+Time series forecasting of price of agricultural products using hybrid methods
+SK Purohit, S Panigrahi, PK Sethy… - Applied Artificial …, 2021 - Taylor & Francis
+… the closeness of original time series and Additive-ARIMA-ANN forecasts, we have plotted
+the comparison graph for onion retail price time series and presented it in Figure 3. …
+Save Cite Cited by 118 Related articles All 3 versions
+[BOOK] Time series forecasting in python
+M Peixeiro - 2022 - books.google.com
+… 10 Forecasting multiple time series 11 Capstone: Forecasting the number of antidiabetic drug
+prescriptions in Australia PART 3 LARGE-SCALE FORECASTING … average retail price of …
+Save Cite Cited by 154 Related articles All 5 versions
+[PDF] umn.edu
+Time series forecasting of price of the agricultural products using data science
+T Kmytiuk, G Majore, T Bilyk - Agricultural and Resource …, 2024 - ageconsearch.umn.edu
+… The issue of price forecasting is one of the key … original levels of the series and then use
+the time series of errors 𝐸 to analyse the relationships of the original level and other time series. …
+Save Cite Cited by 18 Related articles All 9 versions 
+[PDF] usda.gov
+[PDF] Time-series methods for forecasting and modeling uncertainty in the Food Price Outlook
+MJ MacLachlan, C Chelius, G Short - 2022 - ers.usda.gov
+… Historically, these food price forecasts have been reported as 1-… the Consumer Price Index,
+which reflects retail food prices. Forecasts of percent annual changes for the Producer Price …
+Save Cite Cited by 18 Related articles All 14 versions 
+[PDF] nih.gov
+Predictive accuracy of time series models applied to economic data: the European countries retail trade
+S Lima, AM Gonçalves, M Costa - Journal of Applied Statistics, 2024 - Taylor & Francis
+… Modeling and accurately forecasting trend and seasonal patterns of a time series is a
+crucial activity in economics. The main propose of this study is to evaluate and compare the …
+Save Cite Cited by 30 Related articles All 11 versions
+[PDF] preprints.org
+An ensemble approach to stock price prediction using deep learning and time series models
+M Sui, C Zhang, L Zhou, S Liao… - 2024 IEEE 6th …, 2024 - ieeexplore.ieee.org
+… on enhancing stock price prediction for retail investors by … Our proposed ensemble model,
+which combines time series and … in prediction accuracy, providing a robust solution for retail …
+Save Cite Cited by 68 Related articles All 6 versions
+[BOOK] SAS for forecasting time series
+JC Brocklebank, DA Dickey - 2003 - books.google.com
+… See the last pages of this book for a complete list of books available through Books by …
+This chapter introduces some techniques for analyzing and forecasting time series and lists the …
+Save Cite Cited by 392 Related articles All 7 versions
+Time series grey system prediction-based models: Gold price forecasting
+M Askari, H Askari - Trends in Applied Sciences Research, 2011 - search.proquest.com
+… grey models include original GM (1, 1) … prediction of gold price has been considered in
+this study. For this purpose, two GM model include ordinary GM (1, 1) model and Fourier series …
+Save Cite Cited by 67 Related articles
+Related searches
+time series models price predictiongold price forecastingforecasting time series business economyseasonal items price predictionartificial neural networks price forecastingretail demand forecastingagricultural products time series forecastingtime series analysis techniques sales forecastingretail sales forecastingpredictive analytics in agriculture forecasting pricestime series prediction arima bpnnholt winters time series forecastingshort term price predictionsmart system price predictionstatistical methods price predictionmachine learning price prediction
+	1	2	3	4	5	6	7	8	9	10	
+Next
+PrivacyTermsHelp
