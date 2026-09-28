@@ -50,3 +50,8 @@ InflationItems/prices_json/
 Thumbs.db
 .vscode/
 .idea/
+
+# TechnologicalProducts scraper runtime files
+InflationItems/Codes/TechnologicalProducts/Beymen/.beymen_cookies.json
+InflationItems/Codes/TechnologicalProducts/Samsung/checkpoints/
+*.csv.part

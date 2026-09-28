@@ -1,0 +1,17 @@
+# TechnologicalProducts scrapers - server time zone must be Europe/Istanbul.
+# Installed by setup.sh (it replaces only the block between the BEGIN/END markers).
+# Each job takes a global lock, so even if one runs late they never overlap.
+# Durations measured 2026-09-28 (full runs): samsung 1 min, huawei 1, pozitif 1,
+# dr 1, beymen 11, koctas ~15, vatan 19. Start times leave room for a slower server.
+# BEGIN inflation-scrapers
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+30 0 * * * /root/scraper/bin/cleanup.sh >> /root/scraper/log.txt 2>&1
+0  1 * * * /root/scraper/bin/run_scraper.sh samsung >> /root/scraper/log.txt 2>&1
+10 1 * * * /root/scraper/bin/run_scraper.sh huawei  >> /root/scraper/log.txt 2>&1
+20 1 * * * /root/scraper/bin/run_scraper.sh pozitif >> /root/scraper/log.txt 2>&1
+30 1 * * * /root/scraper/bin/run_scraper.sh dr      >> /root/scraper/log.txt 2>&1
+0  2 * * * /root/scraper/bin/run_scraper.sh beymen  >> /root/scraper/log.txt 2>&1
+0  3 * * * /root/scraper/bin/run_scraper.sh koctas  >> /root/scraper/log.txt 2>&1
+0  4 * * * /root/scraper/bin/run_scraper.sh vatan   >> /root/scraper/log.txt 2>&1
+# END inflation-scrapers
