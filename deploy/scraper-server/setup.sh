@@ -1,16 +1,29 @@
 #!/usr/bin/env bash
 # One-time (re-runnable) server setup for the TechnologicalProducts scrapers.
-# Run as root from /root/scraper:   bash setup.sh
+# Works both from a git clone (<repo-root>/deploy/scraper-server/setup.sh)
+# and from the extracted tarball (<repo-root>/setup.sh):   bash setup.sh
 set -euo pipefail
 
-ROOT=/root/scraper
-cd "$ROOT"
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [ -d "$HERE/../../InflationItems" ]; then
+  ROOT="$(cd "$HERE/../.." && pwd)"   # git clone
+else
+  ROOT="$HERE"                          # tarball
+fi
+echo "project root: $ROOT"
 [ "$(id -u)" -eq 0 ] || { echo "run as root"; exit 1; }
+[ -d "$ROOT/InflationItems/Codes/TechnologicalProducts" ] || { echo "scraper code not found under $ROOT"; exit 1; }
+cd "$ROOT"
 
-echo "== 1/6 normalise files copied from Windows"
-sed -i 's/\r$//' setup.sh crontab.txt requirements.txt bin/*.sh
-chmod +x bin/*.sh
-mkdir -p logs export InflationItems/Datas
+echo "== 1/6 install run scripts into $ROOT/bin"
+if [ "$HERE" != "$ROOT" ]; then
+  mkdir -p "$ROOT/bin"
+  cp "$HERE"/bin/*.sh "$ROOT/bin/"
+fi
+# files copied from Windows may carry CRLF
+sed -i 's/\r$//' "$ROOT"/bin/*.sh
+chmod +x "$ROOT"/bin/*.sh
+mkdir -p server_logs export InflationItems/Datas/TechnologicalProducts
 
 echo "== 2/6 time zone -> Europe/Istanbul"
 timedatectl set-timezone Europe/Istanbul
@@ -19,7 +32,7 @@ timedatectl | grep -i 'time zone'
 echo "== 3/6 system packages"
 export DEBIAN_FRONTEND=noninteractive
 apt-get update -q
-apt-get install -y -q curl ca-certificates gnupg cron util-linux procps coreutils
+apt-get install -y -q curl ca-certificates gnupg cron util-linux procps coreutils git
 
 echo "== 4/6 Google Chrome (only Koctas and the Beymen fallback use it)"
 if ! command -v google-chrome >/dev/null 2>&1; then
@@ -32,22 +45,24 @@ fi
 google-chrome --version
 
 echo "== 5/6 Python 3.11 venv with pinned packages (uv)"
-if [ ! -x /root/.local/bin/uv ]; then
+UV="$HOME/.local/bin/uv"
+if [ ! -x "$UV" ]; then
   curl -LsSf https://astral.sh/uv/install.sh | sh
 fi
-UV=/root/.local/bin/uv
+
 if [ -x venv/bin/python ] && ! venv/bin/python -c 'import sys; sys.exit(sys.version_info[:2] != (3, 11))'; then
   echo "existing venv is not Python 3.11 -> moved to venv.old"
   rm -rf venv.old && mv venv venv.old
 fi
 [ -x venv/bin/python ] || "$UV" venv --python 3.11 venv
-"$UV" pip install --python venv/bin/python -r requirements.txt
+"$UV" pip install --python venv/bin/python -r "$HERE/requirements.txt"
 venv/bin/python -c 'import requests, bs4, lxml, pandas, curl_cffi, undetected_chromedriver; print("python packages OK")'
 
 echo "== 6/6 crontab (replaces only our block, keeps your other jobs)"
 {
   crontab -l 2>/dev/null | sed '/# BEGIN inflation-scrapers/,/# END inflation-scrapers/d' || true
-  sed -n '/# BEGIN inflation-scrapers/,/# END inflation-scrapers/p' crontab.txt
+  sed -n '/# BEGIN inflation-scrapers/,/# END inflation-scrapers/p' "$HERE/crontab.txt" \
+    | sed -e 's/\r$//' -e "s|@ROOT@|$ROOT|g"
 } | crontab -
 systemctl enable --now cron >/dev/null 2>&1 || true
 crontab -l | sed -n '/# BEGIN inflation-scrapers/,/# END inflation-scrapers/p'

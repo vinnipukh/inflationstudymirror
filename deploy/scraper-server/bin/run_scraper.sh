@@ -5,13 +5,13 @@
 # - hard timeout: a hung scraper cannot block the next day
 # - disk guard: skips the run when the disk is nearly full
 # - kills any leftover Chrome after the run (RAM)
-# - per-run log in logs/, one status line per run in log.txt
+# - per-run log in server_logs/, one status line per run in log.txt
 set -u
 
-ROOT=/root/scraper
+ROOT="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/.." && pwd)"  # <repo-root>: bin/ lives directly under it
 PY="$ROOT/venv/bin/python"
 CODES="$ROOT/InflationItems/Codes/TechnologicalProducts"
-LOG_DIR="$ROOT/logs"
+LOG_DIR="$ROOT/server_logs"
 STATUS_LOG="$ROOT/log.txt"
 LOCK=/tmp/scraper.lock
 MIN_FREE_MB=1500
@@ -35,7 +35,7 @@ mkdir -p "$LOG_DIR"
 if [ -f "$ROOT/.env" ]; then
   set -a; . "$ROOT/.env"; set +a
 fi
-export PYTHONIOENCODING=utf-8 LANG=C.UTF-8 LC_ALL=C.UTF-8 HOME=/root
+export PYTHONIOENCODING=utf-8 LANG=C.UTF-8 LC_ALL=C.UTF-8
 
 status() { echo "$(date '+%F %T') [$NAME] $*" >> "$STATUS_LOG"; }
 

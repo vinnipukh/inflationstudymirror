@@ -55,3 +55,11 @@ Thumbs.db
 InflationItems/Codes/TechnologicalProducts/Beymen/.beymen_cookies.json
 InflationItems/Codes/TechnologicalProducts/Samsung/checkpoints/
 *.csv.part
+# scraper-server runtime (deploy/scraper-server/setup.sh), repo-root anchored
+/bin/
+/venv/
+/venv.old/
+/server_logs/
+/export/
+/log.txt
+/.env

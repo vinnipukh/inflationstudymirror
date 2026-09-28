@@ -6,12 +6,12 @@
 # BEGIN inflation-scrapers
 SHELL=/bin/bash
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-30 0 * * * /root/scraper/bin/cleanup.sh >> /root/scraper/log.txt 2>&1
-0  1 * * * /root/scraper/bin/run_scraper.sh samsung >> /root/scraper/log.txt 2>&1
-10 1 * * * /root/scraper/bin/run_scraper.sh huawei  >> /root/scraper/log.txt 2>&1
-20 1 * * * /root/scraper/bin/run_scraper.sh pozitif >> /root/scraper/log.txt 2>&1
-30 1 * * * /root/scraper/bin/run_scraper.sh dr      >> /root/scraper/log.txt 2>&1
-0  2 * * * /root/scraper/bin/run_scraper.sh beymen  >> /root/scraper/log.txt 2>&1
-0  3 * * * /root/scraper/bin/run_scraper.sh koctas  >> /root/scraper/log.txt 2>&1
-0  4 * * * /root/scraper/bin/run_scraper.sh vatan   >> /root/scraper/log.txt 2>&1
+30 0 * * * @ROOT@/bin/cleanup.sh >> @ROOT@/log.txt 2>&1
+0  1 * * * @ROOT@/bin/run_scraper.sh samsung >> @ROOT@/log.txt 2>&1
+10 1 * * * @ROOT@/bin/run_scraper.sh huawei  >> @ROOT@/log.txt 2>&1
+20 1 * * * @ROOT@/bin/run_scraper.sh pozitif >> @ROOT@/log.txt 2>&1
+30 1 * * * @ROOT@/bin/run_scraper.sh dr      >> @ROOT@/log.txt 2>&1
+0  2 * * * @ROOT@/bin/run_scraper.sh beymen  >> @ROOT@/log.txt 2>&1
+0  3 * * * @ROOT@/bin/run_scraper.sh koctas  >> @ROOT@/log.txt 2>&1
+0  4 * * * @ROOT@/bin/run_scraper.sh vatan   >> @ROOT@/log.txt 2>&1
 # END inflation-scrapers
