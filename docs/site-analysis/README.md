@@ -50,6 +50,9 @@ product variants (color/size/GB), and show:
 - **The real moat is data acquisition**, not design: the site wins by crawling thousands of products daily. Your platform needs an equivalent crawler + scheduler + normalization pipeline (this repo already has scraper infrastructure under `InflationItems/Codes/`).
 - **Bias sources to design against**: sponsored ribbons/campaigns, `hasSpotCampaign` products, "Reklam" feed cards, paid "Satıcıya Git" placements, promoted store rows. Your minimalist platform can simply never render them.
 
+## Other sources
+- `telecom/NOTES.md` — mobile tariff + home internet recon (Turkcell, Vodafone, Türk Telekom, NetGSM; Superonline, Kablonet, Milleni, TurkNet), 2026-10-08
+
 ## Files
 - `epey/NOTES.md` — full detail
 - `epey/endpoint-*.html` — captured AJAX responses (listele, filtrele, ustbilgi, kiyasla, kiyaslink, fg JSON)

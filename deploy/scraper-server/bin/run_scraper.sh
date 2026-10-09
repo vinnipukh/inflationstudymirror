@@ -11,6 +11,7 @@ set -u
 ROOT="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/.." && pwd)"  # <repo-root>: bin/ lives directly under it
 PY="$ROOT/venv/bin/python"
 CODES="$ROOT/InflationItems/Codes/TechnologicalProducts"
+TELECOM="$ROOT/InflationItems/Codes/Telecom"
 LOG_DIR="$ROOT/server_logs"
 STATUS_LOG="$ROOT/log.txt"
 LOCK=/tmp/scraper.lock
@@ -25,7 +26,11 @@ case "$NAME" in
   dr)       TIMEOUT=20m;  CMD=("$PY" -u "$CODES/DR/dr_scraper.py") ;;
   koctas)   TIMEOUT=60m;  CMD=("$PY" -u "$CODES/Koctas/koctas_scraper.py") ;;
   vatan)    TIMEOUT=120m; CMD=("$PY" -u "$CODES/VatanComputer/vatan_comp.py") ;;
-  *) echo "usage: $0 {samsung|huawei|pozitif|beymen|dr|koctas|vatan}"; exit 2 ;;
+  telecom)  TIMEOUT=90m;  CMD=("$PY" -u "$TELECOM/scraper.py") ;;
+  internet) TIMEOUT=75m;  CMD=("$PY" -u "$TELECOM/internet.py") ;;
+  streaming) TIMEOUT=15m; CMD=("$PY" -u "$TELECOM/streaming.py") ;;
+  repair)   TIMEOUT=90m;  CMD=("$PY" -u "$TELECOM/repair.py") ;;
+  *) echo "usage: $0 {samsung|huawei|pozitif|beymen|dr|koctas|vatan|telecom|internet|streaming|repair}"; exit 2 ;;
 esac
 
 cd "$ROOT" || exit 1

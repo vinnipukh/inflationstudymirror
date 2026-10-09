@@ -1,0 +1,5 @@
+﻿date,operator,group,product_id,product_name,price,list_price,period,url
+2026-10-09,tvplus,,tv-aylik-plan,TV+ aylık plan,129.99,,1_ay,https://tvplus.com.tr/paketler
+2026-10-09,tvplus,,tv-yillik-plan,TV+ yıllık plan (aylık karşılığı),100.0,,1_ay,https://tvplus.com.tr/paketler
+2026-10-09,tvplus,turkcell-hbo-max,163704,Turkcelli'lere Özel x HBO Max Yıllık (kampanya: ilk ay(lar) 130.00 TL),200.0,,1_ay,https://tvplus.com.tr/paketler
+2026-10-09,tvplus,turkcell-hbo-max,163727,Turkcelli'lere Özel x HBO Max Aylık (kampanya: ilk ay(lar) 100.00 TL),200.0,,1_ay,https://tvplus.com.tr/paketler

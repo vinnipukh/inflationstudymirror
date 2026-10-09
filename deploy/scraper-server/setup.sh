@@ -23,7 +23,9 @@ fi
 # files copied from Windows may carry CRLF
 sed -i 's/\r$//' "$ROOT"/bin/*.sh
 chmod +x "$ROOT"/bin/*.sh
-mkdir -p server_logs export InflationItems/Datas/TechnologicalProducts
+mkdir -p server_logs export InflationItems/Datas/TechnologicalProducts InflationItems/Datas/Telecom
+[ -d "$ROOT/InflationItems/Codes/Telecom" ] || echo "WARNING: InflationItems/Codes/Telecom missing -> "\
+  "git sparse-checkout add InflationItems/Codes/Telecom (telecom/internet jobs will fail without it)"
 
 echo "== 2/6 time zone -> Europe/Istanbul"
 timedatectl set-timezone Europe/Istanbul
@@ -34,7 +36,7 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get update -q
 apt-get install -y -q curl ca-certificates gnupg cron util-linux procps coreutils git
 
-echo "== 4/6 Google Chrome (only Koctas and the Beymen fallback use it)"
+echo "== 4/6 Google Chrome (Koctas, the Beymen fallback and the TurkNet cookie visit use it)"
 if ! command -v google-chrome >/dev/null 2>&1; then
   curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor --yes -o /usr/share/keyrings/google-chrome.gpg
   echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] https://dl.google.com/linux/chrome/deb/ stable main" \

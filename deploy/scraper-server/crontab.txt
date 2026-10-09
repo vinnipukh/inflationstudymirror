@@ -1,4 +1,4 @@
-# TechnologicalProducts scrapers - server time zone must be Europe/Istanbul.
+# TechnologicalProducts + Telecom scrapers - server time zone must be Europe/Istanbul.
 # Installed by setup.sh (it replaces only the block between the BEGIN/END markers).
 # Each job takes a global lock, so even if one runs late they never overlap.
 # Durations measured 2026-09-28 (full runs): samsung 1 min, huawei 1, pozitif 1,
@@ -14,4 +14,8 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 0  2 * * * @ROOT@/bin/run_scraper.sh beymen  >> @ROOT@/log.txt 2>&1
 0  3 * * * @ROOT@/bin/run_scraper.sh koctas  >> @ROOT@/log.txt 2>&1
 0  4 * * * @ROOT@/bin/run_scraper.sh vatan   >> @ROOT@/log.txt 2>&1
+0  6 * * * @ROOT@/bin/run_scraper.sh telecom  >> @ROOT@/log.txt 2>&1
+30 7 * * * @ROOT@/bin/run_scraper.sh internet >> @ROOT@/log.txt 2>&1
+45 8 * * * @ROOT@/bin/run_scraper.sh streaming >> @ROOT@/log.txt 2>&1
+0  9 * * * @ROOT@/bin/run_scraper.sh repair    >> @ROOT@/log.txt 2>&1
 # END inflation-scrapers

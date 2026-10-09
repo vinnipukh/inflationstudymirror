@@ -23,6 +23,7 @@ Examples:
 - `InflationItems/Codes/Technology/`
 - `InflationItems/Codes/ConstructionMarkets/yapimaks/`
 - `InflationItems/Codes/HousesRent/Emlakjet/`
+- `InflationItems/Codes/Telecom/` (`scraper.py` mobile tariffs: Turkcell, Vodafone, Türk Telekom, NetGSM; `internet.py` home internet: Superonline, Vodafone, Kablonet, Milleni, TurkNet, Türk Telekom; `streaming.py` streaming subscriptions; `repair.py` ICT equipment repair prices)
 
 ## Data tree
 
@@ -52,6 +53,7 @@ Examples:
 - Yapımaks raw: `InflationItems/Datas/ConstructionSuppliesMarkets/yapimaks/YYYY-MM-DD.csv`
 - HomeGoods raw: `InflationItems/Datas/HomeGoods/chakra_all_categories_YYYY_MM_DD.csv`
 - Emlakjet raw: `InflationItems/Datas/HousesRent/Emlakjet/YYYY-MM-DD.csv`
+- Telecom raw: `InflationItems/Datas/Telecom/<Operator>/<operator>_YYYY-MM-DD.csv`; home internet `InflationItems/Datas/Telecom/Internet/<Provider>/<provider>_YYYY-MM-DD.csv`, streaming `InflationItems/Datas/Telecom/Streaming/<Service>/<service>_YYYY-MM-DD.csv`, repair `InflationItems/Datas/Telecom/Repair/<Source>/<source>_YYYY-MM-DD.csv`
 
 ## Repository boundary
 

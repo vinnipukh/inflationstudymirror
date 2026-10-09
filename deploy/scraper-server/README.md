@@ -1,4 +1,4 @@
-# TechnologicalProducts scraper sunucusu
+# TechnologicalProducts + Telecom scraper sunucusu
 
 Hedef sunucu: Ubuntu 22.04, 2 vCPU, 1.9 GB RAM, cron. Kod kaynağı:
 `InflationItems/Codes/TechnologicalProducts/` (upstream `TUGC3/InflationResearchStudy`
@@ -35,7 +35,7 @@ dışında kalır):
 apt-get update && apt-get install -y git
 git clone --filter=blob:none --no-checkout https://github.com/vinnipukh/inflationstudymirror.git <repo-root>
 cd <repo-root>
-git sparse-checkout set --cone deploy/scraper-server InflationItems/Codes/TechnologicalProducts
+git sparse-checkout set --cone deploy/scraper-server InflationItems/Codes/TechnologicalProducts InflationItems/Codes/Telecom
 git checkout main
 bash deploy/scraper-server/setup.sh
 ```
@@ -47,6 +47,12 @@ cron işlerine dokunmaz).
 
 Kontrol: `bin/run_scraper.sh huawei && tail -3 log.txt`
 
+Daha önce kurulmuş sunucuya Telecom'u eklemek için (bir kere):
+
+```bash
+cd <repo-root> && git sparse-checkout add InflationItems/Codes/Telecom && git pull && bash deploy/scraper-server/setup.sh
+```
+
 Kod güncellemesi (repoda scraper değişirse):
 
 ```bash
@@ -57,7 +63,7 @@ Git'siz alternatif: Windows'ta repo kökünde paketi yap, sunucuda `<repo-root>`
 `bash setup.sh` çalıştır.
 
 ```powershell
-tar --exclude __pycache__ -czf scraper.tgz -C deploy/scraper-server . -C ../.. InflationItems/Codes/TechnologicalProducts
+tar --exclude __pycache__ -czf scraper.tgz -C deploy/scraper-server . -C ../.. InflationItems/Codes/TechnologicalProducts InflationItems/Codes/Telecom
 ```
 
 ## Program (Istanbul saati, her gün)
@@ -76,10 +82,21 @@ Bellek = USS (process'e özel bellek, Chrome alt process'leri dahil).
 | 02:00 | beymen | 10.5 dk | 10.659 | 22 MB | 45 dk | sadece 403 gelirse |
 | 03:00 | koctas | 16.5 dk | 5.617 | 619 MB | 60 dk | her zaman, her 6 sayfada yenilenir |
 | 04:00 | vatan | ~19 dk (yavaşlatıldı, ~45 dk bekle) | 5.497 | ~105 MB | 120 dk | yok |
+| 06:00 | telecom (mobil tarifeler: Turkcell, Vodafone, Türk Telekom, NetGSM) | ~40 dk | ~820 | düşük | 90 dk | yok |
+| 07:30 | internet (ev interneti: Superonline, Vodafone, Kablonet, Milleni, TurkNet, Türk Telekom) | ~25 dk | ~400 | ~300 MB (kısa Chrome) | 75 dk | TurkNet için tek seferlik headless Chrome (Cloudflare çerezi) |
+| 08:45 | streaming (Netflix, Disney+, HBO Max, Amazon Prime, Apple TV+, YouTube Premium, Spotify, MUBI, TV+, Tivibu, TOD, GAİN, tabii) | ~1 dk | ~40 | ~300 MB (kısa Chrome) | 15 dk | tabii için tek seferlik headless Chrome |
+| 09:00 | repair (onarım: Apple, Samsung, Huawei, Egemek, GSM İletişim) | ~30 dk | ~2.000 | düşük | 90 dk | yok |
 
 Tüm işler aynı kilidi (`flock /tmp/scraper.lock`) kullanır, yani biri geç kalırsa
 sıradaki bekler; iki scraper asla aynı anda çalışmaz. Her çalıştırmadan sonra
 kalan Chrome process'leri öldürülür.
+
+Telecom çıktısı: `InflationItems/Datas/Telecom/<Operatör>/*.csv` (mobil) ve
+`InflationItems/Datas/Telecom/Internet/<Sağlayıcı>/*.csv` (ev interneti),
+`InflationItems/Datas/Telecom/Streaming/<Servis>/*.csv` (dijital platform abonelikleri),
+`InflationItems/Datas/Telecom/Repair/<Kaynak>/*.csv` (bilgi-iletişim ekipmanı onarım ücretleri). Süreler 2026-10-08
+geliştirici PC'sinde ölçüldü; süreyi Türk Telekom'un sitemap'teki ~490 + ~340 detay sayfası belirler
+(sıralı, 1.5-3.5 sn bekleme). Kaynak notları: `docs/site-analysis/telecom/NOTES.md`.
 
 ## Haftalık rutin
 

@@ -1,0 +1,4 @@
+﻿date,operator,group,product_id,product_name,price,list_price,period,url
+2026-10-09,netflix,,temel-plan,Temel plan,259.99,,1_ay,https://help.netflix.com/tr/node/24926
+2026-10-09,netflix,,standart-plan,Standart plan,389.99,,1_ay,https://help.netflix.com/tr/node/24926
+2026-10-09,netflix,,premium-plan,Premium plan,499.99,,1_ay,https://help.netflix.com/tr/node/24926
