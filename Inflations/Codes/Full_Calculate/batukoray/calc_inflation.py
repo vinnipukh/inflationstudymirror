@@ -82,7 +82,7 @@ def _get_scraper_dates():
             data_root / "Cosmetics" / "GoldenRose", "goldenrose_*.csv"
         ),
         "DR": _extract_dates_from_files(
-            data_root / "TechnologicalProducts" / "DR", "dr_*.csv"
+            data_root / "08_Communication" / "DR", "dr_*.csv"
         ),
     }
 

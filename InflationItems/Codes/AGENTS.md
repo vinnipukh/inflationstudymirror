@@ -30,9 +30,9 @@ The Svelte frontend, Falcon API and SQLite serving database are not part of this
 - Prefer preserving the last valid snapshot over writing empty rows after a failed refresh.
 - Use bounded live runs before scheduled/full runs.
 
-## TechnologicalProducts (cron server)
+## 08_Communication (cron server)
 
-`TechnologicalProducts/` (Beymen, DR, Huawei, Koctas, PozitifTeknoloji, Samsung,
+`08_Communication/` (Beymen, DR, Huawei, Koctas, PozitifTeknoloji, Samsung,
 VatanComputer) was imported from `TUGC3/InflationResearchStudy@9cb747a` and adapted
 for a 2 vCPU / 1.9 GB RAM Ubuntu cron box (not GitHub Actions). Deployment, schedule
 and the list of changes vs. upstream: `deploy/scraper-server/README.md`. Constraints:

@@ -1,6 +1,6 @@
 # Mobile operator tariffs — Turkcell, Vodafone, Türk Telekom, NetGSM
 
-Recon: 2026-10-08. Scraper: `InflationItems/Codes/Telecom/scraper.py`.
+Recon: 2026-10-08. Scraper: `InflationItems/Codes/08_Communication/Telecom/scraper.py`.
 TÜİK item: `0832001` Cep telefonu görüşme ücreti (group `0832` Mobil iletişim hizmetleri).
 
 Scope (user decision 2026-10-08): **all** prices shown on the operators' public pages: postpaid
@@ -78,7 +78,7 @@ no personal data is collected.
 
 ## Output
 
-`InflationItems/Datas/Telecom/<Turkcell|Vodafone|TurkTelekom|NetGSM>/<operator>_YYYY-MM-DD.csv`,
+`InflationItems/Datas/08_Communication/<Turkcell|Vodafone|TurkTelekom|NetGSM>/<operator>_YYYY-MM-DD.csv`,
 comma, utf-8-sig:
 
 `date,operator,segment,group,product_id,product_name,price,list_price,period,data_gb,minutes,sms,commitment_months,url`
@@ -103,7 +103,7 @@ comma, utf-8-sig:
 
 # Ev interneti — Türk Telekom, TurkNet, Kablonet, Superonline, Vodafone, Millenicom
 
-Recon: 2026-10-08. Scraper: `InflationItems/Codes/Telecom/internet.py` (shares `Fetcher`, `run()` and the
+Recon: 2026-10-08. Scraper: `InflationItems/Codes/08_Communication/Telecom/internet.py` (shares `Fetcher`, `run()` and the
 Türk Telekom detail parser `tt_details()` with `scraper.py`). TÜİK item: `0833001` İnternet ücreti.
 
 ## Access summary
@@ -173,7 +173,7 @@ Türk Telekom detail parser `tt_details()` with `scraper.py`). TÜİK item: `083
 
 ## Output
 
-`InflationItems/Datas/Telecom/Internet/<Superonline|Vodafone|Kablonet|Milleni|TurkNet|TurkTelekom>/<provider>_YYYY-MM-DD.csv`,
+`InflationItems/Datas/08_Communication/<Superonline|Vodafone|Kablonet|Milleni|TurkNet|TurkTelekom>/<provider>_internet_YYYY-MM-DD.csv`,
 comma, utf-8-sig:
 
 `date,operator,group,product_id,product_name,price,list_price,period,speed_mbps,upload_mbps,infrastructure,commitment_months,url`
@@ -185,7 +185,7 @@ day's full snapshot; the server's `cleanup.sh` deletes `*_limit.csv` older than 
 
 # Dijital içerik / streaming platform abonelikleri
 
-Recon: 2026-10-09. Scraper: `InflationItems/Codes/Telecom/streaming.py`. One public page per service, plain
+Recon: 2026-10-09. Scraper: `InflationItems/Codes/08_Communication/Telecom/streaming.py`. One public page per service, plain
 HTTP (`curl_cffi` chrome124 + `Accept-Language: tr-TR`). Prices are the regular prices; first-month / trial
 promotions are skipped (noted in the product name where relevant).
 
@@ -217,14 +217,14 @@ Not collected:
 - **Paramount+** — not sold in Türkiye (`paramountplus.com/tr/` → `/intl/`, no app in the TR App Store);
   its catalogue is part of TOD / TV+ packages.
 
-Output: `InflationItems/Datas/Telecom/Streaming/<Service>/<service>_YYYY-MM-DD.csv`, comma, utf-8-sig:
+Output: `InflationItems/Datas/08_Communication/<Service>/<service>_YYYY-MM-DD.csv`, comma, utf-8-sig:
 `date,operator,group,product_id,product_name,price,list_price,period,url` (`period` = `1_ay` / `1_yil`).
 
 ---
 
 # Bilgi ve iletişim ekipmanı bakım / onarım ücreti
 
-Recon: 2026-10-09. Scraper: `InflationItems/Codes/Telecom/repair.py`. The basket (which devices / brands /
+Recon: 2026-10-09. Scraper: `InflationItems/Codes/08_Communication/Telecom/repair.py`. The basket (which devices / brands /
 services) is not decided yet, so every price each source publishes is collected. All plain HTTP.
 
 | Source | Kind | Where | Count (2026-10-09) |
@@ -274,5 +274,5 @@ services) is not decided yet, so every price each source publishes is collected.
   price ("fiyat sorunuz") are skipped.
 - Model and service are split at the first service keyword (ekran, batarya, pil, ön cam, kamera, ...).
 
-Output: `InflationItems/Datas/Telecom/Repair/<Source>/<source>_YYYY-MM-DD.csv`, comma, utf-8-sig:
+Output: `InflationItems/Datas/08_Communication/<Source>/<source>_repair_YYYY-MM-DD.csv`, comma, utf-8-sig:
 `date,operator,group,product_id,product_name,service,price,list_price,url`.

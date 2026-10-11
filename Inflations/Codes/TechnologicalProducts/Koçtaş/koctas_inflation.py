@@ -19,7 +19,7 @@ import pandas as pd
 
 _THIS_DIR = Path(__file__).resolve().parent
 # Bu dosya: Inflations/Codes/TechnologicalProducts/Koçtaş/koctas_inflation.py
-# Veri:     InflationItems/Datas/TechnologicalProducts/Koçtaş/
+# Veri:     InflationItems/Datas/08_Communication/Koçtaş/
 # Çıktı:    Inflations/Datas/TechnologicalProducts/Koçtaş/
 REPO_ROOT  = _THIS_DIR.parents[3]
 sys.path.insert(0, str(_THIS_DIR))
@@ -27,7 +27,7 @@ from koctas_tuik_config import normalised_weights
 
 logger = logging.getLogger(__name__)
 
-DATA_DIR   = REPO_ROOT / "InflationItems" / "Datas" / "TechnologicalProducts" / "Koçtaş"
+DATA_DIR   = REPO_ROOT / "InflationItems" / "Datas" / "08_Communication" / "Koçtaş"
 OUTPUT_DIR = REPO_ROOT / "Inflations"     / "Datas" / "TechnologicalProducts" / "Koçtaş"
 
 # Yeni CSV formatı sadece product_name,price içeriyor — kategori yok.

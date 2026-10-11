@@ -1,0 +1,413 @@
+﻿id,product_name,price,category
+SM-S741BLGGTUR,Galaxy S26 FE,54999.0,Smartphones
+SM-S741BZKGTUR,Galaxy S26 FE,54999.0,Smartphones
+SM-S741BZKITUR,Galaxy S26 FE,66999.0,Smartphones
+SM-S741BZVGTUR,Galaxy S26 FE,54999.0,Smartphones
+SM-S741BZVITUR,Galaxy S26 FE,66999.0,Smartphones
+SM-S741BLGITUR,Galaxy S26 FE,66999.0,Smartphones
+SM-F976BZVBTUR,Galaxy Z Fold8 Ultra,151999.0,Smartphones
+SM-F976BZVCTUR,Galaxy Z Fold8 Ultra,163999.0,Smartphones
+SM-F976BZVNTUR,Galaxy Z Fold8 Ultra,187999.0,Smartphones
+SM-F976BZKBTUR,Galaxy Z Fold8 Ultra,151999.0,Smartphones
+SM-F976BZKCTUR,Galaxy Z Fold8 Ultra,163999.0,Smartphones
+SM-F976BZKNTUR,Galaxy Z Fold8 Ultra,187999.0,Smartphones
+SM-F976BZWBTUR,Galaxy Z Fold8 Ultra,151999.0,Smartphones
+SM-F976BZWCTUR,Galaxy Z Fold8 Ultra,163999.0,Smartphones
+SM-F976BZWNTUR,Galaxy Z Fold8 Ultra,187999.0,Smartphones
+SM-F971BLVBTUR,Galaxy Z Fold8,131999.0,Smartphones
+SM-F971BZKBTUR,Galaxy Z Fold8,131999.0,Smartphones
+SM-F971BZKCTUR,Galaxy Z Fold8,143999.0,Smartphones
+SM-F971BZKNTUR,Galaxy Z Fold8,167999.0,Smartphones
+SM-F971BLVCTUR,Galaxy Z Fold8,143999.0,Smartphones
+SM-F971BLVNTUR,Galaxy Z Fold8,167999.0,Smartphones
+SM-F971BZWBTUR,Galaxy Z Fold8,131999.0,Smartphones
+SM-F971BZWCTUR,Galaxy Z Fold8,143999.0,Smartphones
+SM-F971BZWNTUR,Galaxy Z Fold8,167999.0,Smartphones
+SM-F776BLIGTUR,Galaxy Z Flip8,96999.0,Smartphones
+SM-F776BZKGTUR,Galaxy Z Flip8,96999.0,Smartphones
+SM-F776BZKHTUR,Galaxy Z Flip8,108999.0,Smartphones
+SM-F776BLIHTUR,Galaxy Z Flip8,108999.0,Smartphones
+SM-F776BZWGTUR,Galaxy Z Flip8,96999.0,Smartphones
+SM-F776BZWHTUR,Galaxy Z Flip8,108999.0,Smartphones
+SM-F976BDGBTUR,Galaxy Z Fold8 Ultra (Samsung.com’a özel),151999.0,Smartphones
+SM-F971BZGBTUR,Galaxy Z Fold8 (Samsung.com’a özel),131999.0,Smartphones
+SM-F776BLGGTUR,Galaxy Z Flip8 (Samsung.com’a özel),96999.0,Smartphones
+SM-A376BZADTUR,Galaxy A37 5G,25999.0,Smartphones
+SM-A376BDGDTUR,Galaxy A37 5G,25999.0,Smartphones
+SM-A376BLVDTUR,Galaxy A37 5G,25999.0,Smartphones
+SM-A376BLVGTUR,Galaxy A37 5G,29999.0,Smartphones
+SM-A376BZWDTUR,Galaxy A37 5G,25999.0,Smartphones
+SM-A376BZWGTUR,Galaxy A37 5G,29999.0,Smartphones
+SM-A576BDBBTUR,Galaxy A57 5G,32999.0,Smartphones
+SM-A576BZVDTUR,Galaxy A57 5G,36999.0,Smartphones
+SM-A076EZKBTUR,Galaxy A07 5G,14499.0,Smartphones
+SM-A076ELGBTUR,Galaxy A07 5G,14499.0,Smartphones
+SM-A076ELVBTUR,Galaxy A07 5G,14499.0,Smartphones
+SM-S948BZKDTUR,Galaxy S26 Ultra,119999.0,Smartphones
+SM-S948BZKHTUR,Galaxy S26 Ultra,149999.0,Smartphones
+SM-S948BZVDTUR,Galaxy S26 Ultra,119999.0,Smartphones
+SM-S948BLBHTUR,Galaxy S26 Ultra,149999.0,Smartphones
+SM-S948BZWHTUR,Galaxy S26 Ultra,149999.0,Smartphones
+SM-S947BZVDTUR,Galaxy S26+,97999.0,Smartphones
+SM-S947BLBDTUR,Galaxy S26+,97999.0,Smartphones
+SM-S942BZKGTUR,Galaxy S26,77999.0,Smartphones
+SM-S942BZVGTUR,Galaxy S26,77999.0,Smartphones
+SM-S942BLBGTUR,Galaxy S26,77999.0,Smartphones
+SM-A175FZKBTUR,Galaxy A17,16999.0,Smartphones
+SM-S731BDBGTUR,Galaxy S25 FE,46999.0,Smartphones
+SM-S731BZKGTUR,Galaxy S25 FE,46999.0,Smartphones
+SM-S731BLBGTUR,Galaxy S25 FE,46999.0,Smartphones
+SM-S731BZWGTUR,Galaxy S25 FE,46999.0,Smartphones
+SM-A176BZBBTUR,Galaxy A17 5G,17999.0,Smartphones
+SM-A176BZBDTUR,Galaxy A17 5G,19999.0,Smartphones
+SM-A176BZKDTUR,Galaxy A17 5G,19999.0,Smartphones
+SM-A366BZKGTUR,Galaxy A36 5G,25499.0,Smartphones
+SM-S936BDBDTUR,Galaxy S25+,73499.0,Smartphones
+SM-S938BZTHTUR,Galaxy S25 Ultra,111499.0,Smartphones
+SM-S938BZSHTUR,Galaxy S25 Ultra,111499.0,Smartphones
+SM-X230NZARTUR,Galaxy Tab A11+ (Wi-Fi),12499.0,Tablets
+SM-X230NZSRTUR,Galaxy Tab A11+ (Wi-Fi),12499.0,Tablets
+SM-X130NZAETUR,Galaxy Tab A11 (Wi-Fi),9999.0,Tablets
+SM-X130NZSETUR,Galaxy Tab A11 (Wi-Fi),9999.0,Tablets
+SM-X400NZAPTUR,Galaxy Tab S10 Lite (Wi-Fi),24499.0,Tablets
+SM-X400NZARTUR,Galaxy Tab S10 Lite (Wi-Fi),20499.0,Tablets
+SM-X400NZSRTUR,Galaxy Tab S10 Lite (Wi-Fi),20499.0,Tablets
+SM-X400NZSPTUR,Galaxy Tab S10 Lite (Wi-Fi),24499.0,Tablets
+SM-X400NZRRTUR,Galaxy Tab S10 Lite (Wi-Fi),20499.0,Tablets
+SM-X400NZRPTUR,Galaxy Tab S10 Lite (Wi-Fi),24499.0,Tablets
+SM-X736BZARTUR,Galaxy Tab S11 5G,52999.0,Tablets
+SM-X620NZARTUR,Galaxy Tab S10 FE+ (Wi-Fi),35499.0,Tablets
+SM-X520NZARTUR,Galaxy Tab S10 FE (Wi-Fi),27499.0,Tablets
+SM-X308BZGAM09,Galaxy Tab Active5 5G (SM-X308),35999.0,Tablets
+SM-L710NZSATUR,Galaxy Watch Ultra2 Bluetooth,37999.0,Watches
+SM-L710NZKATUR,Galaxy Watch Ultra2 Bluetooth,37999.0,Watches
+SM-L340NZEATUR,"Galaxy Watch9 (Bluetooth, 40 mm)",19999.0,Watches
+SM-L340NZKATUR,"Galaxy Watch9 (Bluetooth, 40 mm)",19999.0,Watches
+SM-L350NZKATUR,"Galaxy Watch9 (Bluetooth, 44 mm)",20999.0,Watches
+SM-L350NZSATUR,"Galaxy Watch9 (Bluetooth, 44 mm)",20999.0,Watches
+SM-L500NZWATUR,"Galaxy Watch8 Classic (Bluetooth, 46 mm)",19999.0,Watches
+SM-R640NZWATUR,Galaxy Buds4 Pro,12499.0,Audio Sound
+SM-R640NZKATUR,Galaxy Buds4 Pro,12499.0,Audio Sound
+SM-R420NZAATUR,Galaxy Buds3 FE,5499.0,Audio Sound
+EI-T5600BBEGTR,Galaxy SmartTag2,1599.0,Mobile Accessories
+EI-T5600BWEGTR,Galaxy SmartTag2,1599.0,Mobile Accessories
+EP-T2510XBEGWW,EP-T2510X TypeC Hızlı Şarj Aleti (25W) - Siyah,1799.0,Mobile Accessories
+EP-P5400TBEGWW,İkili Süper Hızlı Kablosuz Şarj Cihazı,4000.0,Mobile Accessories
+EP-P5400TWEGWW,İkili Süper Hızlı Kablosuz Şarj Cihazı,4000.0,Mobile Accessories
+EF-ES741CBEGWW,Galaxy S26 FE Silikon Magnet Kılıf - Siyah,2199.0,Mobile Accessories
+EF-ES741CMEGWW,Galaxy S26 FE Silikon Magnet Kılıf - Mint,2199.0,Mobile Accessories
+EF-ES741CLEGWW,Galaxy S26 FE Silikon Magnet Kılıf - Gece Moru,2199.0,Mobile Accessories
+EF-ES741CPEGWW,Galaxy S26 FE Silikon Magnet Kılıf - Pembe,2199.0,Mobile Accessories
+EF-SS741CBEGWW,Galaxy S26 FE İnce Magnet Kılıf - Siyah,2199.0,Mobile Accessories
+EF-SS741CMEGWW,Galaxy S26 FE İnce Magnet Kılıf - Mint,2199.0,Mobile Accessories
+EF-SS741CLEGWW,Galaxy S26 FE İnce Magnet Kılıf - Gece Moru,2199.0,Mobile Accessories
+EF-QS741CTEGWW,Galaxy S26 FE Şeffaf Kılıf,1099.0,Mobile Accessories
+EF-CS741CTEGWW,Galaxy S26 FE Şeffaf Magnet Kılıf,1599.0,Mobile Accessories
+GP-FPF766PGBTW,Galaxy Z Flip7 Capella,3199.0,Mobile Accessories
+EF-PF741TBEGWW,"Galaxy Z Flip7 FE, Z Flip6 için Silikon Kılıf",2199.0,Mobile Accessories
+EF-PF741TWEGWW,"Galaxy Z Flip7 FE, Z Flip6 için Silikon Kılıf",2199.0,Mobile Accessories
+GP-FFF776CUBTW,Galaxy Z Flip8 Flipsuit Kılıf (Fireworks) - Siyah,2499.0,Mobile Accessories
+GP-FPF776HIAPW,Galaxy Z Flip8  Aynalı Magnet Kılıf (Esther Bunny) - Çok Renkli,2499.0,Mobile Accessories
+GP-FPF971HIAPW,Galaxy Z Fold8 Aynalı Magnet Kılıf (Esther Bunny) - Çok Renkli,2999.0,Mobile Accessories
+GP-FPF971HICBW,Galaxy Z Fold8 Aynalı Magnet Kılıf (PinGu) - Çok Renkli,2999.0,Mobile Accessories
+GP-FPF776YCBBW,Galaxy Z Flip8 Dayanıklı Magnet Kılıf - Siyah,2499.0,Mobile Accessories
+GP-FPF971HIBAW,Galaxy Z Fold8 Aynalı Magnet Kılıf (Kakao Friends) - Çok Renkli,2999.0,Mobile Accessories
+GP-FPF776HIDSW,Galaxy Z Flip8  Aynalı Magnet Kılıf - Gümüş,2499.0,Mobile Accessories
+GP-FFF776CUDTW,Galaxy Z Flip8 Flipsuit Kılıf (Summer Vacation) - Çok renkli,2499.0,Mobile Accessories
+GP-FFF776CUATW,Galaxy Z Flip8 Flipsuit Kılıf (Dream World) - Çok Renkli,2499.0,Mobile Accessories
+GP-FPF776HIBAW,Galaxy Z Flip8  Aynalı Magnet Kılıf (Kakao Friends) - Çok Renkli,2499.0,Mobile Accessories
+GP-FPF776HICBW,Galaxy Z Flip8  Aynalı Magnet Kılıf (PinGu) - Çok Renkli,2499.0,Mobile Accessories
+GP-FPF971HIDSW,Galaxy Z Fold8 Aynalı Magnet Kılıf - Gümüş,2999.0,Mobile Accessories
+GP-TEU026BSABW,Çift Magnet Tutucu İnce,1399.0,Mobile Accessories
+ET-SXL34SYEGWW,Galaxy Watch9 (Watch8) için Şeffaf Kenarlı Kordon (S/M),2199.0,Mobile Accessories
+EF-QF776CTEGWW,Galaxy Z Flip8 Şeffaf Kılıf,1999.0,Mobile Accessories
+EF-CF776CTEGWW,Galaxy Z Flip8 Şeffaf Magnet Kılıf,2499.0,Mobile Accessories
+EF-EF776CBEGWW,Galaxy Z Flip8 Silikon Yüzüklü Magnet Kılıf,2499.0,Mobile Accessories
+EF-EF776CGEGWW,Galaxy Z Flip8 Silikon Yüzüklü Magnet Kılıf,2499.0,Mobile Accessories
+EF-EF776CWEGWW,Galaxy Z Flip8 Silikon Yüzüklü Magnet Kılıf,2499.0,Mobile Accessories
+EF-KF971SREGWW,Galaxy Z Fold8 Karbon Magnet Kılıf,3799.0,Mobile Accessories
+EF-KF971SNEGWW,Galaxy Z Fold8 Karbon Magnet Kılıf,3799.0,Mobile Accessories
+EF-KF971SBEGWW,Galaxy Z Fold8 Karbon Magnet Kılıf,3799.0,Mobile Accessories
+EF-CF971CTEGWW,Galaxy Z Fold8 Şeffaf Magnet Kılıf,2499.0,Mobile Accessories
+EF-EF971CVEGWW,Galaxy Z Fold8 Silikon Magnet Kılıf,3799.0,Mobile Accessories
+EF-EF971CBEGWW,Galaxy Z Fold8 Silikon Magnet Kılıf,3799.0,Mobile Accessories
+EF-EF971CGEGWW,Galaxy Z Fold8 Silikon Magnet Kılıf,3799.0,Mobile Accessories
+EF-EF971CWEGWW,Galaxy Z Fold8 Silikon Magnet Kılıf,3799.0,Mobile Accessories
+EF-KF976SNEGWW,Galaxy Z Fold8 Ultra Karbon Magnet Kılıf,3799.0,Mobile Accessories
+EF-CF976CTEGWW,Galaxy Z Fold8 Ultra Şeffaf Magnet Kılıf,2499.0,Mobile Accessories
+EF-EF976CVEGWW,Galaxy Z Fold8 Ultra Silikon Magnet Kılıf,3799.0,Mobile Accessories
+EF-EF976CGEGWW,Galaxy Z Fold8 Ultra Silikon Magnet Kılıf,3799.0,Mobile Accessories
+EF-EF976CBEGWW,Galaxy Z Fold8 Ultra Silikon Magnet Kılıf,3799.0,Mobile Accessories
+EF-EF976CWEGWW,Galaxy Z Fold8 Ultra Silikon Magnet Kılıf,3799.0,Mobile Accessories
+EF-QF971CTEGWW,Galaxy Z Fold8 Şeffaf Kılıf,1999.0,Mobile Accessories
+EF-FF776CJEGWW,Galaxy Z Flip8 Flipsuit Kılıf,2199.0,Mobile Accessories
+EF-DX935BSEGTR,Galaxy Tab S11 Ultra Pro Klavye,18999.0,Mobile Accessories
+EP-T6010NBEGWW,60W Adaptör - Type C,2999.0,Mobile Accessories
+EB-U2500XJEGWW,Standlı Magnet Powerbank,3199.0,Mobile Accessories
+GP-FPR640HICJW,Galaxy Buds4 | Buds4 Pro Magnet Standlı Kılıf,1299.0,Mobile Accessories
+GP-FPR640HICNW,Galaxy Buds4 | Buds4 Pro Magnet Standlı Kılıf,1299.0,Mobile Accessories
+EF-SS942CJEGWW,Galaxy S26 İnce Magnet Kılıf,2399.0,Mobile Accessories
+EF-SS942CLEGWW,Galaxy S26 İnce Magnet Kılıf,2399.0,Mobile Accessories
+EF-ES942CJEGWW,Galaxy S26 Silikon Magnet Kılıf,2399.0,Mobile Accessories
+EF-ES942CLEGWW,Galaxy S26 Silikon Magnet Kılıf,2399.0,Mobile Accessories
+EF-SS948CVEGWW,Galaxy S26 Ultra İnce Magnet Kılıf,2399.0,Mobile Accessories
+EF-SS948CLEGWW,Galaxy S26 Ultra İnce Magnet Kılıf,2399.0,Mobile Accessories
+EF-ES948CLEGWW,Galaxy S26 Ultra Silikon Magnet Kılıf,2399.0,Mobile Accessories
+EF-ES948CWEGWW,Galaxy S26 Ultra Silikon Magnet Kılıf,2399.0,Mobile Accessories
+EF-ES948COEGWW,Galaxy S26 Ultra Silikon Magnet Kılıf,2399.0,Mobile Accessories
+EF-CS947CTEGWW,Galaxy S26+ Şeffaf Magnet Kılıf,2199.0,Mobile Accessories
+EF-SS947CVEGWW,Galaxy S26+ İnce Magnet Kılıf,2399.0,Mobile Accessories
+EF-SS947CBEGWW,Galaxy S26+ İnce Magnet Kılıf,2399.0,Mobile Accessories
+EF-SS947CJEGWW,Galaxy S26+ İnce Magnet Kılıf,2399.0,Mobile Accessories
+EF-SS947CLEGWW,Galaxy S26+ İnce Magnet Kılıf,2399.0,Mobile Accessories
+EF-ES947CLEGWW,Galaxy S26+ Silikon Magnet Kılıf,2399.0,Mobile Accessories
+GP-FPR640AMBLW,Galaxy Buds4 | Buds4 Pro Konserve Tasarımlı Kılıf,1099.0,Mobile Accessories
+GP-FPR640AMBRW,Galaxy Buds4 | Buds4 Pro Konserve Tasarımlı Kılıf,1099.0,Mobile Accessories
+EJ-B7800BBEGTR,Samsung Smart Bluetooth Klavye,4999.0,Mobile Accessories
+EP-T4511NBEGWW,EP-T4511N Type C Hızlı Şarj Adaptörü (45W) - Siyah,2599.0,Mobile Accessories
+EF-BX930PBEGWW,Galaxy Tab S11 Ultra Akıllı Kapaklı Kılıf,4199.0,Mobile Accessories
+EF-DX930BBEGTR,Galaxy Tab S11 Ultra İnce Klavyeli Kılıf,10999.0,Mobile Accessories
+EF-DX730BBEGTR,Galaxy Tab S11 İnce Klavyeli Kılıf,10999.0,Mobile Accessories
+ET-SLL50LNEGWW,Galaxy Watch8 | Watch8 Classic Hibrit Kordon (S/M/L),4999.0,Mobile Accessories
+ET-SNL32SNEGWW,Galaxy Watch8 | Watch8 Classic Spor Kordon (S/M),2999.0,Mobile Accessories
+EF-VS937PLEGWW,Galaxy S25 Edge Deri Kılıf,3499.0,Mobile Accessories
+EF-VS937PJEGWW,Galaxy S25 Edge Deri Kılıf,3499.0,Mobile Accessories
+EF-DX925BWEGTR,Galaxy Tab S10 / S9  Ultra Klavyeli Mousepadli Kılıf (Galaxy AI),13999.0,Mobile Accessories
+EB-P4520XUEGWW,20.000 mAh Süper Hızlı Powerbank,3199.0,Mobile Accessories
+EP-T2510NWEGWW,EP-T2510N Type C Hızlı Şarj Adaptörü (25W) - Beyaz,999.0,Mobile Accessories
+EP-T2510NBEGWW,EP-T2510N Type C Hızlı Şarj Adaptörü (25W) - Siyah,999.0,Mobile Accessories
+EI-T5600KWEGWW,Galaxy SmartTag2,4799.0,Mobile Accessories
+EP-T6530NBEGWW,EP-T6530N Type C & Type A Hızlı Şarj Adaptörü Üçlü (65W - 25W - 15W),3999.0,Mobile Accessories
+EP-DA705BBEGWW,EP-DA705B Type C Kablo (25W),999.0,Mobile Accessories
+EP-DA705BWEGWW,EP-DA705B Type C Kablo (25W),999.0,Mobile Accessories
+EP-DN975BBEGWW,EP-DN975B Type C Kablo (45W),1199.0,Mobile Accessories
+EP-DN975BWEGWW,EP-DN975B Type C Kablo (45W),1199.0,Mobile Accessories
+MRE100R85HUXTK,"100"" Micro RGB R85H 4K Samsung Vision AI Smart TV (2026)",299999.0,TVs
+UE100M90HUXTK,"100"" Mini LED M90H 4K Samsung Vision AI Smart TV (2026)",162999.0,TVs
+QE75QN70HAUXTK,"75"" Neo QLED QN70H 4K Samsung Vision AI Smart TV (2026)",79999.0,TVs
+QE85QN70HAUXTK,"85"" Neo QLED QN70H 4K Samsung Vision AI Smart TV (2026)",104199.0,TVs
+QE100QN80HUXTK,"100"" Neo QLED QN80H 4K Samsung Vision AI Smart TV (2026)",239999.0,TVs
+UE98U9000HUXTK,"98"" Crystal UHD U9000H 4K Samsung Vision AI Smart TV (2026)",136499.0,TVs
+UE55M80HAUXTK,"55"" Mini LED M80H 4K Samsung Vision AI Smart TV (2026)",51449.0,TVs
+UE65M80HAUXTK,"65"" Mini LED M80H 4K Samsung Vision AI Smart TV (2026)",65599.0,TVs
+UE75M80HAUXTK,"75"" Mini LED M80H 4K Samsung Vision AI Smart TV (2026)",83999.0,TVs
+UE85M80HAUXTK,"85"" Mini LED M80H 4K Samsung Vision AI Smart TV (2026)",104999.0,TVs
+QE48S90HAEXTK,"48"" OLED S90H 4K Samsung Vision AI Smart TV (2026)",91899.0,TVs
+QE55S90HAEXTK,"55"" OLED S90H 4K Samsung Vision AI Smart TV (2026)",109199.0,TVs
+QE65S90HAEXTK,"65"" OLED S90H 4K Samsung Vision AI Smart TV (2026)",139699.0,TVs
+QE77S90HATXTK,"77"" OLED S90H 4K Samsung Vision AI Smart TV (2026)",203199.0,TVs
+QE83S90HAEXTK,"83"" OLED S90H 4K Samsung Vision AI Smart TV (2026)",267799.0,TVs
+QE55S85HAEXTK,"55"" OLED S85H 4K Samsung Vision AI Smart TV (2026)",86099.0,TVs
+QE65S85HAEXTK,"65"" OLED S85H 4K Samsung Vision AI Smart TV (2026)",110799.0,TVs
+QE77S85HAEXTK,"77"" OLED S85H 4K Samsung Vision AI Smart TV (2026)",161699.0,TVs
+QE83S85HAEXTK,"83"" OLED S85H 4K Samsung Vision AI Smart TV (2026)",213199.0,TVs
+QE65S95HATXTK,"65"" OLED S95H 4K Samsung Vision AI Smart TV (2026)",185299.0,TVs
+QE77S95HATXTK,"77"" OLED S95H 4K Samsung Vision AI Smart TV (2026)",296899.0,TVs
+QE83S95HAEXTK,"83"" OLED S95H 4K Samsung Vision AI Smart TV (2026)",392699.0,TVs
+UE43M1EHAUXTK,"43"" Mini LED M1EH 4K Samsung Vision AI Smart TV (2026)",33099.0,TVs
+UE50M1EHAUXTK,"50"" Mini LED M1EH 4K Samsung Vision AI Smart TV (2026)",37799.0,TVs
+UE55M1EHAUXTK,"55"" Mini LED M1EH 4K Samsung Vision AI Smart TV (2026)",44599.0,TVs
+UE65M1EHAUXTK,"65"" Mini LED M1EH 4K Samsung Vision AI Smart TV (2026)",56199.0,TVs
+UE75M1EHAUXTK,"75"" Mini LED M1EH 4K Samsung Vision AI Smart TV (2026)",71899.0,TVs
+UE50M70HAUXTK,"50"" Mini LED M70H 4K Samsung Vision AI Smart TV (2026)",38599.0,TVs
+UE55M70HAUXTK,"55"" Mini LED M70H 4K Samsung Vision AI Smart TV (2026)",45199.0,TVs
+UE65M70HAUXTK,"65"" Mini LED M70H 4K Samsung Vision AI Smart TV (2026)",57199.0,TVs
+UE75M70HAUXTK,"75"" Mini LED M70H 4K Samsung Vision AI Smart TV (2026)",73499.0,TVs
+UE85M70HAUXTK,"85"" Mini LED M70H 4K Samsung Vision AI Smart TV (2026)",91899.0,TVs
+MRE55R85HAUXTK,"55"" Micro RGB R85H 4K Samsung Vision AI Smart TV (2026)",91399.0,TVs
+MRE65R85HAUXTK,"65"" Micro RGB R85H 4K Samsung Vision AI Smart TV (2026)",116599.0,TVs
+MRE75R85HAUXTK,"75"" Micro RGB R85H 4K Samsung Vision AI Smart TV (2026)",149599.0,TVs
+MRE85R85HAUXTK,"85"" Micro RGB R85H 4K Samsung Vision AI Smart TV (2026)",196399.0,TVs
+UE43U8000HUXTK,"43"" Crystal UHD U8000H 4K Samsung Vision AI Smart TV (2026)",29999.0,TVs
+UE50U8000HUXTK,"50"" Crystal UHD U8000H 4K Samsung Vision AI Smart TV (2026)",31971.0,TVs
+UE55U8000HUXTK,"55"" Crystal UHD U8000H 4K Samsung Vision AI Smart TV (2026)",37484.0,TVs
+UE70U8000HUXTK,"70"" Crystal UHD U8000H 4K Samsung Vision AI Smart TV (2026)",48399.0,TVs
+UE75U8000HUXTK,"75"" Crystal UHD U8000H 4K Samsung Vision AI Smart TV (2026)",58762.0,TVs
+UE85U8000HUXTK,"85"" Crystal UHD U8000H 4K Samsung Vision AI Smart TV (2026)",73536.0,TVs
+MRE65R95HATXTK,"65"" Micro RGB R95H 4K Samsung Vision AI Smart TV (2026)",192199.0,TVs
+MRE75R95HATXTK,"75"" Micro RGB R95H 4K Samsung Vision AI Smart TV (2026)",245699.0,TVs
+MRE85R95HATXTK,"85"" Micro RGB R95H 4K Samsung Vision AI Smart TV (2026)",319199.0,TVs
+QE65QN80HAUXTK,"65"" Neo QLED QN80H 4K Samsung Vision AI Smart TV (2026)",92399.0,TVs
+QE75QN80HAUXTK,"75"" Neo QLED QN80H 4K Samsung Vision AI Smart TV (2026)",118099.0,TVs
+QE98Q7FAAUXTK,"98"" QLED Q7F 4K Samsung Vision AI Smart TV (2025)",154999.0,TVs
+UE55U8200FUXTK,"55"" Crystal UHD U8200F 4K Smart TV (2025)",39999.0,TVs
+UE55U8000FUXTK,"55"" Crystal UHD U8000F 4K Smart TV (2025)",40999.0,TVs
+QE55QN70FAUXTK,"55"" Neo QLED QN70F 4K Samsung Vision AI Smart TV (2025)",58999.0,TVs
+QE65Q7FAAUXTK,"65"" QLED Q7F 4K Vision AI Smart TV (2025)",57499.0,TVs
+QE98LS03HEUXTK,"98"" The Frame LS03HE 4K Samsung Vision AI Smart TV (2026)",283499.0,Lifestyle TVs
+QE55LS03HAUXTK,"55"" The Frame LS03HA 4K Samsung Vision AI Smart TV (2026)",73499.0,Lifestyle TVs
+QE65LS03HWUXTK,"65"" The Frame Pro LS03HW 4K Samsung Vision AI Smart TV (2026)",102899.0,Lifestyle TVs
+QE75LS03HWUXTK,"75"" The Frame Pro LS03HW 4K Samsung Vision AI Smart TV (2026)",131299.0,Lifestyle TVs
+WMN-B50EB/XC,Slim Fit Wall Mount (2023),5699.0,TV Accessories
+VG-SCFF75TKBZN,"75"" The Frame TV için Modern Özelleştirilebilir Çerçeve",5499.0,TV Accessories
+BN59-01439J,TV Kumandası BN59-01439J,1399.0,TV Accessories
+BN59-01500C,TV Kumandası BN59-01500C,1299.0,TV Accessories
+BN59-01303A,TV Kumandası BN59-01303A,599.0,TV Accessories
+BN59-01298D,TV Kumandası BN59-01298D,1199.0,TV Accessories
+BN59-01500H,TV Kumandası BN59-01500H,1299.0,TV Accessories
+WMN-H50EB/ZN,2026 Slim Fit TV Askı Aparatı WMN-H50EB,5699.0,TV Accessories
+VG-SCFH65BWBZN,Özelleştirilebilir Çerçeve VG-SCFH,3799.0,TV Accessories
+VG-SCFH55BWBZN,Özelleştirilebilir Çerçeve VG-SCFH,3299.0,TV Accessories
+VG-SCFF75BWBZN,Özelleştirilebilir Çerçeve VG-SCFH,5499.0,TV Accessories
+VG-SCFH55TKBZN,Özelleştirilebilir Çerçeve VG-SCFH,3299.0,TV Accessories
+VG-SCFH65TKBZN,Özelleştirilebilir Çerçeve VG-SCFH,3799.0,TV Accessories
+VG-SCFH55WTBZN,Özelleştirilebilir Çerçeve VG-SCFH,3299.0,TV Accessories
+VG-SCFH65WTBZN,Özelleştirilebilir Çerçeve VG-SCFH,3799.0,TV Accessories
+VG-SCFF75WTBZN,Özelleştirilebilir Çerçeve VG-SCFH,5499.0,TV Accessories
+WMN8000SXT/ZN,Büyük Boy Duvar Askı Aparatı,6499.0,TV Accessories
+VG-SCFA55TKBRU,Modern Kişiselleştirilebilir Çerçeve (21/22 The Frame TV),4299.0,TV Accessories
+HW-Q990H/TK,Q-Series Soundbar HW-Q990H 11.1.4 Kanallı Derin Baslı Hoparlör ve Arka Hoparlör (2026),65999.0,Audio Devices
+HW-Q800H/TK,Q-series Soundbar HW-Q800H 5.1.2 Kanallı Derin Baslı Hoparlör (2026),32499.0,Audio Devices
+HW-Q600H/TK,Q-Series Soundbar HW-Q600H 3.1.2 Kanallı Derin Baslı Hoparlör (2026),22799.0,Audio Devices
+HW-LS71H/TK,Music Studio 7 LS71H WiFi-Bluetooth Kablosuz Hoparlör (2026),21799.0,Audio Devices
+HW-LS51H/TK,Music Studio 5 LS51H WiFi-Bluetooth Kablosuz Hoparlör (2026),15799.0,Audio Devices
+HW-LS70H/TK,Music Studio 7 LS70H WiFi-Bluetooth Kablosuz Hoparlör (2026),21799.0,Audio Devices
+HW-LS50H/TK,Music Studio 5 LS50H WiFi-Bluetooth Kablosuz Hoparlör (2026),15799.0,Audio Devices
+MX-ST40F/TK,Sound Tower MX-ST40F 160 Watt Parti Hoparlörü (2025),18999.0,Audio Devices
+MX-ST50F/TK,Sound Tower MX-ST50F 240 Watt Parti Hoparlörü (2025),24999.0,Audio Devices
+HW-QS700F/TK,Q-serisi Soundbar HW-QS700F 3.1.2 Kanal Derin Baslı Hoparlör (2025),23999.0,Audio Devices
+HW-B400F/TK,B-serisi Soundbar HW-B400F 2.0 ch (2025),4649.0,Audio Devices
+HW-B450F/TK,B-serisi Soundbar HW-B450F 2.1 ch Subwoofer (2025),8699.0,Audio Devices
+HW-B650F/TK,B-serisi Soundbar HW-B650F 3.1 ch Subwoofer (2025),12099.0,Audio Devices
+LS24HG310EUXUF,24 İnç Essential Monitor G3 G31H FHD 144Hz,5999.0,Monitors
+LS27HG310EUXUF,27 İnç Essential Monitor G3 G31H FHD 144Hz,7199.0,Monitors
+LS27HG800SUXUF,"27"" Odyssey OLED G8 G80SH 4K 240Hz Gaming Monitör",52999.0,Monitors
+LS32HG800SUXUF,"32"" Odyssey OLED G8 G80SH 4K 240Hz Gaming Monitör",57299.0,Monitors
+LS32HG802ESXUF,"32"" Odyssey G8 G80HS 6K 165Hz / 3K 330Hz Gaming Monitör",64999.0,Monitors
+LS27HG806EFXUF,"27"" Odyssey G8 G80HF 5K 180Hz / QHD 360Hz Gaming Monitör",42999.0,Monitors
+LS25HG402EUXUF,25” Odyssey G4 G40H FHD 300Hz Gaming Monitör,9999.0,Monitors
+LS27HG402EUXUF,27” Odyssey G4 G40H IPS 300 Hz Gaming Monitör,11499.0,Monitors
+LS27HG612SUXUF,27” Odyssey OLED G6 G61SH 240 Hz Gaming Monitör,31499.0,Monitors
+LS27FG530EUXUF,"27"" Odyssey G5 G53F QHD 200 Hz Gaming Monitör <br>",10999.0,Monitors
+LS27FG602EUXUF,"27"" Odyssey G6 G60F QHD 350 Hz Gaming Monitör",22999.0,Monitors
+LS32FG502EUXUF,"32"" Odyssey G5 G50F QHD 180 Hz Gaming Monitör",14499.0,Monitors
+LS24F330EAUXUF,"24"" Essential Monitör S3 S33GF Full HD 100 Hz",4899.0,Monitors
+LS40FG750EUXUF,40” Odyssey G7 WUHD 180 Hz Gaming Monitör,42199.0,Monitors
+LS27FG602SUXUF,"27"" Odyssey OLED G6 G60SF QHD 500 Hz Gaming Monitör",40999.0,Monitors
+LS32FM902SUXUF,"32"" Smart Monitör M9 M90SF 4K OLED",66999.0,Monitors
+LS32FM700UUXUF,"32"" Smart Monitör M7 M70F 4K 60 Hz",16499.0,Monitors
+LS43FM700UUXUF,"43"" Smart Monitör M7 M70F 4K 60 Hz",18999.0,Monitors
+LS27F320GAUXUF,"27"" Essential Monitör S3 S32GF FHD 120 Hz",5499.0,Monitors
+LS49FG916EUXUF,"49"" Odyssey G9 G91F DQHD 144 Hz Gaming Monitor",39999.0,Monitors
+LS49DG912SUXUF,"49"" Odyssey OLED  G9 G91SD DQHD 144 Hz Gaming Monitör",49999.0,Monitors
+LS24DG302EUXUF,"24"" Odyssey G3 G30D FHD 180 Hz Gaming Monitör",6599.0,Monitors
+LS27BG400EUXUF,"27"" Odyssey G4 G40B FHD 240 Hz Gaming Monitör",10999.0,Monitors
+MZ-VAP2T0CW,"9100 PRO, Soğutuculu,  NVMe™ M.2 SSD 2 TB",48838.68,Memory & Storage
+MZ-VAP1T0BW,9100 PRO NVMe™ M.2 SSD 1 TB,23758.68,Memory & Storage
+MZ-VAP2T0BW,9100 PRO NVMe™ M.2 SSD 2 TB,47518.68,Memory & Storage
+MZ-V9S1T0BW,990 EVO Plus PCIe 4.0 NVMe M.2 SSD <br>,17818.68,Memory & Storage
+MZ-V9P2T0BW,990 PRO PCIe 4.0 NVMe M.2 SSD,44614.68,Memory & Storage
+MU-PE1T0R/WW,Taşınabilir SSD T7 Shield,17746.78,Memory & Storage
+MU-PE2T0R/WW,Taşınabilir SSD T7 Shield,35494.78,Memory & Storage
+MZ-77E250BW,"870 EVO SATA III 2.5"" SSD 250GB",10426.68,Memory & Storage
+MZ-77E500BW,"870 EVO SATA III 2.5"" SSD 500GB",20854.68,Memory & Storage
+MZ-77E1T0BW,"870 EVO SATA III 2.5"" SSD 1TB",30094.68,Memory & Storage
+MU-PC1T0H/WW,Taşınabilir SSD T7 USB 3.2 Gen 2 1TB (Mavi),18742.68,Memory & Storage
+MU-PC2T0H/WW,Taşınabilir SSD T7 USB 3.2 Gen 2 2TB (Mavi),37486.68,Memory & Storage
+WD90HG5U34BEAH,Combo AI Ecobubble™ ve Yapay Zeka Enerji Modu 9kg + 6kg,57799.0,Washers & Dryers
+DV10DB7440GEAH,Bespoke AI Kurutma Makinesi AI Kurutma 10kg,51599.0,Washers & Dryers
+WW80FG3M05TWAH,Çamaşır Makinesi Hızlı Yıkama 8kg,26999.0,Washers & Dryers
+WW90FG3M05TWAH,Çamaşır Makinesi Hızlı Yıkama 9kg,31299.0,Washers & Dryers
+DV90DG6845LBAH,Kurutma Makinesi AI Kurutma+ 9kg,47199.0,Washers & Dryers
+DV10DB8440GHAH,Bespoke AI Kurutma Makinesi QuickDrive™ 10kg,59099.0,Washers & Dryers
+DV10DB8440GBAH,Bespoke AI Kurutma Makinesi QuickDrive™ 10kg,60999.0,Washers & Dryers
+DV90DG52A0AEAH,Kurutma Makinesi Isı Pompası Teknolojisi 9kg,45799.0,Washers & Dryers
+DV90DG52A0ABAH,Kurutma Makinesi Isı Pompası Teknolojisi 9kg,47199.0,Washers & Dryers
+DV10DG54A0AEAH,Kurutma Makinesi Isı Pompası Teknolojisi 10kg,49399.0,Washers & Dryers
+DV10DG54A0ABAH,Kurutma Makinesi Isı Pompası Teknolojisi 10kg,50799.0,Washers & Dryers
+WW11DB8B95GHAH,Bespoke AI Çamaşır Makinesi AI Yıkama 11kg,53299.0,Washers & Dryers
+WW11DB8B95GBAH,Bespoke AI Çamaşır Makinesi AI Yıkama 11kg,55099.0,Washers & Dryers
+WW90DG6U25LEAH,Çamaşır Makinesi AI EcoBubble™ 9kg,39499.0,Washers & Dryers
+WW90DG6U25LBAH,Çamaşır Makinesi AI EcoBubble™ 9kg,41899.0,Washers & Dryers
+WW11DG5B25AEAH,Çamaşır Makinesi AI EcoBubble™ 11kg,45799.0,Washers & Dryers
+WW11DG5B25ABAH,Çamaşır Makinesi AI EcoBubble™ 11kg,46599.0,Washers & Dryers
+WW11DG6B25LEAH,Çamaşır Makinesi AI EcoBubble™ 11kg,45799.0,Washers & Dryers
+WW11DG6B25LBAH,Çamaşır Makinesi AI EcoBubble™ 11kg,46599.0,Washers & Dryers
+WW11DB7B34GEAH,Bespoke AI Çamaşır Makinesi AI Ecobubble™ 11kg,49599.0,Washers & Dryers
+WD18DB8995BZAH,Bespoke AI Kurutmalı Çamaşır Makinesi AI Home 18kg 11kg,146099.0,Washers & Dryers
+WD11DG5B15BBAH,Kurutmalı Çamaşır Makinesi AI Ecobubble™ 11kg + 6kg,71399.0,Washers & Dryers
+WD11DB8B85GHAH,Kurutmalı Çamaşır Makinesi AI Yıkama 11kg + 6kg,75599.0,Washers & Dryers
+WW90CGC04DAEAH,Çamaşır Makinesi Ecobubble™ 9kg,39499.0,Washers & Dryers
+WW90CGC04DABAH,Çamaşır Makinesi Ecobubble™ 9kg,41899.0,Washers & Dryers
+DC82-01412A,Kurutma ve Çamaşır Makinesi Bağlantı Kiti,5040.0,Washers & Dryers
+DC82-01411A,Kurutma ve Çamaşır Makinesi Bağlantı Kiti,5040.0,Washers & Dryers
+RS70F65QETTR,Bespoke AI Gardrop Tipi Buzdolabı Space Max™ 655L,113999.0,Refrigerators
+RT53DG7A14S9TR,Bespoke AI Üstten Donduruculu Buzdolabı Twin Cooling™ 530L,71899.0,Refrigerators
+RT53DG7A14WWTR,Bespoke AI Üstten Donduruculu Buzdolabı Twin Cooling™ 530L,68199.0,Refrigerators
+RB52DS33ESA/TR,Alttan Donduruculu Buzdolabı Twin Cooling™ 520L,61499.0,Refrigerators
+RT58K704RWW/TR,Bespoke AI Üstten Donduruculu Buzdolabı Twin Cooling™ 588L,75399.0,Refrigerators
+RB45DG600EWWTR,Bespoke AI Alttan Donduruculu Buzdolabı Space Max™ 458L <br>,56999.0,Refrigerators
+RB45DG600ES9TR,Bespoke AI Alttan Donduruculu Buzdolabı Space Max™ 458L <br>,60499.0,Refrigerators
+RT62K704RWW/TR,Bespoke AI Üstten Donduruculu Buzdolabı Twin Cooling™ 622L,80299.0,Refrigerators
+RF65DG90BESLTR,Bespoke AI 4 Kapılı Buzdolabı Triple Cooling™ 650L,133999.0,Refrigerators
+RB58DS75ESA/TR,Alttan Donduruculu Buzdolabı Twin Cooling™ 580L,74499.0,Refrigerators
+RB58DS75EWW/TR,Alttan Donduruculu Buzdolabı Twin Cooling™ 580L,70499.0,Refrigerators
+RT47CG6636WWTR,Bespoke AI Üstten Donduruculu Buzdolabı Space Max™ 465L,48999.0,Refrigerators
+RT47CG6636S9TR,Bespoke AI Üstten Donduruculu Buzdolabı Space Max™ 465L,51799.0,Refrigerators
+RZ20DG3001WWTR,6 Çekmeceli Dondurucu Kolay Açılır Kapı 188L,23999.0,Refrigerators
+RB50DG601ES9TR,Bespoke AI Alttan Donduruculu Buzdolabı Space Max™ 508L,66999.0,Refrigerators
+RB50DG601EB1TR,Bespoke AI Alttan Donduruculu Buzdolabı Space Max™ 508L,67499.0,Refrigerators
+RB50DG601EWWTR,Bespoke AI Alttan Donduruculu Buzdolabı Space Max™ 508L,62599.0,Refrigerators
+RF71DB965E8CTR,Bespoke AI 4 Kapılı Buzdolabı İçecek İstasyonu 819L,199699.0,Refrigerators
+CFX-D100/EU,Hava Temizleyici Filtresi,2299.0,Air Purifier
+AP70F06103RGSK,Hava Temizleyici AX5500,17499.0,Air Purifier
+AR70H09CACW/SK,Bespoke AI WindFree Pro Duvar Tipi Split Klima 9.000 BTU,57149.0,Air Conditioners
+AR70H09CACB/SK,Bespoke AI WindFree Pro Black Duvar Tipi Split Klima 9.000 BTU,58999.0,Air Conditioners
+AR70H12CACB/SK,Bespoke AI WindFree Pro Black Duvar Tipi Split Klima 12.000 BTU,63599.0,Air Conditioners
+AR80H18CAAW/SK,Bespoke AI WindFree Pro PM 1.0 Duvar Tipi Split Klima 18.000 BTU,89149.0,Air Conditioners
+AR80H24CAAW/SK,Bespoke AI WindFree Pro PM 1.0 Duvar Tipi Split Klima 24.000 BTU,102449.0,Air Conditioners
+AR40F09C0BM/SK,Duvar Tipi Split Klima AR40 Dijital Inverter 9.000 BTU,40549.0,Air Conditioners
+AR40F09C0AM/SK,Duvar Tipi Split Klima AR40 Dijital Inverter 9.000 BTU,40549.0,Air Conditioners
+AR40F12C0AM/SK,Duvar Tipi Split Klima AR40 Dijital Inverter 12.000 BTU,44099.0,Air Conditioners
+AR40F18C0AM/SK,Duvar Tipi Split Klima AR40 Dijital Inverter 18.000 BTU,61099.0,Air Conditioners
+AJ068TXJ3KH/EA,WindFree Duvar Tipi Multi Split Klima 12000 BTU + 18000 BTU,100980.0,Air Conditioners
+AJ080TXJ4KH/EA,WindFree Duvar Tipi Multi Split Klima 9000 BTU + 12000 BTU + 18000 BTU,127841.78,Air Conditioners
+AJ100TXJ5KH/EA,WindFree Duvar Tipi Multi Split Klima 9000 BTU + 12000 BTU + 12000 BTU + 18000 BTU,162633.24,Air Conditioners
+AJ050TXJ2KH/EA,WindFree Duvar Tipi Multi Split Klima 9000 BTU + 12000 BTU,80094.86,Air Conditioners
+AR80F09CAAW/SK,Bespoke AI WindFree Elite PM 1.0 Duvar Tipi Split Klima AI WindFree 9.000 BTU,57635.44,Air Conditioners
+AR60F09C1KW/SK,Bespoke AI WindFree Duvar Tipi Split Klima 9.000 BTU,48749.0,Air Conditioners
+AC071RN4PKG/EU,360 Kaset Tipi Klima,114758.58,Air Conditioners
+AC140RN4PKG/EU,360 Kaset Tipi Klima,153595.1,Air Conditioners
+AC071RN4DKG/EU,WindFree 4 Yön Kaset Tipi Klima,106291.08,Air Conditioners
+AC140RN4DKG/EU,WindFree 4 Yön Kaset Tipi Klima,148875.31,Air Conditioners
+AC100BNPDKH/TK,Salon Tipi Klima (PAC),122370.82,Air Conditioners
+AC140BNPDKH/TK,Salon Tipi Klima (PAC),157105.61,Air Conditioners
+VCA-RDB95/VT,Bespoke Jet Bot Combo™ AI Robot Süpürge Toz Torbası (5 adet),999.0,Vacuum Cleaners
+VCA-SBTC97S/GL,Bespoke JET™ AI 250W BATARYA,5199.0,Vacuum Cleaners
+VC07T357MHR/TR,VC3500TM CycloneForce™ Teknolojili Torbasız Elektrikli Süpürge,7899.0,Vacuum Cleaners
+VC07R302MVB/TR,Toz Torbasız Elektrikli Süpürge 750W Motor Gücü Mavi,6199.0,Vacuum Cleaners
+VC07R302MVP/TR,Toz Torbasız Elektrikli Süpürge 750W Motor Gücü Mor,6199.0,Vacuum Cleaners
+VCA-SPW95/VT,Bespoke Jet™ için Antibakteriyel Paspas Pedi (4 adet),899.0,Vacuum Cleaners
+VCA-SPA95/GL,Bespoke Jet™ için Tek Kullanımlık Islak Bez (20 adet),699.0,Vacuum Cleaners
+VCA-ADB952,Bespoke Jet™ Temizlik İstasyonu Toz Boşaltma Torbası (5 adet),899.0,Vacuum Cleaners
+VCA-SBTC97/GL,JET VC YEDEK AKSESUAR PİL3 VCA-SAPC97/WA,5599.0,Vacuum Cleaners
+VCA-SAPC97S/WA,Bespoke JET™ AI 250W BATARYA ve ŞARJ ADAPTÖRÜ,5699.0,Vacuum Cleaners
+VCA-PTA95/VT,Evcil Hayvan Başlığı,1699.0,Vacuum Cleaners
+VCA-SBTA95/VT,JET 85 BATARYA,4499.0,Vacuum Cleaners
+NV7B6665IAN/TR,Bespoke AI Fırın Buhar Özellikli İkili Pişirme 76L,71899.0,Cooking Appliances
+NV7B56458AE/TR,Bespoke AI Fırın İkili ve Buharlı Pişirme 76L,63799.0,Cooking Appliances
+NA64B3100AS/TR,Ankastre Gazlı Ocak Çelik Yüzey 60cm,10999.0,Cooking Appliances
+NA64N7100AB/TR,Ankastre Gazlı Ocak Temperli Cam 60cm,18699.0,Cooking Appliances
+NA64M7100AW/TR,Ankastre Gazlı Ocak Temperli Cam 60cm,19099.0,Cooking Appliances
+NV60K3110BS/TR,Fırın 7 Pişirme Fonksiyonlu 60L,17799.0,Cooking Appliances
+CTR464EB01/XTR,Elektrikli Ocak 60cm,24099.0,Cooking Appliances
+NV60K7140BB/TR,Fırın 8 Pişirme Fonksiyonlu 60L,27999.0,Cooking Appliances
+NV60K5140BB/TR,Fırın 7 Pişirme Fonksiyonlu 60L,23599.0,Cooking Appliances
+NA64H3010AK/TR,NA64H3010AK 4 Gözü Gazlı Ankastre Ocak,19699.0,Cooking Appliances
+NA64H3110AS/TR,NA64H3110AS 4 Gözü Gazlı Ankastre Ocak,13099.0,Cooking Appliances
+NA64H3030AS/TR,NA64H3030AS 4 Gözü Gazlı Ankastre Ocak,17699.0,Cooking Appliances
+DW70H73YCFRTR,Solo Bulaşık Makinesi AutoRelease™ 7 + 3 indirilebilir program,52799.0,Dishwashers
+DW70H73YCFVTR,Solo Bulaşık Makinesi AutoRelease™ 7 + 3 indirilebilir program,52799.0,Dishwashers
+DW80H73YBFFTR,Solo Bulaşık Makinesi Yapay Zeka Yıkama 8 + 4 indirilebilir program ⠀,65699.0,Dishwashers
+DW80H73YBFZTR,Solo Bulaşık Makinesi Yapay Zeka Yıkama 8 + 4 indirilebilir program ⠀,65699.0,Dishwashers
+DW60DG540FSRTR,Solo Bulaşık Makinesi Otomatik Açılır Kapı 4 program,31499.0,Dishwashers
+DW60DG540FWQTR,Solo Bulaşık Makinesi Otomatik Açılır Kapı 4 program,29499.0,Dishwashers
+DW60DG560FSRTR,Solo Bulaşık Makinesi Otomatik Açılır Kapı 6 program,35899.0,Dishwashers
+DW60DG560FWQTR,Solo Bulaşık Makinesi Otomatik Açılır Kapı 6 program,33899.0,Dishwashers
+DW60DG550FWQTR,Solo Bulaşık Makinesi Otomatik Açılır Kapı 5 program,31699.0,Dishwashers
+DW60DG550FSRTR,Solo Bulaşık Makinesi Otomatik Açılır Kapı 5 program,33699.0,Dishwashers
+MS20A3010AH/TR,Solo Mikrodalga Fırın 20L,5499.0,Microwave Ovens
+MS23K3513AK/TR,Solo Mikrodalga Fırın Seramik İç Yüzey ve Otomatik Pişirme Özellikli 23L,6999.0,Microwave Ovens
+GP-TEU026HCABW,360 Stand Magnet,1399.0,Other (mobile-accessories)
+GP-TEU026HCASW,360 Stand Magnet,1399.0,Other (mobile-accessories)
+UE27LSM7FAXXTK,"27"" The Movingstyle LSM7F QHD Dokunmatik Etkileşimli Taşınabilir Ekran (2025)",54999.0,Other (movable-screens)

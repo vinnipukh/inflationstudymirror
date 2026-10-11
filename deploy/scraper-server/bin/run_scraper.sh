@@ -10,8 +10,8 @@ set -u
 
 ROOT="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/.." && pwd)"  # <repo-root>: bin/ lives directly under it
 PY="$ROOT/venv/bin/python"
-CODES="$ROOT/InflationItems/Codes/TechnologicalProducts"
-TELECOM="$ROOT/InflationItems/Codes/Telecom"
+CODES="$ROOT/InflationItems/Codes/08_Communication"
+TELECOM="$CODES/Telecom"
 LOG_DIR="$ROOT/server_logs"
 STATUS_LOG="$ROOT/log.txt"
 LOCK=/tmp/scraper.lock

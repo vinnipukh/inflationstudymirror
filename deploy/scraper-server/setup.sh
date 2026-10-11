@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# One-time (re-runnable) server setup for the TechnologicalProducts scrapers.
+# One-time (re-runnable) server setup for the 08_Communication scrapers.
 # Works both from a git clone (<repo-root>/deploy/scraper-server/setup.sh)
 # and from the extracted tarball (<repo-root>/setup.sh):   bash setup.sh
 set -euo pipefail
@@ -12,7 +12,7 @@ else
 fi
 echo "project root: $ROOT"
 [ "$(id -u)" -eq 0 ] || { echo "run as root"; exit 1; }
-[ -d "$ROOT/InflationItems/Codes/TechnologicalProducts" ] || { echo "scraper code not found under $ROOT"; exit 1; }
+[ -d "$ROOT/InflationItems/Codes/08_Communication" ] || { echo "scraper code not found under $ROOT"; exit 1; }
 cd "$ROOT"
 
 echo "== 1/6 install run scripts into $ROOT/bin"
@@ -23,9 +23,7 @@ fi
 # files copied from Windows may carry CRLF
 sed -i 's/\r$//' "$ROOT"/bin/*.sh
 chmod +x "$ROOT"/bin/*.sh
-mkdir -p server_logs export InflationItems/Datas/TechnologicalProducts InflationItems/Datas/Telecom
-[ -d "$ROOT/InflationItems/Codes/Telecom" ] || echo "WARNING: InflationItems/Codes/Telecom missing -> "\
-  "git sparse-checkout add InflationItems/Codes/Telecom (telecom/internet jobs will fail without it)"
+mkdir -p server_logs export InflationItems/Datas/08_Communication
 
 echo "== 2/6 time zone -> Europe/Istanbul"
 timedatectl set-timezone Europe/Istanbul

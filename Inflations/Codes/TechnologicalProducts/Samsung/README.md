@@ -2,7 +2,7 @@
 
 Computes daily inflation metrics for the Samsung Türkiye product
 catalogue scraped by
-`InflationItems/Codes/TechnologicalProducts/Samsung/scripts/main.py`.
+`InflationItems/Codes/08_Communication/Samsung/scripts/main.py`.
 
 ## Metrics
 
@@ -18,7 +18,7 @@ supported via the `--compare` flag.
 ## Inputs / Outputs
 
 ```
-InflationItems/Datas/TechnologicalProducts/Samsung/samsung_<DATE>.csv    (input)
+InflationItems/Datas/08_Communication/Samsung/samsung_<DATE>.csv    (input)
         ↓
 Inflations/Codes/TechnologicalProducts/Samsung/inflation.py
         ↓

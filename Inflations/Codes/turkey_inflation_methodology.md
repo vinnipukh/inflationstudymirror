@@ -177,7 +177,7 @@ Daily scrape frequency.
 
 ---
 
-### Group 08 — Information & Communication (`TechnologicalProducts/`)
+### Group 08 — Information & Communication (`08_Communication/`; telecom CSVs — `operator` column — are not pooled yet)
 
 Daily scrape frequency.
 

@@ -51,9 +51,9 @@ Thumbs.db
 .vscode/
 .idea/
 
-# TechnologicalProducts scraper runtime files
-InflationItems/Codes/TechnologicalProducts/Beymen/.beymen_cookies.json
-InflationItems/Codes/TechnologicalProducts/Samsung/checkpoints/
+# 08_Communication scraper runtime files
+InflationItems/Codes/08_Communication/Beymen/.beymen_cookies.json
+InflationItems/Codes/08_Communication/Samsung/checkpoints/
 *.csv.part
 # scraper-server runtime (deploy/scraper-server/setup.sh), repo-root anchored
 /bin/

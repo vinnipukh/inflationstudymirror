@@ -14,11 +14,10 @@ if [ -f "$STATUS_LOG" ] && [ "$(stat -c %s "$STATUS_LOG")" -gt 5242880 ]; then
 fi
 
 # Samsung resume checkpoints, half-written CSVs from killed runs
-find "$ROOT/InflationItems/Codes/TechnologicalProducts/Samsung/checkpoints" -type f -mtime +7 -delete 2>/dev/null
-find "$ROOT/InflationItems/Datas/TechnologicalProducts" "$ROOT/InflationItems/Datas/Telecom" \
-     -type f -name '*.part' -mtime +2 -delete 2>/dev/null
+find "$ROOT/InflationItems/Codes/08_Communication/Samsung/checkpoints" -type f -mtime +7 -delete 2>/dev/null
+find "$ROOT/InflationItems/Datas/08_Communication" -type f -name '*.part' -mtime +2 -delete 2>/dev/null
 # bounded Telecom test runs (--limit) write *_limit.csv next to the real snapshot
-find "$ROOT/InflationItems/Datas/Telecom" -type f -name '*_limit.csv' -mtime +0 -delete 2>/dev/null
+find "$ROOT/InflationItems/Datas/08_Communication" -type f -name '*_limit.csv' -mtime +0 -delete 2>/dev/null
 # Telecom scrapers also write a per-day log under logs/
 find "$ROOT/logs" -type f -name 'telecom*.log' -mtime +30 -delete 2>/dev/null
 

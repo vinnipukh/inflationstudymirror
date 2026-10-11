@@ -28,7 +28,7 @@ _tuik_spec.loader.exec_module(_tuik_config)
 dr_category_to_tuik = _tuik_config.dr_category_to_tuik
 normalised_weights = _tuik_config.normalised_weights
 
-DATA_DIR = _PROJECT_ROOT / "InflationItems" / "Datas" / "TechnologicalProducts" / "DR"
+DATA_DIR = _PROJECT_ROOT / "InflationItems" / "Datas" / "08_Communication" / "DR"
 INFLATION_OUT_DIR = _CODES_DIR.parent / "Datas" / "TechnologicalProducts" / "DR"
 MATCH_KEY = "Product ID"
 PRICE_COLUMN = "Product Cost"

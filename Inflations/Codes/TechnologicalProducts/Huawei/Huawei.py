@@ -9,7 +9,7 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(script_dir, '..', '..', '..', '..'))
 
 # Updated paths for Huawei
-input_dir = os.path.join(project_root, 'InflationItems', 'Datas', 'TechnologicalProducts', 'Huawei')
+input_dir = os.path.join(project_root, 'InflationItems', 'Datas', '08_Communication', 'Huawei')
 output_dir = os.path.join(project_root, 'Inflations', 'Datas', 'TechnologicalProducts', 'Huawei')
 output_filename = os.path.join(output_dir, 'Huawei_inflation_summary.csv')
 
@@ -18,7 +18,7 @@ os.makedirs(output_dir, exist_ok=True)
 # ==========================================
 # 2. READ AND PROCESS DATA
 # ==========================================
-file_pattern = os.path.join(input_dir, 'huawei_*.csv')
+file_pattern = os.path.join(input_dir, 'huawei_????-??-??.csv')  # not huawei_repair_*
 all_files = glob.glob(file_pattern)
 
 if not all_files:

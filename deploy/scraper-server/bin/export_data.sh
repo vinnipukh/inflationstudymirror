@@ -14,7 +14,7 @@ LIST="$OUT_DIR/data_$STAMP.files"
 mkdir -p "$OUT_DIR"
 cd "$ROOT"
 # skip today's files: a scraper may still be writing them
-find InflationItems/Datas/TechnologicalProducts InflationItems/Datas/Telecom -type f -name '*.csv' \
+find InflationItems/Datas/08_Communication -type f -name '*.csv' \
      ! -newermt "$(date +%F)" 2>/dev/null | sort > "$LIST"
 
 if [ ! -s "$LIST" ]; then

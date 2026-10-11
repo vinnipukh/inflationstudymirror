@@ -1,7 +1,7 @@
-# TechnologicalProducts + Telecom scraper sunucusu
+# 08_Communication (teknoloji + telecom) scraper sunucusu
 
 Hedef sunucu: Ubuntu 22.04, 2 vCPU, 1.9 GB RAM, cron. Kod kaynağı:
-`InflationItems/Codes/TechnologicalProducts/` (upstream `TUGC3/InflationResearchStudy`
+`InflationItems/Codes/08_Communication/` (upstream `TUGC3/InflationResearchStudy`
 commit `9cb747a`, 2026-09-22, sunucu için düzenlendi).
 
 ## Sunucudaki yapı
@@ -17,8 +17,8 @@ commit `9cb747a`, 2026-09-22, sunucu için düzenlendi).
     export_data.sh         haftalık: CSV'leri tek .tar.gz yapar (--delete ile siler)
   venv/                    Python 3.11 (uv), sabit sürümlü paketler
   .env                     opsiyonel ayarlar
-  InflationItems/Codes/TechnologicalProducts/...              scraper kodu
-  InflationItems/Datas/TechnologicalProducts/<Mağaza>/*.csv   çıktı
+  InflationItems/Codes/08_Communication/...              scraper kodu
+  InflationItems/Datas/08_Communication/<Mağaza>/*.csv   çıktı
   server_logs/<scraper>_<tarih>.log   her çalıştırmanın tam logu
   log.txt                  her çalıştırma için tek satır: OK / FAILED / TIMEOUT / SKIPPED
 ```
@@ -35,7 +35,7 @@ dışında kalır):
 apt-get update && apt-get install -y git
 git clone --filter=blob:none --no-checkout https://github.com/vinnipukh/inflationstudymirror.git <repo-root>
 cd <repo-root>
-git sparse-checkout set --cone deploy/scraper-server InflationItems/Codes/TechnologicalProducts InflationItems/Codes/Telecom
+git sparse-checkout set --cone deploy/scraper-server InflationItems/Codes/08_Communication
 git checkout main
 bash deploy/scraper-server/setup.sh
 ```
@@ -47,10 +47,12 @@ cron işlerine dokunmaz).
 
 Kontrol: `bin/run_scraper.sh huawei && tail -3 log.txt`
 
-Daha önce kurulmuş sunucuya Telecom'u eklemek için (bir kere):
+2026-10-11 öncesi kurulmuş sunucu (eski `Codes/TechnologicalProducts` + `Codes/Telecom` düzeni) için
+bir kere: önce `bin/export_data.sh` ile eski `Datas/TechnologicalProducts` ve `Datas/Telecom` CSV'lerini
+indir (yeni script'ler sadece `Datas/08_Communication`'a bakar), sonra:
 
 ```bash
-cd <repo-root> && git sparse-checkout add InflationItems/Codes/Telecom && git pull && bash deploy/scraper-server/setup.sh
+cd <repo-root> && git sparse-checkout set --cone deploy/scraper-server InflationItems/Codes/08_Communication && git pull && bash deploy/scraper-server/setup.sh
 ```
 
 Kod güncellemesi (repoda scraper değişirse):
@@ -63,7 +65,7 @@ Git'siz alternatif: Windows'ta repo kökünde paketi yap, sunucuda `<repo-root>`
 `bash setup.sh` çalıştır.
 
 ```powershell
-tar --exclude __pycache__ -czf scraper.tgz -C deploy/scraper-server . -C ../.. InflationItems/Codes/TechnologicalProducts InflationItems/Codes/Telecom
+tar --exclude __pycache__ -czf scraper.tgz -C deploy/scraper-server . -C ../.. InflationItems/Codes/08_Communication
 ```
 
 ## Program (Istanbul saati, her gün)
@@ -91,10 +93,10 @@ Tüm işler aynı kilidi (`flock /tmp/scraper.lock`) kullanır, yani biri geç k
 sıradaki bekler; iki scraper asla aynı anda çalışmaz. Her çalıştırmadan sonra
 kalan Chrome process'leri öldürülür.
 
-Telecom çıktısı: `InflationItems/Datas/Telecom/<Operatör>/*.csv` (mobil) ve
-`InflationItems/Datas/Telecom/Internet/<Sağlayıcı>/*.csv` (ev interneti),
-`InflationItems/Datas/Telecom/Streaming/<Servis>/*.csv` (dijital platform abonelikleri),
-`InflationItems/Datas/Telecom/Repair/<Kaynak>/*.csv` (bilgi-iletişim ekipmanı onarım ücretleri). Süreler 2026-10-08
+Telecom çıktısı: `InflationItems/Datas/08_Communication/<Operatör>/*.csv` (mobil) ve
+`InflationItems/Datas/08_Communication/<Sağlayıcı>/*_internet_*.csv` (ev interneti),
+`InflationItems/Datas/08_Communication/<Servis>/*.csv` (dijital platform abonelikleri),
+`InflationItems/Datas/08_Communication/<Kaynak>/*_repair_*.csv` (bilgi-iletişim ekipmanı onarım ücretleri). Süreler 2026-10-08
 geliştirici PC'sinde ölçüldü; süreyi Türk Telekom'un sitemap'teki ~490 + ~340 detay sayfası belirler
 (sıralı, 1.5-3.5 sn bekleme). Kaynak notları: `docs/site-analysis/telecom/NOTES.md`.
 

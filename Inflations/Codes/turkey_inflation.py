@@ -210,7 +210,8 @@ def _has_standard_header(fpath: Path) -> bool:
         with fpath.open(encoding="utf-8", errors="ignore") as fh:
             first = fh.readline().strip().lstrip("﻿")
         cols = {c.strip().lower() for c in first.split(",")}
-        return bool(cols & _NAME_ALIASES) and bool(cols & _PRICE_ALIASES)
+        # Telecom CSVs (operator column) share 08_Communication but stay out of the pool for now
+        return bool(cols & _NAME_ALIASES) and bool(cols & _PRICE_ALIASES) and "operator" not in cols
     except Exception:
         return False
 
@@ -291,7 +292,7 @@ _SECTOR_CONFIG: dict[str, tuple[str, str, str]] = {
     "HomeGoods":                              ("05", "homegoods",    "daily"),
     "ConstructionSuppliesMarkets":            ("05", "construction", "daily"),
     "Health":                                 ("06", "health",       "monthly"),
-    "TechnologicalProducts":                  ("08", "tech",         "daily"),
+    "08_Communication":                       ("08", "tech",         "daily"),
     "TravelTourism":                          ("11", "tourism",      "daily"),
     "RestaurantMealPricesVenueHallRentalFees": ("11", "restaurant",  "flat_daily"),
     "Cosmetics":                              ("13", "cosmetics",    "daily"),
