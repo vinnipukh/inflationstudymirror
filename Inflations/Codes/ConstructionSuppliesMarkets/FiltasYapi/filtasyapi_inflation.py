@@ -37,7 +37,7 @@ from tuik_config import TUIK_WEIGHTS, normalised_weights
 logger = logging.getLogger(__name__)
 
 # Paths aligned with FiltaşYapı scraper
-DATA_DIR = _PROJECT_ROOT / "InflationItems" / "Datas" / "ConstructionSuppliesMarkets" / "FiltasYapi"
+DATA_DIR = _PROJECT_ROOT / "InflationItems" / "Datas" / "05_Furnishings" / "ConstructionSuppliesMarkets" / "FiltasYapi"
 INFLATION_OUT_DIR = _CODES_DIR.parent / "Datas" / "ConstructionSuppliesMarkets" / "FiltasYapi"
 
 # Match keys based on FiltaşYapı's CSV structure

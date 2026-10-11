@@ -29,7 +29,7 @@ normalised_weights = _tuik_config.normalised_weights
 
 try:
     _SCRAPER_DIR = (
-        _PROJECT_ROOT / "InflationItems" / "Codes" / "HomeGoods" / "Karaca" / "scripts"
+        _PROJECT_ROOT / "InflationItems" / "Codes" / "05_Furnishings" / "HomeGoods" / "Karaca" / "scripts"
     )
     _config_path = _SCRAPER_DIR / "config.py"
     _spec = importlib.util.spec_from_file_location("karaca_scraper_config", _config_path)
@@ -39,7 +39,7 @@ try:
     _spec.loader.exec_module(_config)
     DATA_DIR = Path(_config.OUTPUT_DIR)
 except Exception:
-    DATA_DIR = _PROJECT_ROOT / "InflationItems" / "Datas" / "HomeGoods" / "Karaca"
+    DATA_DIR = _PROJECT_ROOT / "InflationItems" / "Datas" / "05_Furnishings" / "HomeGoods" / "Karaca"
 
 INFLATION_OUT_DIR = _CODES_DIR.parent / "Datas" / "HomeGoods" / "Karaca"
 MATCH_KEY = "Product ID"

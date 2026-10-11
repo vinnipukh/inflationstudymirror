@@ -9,7 +9,7 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(script_dir, '..', '..', '..', '..'))
 
 # Updated paths for Istikbal
-input_dir = os.path.join(project_root, 'InflationItems', 'Datas', 'HomeGoods', 'Istikbal')
+input_dir = os.path.join(project_root, 'InflationItems', 'Datas', '05_Furnishings', 'HomeGoods', 'Istikbal')
 output_dir = os.path.join(project_root, 'Inflations', 'Datas', 'HomeGoods', 'Istikbal')
 output_filename = os.path.join(output_dir, 'Istikbal_inflation_summary.csv')
 

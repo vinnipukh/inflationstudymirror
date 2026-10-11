@@ -16,7 +16,7 @@ from tuik_config import (  # noqa: E402
     normalised_weights,
 )
 
-DATA_DIR = _PROJECT_ROOT / "InflationItems" / "Datas" / "Cosmetics" / "Watson"
+DATA_DIR = _PROJECT_ROOT / "InflationItems" / "Datas" / "13_Personal_Care" / "Cosmetics" / "Watson"
 INFLATION_OUT_DIR = _PROJECT_ROOT / "Inflations" / "Datas" / "Cosmetics"
 
 logger = logging.getLogger(__name__)

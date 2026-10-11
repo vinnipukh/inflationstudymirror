@@ -253,8 +253,8 @@ def main():
     script_dir = os.path.dirname(os.path.abspath(__file__))
     items_root = os.path.abspath(os.path.join(script_dir, "..", "..", ".."))
 
-    # Target the InflationItems/Datas/Markets/Gurmar folder
-    target_dir = os.path.join(items_root, "Datas", "Markets", "Gurmar")
+    # Target the InflationItems/Datas/01_Food/Gurmar folder
+    target_dir = os.path.join(items_root, "Datas", "01_Food", "Gurmar")
     csv_dosyasi = os.path.join(target_dir, f"gurmar_prices_{bugunun_tarihi}.csv")
 
     os.makedirs(target_dir, exist_ok=True)

@@ -64,22 +64,22 @@ def _get_scraper_dates():
     data_root = _PROJECT_ROOT / "InflationItems" / "Datas"
     return {
         "Bershka": _extract_dates_from_files(
-            data_root / "ClothingStores" / "Bershka" / "ProductData", "bershka_*.csv"
+            data_root / "03_Clothing" / "Bershka" / "ProductData", "bershka_*.csv"
         ),
         "Hapeloglu": _extract_dates_from_files(
-            data_root / "Markets" / "Hapeloglu", "hapeloglu_*.csv"
+            data_root / "01_Food" / "Hapeloglu", "hapeloglu_*.csv"
         ),
         "Nalburadam": _extract_dates_from_files(
-            data_root / "ConstructionSuppliesMarkets" / "Nalburadam", "nalburadam_*.csv"
+            data_root / "05_Furnishings" / "ConstructionSuppliesMarkets" / "Nalburadam", "nalburadam_*.csv"
         ),
         "ErzurumErzincanBayburt": _extract_dates_from_files(
-            data_root / "HousesRent" / "ErzurumErzincanBayburt" / "Erzurum", "Erzurum_*.csv"
+            data_root / "04_Housing" / "ErzurumErzincanBayburt" / "Erzurum", "Erzurum_*.csv"
         ),
         "Karaca": _extract_dates_from_files(
-            data_root / "HomeGoods" / "Karaca", "karaca_*.csv"
+            data_root / "05_Furnishings" / "HomeGoods" / "Karaca", "karaca_*.csv"
         ),
         "GoldenRose": _extract_dates_from_files(
-            data_root / "Cosmetics" / "GoldenRose", "goldenrose_*.csv"
+            data_root / "13_Personal_Care" / "Cosmetics" / "GoldenRose", "goldenrose_*.csv"
         ),
         "DR": _extract_dates_from_files(
             data_root / "08_Communication" / "DR", "dr_*.csv"

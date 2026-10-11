@@ -8,7 +8,7 @@ import pandas as pd
 script_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(script_dir, '..', '..', '..', '..'))
 
-input_dir = os.path.join(project_root, 'InflationItems', 'Datas', 'ClothingStores', 'adL')
+input_dir = os.path.join(project_root, 'InflationItems', 'Datas', '03_Clothing', 'adL')
 output_dir = os.path.join(project_root, 'Inflations', 'Datas', 'ClothingStores', 'adL')
 output_filename = os.path.join(output_dir, 'adL_inflation_summary.csv')
 

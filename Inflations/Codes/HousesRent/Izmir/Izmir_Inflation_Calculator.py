@@ -145,7 +145,7 @@ if __name__ == "__main__":
     # --- DEFINE EXACT PATHS HERE ---
 
     # Where the scraper SAVES the raw CSV data:
-    INPUT_DIRECTORY = r"C:\Users\onurk\PycharmProjects\InflationResearchStudy\InflationItems\Datas\HousesRent\Izmir"
+    INPUT_DIRECTORY = r"C:\Users\onurk\PycharmProjects\InflationResearchStudy\InflationItems\Datas\04_Housing\Izmir"
 
     # Where the calculator should SAVE the final inflation reports:
     OUTPUT_DIRECTORY = r"C:\Users\onurk\PycharmProjects\InflationResearchStudy\Inflations\Datas\HousesRent\Izmir"

@@ -31,12 +31,12 @@ jobs:
         run: seleniumbase install chromedriver
 
       - name: Run Scraper
-        run: python InflationItems/Codes/Technology/scraper.py
+        run: python InflationItems/Codes/08_Communication/BeymenTech/scraper.py
 
       - name: Commit and Push
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add InflationItems/Datas/Technology/
+          git add InflationItems/Datas/08_Communication/Beymen/beymen_tech_*.csv
           git commit -m "Auto-update: Beymen tech data [skip ci]" || echo "No changes."
           git push

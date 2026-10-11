@@ -9,7 +9,7 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(script_dir, '..', '..', '..', '..'))
 
 # Updated paths for Baskent
-input_dir = os.path.join(project_root, 'InflationItems', 'Datas', 'Markets', 'Baskent')
+input_dir = os.path.join(project_root, 'InflationItems', 'Datas', '01_Food', 'Baskent')
 output_dir = os.path.join(project_root, 'Inflations', 'Datas', 'Markets', 'Baskent')
 output_filename = os.path.join(output_dir, 'baskent_inflation_summary.csv')
 

@@ -30,7 +30,7 @@ except ImportError:
 logger = logging.getLogger(__name__)
 
 # ── Directories ───────────────────────────────────────────────────────────────
-DATA_DIR = _PROJECT_ROOT / "InflationItems" / "Datas" / "ClothingStores" / "Lufian"
+DATA_DIR = _PROJECT_ROOT / "InflationItems" / "Datas" / "03_Clothing" / "Lufian"
 INFLATION_OUT_DIR = _PROJECT_ROOT / "Inflations" / "Datas" / "ClothingStores" / "Lufian"
 
 def lufian_category_to_tuik(category_name):

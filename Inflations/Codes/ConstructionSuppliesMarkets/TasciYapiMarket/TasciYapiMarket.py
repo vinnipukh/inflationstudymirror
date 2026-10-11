@@ -9,7 +9,7 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(script_dir, '..', '..', '..', '..'))
 
 # Updated paths for Tasci Yapi Market
-input_dir = os.path.join(project_root, 'InflationItems', 'Datas', 'ConstructionSuppliesMarkets', 'TasciYapiMarket')
+input_dir = os.path.join(project_root, 'InflationItems', 'Datas', '05_Furnishings', 'ConstructionSuppliesMarkets', 'TasciYapiMarket')
 output_dir = os.path.join(project_root, 'Inflations', 'Datas', 'ConstructionSuppliesMarkets', 'TasciYapiMarket')
 output_filename = os.path.join(output_dir, 'tasciyapi_inflation_summary.csv')
 

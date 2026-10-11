@@ -38,7 +38,7 @@ from tuik_config import TUIK_WEIGHTS, normalised_weights
 
 logger = logging.getLogger(__name__)
 
-DATA_DIR = _PROJECT_ROOT / "InflationItems" / "Datas" / "HousesRent" / "ErzurumErzincanBayburt"
+DATA_DIR = _PROJECT_ROOT / "InflationItems" / "Datas" / "04_Housing" / "ErzurumErzincanBayburt"
 INFLATION_OUT_DIR = _CODES_DIR.parent / "Datas" / "HousesRent" / "ErzurumErzincanBayburt"
 
 TUIK_CATEGORY = "04"  # All rent -> Housing

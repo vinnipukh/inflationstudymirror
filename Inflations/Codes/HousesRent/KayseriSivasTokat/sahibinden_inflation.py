@@ -7,11 +7,11 @@ import pandas as pd
 
 # ── RELATIVE PATH SETUP ─────────────────────────────────────────────────────
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "..", ".."))
+PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "..", "..", ".."))
 sys.path.insert(0, os.path.join(SCRIPT_DIR, "..", ".."))  # .../Inflations/Codes
 from detail_store import append_detail  # noqa: E402
 
-RAW_DATA_DIR = os.path.join(PROJECT_ROOT, "Datas", "HousesRent")
+RAW_DATA_DIR = os.path.join(PROJECT_ROOT, "InflationItems", "Datas", "04_Housing")
 INFLATION_OUT_DIR_BASE = os.path.join(PROJECT_ROOT, "Inflations", "Datas", "HousesRent")
 
 logger = logging.getLogger(__name__)

@@ -18,17 +18,17 @@ Source directories own their scraper, parser/browser helpers, configuration, sta
 
 Examples:
 
-- `InflationItems/Codes/Markets/Gurmar/`
-- `InflationItems/Codes/ClothingStores/Vakko/`
-- `InflationItems/Codes/Technology/`
-- `InflationItems/Codes/ConstructionMarkets/yapimaks/`
-- `InflationItems/Codes/HousesRent/Emlakjet/`
+- `InflationItems/Codes/01_Food/Gurmar/`
+- `InflationItems/Codes/03_Clothing/Vakko/`
+- `InflationItems/Codes/08_Communication/BeymenTech/`
+- `InflationItems/Codes/05_Furnishings/ConstructionSuppliesMarkets/yapimaks/`
+- `InflationItems/Codes/04_Housing/Emlakjet/`
 - `InflationItems/Codes/08_Communication/<Retailer>/` tech retailer scrapers (Beymen, DR, Huawei, Koctas, PozitifTeknoloji, Samsung, VatanComputer)
 - `InflationItems/Codes/08_Communication/Telecom/` (`scraper.py` mobile tariffs: Turkcell, Vodafone, Türk Telekom, NetGSM; `internet.py` home internet: Superonline, Vodafone, Kablonet, Milleni, TurkNet, Türk Telekom; `streaming.py` streaming subscriptions; `repair.py` ICT equipment repair prices)
 
 ## Data tree
 
-`InflationItems/Datas/<Domain>/<Source>/`
+`InflationItems/Datas/<NN_TÜİK group>/[<sector>/]<Source>/` (upstream 01-13 layout; e.g. `01_Food/Gurmar`, `05_Furnishings/HomeGoods/Chakra`)
 
 - dated source snapshots;
 - source checkpoints/state;
@@ -49,11 +49,11 @@ Examples:
 
 ## Naming examples
 
-- Gurmar raw: `InflationItems/Datas/Markets/Gurmar/gurmar_prices_YYYY-MM-DD.csv`
-- Vakko raw: `InflationItems/Datas/ClothingStores/Vakko/vakko_YYYY-MM-DD.csv`
-- Yapımaks raw: `InflationItems/Datas/ConstructionSuppliesMarkets/yapimaks/YYYY-MM-DD.csv`
-- HomeGoods raw: `InflationItems/Datas/HomeGoods/chakra_all_categories_YYYY_MM_DD.csv`
-- Emlakjet raw: `InflationItems/Datas/HousesRent/Emlakjet/YYYY-MM-DD.csv`
+- Gurmar raw: `InflationItems/Datas/01_Food/Gurmar/gurmar_prices_YYYY-MM-DD.csv`
+- Vakko raw: `InflationItems/Datas/03_Clothing/Vakko/vakko_YYYY-MM-DD.csv`
+- Yapımaks raw: `InflationItems/Datas/05_Furnishings/ConstructionSuppliesMarkets/yapimaks/YYYY-MM-DD.csv`
+- HomeGoods raw: `InflationItems/Datas/05_Furnishings/HomeGoods/Chakra/chakra_all_categories_YYYY_MM_DD.csv`
+- Emlakjet raw: `InflationItems/Datas/04_Housing/Emlakjet/YYYY-MM-DD.csv`
 - 08_Communication raw (TÜİK group 08, upstream layout: one folder per retailer, no sub-folders): tech `InflationItems/Datas/08_Communication/<Retailer>/<retailer>_YYYY-MM-DD.csv`
 - Telecom raw: `InflationItems/Datas/08_Communication/<Operator>/<operator>_YYYY-MM-DD.csv`; home internet `InflationItems/Datas/08_Communication/<Provider>/<provider>_internet_YYYY-MM-DD.csv`, streaming `InflationItems/Datas/08_Communication/<Service>/<service>_YYYY-MM-DD.csv`, repair `InflationItems/Datas/08_Communication/<Source>/<source>_repair_YYYY-MM-DD.csv`
 

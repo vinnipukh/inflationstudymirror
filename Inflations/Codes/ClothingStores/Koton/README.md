@@ -14,7 +14,7 @@ Computes three inflation metrics for Koton products:
 
 ### Input Files
 
-- **Location**: `InflationItems/Datas/ClothingStores/Koton/koton_YYYY-MM-DD.csv`
+- **Location**: `InflationItems/Datas/03_Clothing/Koton/koton_YYYY-MM-DD.csv`
 - **Required columns**: `pk`, `sale_price`, `category`
 
 ### Key Columns
@@ -104,7 +104,7 @@ The `tuik_config.py` file contains:
 
 Designed to run after daily Koton scraping completes:
 
-1. Koton scraper saves data to `InflationItems/Datas/ClothingStores/Koton/`
+1. Koton scraper saves data to `InflationItems/Datas/03_Clothing/Koton/`
 2. Run `python inflation.py` to calculate metrics
 3. Results saved to `Inflations/Datas/ClothingStores/Koton/`
 

@@ -11,7 +11,7 @@ Calculates matched-product inflation and TÜİK-style weighted metrics for Vakko
 
 ## Paths
 
-- Input: `InflationItems/Datas/ClothingStores/Vakko/vakko_YYYY-MM-DD.csv`
+- Input: `InflationItems/Datas/03_Clothing/Vakko/vakko_YYYY-MM-DD.csv`
 - Long-form detail output: `Inflations/Datas/ClothingStores/Vakko/vakko_inflation.csv`
 - Summary output: `Inflations/Datas/ClothingStores/Vakko/inflation_summary.csv`
 - Script/config: `Inflations/Codes/ClothingStores/Vakko/`

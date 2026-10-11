@@ -40,7 +40,7 @@ try:
 except ImportError:
     raise ImportError("Could not load tuik_config.py. Ensure it is in the _CODES_DIR.")
 
-DATA_DIR = _PROJECT_ROOT / "InflationItems" / "Datas" / "HousesRent"
+DATA_DIR = _PROJECT_ROOT / "InflationItems" / "Datas" / "04_Housing"
 # Output directory combining both cities
 INFLATION_OUT_DIR = _CODES_DIR.parent / "Datas" / "HousesRent" / "MersinAdana"
 

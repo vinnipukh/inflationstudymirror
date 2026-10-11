@@ -22,7 +22,7 @@ Since rental listings have no stable product IDs, this calculator:
 
 ### Input Files
 
-- **Location**: `InflationItems/Datas/HousesRent/IstanbulAvrupa/IstanbulAvrupa_YYYY-MM-DD.csv`
+- **Location**: `InflationItems/Datas/04_Housing/IstanbulAvrupa/IstanbulAvrupa_YYYY-MM-DD.csv`
 - **Required columns**: `District`, `Rooms`, `Price`
 
 ### Key Columns
@@ -115,7 +115,7 @@ The `tuik_config.py` file contains:
 
 Designed to run after daily IstanbulAvrupa scraping completes:
 
-1. Scraper saves data to `InflationItems/Datas/HousesRent/IstanbulAvrupa/`
+1. Scraper saves data to `InflationItems/Datas/04_Housing/IstanbulAvrupa/`
 2. Run `python inflation.py` to calculate metrics
 3. Results saved to `Inflations/Datas/HousesRent/IstanbulAvrupa/`
 

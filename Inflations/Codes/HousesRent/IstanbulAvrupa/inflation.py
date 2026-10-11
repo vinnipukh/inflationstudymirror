@@ -35,7 +35,7 @@ sys.path.insert(0, str(_THIS_DIR))
 from tuik_config import normalised_weights, TUIK_WEIGHTS
 
 # Scraper config for data paths
-_scraper_dir = _PROJECT_ROOT / "InflationItems" / "Codes" / "HousesRent" / "IstanbulAvrupa" / "scripts"
+_scraper_dir = _PROJECT_ROOT / "InflationItems" / "Codes" / "04_Housing" / "IstanbulAvrupa" / "scripts"
 sys.path.insert(0, str(_scraper_dir))
 import config
 

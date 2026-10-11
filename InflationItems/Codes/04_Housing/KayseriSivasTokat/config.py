@@ -30,7 +30,7 @@ CITIES = [
 
 TODAY = _dt.date.today().strftime("%Y-%m-%d")  # noqa: DTZ011 — daily-run date, local tz is intended
 
-OUTPUT_BASE_DIR = str(_ITEMS_ROOT / "Datas" / "HousesRent")
+OUTPUT_BASE_DIR = str(_ITEMS_ROOT / "Datas" / "04_Housing")
 CHECKPOINT_DIR = str(_SCRIPTS_DIR / "checkpoints")
 
 

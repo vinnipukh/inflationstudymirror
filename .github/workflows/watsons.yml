@@ -32,7 +32,7 @@ jobs:
           pip install "curl_cffi==0.15.0"
 
       - name: Run Scraper
-        run: python InflationItems/Codes/Cosmetics/Watson/scraper.py
+        run: python InflationItems/Codes/13_Personal_Care/Cosmetics/Watson/scraper.py
 
       - name: Commit and Push Changes
         run: |

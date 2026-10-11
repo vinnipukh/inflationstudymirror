@@ -37,14 +37,14 @@ from tuik_config import normalised_weights, TUIK_WEIGHTS
 try:
     _scraper_dir = (
         _PROJECT_ROOT
-        / "InflationItems" / "Codes" / "HomeGoods" / "Vivense" / "scripts"
+        / "InflationItems" / "Codes" / "05_Furnishings" / "HomeGoods" / "Vivense" / "scripts"
     )
     sys.path.insert(0, str(_scraper_dir))
     import config
     DATA_DIR = Path(config.OUTPUT_DIR)
 except Exception:
     DATA_DIR = (
-        _PROJECT_ROOT / "InflationItems" / "Datas" / "HomeGoods" / "Vivense"
+        _PROJECT_ROOT / "InflationItems" / "Datas" / "05_Furnishings" / "HomeGoods" / "Vivense"
     )
 
 logger = logging.getLogger(__name__)

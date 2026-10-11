@@ -13,7 +13,7 @@ PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "..", "..", ".."))
 sys.path.insert(0, os.path.join(PROJECT_ROOT, "Inflations", "Codes"))
 from detail_store import append_detail  # noqa: E402
 
-DATA_DIR = os.path.join(PROJECT_ROOT, "InflationItems", "Datas", "ConstructionSuppliesMarkets", "yapimaks")
+DATA_DIR = os.path.join(PROJECT_ROOT, "InflationItems", "Datas", "05_Furnishings", "ConstructionSuppliesMarkets", "yapimaks")
 OUT_DIR = os.path.join(PROJECT_ROOT, "Inflations", "Datas", "ConstructionSuppliesMarkets", "Yapimaks")
 JSON_PATH = os.path.join(PROJECT_ROOT, "Inflations", "Codes", "ConstructionMarkets", "yapimaks", "Category", "kategori_haritasi.json")
 

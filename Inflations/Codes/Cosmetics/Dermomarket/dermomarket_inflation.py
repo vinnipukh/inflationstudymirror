@@ -32,7 +32,7 @@ import pandas as pd
 
 # ── Path setup ────────────────────────────────────────────────────────────────
 # Bu dosya: Inflations/Codes/Cosmetics/Dermomarket/dermomarket_inflation.py
-# Veri:     InflationItems/Datas/Cosmetics/Dermomarket/
+# Veri:     InflationItems/Datas/13_Personal_Care/Cosmetics/Dermomarket/
 # Çıktı:    Inflations/Datas/Cosmetics/Dermomarket/
 _THIS_DIR = Path(__file__).resolve().parent
 REPO_ROOT  = _THIS_DIR.parents[3]
@@ -41,7 +41,7 @@ from dermomarket_tuik_config import normalised_weights
 
 logger = logging.getLogger(__name__)
 
-DATA_DIR   = REPO_ROOT / "InflationItems" / "Datas" / "Cosmetics" / "Dermomarket"
+DATA_DIR   = REPO_ROOT / "InflationItems" / "Datas" / "13_Personal_Care" / "Cosmetics" / "Dermomarket"
 OUTPUT_DIR = REPO_ROOT / "Inflations"     / "Datas" / "Cosmetics" / "Dermomarket"
 
 KEY = ["product_name"]

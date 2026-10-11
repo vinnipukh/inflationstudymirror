@@ -6,14 +6,14 @@ All times in **Istanbul time (UTC+3)**. Türkiye uses UTC+3 year-round (no dayli
 
 | Istanbul Time (UTC+3) | UTC  | Scraper        | Workflow File         | Script                                   | Output Data                      |
 |-----------------------|------|----------------|-----------------------|------------------------------------------|----------------------------------|
-| 03:00                | 00:00 | Gurmar         | `gurmar.yml`          | `InflationItems/Codes/Markets/Gurmar/gurmar_scraper.py` | `InflationItems/Datas/Markets/Gurmar/*.csv`     |
-| 05:00                | 02:00 | Yapımaks       | `yapimaks.yml`        | `InflationItems/Codes/ConstructionMarkets/yapimaks/scraper.py` | `InflationItems/Datas/ConstructionSuppliesMarkets/yapimaks/` + `logs/` |
-| 07:00                | 04:00 | Vakko          | `vakko_scraper.yml`   | `InflationItems/Codes/ClothingStores/Vakko/vakko_master_scraper.py` | `InflationItems/Datas/ClothingStores/Vakko/*.csv` |
-| 09:00                | 06:00 | Watsons        | `watsons.yml`         | `InflationItems/Codes/Cosmetics/Watson/scraper.py`       | `InflationItems/Datas/` + `logs/`               |
-| 11:00                | 08:00 | Chakra         | `chakra_scraper.yml`  | `InflationItems/Codes/HomeGoods/scraper.py`              | `InflationItems/Datas/HomeGoods/*.csv`          |
-| 13:00                | 10:00 | Beymen         | `beymen.yml`          | `InflationItems/Codes/Technology/scraper.py`             | `InflationItems/Datas/Technology/`              |
-| 17:00                | 14:00 | TasciYapi      | `tasciyapi.yml`       | `InflationItems/Codes/ConstructionMarkets/tasciyapimarket/scraper.py` | `InflationItems/Datas/ConstructionSuppliesMarkets/TasciYapiMarket/*.csv` |
-| 19:00                | 16:00 | Emlakjet       | `emlakjet_scraper.yml` | `InflationItems/Codes/HousesRent/Emlakjet/scraper.py` | `InflationItems/Datas/HousesRent/Emlakjet/*.csv` |
+| 03:00                | 00:00 | Gurmar         | `gurmar.yml`          | `InflationItems/Codes/01_Food/Gurmar/gurmar_scraper.py` | `InflationItems/Datas/01_Food/Gurmar/*.csv`     |
+| 05:00                | 02:00 | Yapımaks       | `yapimaks.yml`        | `InflationItems/Codes/05_Furnishings/ConstructionSuppliesMarkets/yapimaks/scraper.py` | `InflationItems/Datas/05_Furnishings/ConstructionSuppliesMarkets/yapimaks/` + `logs/` |
+| 07:00                | 04:00 | Vakko          | `vakko_scraper.yml`   | `InflationItems/Codes/03_Clothing/Vakko/vakko_master_scraper.py` | `InflationItems/Datas/03_Clothing/Vakko/*.csv` |
+| 09:00                | 06:00 | Watsons        | `watsons.yml`         | `InflationItems/Codes/13_Personal_Care/Cosmetics/Watson/scraper.py`       | `InflationItems/Datas/` + `logs/`               |
+| 11:00                | 08:00 | Chakra         | `chakra_scraper.yml`  | `InflationItems/Codes/05_Furnishings/HomeGoods/Chakra/scraper.py`              | `InflationItems/Datas/05_Furnishings/HomeGoods/Chakra/*.csv`          |
+| 13:00                | 10:00 | Beymen         | `beymen.yml`          | `InflationItems/Codes/08_Communication/BeymenTech/scraper.py`             | `InflationItems/Datas/08_Communication/Beymen/ (beymen_tech_*)`              |
+| 17:00                | 14:00 | TasciYapi      | `tasciyapi.yml`       | `InflationItems/Codes/05_Furnishings/ConstructionSuppliesMarkets/tasciyapimarket/scraper.py` | `InflationItems/Datas/05_Furnishings/ConstructionSuppliesMarkets/TasciYapiMarket/*.csv` |
+| 19:00                | 16:00 | Emlakjet       | `emlakjet_scraper.yml` | `InflationItems/Codes/04_Housing/Emlakjet/scraper.py` | `InflationItems/Datas/04_Housing/Emlakjet/*.csv` |
 
 ## Notes
 
@@ -42,6 +42,6 @@ not GitHub Actions. Setup, measured durations and operations:
 | 08:45 | Telecom — streaming subscriptions (12 services) | `InflationItems/Codes/08_Communication/Telecom/streaming.py` | `InflationItems/Datas/08_Communication/<Service>/*.csv` |
 | 09:00 | Telecom — ICT equipment repair prices (Apple, Samsung, Huawei, Egemek, GSM İletişim) | `InflationItems/Codes/08_Communication/Telecom/repair.py` | `InflationItems/Datas/08_Communication/<Source>/*_repair_*.csv` |
 
-Beymen is also scraped by the `beymen.yml` workflow (`InflationItems/Codes/Technology/scraper.py`,
-same technology category) into `InflationItems/Datas/Technology/`; the server copy writes a
+Beymen is also scraped by the `beymen.yml` workflow (`InflationItems/Codes/08_Communication/BeymenTech/scraper.py`,
+same technology category) into `InflationItems/Datas/08_Communication/Beymen/ (beymen_tech_*)`; the server copy writes a
 separate dataset.

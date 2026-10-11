@@ -33,7 +33,7 @@ import pandas as pd
 
 # ── Path setup ────────────────────────────────────────────────────────────────
 # Bu dosya: Inflations/Codes/HousesRent/Malatya_Elazig_Tunceli/sahibinden_inflation.py
-# Veri:     InflationItems/Datas/HousesRent/Malatya_Elazig_Tunceli/<Şehir>/
+# Veri:     InflationItems/Datas/04_Housing/Malatya_Elazig_Tunceli/<Şehir>/
 # Çıktı:    Inflations/Datas/HousesRent/Malatya_Elazig_Tunceli/
 _THIS_DIR = Path(__file__).resolve().parent
 REPO_ROOT  = _THIS_DIR.parents[3]
@@ -42,7 +42,7 @@ from sahibinden_tuik_config import sahibinden_city_to_tuik, normalised_weights
 
 logger = logging.getLogger(__name__)
 
-_BASE_DATA = REPO_ROOT / "InflationItems" / "Datas" / "HousesRent" / "Malatya_Elazig_Tunceli"
+_BASE_DATA = REPO_ROOT / "InflationItems" / "Datas" / "04_Housing" / "Malatya_Elazig_Tunceli"
 CITY_DATA_DIRS = {
     "malatya": _BASE_DATA / "Malatya",
     "elazig":  _BASE_DATA / "Elazig",

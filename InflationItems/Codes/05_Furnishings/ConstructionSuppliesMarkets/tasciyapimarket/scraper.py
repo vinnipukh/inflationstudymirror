@@ -332,7 +332,7 @@ def main(argv: list[str] | None = None) -> int:
     else:
         script_dir = Path(__file__).resolve().parent
         items_root = script_dir.parents[3]
-        save_dir = items_root / "Datas" / "ConstructionSuppliesMarkets" / "TasciYapiMarket"
+        save_dir = items_root / "Datas" / "05_Furnishings" / "ConstructionSuppliesMarkets" / "TasciYapiMarket"
     save_dir.mkdir(parents=True, exist_ok=True)
 
     csv_path = save_dir / f"tasciyapi_products_{datetime.now():%Y-%m-%d}.csv"

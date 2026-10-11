@@ -249,9 +249,9 @@ if __name__ == "__main__":
 
         # Tarama bittikten sonra tek bir CSV'ye kaydet
         if all_scraped_data:
-            # Scriptin bulunduğu klasörü (InflationItems/Codes/HomeGoods) bul ve 2 üst dizine (InflationItems) çık
+            # Scriptin bulunduğu klasörü (InflationItems/Codes/05_Furnishings/HomeGoods/Chakra) bul ve 4 üst dizine (InflationItems) çık
             script_dir = os.path.dirname(os.path.abspath(__file__))
-            output_dir = os.path.abspath(os.path.join(script_dir, "..", "..", "Datas", "HomeGoods"))
+            output_dir = os.path.abspath(os.path.join(script_dir, "..", "..", "..", "..", "Datas", "05_Furnishings", "HomeGoods", "Chakra"))
 
             # Hedef klasör yoksa hata vermemesi için oluştur
             os.makedirs(output_dir, exist_ok=True)

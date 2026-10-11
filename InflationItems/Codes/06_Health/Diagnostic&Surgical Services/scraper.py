@@ -86,7 +86,7 @@ mevcut_dosya = Path(__file__).resolve()
 items_koku = mevcut_dosya.parents[3]  # InflationItems klasörüne çıkar
 
 # Senden istenen hedef klasör yapısı
-hedef_klasor = items_koku / "Datas" / "Health" / "Diagnostic&Surgical Services"
+hedef_klasor = items_koku / "Datas" / "06_Health" / "Diagnostic&Surgical Services"
 hedef_klasor.mkdir(parents=True, exist_ok=True)
 
 bugunun_tarihi = datetime.datetime.now().strftime("%Y-%m-%d")

@@ -40,7 +40,7 @@ from tuik_config import TUIK_WEIGHTS, normalised_weights
 
 logger = logging.getLogger(__name__)
 
-DATA_DIR = _PROJECT_ROOT / "InflationItems" / "Datas" / "Markets" / "Hapeloglu"
+DATA_DIR = _PROJECT_ROOT / "InflationItems" / "Datas" / "01_Food" / "Hapeloglu"
 INFLATION_OUT_DIR = _CODES_DIR.parent / "Datas" / "Markets" / "Hapeloglu"
 
 # Hapeloglu category -> TUIK code mapping

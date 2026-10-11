@@ -14,7 +14,7 @@ Keep `.env` and secret values out of Git. Prefer GitHub Actions secrets for sche
 ## Source configuration
 
 - Scraper constants and browser settings live beside each source under `InflationItems/Codes/`.
-- Rental city/room/pacing/profile settings live in `InflationItems/Codes/HousesRent/KayseriSivasTokat/config.py`.
+- Rental city/room/pacing/profile settings live in `InflationItems/Codes/04_Housing/KayseriSivasTokat/config.py`.
 - TÜİK weights and category mappings live in calculator-specific `*_tuik_config.py` / `tuik_config.py` files.
 - Source data roots and output directories should remain repository-relative or CLI-configurable.
 

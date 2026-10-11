@@ -2,7 +2,7 @@
 
 **Date:** 2026-08-15 · **Revised:** 2026-08-16 (validation findings folded into this document)
 **Status:** recommended flow (pending benchmark gates)
-**Sources:** live site reconnaissance (section 7, 2026-08-15), the dated validation/status entries in `docs/TECH-STACK-SEARCH.md`, `docs/scraping-wiki/` (tested technique truth), and `InflationItems/Codes/HousesRent/KayseriSivasTokat/` (current scraper).
+**Sources:** live site reconnaissance (section 7, 2026-08-15), the dated validation/status entries in `docs/TECH-STACK-SEARCH.md`, `docs/scraping-wiki/` (tested technique truth), and `InflationItems/Codes/04_Housing/KayseriSivasTokat/` (current scraper).
 
 > ⚠️ **Naming note:** per project convention the target site is referred to as **"sarı site"**. The literal domain remains only where functionally required (code URLs, login-detection patterns, runtime cookie filenames).
 > ⚠️ **Compliance note:** a 16 Aug 2026 review found the site's published usage conditions contain AI-agent provisions (UA identification, no human-interaction simulation, respect for CAPTCHA/firewall/rate/robots controls). **Gate G0 now starts with an authorisation/terms decision** before any anti-detection engineering (blocker B0).

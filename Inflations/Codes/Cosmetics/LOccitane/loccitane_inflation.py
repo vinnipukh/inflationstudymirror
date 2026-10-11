@@ -32,7 +32,7 @@ from tuik_config import TUIK_WEIGHTS, normalised_weights
 logger = logging.getLogger(__name__)
 
 # Paths aligned with your LOccitane scraper
-DATA_DIR = _PROJECT_ROOT / "InflationItems" / "Datas" / "Cosmetics" / "LOccitane" 
+DATA_DIR = _PROJECT_ROOT / "InflationItems" / "Datas" / "13_Personal_Care" / "Cosmetics" / "LOccitane" 
 INFLATION_OUT_DIR = _CODES_DIR.parent / "Datas" / "Cosmetics" / "LOccitane"
 
 TUIK_CATEGORY = "13" 

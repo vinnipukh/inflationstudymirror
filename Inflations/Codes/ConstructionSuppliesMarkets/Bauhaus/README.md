@@ -14,7 +14,7 @@ Computes three inflation metrics for Bauhaus products:
 
 ### Input Files
 
-- **Location**: `InflationItems/Datas/ConstructionSuppliesMarkets/Bauhaus/bauhaus_YYYY-MM-DD.csv`
+- **Location**: `InflationItems/Datas/05_Furnishings/ConstructionSuppliesMarkets/Bauhaus/bauhaus_YYYY-MM-DD.csv`
 - **Required columns**: `id`, `shown_price`, `category`
 
 ### Key Columns
@@ -109,7 +109,7 @@ The `tuik_config.py` file contains:
 
 Designed to run after daily Bauhaus scraping completes:
 
-1. Bauhaus scraper saves data to `InflationItems/Datas/ConstructionSuppliesMarkets/Bauhaus/`
+1. Bauhaus scraper saves data to `InflationItems/Datas/05_Furnishings/ConstructionSuppliesMarkets/Bauhaus/`
 2. Run `python inflation.py` to calculate metrics
 3. Results saved to `Inflations/Datas/ConstructionSuppliesMarkets/Bauhaus/`
 

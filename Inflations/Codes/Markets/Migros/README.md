@@ -14,7 +14,7 @@ Computes three inflation metrics for Migros products:
 
 ### Input Files
 
-- **Location**: `InflationItems/Datas/Markets/Migros/migros_YYYY-MM-DD.csv`
+- **Location**: `InflationItems/Datas/01_Food/Migros/migros_YYYY-MM-DD.csv`
 - **Required columns**: `id`, `shown_price`, `category`
 
 ### Key Columns
@@ -106,7 +106,7 @@ The `tuik_config.py` file contains:
 
 Designed to run after daily Migros scraping completes:
 
-1. Migros scraper saves data to `InflationItems/Datas/Markets/Migros/`
+1. Migros scraper saves data to `InflationItems/Datas/01_Food/Migros/`
 2. Run `python inflation.py` to calculate metrics
 3. Results saved to `Inflations/Datas/Markets/Migros/`
 

@@ -32,7 +32,7 @@ from tuik_config import TUIK_WEIGHTS, normalised_weights
 
 logger = logging.getLogger(__name__)
 
-DATA_DIR = _PROJECT_ROOT / "InflationItems" / "Datas" / "ConstructionSuppliesMarkets" / "Nalburadam"
+DATA_DIR = _PROJECT_ROOT / "InflationItems" / "Datas" / "05_Furnishings" / "ConstructionSuppliesMarkets" / "Nalburadam"
 INFLATION_OUT_DIR = _CODES_DIR.parent / "Datas" / "ConstructionSuppliesMarkets" / "Nalburadam"
 
 TUIK_CATEGORY = "05"  # All Nalburadam products -> Furniture/appliances/maintenance

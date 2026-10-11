@@ -64,7 +64,7 @@ Outlier filtering:
   those rows so they do not bias the Dutot index either.
 
 Rent treatment:
-  Rent is loaded separately from city-level listing files (HousesRent/).  The
+  Rent is loaded separately from city-level listing files (04_Housing/).  The
   inflation rate is computed as the Carli index across cities: arithmetic mean of
   (mean_current_rent_city / mean_past_rent_city − 1) × 100 over all cities
   present in both snapshots. This city-level relative is injected into
@@ -287,15 +287,15 @@ _SKIP_STORES: set[str] = {"EnglishHome"}
 # Maps sector directory name → (tuik_code, sector_label, date_granularity)
 # date_granularity: "daily" matches *YYYY-MM-DD*, "monthly" matches *YYYY-MM*
 _SECTOR_CONFIG: dict[str, tuple[str, str, str]] = {
-    "Markets":                                ("01", "market",       "daily"),
-    "ClothingStores":                         ("03", "clothing",     "daily"),
-    "HomeGoods":                              ("05", "homegoods",    "daily"),
-    "ConstructionSuppliesMarkets":            ("05", "construction", "daily"),
-    "Health":                                 ("06", "health",       "monthly"),
+    "01_Food":                                ("01", "market",       "daily"),
+    "03_Clothing":                            ("03", "clothing",     "daily"),
+    "05_Furnishings/HomeGoods":               ("05", "homegoods",    "daily"),
+    "05_Furnishings/ConstructionSuppliesMarkets": ("05", "construction", "daily"),
+    "06_Health":                              ("06", "health",       "monthly"),
     "08_Communication":                       ("08", "tech",         "daily"),
-    "TravelTourism":                          ("11", "tourism",      "daily"),
-    "RestaurantMealPricesVenueHallRentalFees": ("11", "restaurant",  "flat_daily"),
-    "Cosmetics":                              ("13", "cosmetics",    "daily"),
+    "11_Restaurants/TravelTourism":           ("11", "tourism",      "daily"),
+    "11_Restaurants/RestaurantMealPricesVenueHallRentalFees": ("11", "restaurant",  "flat_daily"),
+    "13_Personal_Care/Cosmetics":             ("13", "cosmetics",    "daily"),
     # Multi-group sector: tuik_code None -> per-row tuik_category from the CSV.
     "EpeyKatfg":                              (None, "epeykatfg",     "flat_daily"),
 }
@@ -427,7 +427,7 @@ def _load_all_stores(date_str: str) -> tuple[pd.DataFrame, list[str], int]:
 # ── Rent inflation helper ─────────────────────────────────────────────────────
 
 def _rent_city_prices(date_str: str) -> dict[str, float]:
-    rent_root = _DATA_ROOT / "HousesRent"
+    rent_root = _DATA_ROOT / "04_Housing"
     city_prices: dict[str, list[float]] = {}
     for fpath in rent_root.rglob(f"*{date_str}*.csv"):
         if fpath.parent == rent_root:  # skip root-level aggregate files

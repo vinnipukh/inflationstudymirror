@@ -9,7 +9,7 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(script_dir, '../../HomeGoods', '..', '..', '..'))
 
 # Updated paths for Boyner
-input_dir = os.path.join(project_root, 'InflationItems', 'Datas', 'Cosmetics', 'Boyner')
+input_dir = os.path.join(project_root, 'InflationItems', 'Datas', '13_Personal_Care', 'Cosmetics', 'Boyner')
 output_dir = os.path.join(project_root, 'Inflations', 'Datas', 'Cosmetics', 'Boyner')
 output_filename = os.path.join(output_dir, 'Boyner_inflation_summary.csv')
 

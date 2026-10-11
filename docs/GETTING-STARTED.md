@@ -30,8 +30,8 @@ Browser-backed scrapers may require platform-specific Chrome/driver setup. Follo
 ### Inspect a scraper without running it
 
 ```bash
-python InflationItems/Codes/Markets/Gurmar/gurmar_scraper.py --help
-python InflationItems/Codes/HousesRent/Emlakjet/scraper.py --help
+python InflationItems/Codes/01_Food/Gurmar/gurmar_scraper.py --help
+python InflationItems/Codes/04_Housing/Emlakjet/scraper.py --help
 ```
 
 ### Run a bounded live sample first

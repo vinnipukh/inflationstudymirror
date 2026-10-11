@@ -35,6 +35,7 @@ try:
         _PROJECT_ROOT
         / "InflationItems"
         / "Codes"
+        / "13_Personal_Care"
         / "Cosmetics"
         / "GoldenRose"
         / "scripts"
@@ -50,7 +51,7 @@ try:
     _spec.loader.exec_module(_config)
     DATA_DIR = Path(_config.OUTPUT_DIR)
 except Exception:
-    DATA_DIR = _PROJECT_ROOT / "InflationItems" / "Datas" / "Cosmetics" / "GoldenRose"
+    DATA_DIR = _PROJECT_ROOT / "InflationItems" / "Datas" / "13_Personal_Care" / "Cosmetics" / "GoldenRose"
 
 INFLATION_OUT_DIR = _CODES_DIR.parent / "Datas" / "Cosmetics" / "GoldenRose"
 MATCH_KEY = "Product ID"

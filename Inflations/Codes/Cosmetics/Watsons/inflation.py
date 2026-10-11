@@ -7,7 +7,7 @@ import pandas as pd
 
 # ── Path setup ────────────────────────────────────────────────────────────────
 _THIS_DIR = Path(__file__).resolve().parent
-_PROJECT_ROOT = _THIS_DIR.parent.parent.parent  # inflationstudymirror
+_PROJECT_ROOT = _THIS_DIR.parents[3]  # inflationstudymirror
 
 sys.path.insert(0, str(_THIS_DIR))
 sys.path.insert(0, str(_PROJECT_ROOT / "Inflations" / "Codes"))
@@ -16,7 +16,7 @@ from tuik_config import (  # noqa: E402
     normalised_weights,
 )
 
-DATA_DIR = _PROJECT_ROOT / "Datas" / "Cosmetics" / "Watson"
+DATA_DIR = _PROJECT_ROOT / "InflationItems" / "Datas" / "13_Personal_Care" / "Cosmetics" / "Watson"
 INFLATION_OUT_DIR = _PROJECT_ROOT / "Inflations" / "Datas" / "Cosmetics"
 
 logger = logging.getLogger(__name__)

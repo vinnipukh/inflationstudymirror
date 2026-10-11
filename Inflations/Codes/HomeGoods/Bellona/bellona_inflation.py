@@ -31,7 +31,7 @@ from tuik_config import TUIK_WEIGHTS, normalised_weights
 
 logger = logging.getLogger(__name__)
 
-DATA_DIR = _PROJECT_ROOT / "InflationItems" / "Datas" / "HomeGoods" / "Bellona" 
+DATA_DIR = _PROJECT_ROOT / "InflationItems" / "Datas" / "05_Furnishings" / "HomeGoods" / "Bellona" 
 INFLATION_OUT_DIR = _CODES_DIR.parent / "Datas" / "HomeGoods" / "Bellona"
 
 # TUIK Category 05: Furnishings, household equipment and routine household maintenance

@@ -49,16 +49,16 @@ Some source-specific workflows intentionally install a smaller pinned dependency
 
 ```bash
 # Market
-python InflationItems/Codes/Markets/Gurmar/gurmar_scraper.py
+python InflationItems/Codes/01_Food/Gurmar/gurmar_scraper.py
 
 # Construction market
-python InflationItems/Codes/ConstructionMarkets/yapimaks/scraper.py
+python InflationItems/Codes/05_Furnishings/ConstructionSuppliesMarkets/yapimaks/scraper.py
 
 # Retail browser scraper
-python InflationItems/Codes/Technology/scraper.py
+python InflationItems/Codes/08_Communication/BeymenTech/scraper.py
 
 # Rental scraper
-python -m InflationItems.Codes.HousesRent.Emlakjet.scraper --resume
+python InflationItems/Codes/04_Housing/Emlakjet/scraper.py --resume
 ```
 
 Before running a protected or browser-backed scraper, read:

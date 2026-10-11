@@ -35,7 +35,7 @@ jobs:
 
       - name: Run Scraper
         # Belirttiğin tam dizindeki scripti çalıştırır
-        run: python InflationItems/Codes/ConstructionMarkets/yapimaks/scraper.py
+        run: python InflationItems/Codes/05_Furnishings/ConstructionSuppliesMarkets/yapimaks/scraper.py
 
       - name: Commit and Push Changes
         run: |

@@ -26,7 +26,7 @@ PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "..", "..", ".."))
 sys.path.insert(0, os.path.join(PROJECT_ROOT, "Inflations", "Codes"))
 from detail_store import append_detail  # noqa: E402
 
-DEFAULT_RAW_DIR = os.path.join(PROJECT_ROOT, "InflationItems", "Datas", "Markets", "Gurmar")
+DEFAULT_RAW_DIR = os.path.join(PROJECT_ROOT, "InflationItems", "Datas", "01_Food", "Gurmar")
 DEFAULT_OUT_DIR = os.path.join(PROJECT_ROOT, "Inflations", "Datas", "Markets", "Gurmar")
 
 

@@ -309,7 +309,7 @@ if atlanan_kategoriler:
 
 mevcut_dosya = Path(__file__).resolve()
 items_koku = mevcut_dosya.parents[3]
-hedef_klasor = items_koku / "Datas" / "ClothingStores" / "Vakko"
+hedef_klasor = items_koku / "Datas" / "03_Clothing" / "Vakko"
 hedef_klasor.mkdir(parents=True, exist_ok=True)
 
 bugunun_tarihi = datetime.datetime.now().strftime("%Y-%m-%d")

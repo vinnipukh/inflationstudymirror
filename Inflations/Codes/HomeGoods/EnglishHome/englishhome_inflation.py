@@ -34,7 +34,7 @@ import pandas as pd
 
 # ── Path setup ────────────────────────────────────────────────────────────────
 # Bu dosya: Inflations/Codes/HomeGoods/EnglishHome/englishhome_inflation.py
-# Veri:     InflationItems/Datas/HomeGoods/EnglishHome/
+# Veri:     InflationItems/Datas/05_Furnishings/HomeGoods/EnglishHome/
 # Çıktı:    Inflations/Datas/HomeGoods/EnglishHome/
 _THIS_DIR = Path(__file__).resolve().parent
 REPO_ROOT  = _THIS_DIR.parents[3]
@@ -43,7 +43,7 @@ from englishhome_tuik_config import normalised_weights
 
 logger = logging.getLogger(__name__)
 
-DATA_DIR   = REPO_ROOT / "InflationItems" / "Datas" / "HomeGoods" / "EnglishHome"
+DATA_DIR   = REPO_ROOT / "InflationItems" / "Datas" / "05_Furnishings" / "HomeGoods" / "EnglishHome"
 OUTPUT_DIR = REPO_ROOT / "Inflations"     / "Datas" / "HomeGoods" / "EnglishHome"
 
 KEY = ["product_name"]

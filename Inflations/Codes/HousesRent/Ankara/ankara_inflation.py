@@ -30,7 +30,7 @@ except ImportError:
 logger = logging.getLogger(__name__)
 
 # ── Directories ───────────────────────────────────────────────────────────────
-DATA_DIR = _PROJECT_ROOT / "InflationItems" / "Datas" / "HousesRent" / "Ankara"
+DATA_DIR = _PROJECT_ROOT / "InflationItems" / "Datas" / "04_Housing" / "Ankara"
 INFLATION_OUT_DIR = _PROJECT_ROOT / "Inflations" / "Datas" / "HousesRent" / "Ankara"
 
 def _load_csv(date_str):

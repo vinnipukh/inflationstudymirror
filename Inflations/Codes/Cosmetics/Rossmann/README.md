@@ -21,7 +21,7 @@ and additionally supports an arbitrary `--compare` date.
 
 ### Input Files
 
-- **Location**: `InflationItems/Datas/Cosmetics/Rossmann/rossmann_YYYY-MM-DD.csv`
+- **Location**: `InflationItems/Datas/13_Personal_Care/Cosmetics/Rossmann/rossmann_YYYY-MM-DD.csv`
 - **Required columns**: `id`, `shown_price`, `category`
 
 ### Key Columns
@@ -84,7 +84,7 @@ python inflation.py --date 2026-04-25 --compare 2026-04-18
 ```
 
 The calculator is also invoked automatically at the end of every successful
-scraper run (`InflationItems/Codes/Cosmetics/Rossmann/scripts/main.py`).
+scraper run (`InflationItems/Codes/13_Personal_Care/Cosmetics/Rossmann/scripts/main.py`).
 
 ## Output Files
 
@@ -160,7 +160,7 @@ changes are required.
 
 Designed to run after each daily Rossmann scraper run:
 
-1. The scraper saves data to `InflationItems/Datas/Cosmetics/Rossmann/`.
+1. The scraper saves data to `InflationItems/Datas/13_Personal_Care/Cosmetics/Rossmann/`.
 2. `main.py` automatically calls `inflation.calculate_inflation()` at the
    end of a successful scrape.
 3. Results land in `Inflations/Datas/Cosmetics/Rossmann/`.

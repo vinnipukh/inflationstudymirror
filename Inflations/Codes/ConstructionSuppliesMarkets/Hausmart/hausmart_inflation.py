@@ -30,7 +30,7 @@ import pandas as pd
 
 # ── Path setup ────────────────────────────────────────────────────────────────
 # Bu dosya: Inflations/Codes/ConstructionSuppliesMarkets/Hausmart/hausmart_inflation.py
-# Veri:     InflationItems/Datas/ConstructionSuppliesMarkets/Hausmart/
+# Veri:     InflationItems/Datas/05_Furnishings/ConstructionSuppliesMarkets/Hausmart/
 # Çıktı:    Inflations/Datas/ConstructionSuppliesMarkets/Hausmart/
 _THIS_DIR = Path(__file__).resolve().parent
 REPO_ROOT  = _THIS_DIR.parents[3]
@@ -39,7 +39,7 @@ from hausmart_tuik_config import normalised_weights
 
 logger = logging.getLogger(__name__)
 
-DATA_DIR   = REPO_ROOT / "InflationItems" / "Datas" / "ConstructionSuppliesMarkets" / "Hausmart"
+DATA_DIR   = REPO_ROOT / "InflationItems" / "Datas" / "05_Furnishings" / "ConstructionSuppliesMarkets" / "Hausmart"
 OUTPUT_DIR = REPO_ROOT / "Inflations"     / "Datas" / "ConstructionSuppliesMarkets" / "Hausmart"
 
 # Yeni CSV formatı sadece product_name,price içeriyor — kategori yok.

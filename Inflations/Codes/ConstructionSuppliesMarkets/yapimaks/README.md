@@ -13,7 +13,7 @@ Kod, kategori_haritasi.json dosyasındaki eşleştirmeleri kullanarak her ürün
 
 Hesaplama yapabilmek için şu dosyaların yerinde olması gerekir:
 
-   Günlük CSV Verileri: InflationItems/Datas/ConstructionSuppliesMarkets/Yapimaks/ içinde yapimaks_YYYY-MM-DD.csv formatında.
+   Günlük CSV Verileri: InflationItems/Datas/05_Furnishings/ConstructionSuppliesMarkets/Yapimaks/ içinde yapimaks_YYYY-MM-DD.csv formatında.
 
    Kategori Haritası: kategori_haritasi.json (Scraper tarafından oluşturulan dosya).
 

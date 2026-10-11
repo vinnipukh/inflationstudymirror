@@ -56,7 +56,7 @@ When TÜİK Weighted metrics are computed, weights are **re-normalised** to sum 
 
 ## Data Sources by Sector
 
-### Group 01 — Food & Non-Alcoholic Beverages (`Markets/`)
+### Group 01 — Food & Non-Alcoholic Beverages (`01_Food/`)
 
 Daily scrape frequency.
 
@@ -88,7 +88,7 @@ Daily scrape frequency.
 
 ---
 
-### Group 03 — Clothing & Footwear (`ClothingStores/`)
+### Group 03 — Clothing & Footwear (`03_Clothing/`)
 
 Daily scrape frequency.
 
@@ -122,7 +122,7 @@ Daily scrape frequency.
 
 Two sub-sectors both mapped to COICOP 05.
 
-#### `HomeGoods/` — Home Furnishings
+#### `05_Furnishings/HomeGoods/` — Home Furnishings
 
 Daily scrape frequency.
 
@@ -139,7 +139,7 @@ Daily scrape frequency.
 | jysk       | Scandinavian home goods    |
 | tcshbo     | Home goods                 |
 
-#### `ConstructionSuppliesMarkets/` — Hardware & Building Materials
+#### `05_Furnishings/ConstructionSuppliesMarkets/` — Hardware & Building Materials
 
 Daily scrape frequency.
 
@@ -163,7 +163,7 @@ Daily scrape frequency.
 
 ---
 
-### Group 06 — Health (`Health/`)
+### Group 06 — Health (`06_Health/`)
 
 **Monthly** scrape frequency (matched by `YYYY-MM` date token).
 
@@ -199,7 +199,7 @@ Daily scrape frequency.
 
 Two sub-sectors both mapped to COICOP 11.
 
-#### `TravelTourism/` — Travel & Accommodation
+#### `11_Restaurants/TravelTourism/` — Travel & Accommodation
 
 Daily scrape frequency.
 
@@ -209,7 +209,7 @@ Daily scrape frequency.
 | HolidayPackages | Package holiday prices     |
 | Hotels          | Hotel accommodation prices |
 
-#### `RestaurantMealPricesVenueHallRentalFees/` — Restaurant & Venue Prices
+#### `11_Restaurants/RestaurantMealPricesVenueHallRentalFees/` — Restaurant & Venue Prices
 
 Daily scrape frequency. Files sit directly in the sector root (no store subdirectories); each file's name prefix is used as the source identifier.
 
@@ -228,7 +228,7 @@ Daily scrape frequency. Files sit directly in the sector root (no store subdirec
 
 ---
 
-### Group 13 — Personal Care (`Cosmetics/`)
+### Group 13 — Personal Care (`13_Personal_Care/Cosmetics/`)
 
 Daily scrape frequency.
 
@@ -248,7 +248,7 @@ Daily scrape frequency.
 
 ---
 
-### Group 04 — Housing / Rent (`HousesRent/`) — Special Handling
+### Group 04 — Housing / Rent (`04_Housing/`) — Special Handling
 
 Rent data is **not** processed through the standard product pipeline. Instead:
 

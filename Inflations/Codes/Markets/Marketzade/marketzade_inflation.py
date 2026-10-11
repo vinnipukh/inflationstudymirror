@@ -43,7 +43,7 @@ logger = logging.getLogger(__name__)
 
 # Repo-relative paths
 _REPO_ROOT = _THIS_DIR.parents[3]  # .../InflationResearchStudy
-DATA_DIR   = _REPO_ROOT / "InflationItems" / "Datas" / "Markets" / "Marketzade"
+DATA_DIR   = _REPO_ROOT / "InflationItems" / "Datas" / "01_Food" / "Marketzade"
 OUTPUT_DIR = _REPO_ROOT / "Inflations" / "Datas" / "Markets" / "Marketzade"
 
 

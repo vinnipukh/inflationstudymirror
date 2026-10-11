@@ -33,7 +33,7 @@ import pandas as pd
 
 # ── Path setup ────────────────────────────────────────────────────────────────
 # Bu dosya: Inflations/Codes/ClothingStores/Stradivarius/stradivarius_inflation.py
-# Veri:     InflationItems/Datas/ClothingStores/Stradivarius/
+# Veri:     InflationItems/Datas/03_Clothing/Stradivarius/
 # Çıktı:    Inflations/Datas/ClothingStores/Stradivarius/
 _THIS_DIR = Path(__file__).resolve().parent
 REPO_ROOT  = _THIS_DIR.parents[3]
@@ -42,7 +42,7 @@ from stradivarius_tuik_config import normalised_weights
 
 logger = logging.getLogger(__name__)
 
-DATA_DIR   = REPO_ROOT / "InflationItems" / "Datas" / "ClothingStores" / "Stradivarius"
+DATA_DIR   = REPO_ROOT / "InflationItems" / "Datas" / "03_Clothing" / "Stradivarius"
 OUTPUT_DIR = REPO_ROOT / "Inflations"     / "Datas" / "ClothingStores" / "Stradivarius"
 
 KEY = ["product_name"]

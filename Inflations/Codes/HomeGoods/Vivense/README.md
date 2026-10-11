@@ -1,7 +1,7 @@
 # Vivense Inflation Calculator
 
 Computes daily inflation metrics for the Vivense product catalogue scraped by
-`InflationItems/Codes/HomeGoods/Vivense/scripts/main.py`.
+`InflationItems/Codes/05_Furnishings/HomeGoods/Vivense/scripts/main.py`.
 
 ## Metrics
 
@@ -17,7 +17,7 @@ via the `--compare` flag.
 ## Inputs / Outputs
 
 ```
-InflationItems/Datas/HomeGoods/Vivense/vivense_<DATE>.csv         (input)
+InflationItems/Datas/05_Furnishings/HomeGoods/Vivense/vivense_<DATE>.csv         (input)
         ↓
 Inflations/Codes/HomeGoods/Vivense/inflation.py
         ↓

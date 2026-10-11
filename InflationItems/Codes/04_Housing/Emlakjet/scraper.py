@@ -6,9 +6,9 @@ large provinces into the district/neighborhood routes advertised by the site.
 It uses the allowed ``?sayfa=`` parameter and does not use the robots-disallowed
 ``filtreler=ilan-sayisi=50`` shortcut.
 
-Reliability (CI): pages load through :class:`Codes.HousesRent.browser.BrowserSession`,
+Reliability (CI): pages load through :class:`04_Housing/browser.py BrowserSession`,
 which watchdog-times every command and restarts Chrome when a session stalls or
-dies.  Run state is checkpointed under ``Datas/HousesRent/Emlakjet/state/``
+dies.  Run state is checkpointed under ``Datas/04_Housing/Emlakjet/state/``
 (tracked, committed by the workflow) so ``--resume`` continues an interrupted
 crawl across GitHub Actions runs; a finished day's checkpoint is deleted.
 """
@@ -28,37 +28,22 @@ from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 from bs4 import BeautifulSoup
 
-try:
-    from InflationItems.Codes.HousesRent.common import (
-        CsvSink,
-        absolute_url,
-        clean_text,
-        is_explicitly_sale_listing,
-        load_checkpoint,
-        make_listing_row,
-        normalize_price,
-        parse_area_m2,
-        parse_listing_date,
-        parse_location,
-        save_checkpoint,
-    )
-except ModuleNotFoundError:  # pragma: no cover - direct-script compatibility
-    _ROOT = Path(__file__).resolve().parents[4]
-    if str(_ROOT) not in sys.path:
-        sys.path.insert(0, str(_ROOT))
-    from InflationItems.Codes.HousesRent.common import (
-        CsvSink,
-        absolute_url,
-        clean_text,
-        is_explicitly_sale_listing,
-        load_checkpoint,
-        make_listing_row,
-        normalize_price,
-        parse_area_m2,
-        parse_listing_date,
-        parse_location,
-        save_checkpoint,
-    )
+# 04_Housing is not an importable package name (leading digit): load the shared
+# helpers (common.py, browser.py) from that folder directly.
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from common import (  # noqa: E402
+    CsvSink,
+    absolute_url,
+    clean_text,
+    is_explicitly_sale_listing,
+    load_checkpoint,
+    make_listing_row,
+    normalize_price,
+    parse_area_m2,
+    parse_listing_date,
+    parse_location,
+    save_checkpoint,
+)
 
 LOGGER = logging.getLogger("houses-rent.emlakjet")
 BASE_URL = "https://www.emlakjet.com"
@@ -76,7 +61,7 @@ _NON_PROVINCE_SLUGS = {
     "kktc",
 }
 _REPO_ROOT = Path(__file__).resolve().parents[4]
-DEFAULT_OUTPUT = _REPO_ROOT / "InflationItems" / "Datas" / "HousesRent" / "Emlakjet"
+DEFAULT_OUTPUT = _REPO_ROOT / "InflationItems" / "Datas" / "04_Housing" / "Emlakjet"
 # Tracked under Datas/ so the workflow can commit it and --resume survives
 # across GitHub Actions runs.  Named "state/" because .gitignore excludes any
 # directory called "checkpoints".
@@ -279,7 +264,7 @@ def scrape(
 
         browser = None
     else:
-        from InflationItems.Codes.HousesRent.browser import BrowserSession
+        from browser import BrowserSession
 
         browser = BrowserSession(
             driver_factory,
@@ -420,7 +405,7 @@ def _build_driver_factory(args: argparse.Namespace) -> Any:
     every browser restart starts clean instead of reusing a possibly locked or
     corrupted profile directory.
     """
-    from InflationItems.Codes.HousesRent.browser import create_chrome_driver
+    from browser import create_chrome_driver
 
     def factory() -> Any:
         return create_chrome_driver(
@@ -452,7 +437,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 
-    from InflationItems.Codes.HousesRent.browser import ChallengeDetected
+    from browser import ChallengeDetected
 
     driver_factory = _build_driver_factory(args)
     try:
