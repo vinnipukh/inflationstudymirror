@@ -24,13 +24,12 @@ case "$NAME" in
   pozitif)  TIMEOUT=15m;  CMD=("$PY" -u "$CODES/PozitifTeknoloji/pozitifTeknoloji_scraper.py") ;;
   beymen)   TIMEOUT=45m;  CMD=("$PY" -u "$CODES/Beymen/scraper.py") ;;
   dr)       TIMEOUT=20m;  CMD=("$PY" -u "$CODES/DR/dr_scraper.py") ;;
-  koctas)   TIMEOUT=60m;  CMD=("$PY" -u "$CODES/Koctas/koctas_scraper.py") ;;
   vatan)    TIMEOUT=120m; CMD=("$PY" -u "$CODES/VatanComputer/vatan_comp.py") ;;
   telecom)  TIMEOUT=90m;  CMD=("$PY" -u "$TELECOM/scraper.py") ;;
   internet) TIMEOUT=75m;  CMD=("$PY" -u "$TELECOM/internet.py") ;;
   streaming) TIMEOUT=15m; CMD=("$PY" -u "$TELECOM/streaming.py") ;;
   repair)   TIMEOUT=90m;  CMD=("$PY" -u "$TELECOM/repair.py") ;;
-  *) echo "usage: $0 {samsung|huawei|pozitif|beymen|dr|koctas|vatan|telecom|internet|streaming|repair}"; exit 2 ;;
+  *) echo "usage: $0 {samsung|huawei|pozitif|beymen|dr|vatan|telecom|internet|streaming|repair}"; exit 2 ;;
 esac
 
 cd "$ROOT" || exit 1

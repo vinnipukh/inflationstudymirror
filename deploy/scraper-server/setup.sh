@@ -34,7 +34,7 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get update -q
 apt-get install -y -q curl ca-certificates gnupg cron util-linux procps coreutils git
 
-echo "== 4/6 Google Chrome (Koctas, the Beymen fallback and the TurkNet cookie visit use it)"
+echo "== 4/6 Google Chrome (the Beymen fallback, the TurkNet cookie visit and tabii use it)"
 if ! command -v google-chrome >/dev/null 2>&1; then
   curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor --yes -o /usr/share/keyrings/google-chrome.gpg
   echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] https://dl.google.com/linux/chrome/deb/ stable main" \

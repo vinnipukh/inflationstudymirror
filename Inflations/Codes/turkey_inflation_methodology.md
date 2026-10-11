@@ -151,6 +151,7 @@ Daily scrape frequency.
 | FiltasYapi      | Construction supplies   |
 | HanCivata       | Fasteners & hardware    |
 | Hausmart        | Online hardware         |
+| Koctas          | Power tools (from 08)   |
 | LoyaMakina      | Machinery & tools       |
 | Nalburadam      | Hardware market         |
 | Nalburcuk       | Hardware market         |
@@ -186,7 +187,6 @@ Daily scrape frequency.
 | Beymen           | Premium electronics             |
 | DR               | Books, electronics & multimedia |
 | Huawei           | Brand store                     |
-| Koçtaş           | DIY & electronics               |
 | PozitifTeknoloji | Apple reseller                  |
 | Samsung          | Brand store                     |
 | Teknoraks        | Consumer electronics            |

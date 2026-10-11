@@ -23,7 +23,7 @@ Examples:
 - `InflationItems/Codes/08_Communication/BeymenTech/`
 - `InflationItems/Codes/05_Furnishings/ConstructionSuppliesMarkets/yapimaks/`
 - `InflationItems/Codes/04_Housing/Emlakjet/`
-- `InflationItems/Codes/08_Communication/<Retailer>/` tech retailer scrapers (Beymen, DR, Huawei, Koctas, PozitifTeknoloji, Samsung, VatanComputer)
+- `InflationItems/Codes/08_Communication/<Retailer>/` tech retailer scrapers (Beymen, DR, Huawei, PozitifTeknoloji, Samsung, VatanComputer)
 - `InflationItems/Codes/08_Communication/Telecom/` (`scraper.py` mobile tariffs: Turkcell, Vodafone, Türk Telekom, NetGSM; `internet.py` home internet: Superonline, Vodafone, Kablonet, Milleni, TurkNet, Türk Telekom; `streaming.py` streaming subscriptions; `repair.py` ICT equipment repair prices)
 
 ## Data tree

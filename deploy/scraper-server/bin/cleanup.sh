@@ -23,7 +23,7 @@ find "$ROOT/logs" -type f -name 'telecom*.log' -mtime +30 -delete 2>/dev/null
 
 # temp Chrome profiles left by a crash (only when no scraper is running)
 if ! pgrep -f 'chrome' >/dev/null; then
-  find /tmp -maxdepth 1 \( -name 'koctas_chrome_*' -o -name 'beymen_chrome_*' -o -name 'telecom_chrome_*' -o -name '.org.chromium.*' \) \
+  find /tmp -maxdepth 1 \( -name 'beymen_chrome_*' -o -name 'telecom_chrome_*' -o -name '.org.chromium.*' \) \
        -mmin +720 -exec rm -rf {} + 2>/dev/null
 fi
 

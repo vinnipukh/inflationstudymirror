@@ -2,7 +2,7 @@
 # Installed by setup.sh (it replaces only the block between the BEGIN/END markers).
 # Each job takes a global lock, so even if one runs late they never overlap.
 # Durations measured 2026-09-28 (full runs): samsung 1 min, huawei 1, pozitif 1,
-# dr 1, beymen 11, koctas ~15, vatan 19. Start times leave room for a slower server.
+# dr 1, beymen 11, vatan 19 (Koctas moved to 05 on 2026-10-11, no longer scheduled). Start times leave room for a slower server.
 # BEGIN inflation-scrapers
 SHELL=/bin/bash
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
@@ -12,7 +12,6 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 20 1 * * * @ROOT@/bin/run_scraper.sh pozitif >> @ROOT@/log.txt 2>&1
 30 1 * * * @ROOT@/bin/run_scraper.sh dr      >> @ROOT@/log.txt 2>&1
 0  2 * * * @ROOT@/bin/run_scraper.sh beymen  >> @ROOT@/log.txt 2>&1
-0  3 * * * @ROOT@/bin/run_scraper.sh koctas  >> @ROOT@/log.txt 2>&1
 0  4 * * * @ROOT@/bin/run_scraper.sh vatan   >> @ROOT@/log.txt 2>&1
 0  6 * * * @ROOT@/bin/run_scraper.sh telecom  >> @ROOT@/log.txt 2>&1
 30 7 * * * @ROOT@/bin/run_scraper.sh internet >> @ROOT@/log.txt 2>&1

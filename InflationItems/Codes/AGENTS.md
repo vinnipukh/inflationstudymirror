@@ -32,12 +32,12 @@ The Svelte frontend, Falcon API and SQLite serving database are not part of this
 
 ## 08_Communication (cron server)
 
-`08_Communication/` (Beymen, DR, Huawei, Koctas, PozitifTeknoloji, Samsung,
+`08_Communication/` (Beymen, DR, Huawei, PozitifTeknoloji, Samsung,
 VatanComputer) was imported from `TUGC3/InflationResearchStudy@9cb747a` and adapted
 for a 2 vCPU / 1.9 GB RAM Ubuntu cron box (not GitHub Actions). Deployment, schedule
 and the list of changes vs. upstream: `deploy/scraper-server/README.md`. Constraints:
-one scraper at a time, parallelism 1, browser only where Akamai forces it (Koctas
-always, Beymen on 403), headless Chrome needs a non-"HeadlessChrome" UA for Akamai,
+one scraper at a time, parallelism 1, browser only where Akamai forces it (Beymen
+on 403), headless Chrome needs a non-"HeadlessChrome" UA for Akamai,
 Chrome major version is auto-detected (never pin `version_main` in code).
 
 ## Verification policy

@@ -35,7 +35,6 @@ not GitHub Actions. Setup, measured durations and operations:
 | 01:20 | Pozitif Teknoloji | `InflationItems/Codes/08_Communication/PozitifTeknoloji/pozitifTeknoloji_scraper.py` | `InflationItems/Datas/08_Communication/PozitifTeknoloji/*.csv` |
 | 01:30 | D&R | `InflationItems/Codes/08_Communication/DR/dr_scraper.py` | `InflationItems/Datas/08_Communication/DR/*.csv` |
 | 02:00 | Beymen | `InflationItems/Codes/08_Communication/Beymen/scraper.py` | `InflationItems/Datas/08_Communication/Beymen/*.csv` |
-| 03:00 | Koçtaş | `InflationItems/Codes/08_Communication/Koctas/koctas_scraper.py` | `InflationItems/Datas/08_Communication/Koctas/*.csv` |
 | 04:00 | Vatan | `InflationItems/Codes/08_Communication/VatanComputer/vatan_comp.py` | `InflationItems/Datas/08_Communication/VatanComputer/*.csv` |
 | 06:00 | Telecom — mobile tariffs (Turkcell, Vodafone, Türk Telekom, NetGSM) | `InflationItems/Codes/08_Communication/Telecom/scraper.py` | `InflationItems/Datas/08_Communication/<Operator>/*.csv` |
 | 07:30 | Telecom — home internet (Superonline, Vodafone, Kablonet, Milleni, TurkNet, Türk Telekom) | `InflationItems/Codes/08_Communication/Telecom/internet.py` | `InflationItems/Datas/08_Communication/<Provider>/*_internet_*.csv` |

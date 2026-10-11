@@ -82,7 +82,6 @@ Bellek = USS (process'e özel bellek, Chrome alt process'leri dahil).
 | 01:20 | pozitif | 1 dk | 1.239 | 30 MB | 15 dk | yok |
 | 01:30 | dr | 1 dk | 1.345 | ~95 MB | 20 dk | yok |
 | 02:00 | beymen | 10.5 dk | 10.659 | 22 MB | 45 dk | sadece 403 gelirse |
-| 03:00 | koctas | 16.5 dk | 5.617 | 619 MB | 60 dk | her zaman, her 6 sayfada yenilenir |
 | 04:00 | vatan | ~19 dk (yavaşlatıldı, ~45 dk bekle) | 5.497 | ~105 MB | 120 dk | yok |
 | 06:00 | telecom (mobil tarifeler: Turkcell, Vodafone, Türk Telekom, NetGSM) | ~40 dk | ~820 | düşük | 90 dk | yok |
 | 07:30 | internet (ev interneti: Superonline, Vodafone, Kablonet, Milleni, TurkNet, Türk Telekom) | ~25 dk | ~400 | ~300 MB (kısa Chrome) | 75 dk | TurkNet için tek seferlik headless Chrome (Cloudflare çerezi) |
